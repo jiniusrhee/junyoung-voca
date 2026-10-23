@@ -21,6 +21,7 @@ import Dictionary from './pages/Dictionary';
 import Favorites from './pages/Favorites';
 import Home from './pages/Home';
 import Quiz from './pages/Quiz';
+import ModeSettings from './pages/ModeSettings';
 import Settings from './pages/Settings';
 import Stats from './pages/Stats';
 import Streak from './pages/Streak';
@@ -83,6 +84,7 @@ function Shell() {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/wrongs" element={<WrongNotes />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/settings/mode/:mode" element={<ModeSettings />} />
         <Route path="/settings/:section" element={<Settings />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

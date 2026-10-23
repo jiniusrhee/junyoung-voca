@@ -305,6 +305,8 @@ export interface Settings {
   homeMode: StudyMode;
   /** 연속 학습 목표(일). 없으면 다음 단계 자동 */
   streakGoal?: number;
+  /** 홈에 표시할 학습 모드 탭 (없으면 전부) */
+  homeTabs?: StudyMode[];
   exprGoal: number;
   exprCourse: string | null;
   talkGoal: number;

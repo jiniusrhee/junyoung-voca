@@ -129,7 +129,7 @@ export default function Home() {
           <button className={`mode-tab vocab ${homeMode === 'vocab' ? 'active' : ''}`} onClick={() => void saveSettings({ homeMode: 'vocab' })} aria-label="어휘 학습">
             <Icon name="bookPerson" size={30} />
           </button>
-          {MODE_TABS.map((m) => (
+          {MODE_TABS.filter((m) => !settings.homeTabs || !m.mode || settings.homeTabs.includes(m.mode)).map((m) => (
             <button
               key={m.key}
               className={`mode-tab ${m.key} ${m.mode && homeMode === m.mode ? 'active' : ''}`}
