@@ -13,7 +13,7 @@ import { syncContent } from '../lib/content';
 import { maybeAdjustLevel } from '../lib/level';
 import { LEVEL_TEST_QUESTIONS } from '../lib/levelLogic';
 import { applyReview, newCardRow, type Outcome } from '../lib/scheduler';
-import { LevelTest, StudyPicker, type Question } from '../lib/session';
+import { LevelTest, ListPicker, StudyPicker, type Question } from '../lib/session';
 import { saveSettings, useSettings } from '../lib/settings';
 import { canRecognize, recognizeOnce, speak, voiceErrorMessage } from '../lib/speech';
 import { SHOW_ANSWER_MSG, containsAnswer, evaluate, feedbackFor, fullSentence, hintPrefix, normalize, speechMatchRate } from '../lib/text';
@@ -59,6 +59,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const nav = useNavigate();
   const [params] = useSearchParams();
   const extraTarget = Number(params.get('target')) || 0;
+  const listIds = params.get('ids')?.split(',').filter(Boolean) ?? null;
   const [phase, setPhase] = useState<Phase>('loading');
   const [live, setLive] = useState<Live | null>(null);
   const [answered, setAnswered] = useState<Answered | null>(null);
@@ -81,7 +82,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
 
   const settingsRef = useRef<Settings | null>(null);
   settingsRef.current = settings ?? null;
-  const pickerRef = useRef<StudyPicker | null>(null);
+  const pickerRef = useRef<StudyPicker | ListPicker | null>(null);
   const testRef = useRef<LevelTest | null>(null);
   const started = useRef(false);
   const finalizing = useRef(false);
@@ -146,7 +147,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         await t.init();
         testRef.current = t;
       } else {
-        const p = new StudyPicker(settings.level ?? 10, settings.newWordDifficulty);
+        const p = listIds ? new ListPicker(listIds) : new StudyPicker(settings.level ?? 10, settings.newWordDifficulty);
         await p.init();
         pickerRef.current = p;
       }
@@ -405,6 +406,18 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     );
   }
 
+  if (phase === 'empty' && listIds) {
+    return (
+      <div className="quiz-screen center col gap">
+        <Mascot size={110} mood="cheer" />
+        <p className="quiz-msg">히스토리 학습을 마쳤어요</p>
+        <p className="muted-light small">고른 단어 {listIds.length}개를 모두 풀었어요.</p>
+        <button className="btn primary" onClick={() => nav(-1)}>
+          돌아가기
+        </button>
+      </div>
+    );
+  }
   if (phase === 'empty') {
     return (
       <div className="quiz-screen center col gap">

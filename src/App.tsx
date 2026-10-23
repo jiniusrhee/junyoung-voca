@@ -13,6 +13,7 @@ import GrammarDict, { GrammarLesson } from './pages/GrammarDict';
 import GrammarQuiz from './pages/GrammarQuiz';
 import Guide from './pages/Guide';
 import LearnedList from './pages/LearnedList';
+import LearnedMenu, { LearnedWords } from './pages/Learned';
 import ListeningQuiz from './pages/ListeningQuiz';
 import Pairs, { PairQuiz } from './pages/Pairs';
 import Wordbook from './pages/Wordbook';
@@ -72,7 +73,9 @@ function Shell() {
         <Route path="/wordbook" element={<Wordbook />} />
         <Route path="/guide" element={<Guide />} />
         <Route path="/dict" element={<Dictionary />} />
-        <Route path="/words" element={<Words />} />
+        <Route path="/words" element={<LearnedMenu />} />
+        <Route path="/words/all" element={<Words />} />
+        <Route path="/learned-words/:kind" element={<LearnedWords />} />
         <Route path="/words/:id" element={<WordDetail />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/wrongs" element={<WrongNotes />} />

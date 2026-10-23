@@ -146,3 +146,31 @@ export class LevelTest {
     return finalLevelFrom(this.history);
   }
 }
+
+/** 정해진 단어 목록을 순서대로 출제 (히스토리 학습) */
+export class ListPicker {
+  private i = 0;
+  constructor(private ids: string[]) {}
+
+  async init(): Promise<void> {}
+
+  setLevel(_level: number): void {}
+
+  noteAnswered(_wordId: string): void {}
+
+  get remaining(): number {
+    return Math.max(0, this.ids.length - this.i);
+  }
+
+  async next(): Promise<Question | null> {
+    while (this.i < this.ids.length) {
+      const id = this.ids[this.i++];
+      const word = await db.words.get(id);
+      if (!word) continue;
+      const card = (await db.cards.get(id)) ?? null;
+      const n = Math.max(1, word.sentences.length);
+      return { word, sentenceIdx: card ? card.reps % n : 0, isNew: !card, card };
+    }
+    return null;
+  }
+}
