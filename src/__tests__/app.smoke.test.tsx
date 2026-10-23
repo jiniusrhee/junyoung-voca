@@ -51,6 +51,17 @@ async function type(text: string) {
     });
   }
 }
+/** 입력 말풍선에 원하는 글자가 들어갈 때까지 (첫 키 입력이 렌더 전에 들어가는 경우 대비) */
+async function typeExactly(text: string) {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    await type(text);
+    const shown = document.querySelector('.toolbar .bubble')?.textContent ?? '';
+    if (shown === text) return;
+    await press('Backspace', shown.length + 2);
+  }
+  throw new Error(`입력 실패: ${text}`);
+}
+
 async function press(key: string, times = 1) {
   for (let i = 0; i < times; i++) {
     await act(async () => {
@@ -123,7 +134,7 @@ describe('app smoke', () => {
     const wrong =
       sentence.alts?.find((a) => a.t !== 'ok' && !a.w.toLowerCase().startsWith(sentence.answer.toLowerCase()))?.w ?? 'zzzz';
 
-    await type(wrong);
+    await typeExactly(wrong);
     await press('Enter');
     expect(document.querySelector('.qcard .pill')).toBeTruthy();
     expect(document.querySelector('.mark-bang')).toBeTruthy();
