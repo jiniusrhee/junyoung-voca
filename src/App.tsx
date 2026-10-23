@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { HashRouter, Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import BottomNav from './components/BottomNav';
+import StreakPopup from './components/StreakPopup';
 import { syncContent } from './lib/content';
 import { useSettings } from './lib/settings';
 import { useApplyTheme } from './lib/theme';
@@ -89,6 +90,7 @@ function Shell() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       {showNav && <BottomNav />}
+      {!needsOnboarding && <StreakPopup />}
     </div>
   );
 }

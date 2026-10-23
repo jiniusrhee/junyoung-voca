@@ -8,7 +8,7 @@ import { db } from '../db';
 import { recordModeAnswer } from '../lib/modeStudy';
 import { saveSettings, useSettings } from '../lib/settings';
 import { canRecognize, recognizeOnce, speak, voiceErrorMessage } from '../lib/speech';
-import { currentEpisode, getTalkProgress, gradeLetter, gradeTalk, saveEpisode, unlocked, type TalkGrade, type TalkProgress } from '../lib/talk';
+import { currentEpisode, getTalkProgress, getTalkReviewMarks, gradeLetter, gradeTalk, saveEpisode, toggleTalkReview, unlocked, type TalkGrade, type TalkProgress } from '../lib/talk';
 import type { TalkLine, TalkStory } from '../types';
 
 type Stage = 'intro' | 'play' | 'done';
@@ -70,6 +70,9 @@ export default function TalkPlay() {
   const [grade, setGrade] = useState<TalkGrade | null>(null);
   const [shown, setShown] = useState(false); // 모범 답안으로 넘어감
   const [stars, setStars] = useState<Record<number, number>>({});
+  const [answers, setAnswers] = useState<Record<number, string>>({});
+  const [openAns, setOpenAns] = useState<number | null>(null);
+  const reviewMarks = useLiveQuery(() => getTalkReviewMarks(), []);
   const [peek, setPeek] = useState<string | null>(null);
   const [tip, setTip] = useState(true);
   const [exprCard, setExprCard] = useState(false);
@@ -167,6 +170,7 @@ export default function TalkPlay() {
     if (!line || !text.trim() || grade) return;
     const g = gradeTalk(text, line, level);
     setInput(text);
+    if (lineIndex != null) setAnswers((m) => ({ ...m, [lineIndex]: text }));
     setGrade(g);
     void record(g);
   };
@@ -312,41 +316,71 @@ export default function TalkPlay() {
   if (stage === 'done') {
     const vals = Object.values(stars);
     const a = vals.length ? vals.reduce((x, y) => x + y, 0) / vals.length : 0;
+    const g = gradeLetter(a);
     const hasNext = epIdx + 1 < story.episodes.length;
+    const comment =
+      g === 'S'
+        ? '모든 문장을 자연스럽게 말했어요. 이 상황은 이제 실전에서도 문제없겠어요!'
+        : g === 'A'
+          ? '핵심 표현을 잘 살렸어요. 몇 문장만 더 다듬으면 완벽해요!'
+          : g === 'B'
+            ? '뜻은 잘 전달됐어요. 모범 답안과 비교하며 표현을 익혀 보세요.'
+            : '포기하지 않고 끝까지 해냈어요. 복습에 추가해서 한 번 더 말해 보세요!';
     return (
-      <div className="talk-screen">
-        <SceneArt scene={story.scene} dim />
-        <div className="talk-done">
-          <GradeBadge g={gradeLetter(a)} size={96} />
-          <p className="done-title">에피소드 완료!</p>
-          <p className="done-sub">
-            {episode.title} · 평균 별 {a.toFixed(1)}개
-          </p>
-          <div className="done-lines">
-            {meIdx.map((li) => (
-              <div key={li} className="done-line">
-                <span>{episode.lines[li].ko}</span>
-                <Stars n={stars[li] ?? 0} />
+      <div className="screen sub talk-done-page">
+        <section className="td-card">
+          <div className={`td-hero g-${g}`}>
+            <GradeBadge g={g} size={110} />
+          </div>
+          <h2 className="td-title">{episode.title} 완료!</h2>
+          <p className="td-comment">{comment}</p>
+        </section>
+        <section className="td-card td-script">
+          <h3>대화 스크립트</h3>
+          {episode.lines.map((l, li) =>
+            l.who === 'npc' ? (
+              <div key={li} className="td-npc">
+                <p>{l.en}</p>
+                <small>{l.ko}</small>
               </div>
-            ))}
-          </div>
-          <div className="talk-intro-actions">
-            <button className="btn gray big" onClick={() => nav('/talk')}>
-              목록으로
-            </button>
-            {hasNext && (
-              <button
-                className="btn primary big"
-                onClick={() => {
-                  nav(`/talk/${story.id}/${epIdx + 1}`, { replace: true });
-                  setStage('intro');
-                  setStars({});
-                }}
-              >
-                다음 에피소드
-              </button>
-            )}
-          </div>
+            ) : (
+              <div key={li} className="td-me-wrap">
+                <div className="td-me">
+                  <p>{l.answer}</p>
+                  <small>{l.ko}</small>
+                  <button className="td-mine" onClick={() => setOpenAns((o) => (o === li ? null : li))}>
+                    <span className="note-tag model">내 답안</span>
+                    <Icon name="chevron" size={16} className={openAns === li ? 'up' : ''} />
+                  </button>
+                  {openAns === li && (
+                    <p className="td-answer">
+                      {answers[li] || '(모범 답안 보기)'} <Stars n={stars[li] ?? 0} />
+                    </p>
+                  )}
+                </div>
+                <label className="td-review">
+                  복습에 추가하기
+                  <input type="checkbox" checked={reviewMarks?.includes(`${episode.id}:${li}`) ?? false} onChange={() => void toggleTalkReview(`${episode.id}:${li}`)} />
+                  <span className="toggle" />
+                </label>
+              </div>
+            ),
+          )}
+        </section>
+        <div className="nb-foot">
+          <button
+            className="btn primary big"
+            onClick={() => {
+              if (hasNext) {
+                nav(`/talk/${story.id}/${epIdx + 1}`, { replace: true });
+                setStage('intro');
+                setStars({});
+                setAnswers({});
+              } else nav('/talk');
+            }}
+          >
+            학습 완료
+          </button>
         </div>
       </div>
     );
@@ -417,7 +451,7 @@ export default function TalkPlay() {
           </button>
           <button onClick={afterAnswer}>
             <Icon name="play" size={26} />
-            <span>{reviewLine != null ? '완료' : pos + 1 >= total ? '결과 보기' : '다음 문제'}</span>
+            <span>{reviewLine != null ? '완료' : pos + 1 >= total ? '학습 완료' : '다음 문제'}</span>
           </button>
         </div>
       ) : mode === 'voice' ? (

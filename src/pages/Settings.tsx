@@ -7,6 +7,7 @@ import VocabSettings from '../components/VocabSettings';
 import { db } from '../db';
 import { exportBackup, importBackup, resetAll } from '../lib/backup';
 import { syncContent } from '../lib/content';
+import { getImported, importedRange } from '../lib/imported';
 import { saveSettings, useSettings } from '../lib/settings';
 
 /** 말해보카 설정: /settings (메뉴), /settings/vocab (어휘 학습), /settings/data (데이터) */
@@ -14,7 +15,11 @@ export default function Settings() {
   const s = useSettings();
   const nav = useNavigate();
   const { section } = useParams();
-  const firstDay = useLiveQuery(async () => (await db.daily.orderBy('date').first())?.date, []);
+  const firstDay = useLiveQuery(async () => {
+    const local = (await db.daily.orderBy('date').first())?.date;
+    const imp = importedRange(await getImported())?.from;
+    return [local, imp].filter((x): x is string => !!x).sort()[0];
+  }, []);
   if (!s) return null;
 
   const back = () => (window.history.length > 1 ? nav(-1) : nav('/'));

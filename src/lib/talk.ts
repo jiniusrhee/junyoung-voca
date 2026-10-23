@@ -125,7 +125,25 @@ export interface ReviewPick {
 }
 
 /** 문장 복습 추천: 별이 가장 적었던 내 대사 */
-export function pickReview(stories: TalkStory[], prog: TalkProgress): ReviewPick | null {
+/** 결과 화면에서 '복습에 추가하기'로 표시한 대사 (`${episodeId}:${lineIdx}`) */
+export async function getTalkReviewMarks(): Promise<string[]> {
+  return ((await db.kv.get('talkReviewMarks'))?.value as string[] | undefined) ?? [];
+}
+
+export async function toggleTalkReview(key: string): Promise<void> {
+  const cur = await getTalkReviewMarks();
+  await db.kv.put({ key: 'talkReviewMarks', value: cur.includes(key) ? cur.filter((k) => k !== key) : [...cur, key] });
+}
+
+export function pickReview(stories: TalkStory[], prog: TalkProgress, marks: string[] = []): ReviewPick | null {
+  for (const key of marks) {
+    const [epId, idx] = key.split(':');
+    for (const story of stories) {
+      const epIdx = story.episodes.findIndex((e) => e.id === epId);
+      const line = story.episodes[epIdx]?.lines[Number(idx)];
+      if (epIdx >= 0 && line?.who === 'me') return { story, epIdx, lineIdx: Number(idx), line };
+    }
+  }
   let best: ReviewPick | null = null;
   let bestStars = 4;
   for (const story of stories) {

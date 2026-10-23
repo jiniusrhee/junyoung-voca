@@ -6,7 +6,7 @@ import SceneArt from '../components/SceneArt';
 import { db } from '../db';
 import { saveSettings, useSettings } from '../lib/settings';
 import { speak } from '../lib/speech';
-import { CEFR, currentEpisode, getTalkProgress, pickReview } from '../lib/talk';
+import { CEFR, currentEpisode, getTalkProgress, getTalkReviewMarks, pickReview } from '../lib/talk';
 import type { Settings } from '../types';
 import { GradeBadge } from './TalkPlay';
 
@@ -27,7 +27,8 @@ export default function TalkHome() {
     if (ta !== tb) return tb - ta;
     return Math.abs(CEFR_IDX.indexOf(a.cefr) - lv) - Math.abs(CEFR_IDX.indexOf(b.cefr) - lv);
   });
-  const review = stories && prog ? pickReview(stories, prog) : null;
+  const marks = useLiveQuery(() => getTalkReviewMarks(), []);
+  const review = stories && prog ? pickReview(stories, prog, marks ?? []) : null;
   const cats = [...new Set((stories ?? []).map((x) => x.category))].sort((a, b) => CAT_ORDER.indexOf(a) - CAT_ORDER.indexOf(b));
 
   return (
