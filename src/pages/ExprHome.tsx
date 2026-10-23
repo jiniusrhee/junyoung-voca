@@ -286,24 +286,32 @@ export function ExprDict({ keyParam }: { keyParam?: string }) {
   const [q, setQ] = useState('');
 
   if (keyParam) {
+    const paras = (detail?.p.note ?? '').split(/\n+/).filter(Boolean);
     return (
-      <div className="vs-page lesson-page">
-        <header className="vs-head">
-          <button className="vs-back" onClick={() => nav(-1)}>
-            <Icon name="back" size={22} /> 표현 사전
-          </button>
-        </header>
+      <div className="vs-page lesson-page xd-page">
+        <button className="xd-close" onClick={() => nav(-1)} aria-label="닫기">
+          <Icon name="close" size={22} />
+        </button>
         {detail && (
-          <article className="lesson">
-            <p className="lesson-cat">{courses?.find((c) => c.id === detail.p.course)?.title}</p>
-            <h2 className="lesson-title">{detail.p.ko}</h2>
-            <button className="listen-pill" onClick={() => speak(detail.p.en.replace(/~/g, ''))}>
-              <Icon name="speaker" size={16} /> {detail.p.en}
+          <article className="lesson xd">
+            <h2 className="xd-title">{detail.p.en.replace(/~/g, '~')}</h2>
+            <p className="xd-ko">{detail.p.ko}</p>
+            <p className="lesson-cat xd-cat">{courses?.find((c) => c.id === detail.p.course)?.title}</p>
+            <button className="xd-bubble" onClick={() => speak(detail.p.en.replace(/~/g, ''))}>
+              <span className="xd-avatar">
+                <Icon name="chat" size={22} />
+              </span>
+              <span className="xd-bubble-text">
+                <b>{detail.p.en}</b>
+                <small>{detail.p.ko}</small>
+              </span>
             </button>
-            <p className="lesson-summary" style={{ marginTop: 12 }}>
-              {detail.p.meaning}
-            </p>
-            <p className="lesson-p">{detail.p.note}</p>
+            <p className="xd-p lead">{detail.p.meaning}</p>
+            {paras.map((t, i) => (
+              <p key={i} className="xd-p">
+                {t}
+              </p>
+            ))}
             <h3 className="lesson-h">예문</h3>
             {detail.items.map((it) => (
               <div key={it.id} className="lesson-ex">
