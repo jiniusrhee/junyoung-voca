@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router-dom';
+import Icon, { type IconName } from './Icon';
 
-const items = [
-  { to: '/', label: '홈', icon: '🏠' },
-  { to: '/words', label: '어휘', icon: '📚' },
-  { to: '/stats', label: '통계', icon: '📈' },
-  { to: '/settings', label: '설정', icon: '⚙️' },
+const items: { to: string; label: string; icon: IconName }[] = [
+  { to: '/', label: '어휘', icon: 'book' },
+  { to: '/stats', label: '기록', icon: 'chart' },
+  { to: '/dict', label: '사전', icon: 'search' },
+  { to: '/settings', label: '설정', icon: 'gear' },
 ];
 
 export default function BottomNav() {
@@ -12,7 +13,7 @@ export default function BottomNav() {
     <nav className="bottom-nav">
       {items.map((it) => (
         <NavLink key={it.to} to={it.to} end={it.to === '/'} className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-          <span className="nav-icon">{it.icon}</span>
+          <Icon name={it.icon} size={24} />
           <span>{it.label}</span>
         </NavLink>
       ))}

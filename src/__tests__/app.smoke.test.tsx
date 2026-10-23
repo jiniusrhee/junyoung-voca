@@ -4,7 +4,8 @@ import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-libra
 import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
 import App from '../App';
 import { db } from '../db';
-import type { WordEntry } from '../types';
+import { SHOW_ANSWER_MSG } from '../lib/text';
+import type { WordEntry, WordSentence } from '../types';
 
 // 배포되는 단어 팩을 그대로 읽어 가짜 fetch로 서빙한다
 const packModules = import.meta.glob<{ default: { words: WordEntry[] } }>('../../public/data/words/*.json', { eager: true });
@@ -33,26 +34,33 @@ beforeAll(() => {
 
 afterEach(() => cleanup());
 
-/** 화면에 표시된 한국어 문장으로 현재 출제 단어를 찾는다 */
-async function findCurrentWord(): Promise<WordEntry> {
-  const ko = document.querySelector('.sentence-ko')?.textContent ?? '';
-  const words = await db.words.toArray();
-  const found = words.find((w) => w.sentences.some((s) => s.ko.replace(/\*\*/g, '') === ko));
-  if (!found) throw new Error(`현재 문제를 찾을 수 없음: ${ko}`);
-  return found;
+/** 화면에 표시된 한국어 문장으로 현재 출제 문장을 찾는다 */
+async function current(): Promise<{ word: WordEntry; sentence: WordSentence }> {
+  const ko = document.querySelector('.qcard .ko')?.textContent ?? '';
+  for (const word of await db.words.toArray()) {
+    for (const sentence of word.sentences) if (sentence.ko.replace(/\*\*/g, '') === ko) return { word, sentence };
+  }
+  throw new Error(`현재 문제를 찾을 수 없음: ${ko}`);
 }
 
-async function typeAndSubmit(input: HTMLInputElement, value: string) {
-  await act(async () => {
-    fireEvent.change(input, { target: { value } });
-  });
-  await act(async () => {
-    fireEvent.keyDown(input, { key: 'Enter' });
-  });
+/** 앱 자체 자판 대신 실제 키보드 이벤트로 입력 */
+async function type(text: string) {
+  for (const ch of text) {
+    await act(async () => {
+      fireEvent.keyDown(window, { key: ch === ' ' ? ' ' : ch });
+    });
+  }
+}
+async function press(key: string, times = 1) {
+  for (let i = 0; i < times; i++) {
+    await act(async () => {
+      fireEvent.keyDown(window, { key });
+    });
+  }
 }
 
 describe('app smoke', () => {
-  it('runs welcome → level test → answer → feedback → next question', async () => {
+  it('runs welcome → level test → auto-checked answer → after panel → next card', async () => {
     expect(packs.length).toBe(30);
     render(<App />);
 
@@ -62,61 +70,74 @@ describe('app smoke', () => {
       fireEvent.click(start);
     });
 
-    const input = (await screen.findByPlaceholderText('영어로 입력', {}, { timeout: 5_000 })) as HTMLInputElement;
-    expect(screen.getByText(/레벨 테스트 1 \/ 20/)).toBeTruthy();
-    expect(screen.getByText(/^Lv\.\d+$/).textContent).toBe('Lv.10');
+    await screen.findByText('0/20', {}, { timeout: 5_000 });
+    expect(screen.getByText('레벨 10')).toBeTruthy();
+    expect(screen.getByText('New')).toBeTruthy();
+    expect(screen.getByRole('button', { name: /힌트 보기/ })).toBeTruthy();
 
-    const questionWord = await findCurrentWord();
-    await typeAndSubmit(input, questionWord.sentences[0].answer);
+    const { word, sentence } = await current();
+    await type(sentence.answer);
 
-    await screen.findByText(/정답!/, {}, { timeout: 5_000 });
-    expect(screen.getByText('뉘앙스')).toBeTruthy();
-    const card = await db.cards.get(questionWord.id);
+    // 정답을 다 입력하면 확인 없이 채점되고 정답 후 패널이 나온다
+    await screen.findByRole('button', { name: /다음 문제/ }, { timeout: 5_000 });
+    expect(screen.getByText(/뒤 복습$/)).toBeTruthy();
+    const card = await db.cards.get(word.id);
     expect(card?.known).toBe(true);
     expect(await db.reviews.count()).toBe(1);
 
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: '다음' }));
+      fireEvent.click(screen.getByRole('button', { name: /다음 문제/ }));
     });
-
-    await screen.findByText(/레벨 테스트 2 \/ 20/, {}, { timeout: 5_000 });
-    expect(screen.getByText(/^Lv\.\d+$/).textContent).toBe('Lv.13');
+    await screen.findByText('1/20', {}, { timeout: 5_000 });
+    expect(screen.getByText('레벨 13')).toBeTruthy();
   });
 
-  it('records a review after 정답 보기 and re-asks the word within the session', async () => {
+  it('shows the answer on the second hint and records it as a miss', async () => {
     window.location.hash = '#/test';
     render(<App />);
-    const input = (await screen.findByPlaceholderText('영어로 입력', {}, { timeout: 10_000 })) as HTMLInputElement;
-    const questionWord = await findCurrentWord();
+    await screen.findByRole('button', { name: /힌트 보기/ }, { timeout: 10_000 });
+    const { word, sentence } = await current();
 
     await act(async () => {
-      fireEvent.click(screen.getByRole('button', { name: '정답 보기' }));
+      fireEvent.click(screen.getByRole('button', { name: /힌트 보기/ }));
     });
-    expect(screen.getByText(new RegExp(`정답은 '${questionWord.sentences[0].answer}'`))).toBeTruthy();
+    expect(document.querySelector('.bubble')?.textContent?.length).toBeGreaterThan(0);
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: /정답 보기/ }));
+    });
+    expect(screen.getByText(SHOW_ANSWER_MSG)).toBeTruthy();
 
-    await typeAndSubmit(input, questionWord.sentences[0].answer);
-    await screen.findByText('정답을 확인했어요', {}, { timeout: 5_000 });
-
-    const card = await db.cards.get(questionWord.id);
+    await type(sentence.answer);
+    await screen.findByRole('button', { name: /다음 문제/ }, { timeout: 5_000 });
+    const card = await db.cards.get(word.id);
     expect(card?.known).toBeFalsy();
-    expect(card?.due.getTime()).toBeLessThanOrEqual(Date.now() + 2 * 60_000);
+    expect(card!.due.getTime()).toBeLessThanOrEqual(Date.now() + 2 * 60_000);
   });
 
-  it('treats the base form as close and lets the user retry', async () => {
+  it('explains a wrong answer, then accepts the retry and keeps it in the wrong note', async () => {
     window.location.hash = '#/test';
     render(<App />);
-    const input = (await screen.findByPlaceholderText('영어로 입력', {}, { timeout: 10_000 })) as HTMLInputElement;
-    const questionWord = await findCurrentWord();
-    const answer = questionWord.sentences[0].answer;
+    await screen.findByRole('button', { name: /힌트 보기/ }, { timeout: 10_000 });
+    const { word, sentence } = await current();
+    const wrong = sentence.alts?.find((a) => a.t !== 'ok')?.w ?? 'zzzz';
 
-    await typeAndSubmit(input, 'zzzz');
-    expect(screen.getByText(/틀렸어요/)).toBeTruthy();
-    expect(screen.queryByText(/정답!/)).toBeNull();
+    await type(wrong);
+    await press('Enter');
+    expect(document.querySelector('.qcard .pill')).toBeTruthy();
+    expect(document.querySelector('.mark-bang')).toBeTruthy();
 
-    await typeAndSubmit(input, answer);
-    // 한 번 틀린 뒤 맞힘 → '맞혔지만 조금 헷갈렸어요'
-    await screen.findByText('맞혔지만 조금 헷갈렸어요', {}, { timeout: 5_000 });
-    const card = await db.cards.get(questionWord.id);
+    await press('Backspace', wrong.length);
+    await type(sentence.answer);
+    await screen.findByRole('button', { name: /다음 문제/ }, { timeout: 5_000 });
+
+    const card = await db.cards.get(word.id);
     expect(card?.known).toBeFalsy();
+    const review = (await db.reviews.where('wordId').equals(word.id).toArray()).pop();
+    expect(review?.wrongs?.[0]?.w).toBe(wrong);
+
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: /오답 노트/ }));
+    });
+    expect(document.querySelector('.card-overlay .wrong-w')?.textContent).toBe(wrong);
   });
 });

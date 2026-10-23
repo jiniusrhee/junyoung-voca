@@ -4,13 +4,13 @@ import type { Settings } from '../types';
 
 export const DEFAULT_SETTINGS: Settings = {
   level: null,
-  dailyGoal: 30,
+  dailyGoal: 20,
   inputMode: 'keyboard',
   blankMatchesLength: true,
-  liveHint: true,
+  autoCheck: true,
   autoSpeak: true,
+  speechRate: 'real',
   newWordDifficulty: 'normal',
-  questionsPerRound: 10,
 };
 
 async function read(): Promise<Settings> {

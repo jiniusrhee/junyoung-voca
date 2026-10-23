@@ -20,8 +20,8 @@ export default defineConfig({
         scope: BASE,
         display: 'standalone',
         orientation: 'portrait',
-        background_color: '#f6f7fb',
-        theme_color: '#4f46e5',
+        background_color: '#f4f5f9',
+        theme_color: '#7c5cf5',
         icons: [
           { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' },
@@ -31,6 +31,15 @@ export default defineConfig({
       workbox: {
         globPatterns: ['**/*.{js,css,html,png,svg,woff2}'],
         runtimeCaching: [
+          {
+            urlPattern: ({ url }) => url.hostname === 'cdn.jsdelivr.net',
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'fonts',
+              expiration: { maxEntries: 120, maxAgeSeconds: 60 * 60 * 24 * 365 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
           {
             urlPattern: ({ url }) => url.pathname.includes('/data/'),
             handler: 'NetworkFirst',

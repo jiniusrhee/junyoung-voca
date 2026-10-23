@@ -1,6 +1,7 @@
 import { useLiveQuery } from 'dexie-react-hooks';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Mascot from '../components/Mascot';
 import { db } from '../db';
 import { syncContent } from '../lib/content';
 
@@ -23,29 +24,32 @@ export default function Welcome() {
   };
 
   return (
-    <div className="screen center col gap welcome">
-      <div className="logo">V</div>
-      <h1>준영보카</h1>
-      <p className="muted">문장 속 빈칸을 채우며 단어를 익히고, 잊을 때쯤 다시 만나는 나만의 단어 앱</p>
-      <div className="card">
-        <p>먼저 20문제로 레벨을 측정합니다. 모르는 단어는 힌트나 정답 보기를 눌러도 괜찮아요. 테스트에서 푼 단어도 학습 기록에 남습니다.</p>
+    <div className="welcome">
+      <div className="welcome-top">
+        <p className="welcome-kicker">문장으로 뉘앙스까지 한 번에</p>
+        <h1>준영보카</h1>
+        <Mascot size={150} mood="cheer" />
       </div>
-      {count === undefined ? (
-        <p className="muted">준비 중…</p>
-      ) : count === 0 ? (
-        <>
-          <p className="muted">{busy ? '단어 데이터를 받는 중…' : '단어 데이터가 아직 없어요.'}</p>
-          {err && <p className="msg warn">{err}</p>}
-          <button className="btn primary" onClick={retry} disabled={busy}>
-            단어 데이터 받기
+      <div className="welcome-card">
+        <p className="welcome-title">20문제만 풀면 내 레벨을 찾아드려요</p>
+        <p className="welcome-desc">모르는 단어는 힌트 보기나 정답 보기를 눌러도 괜찮아요. 테스트에서 푼 단어도 학습 기록에 남아요.</p>
+        {count === undefined ? (
+          <p className="muted">준비 중…</p>
+        ) : count === 0 ? (
+          <>
+            <p className="muted small">{busy ? '단어 데이터를 받는 중…' : '단어 데이터가 아직 없어요.'}</p>
+            {err && <p className="msg-warn">{err}</p>}
+            <button className="btn primary big" onClick={retry} disabled={busy}>
+              단어 데이터 받기
+            </button>
+          </>
+        ) : (
+          <button className="btn primary big" onClick={() => nav('/test')}>
+            레벨 테스트 시작
           </button>
-        </>
-      ) : (
-        <button className="btn primary big" onClick={() => nav('/test')}>
-          레벨 테스트 시작
-        </button>
-      )}
-      <p className="muted small">단어 {count ?? 0}개 준비됨</p>
+        )}
+        <p className="muted tiny center-text">단어 {count ?? 0}개 준비됨</p>
+      </div>
     </div>
   );
 }

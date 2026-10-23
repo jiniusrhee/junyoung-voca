@@ -1,3 +1,5 @@
+import type { Alt, Tone, WordSentence } from '../types';
+
 export function normalize(s: string): string {
   return s
     .toLowerCase()
@@ -43,6 +45,56 @@ export function judge(input: string, answer: string, word: string): Judgement {
   return { verdict: d <= tolerance ? 'close' : 'wrong', distance: d, baseForm: false };
 }
 
+export type Evaluation =
+  | { kind: 'correct' }
+  | { kind: 'alt'; alt: Alt }
+  | { kind: 'form' }
+  | { kind: 'typo'; distance: number }
+  | { kind: 'wrong' };
+
+/** 입력을 정답·오답 설명(alts)과 비교 */
+export function evaluate(input: string, sentence: WordSentence, word: string): Evaluation {
+  const i = normalize(input);
+  const a = normalize(sentence.answer);
+  if (!i) return { kind: 'wrong' };
+  if (i === a) return { kind: 'correct' };
+  const alt = sentence.alts?.find((x) => normalize(x.w) === i);
+  if (alt) return { kind: 'alt', alt };
+  if (i === normalize(word)) return { kind: 'form' };
+  const d = levenshtein(i, a);
+  if (d <= (a.length >= 8 ? 2 : 1)) return { kind: 'typo', distance: d };
+  return { kind: 'wrong' };
+}
+
+export interface FeedbackMsg {
+  tone: Tone;
+  msg: string;
+  /** 정답으로 인정되는 유의어라 감점하지 않음 */
+  bonus: boolean;
+}
+
+const ALT_TONE: Record<Alt['t'], Tone> = { ok: 'green', near: 'yellow', wrong: 'red' };
+
+export function feedbackFor(e: Exclude<Evaluation, { kind: 'correct' }>): FeedbackMsg {
+  switch (e.kind) {
+    case 'alt':
+      return { tone: ALT_TONE[e.alt.t], msg: e.alt.m, bonus: e.alt.t === 'ok' };
+    case 'form':
+      return { tone: 'yellow', msg: '뜻은 맞아요! 문장에 맞는 형태로 바꿔 보세요.', bonus: false };
+    case 'typo':
+      return { tone: 'yellow', msg: `거의 맞았어요. 철자를 다시 확인해 보세요.`, bonus: false };
+    default:
+      return { tone: 'red', msg: '다시 생각해 보세요. 한글 뜻에 맞는 단어는 뭘까요?', bonus: false };
+  }
+}
+
+export const SHOW_ANSWER_MSG = '정답을 확인하고, 다시 입력해보세요.';
+
+/** 1단계 힌트로 보여줄 앞부분 (말해보카처럼 길이의 1/3, 최소 1글자) */
+export function hintPrefix(answer: string): string {
+  return answer.slice(0, Math.max(1, Math.floor(answer.length / 3)));
+}
+
 /** 음성 인식 결과(후보 여러 개) 중 정답 단어가 들어 있는지 */
 export function containsAnswer(transcripts: string[], answer: string, word: string): boolean {
   const a = normalize(answer);
@@ -51,6 +103,23 @@ export function containsAnswer(transcripts: string[], answer: string, word: stri
     const n = ` ${normalize(t)} `;
     return n.includes(` ${a} `) || n.includes(` ${w} `) || n.replace(/ /g, '') === a.replace(/ /g, '');
   });
+}
+
+/** 말해보기: 문장 단어 중 몇 %를 말했는지 */
+export function speechMatchRate(transcript: string, sentence: string): number {
+  const target = normalize(sentence).split(' ').filter(Boolean);
+  const said = normalize(transcript).split(' ').filter(Boolean);
+  if (!target.length) return 0;
+  const pool = [...said];
+  let hit = 0;
+  for (const t of target) {
+    const k = pool.indexOf(t);
+    if (k >= 0) {
+      hit++;
+      pool.splice(k, 1);
+    }
+  }
+  return hit / target.length;
 }
 
 export interface Segment {
@@ -70,4 +139,48 @@ export function splitBlank(en: string): [string, string] {
   const idx = en.indexOf('___');
   if (idx < 0) return [en, ''];
   return [en.slice(0, idx), en.slice(idx + 3)];
+}
+
+export function answerWords(answer: string): string[] {
+  return answer.trim().split(/\s+/);
+}
+
+export type SentenceSeg = { kind: 'text'; text: string } | { kind: 'blank'; idx: number };
+
+/** 영어 문장을 글자 구간과 빈칸(정답 단어 하나당 한 칸)으로 나눈다 */
+export function layoutSentence(en: string, answer: string): SentenceSeg[] {
+  const words = answerWords(answer);
+  const parts = en.split('___');
+  const blanks = parts.length - 1;
+  const segs: SentenceSeg[] = [];
+  let w = 0;
+  parts.forEach((p, i) => {
+    if (p) segs.push({ kind: 'text', text: p });
+    if (i >= blanks) return;
+    if (blanks === 1) {
+      words.forEach((_, k) => {
+        if (k > 0) segs.push({ kind: 'text', text: ' ' });
+        segs.push({ kind: 'blank', idx: w++ });
+      });
+    } else {
+      segs.push({ kind: 'blank', idx: w++ });
+    }
+  });
+  return segs;
+}
+
+/** 입력을 빈칸 수만큼 공백 기준으로 나눈다 (남는 단어는 마지막 칸에) */
+export function splitInput(input: string, count: number): string[] {
+  const parts = input.replace(/^\s+/, '').split(' ');
+  const out: string[] = [];
+  for (let i = 0; i < count; i++) out.push(i < count - 1 ? (parts[i] ?? '') : parts.slice(i).join(' '));
+  return out;
+}
+
+/** 빈칸에 정답을 채운 완성 문장 */
+export function fullSentence(en: string, answer: string): string {
+  const words = answerWords(answer);
+  const parts = en.split('___');
+  if (parts.length - 1 === 1) return parts[0] + answer + parts[1];
+  return parts.reduce((acc, p, i) => acc + p + (i < parts.length - 1 ? (words[i] ?? '') : ''), '');
 }

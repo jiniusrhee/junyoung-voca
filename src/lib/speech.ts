@@ -66,17 +66,26 @@ export function recognizeOnce(lang = 'en-US'): Promise<string[]> {
   });
 }
 
+export function voiceErrorMessage(e: unknown): string {
+  const code = e instanceof Error ? e.message : '';
+  if (code === 'no-speech') return '음성이 들리지 않았어요. 다시 말해 보세요.';
+  if (code === 'not-allowed' || code === 'service-not-allowed') return '마이크 권한을 허용해 주세요.';
+  if (code === 'unsupported') return '이 브라우저는 음성 인식을 지원하지 않아요.';
+  return '음성 인식에 실패했어요. 다시 시도해 주세요.';
+}
+
 export function canSpeak(): boolean {
   return typeof window !== 'undefined' && 'speechSynthesis' in window;
 }
 
-export function speak(text: string): void {
+/** 폰 내장 음성으로 읽기. slow=듣기평가 속도 */
+export function speak(text: string, slow = false): void {
   if (!canSpeak()) return;
   try {
     window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
     u.lang = 'en-US';
-    u.rate = 0.95;
+    u.rate = slow ? 0.72 : 0.98;
     const voices = window.speechSynthesis.getVoices();
     const voice = voices.find((v) => v.lang.replace('_', '-').startsWith('en-US')) ?? voices.find((v) => v.lang.startsWith('en'));
     if (voice) u.voice = voice;

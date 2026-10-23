@@ -3,10 +3,11 @@ interface Props {
   size?: number;
   stroke?: number;
   label: string;
-  sub?: string;
+  unit?: string;
 }
 
-export default function ProgressRing({ value, size = 120, stroke = 12, label, sub }: Props) {
+/** 말해보카 홈의 퍼센트 링 */
+export default function ProgressRing({ value, size = 84, stroke = 5, label, unit = '%' }: Props) {
   const r = (size - stroke) / 2;
   const c = 2 * Math.PI * r;
   const off = c * (1 - Math.min(1, Math.max(0, value)));
@@ -27,7 +28,7 @@ export default function ProgressRing({ value, size = 120, stroke = 12, label, su
       </svg>
       <div className="ring-label">
         <span className="ring-value">{label}</span>
-        {sub && <span className="ring-sub">{sub}</span>}
+        <span className="ring-unit">{unit}</span>
       </div>
     </div>
   );
