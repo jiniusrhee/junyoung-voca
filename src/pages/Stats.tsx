@@ -4,7 +4,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import Icon from '../components/Icon';
 import { db } from '../db';
 import { MASTERY_KO, MASTERY_ORDER, masteryOf, type Mastery } from '../lib/scheduler';
-import { useSettings } from '../lib/settings';
+import { getSettings, useSettings } from '../lib/settings';
 import { getImported } from '../lib/imported';
 import { comprehension, dayTime, dayTotal, displayVocab, goalMet, reviewAccuracy, vocabDateText } from '../lib/stats';
 import { WEEKDAYS_KO, dayOfWeek, formatClock, shiftDate, studyDateOf } from '../lib/time';
@@ -63,6 +63,13 @@ export default function Stats() {
 
 function PeriodTab({ byDate, daily, today, acc }: { byDate: Map<string, DailyRow>; daily: DailyRow[]; today: string; acc: number | null }) {
   const t = byDate.get(today);
+  const modeAcc = useLiveQuery(async () => ({
+    grammar: await reviewAccuracy(7, new Date(), 'grammar'),
+    expr: await reviewAccuracy(7, new Date(), 'expr'),
+    talk: await reviewAccuracy(7, new Date(), 'talk'),
+    listening: null,
+  }), []);
+  const listenBest = useLiveQuery(async () => ((await db.kv.get('listeningBest'))?.value as number | undefined) ?? (await getSettings()).listeningLevel ?? undefined, []);
   const reviews = t?.reviews ?? 0;
   const fresh = t?.newWords ?? 0;
   const sum = Math.max(1, fresh + reviews);
@@ -126,14 +133,34 @@ function PeriodTab({ byDate, daily, today, acc }: { byDate: Map<string, DailyRow
             <div className="ms-body">
               <div className="ms-head">
                 <b>{SMODE_LABEL[m]}</b>
+                <span className="ms-acc">
+                  {m === 'listening' ? (
+                    <>
+                      <Icon name="trophy" size={13} /> 최고 레벨 {listenBest ?? '-'}
+                    </>
+                  ) : (
+                    <>
+                      <Icon name="shield" size={13} /> 복습 정답률 {modeAcc?.[m] == null ? '-' : `${Math.round((modeAcc[m] ?? 0) * 100)}%`}
+                    </>
+                  )}
+                  <Icon name="chevron" size={12} />
+                </span>
               </div>
-              <div className="ms-bar">
-                <span className="new" style={{ width: `${(md.newItems / sm) * 100}%` }} />
-                <span className="rev" style={{ width: `${(md.reviews / sm) * 100}%` }} />
-              </div>
-              <p className="ms-legend">
-                새 문제 <b className="y">{md.newItems}</b> 복습 문제 <b className="b">{md.reviews}</b>
-              </p>
+              {m === 'listening' ? (
+                <p className="ms-legend">
+                  문제 <b className="b">{md.total}</b>
+                </p>
+              ) : (
+                <>
+                  <div className="ms-bar">
+                    <span className="new" style={{ width: `${(md.newItems / sm) * 100}%` }} />
+                    <span className="rev" style={{ width: `${(md.reviews / sm) * 100}%` }} />
+                  </div>
+                  <p className="ms-legend">
+                    새 문제 <b className="y">{md.newItems}</b> 복습 문제 <b className="b">{md.reviews}</b>
+                  </p>
+                </>
+              )}
             </div>
           </div>
         );
@@ -322,6 +349,15 @@ function StudyTab({ mode, byDate, daily, today, goal, extra }: { mode: SMode; by
   const reviewRows = rows.filter((r): r is DailyRow => !!r && r.total > 0);
   const accAll = reviewRows.length ? Math.round((reviewRows.reduce((s, r) => s + r.correct, 0) / reviewRows.reduce((s, r) => s + r.total, 0)) * 100) : null;
   const H = 150;
+  const talkStat = useLiveQuery(async () => {
+    if (mode !== 'talk') return null;
+    const rows = await db.reviews.where('studyDate').between(days[0], days[6], true, true).filter((r) => r.studyMode === 'talk').toArray();
+    return {
+      perfect: rows.filter((r) => r.firstTry).length,
+      excellent: rows.filter((r) => !r.firstTry && !r.showedAnswer && r.wrongAttempts === 0).length,
+      good: rows.filter((r) => !r.firstTry && (r.showedAnswer || r.wrongAttempts > 0)).length,
+    };
+  }, [mode, days[0]]);
 
   return (
     <>
@@ -407,15 +443,31 @@ function StudyTab({ mode, byDate, daily, today, goal, extra }: { mode: SMode; by
             <b>{tot('newWords') + tot('reviews')}</b>
           </div>
           <ul>
-            <li>
-              <i className="sw new" /> 새로 배운 {unit} <b>{newLearned}</b>
-            </li>
-            <li>
-              <i className="sw known" /> 이미 아는 단어 <b>{tot('knownNew')}</b>
-            </li>
-            <li>
-              <i className="sw review" /> 복습 {unit} <b>{tot('reviews')}</b>
-            </li>
+            {mode === 'talk' ? (
+              <>
+                <li>
+                  <i className="sw new" /> Perfect <b>{talkStat?.perfect ?? '-'}</b>
+                </li>
+                <li>
+                  <i className="sw known" /> Excellent <b>{talkStat?.excellent ?? '-'}</b>
+                </li>
+                <li>
+                  <i className="sw review" /> Good <b>{talkStat?.good ?? '-'}</b>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <i className="sw new" /> 새로 배운 {unit} <b>{newLearned}</b>
+                </li>
+                <li>
+                  <i className="sw known" /> 이미 아는 단어 <b>{tot('knownNew')}</b>
+                </li>
+                <li>
+                  <i className="sw review" /> 복습 {unit} <b>{tot('reviews')}</b>
+                </li>
+              </>
+            )}
             <li>
               <i className="sw ring" /> 복습 정답률 <i className="qmark">?</i> <b>{accAll == null ? '-' : `${accAll}%`}</b>
             </li>
@@ -445,6 +497,10 @@ function VocabTab({ level, imp }: { level: number; imp: ImportedProgress | null 
     return { byLevel, mastery, total: cards.length };
   }, []);
   const maxL = Math.max(1, ...(data?.byLevel ?? [1]));
+  const hist = useLiveQuery(async () => ((await db.kv.get('vocabHistory'))?.value as { date: string; vocab: number; level?: number }[] | undefined) ?? [], []);
+  const history = [...(imp?.vocabHistory ?? []), ...(hist ?? [])].sort((a, b) => b.date.localeCompare(a.date));
+  const vocabNow = displayVocab(level, comp ?? null, imp, testDate);
+  const pct = imp?.percentile != null && vocabNow === imp.vocabSize ? imp.percentile : percentileOf(vocabNow);
   const dt = vocabDateText(imp, testDate);
   const dateText = dt ? dt.replace(/^(\d{4})-(\d{2})-(\d{2})/, (_, y, m, d) => `${y}년 ${Number(m)}월 ${Number(d)}일`) : '측정 전';
 
@@ -466,10 +522,27 @@ function VocabTab({ level, imp }: { level: number; imp: ImportedProgress | null 
           <span>현재 레벨</span>
           <b className="laurel">레벨 {level}</b>
         </div>
+        <p className="gold-rank">
+          나의 어휘력은 대한민국 <em>상위 {pct}%</em>
+        </p>
       </section>
       <button className="measure-btn" onClick={() => nav('/test')}>
         어휘력 측정하기
       </button>
+      {history.length > 0 && (
+        <div className="s-card">
+          <b className="card-title">어휘력 측정 결과</b>
+          <ul className="vh-list">
+            {history.slice(0, 8).map((h) => (
+              <li key={h.date + h.vocab}>
+                <span>{h.date.replace(/-/g, '.')}</span>
+                <b>{h.vocab.toLocaleString()} 개</b>
+                {h.level != null && <small>레벨 {h.level}</small>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <div className="s-card">
         <b className="card-title">레벨별 학습 단어</b>
@@ -510,4 +583,22 @@ function VocabTab({ level, imp }: { level: number; imp: ImportedProgress | null 
       </div>
     </>
   );
+}
+
+/** 어휘 수로 본 대략적인 상위 비율 (성인 기준, 추정) */
+function percentileOf(vocab: number): number {
+  const table: [number, number][] = [
+    [22000, 0.1],
+    [20000, 0.3],
+    [17000, 1],
+    [14000, 3],
+    [12000, 6],
+    [10000, 12],
+    [8000, 22],
+    [6000, 38],
+    [4000, 58],
+    [2000, 80],
+  ];
+  for (const [v, p] of table) if (vocab >= v) return p;
+  return 95;
 }

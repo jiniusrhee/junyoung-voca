@@ -1,5 +1,5 @@
 import { useLiveQuery } from 'dexie-react-hooks';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ExtraStudySheet from '../components/ExtraStudySheet';
 import ModeStart from '../components/ModeStart';
@@ -46,6 +46,13 @@ export default function Home() {
   const [goalOpen, setGoalOpen] = useState(false);
   const [extraOpen, setExtraOpen] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
+  // 앱을 열 때 한 번 환영 인사 (말해보카 홈과 같게)
+  useEffect(() => {
+    if (!settings || sessionStorage.getItem('welcomed')) return;
+    sessionStorage.setItem('welcomed', '1');
+    setToast(`'${settings.nickname}' 님 환영합니다.`);
+    window.setTimeout(() => setToast(null), 2200);
+  }, [settings]);
   if (!settings) return null;
 
   const byDate = new Map((daily ?? []).map((d) => [d.date, d]));

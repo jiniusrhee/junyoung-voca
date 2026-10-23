@@ -47,7 +47,11 @@ export async function applyImported(data: ImportedProgress): Promise<void> {
   const patch: Partial<Settings> = {};
   if (data.levels?.vocab) patch.level = data.levels.vocab;
   if (data.levels?.grammar) patch.grammarLevel = data.levels.grammar;
-  if (data.levels?.listening) patch.listeningLevel = data.levels.listening;
+  if (data.levels?.listening) {
+    patch.listeningLevel = data.levels.listening;
+    const best = ((await db.kv.get('listeningBest'))?.value as number | undefined) ?? 0;
+    if (data.levels.listening > best) await db.kv.put({ key: 'listeningBest', value: data.levels.listening });
+  }
   if (Object.keys(patch).length) await saveSettings(patch);
   await applyImportedKnown(data);
 }

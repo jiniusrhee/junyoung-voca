@@ -116,6 +116,10 @@ export default function ListeningQuiz() {
     setLevel(nl);
     if (pickerRef.current) pickerRef.current.level = nl;
     void saveSettings({ listeningLevel: nl });
+    void db.kv.get('listeningBest').then((r) => {
+      const best = (r?.value as number | undefined) ?? 0;
+      if (nl > best) return db.kv.put({ key: 'listeningBest', value: nl });
+    });
     pickerRef.current?.note(q.item.id);
     setCount(res.total);
     setResult(r);

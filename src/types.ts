@@ -312,6 +312,9 @@ export interface ImportedProgress {
   streak?: { days: number; asOf: string };
   levels?: { vocab?: number; grammar?: number; listening?: number };
   vocabSize?: number;
+  /** 대한민국 상위 N% */
+  percentile?: number;
+  vocabHistory?: { date: string; vocab: number; level?: number }[];
   learnedCount?: number;
   learnedWords?: string[];
   stats?: Partial<Record<StudyMode, { trophies?: number; questions?: number; timeMs?: number }>>;

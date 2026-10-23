@@ -9,6 +9,7 @@ import VocabSettings from '../components/VocabSettings';
 import QuizCard, { FilledSentence, KoSentence, type CardBadge } from '../components/QuizCard';
 import WrongItem from '../components/WrongItem';
 import { db } from '../db';
+import { comprehension, estimateVocab } from '../lib/stats';
 import { syncContent } from '../lib/content';
 import { maybeAdjustLevel } from '../lib/level';
 import { LEVEL_TEST_QUESTIONS } from '../lib/levelLogic';
@@ -110,6 +111,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     const lvl = t.finalLevel();
     await saveSettings({ level: lvl });
     await db.kv.put({ key: 'levelTestDate', value: studyDateOf() });
+    const hist = ((await db.kv.get('vocabHistory'))?.value as { date: string; level: number; vocab: number }[] | undefined) ?? [];
+    await db.kv.put({ key: 'vocabHistory', value: [...hist, { date: studyDateOf(), level: lvl, vocab: estimateVocab(lvl, await comprehension()) }] });
     setTestLevel(lvl);
     setPhase('testResult');
   }, []);
