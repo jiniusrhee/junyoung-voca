@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": "deliberate", "word": "deliberate", "pos": "adj", "level": 11,
+      "meanings": ["의도적인", "신중한"],
+      "sentences": [
+        { "en": "It was a ___ attempt to mislead the public.", "ko": "그것은 대중을 속이려는 **의도적인** 시도였다.", "answer": "deliberate" },
+        { "en": "She spoke in a slow, ___ voice.", "ko": "그녀는 느리고 **신중한** 목소리로 말했다.", "answer": "deliberate" }
+      ],
+      "nuance": "'일부러 한'(intentional)과 '찬찬히 생각한' 두 뜻. 동사로 쓰면 '숙의하다'이고 발음이 [딜리버레이트]로 바뀐다. 부사 deliberately(고의로).",
+      "etymology": "라틴어 de + librare(저울질하다) → '저울에 달아 보다'"
+    },
+    {
+      "id": "deteriorate", "word": "deteriorate", "pos": "v", "level": 11,
+      "meanings": ["악화되다, 나빠지다"],
+      "sentences": [
+        { "en": "His health began to ___ last winter.", "ko": "그의 건강은 지난겨울부터 **나빠지기** 시작했다.", "answer": "deteriorate" },
+        { "en": "Relations between the two countries have ___.", "ko": "두 나라의 관계가 **악화되었다**.", "answer": "deteriorated" }
+      ],
+      "nuance": "worsen과 같지만 격식체. 서서히 상태가 '나빠지는' 과정. 반대는 improve. 명사 deterioration.",
+      "etymology": "라틴어 deterior(더 나쁜)"
+    },
+    {
+      "id": "diminish", "word": "diminish", "pos": "v", "level": 11,
+      "meanings": ["줄어들다, 약해지다", "깎아내리다"],
+      "sentences": [
+        { "en": "The pain will ___ over time.", "ko": "통증은 시간이 지나면서 **줄어들** 것이다.", "answer": "diminish" },
+        { "en": "Nothing can ___ her achievement.", "ko": "무엇도 그녀의 업적을 **깎아내릴** 수 없다.", "answer": "diminish" }
+      ],
+      "nuance": "decrease는 수치가 줄어드는 중립적 표현, diminish는 중요성·힘이 '약해지는' 느낌. 사람을 '하찮게 만들다'로도 쓴다.",
+      "etymology": "라틴어 de(아래로) + minuere(작게 하다)"
+    },
+    {
+      "id": "discrepancy", "word": "discrepancy", "pos": "n", "level": 11,
+      "meanings": ["불일치, 차이"],
+      "sentences": [
+        { "en": "There is a ___ between the two reports.", "ko": "두 보고서 사이에 **불일치**가 있다.", "answer": "discrepancy" },
+        { "en": "Auditors found several ___ in the accounts.", "ko": "감사관들은 회계에서 몇 가지 **차이**를 발견했다.", "answer": "discrepancies" }
+      ],
+      "nuance": "같아야 할 두 수치나 설명이 '맞지 않는' 상태. difference보다 '문제가 되는 차이'라는 느낌. 'discrepancy between A and B'.",
+      "etymology": "라틴어 dis(따로) + crepare(소리 나다) → '소리가 어긋나다'"
+    },
+    {
+      "id": "dispose", "word": "dispose", "pos": "v", "level": 11,
+      "meanings": ["처리하다, 버리다"],
+      "sentences": [
+        { "en": "How should I ___ of old batteries?", "ko": "오래된 배터리는 어떻게 **처리해야** 하나요?", "answer": "dispose" },
+        { "en": "The company ___ of its waste illegally.", "ko": "그 회사는 폐기물을 불법으로 **처리했다**.", "answer": "disposed" }
+      ],
+      "nuance": "'dispose of ~'(~를 처분하다)로 거의 항상 of와 함께. 형용사 disposable(일회용의), 명사 disposal(at your disposal 마음대로 쓸 수 있는).",
+      "etymology": "라틴어 dis(따로) + ponere(놓다) → '따로 배치하다'"
+    },
+    {
+      "id": "distinct", "word": "distinct", "pos": "adj", "level": 11,
+      "meanings": ["뚜렷한", "별개의"],
+      "sentences": [
+        { "en": "There was a ___ smell of smoke in the room.", "ko": "방 안에 **뚜렷한** 연기 냄새가 있었다.", "answer": "distinct" },
+        { "en": "The two languages are quite ___ from each other.", "ko": "두 언어는 서로 꽤 **다르다**.", "answer": "distinct" }
+      ],
+      "nuance": "'distinct from ~'(~와 구별되는). distinctive는 '남과 구별되게 독특한'(a distinctive voice)으로 뜻이 다르다.",
+      "etymology": "라틴어 distinguere(구별하다)의 과거분사"
+    },
+    {
+      "id": "elaborate", "word": "elaborate", "pos": "v", "level": 11,
+      "meanings": ["자세히 설명하다", "정교한"],
+      "sentences": [
+        { "en": "Could you ___ on that point?", "ko": "그 점에 대해 **더 자세히 설명해** 주시겠어요?", "answer": "elaborate" },
+        { "en": "They made ___ plans for the wedding.", "ko": "그들은 결혼식을 위해 **정교한** 계획을 세웠다.", "answer": "elaborate" }
+      ],
+      "nuance": "동사는 'elaborate on ~'(~를 상세히 말하다), 형용사는 '공들여 복잡하게 만든'. 동사 끝은 [-레이트], 형용사 끝은 [-릿]으로 발음.",
+      "etymology": "라틴어 e(밖으로) + laborare(일하다) → '공들여 만들어 내다'"
+    },
+    {
+      "id": "eliminate", "word": "eliminate", "pos": "v", "level": 11,
+      "meanings": ["없애다, 제거하다", "탈락시키다"],
+      "sentences": [
+        { "en": "The new system will ___ most paperwork.", "ko": "새 시스템은 대부분의 서류 작업을 **없앨** 것이다.", "answer": "eliminate" },
+        { "en": "Our team was ___ in the first round.", "ko": "우리 팀은 1라운드에서 **탈락했다**.", "answer": "eliminated" }
+      ],
+      "nuance": "remove는 '옮겨 치우다', eliminate는 '완전히 없애다'. 대회에서 '탈락시키다'로도 자주 쓴다.",
+      "etymology": "라틴어 e(밖으로) + limen(문지방) → '문밖으로 내쫓다'"
+    },
+    {
+      "id": "enhance", "word": "enhance", "pos": "v", "level": 11,
+      "meanings": ["향상시키다, 높이다"],
+      "sentences": [
+        { "en": "Good lighting can ___ the mood of a room.", "ko": "좋은 조명은 방의 분위기를 **살릴** 수 있다.", "answer": "enhance" },
+        { "en": "The course ___ my understanding of the subject.", "ko": "그 과정은 그 주제에 대한 내 이해를 **높였다**.", "answer": "enhanced" }
+      ],
+      "nuance": "이미 좋은 것을 '더 좋게' 만드는 것. improve는 나쁜 것을 고치는 데도 쓰지만 enhance는 질·가치·매력을 더하는 느낌. 명사 enhancement.",
+      "etymology": "고대 프랑스어 enhaucier(높이다) ← 라틴어 altus(높은)"
+    },
+    {
+      "id": "exceed", "word": "exceed", "pos": "v", "level": 11,
+      "meanings": ["초과하다, 넘다"],
+      "sentences": [
+        { "en": "Do not ___ the speed limit.", "ko": "제한 속도를 **초과하지** 마세요.", "answer": "exceed" },
+        { "en": "Sales ___ our expectations this quarter.", "ko": "이번 분기 매출은 우리의 기대를 **넘어섰다**.", "answer": "exceeded" }
+      ],
+      "nuance": "수치나 한도를 '넘다'. surpass는 능력·성과에서 '능가하다'. 형용사 excessive(과도한), 부사 exceedingly(극히).",
+      "etymology": "라틴어 ex(밖으로) + cedere(가다) → '범위 밖으로 나가다'"
+    }
+  ]
+}

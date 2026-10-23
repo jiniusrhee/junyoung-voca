@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": "paradigm", "word": "paradigm", "pos": "n", "level": 14,
+      "meanings": ["패러다임, 전형적인 틀"],
+      "sentences": [
+        { "en": "The internet created a new ___ for communication.", "ko": "인터넷은 소통의 새로운 **패러다임**을 만들었다.", "answer": "paradigm" },
+        { "en": "This discovery led to a ___ shift in physics.", "ko": "이 발견은 물리학의 **패러다임** 전환을 이끌었다.", "answer": "paradigm" }
+      ],
+      "nuance": "한 시대나 분야가 세상을 보는 '기본 틀'. model은 구체적인 모형, paradigm은 사고방식 전체. 'paradigm shift'(패러다임 전환). g는 묵음.",
+      "etymology": "그리스어 para(옆에) + deiknynai(보이다) → '옆에 놓고 보여 주는 예'"
+    },
+    {
+      "id": "perceive", "word": "perceive", "pos": "v", "level": 14,
+      "meanings": ["인식하다, 감지하다", "~로 여기다"],
+      "sentences": [
+        { "en": "Dogs can ___ sounds that humans cannot hear.", "ko": "개는 사람이 들을 수 없는 소리를 **감지할** 수 있다.", "answer": "perceive" },
+        { "en": "She is ___ as a strong leader.", "ko": "그녀는 강한 리더로 **인식된다**.", "answer": "perceived" }
+      ],
+      "nuance": "감각으로 '알아차리다'와 '~라고 받아들이다' 두 뜻. notice는 우연히 눈치채는 것, perceive는 해석이 들어간 인식. 명사 perception.",
+      "etymology": "라틴어 per(완전히) + capere(잡다) → '온전히 받아들이다'"
+    },
+    {
+      "id": "persist", "word": "persist", "pos": "v", "level": 14,
+      "meanings": ["지속되다", "끈질기게 계속하다"],
+      "sentences": [
+        { "en": "If the pain ___, see a doctor.", "ko": "통증이 **계속되면** 의사를 찾아가세요.", "answer": "persists" },
+        { "en": "She ___ in asking questions despite his silence.", "ko": "그가 침묵해도 그녀는 **끈질기게** 질문을 계속했다.", "answer": "persisted" }
+      ],
+      "nuance": "'persist in -ing'(고집스럽게 계속하다). continue는 중립적, persist는 어려움·반대에도 '버티며 계속'. 형용사 persistent(끈질긴, 지속적인).",
+      "etymology": "라틴어 per(끝까지) + sistere(서 있다) → '끝까지 서 있다'"
+    },
+    {
+      "id": "plausible", "word": "plausible", "pos": "adj", "level": 14,
+      "meanings": ["그럴듯한, 타당해 보이는"],
+      "sentences": [
+        { "en": "His excuse sounded ___, so we believed him.", "ko": "그의 변명이 **그럴듯해서** 우리는 그를 믿었다.", "answer": "plausible" },
+        { "en": "There is no ___ explanation for the accident.", "ko": "그 사고에 대한 **타당한** 설명이 없다.", "answer": "plausible" }
+      ],
+      "nuance": "'믿을 만해 보이는'. 사실인지는 모르지만 설득력이 있다는 뉘앙스. probable은 실제로 '일어날 가능성이 큰'. 반대는 implausible.",
+      "etymology": "라틴어 plaudere(박수치다) → '박수받을 만한, 받아들일 만한'"
+    },
+    {
+      "id": "predominant", "word": "predominant", "pos": "adj", "level": 14,
+      "meanings": ["지배적인, 두드러진"],
+      "sentences": [
+        { "en": "Blue is the ___ color in her paintings.", "ko": "파란색은 그녀의 그림에서 **지배적인** 색이다.", "answer": "predominant" },
+        { "en": "Fear was the ___ emotion in the room.", "ko": "두려움이 그 방의 **주된** 감정이었다.", "answer": "predominant" }
+      ],
+      "nuance": "여럿 중 '가장 힘이 세거나 수가 많은'. main은 중립적, predominant는 다른 것을 압도하는 느낌. 부사 predominantly(주로).",
+      "etymology": "라틴어 prae(앞서) + dominari(지배하다)"
+    },
+    {
+      "id": "preliminary", "word": "preliminary", "pos": "adj", "level": 14,
+      "meanings": ["예비의, 준비 단계의"],
+      "sentences": [
+        { "en": "The ___ results look promising.", "ko": "**예비** 결과는 희망적으로 보인다.", "answer": "preliminary" },
+        { "en": "We held a ___ meeting before the official talks.", "ko": "우리는 공식 회담 전에 **사전** 회의를 열었다.", "answer": "preliminary" }
+      ],
+      "nuance": "본격적인 것 '앞에 오는'. initial은 단순히 '처음의', preliminary는 본 작업을 위한 준비라는 뜻이 강하다. 명사로 '예선'(preliminaries).",
+      "etymology": "라틴어 prae(앞) + limen(문지방) → '문지방 앞의'"
+    },
+    {
+      "id": "prevalent", "word": "prevalent", "pos": "adj", "level": 14,
+      "meanings": ["널리 퍼진, 흔한"],
+      "sentences": [
+        { "en": "Smartphone use is ___ among teenagers.", "ko": "스마트폰 사용은 십 대 사이에 **널리 퍼져** 있다.", "answer": "prevalent" },
+        { "en": "The disease is more ___ in warm climates.", "ko": "그 질병은 따뜻한 기후에서 더 **흔하다**.", "answer": "prevalent" }
+      ],
+      "nuance": "특정 시기·지역에 '만연한'. common보다 격식체이고 '퍼져 있음'에 초점. 명사 prevalence(유병률, 보급률).",
+      "etymology": "라틴어 praevalere(더 힘이 세다) → '우세한'"
+    },
+    {
+      "id": "profound", "word": "profound", "pos": "adj", "level": 14,
+      "meanings": ["깊은, 심오한", "엄청난"],
+      "sentences": [
+        { "en": "The book had a ___ effect on my thinking.", "ko": "그 책은 내 사고에 **깊은** 영향을 주었다.", "answer": "profound" },
+        { "en": "She asked a ___ question about life.", "ko": "그녀는 삶에 대해 **심오한** 질문을 했다.", "answer": "profound" }
+      ],
+      "nuance": "deep의 격식체이지만 물리적 깊이에는 쓰지 않는다. 감정·영향·지식이 '아주 깊은'. 부사 profoundly(깊이).",
+      "etymology": "라틴어 pro(앞으로) + fundus(바닥) → '바닥까지 이르는'"
+    },
+    {
+      "id": "prolong", "word": "prolong", "pos": "v", "level": 14,
+      "meanings": ["연장하다, 길게 끌다"],
+      "sentences": [
+        { "en": "Regular exercise can ___ your life.", "ko": "규칙적인 운동은 수명을 **연장할** 수 있다.", "answer": "prolong" },
+        { "en": "There is no point in ___ this discussion.", "ko": "이 논의를 **길게 끌어도** 소용없다.", "answer": "prolonging" }
+      ],
+      "nuance": "extend는 중립적 '연장', prolong은 '필요 이상으로 오래 끈다'는 부정적 느낌이 섞이기도 한다. 형용사 prolonged(장기간의).",
+      "etymology": "라틴어 pro(앞으로) + longus(긴) → '앞으로 길게 하다'"
+    },
+    {
+      "id": "provoke", "word": "provoke", "pos": "v", "level": 14,
+      "meanings": ["유발하다", "화나게 하다, 자극하다"],
+      "sentences": [
+        { "en": "The article ___ a heated debate.", "ko": "그 기사는 뜨거운 논쟁을 **불러일으켰다**.", "answer": "provoked" },
+        { "en": "Don't ___ the dog; it might bite.", "ko": "그 개를 **자극하지** 마, 물 수도 있어.", "answer": "provoke" }
+      ],
+      "nuance": "반응·감정을 '일으키다'. cause는 중립적, provoke는 보통 분노·논란 같은 강한 반응. 형용사 provocative(도발적인).",
+      "etymology": "라틴어 pro(앞으로) + vocare(부르다) → '불러내다'"
+    }
+  ]
+}

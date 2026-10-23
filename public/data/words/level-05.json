@@ -1,0 +1,101 @@
+{
+  "words": [
+    {
+      "id": "improve", "word": "improve", "pos": "v", "level": 5,
+      "meanings": ["향상시키다, 나아지다"],
+      "sentences": [
+        { "en": "I want to ___ my English speaking skills.", "ko": "영어 말하기 실력을 **향상시키고** 싶다.", "answer": "improve" },
+        { "en": "Her health has ___ a lot since last year.", "ko": "그녀의 건강은 작년 이후 많이 **좋아졌다**.", "answer": "improved" }
+      ],
+      "nuance": "스스로 나아지는 것(자동사)과 무엇을 개선하는 것(타동사) 둘 다 가능. enhance는 격식체로 '질을 더 높이다'.",
+      "etymology": "고대 프랑스어 en prou '이익이 되게' → '더 좋게 만들다'"
+    },
+    {
+      "id": "prepare", "word": "prepare", "pos": "v", "level": 5,
+      "meanings": ["준비하다"],
+      "sentences": [
+        { "en": "She is ___ dinner for the guests.", "ko": "그녀는 손님들을 위해 저녁을 **준비하고** 있다.", "answer": "preparing" },
+        { "en": "We need to ___ for the exam.", "ko": "우리는 시험에 **대비해야** 한다.", "answer": "prepare" }
+      ],
+      "nuance": "'prepare 음식/자료'(만들어 준비하다)와 'prepare for 행사'(~에 대비하다)를 구분. 'be prepared to'는 '~할 각오가 되어 있다'.",
+      "etymology": "라틴어 prae(미리) + parare(마련하다)"
+    },
+    {
+      "id": "suggest", "word": "suggest", "pos": "v", "level": 5,
+      "meanings": ["제안하다", "암시하다"],
+      "sentences": [
+        { "en": "Can you ___ a good restaurant nearby?", "ko": "근처에 좋은 식당을 **추천해** 줄 수 있나요?", "answer": "suggest" },
+        { "en": "He ___ that we take a break.", "ko": "그는 우리가 쉬자고 **제안했다**.", "answer": "suggested" }
+      ],
+      "nuance": "'suggest 사람 to 동사'는 틀린 표현. 'suggest -ing' 또는 'suggest that 주어 (should) 동사원형'. '암시하다'라는 뜻도 있다.",
+      "etymology": "라틴어 sub(아래에서) + gerere(가져오다) → '슬며시 가져다 놓다'"
+    },
+    {
+      "id": "receive", "word": "receive", "pos": "v", "level": 5,
+      "meanings": ["받다"],
+      "sentences": [
+        { "en": "Did you ___ my email yesterday?", "ko": "어제 내 이메일 **받았어**?", "answer": "receive" },
+        { "en": "She ___ a letter from her old friend.", "ko": "그녀는 옛 친구에게서 편지를 **받았다**.", "answer": "received" }
+      ],
+      "nuance": "get보다 격식체. accept는 '받아들이다'(동의)라는 의지가 들어가고, receive는 단순히 '받다'. 철자 ei 순서 주의.",
+      "etymology": "라틴어 re(다시) + capere(잡다) → '받아 잡다'"
+    },
+    {
+      "id": "allow", "word": "allow", "pos": "v", "level": 5,
+      "meanings": ["허락하다"],
+      "sentences": [
+        { "en": "My parents don't ___ me to stay out late.", "ko": "부모님은 내가 늦게까지 밖에 있는 걸 **허락하지** 않으신다.", "answer": "allow" },
+        { "en": "Smoking is not ___ in this building.", "ko": "이 건물에서는 흡연이 **허용되지** 않습니다.", "answer": "allowed" }
+      ],
+      "nuance": "'allow 사람 to 동사'. permit은 더 격식체(공식 허가), let은 구어체('let 사람 동사원형')."
+    },
+    {
+      "id": "available", "word": "available", "pos": "adj", "level": 5,
+      "meanings": ["이용할 수 있는", "시간이 있는"],
+      "sentences": [
+        { "en": "Is this seat ___?", "ko": "이 자리 **비어 있나요**?", "answer": "available" },
+        { "en": "The doctor is not ___ until Monday.", "ko": "그 의사는 월요일까지 **시간이 안 된다**.", "answer": "available" }
+      ],
+      "nuance": "물건이면 '구할 수 있는', 사람이면 '시간이 있는, 만날 수 있는'. 'available for/to'.",
+      "etymology": "라틴어 valere(가치 있다, 힘이 있다) → '쓸 수 있는'"
+    },
+    {
+      "id": "serious", "word": "serious", "pos": "adj", "level": 5,
+      "meanings": ["심각한", "진지한"],
+      "sentences": [
+        { "en": "This is a ___ problem that needs attention.", "ko": "이것은 관심이 필요한 **심각한** 문제다.", "answer": "serious" },
+        { "en": "Are you ___ about moving to Canada?", "ko": "캐나다로 이사하는 거 **진심이야**?", "answer": "serious" }
+      ],
+      "nuance": "'심각한'과 '진지한' 두 뜻. severe는 정도가 '극심한', grave는 매우 격식체의 '중대한'."
+    },
+    {
+      "id": "recently", "word": "recently", "pos": "adv", "level": 5,
+      "meanings": ["최근에"],
+      "sentences": [
+        { "en": "I ___ moved to a new apartment.", "ko": "나는 **최근에** 새 아파트로 이사했다.", "answer": "recently" },
+        { "en": "Have you seen any good movies ___?", "ko": "**최근에** 좋은 영화 본 거 있어?", "answer": "recently" }
+      ],
+      "nuance": "lately와 비슷하지만 lately는 주로 현재완료와 함께 쓰고, recently는 과거 시제에도 자연스럽다."
+    },
+    {
+      "id": "environment", "word": "environment", "pos": "n", "level": 5,
+      "meanings": ["환경"],
+      "sentences": [
+        { "en": "We should protect the ___ for future generations.", "ko": "우리는 미래 세대를 위해 **환경**을 보호해야 한다.", "answer": "environment" },
+        { "en": "She grew up in a loving family ___.", "ko": "그녀는 사랑이 넘치는 가정 **환경**에서 자랐다.", "answer": "environment" }
+      ],
+      "nuance": "자연환경(the environment)과 주변 상황·분위기(working environment) 모두. 형용사 environmental. 철자에서 n을 빠뜨리기 쉽다.",
+      "etymology": "프랑스어 environ(주위에) → '둘러싼 것'"
+    },
+    {
+      "id": "experience", "word": "experience", "pos": "n", "level": 5,
+      "meanings": ["경험", "경력"],
+      "sentences": [
+        { "en": "She has ten years of ___ as a nurse.", "ko": "그녀는 간호사로 10년의 **경험**이 있다.", "answer": "experience" },
+        { "en": "Traveling alone was a great ___ for me.", "ko": "혼자 여행한 것은 나에게 멋진 **경험**이었다.", "answer": "experience" }
+      ],
+      "nuance": "'경력'으로서의 경험은 셀 수 없고(experience), '한 번의 체험'은 셀 수 있다(an experience). 동사로 '겪다'도 가능.",
+      "etymology": "라틴어 experiri(시험하다, 겪어 보다)"
+    }
+  ]
+}

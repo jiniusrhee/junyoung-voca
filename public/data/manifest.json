@@ -1,0 +1,245 @@
+{
+  "totalWords": 300,
+  "packs": [
+    {
+      "file": "level-01.json",
+      "hash": "0114ecd8a6e4",
+      "count": 10,
+      "levels": [
+        1
+      ]
+    },
+    {
+      "file": "level-02.json",
+      "hash": "edb76febfb09",
+      "count": 10,
+      "levels": [
+        2
+      ]
+    },
+    {
+      "file": "level-03.json",
+      "hash": "31af3ed3c653",
+      "count": 10,
+      "levels": [
+        3
+      ]
+    },
+    {
+      "file": "level-04.json",
+      "hash": "3cbff0428c18",
+      "count": 10,
+      "levels": [
+        4
+      ]
+    },
+    {
+      "file": "level-05.json",
+      "hash": "6022be5fd9a8",
+      "count": 10,
+      "levels": [
+        5
+      ]
+    },
+    {
+      "file": "level-06.json",
+      "hash": "57b0361871d3",
+      "count": 10,
+      "levels": [
+        6
+      ]
+    },
+    {
+      "file": "level-07.json",
+      "hash": "7d7c2e0a0c67",
+      "count": 10,
+      "levels": [
+        7
+      ]
+    },
+    {
+      "file": "level-08.json",
+      "hash": "269b7363ab68",
+      "count": 10,
+      "levels": [
+        8
+      ]
+    },
+    {
+      "file": "level-09.json",
+      "hash": "b79e9ddd3a8c",
+      "count": 10,
+      "levels": [
+        9
+      ]
+    },
+    {
+      "file": "level-10.json",
+      "hash": "8eb3dafd490b",
+      "count": 10,
+      "levels": [
+        10
+      ]
+    },
+    {
+      "file": "level-11.json",
+      "hash": "99e81705ef98",
+      "count": 10,
+      "levels": [
+        11
+      ]
+    },
+    {
+      "file": "level-12.json",
+      "hash": "8369a24678f2",
+      "count": 10,
+      "levels": [
+        12
+      ]
+    },
+    {
+      "file": "level-13.json",
+      "hash": "03091854e599",
+      "count": 10,
+      "levels": [
+        13
+      ]
+    },
+    {
+      "file": "level-14.json",
+      "hash": "d8938c8c2c8c",
+      "count": 10,
+      "levels": [
+        14
+      ]
+    },
+    {
+      "file": "level-15.json",
+      "hash": "ee41b2ca769c",
+      "count": 10,
+      "levels": [
+        15
+      ]
+    },
+    {
+      "file": "level-16.json",
+      "hash": "18335e3f23cb",
+      "count": 10,
+      "levels": [
+        16
+      ]
+    },
+    {
+      "file": "level-17.json",
+      "hash": "8fa8153fd2d7",
+      "count": 10,
+      "levels": [
+        17
+      ]
+    },
+    {
+      "file": "level-18.json",
+      "hash": "fcf9234b15b6",
+      "count": 10,
+      "levels": [
+        18
+      ]
+    },
+    {
+      "file": "level-19.json",
+      "hash": "435eed0e0f5c",
+      "count": 10,
+      "levels": [
+        19
+      ]
+    },
+    {
+      "file": "level-20.json",
+      "hash": "878da3f40043",
+      "count": 10,
+      "levels": [
+        20
+      ]
+    },
+    {
+      "file": "level-21.json",
+      "hash": "a645b0e4827c",
+      "count": 10,
+      "levels": [
+        21
+      ]
+    },
+    {
+      "file": "level-22.json",
+      "hash": "328fcd1633de",
+      "count": 10,
+      "levels": [
+        22
+      ]
+    },
+    {
+      "file": "level-23.json",
+      "hash": "c224e404a8c8",
+      "count": 10,
+      "levels": [
+        23
+      ]
+    },
+    {
+      "file": "level-24.json",
+      "hash": "5e95a0a58a27",
+      "count": 10,
+      "levels": [
+        24
+      ]
+    },
+    {
+      "file": "level-25.json",
+      "hash": "e0b92a997f4d",
+      "count": 10,
+      "levels": [
+        25
+      ]
+    },
+    {
+      "file": "level-26.json",
+      "hash": "904b61873984",
+      "count": 10,
+      "levels": [
+        26
+      ]
+    },
+    {
+      "file": "level-27.json",
+      "hash": "c21e48a57c17",
+      "count": 10,
+      "levels": [
+        27
+      ]
+    },
+    {
+      "file": "level-28.json",
+      "hash": "199aaf01ac30",
+      "count": 10,
+      "levels": [
+        28
+      ]
+    },
+    {
+      "file": "level-29.json",
+      "hash": "11fc3ad01128",
+      "count": 10,
+      "levels": [
+        29
+      ]
+    },
+    {
+      "file": "level-30.json",
+      "hash": "a9d05239cfbb",
+      "count": 10,
+      "levels": [
+        30
+      ]
+    }
+  ]
+}

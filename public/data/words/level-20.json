@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": "incessant", "word": "incessant", "pos": "adj", "level": 20,
+      "meanings": ["끊임없는, 쉴 새 없는"],
+      "sentences": [
+        { "en": "The ___ noise from the road kept me awake.", "ko": "도로에서 나는 **끊임없는** 소음 때문에 잠을 잘 수 없었다.", "answer": "incessant" },
+        { "en": "She was tired of his ___ complaints.", "ko": "그녀는 그의 **쉴 새 없는** 불평에 지쳤다.", "answer": "incessant" }
+      ],
+      "nuance": "멈추지 않아 '짜증스러운' 느낌이 담긴다. constant는 중립적, continuous는 끊김 없음에 초점. 부사 incessantly.",
+      "etymology": "라틴어 in(아닌) + cessare(멈추다) → '멈추지 않는'"
+    },
+    {
+      "id": "indifferent", "word": "indifferent", "pos": "adj", "level": 20,
+      "meanings": ["무관심한", "그저 그런"],
+      "sentences": [
+        { "en": "He seemed ___ to the suffering of others.", "ko": "그는 다른 사람들의 고통에 **무관심한** 듯했다.", "answer": "indifferent" },
+        { "en": "The food at the hotel was ___.", "ko": "그 호텔의 음식은 **그저 그랬다**.", "answer": "indifferent" }
+      ],
+      "nuance": "'indifferent to ~'(~에 관심이 없는). different(다른)와 전혀 다른 뜻이니 주의. 품질을 말할 때는 '평범하고 별로인'. 명사 indifference.",
+      "etymology": "라틴어 in(아닌) + differens(차이 나는) → '어느 쪽이든 차이가 없는'"
+    },
+    {
+      "id": "indispensable", "word": "indispensable", "pos": "adj", "level": 20,
+      "meanings": ["없어서는 안 될, 필수적인"],
+      "sentences": [
+        { "en": "A smartphone has become ___ for many people.", "ko": "스마트폰은 많은 사람에게 **없어서는 안 될** 것이 되었다.", "answer": "indispensable" },
+        { "en": "She is an ___ member of the team.", "ko": "그녀는 팀에 **꼭 필요한** 일원이다.", "answer": "indispensable" }
+      ],
+      "nuance": "essential보다 강하게 '그것 없이는 안 된다'. 'indispensable to/for ~'. 반대는 dispensable(없어도 되는).",
+      "etymology": "in(아닌) + dispense with(~없이 지내다) → '없이 지낼 수 없는'"
+    },
+    {
+      "id": "inept", "word": "inept", "pos": "adj", "level": 20,
+      "meanings": ["서투른, 무능한"],
+      "sentences": [
+        { "en": "He is socially ___ and avoids parties.", "ko": "그는 사회적으로 **서툴러서** 파티를 피한다.", "answer": "inept" },
+        { "en": "The government's ___ response made things worse.", "ko": "정부의 **무능한** 대응이 상황을 더 나쁘게 만들었다.", "answer": "inept" }
+      ],
+      "nuance": "해야 할 일을 '제대로 못 하는'. clumsy는 몸이 둔한 것, inept는 능력·판단이 부족한 것(비판적). 명사 ineptitude.",
+      "etymology": "라틴어 in(아닌) + aptus(알맞은) → '맞지 않는'"
+    },
+    {
+      "id": "infer", "word": "infer", "pos": "v", "level": 20,
+      "meanings": ["추론하다, 미루어 짐작하다"],
+      "sentences": [
+        { "en": "From her tone, I ___ that she was upset.", "ko": "그녀의 말투에서 나는 그녀가 화났다고 **추론했다**.", "answer": "inferred" },
+        { "en": "What can we ___ from these results?", "ko": "이 결과에서 무엇을 **추론할** 수 있을까?", "answer": "infer" }
+      ],
+      "nuance": "주어진 정보에서 '결론을 끌어내다'. imply(암시하다)는 말하는 쪽, infer(추론하다)는 듣는 쪽. 둘을 바꿔 쓰면 틀린다. 명사 inference.",
+      "etymology": "라틴어 in(안으로) + ferre(가져오다) → '안으로 끌어오다'"
+    },
+    {
+      "id": "innate", "word": "innate", "pos": "adj", "level": 20,
+      "meanings": ["타고난, 선천적인"],
+      "sentences": [
+        { "en": "She has an ___ talent for music.", "ko": "그녀는 음악에 **타고난** 재능이 있다.", "answer": "innate" },
+        { "en": "Humans have an ___ desire to belong.", "ko": "인간에게는 소속되고자 하는 **선천적인** 욕구가 있다.", "answer": "innate" }
+      ],
+      "nuance": "배워서가 아니라 '태어날 때부터 가진'. inherent는 사물의 본질에 속한 것, innate는 생명체의 타고난 성질. 반대는 acquired, learned.",
+      "etymology": "라틴어 in(안에) + natus(태어난) → '안에 태어난'"
+    },
+    {
+      "id": "insatiable", "word": "insatiable", "pos": "adj", "level": 20,
+      "meanings": ["채울 수 없는, 만족을 모르는"],
+      "sentences": [
+        { "en": "He has an ___ appetite for knowledge.", "ko": "그는 지식에 대한 **채울 수 없는** 욕구가 있다.", "answer": "insatiable" },
+        { "en": "The public's ___ demand for news never ends.", "ko": "뉴스에 대한 대중의 **끝없는** 수요는 멈추지 않는다.", "answer": "insatiable" }
+      ],
+      "nuance": "아무리 채워도 '만족하지 못하는' 욕구·호기심·식욕에 쓴다. 동사 satiate(충분히 만족시키다)의 부정형.",
+      "etymology": "라틴어 in(아닌) + satiare(채우다) → '채울 수 없는'"
+    },
+    {
+      "id": "intricate", "word": "intricate", "pos": "adj", "level": 20,
+      "meanings": ["복잡하고 정교한"],
+      "sentences": [
+        { "en": "The carpet has an ___ pattern.", "ko": "그 카펫에는 **복잡하고 정교한** 무늬가 있다.", "answer": "intricate" },
+        { "en": "The novel has an ___ plot with many characters.", "ko": "그 소설은 많은 인물이 나오는 **복잡한** 줄거리를 갖고 있다.", "answer": "intricate" }
+      ],
+      "nuance": "많은 부분이 '세밀하게 얽힌'. complex는 이해하기 어려움에 초점, intricate는 세부가 정교하게 짜인 것(종종 감탄). 명사 intricacy.",
+      "etymology": "라틴어 in(안에) + tricae(얽힘, 어려움) → '얽혀 있는'"
+    },
+    {
+      "id": "lucrative", "word": "lucrative", "pos": "adj", "level": 20,
+      "meanings": ["수익성이 좋은, 돈이 되는"],
+      "sentences": [
+        { "en": "He left teaching for a more ___ career.", "ko": "그는 더 **돈이 되는** 직업을 위해 교직을 떠났다.", "answer": "lucrative" },
+        { "en": "The company signed a ___ contract with the government.", "ko": "그 회사는 정부와 **수익성 좋은** 계약을 맺었다.", "answer": "lucrative" }
+      ],
+      "nuance": "큰 이익을 '가져다주는'. profitable과 같지만 격식체이고 '벌이가 좋다'는 느낌이 강하다.",
+      "etymology": "라틴어 lucrum(이익) → '이익이 되는'"
+    },
+    {
+      "id": "meticulous", "word": "meticulous", "pos": "adj", "level": 20,
+      "meanings": ["꼼꼼한, 세심한"],
+      "sentences": [
+        { "en": "She is ___ about keeping records.", "ko": "그녀는 기록을 남기는 데 **꼼꼼하다**.", "answer": "meticulous" },
+        { "en": "The watch was made with ___ attention to detail.", "ko": "그 시계는 세부에 **세심한** 주의를 기울여 만들어졌다.", "answer": "meticulous" }
+      ],
+      "nuance": "아주 작은 것까지 '빠뜨리지 않고 신경 쓰는'(칭찬). careful보다 훨씬 강하다. 'meticulous about ~'. 부사 meticulously.",
+      "etymology": "라틴어 metus(두려움) → '실수를 두려워하여 조심하는'"
+    }
+  ]
+}

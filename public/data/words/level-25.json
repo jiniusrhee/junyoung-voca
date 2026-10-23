@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": "ambivalent", "word": "ambivalent", "pos": "adj", "level": 25,
+      "meanings": ["양가적인, 상반된 감정이 공존하는"],
+      "sentences": [
+        { "en": "She feels ___ about moving to a new city.", "ko": "그녀는 새 도시로 이사하는 것에 **마음이 반반이다**.", "answer": "ambivalent" },
+        { "en": "Voters remain ___ toward the new candidate.", "ko": "유권자들은 새 후보에 대해 여전히 **양가적인** 태도다.", "answer": "ambivalent" }
+      ],
+      "nuance": "좋기도 하고 싫기도 해서 '마음을 정하지 못한'. indifferent는 관심이 없는 것, ambivalent는 두 감정이 동시에 강한 것. 'ambivalent about ~'. 명사 ambivalence.",
+      "etymology": "라틴어 ambi(양쪽) + valere(힘이 있다) → '양쪽으로 힘이 작용하는'"
+    },
+    {
+      "id": "anomaly", "word": "anomaly", "pos": "n", "level": 25,
+      "meanings": ["이례적인 것, 변칙"],
+      "sentences": [
+        { "en": "The warm winter was an ___ in this region.", "ko": "따뜻한 겨울은 이 지역에서 **이례적인 일**이었다.", "answer": "anomaly" },
+        { "en": "Scientists noticed an ___ in the data.", "ko": "과학자들은 데이터에서 **이상치**를 발견했다.", "answer": "anomaly" }
+      ],
+      "nuance": "정상이나 예상에서 '벗어난 것'. exception은 규칙에서 빠진 것, anomaly는 설명이 필요한 '이상한' 것. 형용사 anomalous.",
+      "etymology": "그리스어 an(아닌) + homalos(고른, 같은) → '고르지 않은 것'"
+    },
+    {
+      "id": "antagonize", "word": "antagonize", "pos": "v", "level": 25,
+      "meanings": ["적대감을 불러일으키다, 반감을 사다"],
+      "sentences": [
+        { "en": "Don't ___ your boss on your first day.", "ko": "첫날부터 상사의 **반감을 사지** 마.", "answer": "antagonize" },
+        { "en": "His comments ___ many of his supporters.", "ko": "그의 발언은 많은 지지자들의 **적대감을 불러일으켰다**.", "answer": "antagonized" }
+      ],
+      "nuance": "상대를 '적으로 만들다'. provoke는 반응을 일으키는 것, antagonize는 상대가 나를 싫어하게 만드는 것. 명사 antagonist(적대자, 작품 속 적수), antagonism.",
+      "etymology": "그리스어 anti(맞서) + agonizesthai(싸우다) → '맞서 싸우게 하다'"
+    },
+    {
+      "id": "apathetic", "word": "apathetic", "pos": "adj", "level": 25,
+      "meanings": ["무관심한, 무기력한"],
+      "sentences": [
+        { "en": "Many young people are ___ about politics.", "ko": "많은 젊은이들이 정치에 **무관심하다**.", "answer": "apathetic" },
+        { "en": "After the loss, the team seemed ___ and lifeless.", "ko": "패배 후 그 팀은 **무기력하고** 생기가 없어 보였다.", "answer": "apathetic" }
+      ],
+      "nuance": "감정도 관심도 '없어서 아무것도 하지 않는'. indifferent는 신경 쓰지 않는 태도, apathetic은 의욕 자체가 없는 상태. 명사 apathy.",
+      "etymology": "그리스어 a(없는) + pathos(감정) → '감정이 없는'"
+    },
+    {
+      "id": "arduous", "word": "arduous", "pos": "adj", "level": 25,
+      "meanings": ["몹시 힘든, 고된"],
+      "sentences": [
+        { "en": "They made an ___ journey across the desert.", "ko": "그들은 사막을 가로지르는 **고된** 여정을 했다.", "answer": "arduous" },
+        { "en": "Writing a dictionary is an ___ task.", "ko": "사전을 쓰는 것은 **몹시 힘든** 일이다.", "answer": "arduous" }
+      ],
+      "nuance": "오랜 시간 '큰 노력과 인내가 필요한'. difficult는 어려움 일반, arduous는 체력·끈기를 소모하는 고됨. hard work보다 격식체.",
+      "etymology": "라틴어 arduus(가파른, 높은) → '오르기 힘든'"
+    },
+    {
+      "id": "austere", "word": "austere", "pos": "adj", "level": 25,
+      "meanings": ["소박하고 엄격한, 금욕적인", "꾸밈없는"],
+      "sentences": [
+        { "en": "The monks live an ___ life with few possessions.", "ko": "그 수도사들은 소유물이 거의 없는 **금욕적인** 삶을 산다.", "answer": "austere" },
+        { "en": "The room was ___, with only a bed and a chair.", "ko": "그 방은 침대와 의자 하나만 있는 **꾸밈없는** 공간이었다.", "answer": "austere" }
+      ],
+      "nuance": "장식·쾌락 없이 '엄격하게 간소한'. simple은 중립적, austere는 차갑고 엄숙한 느낌까지. 경제 용어 austerity(긴축)도 여기서.",
+      "etymology": "그리스어 austeros(떫은, 거친)"
+    },
+    {
+      "id": "belligerent", "word": "belligerent", "pos": "adj", "level": 25,
+      "meanings": ["호전적인, 싸우려 드는"],
+      "sentences": [
+        { "en": "He became ___ after a few drinks.", "ko": "그는 술을 몇 잔 마시자 **싸우려 들었다**.", "answer": "belligerent" },
+        { "en": "The country's ___ attitude worried its neighbors.", "ko": "그 나라의 **호전적인** 태도는 이웃 나라들을 불안하게 했다.", "answer": "belligerent" }
+      ],
+      "nuance": "싸움을 '걸고 싶어 하는' 공격적 태도. aggressive는 적극적·공격적 전반, belligerent는 적대감이 드러나 당장 싸울 듯한 것. 명사로 '교전국'.",
+      "etymology": "라틴어 bellum(전쟁) + gerere(수행하다) → '전쟁을 벌이는'"
+    },
+    {
+      "id": "candid", "word": "candid", "pos": "adj", "level": 25,
+      "meanings": ["솔직한, 거리낌 없는"],
+      "sentences": [
+        { "en": "To be ___, I didn't enjoy the movie.", "ko": "**솔직히** 말하면 그 영화는 재미없었어.", "answer": "candid" },
+        { "en": "She gave a ___ account of her struggles.", "ko": "그녀는 자신의 고충을 **거리낌 없이** 털어놓았다.", "answer": "candid" }
+      ],
+      "nuance": "불편한 내용도 '숨기지 않고 말하는'. honest는 거짓이 없는 것, candid는 꾸밈없이 직설적인 것. 'candid photo'는 연출 없이 찍은 사진. 명사 candor.",
+      "etymology": "라틴어 candidus(흰, 순수한) → '감춘 것 없이 깨끗한'"
+    },
+    {
+      "id": "capricious", "word": "capricious", "pos": "adj", "level": 25,
+      "meanings": ["변덕스러운, 예측할 수 없는"],
+      "sentences": [
+        { "en": "The weather here is ___ in spring.", "ko": "이곳 날씨는 봄에 **변덕스럽다**.", "answer": "capricious" },
+        { "en": "Employees were frustrated by the ___ decisions of the boss.", "ko": "직원들은 사장의 **종잡을 수 없는** 결정에 좌절했다.", "answer": "capricious" }
+      ],
+      "nuance": "이유 없이 '갑자기 마음이나 상태가 바뀌는'. fickle은 애정·충성이 쉽게 변하는 것, capricious는 즉흥적 변덕 전반. 명사 caprice(변덕).",
+      "etymology": "이탈리아어 capriccio(갑작스러운 충동, 염소처럼 뛰는 것) ← capra(염소)"
+    },
+    {
+      "id": "caustic", "word": "caustic", "pos": "adj", "level": 25,
+      "meanings": ["(말이) 신랄한, 독설적인", "부식성의"],
+      "sentences": [
+        { "en": "Her ___ remarks hurt his feelings.", "ko": "그녀의 **신랄한** 말은 그의 마음을 아프게 했다.", "answer": "caustic" },
+        { "en": "Wear gloves when handling ___ chemicals.", "ko": "**부식성** 화학 물질을 다룰 때는 장갑을 착용하세요.", "answer": "caustic" }
+      ],
+      "nuance": "살을 태우는 화학 물질처럼 '상처 주는 날카로운' 말. sarcastic은 비꼬는 것, caustic은 비꼼에 독기까지 더한 것.",
+      "etymology": "그리스어 kaustikos(태우는) ← kaiein(태우다)"
+    }
+  ]
+}

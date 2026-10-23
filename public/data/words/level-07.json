@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": "announce", "word": "announce", "pos": "v", "level": 7,
+      "meanings": ["발표하다, 알리다"],
+      "sentences": [
+        { "en": "The company will ___ its new product tomorrow.", "ko": "그 회사는 내일 신제품을 **발표할** 것이다.", "answer": "announce" },
+        { "en": "They ___ their engagement at the party.", "ko": "그들은 파티에서 약혼을 **발표했다**.", "answer": "announced" }
+      ],
+      "nuance": "공식적으로 '알리다'. declare는 더 단호한 '선언', inform은 '특정인에게 알려주다'.",
+      "etymology": "라틴어 ad(~에게) + nuntiare(소식을 전하다)"
+    },
+    {
+      "id": "appreciate", "word": "appreciate", "pos": "v", "level": 7,
+      "meanings": ["감사하다", "진가를 알아보다"],
+      "sentences": [
+        { "en": "I really ___ your help.", "ko": "도와주셔서 정말 **감사합니다**.", "answer": "appreciate" },
+        { "en": "You need time to ___ this kind of music.", "ko": "이런 음악의 **진가를 알아보려면** 시간이 필요하다.", "answer": "appreciate" }
+      ],
+      "nuance": "thank는 사람에게, appreciate는 행위·물건에 쓴다(appreciate your help). '가치를 알다, 감상하다', '(가치가) 오르다'라는 뜻도.",
+      "etymology": "라틴어 ad + pretium(값) → '값을 매기다'"
+    },
+    {
+      "id": "contain", "word": "contain", "pos": "v", "level": 7,
+      "meanings": ["담고 있다, 포함하다"],
+      "sentences": [
+        { "en": "This box ___ old photos.", "ko": "이 상자에는 오래된 사진들이 **들어 있다**.", "answer": "contains" },
+        { "en": "The report ___ several errors.", "ko": "그 보고서에는 몇 가지 오류가 **포함되어** 있었다.", "answer": "contained" }
+      ],
+      "nuance": "include는 전체 중 '일부로 포함', contain은 안에 '들어 있는 것 전체'. 명사 container(용기).",
+      "etymology": "라틴어 con(함께) + tenere(잡다) → '함께 붙잡아 두다'"
+    },
+    {
+      "id": "deserve", "word": "deserve", "pos": "v", "level": 7,
+      "meanings": ["~을 받을 만하다"],
+      "sentences": [
+        { "en": "You ___ a break after all that work.", "ko": "그 많은 일을 했으니 너는 휴식을 **누릴 자격이 있어**.", "answer": "deserve" },
+        { "en": "He ___ the award for his hard work.", "ko": "그는 열심히 일한 것에 대해 그 상을 **받을 만했다**.", "answer": "deserved" }
+      ],
+      "nuance": "좋은 것도 나쁜 것도 '~할 만하다'(deserve punishment). 진행형으로 쓰지 않는다.",
+      "etymology": "라틴어 de(완전히) + servire(봉사하다) → '충분히 봉사하여 얻다'"
+    },
+    {
+      "id": "encourage", "word": "encourage", "pos": "v", "level": 7,
+      "meanings": ["격려하다", "장려하다"],
+      "sentences": [
+        { "en": "My teacher ___ me to apply for the scholarship.", "ko": "선생님은 내가 장학금을 신청하도록 **격려해** 주셨다.", "answer": "encouraged" },
+        { "en": "The city ___ people to use public transport.", "ko": "그 도시는 시민들이 대중교통을 이용하도록 **장려한다**.", "answer": "encourages" }
+      ],
+      "nuance": "'encourage 사람 to 동사'. 반대는 discourage. 명사 courage(용기)에서 나온 말로 '용기를 북돋다'.",
+      "etymology": "고대 프랑스어 en(안에) + corage(용기) → '용기를 넣어주다'"
+    },
+    {
+      "id": "estimate", "word": "estimate", "pos": "v", "level": 7,
+      "meanings": ["추정하다", "추정치, 견적"],
+      "sentences": [
+        { "en": "Experts ___ that the bridge will take two years to build.", "ko": "전문가들은 그 다리를 짓는 데 2년이 걸릴 것으로 **추정한다**.", "answer": "estimate" },
+        { "en": "Can you give me a rough ___ of the cost?", "ko": "비용의 대략적인 **견적**을 주시겠어요?", "answer": "estimate" }
+      ],
+      "nuance": "정확한 계산이 아닌 '어림 계산'. guess는 근거 없는 추측, estimate는 근거가 있는 추정. 명사 발음은 [에스티밋].",
+      "etymology": "라틴어 aestimare '값을 매기다'"
+    },
+    {
+      "id": "maintain", "word": "maintain", "pos": "v", "level": 7,
+      "meanings": ["유지하다", "주장하다"],
+      "sentences": [
+        { "en": "It is important to ___ a healthy weight.", "ko": "건강한 체중을 **유지하는** 것이 중요하다.", "answer": "maintain" },
+        { "en": "He ___ that he was innocent.", "ko": "그는 자신이 무죄라고 **주장했다**.", "answer": "maintained" }
+      ],
+      "nuance": "keep보다 격식체로 '지속해서 관리하며 유지'. '(계속해서) 주장하다'라는 뜻도 있다. 명사 maintenance(유지 관리).",
+      "etymology": "라틴어 manu(손으로) + tenere(잡다) → '손으로 붙잡고 있다'"
+    },
+    {
+      "id": "obtain", "word": "obtain", "pos": "v", "level": 7,
+      "meanings": ["얻다, 취득하다"],
+      "sentences": [
+        { "en": "You must ___ permission before entering.", "ko": "들어가기 전에 허가를 **받아야** 합니다.", "answer": "obtain" },
+        { "en": "She ___ a degree in chemistry.", "ko": "그녀는 화학 학위를 **취득했다**.", "answer": "obtained" }
+      ],
+      "nuance": "get의 격식체. 특히 노력이나 절차를 거쳐 '획득'하는 느낌. acquire는 지식·습관처럼 시간이 걸려 얻는 것.",
+      "etymology": "라틴어 ob(향하여) + tenere(잡다)"
+    },
+    {
+      "id": "remain", "word": "remain", "pos": "v", "level": 7,
+      "meanings": ["남아 있다", "여전히 ~이다"],
+      "sentences": [
+        { "en": "Only a few tickets ___ for tonight's show.", "ko": "오늘 밤 공연 티켓이 몇 장만 **남아 있다**.", "answer": "remain" },
+        { "en": "Please ___ seated until the plane stops.", "ko": "비행기가 멈출 때까지 자리에 **앉아 계십시오**.", "answer": "remain" }
+      ],
+      "nuance": "stay와 비슷하지만 더 격식체. 'remain + 형용사'(remain silent 계속 침묵하다). 명사 remains는 '유적, 유해'.",
+      "etymology": "라틴어 re(뒤에) + manere(머물다)"
+    },
+    {
+      "id": "approach", "word": "approach", "pos": "v", "level": 7,
+      "meanings": ["다가가다", "접근법"],
+      "sentences": [
+        { "en": "A stranger ___ me and asked for directions.", "ko": "낯선 사람이 내게 **다가와** 길을 물었다.", "answer": "approached" },
+        { "en": "We need a new ___ to this problem.", "ko": "이 문제에는 새로운 **접근법**이 필요하다.", "answer": "approach" }
+      ],
+      "nuance": "'approach to 장소'가 아니라 'approach 장소'(타동사). 명사로 '접근 방식'이 매우 자주 쓰인다. 시간이 '다가오다'에도 쓴다(Winter is approaching).",
+      "etymology": "라틴어 ad(~로) + propiare(가까이 가다)"
+    }
+  ]
+}

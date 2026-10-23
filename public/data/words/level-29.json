@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": "idiosyncrasy", "word": "idiosyncrasy", "pos": "n", "level": 29,
+      "meanings": ["(개인의) 특이한 습성, 기벽"],
+      "sentences": [
+        { "en": "One of his ___ is eating dessert before dinner.", "ko": "그의 **특이한 습성** 중 하나는 저녁 식사 전에 디저트를 먹는 것이다.", "answer": "idiosyncrasies" },
+        { "en": "Every language has its own ___.", "ko": "모든 언어에는 그 나름의 **독특한 특성**이 있다.", "answer": "idiosyncrasies" }
+      ],
+      "nuance": "그 사람(또는 사물)에게만 있는 '남과 다른 별난 특징'. habit은 습관 일반, idiosyncrasy는 유독 그 사람다운 독특함. 형용사 idiosyncratic.",
+      "etymology": "그리스어 idios(자기만의) + synkrasis(혼합, 기질) → '자기만의 기질'"
+    },
+    {
+      "id": "impetuous", "word": "impetuous", "pos": "adj", "level": 29,
+      "meanings": ["충동적인, 성급한"],
+      "sentences": [
+        { "en": "In an ___ moment, he quit his job.", "ko": "**충동적인** 순간에 그는 직장을 그만두었다.", "answer": "impetuous" },
+        { "en": "She regretted her ___ decision to buy the car.", "ko": "그녀는 차를 사기로 한 **성급한** 결정을 후회했다.", "answer": "impetuous" }
+      ],
+      "nuance": "결과를 생각하지 않고 '감정에 휩쓸려 급히 행동하는'. impulsive와 거의 같지만 impetuous는 격한 기세가 더 느껴진다. 명사 impetuosity.",
+      "etymology": "라틴어 impetus(돌진, 기세) ← in + petere(향해 가다)"
+    },
+    {
+      "id": "incorrigible", "word": "incorrigible", "pos": "adj", "level": 29,
+      "meanings": ["고칠 수 없는, 구제 불능의"],
+      "sentences": [
+        { "en": "He is an ___ liar who cannot be trusted.", "ko": "그는 믿을 수 없는 **구제 불능의** 거짓말쟁이다.", "answer": "incorrigible" },
+        { "en": "She is an ___ optimist, even in hard times.", "ko": "그녀는 힘든 시기에도 **못 말리는** 낙천주의자다.", "answer": "incorrigible" }
+      ],
+      "nuance": "나쁜 버릇이 '교정할 수 없을 만큼 굳어진'. 가볍게 농담조로 '못 말리는'이라고도 쓴다. hopeless는 희망이 없는 것, incorrigible은 바뀔 여지가 없는 것.",
+      "etymology": "라틴어 in(아닌) + corrigere(바로잡다) → '바로잡을 수 없는'"
+    },
+    {
+      "id": "indefatigable", "word": "indefatigable", "pos": "adj", "level": 29,
+      "meanings": ["지칠 줄 모르는, 끈기 있는"],
+      "sentences": [
+        { "en": "She is an ___ campaigner for human rights.", "ko": "그녀는 인권을 위한 **지칠 줄 모르는** 운동가다.", "answer": "indefatigable" },
+        { "en": "His ___ energy amazed his colleagues.", "ko": "그의 **끝없는** 에너지는 동료들을 놀라게 했다.", "answer": "indefatigable" }
+      ],
+      "nuance": "아무리 오래 해도 '피로를 모르는 듯 계속하는'. tireless와 같지만 더 격식체. 발음 [인디패티거블].",
+      "etymology": "라틴어 in(아닌) + defatigare(지치게 하다) → '지치게 할 수 없는'"
+    },
+    {
+      "id": "insidious", "word": "insidious", "pos": "adj", "level": 29,
+      "meanings": ["서서히 퍼지는, 교활하게 해를 끼치는"],
+      "sentences": [
+        { "en": "High blood pressure is an ___ disease with few symptoms.", "ko": "고혈압은 증상이 거의 없이 **서서히 진행되는** 병이다.", "answer": "insidious" },
+        { "en": "Rumors can have an ___ effect on a workplace.", "ko": "소문은 직장에 **은밀하게 해를 끼치는** 영향을 줄 수 있다.", "answer": "insidious" }
+      ],
+      "nuance": "눈에 띄지 않게 '조금씩 파고들어 해를 입히는'. dangerous는 위험 일반, insidious는 알아차렸을 때 이미 늦은 종류의 위험. sly(교활한)보다 피해에 초점.",
+      "etymology": "라틴어 insidiae(함정, 복병) ← insidere(안에 앉아 기다리다)"
+    },
+    {
+      "id": "laconic", "word": "laconic", "pos": "adj", "level": 29,
+      "meanings": ["말을 아끼는, 간결한"],
+      "sentences": [
+        { "en": "His ___ reply was simply 'No'.", "ko": "그의 **짧은** 대답은 그저 '아니오'였다.", "answer": "laconic" },
+        { "en": "She is ___ by nature and rarely explains herself.", "ko": "그녀는 천성이 **말을 아끼는** 편이라 자신을 거의 설명하지 않는다.", "answer": "laconic" }
+      ],
+      "nuance": "말이 너무 적어 '무뚝뚝하게 들릴 만큼 간결한'. concise는 글이 간결하다는 칭찬, laconic은 사람의 말수가 적다는 묘사. terse는 짧고 쌀쌀한 것.",
+      "etymology": "그리스어 Lakonikos(라코니아, 스파르타의) → 말이 짧았던 스파르타인에서"
+    },
+    {
+      "id": "magnanimous", "word": "magnanimous", "pos": "adj", "level": 29,
+      "meanings": ["관대한, 너그러운(특히 적이나 패자에게)"],
+      "sentences": [
+        { "en": "The winner was ___ in victory and praised her opponent.", "ko": "승자는 승리에 **관대하여** 상대를 칭찬했다.", "answer": "magnanimous" },
+        { "en": "It was ___ of him to forgive the man who wronged him.", "ko": "자신에게 잘못한 사람을 용서한 것은 그의 **너그러움**이었다.", "answer": "magnanimous" }
+      ],
+      "nuance": "자기보다 약하거나 적대적인 상대를 '큰 마음으로 품어 주는'. generous는 베풂 일반, magnanimous는 원한을 품을 만한 상황에서의 너그러움. 명사 magnanimity.",
+      "etymology": "라틴어 magnus(큰) + animus(마음) → '큰 마음을 가진'"
+    },
+    {
+      "id": "mercurial", "word": "mercurial", "pos": "adj", "level": 29,
+      "meanings": ["(기분이) 변덕스러운, 종잡을 수 없는"],
+      "sentences": [
+        { "en": "The coach is known for his ___ temperament.", "ko": "그 감독은 **변덕스러운** 기질로 유명하다.", "answer": "mercurial" },
+        { "en": "Her ___ moods made her hard to work with.", "ko": "그녀의 **종잡을 수 없는** 기분 변화는 함께 일하기 어렵게 했다.", "answer": "mercurial" }
+      ],
+      "nuance": "수은처럼 '빠르게 변해 예측할 수 없는'. capricious는 변덕 일반, mercurial은 특히 기분·성격이 급변하며 재기 넘친다는 뉘앙스도 있다.",
+      "etymology": "라틴어 Mercurius(전령의 신 메르쿠리우스, 수은) → '수은처럼 유동적인'"
+    },
+    {
+      "id": "nefarious", "word": "nefarious", "pos": "adj", "level": 29,
+      "meanings": ["극악한, 사악한"],
+      "sentences": [
+        { "en": "The group was involved in ___ activities like smuggling.", "ko": "그 조직은 밀수 같은 **사악한** 활동에 관여했다.", "answer": "nefarious" },
+        { "en": "He had ___ plans to take over the company.", "ko": "그는 회사를 장악하려는 **극악한** 계획을 갖고 있었다.", "answer": "nefarious" }
+      ],
+      "nuance": "범죄적으로 '악하고 비도덕적인'. evil은 악 일반, nefarious는 특히 음모·범죄 활동에 쓰는 격식체. wicked보다 무겁다.",
+      "etymology": "라틴어 nefas(불경한 짓) ← ne(아닌) + fas(신의 법)"
+    },
+    {
+      "id": "obsequious", "word": "obsequious", "pos": "adj", "level": 29,
+      "meanings": ["아첨하는, 비굴하게 굽실거리는"],
+      "sentences": [
+        { "en": "The ___ waiter kept bowing and praising our choices.", "ko": "**비굴하게 굽실거리는** 웨이터는 계속 고개를 숙이며 우리의 선택을 칭찬했다.", "answer": "obsequious" },
+        { "en": "He was ___ toward his superiors and rude to his staff.", "ko": "그는 상사에게는 **아첨하고** 부하 직원에게는 무례했다.", "answer": "obsequious" }
+      ],
+      "nuance": "환심을 사려고 '지나치게 복종적이고 비굴한'. polite는 예의 바른 것, obsequious는 자존심을 버린 과도한 공손함(경멸적). servile, fawning과 비슷.",
+      "etymology": "라틴어 obsequi(따르다, 순종하다) ← ob + sequi(따르다)"
+    }
+  ]
+}

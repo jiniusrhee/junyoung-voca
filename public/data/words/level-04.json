@@ -1,0 +1,97 @@
+{
+  "words": [
+    {
+      "id": "decide", "word": "decide", "pos": "v", "level": 4,
+      "meanings": ["결정하다"],
+      "sentences": [
+        { "en": "We need to ___ where to go for lunch.", "ko": "점심을 어디서 먹을지 **결정해야** 해.", "answer": "decide" },
+        { "en": "She ___ to study abroad next year.", "ko": "그녀는 내년에 유학을 가기로 **결정했다**.", "answer": "decided" }
+      ],
+      "nuance": "'decide to + 동사'. determine은 더 단호하고 격식체. 명사형은 decision(make a decision).",
+      "etymology": "라틴어 de(떼어) + caedere(자르다) → '잘라 내어 정하다'"
+    },
+    {
+      "id": "remember", "word": "remember", "pos": "v", "level": 4,
+      "meanings": ["기억하다"],
+      "sentences": [
+        { "en": "Do you ___ my name?", "ko": "내 이름 **기억해**?", "answer": "remember" },
+        { "en": "I ___ to lock the door before I left.", "ko": "나는 나가기 전에 문을 잠가야 한다는 걸 **기억했다**.", "answer": "remembered" }
+      ],
+      "nuance": "'remember to 동사'는 앞으로 할 일을 기억하다, 'remember -ing'은 과거에 한 일을 기억하다. 뜻이 달라진다."
+    },
+    {
+      "id": "forget", "word": "forget", "pos": "v", "level": 4,
+      "meanings": ["잊다"],
+      "sentences": [
+        { "en": "Don't ___ to bring your umbrella.", "ko": "우산 가져오는 거 **잊지** 마.", "answer": "forget" },
+        { "en": "I always ___ where I put my keys.", "ko": "나는 항상 열쇠를 어디 뒀는지 **잊어버린다**.", "answer": "forget" }
+      ],
+      "nuance": "'forget to 동사'는 할 일을 잊다, 'forget -ing'은 한 일을 잊다. 물건을 '깜빡 두고 오다'는 forget이 아니라 leave를 쓴다."
+    },
+    {
+      "id": "invite", "word": "invite", "pos": "v", "level": 4,
+      "meanings": ["초대하다"],
+      "sentences": [
+        { "en": "They ___ us to their wedding.", "ko": "그들은 우리를 결혼식에 **초대했다**.", "answer": "invited" },
+        { "en": "Why don't you ___ her to the party?", "ko": "그녀를 파티에 **초대하는** 게 어때?", "answer": "invite" }
+      ],
+      "nuance": "'invite 사람 to 행사/장소'. 명사는 invitation. 격식 없는 '초대장'은 invite라고도 한다."
+    },
+    {
+      "id": "promise", "word": "promise", "pos": "v", "level": 4,
+      "meanings": ["약속하다"],
+      "sentences": [
+        { "en": "I ___ I will be there on time.", "ko": "제시간에 가겠다고 **약속해**.", "answer": "promise" },
+        { "en": "He ___ to call me back.", "ko": "그는 다시 전화하겠다고 **약속했다**.", "answer": "promised" }
+      ],
+      "nuance": "'만날 약속'은 appointment(공식)나 plans(사적)이고, promise는 '~하겠다는 다짐'. 뜻이 다르니 주의.",
+      "etymology": "라틴어 pro(앞으로) + mittere(보내다) → '미리 내보낸 말'"
+    },
+    {
+      "id": "careful", "word": "careful", "pos": "adj", "level": 4,
+      "meanings": ["조심하는, 신중한"],
+      "sentences": [
+        { "en": "Be ___ when you cross the street.", "ko": "길을 건널 때 **조심해**.", "answer": "careful" },
+        { "en": "She is a very ___ driver.", "ko": "그녀는 아주 **신중한** 운전자다.", "answer": "careful" }
+      ],
+      "nuance": "'be careful of/with ~'(~에 주의하다). cautious는 더 소극적이고 경계하는 느낌."
+    },
+    {
+      "id": "dangerous", "word": "dangerous", "pos": "adj", "level": 4,
+      "meanings": ["위험한"],
+      "sentences": [
+        { "en": "It is ___ to swim here.", "ko": "여기서 수영하는 것은 **위험하다**.", "answer": "dangerous" },
+        { "en": "Smoking is ___ to your health.", "ko": "흡연은 건강에 **위험하다**.", "answer": "dangerous" }
+      ],
+      "nuance": "명사는 danger(in danger). risky는 '손해 볼 수 있는' 위험, dangerous는 신체적 해를 끼칠 수 있는 위험."
+    },
+    {
+      "id": "expensive", "word": "expensive", "pos": "adj", "level": 4,
+      "meanings": ["값비싼"],
+      "sentences": [
+        { "en": "This restaurant is too ___ for me.", "ko": "이 식당은 나에겐 너무 **비싸다**.", "answer": "expensive" },
+        { "en": "She bought an ___ watch for her husband.", "ko": "그녀는 남편에게 **고가의** 시계를 사 주었다.", "answer": "expensive" }
+      ],
+      "nuance": "가격이 비싸다는 'The price is high', 물건이 비싸다는 'It is expensive'. costly는 격식체이고 '손실이 큰'이란 뜻도 있다.",
+      "etymology": "라틴어 ex(밖으로) + pendere(무게를 달다, 지불하다) → '많이 지불하는'"
+    },
+    {
+      "id": "several", "word": "several", "pos": "det", "level": 4,
+      "meanings": ["몇몇의, 여러"],
+      "sentences": [
+        { "en": "I have read this book ___ times.", "ko": "이 책을 **여러** 번 읽었다.", "answer": "several" },
+        { "en": "There were ___ problems with the plan.", "ko": "그 계획에는 **몇 가지** 문제가 있었다.", "answer": "several" }
+      ],
+      "nuance": "a few(두세 개)보다 많고 many보다 적은 '서너 개에서 예닐곱 개' 정도. 복수 명사와 함께 쓴다."
+    },
+    {
+      "id": "usually", "word": "usually", "pos": "adv", "level": 4,
+      "meanings": ["보통, 대개"],
+      "sentences": [
+        { "en": "I ___ get up at six.", "ko": "나는 **보통** 6시에 일어난다.", "answer": "usually" },
+        { "en": "The bus is ___ on time.", "ko": "그 버스는 **대개** 제시간에 온다.", "answer": "usually" }
+      ],
+      "nuance": "normally, generally와 비슷. 'as usual'(평소처럼)은 형용사 usual을 쓴다."
+    }
+  ]
+}

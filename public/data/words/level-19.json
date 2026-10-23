@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": "eloquent", "word": "eloquent", "pos": "adj", "level": 19,
+      "meanings": ["유창한, 설득력 있게 말하는"],
+      "sentences": [
+        { "en": "She gave an ___ speech about freedom.", "ko": "그녀는 자유에 대해 **감동적이고 유창한** 연설을 했다.", "answer": "eloquent" },
+        { "en": "His silence was more ___ than words.", "ko": "그의 침묵은 말보다 더 **많은 것을 말해 주었다**.", "answer": "eloquent" }
+      ],
+      "nuance": "fluent는 막힘없이 말하는 것, eloquent는 말이 '아름답고 설득력 있는' 것. 비유적으로 표정·침묵이 '뜻을 잘 전달하는'에도 쓴다. 명사 eloquence.",
+      "etymology": "라틴어 e(밖으로) + loqui(말하다) → '말을 잘 내는'"
+    },
+    {
+      "id": "emulate", "word": "emulate", "pos": "v", "level": 19,
+      "meanings": ["(존경하여) 본받다, 모방하다"],
+      "sentences": [
+        { "en": "Many young players try to ___ their heroes.", "ko": "많은 어린 선수들은 자신의 영웅을 **본받으려** 한다.", "answer": "emulate" },
+        { "en": "The software ___ an old game console.", "ko": "그 소프트웨어는 옛 게임기를 **모방한다**.", "answer": "emulates" }
+      ],
+      "nuance": "imitate는 단순히 따라 하기, emulate는 '그만큼 잘하려고' 따라 하는 것. 컴퓨터에서 다른 기기를 흉내 내는 emulator도 이 말.",
+      "etymology": "라틴어 aemulus(경쟁자) → '경쟁하며 따라가다'"
+    },
+    {
+      "id": "exacerbate", "word": "exacerbate", "pos": "v", "level": 19,
+      "meanings": ["악화시키다"],
+      "sentences": [
+        { "en": "Stress can ___ skin problems.", "ko": "스트레스는 피부 문제를 **악화시킬** 수 있다.", "answer": "exacerbate" },
+        { "en": "The drought ___ the food shortage.", "ko": "가뭄이 식량 부족을 **더 심각하게 만들었다**.", "answer": "exacerbated" }
+      ],
+      "nuance": "이미 나쁜 상황을 '더 나쁘게 하다'. worsen과 같지만 격식체. aggravate도 같은 뜻이지만 '짜증나게 하다'라는 구어 용법도 있다.",
+      "etymology": "라틴어 ex(강조) + acerbus(쓴, 거친) → '더 거칠게 하다'"
+    },
+    {
+      "id": "exemplify", "word": "exemplify", "pos": "v", "level": 19,
+      "meanings": ["전형적인 예가 되다, 예시하다"],
+      "sentences": [
+        { "en": "This building ___ modern architecture.", "ko": "이 건물은 현대 건축의 **전형적인 예다**.", "answer": "exemplifies" },
+        { "en": "Her career ___ what hard work can achieve.", "ko": "그녀의 경력은 노력이 무엇을 이룰 수 있는지를 **잘 보여 준다**.", "answer": "exemplifies" }
+      ],
+      "nuance": "주어 자체가 '좋은 예'가 된다는 뜻. illustrate는 예를 들어 설명하는 것, exemplify는 그 자체가 대표 사례인 것. 명사 example, exemplar.",
+      "etymology": "라틴어 exemplum(예) + facere(만들다)"
+    },
+    {
+      "id": "exhaustive", "word": "exhaustive", "pos": "adj", "level": 19,
+      "meanings": ["빠짐없는, 철저한"],
+      "sentences": [
+        { "en": "The police made an ___ search of the area.", "ko": "경찰은 그 지역을 **철저히** 수색했다.", "answer": "exhaustive" },
+        { "en": "This list is not ___, but it covers the main points.", "ko": "이 목록이 **전부를 담은** 것은 아니지만 주요 사항은 다룬다.", "answer": "exhaustive" }
+      ],
+      "nuance": "가능한 모든 것을 '다 다룬'. exhausting(지치게 하는)과 철자 혼동 주의. thorough와 거의 같다. 부사 exhaustively.",
+      "etymology": "라틴어 exhaurire(모두 퍼내다) → '다 퍼낸'"
+    },
+    {
+      "id": "explicit", "word": "explicit", "pos": "adj", "level": 19,
+      "meanings": ["명시적인, 분명한"],
+      "sentences": [
+        { "en": "The teacher gave ___ instructions for the test.", "ko": "선생님은 시험에 대해 **명확한** 지시를 했다.", "answer": "explicit" },
+        { "en": "He was ___ about what he wanted.", "ko": "그는 자신이 원하는 것을 **분명하게** 말했다.", "answer": "explicit" }
+      ],
+      "nuance": "'말로 똑똑히 표현된'. 반대는 implicit(암묵적인). 'explicit content'는 노골적인(성적·폭력적) 내용이라는 뜻도. 부사 explicitly.",
+      "etymology": "라틴어 ex(밖으로) + plicare(접다) → '접힌 것을 펼친'"
+    },
+    {
+      "id": "frugal", "word": "frugal", "pos": "adj", "level": 19,
+      "meanings": ["검소한, 절약하는"],
+      "sentences": [
+        { "en": "My grandmother was ___ and never wasted food.", "ko": "할머니는 **검소하셔서** 음식을 절대 낭비하지 않으셨다.", "answer": "frugal" },
+        { "en": "They lived a ___ life to save for a house.", "ko": "그들은 집을 사기 위해 저축하며 **절약하는** 삶을 살았다.", "answer": "frugal" }
+      ],
+      "nuance": "돈·자원을 '아껴 쓰는'(긍정적). thrifty와 비슷. stingy(인색한)는 남에게 안 쓰는 부정적 의미. 명사 frugality.",
+      "etymology": "라틴어 frux(열매, 수확) → '열매를 알차게 쓰는'"
+    },
+    {
+      "id": "futile", "word": "futile", "pos": "adj", "level": 19,
+      "meanings": ["소용없는, 헛된"],
+      "sentences": [
+        { "en": "It is ___ to argue with him.", "ko": "그와 논쟁하는 것은 **소용없다**.", "answer": "futile" },
+        { "en": "They made a ___ attempt to save the ship.", "ko": "그들은 배를 구하려는 **헛된** 시도를 했다.", "answer": "futile" }
+      ],
+      "nuance": "노력해도 '결과가 나올 수 없는'. useless는 쓸모가 없는 것, futile은 시도 자체가 헛된 것. 명사 futility.",
+      "etymology": "라틴어 futilis(새는, 쏟아지는) → '담아도 새는'"
+    },
+    {
+      "id": "gregarious", "word": "gregarious", "pos": "adj", "level": 19,
+      "meanings": ["사교적인, 무리를 좋아하는"],
+      "sentences": [
+        { "en": "He is ___ and loves meeting new people.", "ko": "그는 **사교적이어서** 새 사람을 만나는 것을 좋아한다.", "answer": "gregarious" },
+        { "en": "Sheep are ___ animals that stay in flocks.", "ko": "양은 떼를 지어 지내는 **군집성** 동물이다.", "answer": "gregarious" }
+      ],
+      "nuance": "사람에게는 '사람들과 어울리기 좋아하는', 동물에게는 '무리를 짓는'. sociable, outgoing과 비슷하지만 더 격식체.",
+      "etymology": "라틴어 grex(무리, 떼) → '무리에 속하는'"
+    },
+    {
+      "id": "impede", "word": "impede", "pos": "v", "level": 19,
+      "meanings": ["지연시키다, 방해하다"],
+      "sentences": [
+        { "en": "Fog ___ the rescue operation.", "ko": "안개가 구조 작업을 **방해했다**.", "answer": "impeded" },
+        { "en": "High costs ___ the growth of small businesses.", "ko": "높은 비용이 소규모 기업의 성장을 **가로막는다**.", "answer": "impede" }
+      ],
+      "nuance": "진행을 '느리게 하거나 어렵게 하다'. hinder와 거의 같고 격식체. 명사 impediment(장애물, speech impediment 언어 장애).",
+      "etymology": "라틴어 im(안에) + pes(발) → '발에 족쇄를 채우다'"
+    }
+  ]
+}

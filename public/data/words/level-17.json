@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": "undermine", "word": "undermine", "pos": "v", "level": 17,
+      "meanings": ["약화시키다, 훼손하다"],
+      "sentences": [
+        { "en": "Constant criticism can ___ a child's confidence.", "ko": "끊임없는 비판은 아이의 자신감을 **약화시킬** 수 있다.", "answer": "undermine" },
+        { "en": "The scandal ___ public trust in the government.", "ko": "그 스캔들은 정부에 대한 국민의 신뢰를 **훼손했다**.", "answer": "undermined" }
+      ],
+      "nuance": "겉으로 드러나지 않게 '밑에서부터 서서히 무너뜨리다'. weaken은 중립적, undermine은 교묘하고 점진적인 느낌.",
+      "etymology": "under(아래) + mine(굴을 파다) → '성벽 아래에 굴을 파서 무너뜨리다'"
+    },
+    {
+      "id": "unprecedented", "word": "unprecedented", "pos": "adj", "level": 17,
+      "meanings": ["전례 없는"],
+      "sentences": [
+        { "en": "The storm caused ___ damage to the city.", "ko": "그 폭풍은 도시에 **전례 없는** 피해를 입혔다.", "answer": "unprecedented" },
+        { "en": "The team achieved ___ success this season.", "ko": "그 팀은 이번 시즌에 **전례 없는** 성공을 거두었다.", "answer": "unprecedented" }
+      ],
+      "nuance": "'이전에 한 번도 없었던'. new는 단순히 새로운 것, unprecedented는 역사상 처음이라는 강조. 명사 precedent(판례, 선례).",
+      "etymology": "un(아닌) + precedent(선례) ← 라틴어 prae(앞) + cedere(가다)"
+    },
+    {
+      "id": "vague", "word": "vague", "pos": "adj", "level": 17,
+      "meanings": ["막연한, 모호한"],
+      "sentences": [
+        { "en": "He gave a ___ answer about his plans.", "ko": "그는 자신의 계획에 대해 **모호한** 대답을 했다.", "answer": "vague" },
+        { "en": "I have only a ___ memory of that day.", "ko": "그날에 대해서는 **희미한** 기억만 있다.", "answer": "vague" }
+      ],
+      "nuance": "자세하지 않아 '뚜렷하지 않은'. ambiguous는 여러 뜻으로 읽히는 것, vague는 그냥 불분명한 것. 부사 vaguely(어렴풋이).",
+      "etymology": "라틴어 vagus(떠도는, 방황하는)"
+    },
+    {
+      "id": "versatile", "word": "versatile", "pos": "adj", "level": 17,
+      "meanings": ["다재다능한, 다용도의"],
+      "sentences": [
+        { "en": "She is a ___ actress who can play any role.", "ko": "그녀는 어떤 역할도 할 수 있는 **다재다능한** 배우다.", "answer": "versatile" },
+        { "en": "Eggs are a ___ ingredient in cooking.", "ko": "달걀은 요리에서 **다용도로** 쓰이는 재료다.", "answer": "versatile" }
+      ],
+      "nuance": "사람에게는 '여러 가지를 잘하는', 물건에는 '여러 용도로 쓸 수 있는'. 명사 versatility.",
+      "etymology": "라틴어 versare(돌리다) → '이리저리 돌릴 수 있는'"
+    },
+    {
+      "id": "viable", "word": "viable", "pos": "adj", "level": 17,
+      "meanings": ["실행 가능한, 성공할 수 있는"],
+      "sentences": [
+        { "en": "Solar power is now a ___ alternative to coal.", "ko": "태양광은 이제 석탄의 **실현 가능한** 대안이다.", "answer": "viable" },
+        { "en": "The business plan is not financially ___.", "ko": "그 사업 계획은 재정적으로 **지속 가능하지** 않다.", "answer": "viable" }
+      ],
+      "nuance": "원래 생물이 '살아갈 수 있는'에서 계획·사업이 '굴러갈 수 있는'으로. feasible은 '해낼 수 있는지', viable은 '해낸 뒤 살아남을 수 있는지'. 명사 viability.",
+      "etymology": "프랑스어 vie(생명) → viable(살 수 있는)"
+    },
+    {
+      "id": "vulnerable", "word": "vulnerable", "pos": "adj", "level": 17,
+      "meanings": ["취약한, 상처받기 쉬운"],
+      "sentences": [
+        { "en": "Elderly people are especially ___ to the heat.", "ko": "노인들은 특히 더위에 **취약하다**.", "answer": "vulnerable" },
+        { "en": "He felt ___ after sharing his story.", "ko": "그는 자기 이야기를 털어놓은 뒤 **상처받기 쉬운** 기분이 들었다.", "answer": "vulnerable" }
+      ],
+      "nuance": "'vulnerable to ~'(~에 취약한). weak는 힘이 없는 것, vulnerable은 '공격이나 피해를 입기 쉬운'. 명사 vulnerability(취약점).",
+      "etymology": "라틴어 vulnus(상처) → '상처 입을 수 있는'"
+    },
+    {
+      "id": "withstand", "word": "withstand", "pos": "v", "level": 17,
+      "meanings": ["견디다, 버티다"],
+      "sentences": [
+        { "en": "This bridge can ___ strong earthquakes.", "ko": "이 다리는 강한 지진을 **견딜** 수 있다.", "answer": "withstand" },
+        { "en": "The material ___ temperatures of up to 500 degrees.", "ko": "그 소재는 500도까지의 온도를 **견딘다**.", "answer": "withstands" }
+      ],
+      "nuance": "외부의 힘·압력·공격에 '손상 없이 버티다'. endure는 고통을 '참아 내다', withstand는 물리적·비유적 압력을 '막아 내다'.",
+      "etymology": "고대 영어 with(맞서) + standan(서다) → '맞서 서다'"
+    },
+    {
+      "id": "allocate", "word": "allocate", "pos": "v", "level": 17,
+      "meanings": ["할당하다, 배분하다"],
+      "sentences": [
+        { "en": "The city will ___ more money to public parks.", "ko": "시는 공원에 더 많은 예산을 **배정할** 것이다.", "answer": "allocate" },
+        { "en": "Each team was ___ two hours for the task.", "ko": "각 팀에는 그 과제를 위해 두 시간이 **할당되었다**.", "answer": "allocated" }
+      ],
+      "nuance": "'allocate A to B'(A를 B에 배정하다). distribute는 '나누어 주다', allocate는 계획에 따라 '몫을 정해 주다'. 명사 allocation.",
+      "etymology": "라틴어 ad(~에) + locare(놓다) → '자리를 정해 놓다'"
+    },
+    {
+      "id": "alleviate", "word": "alleviate", "pos": "v", "level": 17,
+      "meanings": ["완화하다, 덜어 주다"],
+      "sentences": [
+        { "en": "This medicine will ___ the pain.", "ko": "이 약은 통증을 **덜어 줄** 것이다.", "answer": "alleviate" },
+        { "en": "The new road ___ traffic in the city center.", "ko": "새 도로는 도심의 교통 혼잡을 **완화했다**.", "answer": "alleviated" }
+      ],
+      "nuance": "고통·문제를 '덜 심하게 하다'(없애지는 못함). relieve와 거의 같지만 더 격식체. mitigate는 피해·위험의 심각성을 줄이는 데 더 자주 쓴다.",
+      "etymology": "라틴어 ad + levis(가벼운) → '가볍게 하다'"
+    },
+    {
+      "id": "arbitrary", "word": "arbitrary", "pos": "adj", "level": 17,
+      "meanings": ["임의적인, 제멋대로인"],
+      "sentences": [
+        { "en": "The choice of color was completely ___.", "ko": "색상 선택은 완전히 **임의적**이었다.", "answer": "arbitrary" },
+        { "en": "Workers complained about ___ decisions by managers.", "ko": "직원들은 관리자들의 **제멋대로인** 결정에 불만을 제기했다.", "answer": "arbitrary" }
+      ],
+      "nuance": "이유나 기준 없이 '마음대로 정한'. random은 우연에 맡긴 것, arbitrary는 누군가 근거 없이 정한 것(종종 비판적). 부사 arbitrarily.",
+      "etymology": "라틴어 arbiter(판정자) → '판정자 마음대로인'"
+    }
+  ]
+}

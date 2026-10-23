@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": "benevolent", "word": "benevolent", "pos": "adj", "level": 18,
+      "meanings": ["자애로운, 인자한"],
+      "sentences": [
+        { "en": "The old king was known as a ___ ruler.", "ko": "그 노왕은 **자애로운** 통치자로 알려져 있었다.", "answer": "benevolent" },
+        { "en": "She gave the children a ___ smile.", "ko": "그녀는 아이들에게 **인자한** 미소를 지어 주었다.", "answer": "benevolent" }
+      ],
+      "nuance": "남에게 '좋은 일을 하려는 마음이 담긴'. kind보다 격식체이고 윗사람의 너그러움이라는 느낌. 반대는 malevolent(악의 있는).",
+      "etymology": "라틴어 bene(좋게) + volens(바라는) → '좋은 뜻을 가진'"
+    },
+    {
+      "id": "coerce", "word": "coerce", "pos": "v", "level": 18,
+      "meanings": ["강압하다, 강요하다"],
+      "sentences": [
+        { "en": "He was ___ into signing the contract.", "ko": "그는 **강압에 못 이겨** 계약서에 서명했다.", "answer": "coerced" },
+        { "en": "You cannot ___ people into loving you.", "ko": "사람들이 너를 사랑하도록 **강요할** 수는 없다.", "answer": "coerce" }
+      ],
+      "nuance": "'coerce 사람 into -ing'. force는 물리적 힘 포함, coerce는 위협·압박으로 '억지로 하게 하다'. 명사 coercion.",
+      "etymology": "라틴어 co(함께) + arcere(가두다) → '가두어 제한하다'"
+    },
+    {
+      "id": "complacent", "word": "complacent", "pos": "adj", "level": 18,
+      "meanings": ["현실에 안주하는, 자기만족에 빠진"],
+      "sentences": [
+        { "en": "After years of success, the company became ___.", "ko": "수년간의 성공 뒤에 그 회사는 **현실에 안주하게** 되었다.", "answer": "complacent" },
+        { "en": "We must not grow ___ about safety.", "ko": "우리는 안전에 대해 **방심해서는** 안 된다.", "answer": "complacent" }
+      ],
+      "nuance": "잘 되고 있다고 느껴 '더 노력하지 않는'(부정적). satisfied는 중립적 만족. complaisant(남에게 잘 맞춰 주는)와 철자 혼동 주의. 명사 complacency.",
+      "etymology": "라틴어 complacere(크게 기쁘게 하다) → '스스로에 만족한'"
+    },
+    {
+      "id": "concise", "word": "concise", "pos": "adj", "level": 18,
+      "meanings": ["간결한"],
+      "sentences": [
+        { "en": "Please keep your answer ___.", "ko": "답변을 **간결하게** 해 주세요.", "answer": "concise" },
+        { "en": "The report is clear and ___.", "ko": "그 보고서는 명확하고 **간결하다**.", "answer": "concise" }
+      ],
+      "nuance": "필요한 말만 담아 '짧지만 충분한'. brief는 단순히 짧은 것, concise는 짧으면서 핵심을 다 담은 것(칭찬). 부사 concisely.",
+      "etymology": "라틴어 con(완전히) + caedere(자르다) → '잘라 낸'"
+    },
+    {
+      "id": "conspicuous", "word": "conspicuous", "pos": "adj", "level": 18,
+      "meanings": ["눈에 잘 띄는, 두드러진"],
+      "sentences": [
+        { "en": "His red jacket made him ___ in the crowd.", "ko": "빨간 재킷 때문에 그는 군중 속에서 **눈에 띄었다**.", "answer": "conspicuous" },
+        { "en": "She was ___ by her absence at the meeting.", "ko": "그녀는 회의에 없어서 오히려 **더 눈에 띄었다**.", "answer": "conspicuous" }
+      ],
+      "nuance": "너무 잘 보여 '주목을 끄는'. noticeable은 중립적, conspicuous는 때로 '지나치게 튀는'. 반대는 inconspicuous(눈에 안 띄는).",
+      "etymology": "라틴어 con(완전히) + specere(보다) → '잘 보이는'"
+    },
+    {
+      "id": "culminate", "word": "culminate", "pos": "v", "level": 18,
+      "meanings": ["절정에 이르다, ~로 끝나다"],
+      "sentences": [
+        { "en": "Years of research ___ in a major discovery.", "ko": "수년간의 연구는 중대한 발견으로 **결실을 맺었다**.", "answer": "culminated" },
+        { "en": "The festival will ___ in a fireworks display.", "ko": "축제는 불꽃놀이로 **대미를 장식할** 것이다.", "answer": "culminate" }
+      ],
+      "nuance": "'culminate in ~'(~로 정점을 찍다). end는 단순히 끝나는 것, culminate는 쌓여 온 과정이 '최고점에서 마무리'되는 것. 명사 culmination.",
+      "etymology": "라틴어 culmen(꼭대기) → '꼭대기에 이르다'"
+    },
+    {
+      "id": "cumbersome", "word": "cumbersome", "pos": "adj", "level": 18,
+      "meanings": ["크고 무거워 다루기 힘든", "번거로운"],
+      "sentences": [
+        { "en": "The old camera was heavy and ___.", "ko": "그 오래된 카메라는 무겁고 **다루기 힘들었다**.", "answer": "cumbersome" },
+        { "en": "The application process is slow and ___.", "ko": "신청 절차가 느리고 **번거롭다**.", "answer": "cumbersome" }
+      ],
+      "nuance": "물건이면 '부피가 커서 불편한', 절차면 '복잡하고 비효율적인'. bulky는 크기만 말하고, cumbersome은 그로 인한 '불편함'까지.",
+      "etymology": "중세 영어 cumber(방해하다) + -some → '방해가 되는'"
+    },
+    {
+      "id": "deplete", "word": "deplete", "pos": "v", "level": 18,
+      "meanings": ["고갈시키다, 크게 줄이다"],
+      "sentences": [
+        { "en": "Overfishing has ___ the ocean's fish stocks.", "ko": "남획이 바다의 어족 자원을 **고갈시켰다**.", "answer": "depleted" },
+        { "en": "The long trip ___ our savings.", "ko": "긴 여행이 우리 저축을 **바닥나게 했다**.", "answer": "depleted" }
+      ],
+      "nuance": "자원·에너지·돈을 '써서 거의 없게 만들다'. reduce는 줄이는 것, deplete는 바닥이 보이도록 소모하는 것. 명사 depletion.",
+      "etymology": "라틴어 de(비우다) + plere(채우다) → '채운 것을 비우다'"
+    },
+    {
+      "id": "derive", "word": "derive", "pos": "v", "level": 18,
+      "meanings": ["얻다, 끌어내다", "~에서 유래하다"],
+      "sentences": [
+        { "en": "She ___ great pleasure from gardening.", "ko": "그녀는 정원 가꾸기에서 큰 즐거움을 **얻는다**.", "answer": "derives" },
+        { "en": "The word 'salary' is ___ from the Latin word for salt.", "ko": "'salary'라는 단어는 소금을 뜻하는 라틴어에서 **유래했다**.", "answer": "derived" }
+      ],
+      "nuance": "'derive A from B'(B에서 A를 얻다), 'be derived from'(~에서 유래하다). 어원 설명에 늘 나오는 단어. 명사 derivative(파생물, 파생 상품).",
+      "etymology": "라틴어 de(~에서) + rivus(강) → '강에서 물을 끌어오다'"
+    },
+    {
+      "id": "disparity", "word": "disparity", "pos": "n", "level": 18,
+      "meanings": ["(불공평한) 격차, 차이"],
+      "sentences": [
+        { "en": "There is a growing ___ between rich and poor.", "ko": "부자와 빈자 사이의 **격차**가 커지고 있다.", "answer": "disparity" },
+        { "en": "The study found a ___ in pay between men and women.", "ko": "그 연구는 남녀 간 임금 **격차**를 발견했다.", "answer": "disparity" }
+      ],
+      "nuance": "difference 중에서도 '불공평하다고 여겨지는 큰 차이'. gap과 비슷하지만 격식체. 형용사 disparate(이질적인). 'disparity between A and B'.",
+      "etymology": "라틴어 dis(아닌) + par(같은) → '같지 않음'"
+    }
+  ]
+}

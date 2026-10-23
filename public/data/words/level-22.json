@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": "quintessential", "word": "quintessential", "pos": "adj", "level": 22,
+      "meanings": ["전형적인, 가장 본질적인"],
+      "sentences": [
+        { "en": "Kimchi is the ___ Korean food.", "ko": "김치는 **가장 한국적인** 음식이다.", "answer": "quintessential" },
+        { "en": "He is the ___ English gentleman.", "ko": "그는 **전형적인** 영국 신사다.", "answer": "quintessential" }
+      ],
+      "nuance": "어떤 부류의 '가장 완벽한 본보기'인. typical은 흔한 특징을 가진 것, quintessential은 그 본질을 가장 순수하게 보여 주는 것(강한 칭찬). 명사 quintessence.",
+      "etymology": "중세 라틴어 quinta essentia(제5원소) → '가장 순수한 본질'"
+    },
+    {
+      "id": "ramification", "word": "ramification", "pos": "n", "level": 22,
+      "meanings": ["(복잡한) 파급 효과, 결과"],
+      "sentences": [
+        { "en": "The decision had serious legal ___.", "ko": "그 결정은 심각한 법적 **파급 효과**를 낳았다.", "answer": "ramifications" },
+        { "en": "We did not foresee the ___ of the new policy.", "ko": "우리는 새 정책의 **파장**을 예견하지 못했다.", "answer": "ramifications" }
+      ],
+      "nuance": "주로 복수형. consequence는 결과 일반, ramification은 나뭇가지처럼 '여러 갈래로 뻗어 나가는 복잡한 결과'. implication과 가깝다.",
+      "etymology": "라틴어 ramus(가지) + facere(만들다) → '가지를 치는 것'"
+    },
+    {
+      "id": "reconcile", "word": "reconcile", "pos": "v", "level": 22,
+      "meanings": ["화해시키다", "조화시키다, 양립시키다"],
+      "sentences": [
+        { "en": "The brothers finally ___ after years of silence.", "ko": "형제들은 수년간의 침묵 끝에 마침내 **화해했다**.", "answer": "reconciled" },
+        { "en": "It is hard to ___ work and family life.", "ko": "일과 가정생활을 **조화시키는** 것은 어렵다.", "answer": "reconcile" }
+      ],
+      "nuance": "'reconcile A with B'(A와 B를 조화시키다). 'be reconciled to ~'는 싫은 상황을 '받아들이다'. 명사 reconciliation.",
+      "etymology": "라틴어 re(다시) + conciliare(모으다, 화합시키다)"
+    },
+    {
+      "id": "redundant", "word": "redundant", "pos": "adj", "level": 22,
+      "meanings": ["불필요한, 중복되는", "(영국) 해고된"],
+      "sentences": [
+        { "en": "The second paragraph is ___ and should be removed.", "ko": "두 번째 단락은 **불필요하게 중복되니** 삭제해야 한다.", "answer": "redundant" },
+        { "en": "Hundreds of workers were made ___ when the factory closed.", "ko": "공장이 문을 닫으면서 수백 명의 노동자가 **정리 해고되었다**.", "answer": "redundant" }
+      ],
+      "nuance": "이미 있어서 '더 있을 필요가 없는'. unnecessary보다 '겹친다'는 뜻이 강하다. 영국 영어에서 'be made redundant'는 인력 과잉으로 해고되다. 명사 redundancy.",
+      "etymology": "라틴어 redundare(넘쳐흐르다) ← re + unda(파도)"
+    },
+    {
+      "id": "relinquish", "word": "relinquish", "pos": "v", "level": 22,
+      "meanings": ["(마지못해) 포기하다, 내주다"],
+      "sentences": [
+        { "en": "He refused to ___ control of the company.", "ko": "그는 회사의 경영권을 **내놓기를** 거부했다.", "answer": "relinquish" },
+        { "en": "She ___ her claim to the property.", "ko": "그녀는 그 재산에 대한 권리를 **포기했다**.", "answer": "relinquished" }
+      ],
+      "nuance": "권력·권리·소유를 '놓아 버리다'. give up보다 격식체이고, 보통 쥐고 있던 것을 아쉽게 놓는 느낌. abandon은 버리고 떠나는 것.",
+      "etymology": "라틴어 re(뒤에) + linquere(남기다) → '뒤에 남겨 두다'"
+    },
+    {
+      "id": "reprimand", "word": "reprimand", "pos": "v", "level": 22,
+      "meanings": ["질책하다, 징계하다"],
+      "sentences": [
+        { "en": "The manager ___ him for being late again.", "ko": "관리자는 그가 또 지각한 것을 **질책했다**.", "answer": "reprimanded" },
+        { "en": "The officer received an official ___.", "ko": "그 경관은 공식 **징계**를 받았다.", "answer": "reprimand" }
+      ],
+      "nuance": "윗사람이 공식적으로 '꾸짖다'. scold는 부모가 아이를 혼내는 느낌, reprimand는 직장·조직에서의 공식적 질책. 명사로도 같은 형태.",
+      "etymology": "라틴어 reprimere(억누르다) → '억눌러 꾸짖다'"
+    },
+    {
+      "id": "scant", "word": "scant", "pos": "adj", "level": 22,
+      "meanings": ["부족한, 아주 적은"],
+      "sentences": [
+        { "en": "The project received ___ attention from the media.", "ko": "그 프로젝트는 언론의 관심을 **거의 받지** 못했다.", "answer": "scant" },
+        { "en": "There is ___ evidence to support his claim.", "ko": "그의 주장을 뒷받침할 증거가 **거의 없다**.", "answer": "scant" }
+      ],
+      "nuance": "필요한 만큼에 '턱없이 모자란'. little보다 격식체이고 '모자라서 아쉽다'는 뉘앙스. 형용사 scanty(빈약한), 동사 scant는 거의 안 쓴다.",
+      "etymology": "고대 노르드어 skamt(짧은)"
+    },
+    {
+      "id": "skeptical", "word": "skeptical", "pos": "adj", "level": 22,
+      "meanings": ["회의적인, 의심하는"],
+      "sentences": [
+        { "en": "I am ___ about his promises.", "ko": "나는 그의 약속에 **회의적이다**.", "answer": "skeptical" },
+        { "en": "Scientists remain ___ of the new theory.", "ko": "과학자들은 그 새 이론에 여전히 **의구심을 갖고** 있다.", "answer": "skeptical" }
+      ],
+      "nuance": "'skeptical about/of ~'. doubtful은 확신이 없는 것, skeptical은 증거를 요구하며 '쉽게 믿지 않는' 태도. 영국식 철자 sceptical. 명사 skepticism.",
+      "etymology": "그리스어 skeptikos(깊이 살피는) ← skeptesthai(살피다)"
+    },
+    {
+      "id": "squander", "word": "squander", "pos": "v", "level": 22,
+      "meanings": ["낭비하다, 헛되이 써 버리다"],
+      "sentences": [
+        { "en": "He ___ his inheritance on gambling.", "ko": "그는 유산을 도박으로 **탕진했다**.", "answer": "squandered" },
+        { "en": "Don't ___ this opportunity.", "ko": "이 기회를 **헛되이 날리지** 마.", "answer": "squander" }
+      ],
+      "nuance": "돈·시간·기회를 '어리석게 다 써 버리다'. waste보다 강하고 비난이 담겨 있다. 특히 소중한 것을 날리는 느낌.",
+      "etymology": "어원 불확실. 16세기 영어에서 '흩뿌리다'의 뜻으로 등장"
+    },
+    {
+      "id": "stagnant", "word": "stagnant", "pos": "adj", "level": 22,
+      "meanings": ["정체된, 침체된", "(물이) 고여 있는"],
+      "sentences": [
+        { "en": "Wages have remained ___ for a decade.", "ko": "임금은 10년 동안 **정체되어** 있었다.", "answer": "stagnant" },
+        { "en": "Mosquitoes breed in ___ water.", "ko": "모기는 **고인** 물에서 번식한다.", "answer": "stagnant" }
+      ],
+      "nuance": "흐르지 않고 '멈춰서 썩어 가는'. static은 단순히 변화가 없는 것, stagnant는 멈춰서 나빠지고 있다는 느낌. 동사 stagnate, 명사 stagnation(경기 침체).",
+      "etymology": "라틴어 stagnum(고인 물, 늪)"
+    }
+  ]
+}

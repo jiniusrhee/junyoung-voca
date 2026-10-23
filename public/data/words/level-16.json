@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": "subtle", "word": "subtle", "pos": "adj", "level": 16,
+      "meanings": ["미묘한, 감지하기 힘든"],
+      "sentences": [
+        { "en": "There is a ___ difference between the two words.", "ko": "두 단어 사이에는 **미묘한** 차이가 있다.", "answer": "subtle" },
+        { "en": "The sauce has a ___ hint of lemon.", "ko": "그 소스에는 **은은한** 레몬 향이 난다.", "answer": "subtle" }
+      ],
+      "nuance": "너무 작거나 섬세해서 '알아차리기 어려운'. b는 묵음[서틀]. slight는 정도가 작은 것, subtle은 섬세해서 눈에 잘 안 띄는 것. 명사 subtlety.",
+      "etymology": "라틴어 subtilis(가늘게 짠, 섬세한) ← sub + tela(직물)"
+    },
+    {
+      "id": "sufficient", "word": "sufficient", "pos": "adj", "level": 16,
+      "meanings": ["충분한"],
+      "sentences": [
+        { "en": "We have ___ food for a week.", "ko": "우리는 일주일 치 **충분한** 식량이 있다.", "answer": "sufficient" },
+        { "en": "One example is ___ to prove the point.", "ko": "요점을 증명하는 데는 예시 하나로 **충분하다**.", "answer": "sufficient" }
+      ],
+      "nuance": "enough의 격식체. adequate는 '필요한 최소치는 된다', sufficient는 '목적에 충분하다'. self-sufficient는 자급자족하는. 부사 sufficiently.",
+      "etymology": "라틴어 sub(아래에서) + facere(만들다) → '받쳐 주다'"
+    },
+    {
+      "id": "supplement", "word": "supplement", "pos": "v", "level": 16,
+      "meanings": ["보충하다", "보충제, 부록"],
+      "sentences": [
+        { "en": "He ___ his income by teaching at night.", "ko": "그는 밤에 강의를 하며 수입을 **보충한다**.", "answer": "supplements" },
+        { "en": "Many people take vitamin ___ every day.", "ko": "많은 사람이 매일 비타민 **보충제**를 먹는다.", "answer": "supplements" }
+      ],
+      "nuance": "부족한 것을 '더해서 채우다'. complement는 서로 '보완해 완성'하는 것. 명사 발음은 [서플리먼트], 동사는 끝이 [-멘트]로 조금 강하다.",
+      "etymology": "라틴어 supplere(채우다) ← sub + plere(채우다)"
+    },
+    {
+      "id": "suppress", "word": "suppress", "pos": "v", "level": 16,
+      "meanings": ["억누르다, 참다", "진압하다"],
+      "sentences": [
+        { "en": "She tried to ___ a laugh.", "ko": "그녀는 웃음을 **참으려** 했다.", "answer": "suppress" },
+        { "en": "The army ___ the rebellion quickly.", "ko": "군대는 반란을 빠르게 **진압했다**.", "answer": "suppressed" }
+      ],
+      "nuance": "감정·정보·반란을 '힘으로 눌러 드러나지 않게 하다'. repress는 무의식적으로 억누르는 심리 용어에 가깝다. 명사 suppression.",
+      "etymology": "라틴어 sub(아래로) + premere(누르다) → '아래로 누르다'"
+    },
+    {
+      "id": "sustain", "word": "sustain", "pos": "v", "level": 16,
+      "meanings": ["지속하다, 유지하다", "(피해를) 입다"],
+      "sentences": [
+        { "en": "It is hard to ___ this pace for long.", "ko": "이 속도를 오래 **유지하는** 것은 어렵다.", "answer": "sustain" },
+        { "en": "The building ___ heavy damage in the storm.", "ko": "그 건물은 폭풍으로 큰 피해를 **입었다**.", "answer": "sustained" }
+      ],
+      "nuance": "무게·활동을 '버텨 지속시키다'와 부상·손해를 '입다'(격식체) 두 뜻. 형용사 sustainable(지속 가능한)은 환경 분야 핵심어.",
+      "etymology": "라틴어 sub(아래에서) + tenere(잡다) → '아래에서 받치다'"
+    },
+    {
+      "id": "tangible", "word": "tangible", "pos": "adj", "level": 16,
+      "meanings": ["실체가 있는, 명백한"],
+      "sentences": [
+        { "en": "We need ___ results, not just promises.", "ko": "우리는 약속이 아니라 **눈에 보이는** 결과가 필요하다.", "answer": "tangible" },
+        { "en": "The tension in the room was almost ___.", "ko": "방 안의 긴장감은 거의 **만져질 듯** 했다.", "answer": "tangible" }
+      ],
+      "nuance": "원래 '손으로 만질 수 있는'에서 '구체적이고 분명한'으로. 반대는 intangible(무형의, intangible assets 무형 자산).",
+      "etymology": "라틴어 tangere(만지다) → '만질 수 있는'"
+    },
+    {
+      "id": "tedious", "word": "tedious", "pos": "adj", "level": 16,
+      "meanings": ["지루한, 싫증 나는"],
+      "sentences": [
+        { "en": "Filling out the forms was a ___ task.", "ko": "서류를 작성하는 것은 **지루한** 일이었다.", "answer": "tedious" },
+        { "en": "The lecture was long and ___.", "ko": "그 강의는 길고 **따분했다**.", "answer": "tedious" }
+      ],
+      "nuance": "boring은 재미없는 것 일반, tedious는 '길고 반복적이어서' 지치게 하는 느낌. 명사 tedium.",
+      "etymology": "라틴어 taedium(싫증, 권태)"
+    },
+    {
+      "id": "tentative", "word": "tentative", "pos": "adj", "level": 16,
+      "meanings": ["잠정적인, 임시의", "머뭇거리는"],
+      "sentences": [
+        { "en": "We have a ___ plan to meet on Friday.", "ko": "우리는 금요일에 만나기로 **잠정적인** 계획을 세웠다.", "answer": "tentative" },
+        { "en": "He took a ___ step toward the edge.", "ko": "그는 가장자리 쪽으로 **조심스럽게** 한 걸음 내디뎠다.", "answer": "tentative" }
+      ],
+      "nuance": "'확정되지 않은'(일정·합의)과 '자신 없이 머뭇거리는'(행동) 두 뜻. provisional은 공식적으로 임시인 것. 부사 tentatively.",
+      "etymology": "라틴어 tentare(시험하다, 시도하다) → '시험 삼아 하는'"
+    },
+    {
+      "id": "thrive", "word": "thrive", "pos": "v", "level": 16,
+      "meanings": ["번창하다, 잘 자라다"],
+      "sentences": [
+        { "en": "These plants ___ in warm, humid weather.", "ko": "이 식물들은 따뜻하고 습한 날씨에 **잘 자란다**.", "answer": "thrive" },
+        { "en": "Small businesses are ___ in this town.", "ko": "이 도시에서는 소규모 사업체들이 **번창하고** 있다.", "answer": "thriving" }
+      ],
+      "nuance": "그냥 살아남는 survive와 달리 '활기차게 성장하다'. 'thrive on ~'(~을 즐기며 잘 해내다). 형용사 thriving(번성하는).",
+      "etymology": "고대 노르드어 thrifask(붙잡다, 번영하다)"
+    },
+    {
+      "id": "transparent", "word": "transparent", "pos": "adj", "level": 16,
+      "meanings": ["투명한", "(의도가) 명백한, 숨김없는"],
+      "sentences": [
+        { "en": "The water was so ___ we could see the fish.", "ko": "물이 너무 **투명해서** 물고기가 보였다.", "answer": "transparent" },
+        { "en": "The company promised to be ___ about its finances.", "ko": "그 회사는 재무에 대해 **숨김없이 공개하겠다고** 약속했다.", "answer": "transparent" }
+      ],
+      "nuance": "물리적으로 '빛이 통과하는'과 비유적으로 '감추는 게 없는'. clear보다 격식체. 명사 transparency(투명성). 반대는 opaque.",
+      "etymology": "라틴어 trans(통과하여) + parere(보이다) → '통과해 보이는'"
+    }
+  ]
+}

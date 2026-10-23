@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": "facilitate", "word": "facilitate", "pos": "v", "level": 12,
+      "meanings": ["용이하게 하다, 촉진하다"],
+      "sentences": [
+        { "en": "The new software will ___ communication between teams.", "ko": "새 소프트웨어는 팀 간 소통을 **원활하게 할** 것이다.", "answer": "facilitate" },
+        { "en": "A good teacher ___ learning rather than just lecturing.", "ko": "좋은 교사는 강의만 하는 대신 학습을 **촉진한다**.", "answer": "facilitates" }
+      ],
+      "nuance": "직접 하는 게 아니라 '하기 쉽게 도와주다'. help보다 격식체. 회의 진행자를 facilitator라고 한다.",
+      "etymology": "라틴어 facilis(쉬운) → '쉽게 만들다'"
+    },
+    {
+      "id": "feasible", "word": "feasible", "pos": "adj", "level": 12,
+      "meanings": ["실현 가능한"],
+      "sentences": [
+        { "en": "Is it ___ to finish the project by Friday?", "ko": "금요일까지 프로젝트를 끝내는 게 **가능할까요**?", "answer": "feasible" },
+        { "en": "The plan sounds good, but it is not ___.", "ko": "그 계획은 좋게 들리지만 **실현 가능하지** 않다.", "answer": "feasible" }
+      ],
+      "nuance": "possible은 '일어날 수 있는', feasible은 현실적 조건(비용·시간·기술)에서 '해낼 수 있는'. 명사 feasibility(타당성 조사 feasibility study).",
+      "etymology": "고대 프랑스어 faisable(할 수 있는) ← faire(하다)"
+    },
+    {
+      "id": "fluctuate", "word": "fluctuate", "pos": "v", "level": 12,
+      "meanings": ["오르락내리락하다, 변동하다"],
+      "sentences": [
+        { "en": "Prices ___ depending on the season.", "ko": "가격은 계절에 따라 **변동한다**.", "answer": "fluctuate" },
+        { "en": "Her weight has ___ a lot over the years.", "ko": "그녀의 체중은 수년간 많이 **오르락내리락했다**.", "answer": "fluctuated" }
+      ],
+      "nuance": "한 방향이 아니라 '위아래로 불규칙하게' 움직이는 것. change는 중립적. 명사 fluctuation.",
+      "etymology": "라틴어 fluctus(파도) → '파도처럼 흔들리다'"
+    },
+    {
+      "id": "formulate", "word": "formulate", "pos": "v", "level": 12,
+      "meanings": ["(세심히) 만들어 내다, 공식화하다"],
+      "sentences": [
+        { "en": "The committee will ___ a new policy.", "ko": "위원회는 새 정책을 **수립할** 것이다.", "answer": "formulate" },
+        { "en": "He ___ his argument carefully before speaking.", "ko": "그는 말하기 전에 자신의 논거를 신중하게 **정리했다**.", "answer": "formulated" }
+      ],
+      "nuance": "계획·이론·질문을 '체계적으로 구성해 표현하다'. make보다 '생각을 다듬어 형태를 갖추는' 느낌.",
+      "etymology": "라틴어 formula(작은 형태, 규칙)"
+    },
+    {
+      "id": "hinder", "word": "hinder", "pos": "v", "level": 12,
+      "meanings": ["방해하다, 지연시키다"],
+      "sentences": [
+        { "en": "Heavy snow ___ the rescue efforts.", "ko": "폭설이 구조 작업을 **방해했다**.", "answer": "hindered" },
+        { "en": "Lack of money should not ___ your education.", "ko": "돈이 없다는 것이 네 교육을 **가로막아서는** 안 된다.", "answer": "hinder" }
+      ],
+      "nuance": "prevent는 '못 하게 막다', hinder는 '어렵게 하고 늦추다'(완전히 막지는 않음). 명사 hindrance.",
+      "etymology": "고대 영어 hindrian(뒤로 밀어 두다) ← hinder(뒤의)"
+    },
+    {
+      "id": "implement", "word": "implement", "pos": "v", "level": 12,
+      "meanings": ["시행하다, 실행하다"],
+      "sentences": [
+        { "en": "The school will ___ the new schedule next month.", "ko": "학교는 다음 달에 새 시간표를 **시행할** 것이다.", "answer": "implement" },
+        { "en": "The changes were ___ without any warning.", "ko": "그 변경 사항들은 아무 예고 없이 **실행되었다**.", "answer": "implemented" }
+      ],
+      "nuance": "결정된 계획·정책을 '실제로 옮기다'. carry out과 비슷하지만 격식체. 명사일 땐 '도구'(farm implements). 명사형은 implementation.",
+      "etymology": "라틴어 implere(채우다) → '채워서 완성하다'"
+    },
+    {
+      "id": "implication", "word": "implication", "pos": "n", "level": 12,
+      "meanings": ["함축, 암시", "(예상되는) 영향"],
+      "sentences": [
+        { "en": "The ___ was that he had lied.", "ko": "그가 거짓말을 했다는 **암시**였다.", "answer": "implication" },
+        { "en": "The new law has serious ___ for small businesses.", "ko": "새 법은 소규모 사업자들에게 심각한 **영향**을 끼친다.", "answer": "implications" }
+      ],
+      "nuance": "직접 말하지 않고 '넌지시 담긴 뜻', 또는 결정이 가져올 '파급 효과'(주로 복수). 동사 imply(암시하다), 형용사 implicit(암묵적인).",
+      "etymology": "라틴어 im(안에) + plicare(접다) → '안에 접어 넣은 것'"
+    },
+    {
+      "id": "incentive", "word": "incentive", "pos": "n", "level": 12,
+      "meanings": ["유인, 동기, 장려책"],
+      "sentences": [
+        { "en": "The bonus is an ___ to work harder.", "ko": "그 보너스는 더 열심히 일하게 하는 **유인**이다.", "answer": "incentive" },
+        { "en": "The government offers tax ___ to green companies.", "ko": "정부는 친환경 기업에 세금 **혜택**을 제공한다.", "answer": "incentives" }
+      ],
+      "nuance": "행동을 유도하는 '외부 보상'. motivation은 내적 동기까지 포함. 'incentive to 동사', 'incentive for 사람'.",
+      "etymology": "라틴어 incentivus(가락을 시작하는) ← incinere(노래를 시작하다)"
+    },
+    {
+      "id": "inevitable", "word": "inevitable", "pos": "adj", "level": 12,
+      "meanings": ["피할 수 없는, 불가피한"],
+      "sentences": [
+        { "en": "Change is ___ in any organization.", "ko": "어떤 조직에서든 변화는 **불가피하다**.", "answer": "inevitable" },
+        { "en": "After such a scandal, his resignation was ___.", "ko": "그런 스캔들 뒤에 그의 사임은 **피할 수 없는** 것이었다.", "answer": "inevitable" }
+      ],
+      "nuance": "'반드시 일어날' 일. unavoidable과 같지만 더 격식체. 부사 inevitably(불가피하게).",
+      "etymology": "라틴어 in(아닌) + evitare(피하다) → '피할 수 없는'"
+    },
+    {
+      "id": "inherent", "word": "inherent", "pos": "adj", "level": 12,
+      "meanings": ["내재된, 고유의"],
+      "sentences": [
+        { "en": "There are risks ___ in any investment.", "ko": "어떤 투자에도 **내재된** 위험이 있다.", "answer": "inherent" },
+        { "en": "Curiosity is ___ in children.", "ko": "호기심은 아이들에게 **타고난** 것이다.", "answer": "inherent" }
+      ],
+      "nuance": "'inherent in ~'(~에 본래부터 있는). intrinsic과 거의 같다. 외부에서 더해진 것이 아니라 '본성에 속한' 특징.",
+      "etymology": "라틴어 in(안에) + haerere(붙다) → '안에 붙어 있는'"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": "circumvent", "word": "circumvent", "pos": "v", "level": 26,
+      "meanings": ["(규칙·장애를) 피해 가다, 우회하다"],
+      "sentences": [
+        { "en": "The company found a way to ___ the new regulations.", "ko": "그 회사는 새 규제를 **피해 갈** 방법을 찾았다.", "answer": "circumvent" },
+        { "en": "We ___ the traffic by taking a back road.", "ko": "우리는 뒷길로 가서 교통 체증을 **우회했다**.", "answer": "circumvented" }
+      ],
+      "nuance": "정면으로 맞서지 않고 '빙 돌아서 피하다'. avoid는 피함 일반, circumvent는 규칙·장애물을 영리하게(종종 꼼수로) 돌아가는 것.",
+      "etymology": "라틴어 circum(둘레) + venire(오다) → '돌아서 오다'"
+    },
+    {
+      "id": "clandestine", "word": "clandestine", "pos": "adj", "level": 26,
+      "meanings": ["비밀리에 하는, 은밀한"],
+      "sentences": [
+        { "en": "The two leaders held a ___ meeting.", "ko": "두 지도자는 **비밀** 회담을 가졌다.", "answer": "clandestine" },
+        { "en": "Police uncovered a ___ drug laboratory.", "ko": "경찰은 **은밀한** 마약 제조 시설을 적발했다.", "answer": "clandestine" }
+      ],
+      "nuance": "들키면 문제가 되기 때문에 '조직적으로 숨겨서 하는'. secret은 단순히 알려지지 않은 것, clandestine은 불법·금지된 느낌이 강하다. surreptitious는 개인의 몰래 하는 행동에 더 쓴다.",
+      "etymology": "라틴어 clam(몰래) → clandestinus(숨겨진)"
+    },
+    {
+      "id": "cogent", "word": "cogent", "pos": "adj", "level": 26,
+      "meanings": ["설득력 있는, 논리 정연한"],
+      "sentences": [
+        { "en": "She made a ___ argument for changing the law.", "ko": "그녀는 법을 바꿔야 한다는 **설득력 있는** 주장을 펼쳤다.", "answer": "cogent" },
+        { "en": "There are ___ reasons to delay the project.", "ko": "프로젝트를 늦춰야 할 **타당한** 이유들이 있다.", "answer": "cogent" }
+      ],
+      "nuance": "논리가 분명해 '반박하기 어려운'. convincing은 결과적으로 믿게 되는 것, cogent는 논증 자체가 탄탄한 것. 주로 argument, reason과 함께.",
+      "etymology": "라틴어 cogere(몰아가다, 강제하다) → '동의하게 몰아가는'"
+    },
+    {
+      "id": "commensurate", "word": "commensurate", "pos": "adj", "level": 26,
+      "meanings": ["(크기·정도가) 상응하는, 걸맞은"],
+      "sentences": [
+        { "en": "Salary will be ___ with experience.", "ko": "급여는 경력에 **상응하여** 지급됩니다.", "answer": "commensurate" },
+        { "en": "The punishment should be ___ with the crime.", "ko": "처벌은 범죄에 **걸맞아야** 한다.", "answer": "commensurate" }
+      ],
+      "nuance": "'commensurate with ~'(~에 비례하는)로 거의 항상 with와 함께. proportional과 같지만 격식체. 채용 공고에 자주 나온다.",
+      "etymology": "라틴어 com(함께) + mensura(치수) → '같은 치수로 재는'"
+    },
+    {
+      "id": "connoisseur", "word": "connoisseur", "pos": "n", "level": 26,
+      "meanings": ["감식가, 전문가(미술·음식·와인 등)"],
+      "sentences": [
+        { "en": "He is a ___ of fine wines.", "ko": "그는 고급 와인 **감식가**다.", "answer": "connoisseur" },
+        { "en": "Only a true ___ could tell the two paintings apart.", "ko": "진정한 **전문가**만이 두 그림을 구별할 수 있었다.", "answer": "connoisseur" }
+      ],
+      "nuance": "예술·미식 분야에서 '좋은 것을 알아보는 안목 있는 사람'. expert는 지식 전문가, connoisseur는 취향과 감식안이 뛰어난 사람. 발음 [카너서].",
+      "etymology": "고대 프랑스어 conoisseor(아는 사람) ← 라틴어 cognoscere(알다)"
+    },
+    {
+      "id": "contrite", "word": "contrite", "pos": "adj", "level": 26,
+      "meanings": ["깊이 뉘우치는, 회개하는"],
+      "sentences": [
+        { "en": "He was ___ and apologized for his behavior.", "ko": "그는 **깊이 뉘우치며** 자신의 행동을 사과했다.", "answer": "contrite" },
+        { "en": "She looked ___ after breaking the vase.", "ko": "그녀는 꽃병을 깨뜨린 뒤 **미안해하는** 표정이었다.", "answer": "contrite" }
+      ],
+      "nuance": "잘못을 '진심으로 후회하고 미안해하는'. sorry는 가볍게도 쓰지만 contrite는 죄책감이 느껴지는 진지한 반성. 명사 contrition.",
+      "etymology": "라틴어 contritus(부서진, 짓밟힌) → '마음이 부서진'"
+    },
+    {
+      "id": "corroborate", "word": "corroborate", "pos": "v", "level": 26,
+      "meanings": ["(증거로) 확증하다, 뒷받침하다"],
+      "sentences": [
+        { "en": "Two witnesses ___ his story.", "ko": "두 명의 목격자가 그의 이야기를 **뒷받침했다**.", "answer": "corroborated" },
+        { "en": "The results ___ the earlier findings.", "ko": "그 결과는 이전 연구 결과를 **확증한다**.", "answer": "corroborate" }
+      ],
+      "nuance": "다른 증거·증언으로 '사실임을 확인해 주다'. confirm은 확인 일반, corroborate는 독립적인 출처가 같은 결론을 지지하는 것. 법정·연구에서 자주. 명사 corroboration.",
+      "etymology": "라틴어 cor(함께) + roborare(강하게 하다) ← robur(참나무)"
+    },
+    {
+      "id": "debilitate", "word": "debilitate", "pos": "v", "level": 26,
+      "meanings": ["쇠약하게 하다, 심하게 약화시키다"],
+      "sentences": [
+        { "en": "The disease ___ him for months.", "ko": "그 병은 몇 달 동안 그를 **쇠약하게 했다**.", "answer": "debilitated" },
+        { "en": "Years of war have ___ the country's economy.", "ko": "수년간의 전쟁이 그 나라의 경제를 **심하게 약화시켰다**.", "answer": "debilitated" }
+      ],
+      "nuance": "힘을 빼앗아 '제대로 기능하지 못하게 만들다'. weaken보다 훨씬 강하고 질병·충격이 원인일 때 쓴다. 형용사 debilitating(심신을 쇠약하게 하는).",
+      "etymology": "라틴어 debilis(약한) → '약하게 만들다'"
+    },
+    {
+      "id": "decorum", "word": "decorum", "pos": "n", "level": 26,
+      "meanings": ["품위, 예의에 맞는 행동"],
+      "sentences": [
+        { "en": "Guests are expected to behave with ___ at the ceremony.", "ko": "하객들은 식에서 **품위 있게** 행동할 것으로 기대된다.", "answer": "decorum" },
+        { "en": "He showed a complete lack of ___ by shouting in court.", "ko": "그는 법정에서 소리를 질러 **예의**를 완전히 저버렸다.", "answer": "decorum" }
+      ],
+      "nuance": "공식적인 자리에서 '적절하고 품위 있는 행동'. manners는 일상 예절, decorum은 격식 있는 상황의 격조. 형용사 decorous.",
+      "etymology": "라틴어 decorus(어울리는, 품위 있는) ← decor(아름다움)"
+    },
+    {
+      "id": "deference", "word": "deference", "pos": "n", "level": 26,
+      "meanings": ["존중, 경의(에서 나오는 양보)"],
+      "sentences": [
+        { "en": "He bowed in ___ to the elderly man.", "ko": "그는 노인에게 **경의**를 표하며 고개를 숙였다.", "answer": "deference" },
+        { "en": "Out of ___ to her wishes, we canceled the party.", "ko": "그녀의 뜻을 **존중하여** 우리는 파티를 취소했다.", "answer": "deference" }
+      ],
+      "nuance": "상대의 지위·판단을 존중해 '자기 뜻을 굽히는' 태도. respect는 존경 일반, deference는 그 존경 때문에 따르는 행동. 'in deference to ~'. 동사 defer to(~에게 따르다).",
+      "etymology": "라틴어 deferre(가져가 바치다) ← de + ferre(나르다)"
+    }
+  ]
+}

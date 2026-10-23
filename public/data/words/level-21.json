@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": "mundane", "word": "mundane", "pos": "adj", "level": 21,
+      "meanings": ["평범한, 일상적인", "세속적인"],
+      "sentences": [
+        { "en": "She was tired of ___ tasks like washing dishes.", "ko": "그녀는 설거지 같은 **단조로운** 일에 지쳐 있었다.", "answer": "mundane" },
+        { "en": "He turned a ___ story into something magical.", "ko": "그는 **평범한** 이야기를 마법 같은 것으로 바꾸었다.", "answer": "mundane" }
+      ],
+      "nuance": "특별할 것 없이 '지루하게 일상적인'. ordinary는 중립적, mundane은 살짝 지루하다는 뉘앙스. 원래 '이 세상의, 세속적인'이라는 뜻에서 왔다.",
+      "etymology": "라틴어 mundus(세계) → '이 세상에 속한'"
+    },
+    {
+      "id": "nuance", "word": "nuance", "pos": "n", "level": 21,
+      "meanings": ["미묘한 차이, 뉘앙스"],
+      "sentences": [
+        { "en": "Translators must capture every ___ of the original.", "ko": "번역가는 원문의 모든 **미묘한 차이**를 담아내야 한다.", "answer": "nuance" },
+        { "en": "His performance was full of subtle ___.", "ko": "그의 연기는 섬세한 **뉘앙스**로 가득했다.", "answer": "nuances" }
+      ],
+      "nuance": "의미·소리·색·감정의 '아주 작은 차이'. difference는 어떤 차이든 가리키고, nuance는 알아차리려면 섬세함이 필요한 차이. 형용사 nuanced(섬세한).",
+      "etymology": "프랑스어 nuer(색조를 입히다) ← 라틴어 nubes(구름) → '구름 그늘처럼 미세한 색 변화'"
+    },
+    {
+      "id": "obscure", "word": "obscure", "pos": "adj", "level": 21,
+      "meanings": ["잘 알려지지 않은", "이해하기 어려운", "가리다"],
+      "sentences": [
+        { "en": "The film was directed by an ___ Polish director.", "ko": "그 영화는 **잘 알려지지 않은** 폴란드 감독이 연출했다.", "answer": "obscure" },
+        { "en": "Fog ___ the view of the mountains.", "ko": "안개가 산의 경치를 **가렸다**.", "answer": "obscured" }
+      ],
+      "nuance": "형용사로 '유명하지 않은, 뜻이 애매한', 동사로 '보이지 않게 가리다'. unknown보다 '묻혀 있는' 느낌. 명사 obscurity(무명).",
+      "etymology": "라틴어 obscurus(어두운, 덮인)"
+    },
+    {
+      "id": "ominous", "word": "ominous", "pos": "adj", "level": 21,
+      "meanings": ["불길한, 나쁜 징조의"],
+      "sentences": [
+        { "en": "Dark, ___ clouds gathered over the sea.", "ko": "어둡고 **불길한** 구름이 바다 위로 모여들었다.", "answer": "ominous" },
+        { "en": "There was an ___ silence after the announcement.", "ko": "발표 뒤에 **불길한** 침묵이 흘렀다.", "answer": "ominous" }
+      ],
+      "nuance": "나쁜 일이 '곧 일어날 것 같은' 느낌을 주는. threatening은 직접 위협하는 것, ominous는 조짐으로 불안하게 하는 것. 명사 omen(징조).",
+      "etymology": "라틴어 omen(징조) → '징조가 되는'"
+    },
+    {
+      "id": "ostensible", "word": "ostensible", "pos": "adj", "level": 21,
+      "meanings": ["표면상의, 겉으로 내세우는"],
+      "sentences": [
+        { "en": "The ___ reason for his visit was business.", "ko": "그의 방문의 **표면상** 이유는 사업이었다.", "answer": "ostensible" },
+        { "en": "Her ___ goal was to help, but she wanted control.", "ko": "그녀의 **겉으로 내세운** 목표는 돕는 것이었지만 실제로는 통제를 원했다.", "answer": "ostensible" }
+      ],
+      "nuance": "'겉으로는 그렇다고 하지만 실제는 다를 수 있는'. apparent도 비슷하지만 ostensible은 거의 항상 '진짜 이유는 따로 있다'는 암시. 부사 ostensibly(표면상으로는).",
+      "etymology": "라틴어 ostendere(보여 주다) → '보여 주기 위한'"
+    },
+    {
+      "id": "palpable", "word": "palpable", "pos": "adj", "level": 21,
+      "meanings": ["감지할 수 있는, 뚜렷한"],
+      "sentences": [
+        { "en": "There was a ___ sense of relief in the room.", "ko": "방 안에는 **뚜렷한** 안도감이 감돌았다.", "answer": "palpable" },
+        { "en": "The tension between them was ___.", "ko": "둘 사이의 긴장감은 **손에 잡힐 듯** 분명했다.", "answer": "palpable" }
+      ],
+      "nuance": "원래 '만질 수 있는'에서 감정·분위기가 '느껴질 만큼 강한'으로. tangible은 결과·증거에, palpable은 분위기·감정에 더 자주 쓴다.",
+      "etymology": "라틴어 palpare(만지다, 더듬다) → '만질 수 있는'"
+    },
+    {
+      "id": "pervasive", "word": "pervasive", "pos": "adj", "level": 21,
+      "meanings": ["널리 스며든, 만연한"],
+      "sentences": [
+        { "en": "Social media has a ___ influence on teenagers.", "ko": "소셜 미디어는 십 대에게 **널리 스며든** 영향을 미친다.", "answer": "pervasive" },
+        { "en": "There was a ___ smell of smoke in the house.", "ko": "집 안 구석구석에 연기 냄새가 **배어** 있었다.", "answer": "pervasive" }
+      ],
+      "nuance": "모든 곳에 '퍼져 스며든'. widespread는 넓게 분포한 것, pervasive는 구석구석 침투한 것(종종 부정적). 동사 pervade.",
+      "etymology": "라틴어 per(두루) + vadere(가다) → '두루 퍼져 가는'"
+    },
+    {
+      "id": "pragmatic", "word": "pragmatic", "pos": "adj", "level": 21,
+      "meanings": ["실용적인, 현실적인"],
+      "sentences": [
+        { "en": "We need a ___ approach to solving this problem.", "ko": "이 문제를 해결하려면 **실용적인** 접근이 필요하다.", "answer": "pragmatic" },
+        { "en": "She is ___ about her career choices.", "ko": "그녀는 진로 선택에 대해 **현실적이다**.", "answer": "pragmatic" }
+      ],
+      "nuance": "이론·이상보다 '실제로 효과가 있는지'를 중시하는. practical과 비슷하지만 사고방식·태도를 말할 때 더 쓴다. 명사 pragmatism.",
+      "etymology": "그리스어 pragma(행위, 일) → '일에 관한'"
+    },
+    {
+      "id": "precarious", "word": "precarious", "pos": "adj", "level": 21,
+      "meanings": ["불안정한, 위태로운"],
+      "sentences": [
+        { "en": "The vase sat in a ___ position on the edge of the shelf.", "ko": "꽃병이 선반 가장자리에 **위태롭게** 놓여 있었다.", "answer": "precarious" },
+        { "en": "Many freelancers live in a ___ financial situation.", "ko": "많은 프리랜서가 **불안정한** 재정 상황에서 살아간다.", "answer": "precarious" }
+      ],
+      "nuance": "언제 무너질지 모르는 '아슬아슬한'. unstable은 중립적, precarious는 위험이 임박한 느낌. 물리적 위치와 처지 모두에 쓴다.",
+      "etymology": "라틴어 precarius(남의 호의에 달린) ← prex(기도, 간청)"
+    },
+    {
+      "id": "prudent", "word": "prudent", "pos": "adj", "level": 21,
+      "meanings": ["신중한, 분별 있는"],
+      "sentences": [
+        { "en": "It would be ___ to save some money for emergencies.", "ko": "비상시를 위해 돈을 좀 저축하는 것이 **현명할** 것이다.", "answer": "prudent" },
+        { "en": "She made a ___ decision to wait for more information.", "ko": "그녀는 더 많은 정보를 기다리기로 **신중한** 결정을 내렸다.", "answer": "prudent" }
+      ],
+      "nuance": "앞날의 위험을 생각해 '조심스럽고 현명하게' 판단하는. careful은 행동의 조심성, prudent는 판단의 분별력. 명사 prudence. 반대는 imprudent.",
+      "etymology": "라틴어 providens(앞을 내다보는)의 축약 → prudens"
+    }
+  ]
+}

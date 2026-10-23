@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": "integrate", "word": "integrate", "pos": "v", "level": 13,
+      "meanings": ["통합하다", "융화되다"],
+      "sentences": [
+        { "en": "The app ___ with your calendar.", "ko": "그 앱은 당신의 캘린더와 **연동된다**.", "answer": "integrates" },
+        { "en": "It took years for the immigrants to ___ into society.", "ko": "이민자들이 사회에 **융화되는** 데 수년이 걸렸다.", "answer": "integrate" }
+      ],
+      "nuance": "'integrate A into/with B'. combine은 단순 결합, integrate는 하나의 체계로 '유기적으로 합치다'. 명사 integration.",
+      "etymology": "라틴어 integer(온전한) → '온전하게 만들다'"
+    },
+    {
+      "id": "intervene", "word": "intervene", "pos": "v", "level": 13,
+      "meanings": ["개입하다, 끼어들다"],
+      "sentences": [
+        { "en": "The police had to ___ to stop the fight.", "ko": "경찰이 싸움을 막기 위해 **개입해야** 했다.", "answer": "intervene" },
+        { "en": "She ___ when the argument got too heated.", "ko": "논쟁이 너무 격해지자 그녀가 **끼어들었다**.", "answer": "intervened" }
+      ],
+      "nuance": "'intervene in ~'(~에 개입하다). interfere는 원치 않는 '간섭', intervene은 상황을 바꾸려는 '개입'. 명사 intervention.",
+      "etymology": "라틴어 inter(사이에) + venire(오다) → '사이에 들어오다'"
+    },
+    {
+      "id": "intrinsic", "word": "intrinsic", "pos": "adj", "level": 13,
+      "meanings": ["본질적인, 내재적인"],
+      "sentences": [
+        { "en": "Honesty has ___ value regardless of reward.", "ko": "정직은 보상과 상관없이 **본질적인** 가치가 있다.", "answer": "intrinsic" },
+        { "en": "Creativity is ___ to good design.", "ko": "창의성은 좋은 디자인에 **본질적인** 요소다.", "answer": "intrinsic" }
+      ],
+      "nuance": "'intrinsic to ~'. 반대는 extrinsic(외적인). intrinsic motivation(내적 동기)처럼 '그 자체에서 나오는'.",
+      "etymology": "라틴어 intrinsecus(안쪽으로)"
+    },
+    {
+      "id": "legitimate", "word": "legitimate", "pos": "adj", "level": 13,
+      "meanings": ["합법적인", "정당한, 타당한"],
+      "sentences": [
+        { "en": "Is this a ___ business?", "ko": "이것은 **합법적인** 사업인가요?", "answer": "legitimate" },
+        { "en": "She has a ___ reason to be angry.", "ko": "그녀가 화를 내는 데는 **정당한** 이유가 있다.", "answer": "legitimate" }
+      ],
+      "nuance": "legal은 '법에 어긋나지 않는', legitimate는 법뿐 아니라 '이치에 맞아 인정받을 만한'. 구어로 legit이라고 줄여 쓴다.",
+      "etymology": "라틴어 lex(법) → legitimus(법에 맞는)"
+    },
+    {
+      "id": "manipulate", "word": "manipulate", "pos": "v", "level": 13,
+      "meanings": ["조작하다, 조종하다", "능숙하게 다루다"],
+      "sentences": [
+        { "en": "He tried to ___ the results of the vote.", "ko": "그는 투표 결과를 **조작하려** 했다.", "answer": "manipulate" },
+        { "en": "She ___ her parents into buying her a car.", "ko": "그녀는 부모를 **구슬려** 차를 사게 했다.", "answer": "manipulated" }
+      ],
+      "nuance": "사람에게 쓰면 '교묘하게 조종하다'(부정적), 사물에 쓰면 '능숙하게 다루다'. control보다 교활한 느낌. 형용사 manipulative.",
+      "etymology": "라틴어 manus(손) + plere(채우다) → '손으로 다루다'"
+    },
+    {
+      "id": "mitigate", "word": "mitigate", "pos": "v", "level": 13,
+      "meanings": ["완화하다, 줄이다"],
+      "sentences": [
+        { "en": "Trees help ___ the effects of air pollution.", "ko": "나무는 대기 오염의 영향을 **완화하는** 데 도움이 된다.", "answer": "mitigate" },
+        { "en": "The company took steps to ___ the risk.", "ko": "그 회사는 위험을 **줄이기** 위한 조치를 취했다.", "answer": "mitigate" }
+      ],
+      "nuance": "나쁜 것의 '심각성을 덜다'. reduce보다 격식체이며 피해·위험·고통에 쓴다. 명사 mitigation. 'mitigating circumstances'는 정상 참작 사유.",
+      "etymology": "라틴어 mitis(부드러운) + agere(만들다) → '부드럽게 만들다'"
+    },
+    {
+      "id": "negligible", "word": "negligible", "pos": "adj", "level": 13,
+      "meanings": ["무시해도 될 정도의, 미미한"],
+      "sentences": [
+        { "en": "The difference in price is ___.", "ko": "가격 차이는 **미미하다**.", "answer": "negligible" },
+        { "en": "The side effects are ___ for most patients.", "ko": "대부분의 환자에게 부작용은 **무시해도 될 정도**다.", "answer": "negligible" }
+      ],
+      "nuance": "너무 작아 '고려할 필요가 없는'. small은 중립적. negligent(부주의한)와 혼동 주의. 둘 다 neglect(무시하다)에서 나왔다.",
+      "etymology": "라틴어 neglegere(돌보지 않다) → '무시할 수 있는'"
+    },
+    {
+      "id": "notion", "word": "notion", "pos": "n", "level": 13,
+      "meanings": ["개념, 생각"],
+      "sentences": [
+        { "en": "I have no ___ of what he meant.", "ko": "그가 무슨 뜻으로 말했는지 전혀 **감이** 없다.", "answer": "notion" },
+        { "en": "The ___ that money brings happiness is widespread.", "ko": "돈이 행복을 가져온다는 **생각**은 널리 퍼져 있다.", "answer": "notion" }
+      ],
+      "nuance": "idea보다 막연하고 '어떤 믿음이나 관념'에 가깝다. concept은 체계적으로 정리된 개념. 'the notion that ~'.",
+      "etymology": "라틴어 notio(알게 됨) ← noscere(알다)"
+    },
+    {
+      "id": "obsolete", "word": "obsolete", "pos": "adj", "level": 13,
+      "meanings": ["쓸모없게 된, 구식의"],
+      "sentences": [
+        { "en": "Fax machines are almost ___ today.", "ko": "팩스는 오늘날 거의 **쓸모없게 되었다**.", "answer": "obsolete" },
+        { "en": "New technology quickly makes old devices ___.", "ko": "신기술은 옛 기기를 빠르게 **구식으로** 만든다.", "answer": "obsolete" }
+      ],
+      "nuance": "더 나은 것이 나와 '더 이상 쓰이지 않는'. old-fashioned는 유행이 지난 것, outdated는 정보가 낡은 것, obsolete는 아예 안 쓰게 된 것.",
+      "etymology": "라틴어 obsolescere(닳아 없어지다)"
+    },
+    {
+      "id": "overwhelm", "word": "overwhelm", "pos": "v", "level": 13,
+      "meanings": ["압도하다, 어쩔 줄 모르게 하다"],
+      "sentences": [
+        { "en": "I was ___ by the amount of work.", "ko": "나는 업무량에 **압도되었다**.", "answer": "overwhelmed" },
+        { "en": "Her kindness ___ me.", "ko": "그녀의 친절은 나를 **감격시켰다**.", "answer": "overwhelmed" }
+      ],
+      "nuance": "감정·양·힘이 너무 커서 '감당하지 못하게 하다'. 좋은 감정(감격)에도 나쁜 상황(압도)에도 쓴다. 형용사 overwhelming(압도적인).",
+      "etymology": "over(위로) + 중세 영어 whelmen(뒤집다, 덮다) → '덮쳐 뒤집다'"
+    }
+  ]
+}

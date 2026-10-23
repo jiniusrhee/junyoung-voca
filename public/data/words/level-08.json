@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": "acquire", "word": "acquire", "pos": "v", "level": 8,
+      "meanings": ["습득하다", "획득하다, 인수하다"],
+      "sentences": [
+        { "en": "Children ___ language naturally.", "ko": "아이들은 언어를 자연스럽게 **습득한다**.", "answer": "acquire" },
+        { "en": "The company ___ two smaller firms last year.", "ko": "그 회사는 지난해 소규모 회사 두 곳을 **인수했다**.", "answer": "acquired" }
+      ],
+      "nuance": "시간을 들여 '얻게 되다'. 지식·기술·재산·회사(인수)에 쓴다. 명사 acquisition(인수, 습득).",
+      "etymology": "라틴어 ad + quaerere(구하다) → '구하여 더하다'"
+    },
+    {
+      "id": "adapt", "word": "adapt", "pos": "v", "level": 8,
+      "meanings": ["적응하다", "개작하다"],
+      "sentences": [
+        { "en": "It took me a while to ___ to the new school.", "ko": "새 학교에 **적응하는** 데 시간이 좀 걸렸다.", "answer": "adapt" },
+        { "en": "The movie was ___ from a famous novel.", "ko": "그 영화는 유명 소설을 **각색한** 것이다.", "answer": "adapted" }
+      ],
+      "nuance": "'adapt to ~'(~에 적응하다). adopt(채택하다, 입양하다)와 철자 혼동 주의. adjust는 조금씩 '맞춰 조정'.",
+      "etymology": "라틴어 ad(~에) + aptare(맞추다)"
+    },
+    {
+      "id": "analyze", "word": "analyze", "pos": "v", "level": 8,
+      "meanings": ["분석하다"],
+      "sentences": [
+        { "en": "Scientists ___ the data carefully.", "ko": "과학자들은 데이터를 신중하게 **분석했다**.", "answer": "analyzed" },
+        { "en": "We need to ___ why sales dropped.", "ko": "매출이 왜 떨어졌는지 **분석해야** 한다.", "answer": "analyze" }
+      ],
+      "nuance": "영국식 철자는 analyse. 명사 analysis(복수 analyses). examine은 '살펴보다', analyze는 '요소로 나눠 따져보다'.",
+      "etymology": "그리스어 ana(두루) + lyein(풀다) → '풀어서 나누다'"
+    },
+    {
+      "id": "assume", "word": "assume", "pos": "v", "level": 8,
+      "meanings": ["가정하다, ~라고 여기다", "(책임을) 맡다"],
+      "sentences": [
+        { "en": "I ___ you have already heard the news.", "ko": "너도 이미 소식을 들었을 거라고 **생각해**.", "answer": "assume" },
+        { "en": "She will ___ the role of manager next month.", "ko": "그녀는 다음 달에 관리자 역할을 **맡을** 것이다.", "answer": "assume" }
+      ],
+      "nuance": "근거 없이 '그럴 것이라 여기다'. suppose와 비슷하지만 assume은 더 확신하는 어조. 명사 assumption.",
+      "etymology": "라틴어 ad(~에) + sumere(가져가다) → '자기에게 가져가다'"
+    },
+    {
+      "id": "attempt", "word": "attempt", "pos": "v", "level": 8,
+      "meanings": ["시도하다", "시도"],
+      "sentences": [
+        { "en": "He ___ to climb the mountain alone.", "ko": "그는 혼자 그 산에 오르려고 **시도했다**.", "answer": "attempted" },
+        { "en": "She passed the exam on her first ___.", "ko": "그녀는 첫 **시도**에 시험에 합격했다.", "answer": "attempt" }
+      ],
+      "nuance": "try의 격식체. 결과가 불확실한 어려운 일에 쓴다. 'in an attempt to'(~하려는 시도로).",
+      "etymology": "라틴어 ad + temptare(시험하다, 건드리다)"
+    },
+    {
+      "id": "convince", "word": "convince", "pos": "v", "level": 8,
+      "meanings": ["확신시키다", "설득하다"],
+      "sentences": [
+        { "en": "He ___ me that the plan would work.", "ko": "그는 그 계획이 성공할 거라고 나를 **확신시켰다**.", "answer": "convinced" },
+        { "en": "I couldn't ___ her to come with us.", "ko": "그녀가 우리와 함께 가도록 **설득할** 수 없었다.", "answer": "convince" }
+      ],
+      "nuance": "persuade는 '행동하게 설득', convince는 '믿게 하다'에 초점. 'be convinced that'(확신하다).",
+      "etymology": "라틴어 con(완전히) + vincere(이기다) → '논쟁에서 이기다'"
+    },
+    {
+      "id": "determine", "word": "determine", "pos": "v", "level": 8,
+      "meanings": ["결정하다, 좌우하다", "알아내다"],
+      "sentences": [
+        { "en": "Your attitude will ___ your success.", "ko": "너의 태도가 성공을 **결정할** 것이다.", "answer": "determine" },
+        { "en": "Doctors are trying to ___ the cause of the illness.", "ko": "의사들은 병의 원인을 **밝혀내려** 애쓰고 있다.", "answer": "determine" }
+      ],
+      "nuance": "decide보다 격식체. 어떤 요인이 결과를 '좌우하다'와 조사해서 '밝혀내다'가 핵심. 'be determined to'는 '굳게 결심하다'.",
+      "etymology": "라틴어 de(완전히) + terminare(경계를 정하다)"
+    },
+    {
+      "id": "emphasize", "word": "emphasize", "pos": "v", "level": 8,
+      "meanings": ["강조하다"],
+      "sentences": [
+        { "en": "The teacher ___ the importance of reading.", "ko": "선생님은 독서의 중요성을 **강조했다**.", "answer": "emphasized" },
+        { "en": "I want to ___ that this is only a draft.", "ko": "이것은 초안일 뿐이라는 점을 **강조하고** 싶다.", "answer": "emphasize" }
+      ],
+      "nuance": "stress와 거의 같지만 emphasize가 더 격식체. 명사 emphasis(put emphasis on). 'emphasize on'은 틀린 표현.",
+      "etymology": "그리스어 en(안에) + phainein(보이게 하다) → '드러내 보이다'"
+    },
+    {
+      "id": "establish", "word": "establish", "pos": "v", "level": 8,
+      "meanings": ["설립하다", "확립하다"],
+      "sentences": [
+        { "en": "The school was ___ in 1950.", "ko": "그 학교는 1950년에 **설립되었다**.", "answer": "established" },
+        { "en": "We need to ___ clear rules for the team.", "ko": "팀을 위한 명확한 규칙을 **세워야** 한다.", "answer": "establish" }
+      ],
+      "nuance": "found는 기관을 '세우다', establish는 더 넓게 관계·규칙·명성을 '확립하다'까지. 형용사 established는 '자리 잡은, 인정받는'.",
+      "etymology": "라틴어 stabilire(견고하게 하다) ← stabilis(안정된)"
+    },
+    {
+      "id": "evaluate", "word": "evaluate", "pos": "v", "level": 8,
+      "meanings": ["평가하다"],
+      "sentences": [
+        { "en": "Teachers ___ students based on their essays.", "ko": "교사들은 에세이를 바탕으로 학생들을 **평가한다**.", "answer": "evaluate" },
+        { "en": "We should ___ the results before making a decision.", "ko": "결정을 내리기 전에 결과를 **평가해야** 한다.", "answer": "evaluate" }
+      ],
+      "nuance": "assess와 거의 동의어. judge는 주관적 '판단', evaluate는 기준에 따라 가치·질을 따지는 '평가'.",
+      "etymology": "프랑스어 évaluer ← value(가치) → '가치를 산출하다'"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": "reluctant", "word": "reluctant", "pos": "adj", "level": 15,
+      "meanings": ["꺼리는, 마음이 내키지 않는"],
+      "sentences": [
+        { "en": "He was ___ to admit his mistake.", "ko": "그는 자신의 실수를 인정하기를 **꺼렸다**.", "answer": "reluctant" },
+        { "en": "She gave a ___ smile.", "ko": "그녀는 **마지못해** 미소를 지었다.", "answer": "reluctant" }
+      ],
+      "nuance": "'be reluctant to 동사'(~하기를 꺼리다). unwilling과 거의 같다. 부사 reluctantly(마지못해), 명사 reluctance.",
+      "etymology": "라틴어 re(반대로) + luctari(싸우다) → '저항하는'"
+    },
+    {
+      "id": "resilient", "word": "resilient", "pos": "adj", "level": 15,
+      "meanings": ["회복력 있는, 탄력 있는"],
+      "sentences": [
+        { "en": "Children are often more ___ than adults.", "ko": "아이들은 종종 어른보다 **회복력이 강하다**.", "answer": "resilient" },
+        { "en": "The economy proved ___ despite the crisis.", "ko": "경제는 위기에도 **탄력적인** 모습을 보였다.", "answer": "resilient" }
+      ],
+      "nuance": "충격을 받아도 '다시 튀어 오르는'. strong은 버티는 힘, resilient는 '회복하는 힘'. 명사 resilience.",
+      "etymology": "라틴어 re(다시) + salire(뛰다) → '다시 튀어 오르다'"
+    },
+    {
+      "id": "retain", "word": "retain", "pos": "v", "level": 15,
+      "meanings": ["유지하다, 보유하다"],
+      "sentences": [
+        { "en": "The company wants to ___ its best employees.", "ko": "그 회사는 최고의 직원들을 **붙잡아 두고** 싶어 한다.", "answer": "retain" },
+        { "en": "Clay ___ water better than sand.", "ko": "점토는 모래보다 물을 더 잘 **머금는다**.", "answer": "retains" }
+      ],
+      "nuance": "keep의 격식체로 '계속 가지고 있다'. maintain은 상태를 '관리하며 유지', retain은 잃지 않고 '보유'. 명사 retention(고객 유지, 기억 보유).",
+      "etymology": "라틴어 re(뒤로) + tenere(잡다) → '붙잡아 두다'"
+    },
+    {
+      "id": "rigorous", "word": "rigorous", "pos": "adj", "level": 15,
+      "meanings": ["엄격한, 철저한"],
+      "sentences": [
+        { "en": "The product goes through ___ testing.", "ko": "그 제품은 **엄격한** 테스트를 거친다.", "answer": "rigorous" },
+        { "en": "She follows a ___ training schedule.", "ko": "그녀는 **혹독한** 훈련 일정을 따른다.", "answer": "rigorous" }
+      ],
+      "nuance": "strict는 규칙을 엄히 적용하는 것, rigorous는 '빈틈없이 꼼꼼하고 철저한'. 학문·검사·훈련에 자주 쓴다. 명사 rigor.",
+      "etymology": "라틴어 rigor(단단함, 뻣뻣함)"
+    },
+    {
+      "id": "scrutinize", "word": "scrutinize", "pos": "v", "level": 15,
+      "meanings": ["세심히 살피다, 면밀히 조사하다"],
+      "sentences": [
+        { "en": "Inspectors ___ every detail of the building.", "ko": "검사관들은 그 건물의 모든 세부 사항을 **면밀히 살폈다**.", "answer": "scrutinized" },
+        { "en": "The media will ___ his every move.", "ko": "언론은 그의 모든 행동을 **철저히 들여다볼** 것이다.", "answer": "scrutinize" }
+      ],
+      "nuance": "examine보다 훨씬 '꼼꼼하고 비판적으로' 들여다보는 느낌. 명사 scrutiny(under scrutiny 조사를 받는 중).",
+      "etymology": "라틴어 scrutari(뒤지다, 샅샅이 찾다) ← scruta(쓰레기)"
+    },
+    {
+      "id": "simultaneous", "word": "simultaneous", "pos": "adj", "level": 15,
+      "meanings": ["동시의"],
+      "sentences": [
+        { "en": "The two events were almost ___.", "ko": "두 사건은 거의 **동시에** 일어났다.", "answer": "simultaneous" },
+        { "en": "The speech was given with ___ translation.", "ko": "그 연설은 **동시** 통역과 함께 진행되었다.", "answer": "simultaneous" }
+      ],
+      "nuance": "정확히 '같은 시각에' 일어나는. concurrent는 같은 기간에 겹쳐 진행되는 것. 부사 simultaneously(동시에).",
+      "etymology": "라틴어 simul(동시에) → '같은 때의'"
+    },
+    {
+      "id": "sophisticated", "word": "sophisticated", "pos": "adj", "level": 15,
+      "meanings": ["정교한, 복잡한", "세련된"],
+      "sentences": [
+        { "en": "The system uses ___ software to detect fraud.", "ko": "그 시스템은 사기를 탐지하기 위해 **정교한** 소프트웨어를 사용한다.", "answer": "sophisticated" },
+        { "en": "She has very ___ taste in music.", "ko": "그녀는 음악 취향이 아주 **세련되었다**.", "answer": "sophisticated" }
+      ],
+      "nuance": "기술·장비에는 '고도로 발달한', 사람·취향에는 '교양 있고 세련된'. complex는 단순히 복잡함, sophisticated는 '수준이 높아서' 복잡함.",
+      "etymology": "그리스어 sophistes(현자, 소피스트) → '지혜로 다듬어진'"
+    },
+    {
+      "id": "speculate", "word": "speculate", "pos": "v", "level": 15,
+      "meanings": ["추측하다", "투기하다"],
+      "sentences": [
+        { "en": "It is too early to ___ about the cause.", "ko": "원인에 대해 **추측하기에는** 너무 이르다.", "answer": "speculate" },
+        { "en": "He lost money ___ on real estate.", "ko": "그는 부동산에 **투기하다가** 돈을 잃었다.", "answer": "speculating" }
+      ],
+      "nuance": "'speculate about/on ~'. guess보다 격식체로 '근거가 부족한 상태에서 이론을 세우다'. 돈을 걸고 '투기하다'라는 뜻도. 명사 speculation.",
+      "etymology": "라틴어 speculari(살피다, 관찰하다) ← specere(보다)"
+    },
+    {
+      "id": "subsequent", "word": "subsequent", "pos": "adj", "level": 15,
+      "meanings": ["그 다음의, 이후의"],
+      "sentences": [
+        { "en": "The first test failed, but ___ tests were successful.", "ko": "첫 시험은 실패했지만 **이후의** 시험들은 성공했다.", "answer": "subsequent" },
+        { "en": "In the ___ years, the city grew rapidly.", "ko": "**그 뒤** 몇 년 동안 그 도시는 빠르게 성장했다.", "answer": "subsequent" }
+      ],
+      "nuance": "어떤 사건 '뒤에 오는'. following과 비슷하지만 격식체. 반대는 previous, prior. 부사 subsequently(그 후에).",
+      "etymology": "라틴어 sub(뒤에) + sequi(따르다) → '뒤따르는'"
+    },
+    {
+      "id": "substantial", "word": "substantial", "pos": "adj", "level": 15,
+      "meanings": ["상당한, 많은", "실질적인"],
+      "sentences": [
+        { "en": "She received a ___ pay raise.", "ko": "그녀는 **상당한** 임금 인상을 받았다.", "answer": "substantial" },
+        { "en": "There is ___ evidence to support the theory.", "ko": "그 이론을 뒷받침하는 **충분한** 증거가 있다.", "answer": "substantial" }
+      ],
+      "nuance": "양·크기·중요성이 '무시할 수 없을 만큼 큰'. considerable과 거의 같다. substantive(실질적 내용에 관한)와 혼동 주의. 부사 substantially(상당히).",
+      "etymology": "라틴어 substantia(실체, 본질) ← sub + stare(아래에 서다)"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": "accomplish", "word": "accomplish", "pos": "v", "level": 9,
+      "meanings": ["완수하다, 이루다"],
+      "sentences": [
+        { "en": "We ___ a lot in a short time.", "ko": "우리는 짧은 시간에 많은 것을 **이루었다**.", "answer": "accomplished" },
+        { "en": "She set out to ___ three goals this year.", "ko": "그녀는 올해 세 가지 목표를 **달성하기로** 마음먹었다.", "answer": "accomplish" }
+      ],
+      "nuance": "achieve는 '목표에 도달', accomplish는 '임무·과제를 끝까지 해내다'. 형용사 accomplished는 '기량이 뛰어난'.",
+      "etymology": "라틴어 ad + complere(채우다) → '끝까지 채우다'"
+    },
+    {
+      "id": "accumulate", "word": "accumulate", "pos": "v", "level": 9,
+      "meanings": ["축적하다, 쌓이다"],
+      "sentences": [
+        { "en": "Dust had ___ on the shelves.", "ko": "선반에 먼지가 **쌓여** 있었다.", "answer": "accumulated" },
+        { "en": "Over time, small savings ___ into a large sum.", "ko": "시간이 지나면 작은 저축이 큰 금액으로 **쌓인다**.", "answer": "accumulate" }
+      ],
+      "nuance": "collect는 의도적으로 '모으다', accumulate는 서서히 '쌓이다/쌓다'(자·타동사 모두). 명사 accumulation.",
+      "etymology": "라틴어 ad + cumulus(더미) → '더미로 쌓다'"
+    },
+    {
+      "id": "adequate", "word": "adequate", "pos": "adj", "level": 9,
+      "meanings": ["충분한, 적절한"],
+      "sentences": [
+        { "en": "The room has ___ space for ten people.", "ko": "그 방은 열 명이 쓰기에 **충분한** 공간이 있다.", "answer": "adequate" },
+        { "en": "His answer was not ___ to the question.", "ko": "그의 대답은 질문에 **적절하지** 않았다.", "answer": "adequate" }
+      ],
+      "nuance": "enough보다 격식체. '넉넉하다'가 아니라 '필요한 만큼은 된다'는 뉘앙스. 반대는 inadequate.",
+      "etymology": "라틴어 ad + aequus(같은) → '필요에 맞춘'"
+    },
+    {
+      "id": "ambiguous", "word": "ambiguous", "pos": "adj", "level": 9,
+      "meanings": ["모호한, 애매한"],
+      "sentences": [
+        { "en": "The ending of the movie was ___.", "ko": "그 영화의 결말은 **모호했다**.", "answer": "ambiguous" },
+        { "en": "His ___ answer left us confused.", "ko": "그의 **애매한** 답변은 우리를 혼란스럽게 했다.", "answer": "ambiguous" }
+      ],
+      "nuance": "두 가지 이상으로 해석될 수 있는 '중의적' 모호함. vague는 그냥 '막연하고 불분명한'. 명사 ambiguity.",
+      "etymology": "라틴어 ambi(양쪽) + agere(이끌다) → '양쪽으로 이끄는'"
+    },
+    {
+      "id": "anticipate", "word": "anticipate", "pos": "v", "level": 9,
+      "meanings": ["예상하다, 기대하다"],
+      "sentences": [
+        { "en": "We ___ a large crowd at the concert.", "ko": "우리는 콘서트에 많은 인파가 올 것으로 **예상한다**.", "answer": "anticipate" },
+        { "en": "The company ___ the demand and increased production.", "ko": "그 회사는 수요를 **예측하고** 생산을 늘렸다.", "answer": "anticipated" }
+      ],
+      "nuance": "expect와 비슷하지만 anticipate는 '예상하고 미리 대비한다'는 느낌이 들어 있다. 'anticipate -ing'.",
+      "etymology": "라틴어 ante(앞서) + capere(잡다) → '미리 잡다'"
+    },
+    {
+      "id": "apparent", "word": "apparent", "pos": "adj", "level": 9,
+      "meanings": ["명백한", "겉보기의"],
+      "sentences": [
+        { "en": "It was ___ that she was tired.", "ko": "그녀가 피곤하다는 것이 **분명했다**.", "answer": "apparent" },
+        { "en": "His ___ calm hid his nervousness.", "ko": "그의 **겉으로 보이는** 침착함은 불안을 감추고 있었다.", "answer": "apparent" }
+      ],
+      "nuance": "'명백한'(obvious)과 '겉보기엔 그런(실제는 다를 수 있음)' 두 뜻이 있어 문맥 주의. 부사 apparently는 '듣자 하니, 보기에는'.",
+      "etymology": "라틴어 apparere(나타나다)"
+    },
+    {
+      "id": "approximately", "word": "approximately", "pos": "adv", "level": 9,
+      "meanings": ["대략, 약"],
+      "sentences": [
+        { "en": "The trip takes ___ three hours.", "ko": "그 여행은 **대략** 세 시간이 걸린다.", "answer": "approximately" },
+        { "en": "There were ___ 200 people at the event.", "ko": "행사에 **약** 200명이 참석했다.", "answer": "approximately" }
+      ],
+      "nuance": "about, around의 격식체. 수치 앞에 쓴다. 약자 approx.",
+      "etymology": "라틴어 ad + proximus(가장 가까운)"
+    },
+    {
+      "id": "attribute", "word": "attribute", "pos": "v", "level": 9,
+      "meanings": ["~의 결과로 보다, ~탓으로 하다", "속성, 자질"],
+      "sentences": [
+        { "en": "She ___ her success to hard work.", "ko": "그녀는 성공을 노력의 **결과로 본다**.", "answer": "attributes" },
+        { "en": "Patience is an important ___ for a teacher.", "ko": "인내심은 교사에게 중요한 **자질**이다.", "answer": "attribute" }
+      ],
+      "nuance": "'attribute A to B'(A를 B 때문이라고 보다). 명사일 땐 강세가 앞(AT-tribute)으로 '속성, 특성'.",
+      "etymology": "라틴어 ad + tribuere(할당하다) → '~에게 돌리다'"
+    },
+    {
+      "id": "capacity", "word": "capacity", "pos": "n", "level": 9,
+      "meanings": ["수용력", "능력"],
+      "sentences": [
+        { "en": "The stadium has a ___ of 50,000.", "ko": "그 경기장은 **수용 인원**이 5만 명이다.", "answer": "capacity" },
+        { "en": "She has a great ___ for learning languages.", "ko": "그녀는 언어를 배우는 **능력**이 뛰어나다.", "answer": "capacity" }
+      ],
+      "nuance": "'담을 수 있는 양'과 '잠재적 능력' 두 뜻. ability는 실제 할 수 있는 능력, capacity는 '받아들일 수 있는 그릇'.",
+      "etymology": "라틴어 capax(담을 수 있는) ← capere(잡다)"
+    },
+    {
+      "id": "circumstance", "word": "circumstance", "pos": "n", "level": 9,
+      "meanings": ["상황, 사정"],
+      "sentences": [
+        { "en": "Under the ___, we had no choice.", "ko": "그런 **상황**에서는 선택의 여지가 없었다.", "answer": "circumstances" },
+        { "en": "He left the company due to personal ___.", "ko": "그는 개인적인 **사정**으로 회사를 떠났다.", "answer": "circumstances" }
+      ],
+      "nuance": "주로 복수형. situation은 '현재 처한 상태', circumstances는 그 상태를 만든 '주변 조건들'. 'under no circumstances'(절대로 ~않다).",
+      "etymology": "라틴어 circum(둘레) + stare(서다) → '둘러서 있는 것'"
+    }
+  ]
+}

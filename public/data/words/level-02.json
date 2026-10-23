@@ -1,0 +1,94 @@
+{
+  "words": [
+    {
+      "id": "want", "word": "want", "pos": "v", "level": 2,
+      "meanings": ["원하다"],
+      "sentences": [
+        { "en": "I ___ a cup of coffee.", "ko": "나는 커피 한 잔을 **원한다**.", "answer": "want" },
+        { "en": "She ___ to be a doctor.", "ko": "그녀는 의사가 **되고 싶어 한다**.", "answer": "wants" }
+      ],
+      "nuance": "would like는 want의 공손한 버전. 'want to + 동사'(~하고 싶다), 'want 사람 to'(사람이 ~하길 바라다)."
+    },
+    {
+      "id": "need", "word": "need", "pos": "v", "level": 2,
+      "meanings": ["필요하다"],
+      "sentences": [
+        { "en": "You ___ a passport to travel abroad.", "ko": "해외여행을 하려면 여권이 **필요하다**.", "answer": "need" },
+        { "en": "He ___ more time to finish the report.", "ko": "그는 보고서를 끝내려면 시간이 더 **필요하다**.", "answer": "needs" }
+      ],
+      "nuance": "want는 '바람', need는 '필수'. 'don't need to'(~할 필요 없다)는 'must not'(~하면 안 된다)과 뜻이 다르다."
+    },
+    {
+      "id": "help", "word": "help", "pos": "v", "level": 2,
+      "meanings": ["돕다"],
+      "sentences": [
+        { "en": "Can you ___ me carry these boxes?", "ko": "이 상자들 옮기는 걸 **도와**줄 수 있어?", "answer": "help" },
+        { "en": "She ___ her mother cook dinner.", "ko": "그녀는 어머니가 저녁 요리하는 것을 **도왔다**.", "answer": "helped" }
+      ],
+      "nuance": "'help 사람 (to) 동사'에서 to는 생략해도 된다. 'can't help -ing'은 '~하지 않을 수 없다'."
+    },
+    {
+      "id": "open", "word": "open", "pos": "v", "level": 2,
+      "meanings": ["열다"],
+      "sentences": [
+        { "en": "Could you ___ the window, please?", "ko": "창문을 **열어** 주시겠어요?", "answer": "open" },
+        { "en": "The store ___ at nine in the morning.", "ko": "그 가게는 아침 9시에 **문을 연다**.", "answer": "opens" }
+      ],
+      "nuance": "형용사로도 쓴다(The door is open). '열려 있다'는 상태, '열다'는 동작. 반대는 close 또는 shut."
+    },
+    {
+      "id": "close", "word": "close", "pos": "v", "level": 2,
+      "meanings": ["닫다"],
+      "sentences": [
+        { "en": "Please ___ the door when you leave.", "ko": "나갈 때 문을 **닫아** 주세요.", "answer": "close" },
+        { "en": "The bank ___ at four on Fridays.", "ko": "그 은행은 금요일에 4시에 **문을 닫는다**.", "answer": "closes" }
+      ],
+      "nuance": "shut은 좀 더 거칠고 '탁' 닫는 느낌. 형용사 close는 '가까운'(close friend)이고 발음도 다르다[클로스]."
+    },
+    {
+      "id": "early", "word": "early", "pos": "adv", "level": 2,
+      "meanings": ["일찍", "이른"],
+      "sentences": [
+        { "en": "I woke up ___ this morning.", "ko": "오늘 아침 **일찍** 일어났다.", "answer": "early" },
+        { "en": "We arrived ___ for the meeting.", "ko": "우리는 회의에 **일찍** 도착했다.", "answer": "early" }
+      ],
+      "nuance": "soon(곧)과 혼동하지 말 것. early는 예정보다 '이른' 시점. 'early in the morning'(아침 일찍)."
+    },
+    {
+      "id": "late", "word": "late", "pos": "adj", "level": 2,
+      "meanings": ["늦은, 늦게"],
+      "sentences": [
+        { "en": "Sorry, I am ___ again.", "ko": "미안, 또 **늦었어**.", "answer": "late" },
+        { "en": "He came home ___ last night.", "ko": "그는 어젯밤 **늦게** 집에 왔다.", "answer": "late" }
+      ],
+      "nuance": "lately는 '최근에'라는 전혀 다른 뜻. 'be late for ~'(~에 늦다). 'the late Mr. Kim'은 고인이 된 김 선생님."
+    },
+    {
+      "id": "buy", "word": "buy", "pos": "v", "level": 2,
+      "meanings": ["사다"],
+      "sentences": [
+        { "en": "I want to ___ a new phone.", "ko": "새 휴대폰을 **사고** 싶다.", "answer": "buy" },
+        { "en": "She ___ fresh bread every morning.", "ko": "그녀는 매일 아침 신선한 빵을 **산다**.", "answer": "buys" }
+      ],
+      "nuance": "purchase는 격식체(구매하다). 'buy 사람 물건'은 'buy 물건 for 사람'과 같은 뜻. 과거형은 bought."
+    },
+    {
+      "id": "cheap", "word": "cheap", "pos": "adj", "level": 2,
+      "meanings": ["값이 싼"],
+      "sentences": [
+        { "en": "This shirt is really ___.", "ko": "이 셔츠는 정말 **싸다**.", "answer": "cheap" },
+        { "en": "We found a ___ hotel near the station.", "ko": "우리는 역 근처의 **값싼** 호텔을 찾았다.", "answer": "cheap" }
+      ],
+      "nuance": "cheap에는 '싸구려'라는 부정적 느낌이 섞일 수 있다. 좋은 의미의 저렴함은 inexpensive, affordable."
+    },
+    {
+      "id": "easy", "word": "easy", "pos": "adj", "level": 2,
+      "meanings": ["쉬운"],
+      "sentences": [
+        { "en": "The test was very ___.", "ko": "시험은 아주 **쉬웠다**.", "answer": "easy" },
+        { "en": "It is ___ to make this dish.", "ko": "이 요리는 만들기 **쉽다**.", "answer": "easy" }
+      ],
+      "nuance": "simple은 '단순한'(구조가 복잡하지 않음), easy는 '힘들지 않은'. 'take it easy'(진정해, 편히 쉬어)."
+    }
+  ]
+}

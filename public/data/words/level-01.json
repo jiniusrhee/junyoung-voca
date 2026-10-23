@@ -1,0 +1,94 @@
+{
+  "words": [
+    {
+      "id": "go", "word": "go", "pos": "v", "level": 1,
+      "meanings": ["가다"],
+      "sentences": [
+        { "en": "I ___ to school by bus every day.", "ko": "나는 매일 버스로 학교에 **간다**.", "answer": "go" },
+        { "en": "He ___ to the gym on Mondays.", "ko": "그는 월요일마다 헬스장에 **간다**.", "answer": "goes" }
+      ],
+      "nuance": "come(오다)과 반대로 말하는 사람에게서 멀어지는 이동. 'go to + 장소'로 쓰지만 home, there, abroad 앞에는 to를 붙이지 않는다."
+    },
+    {
+      "id": "come", "word": "come", "pos": "v", "level": 1,
+      "meanings": ["오다"],
+      "sentences": [
+        { "en": "Please ___ here and sit down.", "ko": "여기로 **와서** 앉으세요.", "answer": "come" },
+        { "en": "My friend is ___ to visit this weekend.", "ko": "내 친구가 이번 주말에 방문하러 **온다**.", "answer": "coming" }
+      ],
+      "nuance": "말하는 사람 쪽으로 다가오는 이동. 상대방 쪽으로 갈 때도 상대 입장에서 'I'm coming!'(지금 가요!)이라고 말한다."
+    },
+    {
+      "id": "eat", "word": "eat", "pos": "v", "level": 1,
+      "meanings": ["먹다"],
+      "sentences": [
+        { "en": "We usually ___ dinner at seven.", "ko": "우리는 보통 7시에 저녁을 **먹는다**.", "answer": "eat" },
+        { "en": "She ___ breakfast at the same time every day.", "ko": "그녀는 매일 같은 시간에 아침을 **먹는다**.", "answer": "eats" }
+      ],
+      "nuance": "have도 식사에 쓰지만(have lunch) eat은 '먹는 행위' 자체에 초점. 'eat out'은 외식하다."
+    },
+    {
+      "id": "drink", "word": "drink", "pos": "v", "level": 1,
+      "meanings": ["마시다"],
+      "sentences": [
+        { "en": "You should ___ plenty of water in summer.", "ko": "여름에는 물을 충분히 **마셔야** 한다.", "answer": "drink" },
+        { "en": "He ___ coffee every morning.", "ko": "그는 매일 아침 커피를 **마신다**.", "answer": "drinks" }
+      ],
+      "nuance": "명사로도 쓰여 '음료, 술'(a drink)을 뜻한다. 'soft drink'는 탄산음료."
+    },
+    {
+      "id": "water", "word": "water", "pos": "n", "level": 1,
+      "meanings": ["물"],
+      "sentences": [
+        { "en": "Can I have a glass of ___, please?", "ko": "**물** 한 잔 주시겠어요?", "answer": "water" },
+        { "en": "Plants need ___ and sunlight to grow.", "ko": "식물은 자라기 위해 **물**과 햇빛이 필요하다.", "answer": "water" }
+      ],
+      "nuance": "셀 수 없는 명사라 a water가 아니라 a glass of water. 동사로 쓰면 '물을 주다'(water the plants)."
+    },
+    {
+      "id": "house", "word": "house", "pos": "n", "level": 1,
+      "meanings": ["집(건물)"],
+      "sentences": [
+        { "en": "They bought a new ___ near the park.", "ko": "그들은 공원 근처에 새 **집**을 샀다.", "answer": "house" },
+        { "en": "My grandmother lives in an old ___ in the countryside.", "ko": "할머니는 시골의 오래된 **집**에 사신다.", "answer": "house" }
+      ],
+      "nuance": "건물로서의 집. 가족이 사는 '가정, 보금자리' 느낌은 home. 그래서 go home(집에 가다)이지 go house가 아니다."
+    },
+    {
+      "id": "friend", "word": "friend", "pos": "n", "level": 1,
+      "meanings": ["친구"],
+      "sentences": [
+        { "en": "She is my best ___ from high school.", "ko": "그녀는 고등학교 때부터 가장 친한 **친구**다.", "answer": "friend" },
+        { "en": "I made a lot of new ___ at camp.", "ko": "캠프에서 새 **친구**를 많이 사귀었다.", "answer": "friends" }
+      ],
+      "nuance": "'친구를 사귀다'는 make friends. 'friend with'가 아니라 'friends with'(be friends with him)."
+    },
+    {
+      "id": "happy", "word": "happy", "pos": "adj", "level": 1,
+      "meanings": ["행복한, 기쁜"],
+      "sentences": [
+        { "en": "I am so ___ to see you again.", "ko": "너를 다시 만나서 정말 **기뻐**.", "answer": "happy" },
+        { "en": "The children looked ___ with their presents.", "ko": "아이들은 선물을 받고 **행복해** 보였다.", "answer": "happy" }
+      ],
+      "nuance": "glad는 특정한 일에 대해 '다행이다, 기쁘다'는 순간적 느낌, happy는 더 넓고 지속적인 기분. 'happy with ~'는 ~에 만족한다는 뜻."
+    },
+    {
+      "id": "big", "word": "big", "pos": "adj", "level": 1,
+      "meanings": ["큰"],
+      "sentences": [
+        { "en": "Seoul is a very ___ city.", "ko": "서울은 아주 **큰** 도시다.", "answer": "big" },
+        { "en": "That was a ___ mistake.", "ko": "그것은 **큰** 실수였다.", "answer": "big" }
+      ],
+      "nuance": "large는 격식 있고 크기·규모에 쓰며, big은 일상적이고 '중요한'(a big decision)이라는 뜻으로도 쓴다."
+    },
+    {
+      "id": "day", "word": "day", "pos": "n", "level": 1,
+      "meanings": ["날, 하루"],
+      "sentences": [
+        { "en": "Have a nice ___!", "ko": "좋은 **하루** 보내세요!", "answer": "day" },
+        { "en": "It rained all ___ yesterday.", "ko": "어제는 **하루** 종일 비가 왔다.", "answer": "day" }
+      ],
+      "nuance": "24시간 또는 해가 있는 낮 시간. 'these days'(요즘), 'one day'(언젠가), 'the other day'(며칠 전)처럼 관용 표현이 많다."
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": "equivocal", "word": "equivocal", "pos": "adj", "level": 28,
+      "meanings": ["모호한, 애매하게 둘러대는"],
+      "sentences": [
+        { "en": "The minister gave an ___ answer to avoid controversy.", "ko": "장관은 논란을 피하려고 **애매하게 둘러대는** 답을 했다.", "answer": "equivocal" },
+        { "en": "The test results were ___ and needed repeating.", "ko": "검사 결과가 **불분명해서** 다시 해야 했다.", "answer": "equivocal" }
+      ],
+      "nuance": "일부러 '어느 쪽으로도 해석되게' 말하는. ambiguous는 의도와 상관없이 중의적인 것, equivocal은 회피 의도가 들어간 것. 반대는 unequivocal(명백한). 동사 equivocate.",
+      "etymology": "라틴어 aequus(같은) + vox(목소리) → '같은 소리로 두 뜻을 내는'"
+    },
+    {
+      "id": "erudite", "word": "erudite", "pos": "adj", "level": 28,
+      "meanings": ["학식이 깊은, 박식한"],
+      "sentences": [
+        { "en": "The professor gave an ___ lecture on medieval poetry.", "ko": "그 교수는 중세 시에 대해 **학식 깊은** 강의를 했다.", "answer": "erudite" },
+        { "en": "She is an ___ scholar of ancient languages.", "ko": "그녀는 고대 언어에 **박식한** 학자다.", "answer": "erudite" }
+      ],
+      "nuance": "책과 연구로 쌓은 '깊은 학문적 지식을 가진'. knowledgeable은 아는 게 많은 것, erudite는 학문적 깊이가 느껴지는 것. 명사 erudition.",
+      "etymology": "라틴어 e(벗어난) + rudis(거친, 미숙한) → '미숙함에서 벗어난'"
+    },
+    {
+      "id": "esoteric", "word": "esoteric", "pos": "adj", "level": 28,
+      "meanings": ["소수만 이해하는, 난해한"],
+      "sentences": [
+        { "en": "The lecture was too ___ for most of the audience.", "ko": "그 강의는 대부분의 청중에게 너무 **난해했다**.", "answer": "esoteric" },
+        { "en": "He has an ___ interest in medieval music theory.", "ko": "그는 중세 음악 이론이라는 **소수만 아는** 분야에 관심이 있다.", "answer": "esoteric" }
+      ],
+      "nuance": "전문 지식이 있는 '소수의 내부자만 아는'. obscure는 잘 알려지지 않은 것, esoteric은 알려졌어도 이해하려면 특별한 배경이 필요한 것.",
+      "etymology": "그리스어 esoterikos(안쪽의) ← eso(안에)"
+    },
+    {
+      "id": "exonerate", "word": "exonerate", "pos": "v", "level": 28,
+      "meanings": ["무죄임을 밝히다, 책임을 면해 주다"],
+      "sentences": [
+        { "en": "DNA evidence ___ him after ten years in prison.", "ko": "DNA 증거는 10년의 수감 끝에 그의 **무죄를 밝혀냈다**.", "answer": "exonerated" },
+        { "en": "The report ___ the pilot of any blame.", "ko": "그 보고서는 조종사에게 어떤 책임도 없다고 **면죄해 주었다**.", "answer": "exonerated" }
+      ],
+      "nuance": "공식적으로 '잘못이 없다고 선언하다'. acquit은 법원의 무죄 판결, exonerate는 더 넓게 비난·책임에서 벗어나게 하는 것. vindicate는 옳았음이 증명되는 것.",
+      "etymology": "라틴어 ex(벗어나) + onus(짐) → '짐을 내려 주다'"
+    },
+    {
+      "id": "extol", "word": "extol", "pos": "v", "level": 28,
+      "meanings": ["극찬하다, 격찬하다"],
+      "sentences": [
+        { "en": "The critics ___ the virtues of her new novel.", "ko": "비평가들은 그녀의 새 소설의 장점을 **극찬했다**.", "answer": "extolled" },
+        { "en": "He never misses a chance to ___ his hometown.", "ko": "그는 고향을 **격찬할** 기회를 절대 놓치지 않는다.", "answer": "extol" }
+      ],
+      "nuance": "열정적으로 '높이 치켜세우며 칭찬하다'. praise보다 훨씬 강하고 격식체. 'extol the virtues of ~'가 관용적.",
+      "etymology": "라틴어 ex(위로) + tollere(들어 올리다) → '들어 올려 높이다'"
+    },
+    {
+      "id": "fastidious", "word": "fastidious", "pos": "adj", "level": 28,
+      "meanings": ["까다로운, 세심하게 신경 쓰는"],
+      "sentences": [
+        { "en": "He is ___ about his appearance.", "ko": "그는 외모에 **까다롭게** 신경 쓴다.", "answer": "fastidious" },
+        { "en": "She keeps her kitchen ___ clean.", "ko": "그녀는 부엌을 **흠잡을 데 없이** 깨끗하게 유지한다.", "answer": "fastidiously" }
+      ],
+      "nuance": "작은 결점도 못 참고 '깔끔함과 정확함에 집착하는'. meticulous는 꼼꼼함(긍정), fastidious는 까다로움이 지나칠 수 있다는 뉘앙스. picky보다 격식체.",
+      "etymology": "라틴어 fastidium(혐오, 까탈) ← fastus(거만함)"
+    },
+    {
+      "id": "fervent", "word": "fervent", "pos": "adj", "level": 28,
+      "meanings": ["열렬한, 간절한"],
+      "sentences": [
+        { "en": "She is a ___ believer in equal rights.", "ko": "그녀는 평등권의 **열렬한** 신봉자다.", "answer": "fervent" },
+        { "en": "It is my ___ hope that peace will return.", "ko": "평화가 돌아오는 것이 나의 **간절한** 바람이다.", "answer": "fervent" }
+      ],
+      "nuance": "감정이 '뜨겁게 타오르는'. passionate와 비슷하지만 fervent는 믿음·소망·지지 같은 추상적 대상에 더 쓴다. 명사 fervor.",
+      "etymology": "라틴어 fervere(끓다, 뜨겁다)"
+    },
+    {
+      "id": "garrulous", "word": "garrulous", "pos": "adj", "level": 28,
+      "meanings": ["수다스러운, 말이 많은"],
+      "sentences": [
+        { "en": "The ___ taxi driver talked the entire trip.", "ko": "**수다스러운** 택시 기사는 가는 내내 말을 했다.", "answer": "garrulous" },
+        { "en": "He becomes ___ after a glass of wine.", "ko": "그는 와인 한 잔을 마시면 **말이 많아진다**.", "answer": "garrulous" }
+      ],
+      "nuance": "하찮은 이야기를 '끊임없이 지루하게 늘어놓는'. talkative는 중립적, garrulous는 듣는 사람이 피곤하다는 뉘앙스. loquacious는 유창하게 말이 많은 것.",
+      "etymology": "라틴어 garrire(재잘거리다)"
+    },
+    {
+      "id": "hackneyed", "word": "hackneyed", "pos": "adj", "level": 28,
+      "meanings": ["진부한, 너무 많이 써서 식상한"],
+      "sentences": [
+        { "en": "The speech was full of ___ phrases.", "ko": "그 연설은 **진부한** 표현들로 가득했다.", "answer": "hackneyed" },
+        { "en": "The plot is ___ and predictable.", "ko": "줄거리는 **식상하고** 예측 가능하다.", "answer": "hackneyed" }
+      ],
+      "nuance": "너무 자주 쓰여 '신선함을 잃은' 말·아이디어. cliché(명사)와 같은 뜻의 형용사. trite, banal과 비슷. old는 단순히 오래된 것.",
+      "etymology": "hackney(빌려 타는 말, 혹사된 말) → '혹사되어 닳아 버린'"
+    },
+    {
+      "id": "iconoclast", "word": "iconoclast", "pos": "n", "level": 28,
+      "meanings": ["관습·전통을 공격하는 사람"],
+      "sentences": [
+        { "en": "As an ___, she challenged every rule of classical music.", "ko": "**전통 파괴자**로서 그녀는 고전 음악의 모든 규칙에 도전했다.", "answer": "iconoclast" },
+        { "en": "The young ___ mocked the traditions of the academy.", "ko": "그 젊은 **이단아**는 학계의 전통을 조롱했다.", "answer": "iconoclast" }
+      ],
+      "nuance": "널리 존중받는 믿음·제도를 '깨부수려 드는 사람'. rebel은 권위에 반항하는 사람 전반, iconoclast는 특히 신성시되는 관습·우상을 공격하는 사람. 형용사 iconoclastic.",
+      "etymology": "그리스어 eikon(성상) + klastes(부수는 사람) → '성상 파괴자'"
+    }
+  ]
+}

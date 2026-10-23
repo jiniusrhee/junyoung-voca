@@ -1,0 +1,104 @@
+{
+  "words": [
+    {
+      "id": "vindicate", "word": "vindicate", "pos": "v", "level": 24,
+      "meanings": ["정당성을 입증하다, 결백을 밝히다"],
+      "sentences": [
+        { "en": "The new evidence ___ him completely.", "ko": "새 증거는 그의 **결백을 완전히 입증했다**.", "answer": "vindicated" },
+        { "en": "Her success ___ her decision to quit her job.", "ko": "그녀의 성공은 직장을 그만둔 결정이 **옳았음을 보여 주었다**.", "answer": "vindicated" }
+      ],
+      "nuance": "비난받던 사람이나 결정이 '결국 옳았음이 드러나다'. justify는 이유를 들어 정당화하는 것, vindicate는 사실로 증명되는 것. 명사 vindication.",
+      "etymology": "라틴어 vindicare(권리를 주장하다, 되찾다)"
+    },
+    {
+      "id": "volatile", "word": "volatile", "pos": "adj", "level": 24,
+      "meanings": ["변덕스러운, 불안정한", "휘발성의"],
+      "sentences": [
+        { "en": "The stock market has been extremely ___ this year.", "ko": "올해 주식 시장은 극도로 **불안정했다**.", "answer": "volatile" },
+        { "en": "He has a ___ temper and gets angry easily.", "ko": "그는 **변덕스러운** 성격이라 쉽게 화를 낸다.", "answer": "volatile" }
+      ],
+      "nuance": "갑자기 '급변할 수 있는'. unstable보다 격식체이고 폭발 직전의 긴장감을 담는다. 화학에서는 쉽게 증발하는 '휘발성'. 명사 volatility(변동성).",
+      "etymology": "라틴어 volare(날다) → '날아가 버리는'"
+    },
+    {
+      "id": "wary", "word": "wary", "pos": "adj", "level": 24,
+      "meanings": ["경계하는, 조심스러운"],
+      "sentences": [
+        { "en": "Be ___ of strangers who ask for money.", "ko": "돈을 요구하는 낯선 사람을 **경계해라**.", "answer": "wary" },
+        { "en": "Investors are ___ about the new company.", "ko": "투자자들은 그 신생 회사에 대해 **조심스러운** 태도다.", "answer": "wary" }
+      ],
+      "nuance": "'be wary of ~'(~를 경계하다). careful은 일반적인 조심성, wary는 위험이나 속임수를 '의심하며' 조심하는 것. weary(지친)와 혼동 주의.",
+      "etymology": "고대 영어 wær(주의하는) → aware와 같은 어원"
+    },
+    {
+      "id": "zealous", "word": "zealous", "pos": "adj", "level": 24,
+      "meanings": ["열성적인, 열심인"],
+      "sentences": [
+        { "en": "She is a ___ supporter of animal rights.", "ko": "그녀는 동물 권리의 **열성적인** 지지자다.", "answer": "zealous" },
+        { "en": "The new recruits were ___ in their work.", "ko": "신입 직원들은 일에 **열심이었다**.", "answer": "zealous" }
+      ],
+      "nuance": "신념·목표에 '불타는 열의를 가진'. enthusiastic은 즐거운 열정, zealous는 때로 지나칠 만큼 강한 헌신. 발음은 [젤러스]. 명사 zeal, 광신자는 zealot.",
+      "etymology": "그리스어 zelos(열정, 질투) → jealous와 같은 뿌리"
+    },
+    {
+      "id": "abate", "word": "abate", "pos": "v", "level": 24,
+      "meanings": ["(기세가) 약해지다, 가라앉다"],
+      "sentences": [
+        { "en": "We waited for the storm to ___.", "ko": "우리는 폭풍이 **잠잠해지기를** 기다렸다.", "answer": "abate" },
+        { "en": "His anger slowly ___.", "ko": "그의 분노는 천천히 **가라앉았다**.", "answer": "abated" }
+      ],
+      "nuance": "폭풍·통증·분노 같은 강한 것이 '점점 누그러지다'. decrease는 양이 줄어드는 것, abate는 세력·강도가 약해지는 것. 명사 abatement(경감).",
+      "etymology": "고대 프랑스어 abattre(쳐서 넘어뜨리다) ← 라틴어 battuere(치다)"
+    },
+    {
+      "id": "acrimonious", "word": "acrimonious", "pos": "adj", "level": 24,
+      "meanings": ["(말·논쟁이) 신랄한, 험악한"],
+      "sentences": [
+        { "en": "The divorce became ___ and lasted two years.", "ko": "그 이혼은 **험악해져** 2년이나 이어졌다.", "answer": "acrimonious" },
+        { "en": "They had an ___ argument over money.", "ko": "그들은 돈 문제로 **신랄한** 언쟁을 벌였다.", "answer": "acrimonious" }
+      ],
+      "nuance": "서로에 대한 '분노와 독기가 가득한' 다툼. bitter와 비슷하지만 격식체이고 주로 논쟁·관계 파탄에 쓴다. 명사 acrimony.",
+      "etymology": "라틴어 acer(날카로운, 쓴) → acrimonia(쓴맛, 신랄함)"
+    },
+    {
+      "id": "admonish", "word": "admonish", "pos": "v", "level": 24,
+      "meanings": ["(부드럽게) 꾸짖다, 타이르다", "충고하다"],
+      "sentences": [
+        { "en": "The teacher ___ the students for talking in class.", "ko": "선생님은 수업 중에 떠든 학생들을 **타일렀다**.", "answer": "admonished" },
+        { "en": "He ___ me to be more careful with my money.", "ko": "그는 돈을 더 조심해서 쓰라고 내게 **충고했다**.", "answer": "admonished" }
+      ],
+      "nuance": "화를 내는 것이 아니라 '진지하게 주의를 주다'. reprimand는 공식적 질책, scold는 감정적 꾸짖음, admonish는 걱정에서 나온 훈계. 명사 admonition.",
+      "etymology": "라틴어 ad(~에게) + monere(경고하다, 일깨우다)"
+    },
+    {
+      "id": "aesthetic", "word": "aesthetic", "pos": "adj", "level": 24,
+      "meanings": ["미적인, 심미적인", "미학, 미적 감각"],
+      "sentences": [
+        { "en": "The building was designed with ___ appeal in mind.", "ko": "그 건물은 **미적인** 매력을 염두에 두고 설계되었다.", "answer": "aesthetic" },
+        { "en": "I love the minimalist ___ of this cafe.", "ko": "나는 이 카페의 미니멀한 **미적 감각**이 마음에 든다.", "answer": "aesthetic" }
+      ],
+      "nuance": "'아름다움에 관한'. beautiful은 아름답다는 평가, aesthetic은 아름다움을 다루는 관점·감각. 영국식 철자 aesthetic, 미국식은 esthetic도 쓴다. 명사 aesthetics(미학).",
+      "etymology": "그리스어 aisthetikos(감각으로 지각하는) ← aisthanesthai(느끼다)"
+    },
+    {
+      "id": "affable", "word": "affable", "pos": "adj", "level": 24,
+      "meanings": ["상냥한, 붙임성 있는"],
+      "sentences": [
+        { "en": "The ___ host made everyone feel welcome.", "ko": "**상냥한** 주인은 모두가 환영받는 기분이 들게 했다.", "answer": "affable" },
+        { "en": "He is ___ and easy to talk to.", "ko": "그는 **붙임성이 있어** 말을 걸기 쉽다.", "answer": "affable" }
+      ],
+      "nuance": "말을 걸기 편하고 '친근하게 대해 주는'. friendly보다 격식체이고 특히 윗사람이 격의 없이 다정하다는 뉘앙스. 명사 affability.",
+      "etymology": "라틴어 affari(말을 걸다) → '말을 걸 수 있는'"
+    },
+    {
+      "id": "altruistic", "word": "altruistic", "pos": "adj", "level": 24,
+      "meanings": ["이타적인"],
+      "sentences": [
+        { "en": "Her decision to donate a kidney was truly ___.", "ko": "신장을 기증하기로 한 그녀의 결정은 진정으로 **이타적이었다**.", "answer": "altruistic" },
+        { "en": "Not all charity is purely ___.", "ko": "모든 자선이 순수하게 **이타적인** 것은 아니다.", "answer": "altruistic" }
+      ],
+      "nuance": "자기 이익을 생각하지 않고 '남을 위해 행동하는'. selfless와 같지만 학술적·격식체. 반대는 selfish, egoistic. 명사 altruism.",
+      "etymology": "프랑스어 autrui(타인) ← 라틴어 alter(다른) → '타인 중심의'"
+    }
+  ]
+}
