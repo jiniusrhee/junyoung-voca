@@ -11,6 +11,8 @@ export const DEFAULT_SETTINGS: Settings = {
   autoSpeak: true,
   speechRate: 'real',
   newWordDifficulty: 'normal',
+  theme: 'system',
+  nickname: '준영',
 };
 
 async function read(): Promise<Settings> {

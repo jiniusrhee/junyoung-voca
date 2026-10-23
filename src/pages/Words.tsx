@@ -11,11 +11,10 @@ type Filter = 'all' | Mastery | 'recentLapse' | 'frequentLapse';
 
 const FILTERS: { key: Filter; label: string }[] = [
   { key: 'all', label: '전체' },
-  { key: 'fresh', label: '갓 배운' },
-  { key: 'shaky', label: '서툰' },
-  { key: 'solid', label: '숙달된' },
   { key: 'strong', label: '매우 숙달된' },
-  { key: 'known', label: '원래 아는' },
+  { key: 'solid', label: '숙달된' },
+  { key: 'fresh', label: '아직 서툰' },
+  { key: 'shaky', label: '재학습 필요' },
   { key: 'recentLapse', label: '최근에 잊은' },
   { key: 'frequentLapse', label: '자주 잊은' },
 ];

@@ -138,4 +138,8 @@ export interface Settings {
   autoSpeak: boolean;
   speechRate: 'real' | 'slow';
   newWordDifficulty: 'easy' | 'normal' | 'hard';
+  /** 다크 모드: 시스템 설정 따르기 / 켜기 / 끄기 */
+  theme: 'system' | 'dark' | 'light';
+  /** 홈 왼쪽 위에 보이는 이름 */
+  nickname: string;
 }

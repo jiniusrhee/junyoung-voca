@@ -27,8 +27,8 @@ export default function Keyboard({ onChar, onBackspace, onSpace, onEnter, onSett
             </button>
           )}
           {row.split('').map((c) => (
-            <button key={c} className="kb-key" onPointerDown={press(() => onChar(c))}>
-              {c}
+            <button key={c} className="kb-key" onPointerDown={press(() => onChar(c))} aria-label={c}>
+              {c.toUpperCase()}
             </button>
           ))}
           {r === 2 && (
@@ -39,9 +39,7 @@ export default function Keyboard({ onChar, onBackspace, onSpace, onEnter, onSett
         </div>
       ))}
       <div className="kb-row bottom">
-        <button className="kb-key gray wide" onPointerDown={press(onSettings)}>
-          <Icon name="gear" size={16} /> 설정
-        </button>
+        <button className="kb-key gray wide" onPointerDown={press(onSettings)} aria-label="설정" />
         <button className="kb-key space" onPointerDown={press(onSpace)} aria-label="띄어쓰기">
           <span className="space-glyph" />
         </button>

@@ -27,9 +27,9 @@ describe('stats', () => {
     expect(formatAgo(new Date(now.getTime() - 86_400_000), now)).toBe('1일 전');
   });
 
-  it('builds a Monday-first week', () => {
+  it('builds a Sunday-first week', () => {
     const w = weekOf('2026-10-23');
-    expect(w[0]).toBe('2026-10-19');
-    expect(w[6]).toBe('2026-10-25');
+    expect(w[0]).toBe('2026-10-18');
+    expect(w[6]).toBe('2026-10-24');
   });
 });

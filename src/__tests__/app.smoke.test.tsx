@@ -119,7 +119,9 @@ describe('app smoke', () => {
     render(<App />);
     await screen.findByRole('button', { name: /힌트 보기/ }, { timeout: 10_000 });
     const { word, sentence } = await current();
-    const wrong = sentence.alts?.find((a) => a.t !== 'ok')?.w ?? 'zzzz';
+    // 정답으로 시작하는 오답(예: see → seen)은 입력 도중 자동 채점되므로 제외
+    const wrong =
+      sentence.alts?.find((a) => a.t !== 'ok' && !a.w.toLowerCase().startsWith(sentence.answer.toLowerCase()))?.w ?? 'zzzz';
 
     await type(wrong);
     await press('Enter');

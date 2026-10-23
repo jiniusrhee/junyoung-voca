@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import Icon, { type IconName } from './Icon';
 
+/** 말해보카 하단 탭 (리그·프리미엄 제외) */
 const items: { to: string; label: string; icon: IconName }[] = [
-  { to: '/', label: '어휘', icon: 'book' },
-  { to: '/stats', label: '기록', icon: 'chart' },
-  { to: '/dict', label: '사전', icon: 'search' },
-  { to: '/settings', label: '설정', icon: 'gear' },
+  { to: '/', label: '홈', icon: 'house' },
+  { to: '/stats', label: '학습 통계', icon: 'pie' },
+  { to: '/all', label: '전체 학습', icon: 'grid' },
 ];
 
 export default function BottomNav() {
@@ -13,7 +13,7 @@ export default function BottomNav() {
     <nav className="bottom-nav">
       {items.map((it) => (
         <NavLink key={it.to} to={it.to} end={it.to === '/'} className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-          <Icon name={it.icon} size={24} />
+          <Icon name={it.icon} size={28} />
           <span>{it.label}</span>
         </NavLink>
       ))}

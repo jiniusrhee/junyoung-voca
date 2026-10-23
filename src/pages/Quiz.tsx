@@ -1,10 +1,11 @@
 import { useLiveQuery } from 'dexie-react-hooks';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import AfterPanel from '../components/AfterPanel';
 import Icon from '../components/Icon';
 import Keyboard from '../components/Keyboard';
 import Mascot from '../components/Mascot';
+import VocabSettings from '../components/VocabSettings';
 import QuizCard, { FilledSentence, KoSentence, type CardBadge } from '../components/QuizCard';
 import WrongItem from '../components/WrongItem';
 import { db } from '../db';
@@ -56,6 +57,8 @@ const freshLive = (q: Question): Live => ({
 export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const settings = useSettings();
   const nav = useNavigate();
+  const [params] = useSearchParams();
+  const extraTarget = Number(params.get('target')) || 0;
   const [phase, setPhase] = useState<Phase>('loading');
   const [live, setLive] = useState<Live | null>(null);
   const [answered, setAnswered] = useState<Answered | null>(null);
@@ -105,6 +108,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const finishTest = useCallback(async (t: LevelTest) => {
     const lvl = t.finalLevel();
     await saveSettings({ level: lvl });
+    await db.kv.put({ key: 'levelTestDate', value: studyDateOf() });
     setTestLevel(lvl);
     setPhase('testResult');
   }, []);
@@ -432,7 +436,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const q = live.q;
   const sentence = sentenceOf(q);
   const goal = settings.dailyGoal;
-  const total = mode === 'test' ? LEVEL_TEST_QUESTIONS : goal;
+  const total = mode === 'test' ? LEVEL_TEST_QUESTIONS : Math.max(goal, extraTarget);
   const count = mode === 'test' ? testAsked : todayTotal;
   const fill = Math.min(1, count / total);
   const isAnswered = phase === 'answered' && answered;
@@ -607,7 +611,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
               <span>{live.hints === 0 ? '힌트 보기' : '정답 보기'}</span>
             </button>
             <div className="toolbar-center">
-              <span className={`bubble ${live.input ? '' : 'empty'}`}>{live.input || ' '}</span>
+              {live.input && <span className="bubble">{live.input}</span>}
             </div>
             <button className="tool-btn" onClick={() => setInputMode('voice')} disabled={!canRecognize()}>
               <Icon name="mic" size={26} className="ic-purple" />
@@ -646,28 +650,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       )}
 
       {showSettings && (
-        <div className="sheet-dim" onClick={() => setShowSettings(false)}>
-          <div className="sheet" onClick={(e) => e.stopPropagation()}>
-            <div className="sheet-grip" />
-            <p className="sheet-title">학습 설정</p>
-            <SheetToggle label="정답을 다 입력하면 바로 채점" checked={settings.autoCheck} onChange={(v) => void saveSettings({ autoCheck: v })} />
-            <SheetToggle label="정답 후 문장 읽어주기" checked={settings.autoSpeak} onChange={(v) => void saveSettings({ autoSpeak: v })} />
-            <SheetToggle label="빈칸 길이를 정답 길이에 맞추기" checked={settings.blankMatchesLength} onChange={(v) => void saveSettings({ blankMatchesLength: v })} />
-            <SheetToggle label="듣기평가 속도로 읽기" checked={settings.speechRate === 'slow'} onChange={(v) => void saveSettings({ speechRate: v ? 'slow' : 'real' })} />
-            <div className="sheet-row">
-              <span>새 단어 난이도</span>
-              <div className="segmented">
-                {(['easy', 'normal', 'hard'] as const).map((d) => (
-                  <button key={d} className={settings.newWordDifficulty === d ? 'active' : ''} onClick={() => void saveSettings({ newWordDifficulty: d })}>
-                    {d === 'easy' ? '쉬운 위주' : d === 'normal' ? '보통' : '어려운 위주'}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <button className="btn primary big" onClick={() => setShowSettings(false)}>
-              닫기
-            </button>
-          </div>
+        <div className="vs-overlay">
+          <VocabSettings s={settings} onBack={() => setShowSettings(false)} />
         </div>
       )}
 
@@ -679,16 +663,6 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         />
       )}
     </div>
-  );
-}
-
-function SheetToggle({ label, checked, onChange }: { label: string; checked: boolean; onChange: (v: boolean) => void }) {
-  return (
-    <label className="toggle-row">
-      <span>{label}</span>
-      <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} />
-      <span className="toggle" />
-    </label>
   );
 }
 

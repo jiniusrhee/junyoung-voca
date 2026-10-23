@@ -3,6 +3,8 @@ import { HashRouter, Navigate, Route, Routes, useLocation } from 'react-router-d
 import BottomNav from './components/BottomNav';
 import { syncContent } from './lib/content';
 import { useSettings } from './lib/settings';
+import { useApplyTheme } from './lib/theme';
+import AllLearning from './pages/AllLearning';
 import Dictionary from './pages/Dictionary';
 import Favorites from './pages/Favorites';
 import Home from './pages/Home';
@@ -14,11 +16,12 @@ import WordDetail from './pages/WordDetail';
 import Words from './pages/Words';
 import WrongNotes from './pages/WrongNotes';
 
-const TABS = ['/', '/stats', '/dict', '/settings'];
+const TABS = ['/', '/stats', '/all'];
 
 function Shell() {
   const settings = useSettings();
   const loc = useLocation();
+  useApplyTheme(settings?.theme);
   if (!settings) return <div className="screen center muted">불러오는 중…</div>;
   const needsOnboarding = settings.level == null;
   const showNav = TABS.includes(loc.pathname) && !(loc.pathname === '/' && needsOnboarding);
@@ -30,12 +33,14 @@ function Shell() {
         <Route path="/test" element={<Quiz mode="test" />} />
         <Route path="/quiz" element={needsOnboarding ? <Navigate to="/welcome" replace /> : <Quiz mode="study" />} />
         <Route path="/stats" element={<Stats />} />
+        <Route path="/all" element={<AllLearning />} />
         <Route path="/dict" element={<Dictionary />} />
         <Route path="/words" element={<Words />} />
         <Route path="/words/:id" element={<WordDetail />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/wrongs" element={<WrongNotes />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/settings/:section" element={<Settings />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       {showNav && <BottomNav />}

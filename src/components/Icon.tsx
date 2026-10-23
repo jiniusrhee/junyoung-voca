@@ -33,7 +33,16 @@ export type IconName =
   | 'hourglass'
   | 'xcircle'
   | 'bookPerson'
-  | 'shield';
+  | 'shield'
+  | 'house'
+  | 'pie'
+  | 'grid'
+  | 'ruby'
+  | 'dict'
+  | 'clock'
+  | 'gbook'
+  | 'talk'
+  | 'headphones';
 
 interface Props {
   name: IconName;
@@ -246,6 +255,65 @@ const PATHS: Record<IconName, ReactElement> = {
       <circle cx="12" cy="5.5" r="3.2" />
       <path d="M2 10.5c3.6-1.2 7-.8 9.3 1.3v9.6c-2.4-1.8-5.7-2.1-9.3-1z" />
       <path d="M22 10.5c-3.6-1.2-7-.8-9.3 1.3v9.6c2.4-1.8 5.7-2.1 9.3-1z" />
+    </g>
+  ),
+  house: <path d="M3 11.2 12 3.5l9 7.7V20a1.5 1.5 0 0 1-1.5 1.5H15v-6h-6v6H4.5A1.5 1.5 0 0 1 3 20z" fill="currentColor" stroke="none" />,
+  pie: (
+    <g fill="currentColor" stroke="none">
+      <path d="M11 3.1A9 9 0 1 0 20.9 13H11z" />
+      <path d="M13 2.1V11h8.9A9 9 0 0 0 13 2.1z" opacity="0.75" />
+    </g>
+  ),
+  grid: (
+    <g fill="currentColor" stroke="none">
+      <rect x="3" y="3" width="8" height="8" rx="2.2" />
+      <rect x="13" y="3" width="8" height="8" rx="2.2" />
+      <rect x="3" y="13" width="8" height="8" rx="2.2" />
+      <rect x="13" y="13" width="8" height="8" rx="2.2" />
+    </g>
+  ),
+  ruby: (
+    <g stroke="none">
+      <path d="M6 4h12l4 5-10 12L2 9z" fill="#ff6b81" />
+      <path d="M2 9h20L12 21z" fill="#e8475f" />
+      <path d="M8.5 4 7 9h10l-1.5-5z" fill="#ffa3b1" />
+    </g>
+  ),
+  gbook: (
+    <g stroke="none">
+      <path d="M5 3h12.5A1.5 1.5 0 0 1 19 4.5V19H6.5A1.5 1.5 0 0 0 5 20.5z" fill="currentColor" />
+      <path d="M5 20.5A1.5 1.5 0 0 1 6.5 19H19v2H6.5A1.5 1.5 0 0 1 5 20.5z" fill="currentColor" opacity="0.6" />
+      <text x="12" y="15" textAnchor="middle" fontSize="10" fontWeight="800" fill="#1d2b33" fontFamily="system-ui, sans-serif">G</text>
+    </g>
+  ),
+  talk: (
+    <g stroke="none" fill="currentColor">
+      <path d="M8 3h12a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 1 20 14h-1.5v3l-3.5-3H8a1.5 1.5 0 0 1-1.5-1.5v-8A1.5 1.5 0 0 1 8 3z" />
+      <path d="M4 8h1.5v5.5A2.5 2.5 0 0 0 8 16h6l-2 2H7.5l-3 2.5V18H4a1.5 1.5 0 0 1-1.5-1.5v-7A1.5 1.5 0 0 1 4 8z" opacity="0.7" />
+      <rect x="10" y="6.5" width="8" height="1.6" rx="0.8" fill="#2b3320" />
+      <rect x="10" y="9.5" width="5.5" height="1.6" rx="0.8" fill="#2b3320" />
+    </g>
+  ),
+  headphones: (
+    <g>
+      <path d="M4 15v-3a8 8 0 0 1 16 0v3" strokeWidth={2.4} />
+      <rect x="2.5" y="13.5" width="5" height="7.5" rx="2" fill="currentColor" stroke="none" />
+      <rect x="16.5" y="13.5" width="5" height="7.5" rx="2" fill="currentColor" stroke="none" />
+    </g>
+  ),
+  clock: (
+    <g>
+      <circle cx="12" cy="12" r="9.5" fill="#cfe0f7" stroke="none" />
+      <circle cx="12" cy="12" r="7.6" fill="#fff" stroke="none" />
+      <path d="M12 7.5V12l3 2" stroke="#3b6fb6" strokeWidth={2} />
+    </g>
+  ),
+  dict: (
+    <g>
+      <rect x="3" y="2.5" width="14" height="19" rx="2" fill="#5b8fd6" stroke="none" />
+      <rect x="5.5" y="5" width="9" height="2" rx="1" fill="#cfe2ff" stroke="none" />
+      <circle cx="16" cy="15.5" r="4.2" fill="#2b3a55" stroke="#cfe2ff" strokeWidth={1.8} />
+      <line x1="19" y1="18.5" x2="21.5" y2="21" stroke="#cfe2ff" strokeWidth={2.2} />
     </g>
   ),
   shield: (

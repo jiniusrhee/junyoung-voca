@@ -12,7 +12,7 @@ describe('scheduler', () => {
     expect(row.state).toBe(State.Review);
     const days = (row.due.getTime() - now.getTime()) / 86_400_000;
     expect(days).toBeGreaterThanOrEqual(KNOWN_WORD_DAYS - 0.01);
-    expect(masteryOf(row)).toBe('known');
+    expect(masteryOf(row)).toBe('strong');
   });
 
   it('brings a failed new word back within minutes', () => {

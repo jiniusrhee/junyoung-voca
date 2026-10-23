@@ -82,18 +82,20 @@ export function applyReview(
   return { row: { ...row, ...next, known: row.known ?? false }, grade, known: false };
 }
 
-export type Mastery = 'fresh' | 'shaky' | 'solid' | 'strong' | 'known';
+/** 말해보카 학습 통계의 숙련도 4단계 */
+export type Mastery = 'strong' | 'solid' | 'fresh' | 'shaky';
 
 export const MASTERY_KO: Record<Mastery, string> = {
-  fresh: '갓 배운 단어',
-  shaky: '서툰 단어',
-  solid: '숙달된 단어',
   strong: '매우 숙달된 단어',
-  known: '원래 아는 단어',
+  solid: '숙달된 단어',
+  fresh: '아직 서툰 단어',
+  shaky: '재학습 필요 단어',
 };
 
+export const MASTERY_ORDER: Mastery[] = ['strong', 'solid', 'fresh', 'shaky'];
+
 export function masteryOf(row: CardRow): Mastery {
-  if (row.known && row.lapses === 0) return 'known';
+  if (row.known && row.lapses === 0) return 'strong';
   if (row.state === State.Review && row.stability >= 90) return 'strong';
   if (row.state === State.Review && row.stability >= 21) return 'solid';
   if (row.lapses >= 1) return 'shaky';
@@ -102,5 +104,5 @@ export function masteryOf(row: CardRow): Mastery {
 
 export function isKnownOrSolid(row: CardRow): boolean {
   const m = masteryOf(row);
-  return m === 'known' || m === 'solid' || m === 'strong';
+  return m === 'solid' || m === 'strong';
 }
