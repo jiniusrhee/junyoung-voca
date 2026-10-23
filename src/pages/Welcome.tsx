@@ -1,12 +1,14 @@
 import { useLiveQuery } from 'dexie-react-hooks';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import Mascot from '../components/Mascot';
 import { db } from '../db';
 import { syncContent } from '../lib/content';
+import { useSettings } from '../lib/settings';
 
 export default function Welcome() {
   const nav = useNavigate();
+  const settings = useSettings();
   const count = useLiveQuery(() => db.words.count(), []);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
@@ -22,6 +24,9 @@ export default function Welcome() {
       setBusy(false);
     }
   };
+
+  // 들여온 기록으로 레벨이 정해지면 테스트 없이 바로 홈으로
+  if (settings && settings.level != null) return <Navigate to="/" replace />;
 
   return (
     <div className="welcome">
