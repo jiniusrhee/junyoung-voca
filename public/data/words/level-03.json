@@ -4,8 +4,25 @@
       "id": "visit", "word": "visit", "pos": "v", "level": 3,
       "meanings": ["방문하다"],
       "sentences": [
-        { "en": "We plan to ___ our grandparents this weekend.", "ko": "이번 주말에 할아버지 할머니를 **찾아뵐** 계획이다.", "answer": "visit" },
-        { "en": "Thousands of tourists ___ the palace every year.", "ko": "매년 수천 명의 관광객이 그 궁궐을 **방문한다**.", "answer": "visit" }
+        {
+          "en": "We plan to ___ our grandparents this weekend.", "ko": "이번 주말에 할아버지 할머니를 **찾아뵐** 계획이다.", "answer": "visit",
+          "ctx": "주말 계획을 세우며",
+          "note": "직접 찾아가 만난다는 뜻",
+          "alts": [
+            { "w": "see", "t": "ok", "m": "see도 맞지만, 일부러 찾아가는 느낌을 살린 단어를 생각해 보세요." },
+            { "w": "meet", "t": "near", "m": "meet은 주로 처음 만나거나 약속해서 만날 때 써요. 찾아가 뵙는 것을 생각해 보세요." },
+            { "w": "go", "t": "wrong", "m": "go 뒤에는 to가 있어야 해요. 사람을 바로 목적어로 받는 단어를 생각해 보세요." }
+          ]
+        },
+        {
+          "en": "Thousands of tourists ___ the palace every year.", "ko": "매년 수천 명의 관광객이 그 궁궐을 **방문한다**.", "answer": "visit",
+          "ctx": "관광 안내 책자에서",
+          "alts": [
+            { "w": "tour", "t": "ok", "m": "tour도 쓸 수 있지만, '방문하다'를 뜻하는 더 기본적인 단어를 생각해 보세요." },
+            { "w": "see", "t": "near", "m": "see는 '보다'예요. 직접 찾아가는 것을 생각해 보세요." },
+            { "w": "travel", "t": "wrong", "m": "travel은 travel to처럼 써요. 장소를 바로 목적어로 받지 않아요." }
+          ]
+        }
       ],
       "nuance": "'visit to 장소'가 아니라 'visit 장소'(타동사). 명사로도 쓴다: pay a visit to."
     },
@@ -13,8 +30,23 @@
       "id": "arrive", "word": "arrive", "pos": "v", "level": 3,
       "meanings": ["도착하다"],
       "sentences": [
-        { "en": "What time does the train ___?", "ko": "기차가 몇 시에 **도착하나요**?", "answer": "arrive" },
-        { "en": "We ___ at the airport two hours early.", "ko": "우리는 공항에 두 시간 일찍 **도착했다**.", "answer": "arrived" }
+        {
+          "en": "What time does the train ___?", "ko": "기차가 몇 시에 **도착하나요**?", "answer": "arrive",
+          "ctx": "역 매표소에서",
+          "alts": [
+            { "w": "come", "t": "ok", "m": "come도 쓸 수 있지만, '도착하다'를 정확히 뜻하는 단어를 생각해 보세요." },
+            { "w": "reach", "t": "wrong", "m": "reach는 목적어가 꼭 필요해요. 뒤에 장소가 없으니 다른 단어가 필요해요." },
+            { "w": "get", "t": "wrong", "m": "get은 get here처럼 장소 표현이 함께 와야 해요." }
+          ]
+        },
+        {
+          "en": "We ___ at the airport two hours early.", "ko": "우리는 공항에 두 시간 일찍 **도착했다**.", "answer": "arrived",
+          "alts": [
+            { "w": "landed", "t": "near", "m": "landed는 비행기가 '착륙했다'예요. 사람이 공항에 닿은 것을 생각해 보세요." },
+            { "w": "reached", "t": "wrong", "m": "reached는 at 없이 바로 장소가 와요. 뒤의 at을 보세요." },
+            { "w": "got", "t": "wrong", "m": "got은 got to처럼 to와 함께 써요. at과는 어울리지 않아요." }
+          ]
+        }
       ],
       "nuance": "도시·나라 같은 넓은 곳은 arrive in, 건물·역처럼 좁은 지점은 arrive at. reach는 전치사 없이 바로 목적어."
     },
@@ -22,8 +54,24 @@
       "id": "leave", "word": "leave", "pos": "v", "level": 3,
       "meanings": ["떠나다", "놓아두다"],
       "sentences": [
-        { "en": "I have to ___ now, or I will miss the bus.", "ko": "지금 **떠나야** 해, 안 그러면 버스를 놓칠 거야.", "answer": "leave" },
-        { "en": "Don't ___ your bag here.", "ko": "가방을 여기 **두고 가지** 마.", "answer": "leave" }
+        {
+          "en": "I have to ___ now, or I will miss the bus.", "ko": "지금 **떠나야** 해, 안 그러면 버스를 놓칠 거야.", "answer": "leave",
+          "ctx": "친구 집에서 일어서며",
+          "alts": [
+            { "w": "go", "t": "ok", "m": "go도 맞지만, 지금 있는 곳을 '떠나다'를 뜻하는 단어를 생각해 보세요." },
+            { "w": "depart", "t": "near", "m": "depart는 비행기·기차 출발처럼 격식체예요. 일상적인 말을 생각해 보세요." },
+            { "w": "start", "t": "wrong", "m": "start는 '시작하다'예요. 자리를 떠나는 것과는 달라요." }
+          ]
+        },
+        {
+          "en": "Don't ___ your bag here.", "ko": "가방을 여기 **두고 가지** 마.", "answer": "leave",
+          "note": "물건을 두고 간다는 뜻",
+          "alts": [
+            { "w": "put", "t": "near", "m": "put은 '놓다'라는 동작이에요. 놓고 '가 버리는' 것을 생각해 보세요." },
+            { "w": "forget", "t": "wrong", "m": "forget 뒤에는 장소(here)를 쓰지 않아요. 물건을 두고 갈 땐 다른 단어를 써요." },
+            { "w": "keep", "t": "wrong", "m": "keep은 '보관하다, 계속 가지다'예요. 두고 가는 것과는 달라요." }
+          ]
+        }
       ],
       "nuance": "'떠나다'와 '놓아두다' 두 뜻이 핵심. leave for Paris는 파리로 떠나다, leave Paris는 파리를 떠나다. 과거형은 left."
     },
@@ -31,8 +79,23 @@
       "id": "borrow", "word": "borrow", "pos": "v", "level": 3,
       "meanings": ["빌리다"],
       "sentences": [
-        { "en": "Can I ___ your pen for a second?", "ko": "펜 잠깐 **빌릴** 수 있을까?", "answer": "borrow" },
-        { "en": "He ___ money from the bank to buy a car.", "ko": "그는 차를 사기 위해 은행에서 돈을 **빌렸다**.", "answer": "borrowed" }
+        {
+          "en": "Can I ___ your pen for a second?", "ko": "펜 잠깐 **빌릴** 수 있을까?", "answer": "borrow",
+          "ctx": "수업 시간에",
+          "alts": [
+            { "w": "use", "t": "ok", "m": "use도 맞지만, '빌리다'를 정확히 뜻하는 단어를 생각해 보세요." },
+            { "w": "rent", "t": "near", "m": "rent는 돈을 내고 빌리는 거예요. 펜을 잠깐 빌리는 상황과는 달라요." },
+            { "w": "lend", "t": "wrong", "m": "lend는 '빌려주다'예요. 내가 빌리는 거라면 다른 단어가 필요해요." }
+          ]
+        },
+        {
+          "en": "He ___ money from the bank to buy a car.", "ko": "그는 차를 사기 위해 은행에서 돈을 **빌렸다**.", "answer": "borrowed",
+          "alts": [
+            { "w": "got", "t": "ok", "m": "got도 쓸 수 있지만, '빌렸다'를 정확히 말하는 단어를 생각해 보세요." },
+            { "w": "rented", "t": "near", "m": "rented는 집·차 같은 물건을 빌릴 때 써요. 돈을 빌릴 땐 다른 단어를 써요." },
+            { "w": "lent", "t": "wrong", "m": "lent는 '빌려주었다'예요. 은행에서 받아 오는 것을 생각해 보세요." }
+          ]
+        }
       ],
       "nuance": "borrow는 '받아서' 빌리는 것, lend는 '내주어' 빌려주는 것. 한국어 '빌리다'와 '빌려주다'를 꼭 구분."
     },
@@ -40,8 +103,24 @@
       "id": "carry", "word": "carry", "pos": "v", "level": 3,
       "meanings": ["들고 가다, 운반하다"],
       "sentences": [
-        { "en": "Let me ___ that heavy bag for you.", "ko": "그 무거운 가방 제가 **들어** 드릴게요.", "answer": "carry" },
-        { "en": "The bus ___ fifty passengers.", "ko": "그 버스는 승객 50명을 **태우고 간다**.", "answer": "carries" }
+        {
+          "en": "Let me ___ that heavy bag for you.", "ko": "그 무거운 가방 제가 **들어** 드릴게요.", "answer": "carry",
+          "ctx": "무거운 짐을 든 사람에게",
+          "alts": [
+            { "w": "take", "t": "ok", "m": "take도 맞지만, 들고 옮긴다는 느낌을 살린 단어를 생각해 보세요." },
+            { "w": "hold", "t": "near", "m": "hold는 손에 쥐고 있는 상태예요. 들고 옮겨 주는 것을 생각해 보세요." },
+            { "w": "lift", "t": "near", "m": "lift는 위로 '들어 올리다'예요. 들고 가는 것을 생각해 보세요." }
+          ]
+        },
+        {
+          "en": "The bus ___ fifty passengers.", "ko": "그 버스는 승객 50명을 **태우고 간다**.", "answer": "carries",
+          "note": "승객을 싣고 나른다는 뜻",
+          "alts": [
+            { "w": "takes", "t": "ok", "m": "takes도 쓸 수 있지만, 승객을 싣고 나르는 뜻을 생각해 보세요." },
+            { "w": "holds", "t": "near", "m": "holds는 수용할 수 있는 인원을 말해요. 태우고 이동하는 것을 생각해 보세요." },
+            { "w": "rides", "t": "wrong", "m": "rides는 사람이 탈것을 '타다'예요. 버스가 승객을 태우는 것은 다른 말이에요." }
+          ]
+        }
       ],
       "nuance": "hold는 '손에 쥐고 있는' 상태, carry는 '들고 이동'. 'carry out'은 '수행하다'."
     },
@@ -49,8 +128,22 @@
       "id": "famous", "word": "famous", "pos": "adj", "level": 3,
       "meanings": ["유명한"],
       "sentences": [
-        { "en": "Paris is ___ for its museums.", "ko": "파리는 박물관으로 **유명하다**.", "answer": "famous" },
-        { "en": "He became a ___ singer in his twenties.", "ko": "그는 20대에 **유명한** 가수가 되었다.", "answer": "famous" }
+        {
+          "en": "Paris is ___ for its museums.", "ko": "파리는 박물관으로 **유명하다**.", "answer": "famous",
+          "alts": [
+            { "w": "known", "t": "ok", "m": "known for도 맞지만, '유명하다'를 더 강하게 말하는 단어를 생각해 보세요." },
+            { "w": "popular", "t": "near", "m": "popular는 '인기 있는'이에요. 무엇으로 이름났는지 말할 땐 다른 단어를 써요." },
+            { "w": "notorious", "t": "wrong", "m": "notorious는 나쁜 일로 '악명 높은'이에요." }
+          ]
+        },
+        {
+          "en": "He became a ___ singer in his twenties.", "ko": "그는 20대에 **유명한** 가수가 되었다.", "answer": "famous",
+          "alts": [
+            { "w": "well-known", "t": "ok", "m": "well-known도 맞지만, 더 짧고 기본적인 단어를 떠올려 보세요." },
+            { "w": "popular", "t": "near", "m": "popular는 '인기 있는'이에요. 이름이 널리 알려진 것을 생각해 보세요." },
+            { "w": "fame", "t": "wrong", "m": "fame은 '명성'이라는 명사예요. singer 앞에는 형용사가 와야 해요." }
+          ]
+        }
       ],
       "nuance": "'famous for ~'(~로 유명한). 나쁜 일로 악명 높은 것은 notorious, infamous."
     },
@@ -58,8 +151,24 @@
       "id": "quiet", "word": "quiet", "pos": "adj", "level": 3,
       "meanings": ["조용한"],
       "sentences": [
-        { "en": "Please be ___ in the library.", "ko": "도서관에서는 **조용히** 해 주세요.", "answer": "quiet" },
-        { "en": "It was a ___ night with no cars on the road.", "ko": "길에 차 한 대 없는 **고요한** 밤이었다.", "answer": "quiet" }
+        {
+          "en": "Please be ___ in the library.", "ko": "도서관에서는 **조용히** 해 주세요.", "answer": "quiet",
+          "ctx": "도서관 안내문",
+          "alts": [
+            { "w": "silent", "t": "ok", "m": "silent도 맞지만 '완전한 침묵'이에요. 소리를 줄이라는 뜻을 생각해 보세요." },
+            { "w": "quietly", "t": "wrong", "m": "quietly는 부사예요. be 뒤에는 형용사가 와야 해요." },
+            { "w": "quite", "t": "wrong", "m": "quite는 '꽤'라는 뜻이에요. 철자가 비슷하니 주의하세요." }
+          ]
+        },
+        {
+          "en": "It was a ___ night with no cars on the road.", "ko": "길에 차 한 대 없는 **고요한** 밤이었다.", "answer": "quiet",
+          "note": "소리가 거의 없이 고요하다는 뜻",
+          "alts": [
+            { "w": "silent", "t": "ok", "m": "silent도 맞지만, 소리가 적어 평온한 느낌의 기본 단어를 생각해 보세요." },
+            { "w": "calm", "t": "near", "m": "calm은 바다나 마음이 '잔잔한'에 잘 써요. 소리가 적은 밤을 생각해 보세요." },
+            { "w": "quite", "t": "wrong", "m": "quite는 '꽤'라는 부사예요. 철자가 비슷해 헷갈리기 쉬워요." }
+          ]
+        }
       ],
       "nuance": "quite(꽤)와 철자가 비슷해 자주 틀린다. silent는 소리가 전혀 없는 '침묵', quiet는 소리가 적은 상태."
     },
@@ -67,8 +176,24 @@
       "id": "busy", "word": "busy", "pos": "adj", "level": 3,
       "meanings": ["바쁜", "붐비는"],
       "sentences": [
-        { "en": "I am too ___ to go out tonight.", "ko": "오늘 밤은 너무 **바빠서** 못 나가.", "answer": "busy" },
-        { "en": "The streets were ___ with shoppers.", "ko": "거리는 쇼핑하는 사람들로 **붐볐다**.", "answer": "busy" }
+        {
+          "en": "I am too ___ to go out tonight.", "ko": "오늘 밤은 너무 **바빠서** 못 나가.", "answer": "busy",
+          "ctx": "친구의 저녁 약속을 거절하며",
+          "alts": [
+            { "w": "tired", "t": "near", "m": "tired는 '피곤한'이에요. 할 일이 많아서 못 나가는 상황을 생각해 보세요." },
+            { "w": "business", "t": "wrong", "m": "business는 '사업'이라는 명사예요. am 뒤에는 형용사가 와야 해요." },
+            { "w": "hurry", "t": "wrong", "m": "hurry는 '서두르다'예요. 할 일이 많다는 말을 생각해 보세요." }
+          ]
+        },
+        {
+          "en": "The streets were ___ with shoppers.", "ko": "거리는 쇼핑하는 사람들로 **붐볐다**.", "answer": "busy",
+          "note": "사람이 많아 붐빈다는 뜻",
+          "alts": [
+            { "w": "crowded", "t": "ok", "m": "crowded도 맞지만, 더 짧고 일상적인 단어를 생각해 보세요." },
+            { "w": "full", "t": "near", "m": "full은 full of처럼 of와 함께 써요. with와 어울리는 단어를 생각해 보세요." },
+            { "w": "noisy", "t": "near", "m": "noisy는 '시끄러운'이에요. 사람이 많아 붐비는 것을 생각해 보세요." }
+          ]
+        }
       ],
       "nuance": "'be busy -ing'(~하느라 바쁘다). 전화가 통화 중일 때도 The line is busy."
     },
@@ -76,8 +201,24 @@
       "id": "enough", "word": "enough", "pos": "det", "level": 3,
       "meanings": ["충분한, 충분히"],
       "sentences": [
-        { "en": "Do we have ___ chairs for everyone?", "ko": "모두 앉을 **충분한** 의자가 있나요?", "answer": "enough" },
-        { "en": "He is old ___ to drive.", "ko": "그는 운전할 만큼 **충분히** 나이가 들었다.", "answer": "enough" }
+        {
+          "en": "Do we have ___ chairs for everyone?", "ko": "모두 앉을 **충분한** 의자가 있나요?", "answer": "enough",
+          "ctx": "파티 준비를 하며",
+          "alts": [
+            { "w": "sufficient", "t": "ok", "m": "sufficient도 맞지만 격식체예요. 더 일상적인 단어를 생각해 보세요." },
+            { "w": "many", "t": "near", "m": "many는 '많은'이에요. 모두 앉기에 모자라지 않은지를 묻고 있어요." },
+            { "w": "plenty", "t": "wrong", "m": "plenty는 plenty of처럼 of와 함께 써야 해요." }
+          ]
+        },
+        {
+          "en": "He is old ___ to drive.", "ko": "그는 운전할 만큼 **충분히** 나이가 들었다.", "answer": "enough",
+          "note": "운전할 나이가 됐다는 뜻",
+          "alts": [
+            { "w": "sufficiently", "t": "wrong", "m": "sufficiently는 형용사 앞에 와요(sufficiently old). 뒤에 오는 단어를 생각해 보세요." },
+            { "w": "very", "t": "wrong", "m": "very는 old 앞에 와야 해요. 형용사 뒤에서 '충분히'를 나타내는 단어가 필요해요." },
+            { "w": "too", "t": "wrong", "m": "too는 형용사 앞에 오고, '너무 ~해서 못 한다'는 반대 뜻이에요." }
+          ]
+        }
       ],
       "nuance": "명사 앞에는 'enough 명사', 형용사·부사 뒤에는 '형용사 enough'(old enough). 순서 주의."
     },
@@ -85,8 +226,23 @@
       "id": "often", "word": "often", "pos": "adv", "level": 3,
       "meanings": ["자주"],
       "sentences": [
-        { "en": "How ___ do you exercise?", "ko": "얼마나 **자주** 운동하세요?", "answer": "often" },
-        { "en": "We ___ eat out on Fridays.", "ko": "우리는 금요일에 **자주** 외식한다.", "answer": "often" }
+        {
+          "en": "How ___ do you exercise?", "ko": "얼마나 **자주** 운동하세요?", "answer": "often",
+          "ctx": "헬스장 상담에서",
+          "alts": [
+            { "w": "frequently", "t": "ok", "m": "How frequently도 맞지만 격식체예요. 더 일상적인 단어를 생각해 보세요." },
+            { "w": "long", "t": "near", "m": "How long은 '얼마나 오래'예요. 운동 시간이 아니라 횟수를 묻고 있어요." },
+            { "w": "much", "t": "wrong", "m": "How much는 양이나 가격을 물을 때 써요. 횟수를 생각해 보세요." }
+          ]
+        },
+        {
+          "en": "We ___ eat out on Fridays.", "ko": "우리는 금요일에 **자주** 외식한다.", "answer": "often",
+          "alts": [
+            { "w": "frequently", "t": "ok", "m": "frequently도 맞지만 격식체예요. 더 일상적인 단어를 생각해 보세요." },
+            { "w": "usually", "t": "near", "m": "usually는 '대개, 보통'으로 빈도가 더 높아요. '자주' 정도를 생각해 보세요." },
+            { "w": "sometimes", "t": "near", "m": "sometimes는 '가끔'이에요. 그보다 더 잦은 빈도를 생각해 보세요." }
+          ]
+        }
       ],
       "nuance": "빈도 순서는 always > usually > often > sometimes > rarely > never. 일반동사 앞, be동사 뒤에 온다."
     }

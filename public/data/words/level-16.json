@@ -4,8 +4,24 @@
       "id": "subtle", "word": "subtle", "pos": "adj", "level": 16,
       "meanings": ["미묘한, 감지하기 힘든"],
       "sentences": [
-        { "en": "There is a ___ difference between the two words.", "ko": "두 단어 사이에는 **미묘한** 차이가 있다.", "answer": "subtle" },
-        { "en": "The sauce has a ___ hint of lemon.", "ko": "그 소스에는 **은은한** 레몬 향이 난다.", "answer": "subtle" }
+        {
+          "en": "There is a ___ difference between the two words.", "ko": "두 단어 사이에는 **미묘한** 차이가 있다.", "answer": "subtle",
+          "alts": [
+            { "w": "slight", "t": "ok", "m": "slight도 맞지만, 섬세해서 알아차리기 어렵다는 단어가 있어요." },
+            { "w": "delicate", "t": "near", "m": "delicate는 '섬세한·깨지기 쉬운'이라 차이엔 다른 단어가 더 자연스러워요." },
+            { "w": "small", "t": "near", "m": "small은 크기가 '작은' 거예요. 알아채기 힘든 차이는요?" }
+          ]
+        },
+        {
+          "en": "The sauce has a ___ hint of lemon.", "ko": "그 소스에는 **은은한** 레몬 향이 난다.", "answer": "subtle",
+          "ctx": "레스토랑에서",
+          "note": "강하지 않고 은근하게 느껴진다는 뜻",
+          "alts": [
+            { "w": "faint", "t": "ok", "m": "faint도 맞지만, 섬세하게 은은한 느낌의 단어가 있어요." },
+            { "w": "light", "t": "near", "m": "light는 '가벼운'이에요. 은은하게 느껴지는 향을 말하는 단어는요?" },
+            { "w": "soft", "t": "wrong", "m": "soft는 촉감·소리가 '부드러운'이라 맛과 향엔 어색해요." }
+          ]
+        }
       ],
       "nuance": "너무 작거나 섬세해서 '알아차리기 어려운'. b는 묵음[서틀]. slight는 정도가 작은 것, subtle은 섬세해서 눈에 잘 안 띄는 것. 명사 subtlety.",
       "etymology": "라틴어 subtilis(가늘게 짠, 섬세한) ← sub + tela(직물)"
@@ -14,8 +30,23 @@
       "id": "sufficient", "word": "sufficient", "pos": "adj", "level": 16,
       "meanings": ["충분한"],
       "sentences": [
-        { "en": "We have ___ food for a week.", "ko": "우리는 일주일 치 **충분한** 식량이 있다.", "answer": "sufficient" },
-        { "en": "One example is ___ to prove the point.", "ko": "요점을 증명하는 데는 예시 하나로 **충분하다**.", "answer": "sufficient" }
+        {
+          "en": "We have ___ food for a week.", "ko": "우리는 일주일 치 **충분한** 식량이 있다.", "answer": "sufficient",
+          "ctx": "캠핑 준비를 하며",
+          "alts": [
+            { "w": "enough", "t": "ok", "m": "enough도 맞지만, 좀 더 격식 있는 단어를 떠올려 보세요." },
+            { "w": "adequate", "t": "near", "m": "adequate는 '최소한은 되는' 정도예요. 목적에 넉넉히 충분하다는 단어는요?" },
+            { "w": "plenty", "t": "wrong", "m": "plenty는 뒤에 of가 필요해요(plenty of food)." }
+          ]
+        },
+        {
+          "en": "One example is ___ to prove the point.", "ko": "요점을 증명하는 데는 예시 하나로 **충분하다**.", "answer": "sufficient",
+          "alts": [
+            { "w": "enough", "t": "ok", "m": "enough도 맞지만, 격식 있는 글에서 쓰는 단어를 떠올려 보세요." },
+            { "w": "adequate", "t": "near", "m": "adequate는 '그럭저럭 쓸 만한'이라는 느낌이에요." },
+            { "w": "efficient", "t": "wrong", "m": "efficient는 '효율적인'이에요. 철자가 비슷하니 주의하세요." }
+          ]
+        }
       ],
       "nuance": "enough의 격식체. adequate는 '필요한 최소치는 된다', sufficient는 '목적에 충분하다'. self-sufficient는 자급자족하는. 부사 sufficiently.",
       "etymology": "라틴어 sub(아래에서) + facere(만들다) → '받쳐 주다'"
@@ -24,8 +55,24 @@
       "id": "supplement", "word": "supplement", "pos": "v", "level": 16,
       "meanings": ["보충하다", "보충제, 부록"],
       "sentences": [
-        { "en": "He ___ his income by teaching at night.", "ko": "그는 밤에 강의를 하며 수입을 **보충한다**.", "answer": "supplements" },
-        { "en": "Many people take vitamin ___ every day.", "ko": "많은 사람이 매일 비타민 **보충제**를 먹는다.", "answer": "supplements" }
+        {
+          "en": "He ___ his income by teaching at night.", "ko": "그는 밤에 강의를 하며 수입을 **보충한다**.", "answer": "supplements",
+          "ctx": "투잡 이야기를 하며",
+          "note": "부족한 부분에 더해 채운다는 뜻",
+          "alts": [
+            { "w": "increases", "t": "near", "m": "increases는 그냥 '늘린다'예요. 부족분을 더해 채운다는 단어는요?" },
+            { "w": "adds", "t": "wrong", "m": "adds는 to와 함께 써야 해요(adds to his income)." },
+            { "w": "complements", "t": "wrong", "m": "complements는 서로 '보완해 완성한다'예요. 철자가 비슷하니 주의하세요." }
+          ]
+        },
+        {
+          "en": "Many people take vitamin ___ every day.", "ko": "많은 사람이 매일 비타민 **보충제**를 먹는다.", "answer": "supplements",
+          "alts": [
+            { "w": "pills", "t": "ok", "m": "pills도 맞지만, '보충제'를 정확히 가리키는 단어를 떠올려 보세요." },
+            { "w": "nutrients", "t": "near", "m": "nutrients는 '영양소'예요. 먹는 '보충제'를 말하는 단어는요?" },
+            { "w": "complements", "t": "wrong", "m": "complements는 '보완물'이에요. 철자가 비슷해 헷갈리기 쉬워요." }
+          ]
+        }
       ],
       "nuance": "부족한 것을 '더해서 채우다'. complement는 서로 '보완해 완성'하는 것. 명사 발음은 [서플리먼트], 동사는 끝이 [-멘트]로 조금 강하다.",
       "etymology": "라틴어 supplere(채우다) ← sub + plere(채우다)"
@@ -34,8 +81,23 @@
       "id": "suppress", "word": "suppress", "pos": "v", "level": 16,
       "meanings": ["억누르다, 참다", "진압하다"],
       "sentences": [
-        { "en": "She tried to ___ a laugh.", "ko": "그녀는 웃음을 **참으려** 했다.", "answer": "suppress" },
-        { "en": "The army ___ the rebellion quickly.", "ko": "군대는 반란을 빠르게 **진압했다**.", "answer": "suppressed" }
+        {
+          "en": "She tried to ___ a laugh.", "ko": "그녀는 웃음을 **참으려** 했다.", "answer": "suppress",
+          "ctx": "조용한 도서관에서",
+          "alts": [
+            { "w": "hold back", "t": "ok", "m": "hold back도 맞지만, 한 단어로 '억누르다'를 표현해 보세요." },
+            { "w": "repress", "t": "near", "m": "repress는 무의식적으로 억누르는 심리 용어에 가까워요." },
+            { "w": "stand", "t": "wrong", "m": "stand는 싫은 걸 '견디다'예요. 웃음을 참는 건 다른 단어를 써요." }
+          ]
+        },
+        {
+          "en": "The army ___ the rebellion quickly.", "ko": "군대는 반란을 빠르게 **진압했다**.", "answer": "suppressed",
+          "alts": [
+            { "w": "crushed", "t": "ok", "m": "crushed도 맞지만, 힘으로 눌러 진압했다는 격식 있는 단어가 있어요." },
+            { "w": "defeated", "t": "near", "m": "defeated는 적을 '물리쳤다'예요. 반란을 눌러 잠재운 건요?" },
+            { "w": "oppressed", "t": "wrong", "m": "oppressed는 사람들을 '억압했다'예요. 반란 진압엔 다른 단어를 써요." }
+          ]
+        }
       ],
       "nuance": "감정·정보·반란을 '힘으로 눌러 드러나지 않게 하다'. repress는 무의식적으로 억누르는 심리 용어에 가깝다. 명사 suppression.",
       "etymology": "라틴어 sub(아래로) + premere(누르다) → '아래로 누르다'"
@@ -44,8 +106,24 @@
       "id": "sustain", "word": "sustain", "pos": "v", "level": 16,
       "meanings": ["지속하다, 유지하다", "(피해를) 입다"],
       "sentences": [
-        { "en": "It is hard to ___ this pace for long.", "ko": "이 속도를 오래 **유지하는** 것은 어렵다.", "answer": "sustain" },
-        { "en": "The building ___ heavy damage in the storm.", "ko": "그 건물은 폭풍으로 큰 피해를 **입었다**.", "answer": "sustained" }
+        {
+          "en": "It is hard to ___ this pace for long.", "ko": "이 속도를 오래 **유지하는** 것은 어렵다.", "answer": "sustain",
+          "ctx": "마라톤 연습 중에",
+          "alts": [
+            { "w": "maintain", "t": "ok", "m": "maintain도 맞지만, 힘들게 버텨 가며 지속한다는 느낌의 단어가 있어요." },
+            { "w": "keep up", "t": "ok", "m": "keep up도 맞지만, 한 단어로 표현해 보세요." },
+            { "w": "remain", "t": "wrong", "m": "remain은 '남다'라서 목적어를 받지 않아요." }
+          ]
+        },
+        {
+          "en": "The building ___ heavy damage in the storm.", "ko": "그 건물은 폭풍으로 큰 피해를 **입었다**.", "answer": "sustained",
+          "note": "피해나 부상을 당했다는 뜻",
+          "alts": [
+            { "w": "suffered", "t": "ok", "m": "suffered도 맞지만, 뉴스에서 피해를 '입다'라고 할 때 쓰는 격식어가 있어요." },
+            { "w": "received", "t": "near", "m": "received는 '받았다'예요. 피해를 입은 건물엔 다른 단어가 더 자연스러워요." },
+            { "w": "wore", "t": "wrong", "m": "wore는 옷을 '입었다'예요. '입다'를 그대로 옮기면 안 돼요." }
+          ]
+        }
       ],
       "nuance": "무게·활동을 '버텨 지속시키다'와 부상·손해를 '입다'(격식체) 두 뜻. 형용사 sustainable(지속 가능한)은 환경 분야 핵심어.",
       "etymology": "라틴어 sub(아래에서) + tenere(잡다) → '아래에서 받치다'"
@@ -54,8 +132,24 @@
       "id": "tangible", "word": "tangible", "pos": "adj", "level": 16,
       "meanings": ["실체가 있는, 명백한"],
       "sentences": [
-        { "en": "We need ___ results, not just promises.", "ko": "우리는 약속이 아니라 **눈에 보이는** 결과가 필요하다.", "answer": "tangible" },
-        { "en": "The tension in the room was almost ___.", "ko": "방 안의 긴장감은 거의 **만져질 듯** 했다.", "answer": "tangible" }
+        {
+          "en": "We need ___ results, not just promises.", "ko": "우리는 약속이 아니라 **눈에 보이는** 결과가 필요하다.", "answer": "tangible",
+          "ctx": "성과 평가 회의에서",
+          "note": "말뿐이 아니라 실제로 확인되는 결과",
+          "alts": [
+            { "w": "concrete", "t": "ok", "m": "concrete도 맞지만, '손에 잡히는'이라는 뜻에서 온 단어가 있어요." },
+            { "w": "visible", "t": "near", "m": "visible은 눈으로 '보이는'이라는 물리적 뜻이 강해요." },
+            { "w": "practical", "t": "near", "m": "practical은 '실용적인'이에요. 실제로 확인 가능한 결과는요?" }
+          ]
+        },
+        {
+          "en": "The tension in the room was almost ___.", "ko": "방 안의 긴장감은 거의 **만져질 듯**했다.", "answer": "tangible",
+          "alts": [
+            { "w": "palpable", "t": "ok", "m": "palpable도 맞아요! 같은 뜻의 다른 단어로 다시 말해 보세요." },
+            { "w": "visible", "t": "near", "m": "visible도 비유로 쓰지만, '만질 수 있을 듯한'이라는 단어가 따로 있어요." },
+            { "w": "touchable", "t": "wrong", "m": "touchable은 거의 쓰지 않는 말이에요. 비유적으로 '만져질 듯한'을 뜻하는 단어는요?" }
+          ]
+        }
       ],
       "nuance": "원래 '손으로 만질 수 있는'에서 '구체적이고 분명한'으로. 반대는 intangible(무형의, intangible assets 무형 자산).",
       "etymology": "라틴어 tangere(만지다) → '만질 수 있는'"
@@ -64,8 +158,23 @@
       "id": "tedious", "word": "tedious", "pos": "adj", "level": 16,
       "meanings": ["지루한, 싫증 나는"],
       "sentences": [
-        { "en": "Filling out the forms was a ___ task.", "ko": "서류를 작성하는 것은 **지루한** 일이었다.", "answer": "tedious" },
-        { "en": "The lecture was long and ___.", "ko": "그 강의는 길고 **따분했다**.", "answer": "tedious" }
+        {
+          "en": "Filling out the forms was a ___ task.", "ko": "서류를 작성하는 것은 **지루한** 일이었다.", "answer": "tedious",
+          "ctx": "관공서에서 서류를 쓰며",
+          "alts": [
+            { "w": "boring", "t": "ok", "m": "boring도 맞지만, 길고 반복적이라 지치는 느낌의 단어가 있어요." },
+            { "w": "dull", "t": "near", "m": "dull은 '단조롭고 재미없는'이에요. 반복적이라 진이 빠지는 일은요?" },
+            { "w": "bored", "t": "wrong", "m": "bored는 사람이 '지루함을 느끼는' 거예요. 일이 지루할 땐 다른 단어를 써요." }
+          ]
+        },
+        {
+          "en": "The lecture was long and ___.", "ko": "그 강의는 길고 **따분했다**.", "answer": "tedious",
+          "alts": [
+            { "w": "boring", "t": "ok", "m": "boring도 맞지만, 길어서 지치게 만드는 느낌을 살린 단어가 있어요." },
+            { "w": "dull", "t": "near", "m": "dull은 생기 없이 '밋밋한'이에요. 길게 늘어져 지치는 강의는요?" },
+            { "w": "tired", "t": "wrong", "m": "tired는 사람이 '피곤한' 상태예요. 강의를 묘사할 땐 쓰지 않아요." }
+          ]
+        }
       ],
       "nuance": "boring은 재미없는 것 일반, tedious는 '길고 반복적이어서' 지치게 하는 느낌. 명사 tedium.",
       "etymology": "라틴어 taedium(싫증, 권태)"
@@ -74,8 +183,25 @@
       "id": "tentative", "word": "tentative", "pos": "adj", "level": 16,
       "meanings": ["잠정적인, 임시의", "머뭇거리는"],
       "sentences": [
-        { "en": "We have a ___ plan to meet on Friday.", "ko": "우리는 금요일에 만나기로 **잠정적인** 계획을 세웠다.", "answer": "tentative" },
-        { "en": "He took a ___ step toward the edge.", "ko": "그는 가장자리 쪽으로 **조심스럽게** 한 걸음 내디뎠다.", "answer": "tentative" }
+        {
+          "en": "We have a ___ plan to meet on Friday.", "ko": "우리는 금요일에 만나기로 **잠정적인** 계획을 세웠다.", "answer": "tentative",
+          "ctx": "친구와 약속을 잡으며",
+          "note": "아직 확정되지 않았다는 뜻",
+          "alts": [
+            { "w": "provisional", "t": "ok", "m": "provisional도 맞지만, 일상적인 약속엔 더 자주 쓰는 단어가 있어요." },
+            { "w": "temporary", "t": "near", "m": "temporary는 '일시적인'이에요. 아직 확정되지 않은 계획은요?" },
+            { "w": "rough", "t": "near", "m": "rough는 '대략적인'이에요. 확정 전이라는 뜻의 단어는요?" }
+          ]
+        },
+        {
+          "en": "He took a ___ step toward the edge.", "ko": "그는 가장자리 쪽으로 **조심스럽게** 한 걸음 내디뎠다.", "answer": "tentative",
+          "note": "자신 없이 머뭇거리며 내딛는 걸음",
+          "alts": [
+            { "w": "careful", "t": "ok", "m": "careful도 맞지만, 자신 없이 머뭇거리는 느낌의 단어가 있어요." },
+            { "w": "hesitant", "t": "ok", "m": "hesitant도 맞지만, 시험 삼아 조심스레 해 보는 느낌의 단어가 있어요." },
+            { "w": "carefully", "t": "wrong", "m": "carefully는 부사라 명사 step 앞에 올 수 없어요." }
+          ]
+        }
       ],
       "nuance": "'확정되지 않은'(일정·합의)과 '자신 없이 머뭇거리는'(행동) 두 뜻. provisional은 공식적으로 임시인 것. 부사 tentatively.",
       "etymology": "라틴어 tentare(시험하다, 시도하다) → '시험 삼아 하는'"
@@ -84,8 +210,22 @@
       "id": "thrive", "word": "thrive", "pos": "v", "level": 16,
       "meanings": ["번창하다, 잘 자라다"],
       "sentences": [
-        { "en": "These plants ___ in warm, humid weather.", "ko": "이 식물들은 따뜻하고 습한 날씨에 **잘 자란다**.", "answer": "thrive" },
-        { "en": "Small businesses are ___ in this town.", "ko": "이 도시에서는 소규모 사업체들이 **번창하고** 있다.", "answer": "thriving" }
+        {
+          "en": "These plants ___ in warm, humid weather.", "ko": "이 식물들은 따뜻하고 습한 날씨에 **잘 자란다**.", "answer": "thrive",
+          "alts": [
+            { "w": "flourish", "t": "ok", "m": "flourish도 맞지만, 일상에서 더 자주 쓰는 단어를 떠올려 보세요." },
+            { "w": "grow", "t": "near", "m": "grow는 그냥 '자라다'예요. 활기차게 무럭무럭 자란다는 단어는요?" },
+            { "w": "survive", "t": "near", "m": "survive는 겨우 '살아남다'예요." }
+          ]
+        },
+        {
+          "en": "Small businesses are ___ in this town.", "ko": "이 도시에서는 소규모 사업체들이 **번창하고** 있다.", "answer": "thriving",
+          "alts": [
+            { "w": "flourishing", "t": "ok", "m": "flourishing도 맞지만, 더 흔히 쓰는 단어를 떠올려 보세요." },
+            { "w": "growing", "t": "near", "m": "growing은 '성장하는'일 뿐이에요. 활기차게 번창하는 건요?" },
+            { "w": "developing", "t": "near", "m": "developing은 '발전 중인'이라 번창한다는 느낌이 약해요." }
+          ]
+        }
       ],
       "nuance": "그냥 살아남는 survive와 달리 '활기차게 성장하다'. 'thrive on ~'(~을 즐기며 잘 해내다). 형용사 thriving(번성하는).",
       "etymology": "고대 노르드어 thrifask(붙잡다, 번영하다)"
@@ -94,8 +234,25 @@
       "id": "transparent", "word": "transparent", "pos": "adj", "level": 16,
       "meanings": ["투명한", "(의도가) 명백한, 숨김없는"],
       "sentences": [
-        { "en": "The water was so ___ we could see the fish.", "ko": "물이 너무 **투명해서** 물고기가 보였다.", "answer": "transparent" },
-        { "en": "The company promised to be ___ about its finances.", "ko": "그 회사는 재무에 대해 **숨김없이 공개하겠다고** 약속했다.", "answer": "transparent" }
+        {
+          "en": "The water was so ___ we could see the fish.", "ko": "물이 너무 **투명해서** 물고기가 보였다.", "answer": "transparent",
+          "ctx": "바닷가 여행 중에",
+          "alts": [
+            { "w": "clear", "t": "ok", "m": "clear도 맞지만, 빛이 통과해 속이 비친다는 격식 있는 단어가 있어요." },
+            { "w": "clean", "t": "near", "m": "clean은 '깨끗한'이에요. 속이 훤히 비친다는 단어는요?" },
+            { "w": "pure", "t": "near", "m": "pure는 '순수한'이에요. 물속이 비쳐 보인다는 단어는요?" }
+          ]
+        },
+        {
+          "en": "The company promised to be ___ about its finances.", "ko": "그 회사는 재무에 대해 **숨김없이 공개하겠다고** 약속했다.", "answer": "transparent",
+          "ctx": "기업 기자회견에서",
+          "note": "감추는 것 없이 모두 드러낸다는 뜻",
+          "alts": [
+            { "w": "open", "t": "ok", "m": "open도 맞지만, '투명성'이라는 말과 연결되는 단어를 떠올려 보세요." },
+            { "w": "honest", "t": "near", "m": "honest는 '정직한'이에요. 감추지 않고 모두 공개한다는 단어는요?" },
+            { "w": "public", "t": "wrong", "m": "public은 '공개된·대중의'라서 be public about은 어색해요." }
+          ]
+        }
       ],
       "nuance": "물리적으로 '빛이 통과하는'과 비유적으로 '감추는 게 없는'. clear보다 격식체. 명사 transparency(투명성). 반대는 opaque.",
       "etymology": "라틴어 trans(통과하여) + parere(보이다) → '통과해 보이는'"

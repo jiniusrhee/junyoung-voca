@@ -4,8 +4,24 @@
       "id": "achieve", "word": "achieve", "pos": "v", "level": 6,
       "meanings": ["(노력하여) 이루다, 달성하다"],
       "sentences": [
-        { "en": "She worked hard to ___ her goal.", "ko": "그녀는 목표를 **이루기** 위해 열심히 노력했다.", "answer": "achieve" },
-        { "en": "The team ___ a record profit last year.", "ko": "그 팀은 지난해 기록적인 이익을 **달성했다**.", "answer": "achieved" }
+        {
+          "en": "She worked hard to ___ her goal.", "ko": "그녀는 목표를 **이루기** 위해 열심히 노력했다.", "answer": "achieve",
+          "note": "노력 끝에 목표에 도달한다는 뜻",
+          "alts": [
+            { "w": "accomplish", "t": "ok", "m": "accomplish도 맞지만, 노력 끝에 목표에 도달하는 느낌의 단어를 생각해 보세요." },
+            { "w": "complete", "t": "near", "m": "complete는 일을 '끝마치다'예요. 목표를 이루는 것을 생각해 보세요." },
+            { "w": "succeed", "t": "wrong", "m": "succeed는 목적어를 바로 받지 않아요(succeed in)." }
+          ]
+        },
+        {
+          "en": "The team ___ a record profit last year.", "ko": "그 팀은 지난해 기록적인 이익을 **달성했다**.", "answer": "achieved",
+          "ctx": "연말 실적 보고",
+          "alts": [
+            { "w": "reached", "t": "ok", "m": "reached도 맞지만, 노력해서 '달성했다'는 느낌을 살려 보세요." },
+            { "w": "accomplished", "t": "near", "m": "accomplished는 임무·과제를 해낼 때 써요. 수치 목표에는 다른 단어가 어울려요." },
+            { "w": "succeeded", "t": "wrong", "m": "succeeded는 목적어를 바로 받지 않아요(succeed in)." }
+          ]
+        }
       ],
       "nuance": "accomplish와 비슷하지만 achieve는 시간을 들여 노력한 끝에 목표에 '도달'하는 느낌이 강하다. reach a goal보다 격식 있는 표현.",
       "etymology": "고대 프랑스어 achever '끝까지 가다' ← a(~로) + chef(머리, 끝)"
@@ -14,8 +30,24 @@
       "id": "avoid", "word": "avoid", "pos": "v", "level": 6,
       "meanings": ["피하다"],
       "sentences": [
-        { "en": "You should ___ eating too much sugar.", "ko": "설탕을 너무 많이 먹는 것은 **피해야** 한다.", "answer": "avoid" },
-        { "en": "He ___ my eyes during the meeting.", "ko": "그는 회의 중에 내 눈을 **피했다**.", "answer": "avoided" }
+        {
+          "en": "You should ___ eating too much sugar.", "ko": "설탕을 너무 많이 먹는 것은 **피해야** 한다.", "answer": "avoid",
+          "alts": [
+            { "w": "stop", "t": "ok", "m": "stop도 맞지만 '그만두다'예요. 아예 멀리하는 것을 생각해 보세요." },
+            { "w": "prevent", "t": "near", "m": "prevent는 어떤 일이 생기지 않게 '막다'예요. 스스로 멀리하는 것을 생각해 보세요." },
+            { "w": "escape", "t": "wrong", "m": "escape는 '탈출하다'예요. 먹는 습관을 피하는 것과는 달라요." }
+          ]
+        },
+        {
+          "en": "He ___ my eyes during the meeting.", "ko": "그는 회의 중에 내 눈을 **피했다**.", "answer": "avoided",
+          "ctx": "어색한 회의 자리에서",
+          "note": "눈이 마주치지 않게 했다는 뜻",
+          "alts": [
+            { "w": "ignored", "t": "near", "m": "ignored는 '무시했다'예요. 눈이 마주치지 않게 한 것을 생각해 보세요." },
+            { "w": "dodged", "t": "near", "m": "dodged는 날아오는 것을 몸으로 피하는 느낌이에요. 눈길을 피한 것을 생각해 보세요." },
+            { "w": "escaped", "t": "wrong", "m": "escaped는 '탈출했다'예요. 눈을 피하는 것과는 달라요." }
+          ]
+        }
       ],
       "nuance": "'avoid -ing'(to부정사 불가). prevent는 '못 하게 막다', avoid는 스스로 '마주치지 않게 하다'.",
       "etymology": "고대 프랑스어 esvuidier '비우다' → '자리를 비워 빠져나가다'"
@@ -24,8 +56,24 @@
       "id": "consider", "word": "consider", "pos": "v", "level": 6,
       "meanings": ["고려하다", "~로 여기다"],
       "sentences": [
-        { "en": "We are ___ moving to a bigger house.", "ko": "우리는 더 큰 집으로 이사하는 것을 **고려하고** 있다.", "answer": "considering" },
-        { "en": "Many people ___ him a genius.", "ko": "많은 사람들이 그를 천재로 **여긴다**.", "answer": "consider" }
+        {
+          "en": "We are ___ moving to a bigger house.", "ko": "우리는 더 큰 집으로 이사하는 것을 **고려하고** 있다.", "answer": "considering",
+          "ctx": "가족회의에서",
+          "note": "할지 말지 따져 본다는 뜻",
+          "alts": [
+            { "w": "contemplating", "t": "ok", "m": "contemplating도 맞지만 더 깊이 오래 생각하는 느낌이에요." },
+            { "w": "thinking", "t": "wrong", "m": "thinking은 뒤에 about이 필요해요." },
+            { "w": "planning", "t": "wrong", "m": "planning은 planning to move처럼 써요. -ing가 바로 오지 않아요." }
+          ]
+        },
+        {
+          "en": "Many people ___ him a genius.", "ko": "많은 사람들이 그를 천재로 **여긴다**.", "answer": "consider",
+          "alts": [
+            { "w": "call", "t": "ok", "m": "call도 맞지만 '부르다'예요. 그렇게 '여긴다'를 생각해 보세요." },
+            { "w": "regard", "t": "near", "m": "regard는 regard him as처럼 as가 필요해요." },
+            { "w": "think", "t": "wrong", "m": "think는 think of him as처럼 써요. 바로 a genius를 붙일 수 없어요." }
+          ]
+        }
       ],
       "nuance": "'consider -ing'(to부정사 불가). 'consider A (as/to be) B'(A를 B로 여기다). 신중하게 '생각해 보다'라는 뜻.",
       "etymology": "라틴어 considerare '별(sidus)을 자세히 관찰하다'"
@@ -34,8 +82,23 @@
       "id": "provide", "word": "provide", "pos": "v", "level": 6,
       "meanings": ["제공하다"],
       "sentences": [
-        { "en": "The hotel ___ free breakfast for guests.", "ko": "그 호텔은 손님에게 무료 아침 식사를 **제공한다**.", "answer": "provides" },
-        { "en": "We will ___ you with all the information you need.", "ko": "필요한 모든 정보를 **제공해** 드리겠습니다.", "answer": "provide" }
+        {
+          "en": "The hotel ___ free breakfast for guests.", "ko": "그 호텔은 손님에게 무료 아침 식사를 **제공한다**.", "answer": "provides",
+          "ctx": "호텔 예약 사이트에서",
+          "alts": [
+            { "w": "offers", "t": "ok", "m": "offers도 맞지만, 필요한 것을 마련해 주는 느낌의 단어를 생각해 보세요." },
+            { "w": "serves", "t": "ok", "m": "serves도 맞지만 음식을 '내놓다'예요. 더 넓게 쓰는 단어를 생각해 보세요." },
+            { "w": "supplies", "t": "near", "m": "supplies는 지속적으로 '공급하다'예요. 손님에게 주는 서비스엔 어색해요." }
+          ]
+        },
+        {
+          "en": "We will ___ you with all the information you need.", "ko": "필요한 모든 정보를 **제공해** 드리겠습니다.", "answer": "provide",
+          "alts": [
+            { "w": "supply", "t": "near", "m": "supply A with B도 가능하지만 물자 공급에 주로 써요. 정보에는 다른 단어가 자연스러워요." },
+            { "w": "give", "t": "wrong", "m": "give는 with를 쓰지 않아요(give you the information)." },
+            { "w": "offer", "t": "wrong", "m": "offer는 'offer A with B' 형태로 쓰지 않아요." }
+          ]
+        }
       ],
       "nuance": "'provide A with B'는 'provide B for A'와 같다. offer는 '권하다'(받을지는 상대가 정함), supply는 '지속적으로 공급'.",
       "etymology": "라틴어 pro(앞서) + videre(보다) → '미리 보고 마련해 두다'"
@@ -44,8 +107,24 @@
       "id": "require", "word": "require", "pos": "v", "level": 6,
       "meanings": ["필요로 하다", "요구하다"],
       "sentences": [
-        { "en": "This job ___ a lot of patience.", "ko": "이 일은 많은 인내심을 **필요로 한다**.", "answer": "requires" },
-        { "en": "All visitors are ___ to show their ID.", "ko": "모든 방문객은 신분증을 **제시해야** 합니다.", "answer": "required" }
+        {
+          "en": "This job ___ a lot of patience.", "ko": "이 일은 많은 인내심을 **필요로 한다**.", "answer": "requires",
+          "alts": [
+            { "w": "needs", "t": "ok", "m": "needs도 맞지만, 조금 더 격식 있는 단어를 생각해 보세요." },
+            { "w": "demands", "t": "near", "m": "demands는 '강하게 요구하다'라 부담이 큰 느낌이에요." },
+            { "w": "asks", "t": "wrong", "m": "asks는 사람이 '묻다, 부탁하다'예요. 일이 필요로 하는 것과는 달라요." }
+          ]
+        },
+        {
+          "en": "All visitors are ___ to show their ID.", "ko": "모든 방문객은 신분증을 **제시해야** 합니다.", "answer": "required",
+          "ctx": "건물 출입구 안내문",
+          "note": "규정상 반드시 해야 한다는 뜻",
+          "alts": [
+            { "w": "asked", "t": "ok", "m": "asked도 맞지만 '요청받는다'예요. 규정상 의무라는 뜻을 생각해 보세요." },
+            { "w": "forced", "t": "near", "m": "forced는 '억지로 시키다'라 강압적이에요. 규정상 필요한 것을 생각해 보세요." },
+            { "w": "needed", "t": "wrong", "m": "needed는 이런 수동태로 쓰지 않아요. 규정상 의무를 나타내는 단어를 생각해 보세요." }
+          ]
+        }
       ],
       "nuance": "need보다 격식체. 주어가 사람이 아니라 '상황·규정'일 때 자주 쓴다. 'be required to'(~해야 한다).",
       "etymology": "라틴어 re(다시) + quaerere(구하다) → '거듭 구하다'"
@@ -54,8 +133,23 @@
       "id": "increase", "word": "increase", "pos": "v", "level": 6,
       "meanings": ["증가하다, 늘리다"],
       "sentences": [
-        { "en": "The price of oil ___ sharply last month.", "ko": "지난달 석유 가격이 급격히 **올랐다**.", "answer": "increased" },
-        { "en": "The company plans to ___ its sales by 20 percent.", "ko": "그 회사는 매출을 20퍼센트 **늘릴** 계획이다.", "answer": "increase" }
+        {
+          "en": "The price of oil ___ sharply last month.", "ko": "지난달 석유 가격이 급격히 **올랐다**.", "answer": "increased",
+          "ctx": "경제 뉴스에서",
+          "alts": [
+            { "w": "rose", "t": "ok", "m": "rose도 맞지만, '증가했다'를 뜻하는 다른 단어를 생각해 보세요." },
+            { "w": "grew", "t": "near", "m": "grew는 '자라다, 커지다'예요. 가격이 오르는 것엔 잘 쓰지 않아요." },
+            { "w": "raised", "t": "wrong", "m": "raised는 목적어가 필요한 타동사예요. 가격이 스스로 오를 땐 쓰지 않아요." }
+          ]
+        },
+        {
+          "en": "The company plans to ___ its sales by 20 percent.", "ko": "그 회사는 매출을 20퍼센트 **늘릴** 계획이다.", "answer": "increase",
+          "alts": [
+            { "w": "raise", "t": "ok", "m": "raise도 맞지만, 수량을 '늘리다'를 뜻하는 더 일반적인 단어를 생각해 보세요." },
+            { "w": "expand", "t": "near", "m": "expand는 규모·범위를 '확장하다'예요. 수치를 늘리는 것을 생각해 보세요." },
+            { "w": "rise", "t": "wrong", "m": "rise는 자동사라 목적어를 받을 수 없어요." }
+          ]
+        }
       ],
       "nuance": "자동사·타동사 모두 가능. 명사일 땐 강세가 앞(IN-crease), 동사일 땐 뒤(in-CREASE). rise는 자동사만.",
       "etymology": "라틴어 in(안에) + crescere(자라다)"
@@ -64,8 +158,23 @@
       "id": "reduce", "word": "reduce", "pos": "v", "level": 6,
       "meanings": ["줄이다, 낮추다"],
       "sentences": [
-        { "en": "We need to ___ our spending this month.", "ko": "이번 달에는 지출을 **줄여야** 한다.", "answer": "reduce" },
-        { "en": "The new law ___ the speed limit in cities.", "ko": "새 법은 도시의 제한 속도를 **낮췄다**.", "answer": "reduced" }
+        {
+          "en": "We need to ___ our spending this month.", "ko": "이번 달에는 지출을 **줄여야** 한다.", "answer": "reduce",
+          "ctx": "가계부를 정리하며",
+          "alts": [
+            { "w": "cut", "t": "ok", "m": "cut도 맞지만 구어체예요. 조금 더 격식 있는 단어를 생각해 보세요." },
+            { "w": "decrease", "t": "near", "m": "decrease도 쓸 수 있지만, 누가 의도적으로 '줄이다'를 말할 땐 다른 단어가 자연스러워요." },
+            { "w": "save", "t": "wrong", "m": "save는 '아끼다, 저축하다'예요. 지출 자체를 줄인다는 말과 달라요." }
+          ]
+        },
+        {
+          "en": "The new law ___ the speed limit in cities.", "ko": "새 법은 도시의 제한 속도를 **낮췄다**.", "answer": "reduced",
+          "alts": [
+            { "w": "lowered", "t": "ok", "m": "lowered도 맞지만, '줄였다'를 뜻하는 더 일반적인 단어를 생각해 보세요." },
+            { "w": "decreased", "t": "near", "m": "decreased도 쓸 수 있지만, 법이 의도적으로 낮춘 것엔 다른 단어가 자연스러워요." },
+            { "w": "fell", "t": "wrong", "m": "fell은 자동사라 목적어를 받을 수 없어요." }
+          ]
+        }
       ],
       "nuance": "decrease는 자동사도 되지만 reduce는 주로 타동사(누가 줄이다). cut은 구어체(cut costs).",
       "etymology": "라틴어 re(뒤로) + ducere(이끌다) → '뒤로 이끌다'"
@@ -74,8 +183,24 @@
       "id": "benefit", "word": "benefit", "pos": "n", "level": 6,
       "meanings": ["이익, 혜택", "이익을 얻다"],
       "sentences": [
-        { "en": "Regular exercise has many health ___.", "ko": "규칙적인 운동은 많은 건강상 **이점**이 있다.", "answer": "benefits" },
-        { "en": "Who will ___ from the new policy?", "ko": "새 정책으로 누가 **이득을 볼까**?", "answer": "benefit" }
+        {
+          "en": "Regular exercise has many health ___.", "ko": "규칙적인 운동은 많은 건강상 **이점**이 있다.", "answer": "benefits",
+          "note": "건강에 좋은 점이라는 뜻",
+          "alts": [
+            { "w": "advantages", "t": "near", "m": "advantages는 남보다 유리한 '우위'예요. 건강에 좋은 점을 말할 땐 다른 단어가 자연스러워요." },
+            { "w": "merits", "t": "near", "m": "merits는 '장점'이라는 다소 딱딱한 말이에요. health와 함께 쓰는 단어를 생각해 보세요." },
+            { "w": "profits", "t": "wrong", "m": "profits는 돈으로 얻는 '수익'이에요. 건강상 이점과는 달라요." }
+          ]
+        },
+        {
+          "en": "Who will ___ from the new policy?", "ko": "새 정책으로 누가 **이득을 볼까**?", "answer": "benefit",
+          "ctx": "정책 발표 뉴스를 보며",
+          "alts": [
+            { "w": "profit", "t": "ok", "m": "profit도 쓸 수 있지만 주로 돈과 관련된 이익이에요. 더 넓은 단어를 생각해 보세요." },
+            { "w": "earn", "t": "near", "m": "earn은 일해서 '벌다'예요. from과 함께 이득을 보는 뜻을 생각해 보세요." },
+            { "w": "advantage", "t": "wrong", "m": "advantage는 명사예요. will 뒤에는 동사가 와야 해요." }
+          ]
+        }
       ],
       "nuance": "'benefit from ~'(~에서 이익을 얻다). advantage는 남보다 유리한 '우위', benefit은 얻게 되는 '좋은 점'.",
       "etymology": "라틴어 bene(좋게) + factum(행한 것) → '좋은 행위'"
@@ -84,8 +209,23 @@
       "id": "opportunity", "word": "opportunity", "pos": "n", "level": 6,
       "meanings": ["기회"],
       "sentences": [
-        { "en": "This job is a great ___ to learn new skills.", "ko": "이 일은 새 기술을 배울 좋은 **기회**다.", "answer": "opportunity" },
-        { "en": "I never had the ___ to meet him.", "ko": "나는 그를 만날 **기회**가 전혀 없었다.", "answer": "opportunity" }
+        {
+          "en": "This job is a great ___ to learn new skills.", "ko": "이 일은 새 기술을 배울 좋은 **기회**다.", "answer": "opportunity",
+          "ctx": "이직을 고민하는 친구에게",
+          "alts": [
+            { "w": "chance", "t": "ok", "m": "chance도 맞지만, 좋은 결과로 이어질 상황을 뜻하는 격식 있는 단어를 생각해 보세요." },
+            { "w": "occasion", "t": "near", "m": "occasion은 '특별한 때, 행사'예요. 배울 수 있는 기회를 생각해 보세요." },
+            { "w": "experience", "t": "near", "m": "experience는 '경험'이에요. 배울 수 있는 '기회'를 생각해 보세요." }
+          ]
+        },
+        {
+          "en": "I never had the ___ to meet him.", "ko": "나는 그를 만날 **기회**가 전혀 없었다.", "answer": "opportunity",
+          "alts": [
+            { "w": "chance", "t": "ok", "m": "chance도 맞지만, 조금 더 격식 있는 단어를 생각해 보세요." },
+            { "w": "occasion", "t": "near", "m": "occasion은 '특정한 때, 행사'예요. 만날 수 있는 기회를 생각해 보세요." },
+            { "w": "time", "t": "near", "m": "time은 '시간'이에요. 만날 '기회'를 생각해 보세요." }
+          ]
+        }
       ],
       "nuance": "chance는 '우연히 생긴 가능성'도 포함하지만 opportunity는 '좋은 결과를 낼 수 있는 상황'. 'opportunity to 동사'.",
       "etymology": "라틴어 ob portum '항구 쪽으로 (부는 바람)' → 배가 들어가기 좋은 때"
@@ -94,8 +234,24 @@
       "id": "responsible", "word": "responsible", "pos": "adj", "level": 6,
       "meanings": ["책임이 있는", "책임감 있는"],
       "sentences": [
-        { "en": "Who is ___ for cleaning the office?", "ko": "사무실 청소는 누가 **담당**하나요?", "answer": "responsible" },
-        { "en": "She is a very ___ person.", "ko": "그녀는 아주 **책임감 있는** 사람이다.", "answer": "responsible" }
+        {
+          "en": "Who is ___ for cleaning the office?", "ko": "사무실 청소는 누가 **담당**하나요?", "answer": "responsible",
+          "note": "그 일을 맡고 있다는 뜻",
+          "alts": [
+            { "w": "in charge", "t": "near", "m": "in charge는 of와 함께 써요(in charge of). for와 어울리는 단어를 생각해 보세요." },
+            { "w": "charge", "t": "wrong", "m": "charge만으로는 '담당'이 되지 않아요. for와 함께 쓰는 형용사를 생각해 보세요." },
+            { "w": "duty", "t": "wrong", "m": "duty는 '의무'라는 명사예요. is 뒤에 형용사가 필요해요." }
+          ]
+        },
+        {
+          "en": "She is a very ___ person.", "ko": "그녀는 아주 **책임감 있는** 사람이다.", "answer": "responsible",
+          "ctx": "동료를 추천하며",
+          "alts": [
+            { "w": "reliable", "t": "ok", "m": "reliable도 맞지만 '믿을 수 있는'이에요. 책임감을 직접 말해 보세요." },
+            { "w": "serious", "t": "near", "m": "serious는 '진지한'이에요. 맡은 일을 끝까지 하는 성격을 생각해 보세요." },
+            { "w": "careful", "t": "near", "m": "careful은 '조심성 있는'이에요. 맡은 일을 책임지는 성격을 생각해 보세요." }
+          ]
+        }
       ],
       "nuance": "'be responsible for ~'(~에 책임이 있다). 명사 responsibility. 'be in charge of'는 '관리·지휘를 맡다'.",
       "etymology": "라틴어 respondere(응답하다) → '응답해야 하는'"

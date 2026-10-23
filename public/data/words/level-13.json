@@ -4,8 +4,24 @@
       "id": "integrate", "word": "integrate", "pos": "v", "level": 13,
       "meanings": ["통합하다", "융화되다"],
       "sentences": [
-        { "en": "The app ___ with your calendar.", "ko": "그 앱은 당신의 캘린더와 **연동된다**.", "answer": "integrates" },
-        { "en": "It took years for the immigrants to ___ into society.", "ko": "이민자들이 사회에 **융화되는** 데 수년이 걸렸다.", "answer": "integrate" }
+        {
+          "en": "The app ___ with your calendar.", "ko": "그 앱은 당신의 캘린더와 **연동된다**.", "answer": "integrates",
+          "ctx": "새 앱을 소개하며",
+          "note": "다른 시스템과 하나로 연결돼 작동한다는 뜻",
+          "alts": [
+            { "w": "connects", "t": "ok", "m": "connects도 맞지만, 하나의 시스템처럼 합쳐진다는 단어를 떠올려 보세요." },
+            { "w": "combines", "t": "near", "m": "combines는 단순히 '합친다'예요. 시스템끼리 유기적으로 맞물리는 건요?" },
+            { "w": "joins", "t": "wrong", "m": "joins는 모임·단체에 '가입한다'는 뜻이 강해요." }
+          ]
+        },
+        {
+          "en": "It took years for the immigrants to ___ into society.", "ko": "이민자들이 사회에 **융화되는** 데 수년이 걸렸다.", "answer": "integrate",
+          "alts": [
+            { "w": "blend", "t": "ok", "m": "blend도 통하지만, 사회의 일원으로 녹아든다는 더 정확한 단어가 있어요." },
+            { "w": "adapt", "t": "near", "m": "adapt는 '적응하다'로 to와 써요. into society와 어울리는 단어는요?" },
+            { "w": "mix", "t": "wrong", "m": "mix는 재료를 '섞다'라는 뜻이라 사람이 사회에 녹아드는 데엔 어색해요." }
+          ]
+        }
       ],
       "nuance": "'integrate A into/with B'. combine은 단순 결합, integrate는 하나의 체계로 '유기적으로 합치다'. 명사 integration.",
       "etymology": "라틴어 integer(온전한) → '온전하게 만들다'"
@@ -14,8 +30,23 @@
       "id": "intervene", "word": "intervene", "pos": "v", "level": 13,
       "meanings": ["개입하다, 끼어들다"],
       "sentences": [
-        { "en": "The police had to ___ to stop the fight.", "ko": "경찰이 싸움을 막기 위해 **개입해야** 했다.", "answer": "intervene" },
-        { "en": "She ___ when the argument got too heated.", "ko": "논쟁이 너무 격해지자 그녀가 **끼어들었다**.", "answer": "intervened" }
+        {
+          "en": "The police had to ___ to stop the fight.", "ko": "경찰이 싸움을 막기 위해 **개입해야** 했다.", "answer": "intervene",
+          "alts": [
+            { "w": "step in", "t": "ok", "m": "step in도 맞지만, 한 단어로 '개입하다'를 표현해 보세요." },
+            { "w": "interfere", "t": "near", "m": "interfere는 원치 않는 '간섭'이에요. 상황을 바로잡으려 끼어드는 건요?" },
+            { "w": "involve", "t": "wrong", "m": "involve는 '포함하다·관련시키다'라서 목적어가 필요해요." }
+          ]
+        },
+        {
+          "en": "She ___ when the argument got too heated.", "ko": "논쟁이 너무 격해지자 그녀가 **끼어들었다**.", "answer": "intervened",
+          "ctx": "친구들의 말다툼을 보다가",
+          "alts": [
+            { "w": "stepped in", "t": "ok", "m": "stepped in도 맞지만, 한 단어로 말해 보세요." },
+            { "w": "interrupted", "t": "near", "m": "interrupted는 말을 '끊었다'예요. 싸움을 말리려 개입한 건요?" },
+            { "w": "interfered", "t": "near", "m": "interfered는 '참견했다'는 부정적 느낌이에요." }
+          ]
+        }
       ],
       "nuance": "'intervene in ~'(~에 개입하다). interfere는 원치 않는 '간섭', intervene은 상황을 바꾸려는 '개입'. 명사 intervention.",
       "etymology": "라틴어 inter(사이에) + venire(오다) → '사이에 들어오다'"
@@ -24,8 +55,24 @@
       "id": "intrinsic", "word": "intrinsic", "pos": "adj", "level": 13,
       "meanings": ["본질적인, 내재적인"],
       "sentences": [
-        { "en": "Honesty has ___ value regardless of reward.", "ko": "정직은 보상과 상관없이 **본질적인** 가치가 있다.", "answer": "intrinsic" },
-        { "en": "Creativity is ___ to good design.", "ko": "창의성은 좋은 디자인에 **본질적인** 요소다.", "answer": "intrinsic" }
+        {
+          "en": "Honesty has ___ value regardless of reward.", "ko": "정직은 보상과 상관없이 **본질적인** 가치가 있다.", "answer": "intrinsic",
+          "note": "보상과 무관하게 그 자체로 지닌 가치",
+          "alts": [
+            { "w": "inherent", "t": "ok", "m": "inherent도 맞지만, '내적 가치'를 말할 때 더 자주 짝을 이루는 단어가 있어요." },
+            { "w": "essential", "t": "near", "m": "essential은 '필수적인'이에요. 그 자체로 지닌 가치를 뜻하는 단어는요?" },
+            { "w": "extrinsic", "t": "wrong", "m": "extrinsic은 반대로 '외적인'이에요." }
+          ]
+        },
+        {
+          "en": "Creativity is ___ to good design.", "ko": "창의성은 좋은 디자인에 **본질적인** 요소다.", "answer": "intrinsic",
+          "ctx": "디자인 강의에서",
+          "alts": [
+            { "w": "essential", "t": "ok", "m": "essential도 맞지만, '그 본질에 속한'이라는 뜻의 단어를 떠올려 보세요." },
+            { "w": "important", "t": "near", "m": "important는 '중요한'일 뿐이에요. 본질 자체에 속한다는 단어는요?" },
+            { "w": "inherent", "t": "near", "m": "inherent는 보통 in과 함께 써요. to와 어울리는 단어는요?" }
+          ]
+        }
       ],
       "nuance": "'intrinsic to ~'. 반대는 extrinsic(외적인). intrinsic motivation(내적 동기)처럼 '그 자체에서 나오는'.",
       "etymology": "라틴어 intrinsecus(안쪽으로)"
@@ -34,8 +81,24 @@
       "id": "legitimate", "word": "legitimate", "pos": "adj", "level": 13,
       "meanings": ["합법적인", "정당한, 타당한"],
       "sentences": [
-        { "en": "Is this a ___ business?", "ko": "이것은 **합법적인** 사업인가요?", "answer": "legitimate" },
-        { "en": "She has a ___ reason to be angry.", "ko": "그녀가 화를 내는 데는 **정당한** 이유가 있다.", "answer": "legitimate" }
+        {
+          "en": "Is this a ___ business?", "ko": "이것은 **합법적인** 사업인가요?", "answer": "legitimate",
+          "ctx": "수상한 투자 권유를 받고",
+          "alts": [
+            { "w": "legal", "t": "ok", "m": "legal도 맞지만, '정식으로 인정받는' 뉘앙스까지 담은 단어가 있어요." },
+            { "w": "real", "t": "near", "m": "real은 '진짜'예요. 법적으로 문제없는 정식 사업인지 묻는 단어는요?" },
+            { "w": "legit", "t": "near", "m": "legit은 구어 줄임말이에요. 원래의 격식 있는 단어로 써 보세요." }
+          ]
+        },
+        {
+          "en": "She has a ___ reason to be angry.", "ko": "그녀가 화를 내는 데는 **정당한** 이유가 있다.", "answer": "legitimate",
+          "note": "이치에 맞아 인정받을 만하다는 뜻",
+          "alts": [
+            { "w": "valid", "t": "ok", "m": "valid도 맞지만, '이치에 맞아 인정받을 만한'이라는 단어가 있어요." },
+            { "w": "fair", "t": "near", "m": "fair는 '공정한'이에요. 화낼 만한 타당한 이유는요?" },
+            { "w": "legal", "t": "wrong", "m": "legal은 '법적인'이에요. 화낼 이유가 법과는 상관없죠." }
+          ]
+        }
       ],
       "nuance": "legal은 '법에 어긋나지 않는', legitimate는 법뿐 아니라 '이치에 맞아 인정받을 만한'. 구어로 legit이라고 줄여 쓴다.",
       "etymology": "라틴어 lex(법) → legitimus(법에 맞는)"
@@ -44,8 +107,24 @@
       "id": "manipulate", "word": "manipulate", "pos": "v", "level": 13,
       "meanings": ["조작하다, 조종하다", "능숙하게 다루다"],
       "sentences": [
-        { "en": "He tried to ___ the results of the vote.", "ko": "그는 투표 결과를 **조작하려** 했다.", "answer": "manipulate" },
-        { "en": "She ___ her parents into buying her a car.", "ko": "그녀는 부모를 **구슬려** 차를 사게 했다.", "answer": "manipulated" }
+        {
+          "en": "He tried to ___ the results of the vote.", "ko": "그는 투표 결과를 **조작하려** 했다.", "answer": "manipulate",
+          "ctx": "선거 비리 뉴스를 보며",
+          "alts": [
+            { "w": "rig", "t": "ok", "m": "rig도 맞지만, 결과를 교묘하게 손대는 더 폭넓은 단어가 있어요." },
+            { "w": "change", "t": "near", "m": "change는 그냥 '바꾸다'예요. 몰래 교묘하게 손대는 건요?" },
+            { "w": "operate", "t": "wrong", "m": "operate는 기계를 '조작·운영하다'예요. 결과를 조작한다는 뜻은 없어요." }
+          ]
+        },
+        {
+          "en": "She ___ her parents into buying her a car.", "ko": "그녀는 부모를 **구슬려** 차를 사게 했다.", "answer": "manipulated",
+          "note": "교묘하게 조종해 원하는 대로 하게 했다는 뜻",
+          "alts": [
+            { "w": "talked", "t": "ok", "m": "talked도 맞지만, 교묘하게 조종했다는 부정적 느낌의 단어가 있어요." },
+            { "w": "persuaded", "t": "near", "m": "persuaded는 정당하게 '설득했다'예요. 교묘하게 조종했다는 단어는요?" },
+            { "w": "controlled", "t": "wrong", "m": "controlled는 into -ing와 함께 쓰지 않아요." }
+          ]
+        }
       ],
       "nuance": "사람에게 쓰면 '교묘하게 조종하다'(부정적), 사물에 쓰면 '능숙하게 다루다'. control보다 교활한 느낌. 형용사 manipulative.",
       "etymology": "라틴어 manus(손) + plere(채우다) → '손으로 다루다'"
@@ -54,8 +133,24 @@
       "id": "mitigate", "word": "mitigate", "pos": "v", "level": 13,
       "meanings": ["완화하다, 줄이다"],
       "sentences": [
-        { "en": "Trees help ___ the effects of air pollution.", "ko": "나무는 대기 오염의 영향을 **완화하는** 데 도움이 된다.", "answer": "mitigate" },
-        { "en": "The company took steps to ___ the risk.", "ko": "그 회사는 위험을 **줄이기** 위한 조치를 취했다.", "answer": "mitigate" }
+        {
+          "en": "Trees help ___ the effects of air pollution.", "ko": "나무는 대기 오염의 영향을 **완화하는** 데 도움이 된다.", "answer": "mitigate",
+          "ctx": "환경 다큐를 보며",
+          "alts": [
+            { "w": "reduce", "t": "ok", "m": "reduce도 맞지만, 피해의 심각성을 덜어 준다는 격식 있는 단어가 있어요." },
+            { "w": "relieve", "t": "near", "m": "relieve는 통증·걱정을 '덜어 주다'예요. 오염 피해엔 다른 단어가 더 자연스러워요." },
+            { "w": "soften", "t": "wrong", "m": "soften은 물건·태도를 '부드럽게 하다'라 오염 영향엔 어색해요." }
+          ]
+        },
+        {
+          "en": "The company took steps to ___ the risk.", "ko": "그 회사는 위험을 **줄이기** 위한 조치를 취했다.", "answer": "mitigate",
+          "ctx": "위기 대응 회의에서",
+          "alts": [
+            { "w": "reduce", "t": "ok", "m": "reduce도 맞지만, 위험·피해를 줄일 때 쓰는 격식 있는 단어가 있어요." },
+            { "w": "decrease", "t": "near", "m": "decrease는 수치가 줄 때 주로 써요. 위험을 줄이는 격식 있는 단어는요?" },
+            { "w": "avoid", "t": "near", "m": "avoid는 위험을 아예 '피하다'예요. 이미 있는 위험을 덜어 내는 건요?" }
+          ]
+        }
       ],
       "nuance": "나쁜 것의 '심각성을 덜다'. reduce보다 격식체이며 피해·위험·고통에 쓴다. 명사 mitigation. 'mitigating circumstances'는 정상 참작 사유.",
       "etymology": "라틴어 mitis(부드러운) + agere(만들다) → '부드럽게 만들다'"
@@ -64,8 +159,23 @@
       "id": "negligible", "word": "negligible", "pos": "adj", "level": 13,
       "meanings": ["무시해도 될 정도의, 미미한"],
       "sentences": [
-        { "en": "The difference in price is ___.", "ko": "가격 차이는 **미미하다**.", "answer": "negligible" },
-        { "en": "The side effects are ___ for most patients.", "ko": "대부분의 환자에게 부작용은 **무시해도 될 정도**다.", "answer": "negligible" }
+        {
+          "en": "The difference in price is ___.", "ko": "가격 차이는 **미미하다**.", "answer": "negligible",
+          "ctx": "두 제품을 비교하며",
+          "alts": [
+            { "w": "minimal", "t": "ok", "m": "minimal도 맞지만, '무시해도 될 정도'라는 뉘앙스의 단어가 있어요." },
+            { "w": "small", "t": "near", "m": "small은 그냥 '작은'이에요. 신경 쓸 필요도 없을 만큼 작다는 단어는요?" },
+            { "w": "negligent", "t": "wrong", "m": "negligent는 '부주의한'이에요. 철자가 비슷하니 주의하세요." }
+          ]
+        },
+        {
+          "en": "The side effects are ___ for most patients.", "ko": "대부분의 환자에게 부작용은 **무시해도 될 정도**다.", "answer": "negligible",
+          "alts": [
+            { "w": "minimal", "t": "ok", "m": "minimal도 맞지만, 아예 신경 쓰지 않아도 된다는 단어를 떠올려 보세요." },
+            { "w": "minor", "t": "near", "m": "minor는 '가벼운'이에요. 무시해도 될 만큼 미미하다는 단어는요?" },
+            { "w": "ignorable", "t": "wrong", "m": "ignorable은 거의 쓰지 않는 말이에요. '무시해도 될'을 뜻하는 자연스러운 단어는요?" }
+          ]
+        }
       ],
       "nuance": "너무 작아 '고려할 필요가 없는'. small은 중립적. negligent(부주의한)와 혼동 주의. 둘 다 neglect(무시하다)에서 나왔다.",
       "etymology": "라틴어 neglegere(돌보지 않다) → '무시할 수 있는'"
@@ -74,8 +184,23 @@
       "id": "notion", "word": "notion", "pos": "n", "level": 13,
       "meanings": ["개념, 생각"],
       "sentences": [
-        { "en": "I have no ___ of what he meant.", "ko": "그가 무슨 뜻으로 말했는지 전혀 **감이** 없다.", "answer": "notion" },
-        { "en": "The ___ that money brings happiness is widespread.", "ko": "돈이 행복을 가져온다는 **생각**은 널리 퍼져 있다.", "answer": "notion" }
+        {
+          "en": "I have no ___ of what he meant.", "ko": "그가 무슨 뜻으로 말했는지 전혀 **감이** 없다.", "answer": "notion",
+          "note": "막연하게라도 짐작이 간다는 뜻",
+          "alts": [
+            { "w": "idea", "t": "ok", "m": "idea도 맞지만, 조금 더 격식 있는 단어를 써 보세요." },
+            { "w": "sense", "t": "near", "m": "sense는 '감각'이에요. 무슨 뜻인지 짐작조차 안 간다는 표현엔 다른 단어를 써요." },
+            { "w": "concept", "t": "near", "m": "concept은 체계적인 '개념'이라 이 표현엔 어색해요." }
+          ]
+        },
+        {
+          "en": "The ___ that money brings happiness is widespread.", "ko": "돈이 행복을 가져온다는 **생각**은 널리 퍼져 있다.", "answer": "notion",
+          "alts": [
+            { "w": "belief", "t": "ok", "m": "belief도 맞지만, '막연한 관념·통념'을 뜻하는 단어를 떠올려 보세요." },
+            { "w": "concept", "t": "near", "m": "concept은 체계적으로 정리된 '개념'이라 이런 통념엔 어색해요." },
+            { "w": "thinking", "t": "wrong", "m": "thinking은 '생각하는 행위'라 that절과 함께 쓰기 어색해요." }
+          ]
+        }
       ],
       "nuance": "idea보다 막연하고 '어떤 믿음이나 관념'에 가깝다. concept은 체계적으로 정리된 개념. 'the notion that ~'.",
       "etymology": "라틴어 notio(알게 됨) ← noscere(알다)"
@@ -84,8 +209,24 @@
       "id": "obsolete", "word": "obsolete", "pos": "adj", "level": 13,
       "meanings": ["쓸모없게 된, 구식의"],
       "sentences": [
-        { "en": "Fax machines are almost ___ today.", "ko": "팩스는 오늘날 거의 **쓸모없게 되었다**.", "answer": "obsolete" },
-        { "en": "New technology quickly makes old devices ___.", "ko": "신기술은 옛 기기를 빠르게 **구식으로** 만든다.", "answer": "obsolete" }
+        {
+          "en": "Fax machines are almost ___ today.", "ko": "팩스는 오늘날 거의 **쓸모없게 되었다**.", "answer": "obsolete",
+          "ctx": "사무실 정리를 하며",
+          "note": "새것에 밀려 더는 쓰이지 않는다는 뜻",
+          "alts": [
+            { "w": "useless", "t": "near", "m": "useless는 기능이 없어 '쓸모없는' 거예요. 시대에 밀려 안 쓰이는 건요?" },
+            { "w": "outdated", "t": "near", "m": "outdated는 '구식인'이에요. 아예 쓰이지 않게 됐다는 단어는요?" },
+            { "w": "extinct", "t": "wrong", "m": "extinct는 생물이 '멸종된'이라 기계엔 어색해요." }
+          ]
+        },
+        {
+          "en": "New technology quickly makes old devices ___.", "ko": "신기술은 옛 기기를 빠르게 **구식으로** 만든다.", "answer": "obsolete",
+          "alts": [
+            { "w": "outdated", "t": "ok", "m": "outdated도 맞지만, 아예 쓸모없어진다는 느낌을 담은 단어가 있어요." },
+            { "w": "old-fashioned", "t": "near", "m": "old-fashioned는 유행이 지난 거예요. 기술 때문에 못 쓰게 된 건요?" },
+            { "w": "unusable", "t": "near", "m": "unusable은 고장 등으로 '사용할 수 없는'이에요." }
+          ]
+        }
       ],
       "nuance": "더 나은 것이 나와 '더 이상 쓰이지 않는'. old-fashioned는 유행이 지난 것, outdated는 정보가 낡은 것, obsolete는 아예 안 쓰게 된 것.",
       "etymology": "라틴어 obsolescere(닳아 없어지다)"
@@ -94,8 +235,24 @@
       "id": "overwhelm", "word": "overwhelm", "pos": "v", "level": 13,
       "meanings": ["압도하다, 어쩔 줄 모르게 하다"],
       "sentences": [
-        { "en": "I was ___ by the amount of work.", "ko": "나는 업무량에 **압도되었다**.", "answer": "overwhelmed" },
-        { "en": "Her kindness ___ me.", "ko": "그녀의 친절은 나를 **감격시켰다**.", "answer": "overwhelmed" }
+        {
+          "en": "I was ___ by the amount of work.", "ko": "나는 업무량에 **압도되었다**.", "answer": "overwhelmed",
+          "ctx": "야근 후 친구에게",
+          "alts": [
+            { "w": "swamped", "t": "ok", "m": "swamped도 맞지만, 감당 못 할 만큼 압도된 느낌까지 담은 단어가 있어요." },
+            { "w": "overloaded", "t": "near", "m": "overloaded는 보통 with와 써요. by와 함께 '압도되다'를 뜻하는 단어는요?" },
+            { "w": "overpowered", "t": "near", "m": "overpowered는 힘으로 '제압당했다'는 느낌이에요." }
+          ]
+        },
+        {
+          "en": "Her kindness ___ me.", "ko": "그녀의 친절은 나를 **감격시켰다**.", "answer": "overwhelmed",
+          "note": "감정이 북받쳐 어쩔 줄 모르게 했다는 뜻",
+          "alts": [
+            { "w": "moved", "t": "ok", "m": "moved도 맞지만, 감정이 벅차올라 감당하기 힘들 정도라는 단어가 있어요." },
+            { "w": "impressed", "t": "near", "m": "impressed는 '인상 깊게 했다'예요. 벅차서 어쩔 줄 몰랐다는 단어는요?" },
+            { "w": "excited", "t": "wrong", "m": "excited는 '신나게 했다'라서 친절에 감격한 느낌과 달라요." }
+          ]
+        }
       ],
       "nuance": "감정·양·힘이 너무 커서 '감당하지 못하게 하다'. 좋은 감정(감격)에도 나쁜 상황(압도)에도 쓴다. 형용사 overwhelming(압도적인).",
       "etymology": "over(위로) + 중세 영어 whelmen(뒤집다, 덮다) → '덮쳐 뒤집다'"

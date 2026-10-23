@@ -4,8 +4,24 @@
       "id": "circumvent", "word": "circumvent", "pos": "v", "level": 26,
       "meanings": ["(규칙·장애를) 피해 가다, 우회하다"],
       "sentences": [
-        { "en": "The company found a way to ___ the new regulations.", "ko": "그 회사는 새 규제를 **피해 갈** 방법을 찾았다.", "answer": "circumvent" },
-        { "en": "We ___ the traffic by taking a back road.", "ko": "우리는 뒷길로 가서 교통 체증을 **우회했다**.", "answer": "circumvented" }
+        {
+          "en": "The company found a way to ___ the new regulations.", "ko": "그 회사는 새 규제를 **피해 갈** 방법을 찾았다.", "answer": "circumvent",
+          "note": "규칙을 어기지 않고 교묘하게 돌아간다는 뜻",
+          "alts": [
+            { "w": "avoid", "t": "ok", "m": "avoid도 맞지만, 규칙을 영리하게 빙 돌아간다는 꼼수 느낌의 단어가 있어요." },
+            { "w": "break", "t": "near", "m": "break는 규칙을 대놓고 '어기다'예요. 정면으로 어기지 않고 피해 간다는 단어는요?" },
+            { "w": "escape", "t": "near", "m": "escape는 '탈출하다'예요. 규제를 교묘하게 우회한다는 단어는요?" }
+          ]
+        },
+        {
+          "en": "We ___ the traffic by taking a back road.", "ko": "우리는 뒷길로 가서 교통 체증을 **우회했다**.", "answer": "circumvented",
+          "ctx": "출근길 운전 중에",
+          "alts": [
+            { "w": "avoided", "t": "ok", "m": "avoided도 맞지만, 빙 돌아서 피해 갔다는 단어가 있어요." },
+            { "w": "escaped", "t": "near", "m": "escaped는 '벗어났다'예요. 다른 길로 빙 돌아 피했다는 단어는요?" },
+            { "w": "passed", "t": "wrong", "m": "passed는 '지나갔다'예요. 체증을 빙 돌아서 피했다는 단어는요?" }
+          ]
+        }
       ],
       "nuance": "정면으로 맞서지 않고 '빙 돌아서 피하다'. avoid는 피함 일반, circumvent는 규칙·장애물을 영리하게(종종 꼼수로) 돌아가는 것.",
       "etymology": "라틴어 circum(둘레) + venire(오다) → '돌아서 오다'"
@@ -14,8 +30,23 @@
       "id": "clandestine", "word": "clandestine", "pos": "adj", "level": 26,
       "meanings": ["비밀리에 하는, 은밀한"],
       "sentences": [
-        { "en": "The two leaders held a ___ meeting.", "ko": "두 지도자는 **비밀** 회담을 가졌다.", "answer": "clandestine" },
-        { "en": "Police uncovered a ___ drug laboratory.", "ko": "경찰은 **은밀한** 마약 제조 시설을 적발했다.", "answer": "clandestine" }
+        {
+          "en": "The two leaders held a ___ meeting.", "ko": "두 지도자는 **비밀** 회담을 가졌다.", "answer": "clandestine",
+          "alts": [
+            { "w": "secret", "t": "ok", "m": "secret도 맞지만, 들키면 안 되는 은밀한 일이라는 느낌이 더 강한 단어가 있어요." },
+            { "w": "private", "t": "near", "m": "private은 '비공개의'예요. 몰래 숨어서 하는 은밀한 회담은요?" },
+            { "w": "hidden", "t": "near", "m": "hidden은 '숨겨진' 상태예요. 비밀리에 조직적으로 한다는 단어는요?" }
+          ]
+        },
+        {
+          "en": "Police uncovered a ___ drug laboratory.", "ko": "경찰은 **은밀한** 마약 제조 시설을 적발했다.", "answer": "clandestine",
+          "ctx": "범죄 뉴스를 보며",
+          "alts": [
+            { "w": "secret", "t": "ok", "m": "secret도 맞지만, 불법이라 숨겨 운영하던 느낌의 단어가 있어요." },
+            { "w": "hidden", "t": "near", "m": "hidden은 '숨겨진'이에요. 불법이라 몰래 운영되던 느낌의 단어는요?" },
+            { "w": "illegal", "t": "wrong", "m": "illegal은 앞의 a와 맞지 않아요. 숨겨서 몰래 운영했다는 단어는요?" }
+          ]
+        }
       ],
       "nuance": "들키면 문제가 되기 때문에 '조직적으로 숨겨서 하는'. secret은 단순히 알려지지 않은 것, clandestine은 불법·금지된 느낌이 강하다. surreptitious는 개인의 몰래 하는 행동에 더 쓴다.",
       "etymology": "라틴어 clam(몰래) → clandestinus(숨겨진)"
@@ -24,8 +55,23 @@
       "id": "cogent", "word": "cogent", "pos": "adj", "level": 26,
       "meanings": ["설득력 있는, 논리 정연한"],
       "sentences": [
-        { "en": "She made a ___ argument for changing the law.", "ko": "그녀는 법을 바꿔야 한다는 **설득력 있는** 주장을 펼쳤다.", "answer": "cogent" },
-        { "en": "There are ___ reasons to delay the project.", "ko": "프로젝트를 늦춰야 할 **타당한** 이유들이 있다.", "answer": "cogent" }
+        {
+          "en": "She made a ___ argument for changing the law.", "ko": "그녀는 법을 바꿔야 한다는 **설득력 있는** 주장을 펼쳤다.", "answer": "cogent",
+          "ctx": "토론 대회에서",
+          "alts": [
+            { "w": "convincing", "t": "ok", "m": "convincing도 맞지만, 논증 자체가 탄탄하다는 단어가 있어요." },
+            { "w": "logical", "t": "near", "m": "logical은 '논리적인'이에요. 반박하기 어려울 만큼 설득력 있다는 단어는요?" },
+            { "w": "powerful", "t": "near", "m": "powerful은 '강력한'이에요. 논리가 탄탄해 반박하기 어렵다는 단어는요?" }
+          ]
+        },
+        {
+          "en": "There are ___ reasons to delay the project.", "ko": "프로젝트를 늦춰야 할 **타당한** 이유들이 있다.", "answer": "cogent",
+          "note": "논리가 탄탄해 반박하기 어렵다는 뜻",
+          "alts": [
+            { "w": "good", "t": "ok", "m": "good도 맞지만, 논리적으로 반박하기 어렵다는 격식 있는 단어가 있어요." },
+            { "w": "reasonable", "t": "near", "m": "reasonable은 '합리적인'이에요. 논리가 탄탄해 설득력 있는 이유는요?" }
+          ]
+        }
       ],
       "nuance": "논리가 분명해 '반박하기 어려운'. convincing은 결과적으로 믿게 되는 것, cogent는 논증 자체가 탄탄한 것. 주로 argument, reason과 함께.",
       "etymology": "라틴어 cogere(몰아가다, 강제하다) → '동의하게 몰아가는'"
@@ -34,8 +80,24 @@
       "id": "commensurate", "word": "commensurate", "pos": "adj", "level": 26,
       "meanings": ["(크기·정도가) 상응하는, 걸맞은"],
       "sentences": [
-        { "en": "Salary will be ___ with experience.", "ko": "급여는 경력에 **상응하여** 지급됩니다.", "answer": "commensurate" },
-        { "en": "The punishment should be ___ with the crime.", "ko": "처벌은 범죄에 **걸맞아야** 한다.", "answer": "commensurate" }
+        {
+          "en": "Salary will be ___ with experience.", "ko": "급여는 경력에 **상응하여** 지급됩니다.", "answer": "commensurate",
+          "ctx": "채용 공고를 읽으며",
+          "note": "경력 정도에 비례해 걸맞게 정한다는 뜻",
+          "alts": [
+            { "w": "proportional", "t": "near", "m": "proportional은 보통 to와 써요. with와 함께 쓰는 '걸맞은'이라는 단어는요?" },
+            { "w": "equal", "t": "near", "m": "equal은 '같은'이에요. 경력에 비례해 걸맞게 정해진다는 단어는요?" },
+            { "w": "according", "t": "wrong", "m": "according은 according to로 써야 해요. with와 함께 쓰는 형용사는요?" }
+          ]
+        },
+        {
+          "en": "The punishment should be ___ with the crime.", "ko": "처벌은 범죄에 **걸맞아야** 한다.", "answer": "commensurate",
+          "alts": [
+            { "w": "consistent", "t": "near", "m": "consistent with는 '일치하는'이에요. 크기·정도가 걸맞다는 단어는요?" },
+            { "w": "appropriate", "t": "near", "m": "appropriate는 보통 for와 써요. with와 어울려 정도가 걸맞다는 단어는요?" },
+            { "w": "fit", "t": "wrong", "m": "fit은 주로 동사나 '건강한'이에요. be 뒤에서 with와 함께 '걸맞다'는 단어는요?" }
+          ]
+        }
       ],
       "nuance": "'commensurate with ~'(~에 비례하는)로 거의 항상 with와 함께. proportional과 같지만 격식체. 채용 공고에 자주 나온다.",
       "etymology": "라틴어 com(함께) + mensura(치수) → '같은 치수로 재는'"
@@ -44,8 +106,23 @@
       "id": "connoisseur", "word": "connoisseur", "pos": "n", "level": 26,
       "meanings": ["감식가, 전문가(미술·음식·와인 등)"],
       "sentences": [
-        { "en": "He is a ___ of fine wines.", "ko": "그는 고급 와인 **감식가**다.", "answer": "connoisseur" },
-        { "en": "Only a true ___ could tell the two paintings apart.", "ko": "진정한 **전문가**만이 두 그림을 구별할 수 있었다.", "answer": "connoisseur" }
+        {
+          "en": "He is a ___ of fine wines.", "ko": "그는 고급 와인 **감식가**다.", "answer": "connoisseur",
+          "ctx": "와인 바에서",
+          "alts": [
+            { "w": "sommelier", "t": "near", "m": "sommelier는 식당에서 와인을 추천하는 직업이에요. 안목 있는 애호가를 뜻하는 단어는요?" },
+            { "w": "lover", "t": "near", "m": "lover는 그냥 좋아하는 사람이에요. 좋은 것을 알아보는 안목까지 갖춘 사람은요?" },
+            { "w": "expert", "t": "wrong", "m": "expert는 앞의 a와 맞지 않아요. 와인을 감별하는 안목 있는 사람은요?" }
+          ]
+        },
+        {
+          "en": "Only a true ___ could tell the two paintings apart.", "ko": "진정한 **전문가**만이 두 그림을 구별할 수 있었다.", "answer": "connoisseur",
+          "alts": [
+            { "w": "expert", "t": "ok", "m": "expert도 맞지만, 예술 작품을 감별하는 안목 있는 사람을 뜻하는 단어가 있어요." },
+            { "w": "specialist", "t": "near", "m": "specialist는 특정 분야 전문가예요. 미술을 보는 감식안을 가진 사람은요?" },
+            { "w": "artist", "t": "wrong", "m": "artist는 그림을 그리는 '예술가'예요. 작품을 감별하는 사람을 생각해 보세요." }
+          ]
+        }
       ],
       "nuance": "예술·미식 분야에서 '좋은 것을 알아보는 안목 있는 사람'. expert는 지식 전문가, connoisseur는 취향과 감식안이 뛰어난 사람. 발음 [카너서].",
       "etymology": "고대 프랑스어 conoisseor(아는 사람) ← 라틴어 cognoscere(알다)"
@@ -54,8 +131,24 @@
       "id": "contrite", "word": "contrite", "pos": "adj", "level": 26,
       "meanings": ["깊이 뉘우치는, 회개하는"],
       "sentences": [
-        { "en": "He was ___ and apologized for his behavior.", "ko": "그는 **깊이 뉘우치며** 자신의 행동을 사과했다.", "answer": "contrite" },
-        { "en": "She looked ___ after breaking the vase.", "ko": "그녀는 꽃병을 깨뜨린 뒤 **미안해하는** 표정이었다.", "answer": "contrite" }
+        {
+          "en": "He was ___ and apologized for his behavior.", "ko": "그는 **깊이 뉘우치며** 자신의 행동을 사과했다.", "answer": "contrite",
+          "ctx": "싸운 다음 날",
+          "note": "잘못을 진심으로 뉘우치고 반성한다는 뜻",
+          "alts": [
+            { "w": "sorry", "t": "ok", "m": "sorry도 맞지만, 죄책감을 느끼며 진지하게 반성한다는 단어가 있어요." },
+            { "w": "regretful", "t": "near", "m": "regretful은 '후회하는'이에요. 잘못을 진심으로 뉘우친다는 단어는요?" },
+            { "w": "guilty", "t": "near", "m": "guilty는 '죄책감이 드는, 유죄의'예요. 뉘우치고 미안해하는 태도는요?" }
+          ]
+        },
+        {
+          "en": "She looked ___ after breaking the vase.", "ko": "그녀는 꽃병을 깨뜨린 뒤 **미안해하는** 표정이었다.", "answer": "contrite",
+          "alts": [
+            { "w": "sorry", "t": "ok", "m": "sorry도 맞지만, 진심으로 뉘우치는 표정을 말하는 단어가 있어요." },
+            { "w": "sad", "t": "near", "m": "sad는 '슬픈'이에요. 잘못해서 미안해하는 표정은요?" },
+            { "w": "ashamed", "t": "near", "m": "ashamed는 '부끄러운'이에요. 잘못을 뉘우치며 미안해하는 쪽은요?" }
+          ]
+        }
       ],
       "nuance": "잘못을 '진심으로 후회하고 미안해하는'. sorry는 가볍게도 쓰지만 contrite는 죄책감이 느껴지는 진지한 반성. 명사 contrition.",
       "etymology": "라틴어 contritus(부서진, 짓밟힌) → '마음이 부서진'"
@@ -64,8 +157,24 @@
       "id": "corroborate", "word": "corroborate", "pos": "v", "level": 26,
       "meanings": ["(증거로) 확증하다, 뒷받침하다"],
       "sentences": [
-        { "en": "Two witnesses ___ his story.", "ko": "두 명의 목격자가 그의 이야기를 **뒷받침했다**.", "answer": "corroborated" },
-        { "en": "The results ___ the earlier findings.", "ko": "그 결과는 이전 연구 결과를 **확증한다**.", "answer": "corroborate" }
+        {
+          "en": "Two witnesses ___ his story.", "ko": "두 명의 목격자가 그의 이야기를 **뒷받침했다**.", "answer": "corroborated",
+          "ctx": "법정 드라마를 보며",
+          "alts": [
+            { "w": "confirmed", "t": "ok", "m": "confirmed도 맞지만, 다른 증언이 같은 사실을 지지해 준다는 단어가 있어요." },
+            { "w": "supported", "t": "ok", "m": "supported도 맞지만, 증거로 사실임을 확증한다는 법정 단어가 있어요." },
+            { "w": "proved", "t": "near", "m": "proved는 '증명했다'예요. 증인들이 이야기를 독립적으로 뒷받침했다는 단어는요?" }
+          ]
+        },
+        {
+          "en": "The results ___ the earlier findings.", "ko": "그 결과는 이전 연구 결과를 **확증한다**.", "answer": "corroborate",
+          "note": "다른 증거가 같은 결론을 지지한다는 뜻",
+          "alts": [
+            { "w": "support", "t": "ok", "m": "support도 맞지만, 독립된 증거로 사실임을 확증한다는 단어가 있어요." },
+            { "w": "prove", "t": "near", "m": "prove는 '증명하다'예요. 이전 결과를 다른 증거가 뒷받침한다는 단어는요?" },
+            { "w": "confirms", "t": "wrong", "m": "주어 results가 복수라 confirms처럼 -s를 붙이지 않아요." }
+          ]
+        }
       ],
       "nuance": "다른 증거·증언으로 '사실임을 확인해 주다'. confirm은 확인 일반, corroborate는 독립적인 출처가 같은 결론을 지지하는 것. 법정·연구에서 자주. 명사 corroboration.",
       "etymology": "라틴어 cor(함께) + roborare(강하게 하다) ← robur(참나무)"
@@ -74,8 +183,24 @@
       "id": "debilitate", "word": "debilitate", "pos": "v", "level": 26,
       "meanings": ["쇠약하게 하다, 심하게 약화시키다"],
       "sentences": [
-        { "en": "The disease ___ him for months.", "ko": "그 병은 몇 달 동안 그를 **쇠약하게 했다**.", "answer": "debilitated" },
-        { "en": "Years of war have ___ the country's economy.", "ko": "수년간의 전쟁이 그 나라의 경제를 **심하게 약화시켰다**.", "answer": "debilitated" }
+        {
+          "en": "The disease ___ him for months.", "ko": "그 병은 몇 달 동안 그를 **쇠약하게 했다**.", "answer": "debilitated",
+          "note": "기운을 빼앗아 제대로 못 움직이게 했다는 뜻",
+          "alts": [
+            { "w": "weakened", "t": "ok", "m": "weakened도 맞지만, 제대로 움직이지도 못할 만큼 약하게 했다는 단어가 있어요." },
+            { "w": "hurt", "t": "near", "m": "hurt는 '다치게 했다'예요. 병이 기력을 빼앗아 쇠약하게 했다는 단어는요?" },
+            { "w": "weaked", "t": "wrong", "m": "weaked라는 말은 없어요. weak는 형용사라 -ed를 붙여 동사로 쓸 수 없어요." }
+          ]
+        },
+        {
+          "en": "Years of war have ___ the country's economy.", "ko": "수년간의 전쟁이 그 나라의 경제를 **심하게 약화시켰다**.", "answer": "debilitated",
+          "ctx": "전쟁 다큐멘터리를 보며",
+          "alts": [
+            { "w": "weakened", "t": "ok", "m": "weakened도 맞지만, 기능을 못 할 만큼 심하게 약화시켰다는 단어가 있어요." },
+            { "w": "destroyed", "t": "near", "m": "destroyed는 완전히 '파괴했다'예요. 무너지진 않았지만 심하게 약해졌다는 단어는요?" },
+            { "w": "damaged", "t": "near", "m": "damaged는 '손상시켰다'예요. 힘을 빼앗아 기능을 못 하게 했다는 단어는요?" }
+          ]
+        }
       ],
       "nuance": "힘을 빼앗아 '제대로 기능하지 못하게 만들다'. weaken보다 훨씬 강하고 질병·충격이 원인일 때 쓴다. 형용사 debilitating(심신을 쇠약하게 하는).",
       "etymology": "라틴어 debilis(약한) → '약하게 만들다'"
@@ -84,8 +209,24 @@
       "id": "decorum", "word": "decorum", "pos": "n", "level": 26,
       "meanings": ["품위, 예의에 맞는 행동"],
       "sentences": [
-        { "en": "Guests are expected to behave with ___ at the ceremony.", "ko": "하객들은 식에서 **품위 있게** 행동할 것으로 기대된다.", "answer": "decorum" },
-        { "en": "He showed a complete lack of ___ by shouting in court.", "ko": "그는 법정에서 소리를 질러 **예의**를 완전히 저버렸다.", "answer": "decorum" }
+        {
+          "en": "Guests are expected to behave with ___ at the ceremony.", "ko": "하객들은 식에서 **품위 있게** 행동할 것으로 기대된다.", "answer": "decorum",
+          "note": "격식 있는 자리에 맞게 행동한다는 뜻",
+          "alts": [
+            { "w": "dignity", "t": "ok", "m": "dignity도 맞지만, 격식 있는 자리에 맞는 예의 바른 행동을 뜻하는 단어가 있어요." },
+            { "w": "manners", "t": "near", "m": "manners는 일상 예절이에요. 공식 행사에 맞는 격조 있는 행동은요?" },
+            { "w": "elegant", "t": "wrong", "m": "elegant는 형용사라 with 뒤에 올 수 없어요. 명사가 필요해요." }
+          ]
+        },
+        {
+          "en": "He showed a complete lack of ___ by shouting in court.", "ko": "그는 법정에서 소리를 질러 **예의**를 완전히 저버렸다.", "answer": "decorum",
+          "ctx": "재판 뉴스를 보며",
+          "alts": [
+            { "w": "manners", "t": "ok", "m": "manners도 맞지만, 법정 같은 격식 있는 자리의 품위를 말하는 단어가 있어요." },
+            { "w": "etiquette", "t": "near", "m": "etiquette는 정해진 예절 규칙이에요. 자리에 맞는 품위 있는 처신 자체는요?" },
+            { "w": "polite", "t": "wrong", "m": "polite는 형용사라 of 뒤에 올 수 없어요. 명사가 필요해요." }
+          ]
+        }
       ],
       "nuance": "공식적인 자리에서 '적절하고 품위 있는 행동'. manners는 일상 예절, decorum은 격식 있는 상황의 격조. 형용사 decorous.",
       "etymology": "라틴어 decorus(어울리는, 품위 있는) ← decor(아름다움)"
@@ -94,8 +235,23 @@
       "id": "deference", "word": "deference", "pos": "n", "level": 26,
       "meanings": ["존중, 경의(에서 나오는 양보)"],
       "sentences": [
-        { "en": "He bowed in ___ to the elderly man.", "ko": "그는 노인에게 **경의**를 표하며 고개를 숙였다.", "answer": "deference" },
-        { "en": "Out of ___ to her wishes, we canceled the party.", "ko": "그녀의 뜻을 **존중하여** 우리는 파티를 취소했다.", "answer": "deference" }
+        {
+          "en": "He bowed in ___ to the elderly man.", "ko": "그는 노인에게 **경의**를 표하며 고개를 숙였다.", "answer": "deference",
+          "alts": [
+            { "w": "respect", "t": "ok", "m": "respect도 맞지만, 존중하는 마음에서 몸을 낮추는 태도를 뜻하는 단어가 있어요." },
+            { "w": "honor", "t": "near", "m": "honor는 '명예, 영광'이에요. 상대를 존중해 자신을 낮추는 태도는요?" },
+            { "w": "polite", "t": "wrong", "m": "polite는 형용사라 in 뒤에 올 수 없어요. 명사가 필요해요." }
+          ]
+        },
+        {
+          "en": "Out of ___ to her wishes, we canceled the party.", "ko": "그녀의 뜻을 **존중하여** 우리는 파티를 취소했다.", "answer": "deference",
+          "ctx": "생일 파티를 준비하다가",
+          "note": "상대 뜻을 존중해 내 뜻을 굽혔다는 뜻",
+          "alts": [
+            { "w": "respect", "t": "near", "m": "respect는 보통 for와 써요. to와 함께 쓰며 상대 뜻에 따른다는 단어는요?" },
+            { "w": "obedience", "t": "near", "m": "obedience는 '복종'이에요. 존중하는 마음에서 상대 뜻을 따른다는 단어는요?" }
+          ]
+        }
       ],
       "nuance": "상대의 지위·판단을 존중해 '자기 뜻을 굽히는' 태도. respect는 존경 일반, deference는 그 존경 때문에 따르는 행동. 'in deference to ~'. 동사 defer to(~에게 따르다).",
       "etymology": "라틴어 deferre(가져가 바치다) ← de + ferre(나르다)"

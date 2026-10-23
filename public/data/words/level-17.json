@@ -4,8 +4,24 @@
       "id": "undermine", "word": "undermine", "pos": "v", "level": 17,
       "meanings": ["약화시키다, 훼손하다"],
       "sentences": [
-        { "en": "Constant criticism can ___ a child's confidence.", "ko": "끊임없는 비판은 아이의 자신감을 **약화시킬** 수 있다.", "answer": "undermine" },
-        { "en": "The scandal ___ public trust in the government.", "ko": "그 스캔들은 정부에 대한 국민의 신뢰를 **훼손했다**.", "answer": "undermined" }
+        {
+          "en": "Constant criticism can ___ a child's confidence.", "ko": "끊임없는 비판은 아이의 자신감을 **약화시킬** 수 있다.", "answer": "undermine",
+          "ctx": "육아 강연에서",
+          "alts": [
+            { "w": "weaken", "t": "ok", "m": "weaken도 맞지만, 밑에서부터 서서히 무너뜨린다는 단어가 있어요." },
+            { "w": "hurt", "t": "near", "m": "hurt는 '상처 주다'예요. 자신감을 서서히 깎아 먹는 건요?" },
+            { "w": "lose", "t": "wrong", "m": "lose는 주어가 잃는 거라 criticism이 주어일 땐 맞지 않아요." }
+          ]
+        },
+        {
+          "en": "The scandal ___ public trust in the government.", "ko": "그 스캔들은 정부에 대한 국민의 신뢰를 **훼손했다**.", "answer": "undermined",
+          "ctx": "정치 뉴스를 보며",
+          "alts": [
+            { "w": "damaged", "t": "ok", "m": "damaged도 맞지만, 신뢰를 서서히 무너뜨렸다는 느낌의 단어가 있어요." },
+            { "w": "destroyed", "t": "near", "m": "destroyed는 '완전히 파괴했다'예요. 밑에서부터 갉아먹은 느낌은요?" },
+            { "w": "broke", "t": "near", "m": "broke는 신뢰를 '깨뜨렸다'는 직접적 느낌이에요. 서서히 훼손된 건요?" }
+          ]
+        }
       ],
       "nuance": "겉으로 드러나지 않게 '밑에서부터 서서히 무너뜨리다'. weaken은 중립적, undermine은 교묘하고 점진적인 느낌.",
       "etymology": "under(아래) + mine(굴을 파다) → '성벽 아래에 굴을 파서 무너뜨리다'"
@@ -14,8 +30,24 @@
       "id": "unprecedented", "word": "unprecedented", "pos": "adj", "level": 17,
       "meanings": ["전례 없는"],
       "sentences": [
-        { "en": "The storm caused ___ damage to the city.", "ko": "그 폭풍은 도시에 **전례 없는** 피해를 입혔다.", "answer": "unprecedented" },
-        { "en": "The team achieved ___ success this season.", "ko": "그 팀은 이번 시즌에 **전례 없는** 성공을 거두었다.", "answer": "unprecedented" }
+        {
+          "en": "The storm caused ___ damage to the city.", "ko": "그 폭풍은 도시에 **전례 없는** 피해를 입혔다.", "answer": "unprecedented",
+          "note": "역사상 한 번도 없었던 수준이라는 뜻",
+          "alts": [
+            { "w": "unparalleled", "t": "ok", "m": "unparalleled도 통하지만, '이전에 선례가 없던'을 뜻하는 단어가 따로 있어요." },
+            { "w": "unexpected", "t": "near", "m": "unexpected는 '예상치 못한'이에요. 한 번도 없었던 수준이라는 단어는요?" },
+            { "w": "new", "t": "wrong", "m": "new는 단순히 '새로운'이에요. 역사상 처음이라는 강조가 필요해요." }
+          ]
+        },
+        {
+          "en": "The team achieved ___ success this season.", "ko": "그 팀은 이번 시즌에 **전례 없는** 성공을 거두었다.", "answer": "unprecedented",
+          "ctx": "스포츠 뉴스를 보며",
+          "alts": [
+            { "w": "historic", "t": "ok", "m": "historic도 통하지만, '선례가 없는'을 정확히 뜻하는 단어가 있어요." },
+            { "w": "unbelievable", "t": "near", "m": "unbelievable은 '믿기 힘든'이에요. 이전에 한 번도 없었다는 단어는요?" },
+            { "w": "unusual", "t": "near", "m": "unusual은 '흔치 않은' 정도예요." }
+          ]
+        }
       ],
       "nuance": "'이전에 한 번도 없었던'. new는 단순히 새로운 것, unprecedented는 역사상 처음이라는 강조. 명사 precedent(판례, 선례).",
       "etymology": "un(아닌) + precedent(선례) ← 라틴어 prae(앞) + cedere(가다)"
@@ -24,8 +56,24 @@
       "id": "vague", "word": "vague", "pos": "adj", "level": 17,
       "meanings": ["막연한, 모호한"],
       "sentences": [
-        { "en": "He gave a ___ answer about his plans.", "ko": "그는 자신의 계획에 대해 **모호한** 대답을 했다.", "answer": "vague" },
-        { "en": "I have only a ___ memory of that day.", "ko": "그날에 대해서는 **희미한** 기억만 있다.", "answer": "vague" }
+        {
+          "en": "He gave a ___ answer about his plans.", "ko": "그는 자신의 계획에 대해 **모호한** 대답을 했다.", "answer": "vague",
+          "ctx": "면접 후기를 들으며",
+          "alts": [
+            { "w": "unclear", "t": "ok", "m": "unclear도 맞지만, 구체성이 없어 흐릿하다는 단어가 더 자연스러워요." },
+            { "w": "ambiguous", "t": "near", "m": "ambiguous는 '두 가지 이상으로 해석되는'이에요. 그냥 흐릿하고 불분명한 건요?" },
+            { "w": "obscure", "t": "near", "m": "obscure는 '잘 알려지지 않은·난해한'이라 대답엔 어색해요." }
+          ]
+        },
+        {
+          "en": "I have only a ___ memory of that day.", "ko": "그날에 대해서는 **희미한** 기억만 있다.", "answer": "vague",
+          "note": "또렷하지 않고 어렴풋하다는 뜻",
+          "alts": [
+            { "w": "faint", "t": "ok", "m": "faint도 맞지만, 뚜렷하지 않고 막연하다는 단어를 떠올려 보세요." },
+            { "w": "blurry", "t": "near", "m": "blurry는 사진·시야가 '흐릿한'이에요. 기억엔 다른 단어가 더 자연스러워요." },
+            { "w": "weak", "t": "wrong", "m": "weak는 '약한'이라 기억이 희미하다는 뜻이 안 돼요." }
+          ]
+        }
       ],
       "nuance": "자세하지 않아 '뚜렷하지 않은'. ambiguous는 여러 뜻으로 읽히는 것, vague는 그냥 불분명한 것. 부사 vaguely(어렴풋이).",
       "etymology": "라틴어 vagus(떠도는, 방황하는)"
@@ -34,8 +82,24 @@
       "id": "versatile", "word": "versatile", "pos": "adj", "level": 17,
       "meanings": ["다재다능한, 다용도의"],
       "sentences": [
-        { "en": "She is a ___ actress who can play any role.", "ko": "그녀는 어떤 역할도 할 수 있는 **다재다능한** 배우다.", "answer": "versatile" },
-        { "en": "Eggs are a ___ ingredient in cooking.", "ko": "달걀은 요리에서 **다용도로** 쓰이는 재료다.", "answer": "versatile" }
+        {
+          "en": "She is a ___ actress who can play any role.", "ko": "그녀는 어떤 역할도 할 수 있는 **다재다능한** 배우다.", "answer": "versatile",
+          "ctx": "영화 리뷰를 읽으며",
+          "alts": [
+            { "w": "all-round", "t": "ok", "m": "all-round도 통하지만, 여러 역할을 두루 소화한다는 격식 있는 단어가 있어요." },
+            { "w": "talented", "t": "near", "m": "talented는 '재능 있는'이에요. 여러 가지를 두루 잘한다는 단어는요?" },
+            { "w": "various", "t": "wrong", "m": "various는 '여러 가지의'라서 사람을 꾸미지 못해요." }
+          ]
+        },
+        {
+          "en": "Eggs are a ___ ingredient in cooking.", "ko": "달걀은 요리에서 **다용도로** 쓰이는 재료다.", "answer": "versatile",
+          "note": "여러 요리에 두루 쓰인다는 뜻",
+          "alts": [
+            { "w": "multipurpose", "t": "ok", "m": "multipurpose도 맞지만, 재료엔 더 자주 쓰는 단어가 있어요." },
+            { "w": "useful", "t": "near", "m": "useful은 그냥 '유용한'이에요. 여러 용도로 쓰인다는 단어는요?" },
+            { "w": "various", "t": "wrong", "m": "various는 복수 명사 앞에서 '여러 가지'라는 뜻으로 써요." }
+          ]
+        }
       ],
       "nuance": "사람에게는 '여러 가지를 잘하는', 물건에는 '여러 용도로 쓸 수 있는'. 명사 versatility.",
       "etymology": "라틴어 versare(돌리다) → '이리저리 돌릴 수 있는'"
@@ -44,8 +108,24 @@
       "id": "viable", "word": "viable", "pos": "adj", "level": 17,
       "meanings": ["실행 가능한, 성공할 수 있는"],
       "sentences": [
-        { "en": "Solar power is now a ___ alternative to coal.", "ko": "태양광은 이제 석탄의 **실현 가능한** 대안이다.", "answer": "viable" },
-        { "en": "The business plan is not financially ___.", "ko": "그 사업 계획은 재정적으로 **지속 가능하지** 않다.", "answer": "viable" }
+        {
+          "en": "Solar power is now a ___ alternative to coal.", "ko": "태양광은 이제 석탄의 **실현 가능한** 대안이다.", "answer": "viable",
+          "ctx": "에너지 정책 토론에서",
+          "alts": [
+            { "w": "feasible", "t": "ok", "m": "feasible도 맞지만, '실제로 굴러갈 수 있는'에 초점을 둔 단어가 있어요." },
+            { "w": "possible", "t": "near", "m": "possible은 '가능한'일 뿐이에요. 현실적으로 쓸 만한 대안은요?" },
+            { "w": "available", "t": "near", "m": "available은 '이용 가능한'이에요. 대안이 현실성 있다는 뜻은 아니에요." }
+          ]
+        },
+        {
+          "en": "The business plan is not financially ___.", "ko": "그 사업 계획은 재정적으로 **지속 가능하지** 않다.", "answer": "viable",
+          "note": "돈 면에서 계속 굴러갈 수 있다는 뜻",
+          "alts": [
+            { "w": "sustainable", "t": "ok", "m": "sustainable도 맞지만, 사업이 살아남을 수 있는지를 말하는 짧은 단어가 있어요." },
+            { "w": "feasible", "t": "near", "m": "feasible은 '실행할 수 있는지'예요. 실행 후 살아남을 수 있는지는요?" },
+            { "w": "stable", "t": "near", "m": "stable은 '안정적인'이에요. 사업이 굴러갈 수 있다는 단어는요?" }
+          ]
+        }
       ],
       "nuance": "원래 생물이 '살아갈 수 있는'에서 계획·사업이 '굴러갈 수 있는'으로. feasible은 '해낼 수 있는지', viable은 '해낸 뒤 살아남을 수 있는지'. 명사 viability.",
       "etymology": "프랑스어 vie(생명) → viable(살 수 있는)"
@@ -54,8 +134,24 @@
       "id": "vulnerable", "word": "vulnerable", "pos": "adj", "level": 17,
       "meanings": ["취약한, 상처받기 쉬운"],
       "sentences": [
-        { "en": "Elderly people are especially ___ to the heat.", "ko": "노인들은 특히 더위에 **취약하다**.", "answer": "vulnerable" },
-        { "en": "He felt ___ after sharing his story.", "ko": "그는 자기 이야기를 털어놓은 뒤 **상처받기 쉬운** 기분이 들었다.", "answer": "vulnerable" }
+        {
+          "en": "Elderly people are especially ___ to the heat.", "ko": "노인들은 특히 더위에 **취약하다**.", "answer": "vulnerable",
+          "ctx": "폭염 경보를 들으며",
+          "alts": [
+            { "w": "sensitive", "t": "ok", "m": "sensitive도 통하지만, 피해를 입기 쉽다는 뜻을 더 정확히 담은 단어가 있어요." },
+            { "w": "weak", "t": "near", "m": "weak는 힘이 '약한'이에요. 피해를 입기 쉽다는 단어는요?" },
+            { "w": "fragile", "t": "wrong", "m": "fragile은 '깨지기 쉬운'이라 더위 같은 피해엔 to와 함께 쓰지 않아요." }
+          ]
+        },
+        {
+          "en": "He felt ___ after sharing his story.", "ko": "그는 자기 이야기를 털어놓은 뒤 **상처받기 쉬운** 기분이 들었다.", "answer": "vulnerable",
+          "note": "마음을 드러내 무방비해진 기분",
+          "alts": [
+            { "w": "exposed", "t": "ok", "m": "exposed도 맞지만, 상처받기 쉬운 상태를 뜻하는 단어가 있어요." },
+            { "w": "hurt", "t": "near", "m": "hurt는 이미 '상처받은' 거예요. 상처받기 쉬운 상태는요?" },
+            { "w": "weak", "t": "near", "m": "weak는 힘이 없다는 뜻이에요. 마음이 무방비해진 느낌은요?" }
+          ]
+        }
       ],
       "nuance": "'vulnerable to ~'(~에 취약한). weak는 힘이 없는 것, vulnerable은 '공격이나 피해를 입기 쉬운'. 명사 vulnerability(취약점).",
       "etymology": "라틴어 vulnus(상처) → '상처 입을 수 있는'"
@@ -64,8 +160,23 @@
       "id": "withstand", "word": "withstand", "pos": "v", "level": 17,
       "meanings": ["견디다, 버티다"],
       "sentences": [
-        { "en": "This bridge can ___ strong earthquakes.", "ko": "이 다리는 강한 지진을 **견딜** 수 있다.", "answer": "withstand" },
-        { "en": "The material ___ temperatures of up to 500 degrees.", "ko": "그 소재는 500도까지의 온도를 **견딘다**.", "answer": "withstands" }
+        {
+          "en": "This bridge can ___ strong earthquakes.", "ko": "이 다리는 강한 지진을 **견딜** 수 있다.", "answer": "withstand",
+          "ctx": "건축 다큐를 보며",
+          "alts": [
+            { "w": "resist", "t": "ok", "m": "resist도 맞지만, 손상 없이 버텨 낸다는 단어가 더 자연스러워요." },
+            { "w": "endure", "t": "near", "m": "endure는 고통을 '참아 내다'예요. 외부 힘을 막아 내는 건요?" },
+            { "w": "bear", "t": "near", "m": "bear는 무게를 '지탱하다'예요. 지진 같은 충격을 버티는 건요?" }
+          ]
+        },
+        {
+          "en": "The material ___ temperatures of up to 500 degrees.", "ko": "그 소재는 500도까지의 온도를 **견딘다**.", "answer": "withstands",
+          "alts": [
+            { "w": "resists", "t": "ok", "m": "resists도 맞지만, 손상 없이 버틴다는 단어를 떠올려 보세요." },
+            { "w": "endures", "t": "near", "m": "endures는 사람이 고통을 '참는' 느낌이에요." },
+            { "w": "holds", "t": "wrong", "m": "holds는 '담다·쥐다'라 온도를 견딘다는 뜻이 안 돼요." }
+          ]
+        }
       ],
       "nuance": "외부의 힘·압력·공격에 '손상 없이 버티다'. endure는 고통을 '참아 내다', withstand는 물리적·비유적 압력을 '막아 내다'.",
       "etymology": "고대 영어 with(맞서) + standan(서다) → '맞서 서다'"
@@ -74,8 +185,23 @@
       "id": "allocate", "word": "allocate", "pos": "v", "level": 17,
       "meanings": ["할당하다, 배분하다"],
       "sentences": [
-        { "en": "The city will ___ more money to public parks.", "ko": "시는 공원에 더 많은 예산을 **배정할** 것이다.", "answer": "allocate" },
-        { "en": "Each team was ___ two hours for the task.", "ko": "각 팀에는 그 과제를 위해 두 시간이 **할당되었다**.", "answer": "allocated" }
+        {
+          "en": "The city will ___ more money to public parks.", "ko": "시는 공원에 더 많은 예산을 **배정할** 것이다.", "answer": "allocate",
+          "ctx": "시의회 예산 발표에서",
+          "alts": [
+            { "w": "assign", "t": "ok", "m": "assign도 통하지만, 예산을 배정할 땐 더 자주 쓰는 단어가 있어요." },
+            { "w": "distribute", "t": "near", "m": "distribute는 '나눠 주다'예요. 계획에 따라 몫을 정해 주는 건요?" },
+            { "w": "spend", "t": "wrong", "m": "spend는 on과 함께 써요(spend money on)." }
+          ]
+        },
+        {
+          "en": "Each team was ___ two hours for the task.", "ko": "각 팀에는 그 과제를 위해 두 시간이 **할당되었다**.", "answer": "allocated",
+          "alts": [
+            { "w": "given", "t": "ok", "m": "given도 맞지만, 계획에 따라 '할당했다'는 격식 있는 단어가 있어요." },
+            { "w": "distributed", "t": "near", "m": "distributed는 여럿에게 '나눠 줬다'예요. 몫을 정해 준 건요?" },
+            { "w": "divided", "t": "wrong", "m": "divided는 '나뉘었다'라서 팀에 시간이 주어졌다는 뜻이 안 돼요." }
+          ]
+        }
       ],
       "nuance": "'allocate A to B'(A를 B에 배정하다). distribute는 '나누어 주다', allocate는 계획에 따라 '몫을 정해 주다'. 명사 allocation.",
       "etymology": "라틴어 ad(~에) + locare(놓다) → '자리를 정해 놓다'"
@@ -84,8 +210,23 @@
       "id": "alleviate", "word": "alleviate", "pos": "v", "level": 17,
       "meanings": ["완화하다, 덜어 주다"],
       "sentences": [
-        { "en": "This medicine will ___ the pain.", "ko": "이 약은 통증을 **덜어 줄** 것이다.", "answer": "alleviate" },
-        { "en": "The new road ___ traffic in the city center.", "ko": "새 도로는 도심의 교통 혼잡을 **완화했다**.", "answer": "alleviated" }
+        {
+          "en": "This medicine will ___ the pain.", "ko": "이 약은 통증을 **덜어 줄** 것이다.", "answer": "alleviate",
+          "alts": [
+            { "w": "relieve", "t": "ok", "m": "relieve도 맞지만, 좀 더 격식 있는 단어를 떠올려 보세요." },
+            { "w": "cure", "t": "near", "m": "cure는 병을 '고치다'예요. 통증을 덜어 주는 건요?" },
+            { "w": "remove", "t": "near", "m": "remove는 아예 '없애다'예요. 덜 심하게 해 주는 건요?" }
+          ]
+        },
+        {
+          "en": "The new road ___ traffic in the city center.", "ko": "새 도로는 도심의 교통 혼잡을 **완화했다**.", "answer": "alleviated",
+          "note": "혼잡을 덜 심하게 했다는 뜻",
+          "alts": [
+            { "w": "eased", "t": "ok", "m": "eased도 맞지만, 좀 더 격식 있는 단어를 써 보세요." },
+            { "w": "solved", "t": "near", "m": "solved는 '해결했다'예요. 완전히가 아니라 덜 심하게 한 건요?" },
+            { "w": "relaxed", "t": "wrong", "m": "relaxed는 규정을 '느슨하게 했다'예요. '완화'를 그대로 옮기면 어색해요." }
+          ]
+        }
       ],
       "nuance": "고통·문제를 '덜 심하게 하다'(없애지는 못함). relieve와 거의 같지만 더 격식체. mitigate는 피해·위험의 심각성을 줄이는 데 더 자주 쓴다.",
       "etymology": "라틴어 ad + levis(가벼운) → '가볍게 하다'"
@@ -94,8 +235,24 @@
       "id": "arbitrary", "word": "arbitrary", "pos": "adj", "level": 17,
       "meanings": ["임의적인, 제멋대로인"],
       "sentences": [
-        { "en": "The choice of color was completely ___.", "ko": "색상 선택은 완전히 **임의적**이었다.", "answer": "arbitrary" },
-        { "en": "Workers complained about ___ decisions by managers.", "ko": "직원들은 관리자들의 **제멋대로인** 결정에 불만을 제기했다.", "answer": "arbitrary" }
+        {
+          "en": "The choice of color was completely ___.", "ko": "색상 선택은 완전히 **임의적**이었다.", "answer": "arbitrary",
+          "note": "특별한 이유나 기준 없이 정했다는 뜻",
+          "alts": [
+            { "w": "random", "t": "near", "m": "random은 우연에 맡긴 거예요. 누군가 근거 없이 정한 건요?" },
+            { "w": "optional", "t": "wrong", "m": "optional은 '선택 가능한'이에요. '임의'를 그대로 옮기면 뜻이 달라져요." },
+            { "w": "voluntary", "t": "wrong", "m": "voluntary는 '자발적인'이에요. 기준 없이 정했다는 뜻이 아니에요." }
+          ]
+        },
+        {
+          "en": "Workers complained about ___ decisions by managers.", "ko": "직원들은 관리자들의 **제멋대로인** 결정에 불만을 제기했다.", "answer": "arbitrary",
+          "ctx": "직장 내 불만을 들으며",
+          "alts": [
+            { "w": "unfair", "t": "near", "m": "unfair는 '불공평한'이에요. 기준 없이 제멋대로 내린 결정은요?" },
+            { "w": "selfish", "t": "near", "m": "selfish는 '이기적인'이에요. 기준 없이 마음대로라는 단어는요?" },
+            { "w": "random", "t": "near", "m": "random은 '무작위의'예요. 권한을 가진 사람이 마음대로 정한 건요?" }
+          ]
+        }
       ],
       "nuance": "이유나 기준 없이 '마음대로 정한'. random은 우연에 맡긴 것, arbitrary는 누군가 근거 없이 정한 것(종종 비판적). 부사 arbitrarily.",
       "etymology": "라틴어 arbiter(판정자) → '판정자 마음대로인'"

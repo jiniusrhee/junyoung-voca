@@ -4,8 +4,24 @@
       "id": "coherent", "word": "coherent", "pos": "adj", "level": 10,
       "meanings": ["일관된, 조리 있는"],
       "sentences": [
-        { "en": "She gave a ___ explanation of the plan.", "ko": "그녀는 그 계획을 **조리 있게** 설명했다.", "answer": "coherent" },
-        { "en": "The essay lacks a ___ structure.", "ko": "그 글은 **일관된** 구조가 없다.", "answer": "coherent" }
+        {
+          "en": "She gave a ___ explanation of the plan.", "ko": "그녀는 그 계획을 **조리 있게** 설명했다.", "answer": "coherent",
+          "note": "앞뒤가 논리적으로 잘 이어진다는 뜻",
+          "alts": [
+            { "w": "logical", "t": "ok", "m": "logical도 맞지만, 내용이 서로 잘 이어진다는 느낌의 단어를 생각해 보세요." },
+            { "w": "consistent", "t": "near", "m": "consistent는 시간이 지나도 '변함없는'이에요. 내용이 잘 연결된 설명을 생각해 보세요." },
+            { "w": "detailed", "t": "near", "m": "detailed는 '자세한'이에요. 앞뒤가 잘 맞는 설명을 생각해 보세요." }
+          ]
+        },
+        {
+          "en": "The essay lacks a ___ structure.", "ko": "그 글은 **일관된** 구조가 없다.", "answer": "coherent",
+          "ctx": "에세이 첨삭 코멘트",
+          "alts": [
+            { "w": "logical", "t": "ok", "m": "logical도 맞지만, 부분들이 서로 잘 붙어 있는 느낌의 단어를 생각해 보세요." },
+            { "w": "consistent", "t": "near", "m": "consistent는 '변함없이 같은'이에요. 부분들이 잘 이어진 구조를 생각해 보세요." },
+            { "w": "constant", "t": "wrong", "m": "constant는 '끊임없는, 일정한'이에요. 글의 구조에는 어울리지 않아요." }
+          ]
+        }
       ],
       "nuance": "부분들이 논리적으로 '잘 이어진'. consistent는 시간이 지나도 '변함없이 같은'. 명사 coherence.",
       "etymology": "라틴어 co(함께) + haerere(붙다) → '함께 붙어 있는'"
@@ -14,8 +30,22 @@
       "id": "compel", "word": "compel", "pos": "v", "level": 10,
       "meanings": ["강요하다, ~하게 만들다"],
       "sentences": [
-        { "en": "The law ___ companies to report accidents.", "ko": "그 법은 회사가 사고를 보고하도록 **강제한다**.", "answer": "compels" },
-        { "en": "Hunger ___ him to steal food.", "ko": "굶주림이 그에게 음식을 훔치도록 **강요했다**.", "answer": "compelled" }
+        {
+          "en": "The law ___ companies to report accidents.", "ko": "그 법은 회사가 사고를 보고하도록 **강제한다**.", "answer": "compels",
+          "alts": [
+            { "w": "forces", "t": "ok", "m": "forces도 맞지만, 조금 더 격식 있는 단어를 생각해 보세요." },
+            { "w": "urges", "t": "near", "m": "urges는 '촉구하다'예요. 법으로 강제하는 것과는 달라요." },
+            { "w": "makes", "t": "wrong", "m": "makes는 to 없이 동사원형을 써요(makes them report)." }
+          ]
+        },
+        {
+          "en": "Hunger ___ him to steal food.", "ko": "굶주림이 그에게 음식을 훔치도록 **강요했다**.", "answer": "compelled",
+          "alts": [
+            { "w": "forced", "t": "ok", "m": "forced도 맞지만, 조금 더 격식 있는 단어를 생각해 보세요." },
+            { "w": "persuaded", "t": "near", "m": "persuaded는 말로 '설득했다'예요. 상황이 몰아붙인 것을 생각해 보세요." },
+            { "w": "made", "t": "wrong", "m": "made는 to 없이 동사원형을 써요(made him steal)." }
+          ]
+        }
       ],
       "nuance": "force보다 격식체. 'compel 사람 to 동사'. 형용사 compelling은 '설득력 있는, 눈을 뗄 수 없는'.",
       "etymology": "라틴어 com(함께) + pellere(몰다) → '몰아붙이다'"
@@ -24,8 +54,24 @@
       "id": "comprehensive", "word": "comprehensive", "pos": "adj", "level": 10,
       "meanings": ["포괄적인, 종합적인"],
       "sentences": [
-        { "en": "The report gives a ___ overview of the market.", "ko": "그 보고서는 시장을 **포괄적으로** 개관한다.", "answer": "comprehensive" },
-        { "en": "She has ___ knowledge of Korean history.", "ko": "그녀는 한국사에 대해 **폭넓은** 지식이 있다.", "answer": "comprehensive" }
+        {
+          "en": "The report gives a ___ overview of the market.", "ko": "그 보고서는 시장을 **포괄적으로** 개관한다.", "answer": "comprehensive",
+          "ctx": "시장 조사 보고서",
+          "note": "빠짐없이 두루 다룬다는 뜻",
+          "alts": [
+            { "w": "complete", "t": "ok", "m": "complete도 맞지만, '빠짐없이 아우르는'을 뜻하는 격식 있는 단어를 생각해 보세요." },
+            { "w": "general", "t": "near", "m": "general은 '일반적인, 개략적인'이에요. 빠짐없이 다룬 개관을 생각해 보세요." },
+            { "w": "comprehensible", "t": "wrong", "m": "comprehensible은 '이해할 수 있는'이에요. 철자가 비슷해 헷갈리기 쉬워요." }
+          ]
+        },
+        {
+          "en": "She has ___ knowledge of Korean history.", "ko": "그녀는 한국사에 대해 **폭넓은** 지식이 있다.", "answer": "comprehensive",
+          "alts": [
+            { "w": "broad", "t": "ok", "m": "broad도 맞지만, 빠짐없이 아우른다는 뜻을 더 살린 단어를 생각해 보세요." },
+            { "w": "deep", "t": "near", "m": "deep은 '깊은'이에요. 폭넓게 두루 아는 것을 생각해 보세요." },
+            { "w": "comprehensible", "t": "wrong", "m": "comprehensible은 '이해할 수 있는'이라는 다른 단어예요." }
+          ]
+        }
       ],
       "nuance": "모든 것을 '빠짐없이 포함하는'. comprehensible(이해할 수 있는)과 혼동 주의. comprehensive insurance는 종합 보험.",
       "etymology": "라틴어 com + prehendere(붙잡다) → '전부 붙잡는'"
@@ -34,8 +80,24 @@
       "id": "conceive", "word": "conceive", "pos": "v", "level": 10,
       "meanings": ["상상하다", "구상하다"],
       "sentences": [
-        { "en": "I cannot ___ of life without music.", "ko": "음악 없는 삶은 **상상할** 수 없다.", "answer": "conceive" },
-        { "en": "The idea was first ___ in the 1960s.", "ko": "그 아이디어는 1960년대에 처음 **구상되었다**.", "answer": "conceived" }
+        {
+          "en": "I cannot ___ of life without music.", "ko": "음악 없는 삶은 **상상할** 수 없다.", "answer": "conceive",
+          "note": "머릿속에 그려 볼 수조차 없다는 뜻",
+          "alts": [
+            { "w": "think", "t": "ok", "m": "think of도 맞지만, '상상하다'라는 격식 있는 단어를 생각해 보세요." },
+            { "w": "imagine", "t": "near", "m": "imagine은 of 없이 바로 목적어를 받아요(imagine life). 뒤의 of를 보세요." },
+            { "w": "dream", "t": "near", "m": "dream of는 '꿈꾸다'예요. 상상조차 할 수 없다는 말을 생각해 보세요." }
+          ]
+        },
+        {
+          "en": "The idea was first ___ in the 1960s.", "ko": "그 아이디어는 1960년대에 처음 **구상되었다**.", "answer": "conceived",
+          "ctx": "기술의 역사를 소개하며",
+          "alts": [
+            { "w": "proposed", "t": "ok", "m": "proposed도 맞지만 '제안된'이에요. 머릿속에서 구상된 것을 생각해 보세요." },
+            { "w": "invented", "t": "near", "m": "invented는 물건을 '발명했다'예요. 아이디어를 처음 품은 것을 생각해 보세요." },
+            { "w": "thought", "t": "wrong", "m": "thought는 thought of처럼 of가 필요해요." }
+          ]
+        }
       ],
       "nuance": "'conceive of ~'(~를 상상하다). 계획·아이디어를 '머릿속에 품다'. '임신하다'라는 뜻도. 명사 concept, conception.",
       "etymology": "라틴어 con + capere(잡다) → '안으로 받아들이다'"
@@ -44,8 +106,25 @@
       "id": "concede", "word": "concede", "pos": "v", "level": 10,
       "meanings": ["(마지못해) 인정하다", "양보하다"],
       "sentences": [
-        { "en": "He finally ___ that he was wrong.", "ko": "그는 마침내 자신이 틀렸음을 **인정했다**.", "answer": "conceded" },
-        { "en": "She refused to ___ a single point in the debate.", "ko": "그녀는 토론에서 단 한 가지 논점도 **양보하기를** 거부했다.", "answer": "concede" }
+        {
+          "en": "He finally ___ that he was wrong.", "ko": "그는 마침내 자신이 틀렸음을 **인정했다**.", "answer": "conceded",
+          "ctx": "긴 논쟁 끝에",
+          "alts": [
+            { "w": "admitted", "t": "ok", "m": "admitted도 맞지만, 마지못해 인정하는 느낌의 단어를 생각해 보세요." },
+            { "w": "accepted", "t": "near", "m": "accepted는 '받아들였다'예요. 마지못해 잘못을 시인한 느낌을 생각해 보세요." },
+            { "w": "recognized", "t": "near", "m": "recognized는 '알아보았다, (공로를) 인정했다'예요. 마지못해 시인하는 것을 생각해 보세요." }
+          ]
+        },
+        {
+          "en": "She refused to ___ a single point in the debate.", "ko": "그녀는 토론에서 단 한 가지 논점도 **양보하기를** 거부했다.", "answer": "concede",
+          "ctx": "토론 대회에서",
+          "note": "상대에게 논점을 내준다는 뜻",
+          "alts": [
+            { "w": "yield", "t": "ok", "m": "yield도 맞지만, 논쟁에서 '내주다'를 뜻하는 다른 단어를 생각해 보세요." },
+            { "w": "give up", "t": "near", "m": "give up은 '포기하다'예요. 논점을 상대에게 내주는 것을 생각해 보세요." },
+            { "w": "admit", "t": "near", "m": "admit은 잘못을 '시인하다'예요. 논점을 내주는 것을 생각해 보세요." }
+          ]
+        }
       ],
       "nuance": "admit은 잘못을 '시인', concede는 마지못해 '인정하거나 내주다'. 명사 concession(양보, 할인).",
       "etymology": "라틴어 con + cedere(물러나다) → '물러나 내주다'"
@@ -54,8 +133,23 @@
       "id": "condemn", "word": "condemn", "pos": "v", "level": 10,
       "meanings": ["비난하다, 규탄하다", "선고하다"],
       "sentences": [
-        { "en": "World leaders ___ the attack.", "ko": "세계 지도자들은 그 공격을 **비난했다**.", "answer": "condemned" },
-        { "en": "Many people ___ violence of any kind.", "ko": "많은 사람들이 어떤 종류의 폭력도 **규탄한다**.", "answer": "condemn" }
+        {
+          "en": "World leaders ___ the attack.", "ko": "세계 지도자들은 그 공격을 **비난했다**.", "answer": "condemned",
+          "ctx": "국제 뉴스에서",
+          "alts": [
+            { "w": "denounced", "t": "ok", "m": "denounced도 맞지만, 더 자주 쓰는 단어를 생각해 보세요." },
+            { "w": "criticized", "t": "near", "m": "criticized는 '비판했다'예요. 훨씬 강한 도덕적 규탄을 생각해 보세요." },
+            { "w": "blamed", "t": "wrong", "m": "blamed는 누구 '탓'으로 돌리는 거예요. 공격을 규탄하는 것과는 달라요." }
+          ]
+        },
+        {
+          "en": "Many people ___ violence of any kind.", "ko": "많은 사람들이 어떤 종류의 폭력도 **규탄한다**.", "answer": "condemn",
+          "alts": [
+            { "w": "oppose", "t": "ok", "m": "oppose도 맞지만 '반대하다'예요. 강하게 규탄하는 것을 생각해 보세요." },
+            { "w": "criticize", "t": "near", "m": "criticize는 '비판하다'예요. 도덕적으로 단죄하는 강한 말을 생각해 보세요." },
+            { "w": "blame", "t": "wrong", "m": "blame은 책임을 '탓하다'예요. 폭력 자체를 규탄하는 것과 달라요." }
+          ]
+        }
       ],
       "nuance": "criticize보다 훨씬 강한 '도덕적 단죄'. 'condemn 사람 to 형벌'(선고하다). condemned building은 철거 판정 건물.",
       "etymology": "라틴어 con + damnare(해를 입히다, 유죄 판결하다)"
@@ -64,8 +158,23 @@
       "id": "consecutive", "word": "consecutive", "pos": "adj", "level": 10,
       "meanings": ["연속적인"],
       "sentences": [
-        { "en": "It rained for five ___ days.", "ko": "**연속** 닷새 동안 비가 왔다.", "answer": "consecutive" },
-        { "en": "She won the title for the third ___ year.", "ko": "그녀는 3년 **연속으로** 우승했다.", "answer": "consecutive" }
+        {
+          "en": "It rained for five ___ days.", "ko": "**연속** 닷새 동안 비가 왔다.", "answer": "consecutive",
+          "ctx": "장마철 날씨를 이야기하며",
+          "alts": [
+            { "w": "straight", "t": "ok", "m": "five straight days도 맞지만 구어체예요. 격식 있는 단어를 생각해 보세요." },
+            { "w": "continuous", "t": "near", "m": "continuous는 끊김 없는 '하나의 흐름'이에요. 하루하루 연달아를 생각해 보세요." },
+            { "w": "following", "t": "wrong", "m": "following days는 '그다음 날들'이에요. 연달아 이어진 것과는 달라요." }
+          ]
+        },
+        {
+          "en": "She won the title for the third ___ year.", "ko": "그녀는 3년 **연속으로** 우승했다.", "answer": "consecutive",
+          "alts": [
+            { "w": "straight", "t": "ok", "m": "straight도 맞지만 구어체예요. 격식 있는 단어를 생각해 보세요." },
+            { "w": "continuous", "t": "near", "m": "continuous는 끊김 없는 하나의 흐름이에요. 해마다 연달아를 생각해 보세요." },
+            { "w": "serial", "t": "wrong", "m": "serial은 '연쇄적인, 연재의'예요. 해마다 연속을 말할 땐 쓰지 않아요." }
+          ]
+        }
       ],
       "nuance": "중간에 끊김 없이 '잇따른'. continuous는 '쭉 이어지는 하나', consecutive는 '하나씩 연달아'.",
       "etymology": "라틴어 con + sequi(따르다) → '뒤따르는'"
@@ -74,8 +183,25 @@
       "id": "constitute", "word": "constitute", "pos": "v", "level": 10,
       "meanings": ["구성하다, 차지하다", "~에 해당하다"],
       "sentences": [
-        { "en": "Women ___ 60 percent of the workforce.", "ko": "여성이 노동력의 60퍼센트를 **차지한다**.", "answer": "constitute" },
-        { "en": "Does this ___ a breach of contract?", "ko": "이것이 계약 위반에 **해당하나요**?", "answer": "constitute" }
+        {
+          "en": "Women ___ 60 percent of the workforce.", "ko": "여성이 노동력의 60퍼센트를 **차지한다**.", "answer": "constitute",
+          "note": "전체 중 그만큼을 이룬다는 뜻",
+          "alts": [
+            { "w": "make up", "t": "ok", "m": "make up도 맞지만 구어체예요. 격식 있는 한 단어를 생각해 보세요." },
+            { "w": "account", "t": "near", "m": "account는 account for처럼 for가 있어야 비율을 나타내요." },
+            { "w": "occupy", "t": "wrong", "m": "occupy는 공간·자리를 '차지하다'예요. 비율을 말할 땐 쓰지 않아요." }
+          ]
+        },
+        {
+          "en": "Does this ___ a breach of contract?", "ko": "이것이 계약 위반에 **해당하나요**?", "answer": "constitute",
+          "ctx": "법률 상담에서",
+          "note": "계약 위반으로 볼 수 있냐는 뜻",
+          "alts": [
+            { "w": "represent", "t": "ok", "m": "represent도 쓸 수 있지만, 법적으로 '해당하다'를 더 정확히 말해 보세요." },
+            { "w": "mean", "t": "near", "m": "mean은 '의미하다'예요. 위반에 '해당하는지'를 묻고 있어요." },
+            { "w": "count", "t": "wrong", "m": "count는 count as처럼 as가 필요해요." }
+          ]
+        }
       ],
       "nuance": "'~를 이루다, ~로 간주되다'. compose, make up과 비슷하지만 격식체. 명사 constitution(헌법, 체질).",
       "etymology": "라틴어 con + statuere(세우다)"
@@ -84,8 +210,23 @@
       "id": "contemplate", "word": "contemplate", "pos": "v", "level": 10,
       "meanings": ["숙고하다, 깊이 생각하다"],
       "sentences": [
-        { "en": "She sat quietly, ___ her future.", "ko": "그녀는 조용히 앉아 자신의 미래를 **곱씹어 생각했다**.", "answer": "contemplating" },
-        { "en": "He paused to ___ the question.", "ko": "그는 멈춰서 그 질문을 **깊이 생각했다**.", "answer": "contemplate" }
+        {
+          "en": "She sat quietly, ___ her future.", "ko": "그녀는 조용히 앉아 자신의 미래를 **곱씹어 생각했다**.", "answer": "contemplating",
+          "ctx": "졸업을 앞두고",
+          "alts": [
+            { "w": "considering", "t": "ok", "m": "considering도 맞지만, 더 오래 깊이 바라보며 생각하는 느낌을 살려 보세요." },
+            { "w": "imagining", "t": "near", "m": "imagining은 '상상하는'이에요. 깊이 곱씹어 생각하는 것을 떠올려 보세요." },
+            { "w": "thinking", "t": "wrong", "m": "thinking은 about이 있어야 목적어를 받아요." }
+          ]
+        },
+        {
+          "en": "He paused to ___ the question.", "ko": "그는 멈춰서 그 질문을 **깊이 생각했다**.", "answer": "contemplate",
+          "alts": [
+            { "w": "consider", "t": "ok", "m": "consider도 맞지만, 더 깊이 오래 생각하는 느낌의 단어를 생각해 보세요." },
+            { "w": "meditate", "t": "near", "m": "meditate는 '명상하다'로 on이 필요해요." },
+            { "w": "think", "t": "wrong", "m": "think는 about이 있어야 목적어를 받아요." }
+          ]
+        }
       ],
       "nuance": "consider보다 더 오래, 깊이 '바라보며 생각하다'. 'contemplate -ing'. 명사 contemplation(명상, 숙고).",
       "etymology": "라틴어 con + templum(신전, 관찰 구역) → '신전에서 징조를 살피다'"
@@ -94,8 +235,24 @@
       "id": "contradict", "word": "contradict", "pos": "v", "level": 10,
       "meanings": ["반박하다", "모순되다"],
       "sentences": [
-        { "en": "Don't ___ me in front of the children.", "ko": "아이들 앞에서 내 말에 **반박하지** 마.", "answer": "contradict" },
-        { "en": "His actions ___ his words.", "ko": "그의 행동은 그의 말과 **모순된다**.", "answer": "contradict" }
+        {
+          "en": "Don't ___ me in front of the children.", "ko": "아이들 앞에서 내 말에 **반박하지** 마.", "answer": "contradict",
+          "ctx": "아이들이 듣는 자리에서",
+          "alts": [
+            { "w": "oppose", "t": "near", "m": "oppose는 계획·의견에 '반대하다'예요. 상대의 말을 맞받아치는 것을 생각해 보세요." },
+            { "w": "argue", "t": "wrong", "m": "argue는 argue with처럼 with가 필요해요." },
+            { "w": "disagree", "t": "wrong", "m": "disagree는 disagree with처럼 with가 필요해요." }
+          ]
+        },
+        {
+          "en": "His actions ___ his words.", "ko": "그의 행동은 그의 말과 **모순된다**.", "answer": "contradict",
+          "note": "말과 행동이 서로 어긋난다는 뜻",
+          "alts": [
+            { "w": "oppose", "t": "near", "m": "oppose는 '반대하다'라 의지가 담겨 있어요. 서로 어긋난다는 뜻을 생각해 보세요." },
+            { "w": "differ", "t": "wrong", "m": "differ는 differ from처럼 from이 필요해요." },
+            { "w": "conflict", "t": "wrong", "m": "conflict는 conflict with처럼 with가 필요해요." }
+          ]
+        }
       ],
       "nuance": "사람에게 쓰면 '말에 반대하다', 사물에 쓰면 '서로 어긋나다'. 명사 contradiction, 형용사 contradictory.",
       "etymology": "라틴어 contra(반대로) + dicere(말하다)"

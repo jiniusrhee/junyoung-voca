@@ -4,8 +4,24 @@
       "id": "mundane", "word": "mundane", "pos": "adj", "level": 21,
       "meanings": ["평범한, 일상적인", "세속적인"],
       "sentences": [
-        { "en": "She was tired of ___ tasks like washing dishes.", "ko": "그녀는 설거지 같은 **단조로운** 일에 지쳐 있었다.", "answer": "mundane" },
-        { "en": "He turned a ___ story into something magical.", "ko": "그는 **평범한** 이야기를 마법 같은 것으로 바꾸었다.", "answer": "mundane" }
+        {
+          "en": "She was tired of ___ tasks like washing dishes.", "ko": "그녀는 설거지 같은 **단조로운** 일에 지쳐 있었다.", "answer": "mundane",
+          "ctx": "집안일에 지쳐서",
+          "note": "특별할 것 없이 일상적이라 따분하다는 뜻",
+          "alts": [
+            { "w": "boring", "t": "ok", "m": "boring도 맞지만, 설거지처럼 '일상적이고 평범해서' 따분하다는 느낌을 살려 보세요." },
+            { "w": "monotonous", "t": "near", "m": "monotonous는 같은 일이 반복돼 지루하다는 데 초점이 있어요. 일상의 평범함을 담은 단어는요?" },
+            { "w": "daily", "t": "near", "m": "daily는 '매일의'라는 빈도를 말해요. 따분할 만큼 평범하다는 느낌의 단어는요?" }
+          ]
+        },
+        {
+          "en": "He turned a ___ story into something magical.", "ko": "그는 **평범한** 이야기를 마법 같은 것으로 바꾸었다.", "answer": "mundane",
+          "alts": [
+            { "w": "ordinary", "t": "wrong", "m": "ordinary는 모음으로 시작해서 앞의 a와 맞지 않아요. 자음으로 시작하는 단어예요." },
+            { "w": "common", "t": "near", "m": "common은 '흔한, 공통의'예요. 특별할 것 없는 일상적인 이야기를 뜻하는 단어는요?" },
+            { "w": "plain", "t": "near", "m": "plain은 '꾸밈없는, 수수한'이에요. 일상적이고 평범한 느낌의 단어를 떠올려 보세요." }
+          ]
+        }
       ],
       "nuance": "특별할 것 없이 '지루하게 일상적인'. ordinary는 중립적, mundane은 살짝 지루하다는 뉘앙스. 원래 '이 세상의, 세속적인'이라는 뜻에서 왔다.",
       "etymology": "라틴어 mundus(세계) → '이 세상에 속한'"
@@ -14,8 +30,22 @@
       "id": "nuance", "word": "nuance", "pos": "n", "level": 21,
       "meanings": ["미묘한 차이, 뉘앙스"],
       "sentences": [
-        { "en": "Translators must capture every ___ of the original.", "ko": "번역가는 원문의 모든 **미묘한 차이**를 담아내야 한다.", "answer": "nuance" },
-        { "en": "His performance was full of subtle ___.", "ko": "그의 연기는 섬세한 **뉘앙스**로 가득했다.", "answer": "nuances" }
+        {
+          "en": "Translators must capture every ___ of the original.", "ko": "번역가는 원문의 모든 **미묘한 차이**를 담아내야 한다.", "answer": "nuance",
+          "ctx": "번역 수업에서",
+          "alts": [
+            { "w": "difference", "t": "near", "m": "difference는 차이 일반이에요. 알아차리려면 섬세함이 필요한 작은 차이를 뜻하는 말은요?" },
+            { "w": "detail", "t": "near", "m": "detail은 '세부 사항'이에요. 의미나 느낌의 미묘한 차이를 가리키는 단어를 생각해 보세요." },
+            { "w": "subtlety", "t": "ok", "m": "subtlety도 맞지만, 프랑스어에서 온 더 흔한 말이 있어요. 한국어로도 그대로 써요." }
+          ]
+        },
+        {
+          "en": "His performance was full of subtle ___.", "ko": "그의 연기는 섬세한 **뉘앙스**로 가득했다.", "answer": "nuances",
+          "alts": [
+            { "w": "differences", "t": "near", "m": "differences는 차이 일반이에요. 연기에 담긴 섬세한 느낌의 차이를 뜻하는 단어는요?" },
+            { "w": "feelings", "t": "near", "m": "feelings는 '감정' 자체예요. 감정 표현의 미묘한 결을 가리키는 말을 떠올려 보세요." }
+          ]
+        }
       ],
       "nuance": "의미·소리·색·감정의 '아주 작은 차이'. difference는 어떤 차이든 가리키고, nuance는 알아차리려면 섬세함이 필요한 차이. 형용사 nuanced(섬세한).",
       "etymology": "프랑스어 nuer(색조를 입히다) ← 라틴어 nubes(구름) → '구름 그늘처럼 미세한 색 변화'"
@@ -24,8 +54,24 @@
       "id": "obscure", "word": "obscure", "pos": "adj", "level": 21,
       "meanings": ["잘 알려지지 않은", "이해하기 어려운", "가리다"],
       "sentences": [
-        { "en": "The film was directed by an ___ Polish director.", "ko": "그 영화는 **잘 알려지지 않은** 폴란드 감독이 연출했다.", "answer": "obscure" },
-        { "en": "Fog ___ the view of the mountains.", "ko": "안개가 산의 경치를 **가렸다**.", "answer": "obscured" }
+        {
+          "en": "The film was directed by an ___ Polish director.", "ko": "그 영화는 **잘 알려지지 않은** 폴란드 감독이 연출했다.", "answer": "obscure",
+          "note": "유명하지 않아 세상에 묻혀 있다는 뜻",
+          "alts": [
+            { "w": "unknown", "t": "ok", "m": "unknown도 맞지만, 세상에 묻혀 잘 드러나지 않았다는 느낌의 단어를 생각해 보세요." },
+            { "w": "unpopular", "t": "near", "m": "unpopular는 '인기 없는, 미움받는'이에요. 그냥 널리 알려지지 않았다는 단어는요?" },
+            { "w": "unfamous", "t": "wrong", "m": "unfamous는 거의 쓰지 않는 말이에요. 무명이라 잘 알려지지 않았다는 단어를 떠올려 보세요." }
+          ]
+        },
+        {
+          "en": "Fog ___ the view of the mountains.", "ko": "안개가 산의 경치를 **가렸다**.", "answer": "obscured",
+          "ctx": "산에 올랐는데",
+          "alts": [
+            { "w": "blocked", "t": "ok", "m": "blocked도 맞지만, 안개처럼 흐릿하게 덮어 안 보이게 가린다는 단어가 있어요." },
+            { "w": "covered", "t": "near", "m": "covered는 위를 덮는다는 뜻이에요. 시야를 흐릿하게 가려 안 보이게 하는 단어는요?" },
+            { "w": "hid", "t": "near", "m": "hid는 일부러 숨겼다는 느낌이에요. 안개가 시야를 흐리게 가렸다는 단어를 생각해 보세요." }
+          ]
+        }
       ],
       "nuance": "형용사로 '유명하지 않은, 뜻이 애매한', 동사로 '보이지 않게 가리다'. unknown보다 '묻혀 있는' 느낌. 명사 obscurity(무명).",
       "etymology": "라틴어 obscurus(어두운, 덮인)"
@@ -34,8 +80,24 @@
       "id": "ominous", "word": "ominous", "pos": "adj", "level": 21,
       "meanings": ["불길한, 나쁜 징조의"],
       "sentences": [
-        { "en": "Dark, ___ clouds gathered over the sea.", "ko": "어둡고 **불길한** 구름이 바다 위로 모여들었다.", "answer": "ominous" },
-        { "en": "There was an ___ silence after the announcement.", "ko": "발표 뒤에 **불길한** 침묵이 흘렀다.", "answer": "ominous" }
+        {
+          "en": "Dark, ___ clouds gathered over the sea.", "ko": "어둡고 **불길한** 구름이 바다 위로 모여들었다.", "answer": "ominous",
+          "alts": [
+            { "w": "threatening", "t": "ok", "m": "threatening도 쓸 수 있지만, '나쁜 징조'라는 느낌이 더 강한 단어가 있어요." },
+            { "w": "scary", "t": "near", "m": "scary는 그냥 '무서운'이에요. 곧 나쁜 일이 닥칠 것 같은 조짐을 주는 단어는요?" },
+            { "w": "unlucky", "t": "wrong", "m": "unlucky는 사람이 '운이 없는'이에요. 구름이 나쁜 징조처럼 보인다는 단어는요?" }
+          ]
+        },
+        {
+          "en": "There was an ___ silence after the announcement.", "ko": "발표 뒤에 **불길한** 침묵이 흘렀다.", "answer": "ominous",
+          "ctx": "회사의 중대 발표 뒤",
+          "note": "나쁜 일이 곧 닥칠 것 같은 조짐이라는 뜻",
+          "alts": [
+            { "w": "eerie", "t": "near", "m": "eerie는 '으스스한, 기묘한'이에요. 나쁜 일이 생길 것 같은 조짐을 말하는 단어는요?" },
+            { "w": "awkward", "t": "near", "m": "awkward는 '어색한'이에요. 불길한 예감이 드는 침묵을 뜻하는 단어를 생각해 보세요." },
+            { "w": "uneasy", "t": "near", "m": "uneasy는 사람이 '불안한'이에요. 침묵 자체가 나쁜 징조처럼 느껴진다는 단어는요?" }
+          ]
+        }
       ],
       "nuance": "나쁜 일이 '곧 일어날 것 같은' 느낌을 주는. threatening은 직접 위협하는 것, ominous는 조짐으로 불안하게 하는 것. 명사 omen(징조).",
       "etymology": "라틴어 omen(징조) → '징조가 되는'"
@@ -44,8 +106,24 @@
       "id": "ostensible", "word": "ostensible", "pos": "adj", "level": 21,
       "meanings": ["표면상의, 겉으로 내세우는"],
       "sentences": [
-        { "en": "The ___ reason for his visit was business.", "ko": "그의 방문의 **표면상** 이유는 사업이었다.", "answer": "ostensible" },
-        { "en": "Her ___ goal was to help, but she wanted control.", "ko": "그녀의 **겉으로 내세운** 목표는 돕는 것이었지만 실제로는 통제를 원했다.", "answer": "ostensible" }
+        {
+          "en": "The ___ reason for his visit was business.", "ko": "그의 방문의 **표면상** 이유는 사업이었다.", "answer": "ostensible",
+          "note": "겉으로 내세운 것과 실제가 다르다는 뜻",
+          "alts": [
+            { "w": "apparent", "t": "near", "m": "apparent는 '분명해 보이는'이에요. 진짜 이유는 따로 있다는 암시가 담긴 단어는요?" },
+            { "w": "official", "t": "near", "m": "official은 '공식적인'이에요. 겉으로만 내세운 이유라는 느낌의 단어를 생각해 보세요." },
+            { "w": "surface", "t": "wrong", "m": "surface는 명사라 reason을 꾸미기 어색해요. '표면상의'라는 형용사를 떠올려 보세요." }
+          ]
+        },
+        {
+          "en": "Her ___ goal was to help, but she wanted control.", "ko": "그녀의 **겉으로 내세운** 목표는 돕는 것이었지만 실제로는 통제를 원했다.", "answer": "ostensible",
+          "ctx": "동료의 속셈을 알고",
+          "alts": [
+            { "w": "stated", "t": "ok", "m": "stated도 말이 되지만, '겉으로만 내세운'이라는 의심이 담긴 단어가 있어요." },
+            { "w": "outward", "t": "near", "m": "outward는 '겉보기의'예요. 남들에게 내세운 명분일 뿐이라는 단어를 생각해 보세요." },
+            { "w": "fake", "t": "wrong", "m": "fake는 '가짜의'예요. 겉으로 내세웠지만 속뜻은 따로 있다는 단어를 떠올려 보세요." }
+          ]
+        }
       ],
       "nuance": "'겉으로는 그렇다고 하지만 실제는 다를 수 있는'. apparent도 비슷하지만 ostensible은 거의 항상 '진짜 이유는 따로 있다'는 암시. 부사 ostensibly(표면상으로는).",
       "etymology": "라틴어 ostendere(보여 주다) → '보여 주기 위한'"
@@ -54,8 +132,24 @@
       "id": "palpable", "word": "palpable", "pos": "adj", "level": 21,
       "meanings": ["감지할 수 있는, 뚜렷한"],
       "sentences": [
-        { "en": "There was a ___ sense of relief in the room.", "ko": "방 안에는 **뚜렷한** 안도감이 감돌았다.", "answer": "palpable" },
-        { "en": "The tension between them was ___.", "ko": "둘 사이의 긴장감은 **손에 잡힐 듯** 분명했다.", "answer": "palpable" }
+        {
+          "en": "There was a ___ sense of relief in the room.", "ko": "방 안에는 **뚜렷한** 안도감이 감돌았다.", "answer": "palpable",
+          "alts": [
+            { "w": "strong", "t": "ok", "m": "strong도 맞지만, 안도감이 손에 잡힐 듯 생생하다는 느낌의 단어가 있어요." },
+            { "w": "clear", "t": "near", "m": "clear는 '분명한'이에요. 손에 잡힐 듯 느껴지는 분위기를 표현하는 단어는요?" },
+            { "w": "tangible", "t": "near", "m": "tangible은 증거·결과처럼 실체 있는 것에 주로 써요. 분위기·감정에 더 어울리는 단어는요?" }
+          ]
+        },
+        {
+          "en": "The tension between them was ___.", "ko": "둘 사이의 긴장감은 **손에 잡힐 듯** 분명했다.", "answer": "palpable",
+          "ctx": "다툰 두 사람 사이에서",
+          "note": "만질 수 있을 만큼 생생하게 느껴진다는 뜻",
+          "alts": [
+            { "w": "obvious", "t": "near", "m": "obvious는 '명백한'이에요. 긴장감이 손에 잡힐 듯 느껴진다는 단어를 떠올려 보세요." },
+            { "w": "touchable", "t": "wrong", "m": "touchable은 실제로 만질 수 있다는 뜻이라 감정이나 분위기에는 안 써요." },
+            { "w": "tense", "t": "wrong", "m": "tense는 앞의 tension과 뜻이 겹쳐요. 긴장감이 '만져질 듯 분명하다'는 단어는요?" }
+          ]
+        }
       ],
       "nuance": "원래 '만질 수 있는'에서 감정·분위기가 '느껴질 만큼 강한'으로. tangible은 결과·증거에, palpable은 분위기·감정에 더 자주 쓴다.",
       "etymology": "라틴어 palpare(만지다, 더듬다) → '만질 수 있는'"
@@ -64,8 +158,24 @@
       "id": "pervasive", "word": "pervasive", "pos": "adj", "level": 21,
       "meanings": ["널리 스며든, 만연한"],
       "sentences": [
-        { "en": "Social media has a ___ influence on teenagers.", "ko": "소셜 미디어는 십 대에게 **널리 스며든** 영향을 미친다.", "answer": "pervasive" },
-        { "en": "There was a ___ smell of smoke in the house.", "ko": "집 안 구석구석에 연기 냄새가 **배어** 있었다.", "answer": "pervasive" }
+        {
+          "en": "Social media has a ___ influence on teenagers.", "ko": "소셜 미디어는 십 대에게 **널리 스며든** 영향을 미친다.", "answer": "pervasive",
+          "note": "생활 구석구석까지 스며들었다는 뜻",
+          "alts": [
+            { "w": "widespread", "t": "near", "m": "widespread는 넓게 퍼진 분포를 말해요. 생활 구석구석 스며든 영향을 뜻하는 단어는요?" },
+            { "w": "strong", "t": "near", "m": "strong은 영향이 '강하다'는 것이에요. 구석구석 스며들어 퍼졌다는 단어는요?" },
+            { "w": "big", "t": "near", "m": "big은 크기만 말해요. 어디에나 스며든 영향이라는 느낌의 단어를 생각해 보세요." }
+          ]
+        },
+        {
+          "en": "There was a ___ smell of smoke in the house.", "ko": "집 안 구석구석에 연기 냄새가 **배어** 있었다.", "answer": "pervasive",
+          "ctx": "불이 난 집을 둘러보며",
+          "alts": [
+            { "w": "strong", "t": "ok", "m": "strong도 맞지만, 냄새가 집 안 구석구석 배어 있다는 느낌의 단어가 있어요." },
+            { "w": "spreading", "t": "near", "m": "spreading은 지금 퍼지는 중이라는 뜻이에요. 이미 구석구석 배어 있다는 단어는요?" },
+            { "w": "soaked", "t": "wrong", "m": "soaked는 액체에 '흠뻑 젖은'이에요. 냄새가 구석구석 스며든 상태를 말하는 단어는요?" }
+          ]
+        }
       ],
       "nuance": "모든 곳에 '퍼져 스며든'. widespread는 넓게 분포한 것, pervasive는 구석구석 침투한 것(종종 부정적). 동사 pervade.",
       "etymology": "라틴어 per(두루) + vadere(가다) → '두루 퍼져 가는'"
@@ -74,8 +184,24 @@
       "id": "pragmatic", "word": "pragmatic", "pos": "adj", "level": 21,
       "meanings": ["실용적인, 현실적인"],
       "sentences": [
-        { "en": "We need a ___ approach to solving this problem.", "ko": "이 문제를 해결하려면 **실용적인** 접근이 필요하다.", "answer": "pragmatic" },
-        { "en": "She is ___ about her career choices.", "ko": "그녀는 진로 선택에 대해 **현실적이다**.", "answer": "pragmatic" }
+        {
+          "en": "We need a ___ approach to solving this problem.", "ko": "이 문제를 해결하려면 **실용적인** 접근이 필요하다.", "answer": "pragmatic",
+          "ctx": "회의에서 해결책을 논하며",
+          "alts": [
+            { "w": "practical", "t": "ok", "m": "practical도 맞지만, 사고방식·태도로서의 실용성을 강조하는 단어가 있어요." },
+            { "w": "realistic", "t": "near", "m": "realistic은 '현실적으로 가능한'이에요. 이론보다 실제 효과를 중시한다는 단어는요?" },
+            { "w": "useful", "t": "wrong", "m": "useful은 물건이 '쓸모 있는'이에요. 접근 방식이 실용적이라는 단어를 생각해 보세요." }
+          ]
+        },
+        {
+          "en": "She is ___ about her career choices.", "ko": "그녀는 진로 선택에 대해 **현실적이다**.", "answer": "pragmatic",
+          "note": "이상보다 실제 효과를 따진다는 뜻",
+          "alts": [
+            { "w": "realistic", "t": "ok", "m": "realistic도 맞지만, 이상보다 실리를 따지는 태도를 말하는 단어가 있어요." },
+            { "w": "sensible", "t": "near", "m": "sensible은 '분별 있는'이에요. 이상보다 실제 효과를 따지는 태도를 말하는 단어는요?" },
+            { "w": "real", "t": "wrong", "m": "real은 '진짜의'라는 뜻이에요. '현실적인' 태도를 말하는 형용사를 떠올려 보세요." }
+          ]
+        }
       ],
       "nuance": "이론·이상보다 '실제로 효과가 있는지'를 중시하는. practical과 비슷하지만 사고방식·태도를 말할 때 더 쓴다. 명사 pragmatism.",
       "etymology": "그리스어 pragma(행위, 일) → '일에 관한'"
@@ -84,8 +210,24 @@
       "id": "precarious", "word": "precarious", "pos": "adj", "level": 21,
       "meanings": ["불안정한, 위태로운"],
       "sentences": [
-        { "en": "The vase sat in a ___ position on the edge of the shelf.", "ko": "꽃병이 선반 가장자리에 **위태롭게** 놓여 있었다.", "answer": "precarious" },
-        { "en": "Many freelancers live in a ___ financial situation.", "ko": "많은 프리랜서가 **불안정한** 재정 상황에서 살아간다.", "answer": "precarious" }
+        {
+          "en": "The vase sat in a ___ position on the edge of the shelf.", "ko": "꽃병이 선반 가장자리에 **위태롭게** 놓여 있었다.", "answer": "precarious",
+          "ctx": "선반을 정리하다가",
+          "alts": [
+            { "w": "shaky", "t": "ok", "m": "shaky도 통하지만, 금방이라도 떨어질 듯 아슬아슬한 느낌의 단어가 있어요." },
+            { "w": "dangerous", "t": "near", "m": "dangerous는 위험 일반이에요. 언제 떨어질지 모를 만큼 아슬아슬한 상태는요?" },
+            { "w": "dangerously", "t": "wrong", "m": "dangerously는 부사라 명사 position 앞에 올 수 없어요. 형용사가 필요해요." }
+          ]
+        },
+        {
+          "en": "Many freelancers live in a ___ financial situation.", "ko": "많은 프리랜서가 **불안정한** 재정 상황에서 살아간다.", "answer": "precarious",
+          "note": "언제 무너질지 몰라 아슬아슬하다는 뜻",
+          "alts": [
+            { "w": "unstable", "t": "wrong", "m": "unstable은 뜻은 비슷하지만 앞의 a와 맞지 않아요. 자음으로 시작하는 단어예요." },
+            { "w": "difficult", "t": "near", "m": "difficult는 '어려운'이에요. 언제 무너질지 몰라 불안한 처지를 말하는 단어는요?" },
+            { "w": "poor", "t": "near", "m": "poor는 '가난한'이에요. 돈이 없다기보다 언제 흔들릴지 모르는 처지를 말해요." }
+          ]
+        }
       ],
       "nuance": "언제 무너질지 모르는 '아슬아슬한'. unstable은 중립적, precarious는 위험이 임박한 느낌. 물리적 위치와 처지 모두에 쓴다.",
       "etymology": "라틴어 precarius(남의 호의에 달린) ← prex(기도, 간청)"
@@ -94,8 +236,24 @@
       "id": "prudent", "word": "prudent", "pos": "adj", "level": 21,
       "meanings": ["신중한, 분별 있는"],
       "sentences": [
-        { "en": "It would be ___ to save some money for emergencies.", "ko": "비상시를 위해 돈을 좀 저축하는 것이 **현명할** 것이다.", "answer": "prudent" },
-        { "en": "She made a ___ decision to wait for more information.", "ko": "그녀는 더 많은 정보를 기다리기로 **신중한** 결정을 내렸다.", "answer": "prudent" }
+        {
+          "en": "It would be ___ to save some money for emergencies.", "ko": "비상시를 위해 돈을 좀 저축하는 것이 **현명할** 것이다.", "answer": "prudent",
+          "note": "앞날의 위험을 생각해 대비한다는 뜻",
+          "alts": [
+            { "w": "wise", "t": "ok", "m": "wise도 맞지만, 앞날의 위험에 대비하는 신중함을 담은 단어가 있어요." },
+            { "w": "smart", "t": "near", "m": "smart는 머리가 좋다는 느낌이에요. 위험을 내다보고 조심하는 분별력을 말하는 단어는요?" },
+            { "w": "careful", "t": "near", "m": "careful은 행동이 조심스럽다는 거예요. 판단이 분별 있고 현명하다는 단어를 생각해 보세요." }
+          ]
+        },
+        {
+          "en": "She made a ___ decision to wait for more information.", "ko": "그녀는 더 많은 정보를 기다리기로 **신중한** 결정을 내렸다.", "answer": "prudent",
+          "ctx": "투자를 앞두고",
+          "alts": [
+            { "w": "careful", "t": "ok", "m": "careful도 맞지만, 위험을 내다본 분별 있는 판단이라는 단어가 있어요." },
+            { "w": "cautious", "t": "near", "m": "cautious는 위험을 피하려 조심하는 성향이에요. 판단 자체가 분별 있다는 단어는요?" },
+            { "w": "serious", "t": "near", "m": "serious는 '진지한'이에요. 앞일을 고려한 분별 있는 결정을 말하는 단어는요?" }
+          ]
+        }
       ],
       "nuance": "앞날의 위험을 생각해 '조심스럽고 현명하게' 판단하는. careful은 행동의 조심성, prudent는 판단의 분별력. 명사 prudence. 반대는 imprudent.",
       "etymology": "라틴어 providens(앞을 내다보는)의 축약 → prudens"

@@ -4,8 +4,24 @@
       "id": "acquire", "word": "acquire", "pos": "v", "level": 8,
       "meanings": ["습득하다", "획득하다, 인수하다"],
       "sentences": [
-        { "en": "Children ___ language naturally.", "ko": "아이들은 언어를 자연스럽게 **습득한다**.", "answer": "acquire" },
-        { "en": "The company ___ two smaller firms last year.", "ko": "그 회사는 지난해 소규모 회사 두 곳을 **인수했다**.", "answer": "acquired" }
+        {
+          "en": "Children ___ language naturally.", "ko": "아이들은 언어를 자연스럽게 **습득한다**.", "answer": "acquire",
+          "note": "시간을 들여 자연스럽게 익힌다는 뜻",
+          "alts": [
+            { "w": "learn", "t": "ok", "m": "learn도 맞지만, 자연스럽게 '습득한다'는 느낌의 단어를 생각해 보세요." },
+            { "w": "obtain", "t": "near", "m": "obtain은 절차를 거쳐 '얻다'예요. 언어를 익히는 것과는 어울리지 않아요." },
+            { "w": "study", "t": "near", "m": "study는 의식적으로 '공부하다'예요. naturally와는 어울리지 않아요." }
+          ]
+        },
+        {
+          "en": "The company ___ two smaller firms last year.", "ko": "그 회사는 지난해 소규모 회사 두 곳을 **인수했다**.", "answer": "acquired",
+          "ctx": "기업 인수 소식",
+          "alts": [
+            { "w": "bought", "t": "ok", "m": "bought도 맞지만 구어체예요. 회사 '인수'를 뜻하는 격식 있는 단어를 생각해 보세요." },
+            { "w": "obtained", "t": "near", "m": "obtained는 허가·자료를 얻을 때 써요. 회사 인수엔 어울리지 않아요." },
+            { "w": "took", "t": "wrong", "m": "took은 '가져갔다'예요. 회사를 인수할 땐 take over처럼 써야 해요." }
+          ]
+        }
       ],
       "nuance": "시간을 들여 '얻게 되다'. 지식·기술·재산·회사(인수)에 쓴다. 명사 acquisition(인수, 습득).",
       "etymology": "라틴어 ad + quaerere(구하다) → '구하여 더하다'"
@@ -14,8 +30,24 @@
       "id": "adapt", "word": "adapt", "pos": "v", "level": 8,
       "meanings": ["적응하다", "개작하다"],
       "sentences": [
-        { "en": "It took me a while to ___ to the new school.", "ko": "새 학교에 **적응하는** 데 시간이 좀 걸렸다.", "answer": "adapt" },
-        { "en": "The movie was ___ from a famous novel.", "ko": "그 영화는 유명 소설을 **각색한** 것이다.", "answer": "adapted" }
+        {
+          "en": "It took me a while to ___ to the new school.", "ko": "새 학교에 **적응하는** 데 시간이 좀 걸렸다.", "answer": "adapt",
+          "ctx": "전학 간 첫 학기",
+          "alts": [
+            { "w": "adjust", "t": "ok", "m": "adjust to도 맞지만, 새 환경에 '적응하다'를 뜻하는 다른 단어를 생각해 보세요." },
+            { "w": "settle", "t": "near", "m": "settle은 settle in처럼 in과 함께 써요. to와 어울리는 단어를 생각해 보세요." },
+            { "w": "adopt", "t": "wrong", "m": "adopt는 '채택하다, 입양하다'예요. 철자가 비슷하니 주의하세요." }
+          ]
+        },
+        {
+          "en": "The movie was ___ from a famous novel.", "ko": "그 영화는 유명 소설을 **각색한** 것이다.", "answer": "adapted",
+          "note": "원작을 바탕으로 다시 만들었다는 뜻",
+          "alts": [
+            { "w": "made", "t": "near", "m": "made from은 재료로 '만들어진'이에요. 원작을 바꿔 쓴 것을 생각해 보세요." },
+            { "w": "adopted", "t": "wrong", "m": "adopted는 '채택된, 입양된'이에요. 철자가 비슷해 헷갈리기 쉬워요." },
+            { "w": "based", "t": "wrong", "m": "based는 based on처럼 on과 함께 써요. from과는 어울리지 않아요." }
+          ]
+        }
       ],
       "nuance": "'adapt to ~'(~에 적응하다). adopt(채택하다, 입양하다)와 철자 혼동 주의. adjust는 조금씩 '맞춰 조정'.",
       "etymology": "라틴어 ad(~에) + aptare(맞추다)"
@@ -24,8 +56,23 @@
       "id": "analyze", "word": "analyze", "pos": "v", "level": 8,
       "meanings": ["분석하다"],
       "sentences": [
-        { "en": "Scientists ___ the data carefully.", "ko": "과학자들은 데이터를 신중하게 **분석했다**.", "answer": "analyzed" },
-        { "en": "We need to ___ why sales dropped.", "ko": "매출이 왜 떨어졌는지 **분석해야** 한다.", "answer": "analyze" }
+        {
+          "en": "Scientists ___ the data carefully.", "ko": "과학자들은 데이터를 신중하게 **분석했다**.", "answer": "analyzed",
+          "alts": [
+            { "w": "examined", "t": "ok", "m": "examined도 맞지만 '살펴봤다'예요. 요소로 나눠 따져 본 것을 생각해 보세요." },
+            { "w": "checked", "t": "near", "m": "checked는 '확인했다'예요. 데이터를 깊이 따져 본 것을 생각해 보세요." },
+            { "w": "researched", "t": "near", "m": "researched는 주제를 '조사했다'예요. 데이터를 나눠 따져 보는 것과는 달라요." }
+          ]
+        },
+        {
+          "en": "We need to ___ why sales dropped.", "ko": "매출이 왜 떨어졌는지 **분석해야** 한다.", "answer": "analyze",
+          "ctx": "매출 회의에서",
+          "alts": [
+            { "w": "understand", "t": "ok", "m": "understand도 맞지만, 원인을 나눠 따져 보는 단어를 생각해 보세요." },
+            { "w": "examine", "t": "near", "m": "examine은 '살펴보다'예요. 원인을 요소별로 따져 보는 단어를 생각해 보세요." },
+            { "w": "solve", "t": "wrong", "m": "solve는 문제를 '해결하다'예요. 왜 떨어졌는지 따져 보는 것과 달라요." }
+          ]
+        }
       ],
       "nuance": "영국식 철자는 analyse. 명사 analysis(복수 analyses). examine은 '살펴보다', analyze는 '요소로 나눠 따져보다'.",
       "etymology": "그리스어 ana(두루) + lyein(풀다) → '풀어서 나누다'"
@@ -34,8 +81,25 @@
       "id": "assume", "word": "assume", "pos": "v", "level": 8,
       "meanings": ["가정하다, ~라고 여기다", "(책임을) 맡다"],
       "sentences": [
-        { "en": "I ___ you have already heard the news.", "ko": "너도 이미 소식을 들었을 거라고 **생각해**.", "answer": "assume" },
-        { "en": "She will ___ the role of manager next month.", "ko": "그녀는 다음 달에 관리자 역할을 **맡을** 것이다.", "answer": "assume" }
+        {
+          "en": "I ___ you have already heard the news.", "ko": "너도 이미 소식을 들었을 거라고 **생각해**.", "answer": "assume",
+          "note": "그럴 거라고 미리 여긴다는 뜻",
+          "alts": [
+            { "w": "think", "t": "ok", "m": "think도 맞지만, 확인 없이 '그럴 거라 여기는' 단어를 생각해 보세요." },
+            { "w": "suppose", "t": "near", "m": "suppose도 비슷하지만 확신이 덜한 느낌이에요. 더 확신하는 어조의 단어를 생각해 보세요." },
+            { "w": "consider", "t": "wrong", "m": "consider는 '고려하다'예요. 이렇게 that절을 바로 받아 짐작을 나타내지 않아요." }
+          ]
+        },
+        {
+          "en": "She will ___ the role of manager next month.", "ko": "그녀는 다음 달에 관리자 역할을 **맡을** 것이다.", "answer": "assume",
+          "ctx": "인사 발령 소식",
+          "note": "책임 있는 자리를 맡는다는 뜻",
+          "alts": [
+            { "w": "take", "t": "ok", "m": "take도 맞지만, 책임을 '맡다'를 뜻하는 격식 있는 단어를 생각해 보세요." },
+            { "w": "play", "t": "near", "m": "play the role은 연극처럼 '역할을 하다'예요. 직책을 맡는 것을 생각해 보세요." },
+            { "w": "charge", "t": "wrong", "m": "charge는 take charge of처럼 써야 '맡다'가 돼요." }
+          ]
+        }
       ],
       "nuance": "근거 없이 '그럴 것이라 여기다'. suppose와 비슷하지만 assume은 더 확신하는 어조. 명사 assumption.",
       "etymology": "라틴어 ad(~에) + sumere(가져가다) → '자기에게 가져가다'"
@@ -44,8 +108,23 @@
       "id": "attempt", "word": "attempt", "pos": "v", "level": 8,
       "meanings": ["시도하다", "시도"],
       "sentences": [
-        { "en": "He ___ to climb the mountain alone.", "ko": "그는 혼자 그 산에 오르려고 **시도했다**.", "answer": "attempted" },
-        { "en": "She passed the exam on her first ___.", "ko": "그녀는 첫 **시도**에 시험에 합격했다.", "answer": "attempt" }
+        {
+          "en": "He ___ to climb the mountain alone.", "ko": "그는 혼자 그 산에 오르려고 **시도했다**.", "answer": "attempted",
+          "alts": [
+            { "w": "tried", "t": "ok", "m": "tried도 맞지만, 어려운 일에 쓰는 격식 있는 단어를 생각해 보세요." },
+            { "w": "planned", "t": "near", "m": "planned는 '계획했다'예요. 실제로 해 보려 한 것을 생각해 보세요." },
+            { "w": "challenged", "t": "wrong", "m": "challenged는 '도전장을 냈다'예요. 한국어 '도전하다'와 뜻이 달라요." }
+          ]
+        },
+        {
+          "en": "She passed the exam on her first ___.", "ko": "그녀는 첫 **시도**에 시험에 합격했다.", "answer": "attempt",
+          "ctx": "합격 소식을 전하며",
+          "alts": [
+            { "w": "try", "t": "ok", "m": "try도 맞지만 구어체예요. 격식 있는 단어를 생각해 보세요." },
+            { "w": "trial", "t": "near", "m": "trial은 '시험, 재판'이에요. 시험에 몇 번째 도전했는지는 다른 단어로 말해요." },
+            { "w": "challenge", "t": "wrong", "m": "challenge는 '도전장, 난제'예요. 한 번 해 보는 것과는 달라요." }
+          ]
+        }
       ],
       "nuance": "try의 격식체. 결과가 불확실한 어려운 일에 쓴다. 'in an attempt to'(~하려는 시도로).",
       "etymology": "라틴어 ad + temptare(시험하다, 건드리다)"
@@ -54,8 +133,24 @@
       "id": "convince", "word": "convince", "pos": "v", "level": 8,
       "meanings": ["확신시키다", "설득하다"],
       "sentences": [
-        { "en": "He ___ me that the plan would work.", "ko": "그는 그 계획이 성공할 거라고 나를 **확신시켰다**.", "answer": "convinced" },
-        { "en": "I couldn't ___ her to come with us.", "ko": "그녀가 우리와 함께 가도록 **설득할** 수 없었다.", "answer": "convince" }
+        {
+          "en": "He ___ me that the plan would work.", "ko": "그는 그 계획이 성공할 거라고 나를 **확신시켰다**.", "answer": "convinced",
+          "note": "그렇다고 믿게 만들었다는 뜻",
+          "alts": [
+            { "w": "assured", "t": "ok", "m": "assured도 맞지만 '장담했다'예요. 나를 믿게 만든 것을 생각해 보세요." },
+            { "w": "persuaded", "t": "near", "m": "persuaded는 주로 '행동하게' 설득할 때 써요. 믿게 만든 것을 생각해 보세요." },
+            { "w": "believed", "t": "wrong", "m": "believed는 '믿었다'예요. 남을 믿게 만든 것과는 달라요." }
+          ]
+        },
+        {
+          "en": "I couldn't ___ her to come with us.", "ko": "그녀가 우리와 함께 가도록 **설득할** 수 없었다.", "answer": "convince",
+          "ctx": "여행 계획을 세우며",
+          "alts": [
+            { "w": "persuade", "t": "ok", "m": "persuade도 맞지만, '믿게 만들다'라는 뜻도 있는 다른 단어를 생각해 보세요." },
+            { "w": "force", "t": "near", "m": "force는 '억지로 시키다'예요. 말로 설득하는 것을 생각해 보세요." },
+            { "w": "make", "t": "wrong", "m": "make는 to 없이 동사원형을 써요(make her come)." }
+          ]
+        }
       ],
       "nuance": "persuade는 '행동하게 설득', convince는 '믿게 하다'에 초점. 'be convinced that'(확신하다).",
       "etymology": "라틴어 con(완전히) + vincere(이기다) → '논쟁에서 이기다'"
@@ -64,8 +159,25 @@
       "id": "determine", "word": "determine", "pos": "v", "level": 8,
       "meanings": ["결정하다, 좌우하다", "알아내다"],
       "sentences": [
-        { "en": "Your attitude will ___ your success.", "ko": "너의 태도가 성공을 **결정할** 것이다.", "answer": "determine" },
-        { "en": "Doctors are trying to ___ the cause of the illness.", "ko": "의사들은 병의 원인을 **밝혀내려** 애쓰고 있다.", "answer": "determine" }
+        {
+          "en": "Your attitude will ___ your success.", "ko": "너의 태도가 성공을 **결정할** 것이다.", "answer": "determine",
+          "ctx": "면접을 앞둔 후배에게",
+          "note": "결과를 좌우한다는 뜻",
+          "alts": [
+            { "w": "affect", "t": "ok", "m": "affect도 맞지만 '영향을 주다'예요. 결과를 좌우한다는 강한 뜻을 생각해 보세요." },
+            { "w": "decide", "t": "near", "m": "decide는 사람이 '결정하다'예요. 요인이 결과를 좌우할 땐 다른 단어가 자연스러워요." },
+            { "w": "control", "t": "near", "m": "control은 '통제하다'예요. 결과를 좌우한다는 말과는 달라요." }
+          ]
+        },
+        {
+          "en": "Doctors are trying to ___ the cause of the illness.", "ko": "의사들은 병의 원인을 **밝혀내려** 애쓰고 있다.", "answer": "determine",
+          "note": "조사해서 알아낸다는 뜻",
+          "alts": [
+            { "w": "find", "t": "ok", "m": "find도 맞지만, 조사해서 '밝혀내다'를 뜻하는 격식 있는 단어를 생각해 보세요." },
+            { "w": "discover", "t": "near", "m": "discover는 '처음 발견하다'예요. 조사로 원인을 확정하는 것을 생각해 보세요." },
+            { "w": "decide", "t": "wrong", "m": "decide는 '결정하다'예요. 원인을 밝혀내는 것과는 달라요." }
+          ]
+        }
       ],
       "nuance": "decide보다 격식체. 어떤 요인이 결과를 '좌우하다'와 조사해서 '밝혀내다'가 핵심. 'be determined to'는 '굳게 결심하다'.",
       "etymology": "라틴어 de(완전히) + terminare(경계를 정하다)"
@@ -74,8 +186,23 @@
       "id": "emphasize", "word": "emphasize", "pos": "v", "level": 8,
       "meanings": ["강조하다"],
       "sentences": [
-        { "en": "The teacher ___ the importance of reading.", "ko": "선생님은 독서의 중요성을 **강조했다**.", "answer": "emphasized" },
-        { "en": "I want to ___ that this is only a draft.", "ko": "이것은 초안일 뿐이라는 점을 **강조하고** 싶다.", "answer": "emphasize" }
+        {
+          "en": "The teacher ___ the importance of reading.", "ko": "선생님은 독서의 중요성을 **강조했다**.", "answer": "emphasized",
+          "alts": [
+            { "w": "stressed", "t": "ok", "m": "stressed도 맞지만, 조금 더 격식 있는 단어를 생각해 보세요." },
+            { "w": "explained", "t": "near", "m": "explained는 '설명했다'예요. 중요성을 힘주어 말한 것을 생각해 보세요." },
+            { "w": "insisted", "t": "wrong", "m": "insisted는 insisted on처럼 on이 필요해요." }
+          ]
+        },
+        {
+          "en": "I want to ___ that this is only a draft.", "ko": "이것은 초안일 뿐이라는 점을 **강조하고** 싶다.", "answer": "emphasize",
+          "ctx": "초안을 공유하며",
+          "alts": [
+            { "w": "stress", "t": "ok", "m": "stress도 맞지만, 조금 더 격식 있는 단어를 생각해 보세요." },
+            { "w": "point out", "t": "near", "m": "point out은 '지적하다'예요. 힘주어 강조하는 느낌을 생각해 보세요." },
+            { "w": "insist", "t": "near", "m": "insist는 '고집하다, 우기다'예요. 강조하는 것과는 느낌이 달라요." }
+          ]
+        }
       ],
       "nuance": "stress와 거의 같지만 emphasize가 더 격식체. 명사 emphasis(put emphasis on). 'emphasize on'은 틀린 표현.",
       "etymology": "그리스어 en(안에) + phainein(보이게 하다) → '드러내 보이다'"
@@ -84,8 +211,23 @@
       "id": "establish", "word": "establish", "pos": "v", "level": 8,
       "meanings": ["설립하다", "확립하다"],
       "sentences": [
-        { "en": "The school was ___ in 1950.", "ko": "그 학교는 1950년에 **설립되었다**.", "answer": "established" },
-        { "en": "We need to ___ clear rules for the team.", "ko": "팀을 위한 명확한 규칙을 **세워야** 한다.", "answer": "establish" }
+        {
+          "en": "The school was ___ in 1950.", "ko": "그 학교는 1950년에 **설립되었다**.", "answer": "established",
+          "ctx": "학교 연혁을 소개하며",
+          "alts": [
+            { "w": "founded", "t": "ok", "m": "founded도 맞지만, 더 넓게 쓰이는 단어를 생각해 보세요." },
+            { "w": "built", "t": "near", "m": "built는 건물을 '지었다'예요. 기관을 세운 것을 생각해 보세요." },
+            { "w": "found", "t": "wrong", "m": "found는 find의 과거분사라 '발견되었다'가 돼요. '설립하다'의 과거분사는 형태가 달라요." }
+          ]
+        },
+        {
+          "en": "We need to ___ clear rules for the team.", "ko": "팀을 위한 명확한 규칙을 **세워야** 한다.", "answer": "establish",
+          "alts": [
+            { "w": "set", "t": "ok", "m": "set도 맞지만, 규칙을 '확립하다'는 격식 있는 단어를 생각해 보세요." },
+            { "w": "build", "t": "near", "m": "build는 '짓다, 쌓아 올리다'예요. 규칙을 세우는 것엔 어색해요." },
+            { "w": "found", "t": "wrong", "m": "found는 기관·회사를 '설립하다'예요. 규칙에는 쓰지 않아요." }
+          ]
+        }
       ],
       "nuance": "found는 기관을 '세우다', establish는 더 넓게 관계·규칙·명성을 '확립하다'까지. 형용사 established는 '자리 잡은, 인정받는'.",
       "etymology": "라틴어 stabilire(견고하게 하다) ← stabilis(안정된)"
@@ -94,8 +236,23 @@
       "id": "evaluate", "word": "evaluate", "pos": "v", "level": 8,
       "meanings": ["평가하다"],
       "sentences": [
-        { "en": "Teachers ___ students based on their essays.", "ko": "교사들은 에세이를 바탕으로 학생들을 **평가한다**.", "answer": "evaluate" },
-        { "en": "We should ___ the results before making a decision.", "ko": "결정을 내리기 전에 결과를 **평가해야** 한다.", "answer": "evaluate" }
+        {
+          "en": "Teachers ___ students based on their essays.", "ko": "교사들은 에세이를 바탕으로 학생들을 **평가한다**.", "answer": "evaluate",
+          "alts": [
+            { "w": "assess", "t": "ok", "m": "assess도 맞지만, 기준에 따라 가치를 따지는 다른 단어를 생각해 보세요." },
+            { "w": "judge", "t": "near", "m": "judge는 주관적인 '판단'이에요. 기준에 따른 평가를 생각해 보세요." },
+            { "w": "estimate", "t": "wrong", "m": "estimate는 수치를 '추정하다'예요. 학생을 평가하는 것과 달라요." }
+          ]
+        },
+        {
+          "en": "We should ___ the results before making a decision.", "ko": "결정을 내리기 전에 결과를 **평가해야** 한다.", "answer": "evaluate",
+          "ctx": "프로젝트를 마무리하며",
+          "alts": [
+            { "w": "review", "t": "ok", "m": "review도 맞지만 '검토하다'예요. 기준에 따라 가치를 따지는 것을 생각해 보세요." },
+            { "w": "check", "t": "near", "m": "check는 단순히 '확인하다'예요. 결과의 가치를 따져 보는 것을 생각해 보세요." },
+            { "w": "value", "t": "wrong", "m": "value는 '소중히 여기다'예요. 결과를 따져 평가하는 것과 달라요." }
+          ]
+        }
       ],
       "nuance": "assess와 거의 동의어. judge는 주관적 '판단', evaluate는 기준에 따라 가치·질을 따지는 '평가'.",
       "etymology": "프랑스어 évaluer ← value(가치) → '가치를 산출하다'"

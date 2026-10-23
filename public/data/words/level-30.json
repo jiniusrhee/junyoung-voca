@@ -4,8 +4,24 @@
       "id": "paragon", "word": "paragon", "pos": "n", "level": 30,
       "meanings": ["모범, 전형(완벽한 본보기)"],
       "sentences": [
-        { "en": "She is a ___ of patience with her students.", "ko": "그녀는 학생들에게 인내의 **모범**이다.", "answer": "paragon" },
-        { "en": "The hotel is a ___ of luxury and service.", "ko": "그 호텔은 사치와 서비스의 **전형**이다.", "answer": "paragon" }
+        {
+          "en": "She is a ___ of patience with her students.", "ko": "그녀는 학생들에게 인내의 **모범**이다.", "answer": "paragon",
+          "ctx": "선생님을 칭찬하며",
+          "note": "어떤 미덕을 완벽히 갖춘 본보기라는 뜻",
+          "alts": [
+            { "w": "model", "t": "ok", "m": "model도 맞지만, 미덕을 완벽하게 갖춘 본보기라는 더 강한 찬사가 있어요." },
+            { "w": "symbol", "t": "near", "m": "symbol은 '상징'이에요. 인내라는 미덕을 완벽히 갖춘 본보기는요?" },
+            { "w": "example", "t": "wrong", "m": "example은 앞의 a와 맞지 않아요. 완벽한 본보기를 뜻하는 단어는요?" }
+          ]
+        },
+        {
+          "en": "The hotel is a ___ of luxury and service.", "ko": "그 호텔은 사치와 서비스의 **전형**이다.", "answer": "paragon",
+          "alts": [
+            { "w": "model", "t": "ok", "m": "model도 맞지만, 완벽한 본보기라는 강한 찬사를 담은 단어가 있어요." },
+            { "w": "symbol", "t": "near", "m": "symbol은 '상징'이에요. 사치와 서비스의 완벽한 본보기는요?" },
+            { "w": "type", "t": "wrong", "m": "type은 '유형, 종류'예요. 완벽한 본보기라는 칭찬의 뜻은 없어요." }
+          ]
+        }
       ],
       "nuance": "어떤 미덕을 '완벽하게 갖춘 본보기'. model, example보다 훨씬 강한 찬사. 'a paragon of virtue'(덕의 귀감)가 관용적.",
       "etymology": "이탈리아어 paragone(시금석, 비교) ← 그리스어 parakonan(날을 세우다)"
@@ -14,8 +30,24 @@
       "id": "pejorative", "word": "pejorative", "pos": "adj", "level": 30,
       "meanings": ["(말이) 경멸적인, 비하하는"],
       "sentences": [
-        { "en": "The word has taken on a ___ meaning over time.", "ko": "그 단어는 시간이 지나면서 **경멸적인** 뜻을 띠게 되었다.", "answer": "pejorative" },
-        { "en": "He used the term in a ___ sense.", "ko": "그는 그 용어를 **비하하는** 의미로 사용했다.", "answer": "pejorative" }
+        {
+          "en": "The word has taken on a ___ meaning over time.", "ko": "그 단어는 시간이 지나면서 **경멸적인** 뜻을 띠게 되었다.", "answer": "pejorative",
+          "note": "단어 뜻에 낮잡아 보는 느낌이 생겼다는 뜻",
+          "alts": [
+            { "w": "negative", "t": "ok", "m": "negative도 맞지만, 말 자체에 깔린 경멸을 뜻하는 단어가 있어요." },
+            { "w": "bad", "t": "near", "m": "bad는 너무 막연해요. 대상을 낮잡아 보는 느낌이 담긴 뜻은요?" },
+            { "w": "rude", "t": "near", "m": "rude는 '무례한' 태도예요. 단어의 뜻이 대상을 낮잡아 본다는 단어는요?" }
+          ]
+        },
+        {
+          "en": "He used the term in a ___ sense.", "ko": "그는 그 용어를 **비하하는** 의미로 사용했다.", "answer": "pejorative",
+          "ctx": "언어 수업에서",
+          "alts": [
+            { "w": "negative", "t": "ok", "m": "negative도 맞지만, 대상을 깎아내리는 경멸을 담은 단어가 있어요." },
+            { "w": "humiliating", "t": "near", "m": "humiliating은 '굴욕적인'이에요. 말에 경멸적인 뜻을 담은 단어는요?" },
+            { "w": "despise", "t": "wrong", "m": "despise는 동사라 sense 앞에 올 수 없어요. 형용사가 필요해요." }
+          ]
+        }
       ],
       "nuance": "단어나 표현이 '대상을 낮추어 보는 느낌을 담은'. negative는 부정적 평가 일반, pejorative는 말 자체에 깔린 경멸. 사전에서 (pej.) 표시로 자주 본다.",
       "etymology": "라틴어 pejor(더 나쁜) → '더 나쁘게 만드는'"
@@ -24,8 +56,24 @@
       "id": "perfunctory", "word": "perfunctory", "pos": "adj", "level": 30,
       "meanings": ["형식적인, 마음이 담기지 않은"],
       "sentences": [
-        { "en": "He gave the report a ___ glance and signed it.", "ko": "그는 보고서를 **형식적으로** 훑어보고 서명했다.", "answer": "perfunctory" },
-        { "en": "Her ___ apology did not convince anyone.", "ko": "그녀의 **마음이 담기지 않은** 사과는 아무도 납득시키지 못했다.", "answer": "perfunctory" }
+        {
+          "en": "He gave the report a ___ glance and signed it.", "ko": "그는 보고서를 **형식적으로** 훑어보고 서명했다.", "answer": "perfunctory",
+          "ctx": "결재 서류를 올렸는데",
+          "note": "성의 없이 마지못해 대충 했다는 뜻",
+          "alts": [
+            { "w": "quick", "t": "ok", "m": "quick도 맞지만, 성의 없이 대충 해치운다는 비판이 담긴 단어가 있어요." },
+            { "w": "careless", "t": "near", "m": "careless는 '부주의한'이에요. 마지못해 최소한으로만 훑어본 건요?" },
+            { "w": "formal", "t": "wrong", "m": "formal은 '격식을 갖춘'이에요. 한국어 '형식적인'과 달리 성의 없다는 뜻은 없어요." }
+          ]
+        },
+        {
+          "en": "Her ___ apology did not convince anyone.", "ko": "그녀의 **마음이 담기지 않은** 사과는 아무도 납득시키지 못했다.", "answer": "perfunctory",
+          "alts": [
+            { "w": "insincere", "t": "ok", "m": "insincere도 맞지만, 해야 하니까 대충 해치웠다는 느낌의 단어가 있어요." },
+            { "w": "empty", "t": "near", "m": "empty는 '텅 빈'이에요. 의무감에 대충 해치운 사과를 뜻하는 단어는요?" },
+            { "w": "formal", "t": "wrong", "m": "formal은 '격식 있는'이에요. 마음이 안 담긴 형식적인 사과와는 달라요." }
+          ]
+        }
       ],
       "nuance": "해야 하니까 '최소한의 노력으로 대충 처리하는'. routine은 정해진 절차, perfunctory는 성의 없음을 비판하는 말. cursory는 빠르고 대충인 것.",
       "etymology": "라틴어 per(끝까지) + fungi(수행하다) → '그냥 해치우는'"
@@ -34,8 +82,24 @@
       "id": "pernicious", "word": "pernicious", "pos": "adj", "level": 30,
       "meanings": ["(서서히) 치명적인, 해악이 큰"],
       "sentences": [
-        { "en": "Gossip can have a ___ effect on a community.", "ko": "뒷말은 공동체에 **해악이 큰** 영향을 줄 수 있다.", "answer": "pernicious" },
-        { "en": "The ___ myth that hard work alone guarantees success persists.", "ko": "노력만 하면 성공이 보장된다는 **유해한** 신화가 여전히 남아 있다.", "answer": "pernicious" }
+        {
+          "en": "Gossip can have a ___ effect on a community.", "ko": "뒷말은 공동체에 **해악이 큰** 영향을 줄 수 있다.", "answer": "pernicious",
+          "ctx": "동네 소문을 듣고",
+          "note": "서서히 깊고 오래가는 해를 끼친다는 뜻",
+          "alts": [
+            { "w": "harmful", "t": "ok", "m": "harmful도 맞지만, 깊고 오래가는 심각한 해악을 강조하는 단어가 있어요." },
+            { "w": "bad", "t": "near", "m": "bad는 너무 막연해요. 서서히 깊은 해를 끼치는 영향은요?" },
+            { "w": "negative", "t": "near", "m": "negative는 '부정적인'이에요. 공동체에 치명적인 해를 끼친다는 단어는요?" }
+          ]
+        },
+        {
+          "en": "The ___ myth that hard work alone guarantees success persists.", "ko": "노력만 하면 성공이 보장된다는 **유해한** 신화가 여전히 남아 있다.", "answer": "pernicious",
+          "alts": [
+            { "w": "harmful", "t": "ok", "m": "harmful도 맞지만, 교묘하고 치명적인 해악을 강조하는 단어가 있어요." },
+            { "w": "dangerous", "t": "near", "m": "dangerous는 위험 일반이에요. 서서히 깊은 해를 끼치는 신화는요?" },
+            { "w": "toxic", "t": "near", "m": "toxic은 '독성 있는'으로 구어에서 흔해요. 격식 있게 해악이 크다는 단어는요?" }
+          ]
+        }
       ],
       "nuance": "눈에 띄지 않게 '깊고 지속적인 해를 끼치는'. harmful은 해로움 일반, pernicious는 심각하고 교묘한 해악. insidious와 가깝지만 pernicious는 결과의 치명성에 초점.",
       "etymology": "라틴어 per(완전히) + nex(죽음) → '죽음에 이르게 하는'"
@@ -44,8 +108,24 @@
       "id": "precocious", "word": "precocious", "pos": "adj", "level": 30,
       "meanings": ["조숙한, 나이에 비해 발달이 빠른"],
       "sentences": [
-        { "en": "The ___ child was reading novels at age five.", "ko": "그 **조숙한** 아이는 다섯 살에 소설을 읽고 있었다.", "answer": "precocious" },
-        { "en": "She showed a ___ talent for mathematics.", "ko": "그녀는 수학에 **또래보다 앞선** 재능을 보였다.", "answer": "precocious" }
+        {
+          "en": "The ___ child was reading novels at age five.", "ko": "그 **조숙한** 아이는 다섯 살에 소설을 읽고 있었다.", "answer": "precocious",
+          "ctx": "영재 다큐를 보며",
+          "alts": [
+            { "w": "smart", "t": "near", "m": "smart는 '똑똑한'이에요. 나이에 비해 일찍 성숙했다는 단어는요?" },
+            { "w": "gifted", "t": "near", "m": "gifted는 재능을 타고난 거예요. 발달 시기가 또래보다 빠르다는 단어는요?" },
+            { "w": "mature", "t": "near", "m": "mature는 '성숙한'이에요. 나이에 비해 너무 일찍 발달했다는 단어는요?" }
+          ]
+        },
+        {
+          "en": "She showed a ___ talent for mathematics.", "ko": "그녀는 수학에 **또래보다 앞선** 재능을 보였다.", "answer": "precocious",
+          "note": "나이에 비해 일찍 발달한 재능이라는 뜻",
+          "alts": [
+            { "w": "early", "t": "near", "m": "early는 시기가 '이른'이에요. 나이에 비해 일찍 꽃핀 재능을 뜻하는 단어는요?" },
+            { "w": "natural", "t": "near", "m": "natural은 '타고난'이에요. 또래보다 일찍 발달한 재능은요?" },
+            { "w": "advanced", "t": "wrong", "m": "advanced는 앞의 a와 맞지 않아요. 또래보다 일찍 발달했다는 단어는요?" }
+          ]
+        }
       ],
       "nuance": "아이가 '나이에 비해 지적·정신적으로 일찍 성숙한'. gifted는 재능이 있는 것, precocious는 발달 시기가 빠른 것. 때로 '어른처럼 구는'이라는 가벼운 비판도. 명사 precocity.",
       "etymology": "라틴어 prae(미리) + coquere(익히다) → '일찍 익은'"
@@ -54,8 +134,24 @@
       "id": "propensity", "word": "propensity", "pos": "n", "level": 30,
       "meanings": ["(특정 행동을 하는) 경향, 성향"],
       "sentences": [
-        { "en": "He has a ___ to exaggerate his achievements.", "ko": "그는 자신의 업적을 과장하는 **경향**이 있다.", "answer": "propensity" },
-        { "en": "Cats show a natural ___ for hunting.", "ko": "고양이는 사냥에 대한 타고난 **성향**을 보인다.", "answer": "propensity" }
+        {
+          "en": "He has a ___ to exaggerate his achievements.", "ko": "그는 자신의 업적을 과장하는 **경향**이 있다.", "answer": "propensity",
+          "ctx": "자랑 많은 동료 이야기",
+          "alts": [
+            { "w": "tendency", "t": "ok", "m": "tendency도 맞지만, 뿌리 깊은 성향을 뜻하는 격식 있는 단어가 있어요." },
+            { "w": "habit", "t": "near", "m": "habit은 보통 of -ing와 써요. to 동사와 쓰며 뿌리 깊은 성향을 뜻하는 단어는요?" },
+            { "w": "trend", "t": "wrong", "m": "trend는 사회의 '유행, 추세'예요. 개인의 경향에는 쓰지 않아요." }
+          ]
+        },
+        {
+          "en": "Cats show a natural ___ for hunting.", "ko": "고양이는 사냥에 대한 타고난 **성향**을 보인다.", "answer": "propensity",
+          "note": "타고난 뿌리 깊은 성향이라는 뜻",
+          "alts": [
+            { "w": "instinct", "t": "ok", "m": "instinct도 맞지만, 타고난 뿌리 깊은 성향을 뜻하는 단어가 있어요." },
+            { "w": "talent", "t": "near", "m": "talent는 '재능'이에요. 사냥하려 드는 타고난 성향은요?" },
+            { "w": "tendency", "t": "near", "m": "tendency도 비슷하지만, for와 잘 어울리며 뿌리 깊은 성향을 뜻하는 단어는요?" }
+          ]
+        }
       ],
       "nuance": "'propensity to 동사 / for 명사'. tendency는 경향 일반, propensity는 타고난 또는 뿌리 깊은 성향. inclination은 마음의 끌림.",
       "etymology": "라틴어 propendere(앞으로 기울다) ← pro + pendere(매달리다)"
@@ -64,8 +160,24 @@
       "id": "recalcitrant", "word": "recalcitrant", "pos": "adj", "level": 30,
       "meanings": ["반항적인, 고집스럽게 따르지 않는"],
       "sentences": [
-        { "en": "The ___ student refused to follow any rules.", "ko": "그 **반항적인** 학생은 어떤 규칙도 따르기를 거부했다.", "answer": "recalcitrant" },
-        { "en": "The government struggled to control the ___ provinces.", "ko": "정부는 **고집스럽게 따르지 않는** 지방들을 통제하느라 애썼다.", "answer": "recalcitrant" }
+        {
+          "en": "The ___ student refused to follow any rules.", "ko": "그 **반항적인** 학생은 어떤 규칙도 따르기를 거부했다.", "answer": "recalcitrant",
+          "ctx": "담임 선생님의 고민",
+          "alts": [
+            { "w": "rebellious", "t": "ok", "m": "rebellious도 맞지만, 권위에 완강하게 저항한다는 격식 있는 단어가 있어요." },
+            { "w": "naughty", "t": "near", "m": "naughty는 '장난꾸러기의'예요. 권위에 끈질기게 저항하는 학생은요?" },
+            { "w": "stubborn", "t": "near", "m": "stubborn은 성격의 고집이에요. 권위와 규칙에 완강히 저항하는 태도는요?" }
+          ]
+        },
+        {
+          "en": "The government struggled to control the ___ provinces.", "ko": "정부는 **고집스럽게 따르지 않는** 지방들을 통제하느라 애썼다.", "answer": "recalcitrant",
+          "note": "권위의 통제를 끈질기게 거부한다는 뜻",
+          "alts": [
+            { "w": "rebellious", "t": "ok", "m": "rebellious도 맞지만, 다스리기 힘들 만큼 완강히 저항한다는 단어가 있어요." },
+            { "w": "disobedient", "t": "near", "m": "disobedient는 불복종 일반이에요. 통제하기 힘들 만큼 완강한 저항은요?" },
+            { "w": "independent", "t": "near", "m": "independent는 '독립된'이에요. 권위에 끈질기게 저항한다는 단어는요?" }
+          ]
+        }
       ],
       "nuance": "권위·지시에 '끈질기게 저항하는'. disobedient는 불복종 일반, recalcitrant는 다스리기 힘들 만큼 완강한 것. stubborn보다 격식체이고 권위에 대한 저항이 핵심.",
       "etymology": "라틴어 recalcitrare(뒷발로 차다) ← re + calx(발꿈치)"
@@ -74,8 +186,23 @@
       "id": "sanguine", "word": "sanguine", "pos": "adj", "level": 30,
       "meanings": ["낙관적인, 자신감 있는"],
       "sentences": [
-        { "en": "She remains ___ about the company's future.", "ko": "그녀는 회사의 미래에 대해 여전히 **낙관적이다**.", "answer": "sanguine" },
-        { "en": "Investors are less ___ than they were a year ago.", "ko": "투자자들은 1년 전보다 **낙관적이지** 않다.", "answer": "sanguine" }
+        {
+          "en": "She remains ___ about the company's future.", "ko": "그녀는 회사의 미래에 대해 여전히 **낙관적이다**.", "answer": "sanguine",
+          "ctx": "회사 위기 속에서",
+          "alts": [
+            { "w": "optimistic", "t": "ok", "m": "optimistic도 맞지만, 같은 뜻의 좀 더 격식 있는 단어가 있어요." },
+            { "w": "hopeful", "t": "near", "m": "hopeful은 '희망을 품은'이에요. 어려운 상황에서도 자신 있게 낙관하는 건요?" },
+            { "w": "bright", "t": "wrong", "m": "bright는 미래 자체가 '밝은'이에요. 사람이 낙관적이라는 단어는요?" }
+          ]
+        },
+        {
+          "en": "Investors are less ___ than they were a year ago.", "ko": "투자자들은 1년 전보다 **낙관적이지** 않다.", "answer": "sanguine",
+          "alts": [
+            { "w": "optimistic", "t": "ok", "m": "optimistic도 맞지만, 경제 기사에 자주 나오는 격식 있는 단어가 있어요." },
+            { "w": "confident", "t": "near", "m": "confident는 '확신하는'이에요. 앞날을 희망적으로 본다는 단어는요?" },
+            { "w": "positive", "t": "near", "m": "positive는 '긍정적인'이에요. 미래를 낙관한다는 격식 있는 단어는요?" }
+          ]
+        }
       ],
       "nuance": "어려운 상황에서도 '희망적으로 보는'. optimistic과 같지만 격식체. 'sanguine about ~'. 어원이 '피'라서 '붉은, 혈색 좋은'이라는 뜻도 있다.",
       "etymology": "라틴어 sanguis(피) → 중세 의학에서 피가 많은 체질은 쾌활하다고 봄"
@@ -84,8 +211,23 @@
       "id": "sycophant", "word": "sycophant", "pos": "n", "level": 30,
       "meanings": ["아첨꾼, 비위를 맞춰 이익을 얻으려는 사람"],
       "sentences": [
-        { "en": "The king was surrounded by ___ who praised his every word.", "ko": "왕은 그의 말 한마디 한마디를 칭송하는 **아첨꾼들**에 둘러싸여 있었다.", "answer": "sycophants" },
-        { "en": "He is a ___ who agrees with whoever is in power.", "ko": "그는 권력 있는 사람이면 누구에게나 맞장구치는 **아첨꾼**이다.", "answer": "sycophant" }
+        {
+          "en": "The king was surrounded by ___ who praised his every word.", "ko": "왕은 그의 말 한마디 한마디를 칭송하는 **아첨꾼들**에 둘러싸여 있었다.", "answer": "sycophants",
+          "ctx": "역사 드라마를 보며",
+          "alts": [
+            { "w": "flatterers", "t": "ok", "m": "flatterers도 맞지만, 사익을 위해 아첨한다는 경멸적인 단어가 있어요." },
+            { "w": "followers", "t": "near", "m": "followers는 '추종자'예요. 이익을 노리고 비위를 맞추는 사람들은요?" },
+            { "w": "fans", "t": "wrong", "m": "fans는 좋아서 응원하는 사람들이에요. 이익을 위해 아첨하는 사람과는 달라요." }
+          ]
+        },
+        {
+          "en": "He is a ___ who agrees with whoever is in power.", "ko": "그는 권력 있는 사람이면 누구에게나 맞장구치는 **아첨꾼**이다.", "answer": "sycophant",
+          "note": "이익을 위해 권력자에게 아첨하는 사람",
+          "alts": [
+            { "w": "yes-man", "t": "ok", "m": "yes-man도 맞지만, 사익을 노리는 비굴함을 담은 경멸적인 단어가 있어요." },
+            { "w": "flatterer", "t": "near", "m": "flatterer는 칭찬을 잘하는 사람이에요. 사익을 위해 권력자에게 아첨하는 사람은요?" }
+          ]
+        }
       ],
       "nuance": "힘 있는 사람에게 '비굴하게 아첨해 이익을 얻으려는 사람'. flatterer는 칭찬을 잘하는 사람, sycophant는 그 목적이 사익이라는 경멸적 뉘앙스. 형용사 sycophantic.",
       "etymology": "그리스어 sykophantes(무화과를 보이는 사람) → 고대 아테네의 밀고자에서"
@@ -94,8 +236,24 @@
       "id": "truculent", "word": "truculent", "pos": "adj", "level": 30,
       "meanings": ["공격적이고 반항적인, 거친"],
       "sentences": [
-        { "en": "The ___ teenager argued with every adult he met.", "ko": "그 **반항적이고 거친** 십 대는 만나는 어른마다 말다툼을 했다.", "answer": "truculent" },
-        { "en": "His ___ response shocked the interviewer.", "ko": "그의 **공격적인** 대답은 면접관을 놀라게 했다.", "answer": "truculent" }
+        {
+          "en": "The ___ teenager argued with every adult he met.", "ko": "그 **반항적이고 거친** 십 대는 만나는 어른마다 말다툼을 했다.", "answer": "truculent",
+          "ctx": "사춘기 아들을 둔 부모",
+          "alts": [
+            { "w": "rebellious", "t": "ok", "m": "rebellious도 맞지만, 말투와 태도가 거칠고 공격적이라는 단어가 있어요." },
+            { "w": "rude", "t": "near", "m": "rude는 '무례한'이에요. 싸움을 걸 듯 거칠고 반항적인 태도는요?" },
+            { "w": "aggressive", "t": "near", "m": "aggressive는 공격적인 태도 전반이에요. 반항적이고 거친 말투를 콕 집는 단어는요?" }
+          ]
+        },
+        {
+          "en": "His ___ response shocked the interviewer.", "ko": "그의 **공격적인** 대답은 면접관을 놀라게 했다.", "answer": "truculent",
+          "note": "싸움을 걸 듯 거칠게 맞받아쳤다는 뜻",
+          "alts": [
+            { "w": "aggressive", "t": "ok", "m": "aggressive도 맞지만, 말투가 거칠고 싸움을 거는 듯한 단어가 있어요." },
+            { "w": "rude", "t": "near", "m": "rude는 '무례한'이에요. 싸울 듯 공격적이고 거친 대답은요?" },
+            { "w": "attacking", "t": "wrong", "m": "attacking은 '공격하는 중인'이라 대답을 꾸미기 어색해요." }
+          ]
+        }
       ],
       "nuance": "싸움을 걸 듯 '거칠고 반항적으로 대하는'. belligerent는 싸우려 드는 태도, truculent는 말투와 태도의 거침·무례함에 초점. 명사 truculence.",
       "etymology": "라틴어 trux(사나운, 야만적인)"

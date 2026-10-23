@@ -4,8 +4,25 @@
       "id": "decide", "word": "decide", "pos": "v", "level": 4,
       "meanings": ["결정하다"],
       "sentences": [
-        { "en": "We need to ___ where to go for lunch.", "ko": "점심을 어디서 먹을지 **결정해야** 해.", "answer": "decide" },
-        { "en": "She ___ to study abroad next year.", "ko": "그녀는 내년에 유학을 가기로 **결정했다**.", "answer": "decided" }
+        {
+          "en": "We need to ___ where to go for lunch.", "ko": "점심을 어디서 먹을지 **결정해야** 해.", "answer": "decide",
+          "ctx": "점심시간 직전",
+          "alts": [
+            { "w": "choose", "t": "ok", "m": "choose도 맞지만, '결정하다'를 정확히 뜻하는 단어를 생각해 보세요." },
+            { "w": "determine", "t": "near", "m": "determine은 격식체예요. 점심 메뉴 같은 일상적인 결정엔 무거워요." },
+            { "w": "decision", "t": "wrong", "m": "decision은 명사예요. to 뒤에는 동사원형이 와야 해요." }
+          ]
+        },
+        {
+          "en": "She ___ to study abroad next year.", "ko": "그녀는 내년에 유학을 가기로 **결정했다**.", "answer": "decided",
+          "ctx": "진로를 고민한 끝에",
+          "note": "여러 길 중 하나로 마음을 정했다는 뜻",
+          "alts": [
+            { "w": "chose", "t": "ok", "m": "chose to도 맞지만, '결정했다'를 정확히 말하는 단어를 생각해 보세요." },
+            { "w": "planned", "t": "near", "m": "planned는 '계획했다'예요. 고민 끝에 마음을 정했다는 말을 생각해 보세요." },
+            { "w": "determined", "t": "near", "m": "determined는 '굳게 결심했다'는 격식 있는 말이에요. 더 일상적인 단어를 생각해 보세요." }
+          ]
+        }
       ],
       "nuance": "'decide to + 동사'. determine은 더 단호하고 격식체. 명사형은 decision(make a decision).",
       "etymology": "라틴어 de(떼어) + caedere(자르다) → '잘라 내어 정하다'"
@@ -14,8 +31,24 @@
       "id": "remember", "word": "remember", "pos": "v", "level": 4,
       "meanings": ["기억하다"],
       "sentences": [
-        { "en": "Do you ___ my name?", "ko": "내 이름 **기억해**?", "answer": "remember" },
-        { "en": "I ___ to lock the door before I left.", "ko": "나는 나가기 전에 문을 잠가야 한다는 걸 **기억했다**.", "answer": "remembered" }
+        {
+          "en": "Do you ___ my name?", "ko": "내 이름 **기억해**?", "answer": "remember",
+          "ctx": "오랜만에 만난 사람에게",
+          "alts": [
+            { "w": "recall", "t": "ok", "m": "recall도 맞지만 격식체예요. 더 일상적인 단어를 생각해 보세요." },
+            { "w": "know", "t": "near", "m": "know는 원래 알고 있었냐는 말이에요. 잊지 않았는지를 묻고 있어요." },
+            { "w": "memorize", "t": "wrong", "m": "memorize는 '암기하다'예요. 기억하고 있는지를 묻는 말과 달라요." }
+          ]
+        },
+        {
+          "en": "I ___ to lock the door before I left.", "ko": "나는 나가기 전에 문을 잠가야 한다는 걸 **기억했다**.", "answer": "remembered",
+          "note": "해야 할 일을 잊지 않았다는 뜻",
+          "alts": [
+            { "w": "recalled", "t": "near", "m": "recalled는 지난 일을 떠올릴 때 써요. 해야 할 일을 잊지 않은 것과는 달라요." },
+            { "w": "memorized", "t": "wrong", "m": "memorized는 '암기했다'예요. 할 일을 잊지 않았다는 뜻과 달라요." },
+            { "w": "forgot", "t": "wrong", "m": "forgot은 '잊어버렸다'로 반대 뜻이에요." }
+          ]
+        }
       ],
       "nuance": "'remember to 동사'는 앞으로 할 일을 기억하다, 'remember -ing'은 과거에 한 일을 기억하다. 뜻이 달라진다."
     },
@@ -23,17 +56,48 @@
       "id": "forget", "word": "forget", "pos": "v", "level": 4,
       "meanings": ["잊다"],
       "sentences": [
-        { "en": "Don't ___ to bring your umbrella.", "ko": "우산 가져오는 거 **잊지** 마.", "answer": "forget" },
-        { "en": "I always ___ where I put my keys.", "ko": "나는 항상 열쇠를 어디 뒀는지 **잊어버린다**.", "answer": "forget" }
+        {
+          "en": "Don't ___ to bring your umbrella.", "ko": "우산 가져오는 거 **잊지** 마.", "answer": "forget",
+          "ctx": "비 예보가 있는 날",
+          "alts": [
+            { "w": "neglect", "t": "near", "m": "neglect to는 '소홀히 하다'라는 격식체예요. 일상에서 쓰는 단어를 생각해 보세요." },
+            { "w": "miss", "t": "wrong", "m": "miss는 '놓치다, 그리워하다'예요. 잊지 말라는 말과는 달라요." },
+            { "w": "lose", "t": "wrong", "m": "lose는 물건을 '잃어버리다'예요. 챙기는 걸 잊지 말라는 말이에요." }
+          ]
+        },
+        {
+          "en": "I always ___ where I put my keys.", "ko": "나는 항상 열쇠를 어디 뒀는지 **잊어버린다**.", "answer": "forget",
+          "alts": [
+            { "w": "lose", "t": "near", "m": "lose는 열쇠를 '잃어버리다'예요. 둔 곳이 기억나지 않는 것을 생각해 보세요." },
+            { "w": "remember", "t": "wrong", "m": "remember는 '기억하다'로 반대 뜻이에요." },
+            { "w": "miss", "t": "wrong", "m": "miss는 '놓치다'예요. 기억이 나지 않는 상황과 달라요." }
+          ]
+        }
       ],
-      "nuance": "'forget to 동사'는 할 일을 잊다, 'forget -ing'은 한 일을 잊다. 물건을 '깜빡 두고 오다'는 forget이 아니라 leave를 쓴다."
+      "nuance": "'forget to 동사'는 할 일을 잊다, 'forget -ing'은 한 일을 잊다. 물건을 두고 온 장소까지 말할 때는 forget이 아니라 leave를 쓴다(I left my umbrella at home)."
     },
     {
       "id": "invite", "word": "invite", "pos": "v", "level": 4,
       "meanings": ["초대하다"],
       "sentences": [
-        { "en": "They ___ us to their wedding.", "ko": "그들은 우리를 결혼식에 **초대했다**.", "answer": "invited" },
-        { "en": "Why don't you ___ her to the party?", "ko": "그녀를 파티에 **초대하는** 게 어때?", "answer": "invite" }
+        {
+          "en": "They ___ us to their wedding.", "ko": "그들은 우리를 결혼식에 **초대했다**.", "answer": "invited",
+          "note": "행사에 와 달라고 정식으로 불렀다는 뜻",
+          "alts": [
+            { "w": "asked", "t": "ok", "m": "asked도 쓸 수 있지만, 결혼식 같은 행사에는 더 정확한 단어가 있어요." },
+            { "w": "called", "t": "near", "m": "called는 '불렀다, 전화했다'예요. 결혼식에 정식으로 부른 것을 생각해 보세요." },
+            { "w": "invitation", "t": "wrong", "m": "invitation은 명사예요. 주어 뒤에 동사가 와야 해요." }
+          ]
+        },
+        {
+          "en": "Why don't you ___ her to the party?", "ko": "그녀를 파티에 **초대하는** 게 어때?", "answer": "invite",
+          "ctx": "생일 파티를 앞두고",
+          "alts": [
+            { "w": "ask", "t": "ok", "m": "ask도 맞지만, 파티에 '초대하다'를 정확히 말해 보세요." },
+            { "w": "call", "t": "near", "m": "call은 '부르다, 전화하다'예요. 파티에 오라고 정식으로 부르는 것을 생각해 보세요." },
+            { "w": "bring", "t": "near", "m": "bring은 '데려오다'예요. 그녀에게 와 달라고 청하는 것을 생각해 보세요." }
+          ]
+        }
       ],
       "nuance": "'invite 사람 to 행사/장소'. 명사는 invitation. 격식 없는 '초대장'은 invite라고도 한다."
     },
@@ -41,8 +105,23 @@
       "id": "promise", "word": "promise", "pos": "v", "level": 4,
       "meanings": ["약속하다"],
       "sentences": [
-        { "en": "I ___ I will be there on time.", "ko": "제시간에 가겠다고 **약속해**.", "answer": "promise" },
-        { "en": "He ___ to call me back.", "ko": "그는 다시 전화하겠다고 **약속했다**.", "answer": "promised" }
+        {
+          "en": "I ___ I will be there on time.", "ko": "제시간에 가겠다고 **약속해**.", "answer": "promise",
+          "ctx": "중요한 약속을 앞두고",
+          "alts": [
+            { "w": "swear", "t": "ok", "m": "swear도 맞지만 '맹세하다'라 더 강해요. 더 일상적인 단어를 생각해 보세요." },
+            { "w": "guarantee", "t": "near", "m": "guarantee는 '보증하다'라는 딱딱한 말이에요. 상대에게 다짐하는 말을 생각해 보세요." },
+            { "w": "appointment", "t": "wrong", "m": "appointment는 '(만날) 약속'이라는 명사예요. 다짐하는 동사가 필요해요." }
+          ]
+        },
+        {
+          "en": "He ___ to call me back.", "ko": "그는 다시 전화하겠다고 **약속했다**.", "answer": "promised",
+          "alts": [
+            { "w": "planned", "t": "near", "m": "planned는 '계획했다'예요. 상대에게 다짐한 것을 생각해 보세요." },
+            { "w": "vowed", "t": "near", "m": "vowed는 '맹세했다'라는 무거운 말이에요. 일상적인 다짐을 생각해 보세요." },
+            { "w": "said", "t": "wrong", "m": "said to는 '~하라고 말했다'로 들려요. 스스로 다짐한 것을 생각해 보세요." }
+          ]
+        }
       ],
       "nuance": "'만날 약속'은 appointment(공식)나 plans(사적)이고, promise는 '~하겠다는 다짐'. 뜻이 다르니 주의.",
       "etymology": "라틴어 pro(앞으로) + mittere(보내다) → '미리 내보낸 말'"
@@ -51,8 +130,24 @@
       "id": "careful", "word": "careful", "pos": "adj", "level": 4,
       "meanings": ["조심하는, 신중한"],
       "sentences": [
-        { "en": "Be ___ when you cross the street.", "ko": "길을 건널 때 **조심해**.", "answer": "careful" },
-        { "en": "She is a very ___ driver.", "ko": "그녀는 아주 **신중한** 운전자다.", "answer": "careful" }
+        {
+          "en": "Be ___ when you cross the street.", "ko": "길을 건널 때 **조심해**.", "answer": "careful",
+          "ctx": "등교하는 아이에게",
+          "alts": [
+            { "w": "cautious", "t": "ok", "m": "cautious도 맞지만 격식 있는 말이에요. 더 일상적인 단어를 생각해 보세요." },
+            { "w": "safe", "t": "near", "m": "Be safe는 '몸조심해'라는 인사말에 가까워요. 주의하라는 말을 생각해 보세요." },
+            { "w": "carefully", "t": "wrong", "m": "carefully는 부사예요. be 뒤에는 형용사가 와야 해요." }
+          ]
+        },
+        {
+          "en": "She is a very ___ driver.", "ko": "그녀는 아주 **신중한** 운전자다.", "answer": "careful",
+          "note": "주의를 기울여 조심한다는 뜻",
+          "alts": [
+            { "w": "cautious", "t": "ok", "m": "cautious도 맞지만 '경계하는' 느낌이 있어요. 더 기본적인 단어를 생각해 보세요." },
+            { "w": "good", "t": "near", "m": "good driver는 '운전을 잘하는'이에요. 조심성 있는 것을 생각해 보세요." },
+            { "w": "carefully", "t": "wrong", "m": "carefully는 부사예요. driver 앞에는 형용사가 와야 해요." }
+          ]
+        }
       ],
       "nuance": "'be careful of/with ~'(~에 주의하다). cautious는 더 소극적이고 경계하는 느낌."
     },
@@ -60,8 +155,23 @@
       "id": "dangerous", "word": "dangerous", "pos": "adj", "level": 4,
       "meanings": ["위험한"],
       "sentences": [
-        { "en": "It is ___ to swim here.", "ko": "여기서 수영하는 것은 **위험하다**.", "answer": "dangerous" },
-        { "en": "Smoking is ___ to your health.", "ko": "흡연은 건강에 **위험하다**.", "answer": "dangerous" }
+        {
+          "en": "It is ___ to swim here.", "ko": "여기서 수영하는 것은 **위험하다**.", "answer": "dangerous",
+          "ctx": "해변 경고 표지판",
+          "alts": [
+            { "w": "unsafe", "t": "ok", "m": "unsafe도 맞지만, '위험한'을 더 직접적으로 말해 보세요." },
+            { "w": "risky", "t": "near", "m": "risky는 손해를 볼 수 있는 모험에 가까워요. 몸에 해가 될 수 있는 위험을 생각해 보세요." },
+            { "w": "danger", "t": "wrong", "m": "danger는 '위험'이라는 명사예요. is 뒤에는 형용사가 와야 해요." }
+          ]
+        },
+        {
+          "en": "Smoking is ___ to your health.", "ko": "흡연은 건강에 **위험하다**.", "answer": "dangerous",
+          "alts": [
+            { "w": "harmful", "t": "ok", "m": "harmful도 맞지만 '해로운'이에요. '위험한'을 직접 말해 보세요." },
+            { "w": "risky", "t": "near", "m": "risky는 '모험적인'에 가까워요. 건강을 해치는 위험을 생각해 보세요." },
+            { "w": "bad", "t": "wrong", "m": "bad는 bad for your health처럼 for와 써요. to와는 어울리지 않아요." }
+          ]
+        }
       ],
       "nuance": "명사는 danger(in danger). risky는 '손해 볼 수 있는' 위험, dangerous는 신체적 해를 끼칠 수 있는 위험."
     },
@@ -69,8 +179,23 @@
       "id": "expensive", "word": "expensive", "pos": "adj", "level": 4,
       "meanings": ["값비싼"],
       "sentences": [
-        { "en": "This restaurant is too ___ for me.", "ko": "이 식당은 나에겐 너무 **비싸다**.", "answer": "expensive" },
-        { "en": "She bought an ___ watch for her husband.", "ko": "그녀는 남편에게 **고가의** 시계를 사 주었다.", "answer": "expensive" }
+        {
+          "en": "This restaurant is too ___ for me.", "ko": "이 식당은 나에겐 너무 **비싸다**.", "answer": "expensive",
+          "ctx": "메뉴판을 보고",
+          "alts": [
+            { "w": "costly", "t": "ok", "m": "costly도 맞지만 격식체예요. 더 일상적인 단어를 생각해 보세요." },
+            { "w": "luxurious", "t": "near", "m": "luxurious는 '호화로운'이에요. 가격이 부담스럽다는 말을 생각해 보세요." },
+            { "w": "high", "t": "wrong", "m": "high는 가격(price)이 높을 때 써요. 식당 자체를 말할 땐 어울리지 않아요." }
+          ]
+        },
+        {
+          "en": "She bought an ___ watch for her husband.", "ko": "그녀는 남편에게 **고가의** 시계를 사 주었다.", "answer": "expensive",
+          "alts": [
+            { "w": "costly", "t": "wrong", "m": "costly는 자음으로 시작해서 앞에 an이 올 수 없어요." },
+            { "w": "expansive", "t": "wrong", "m": "expansive는 '넓은, 광대한'이라는 다른 단어예요. 철자를 확인해 보세요." },
+            { "w": "high", "t": "wrong", "m": "high는 a high price처럼 가격 자체가 높을 때 써요." }
+          ]
+        }
       ],
       "nuance": "가격이 비싸다는 'The price is high', 물건이 비싸다는 'It is expensive'. costly는 격식체이고 '손실이 큰'이란 뜻도 있다.",
       "etymology": "라틴어 ex(밖으로) + pendere(무게를 달다, 지불하다) → '많이 지불하는'"
@@ -79,8 +204,23 @@
       "id": "several", "word": "several", "pos": "det", "level": 4,
       "meanings": ["몇몇의, 여러"],
       "sentences": [
-        { "en": "I have read this book ___ times.", "ko": "이 책을 **여러** 번 읽었다.", "answer": "several" },
-        { "en": "There were ___ problems with the plan.", "ko": "그 계획에는 **몇 가지** 문제가 있었다.", "answer": "several" }
+        {
+          "en": "I have read this book ___ times.", "ko": "이 책을 **여러** 번 읽었다.", "answer": "several",
+          "note": "서너 번에서 예닐곱 번 정도",
+          "alts": [
+            { "w": "many", "t": "ok", "m": "many도 맞지만 '많은'이에요. 서너 번 이상 정도를 나타내는 단어를 생각해 보세요." },
+            { "w": "some", "t": "near", "m": "some times는 sometimes(가끔)와 헷갈려요. 여러 번을 생각해 보세요." },
+            { "w": "few", "t": "wrong", "m": "few는 '거의 없는'이라는 부정적 뜻이에요. 여러 번 읽었다는 말과 반대예요." }
+          ]
+        },
+        {
+          "en": "There were ___ problems with the plan.", "ko": "그 계획에는 **몇 가지** 문제가 있었다.", "answer": "several",
+          "alts": [
+            { "w": "many", "t": "ok", "m": "many도 맞지만, '몇 가지' 정도의 수를 나타내는 단어를 생각해 보세요." },
+            { "w": "a few", "t": "near", "m": "a few는 두세 개 정도로 더 적은 느낌이에요." },
+            { "w": "various", "t": "near", "m": "various는 '다양한 종류의'예요. 개수를 말하는 단어를 생각해 보세요." }
+          ]
+        }
       ],
       "nuance": "a few(두세 개)보다 많고 many보다 적은 '서너 개에서 예닐곱 개' 정도. 복수 명사와 함께 쓴다."
     },
@@ -88,8 +228,23 @@
       "id": "usually", "word": "usually", "pos": "adv", "level": 4,
       "meanings": ["보통, 대개"],
       "sentences": [
-        { "en": "I ___ get up at six.", "ko": "나는 **보통** 6시에 일어난다.", "answer": "usually" },
-        { "en": "The bus is ___ on time.", "ko": "그 버스는 **대개** 제시간에 온다.", "answer": "usually" }
+        {
+          "en": "I ___ get up at six.", "ko": "나는 **보통** 6시에 일어난다.", "answer": "usually",
+          "ctx": "하루 일과를 소개하며",
+          "alts": [
+            { "w": "normally", "t": "ok", "m": "normally도 맞지만, '보통'을 더 기본적으로 말하는 단어를 생각해 보세요." },
+            { "w": "often", "t": "near", "m": "often은 '자주'예요. 습관적으로 대개 그렇다는 말을 생각해 보세요." },
+            { "w": "usual", "t": "wrong", "m": "usual은 형용사예요. 동사 앞에는 부사가 와야 해요." }
+          ]
+        },
+        {
+          "en": "The bus is ___ on time.", "ko": "그 버스는 **대개** 제시간에 온다.", "answer": "usually",
+          "alts": [
+            { "w": "generally", "t": "ok", "m": "generally도 맞지만 조금 딱딱해요. 더 일상적인 단어를 생각해 보세요." },
+            { "w": "always", "t": "near", "m": "always는 '항상'이에요. 대개 그렇다는 정도를 생각해 보세요." },
+            { "w": "often", "t": "near", "m": "often은 '자주'예요. 평소에 대개 그렇다는 말을 생각해 보세요." }
+          ]
+        }
       ],
       "nuance": "normally, generally와 비슷. 'as usual'(평소처럼)은 형용사 usual을 쓴다."
     }
