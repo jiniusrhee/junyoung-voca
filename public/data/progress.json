@@ -1,9 +1,9 @@
 {
  "source": "말해보카",
- "asOf": "2026-10-23",
+ "asOf": "2026-10-24",
  "streak": {
-  "days": 440,
-  "asOf": "2026-10-23"
+  "days": 441,
+  "asOf": "2026-10-24"
  },
  "levels": {
   "vocab": 30,
@@ -20,6 +20,7 @@
   }
  ],
  "learnedCount": 4870,
+ "repairPens": 5,
  "learnedWords": [
   "a lternately",
   "a thing or two",
@@ -13764,7 +13765,7 @@
    "vigorous",
    "vlgorous"
   ],
-  "2026-10-23": [
+  "2026-10-22": [
    "architecture",
    "arithmetic",
    "association",
@@ -13782,7 +13783,7 @@
    "turn ~ over",
    "vent"
   ],
-  "2026-10-24": [
+  "2026-10-23": [
    "architecture",
    "association",
    "bang",
@@ -13826,6 +13827,6 @@
   }
  },
  "notes": [
-  "일별 학습 어휘 434일치(2025-08-09~2026-10-24)에서 단어 3434개를 OCR로 읽음"
+  "일별 학습 어휘 434일치(2025-08-09~2026-10-23)에서 단어 3434개를 OCR로 읽음"
  ]
 }
