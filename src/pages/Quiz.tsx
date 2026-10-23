@@ -8,6 +8,7 @@ import Mascot from '../components/Mascot';
 import VocabSettings from '../components/VocabSettings';
 import QuizCard, { FilledSentence, KoSentence, type CardBadge } from '../components/QuizCard';
 import WrongItem from '../components/WrongItem';
+import { useLeaveGuard } from '../components/StudyChrome';
 import { db } from '../db';
 import { comprehension, computeStreak, estimateVocab, grantRepairPen } from '../lib/stats';
 import { syncContent } from '../lib/content';
@@ -80,6 +81,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const [levelHelp, setLevelHelp] = useState(false);
   const [cardKey, setCardKey] = useState(0);
   const favorites = useLiveQuery(() => db.favorites.toCollection().primaryKeys(), []) as string[] | undefined;
+  const guard = useLeaveGuard(() => nav('/'));
 
   const settingsRef = useRef<Settings | null>(null);
   settingsRef.current = settings ?? null;
@@ -552,7 +554,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     <div className="quiz-screen">
       <div className="quiz-bg-deco" />
       <header className="quiz-top">
-        <button className="icon-btn light" onClick={() => nav('/')} aria-label="나가기">
+        {guard.modal}
+        <button className="icon-btn light" onClick={mode === 'test' ? () => nav('/') : guard.leave} aria-label="나가기">
           <Icon name="back" size={24} />
         </button>
         <div className="quiz-progress">

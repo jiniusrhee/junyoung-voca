@@ -1,4 +1,7 @@
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
+import { STREAK_MIN_QUESTIONS, studyDateOf } from '../lib/time';
+import { dayTotal } from '../lib/stats';
+import { db } from '../db';
 import Icon, { type IconName } from './Icon';
 
 /** 학습 화면 배경 (하늘 / 공룡 테마) */
@@ -54,11 +57,46 @@ export function Backdrop({ theme }: { theme: 'sky' | 'dino' }) {
 }
 
 /** 학습 화면 상단: 뒤로 + 오늘 진행 막대 + 설정 */
+
+/** 학습 중 나가기: 오늘 5문제 미만이면 말해보카처럼 한 번 붙잡는다 */
+export function useLeaveGuard(onLeave: () => void): { leave: () => void; modal: ReactNode } {
+  const [ask, setAsk] = useState(false);
+  const leave = () => {
+    void db.daily.get(studyDateOf()).then((row) => {
+      if (dayTotal(row) < STREAK_MIN_QUESTIONS) setAsk(true);
+      else onLeave();
+    });
+  };
+  const modal = ask ? (
+    <div className="modal-dim" onClick={() => setAsk(false)}>
+      <div className="opt-sheet leave-sheet" onClick={(e) => e.stopPropagation()}>
+        <h3>이대로 가시게요?</h3>
+        <p className="help-text">
+          {STREAK_MIN_QUESTIONS}문제를 풀어야
+          <br />
+          연속 학습을 달성할 수 있어요!
+        </p>
+        <div className="opt-actions">
+          <button className="btn gray big" onClick={onLeave}>
+            나가기
+          </button>
+          <button className="btn primary big" onClick={() => setAsk(false)}>
+            이어서 하기
+          </button>
+        </div>
+      </div>
+    </div>
+  ) : null;
+  return { leave, modal };
+}
+
 export function StudyTop({ count, total, onBack, onSettings }: { count: number; total: number; onBack: () => void; onSettings?: () => void }) {
   const fill = Math.min(1, total ? count / total : 0);
+  const guard = useLeaveGuard(onBack);
   return (
     <header className="quiz-top">
-      <button className="icon-btn light" onClick={onBack} aria-label="나가기">
+      {guard.modal}
+      <button className="icon-btn light" onClick={guard.leave} aria-label="나가기">
         <Icon name="back" size={24} />
       </button>
       <div className="quiz-progress">
