@@ -6,6 +6,7 @@ import ModeStart from '../components/ModeStart';
 import { db } from '../db';
 import { modeToday } from '../lib/modeStudy';
 import { useSettings } from '../lib/settings';
+import { getTalkProgress } from '../lib/talk';
 import { studyDateOf } from '../lib/time';
 import type { StudyMode } from '../types';
 
@@ -25,7 +26,6 @@ export default function AllLearning() {
   const [params, setParams] = useSearchParams();
   const chip = (params.get('mode') as Chip) || 'vocab';
   const [start, setStart] = useState<StudyMode | null>(null);
-  const [toast, setToast] = useState<string | null>(null);
   const counts = useLiveQuery(
     async () => ({
       fav: await db.favorites.count(),
@@ -39,14 +39,16 @@ export default function AllLearning() {
       vToday: (await db.daily.get(studyDateOf()))?.total ?? 0,
       gToday: (await modeToday('grammar')).total,
       lToday: (await modeToday('listening')).total,
+      eLearned: await db.mcards.where('mode').equals('expr').count(),
+      eToday: (await modeToday('expr')).total,
+      tToday: (await modeToday('talk')).total,
+      course: settings?.exprCourse ? (await db.ecourses.get(settings.exprCourse))?.title : (await db.ecourses.orderBy('order').first())?.title,
+      story: await lastStory(),
+      saved: await db.kv.get('myExpressions').then((r) => ((r?.value as unknown[] | undefined) ?? []).length),
     }),
-    [],
+    [settings?.exprCourse],
   );
   if (!settings) return null;
-  const soon = (m: string) => {
-    setToast(`${m} 학습은 준비 중이에요`);
-    window.setTimeout(() => setToast(null), 2000);
-  };
 
   return (
     <div className="screen all-learning">
@@ -59,7 +61,6 @@ export default function AllLearning() {
           <Icon name="bell" size={26} />
         </span>
       </header>
-      {toast && <div className="home-toast">{toast}</div>}
 
       <h2 className="al-title">학습 모드</h2>
       <div className="al-chips">
@@ -92,14 +93,41 @@ export default function AllLearning() {
       )}
       {chip === 'expr' && (
         <>
-          <ModeCard color="expr" title="표현 학습" beta sub="학습 코스 | 준비 중" onPlay={() => soon('표현')} />
-          <p className="al-soon">표현 학습 화면은 실제 앱 화면을 확인한 뒤 만들 예정이에요.</p>
+          <ModeCard
+            color="expr"
+            title="표현 학습"
+            beta
+            sub={
+              <>
+                학습 코스 <i className="sep">|</i> {counts?.course ?? '코스 선택'} <Icon name="pencil" size={13} />
+              </>
+            }
+            done={(counts?.eToday ?? 0) >= settings.exprGoal}
+            onPlay={() => nav('/expr')}
+          />
+          <ul className="al-list">
+            <Row to="/learned/expr" icon="hourglass" tint="teal" label="내가 학습한 표현" count={counts?.eLearned} />
+          </ul>
         </>
       )}
       {chip === 'talk' && (
         <>
-          <ModeCard color="talk" title="실전 회화 학습" beta sub="스토리 | 준비 중" onPlay={() => soon('실전 회화')} />
-          <p className="al-soon">실전 회화 화면은 실제 앱 화면을 확인한 뒤 만들 예정이에요.</p>
+          <ModeCard
+            color="talk"
+            title="실전 회화 학습"
+            beta
+            sub={
+              <>
+                스토리 <i className="sep">|</i> {counts?.story ?? '스토리 선택'}
+              </>
+            }
+            done={(counts?.tToday ?? 0) >= settings.talkGoal}
+            onPlay={() => nav('/talk')}
+          />
+          <ul className="al-list">
+            <Row to="/talk/recent" icon="hourglass" tint="teal" label="최근 학습한 에피소드" />
+            <Row to="/talk/saved" icon="bookmark" tint="blue" label="내가 추가한 표현" count={counts?.saved} />
+          </ul>
         </>
       )}
       {chip === 'listening' && (
@@ -138,6 +166,17 @@ export default function AllLearning() {
       {start && <ModeStart mode={start} onClose={() => setStart(null)} />}
     </div>
   );
+}
+
+async function lastStory(): Promise<string | undefined> {
+  const prog = await getTalkProgress();
+  const stories = await db.tstories.orderBy('order').toArray();
+  let best: { t: number; title: string } | null = null;
+  for (const st of stories) {
+    const t = Math.max(0, ...st.episodes.map((e) => prog[e.id]?.ts ?? 0));
+    if (t > 0 && (!best || t > best.t)) best = { t, title: st.title };
+  }
+  return best?.title ?? stories[0]?.title;
 }
 
 function ModeCard({ color, title, sub, beta, done, onPlay }: { color: string; title: string; sub: React.ReactNode; beta?: boolean; done?: boolean; onPlay: () => void }) {

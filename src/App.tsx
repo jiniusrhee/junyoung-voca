@@ -1,10 +1,14 @@
 import { useEffect } from 'react';
-import { HashRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import BottomNav from './components/BottomNav';
 import { syncContent } from './lib/content';
 import { useSettings } from './lib/settings';
 import { useApplyTheme } from './lib/theme';
 import AllLearning from './pages/AllLearning';
+import ExprHome, { ExprCourses, ExprDict, ExprNotebook } from './pages/ExprHome';
+import ExprQuiz from './pages/ExprQuiz';
+import TalkHome, { TalkLevel, TalkRecent, TalkSaved } from './pages/TalkHome';
+import TalkPlay from './pages/TalkPlay';
 import GrammarDict, { GrammarLesson } from './pages/GrammarDict';
 import GrammarQuiz from './pages/GrammarQuiz';
 import Guide from './pages/Guide';
@@ -24,6 +28,11 @@ import Words from './pages/Words';
 import WrongNotes from './pages/WrongNotes';
 
 const TABS = ['/', '/stats', '/all'];
+
+function ExprDictRoute() {
+  const { key } = useParams();
+  return <ExprDict keyParam={key} />;
+}
 
 function Shell() {
   const settings = useSettings();
@@ -45,6 +54,17 @@ function Shell() {
         <Route path="/listening" element={<ListeningQuiz />} />
         <Route path="/grammar-dict" element={<GrammarDict />} />
         <Route path="/grammar-dict/:id" element={<GrammarLesson />} />
+        <Route path="/expr" element={<ExprHome />} />
+        <Route path="/expr/courses" element={<ExprCourses />} />
+        <Route path="/expr/notebook" element={<ExprNotebook />} />
+        <Route path="/expr/quiz" element={<ExprQuiz />} />
+        <Route path="/expr-dict" element={<ExprDictRoute />} />
+        <Route path="/expr-dict/:key" element={<ExprDictRoute />} />
+        <Route path="/talk" element={<TalkHome />} />
+        <Route path="/talk/level" element={<TalkLevel />} />
+        <Route path="/talk/recent" element={<TalkRecent />} />
+        <Route path="/talk/saved" element={<TalkSaved />} />
+        <Route path="/talk/:story/:ep" element={<TalkPlay />} />
         <Route path="/pairs" element={<Pairs />} />
         <Route path="/pairs/:stage/:mode" element={<PairQuiz />} />
         <Route path="/learned/:mode" element={<LearnedList kind="learned" />} />

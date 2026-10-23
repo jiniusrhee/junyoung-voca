@@ -1,0 +1,411 @@
+{
+  "course": { "id": "travel-basic", "title": "여행 영어 - 필수", "group": "여행 영어", "stars": 1, "icon": "plane" },
+  "patterns": [
+    { "id": "id-like", "ko": "~로 주세요 / ~하고 싶어요", "en": "I'd like ~.", "meaning": "원하는 것을 공손하게 말할 때", "note": "I would like를 줄인 말로, I want보다 훨씬 공손하게 원하는 것을 말할 수 있어요. 뒤에 명사가 오면 '~로 주세요', to+동사원형이 오면 '~하고 싶어요'가 돼요. '좋아해요'라는 뜻의 I like와 헷갈리지 않도록 주의하세요." },
+    { "id": "can-i-get", "ko": "~ 주실 수 있나요?", "en": "Can I get ~?", "meaning": "카페나 식당에서 원하는 것을 달라고 할 때", "note": "카페나 식당에서 주문하거나 무언가를 달라고 할 때 가장 흔하게 쓰는 표현이에요. Can I have ~?도 같은 뜻이고, Could I ~?로 바꾸면 조금 더 공손해져요. 끝에 please를 붙이면 더 부드럽게 들려요." },
+    { "id": "is-there-nearby", "ko": "근처에 ~ 있나요?", "en": "Is there ~ nearby?", "meaning": "가까운 곳에 어떤 장소가 있는지 물을 때", "note": "근처에 어떤 장소가 있는지 물을 때 써요. 찾는 대상이 하나면 Is there a ~, 여러 개면 Are there any ~로 바꿔요. nearby 대신 around here를 써도 자연스러워요." },
+    { "id": "how-get-to", "ko": "~에 어떻게 가요?", "en": "How do I get to ~?", "meaning": "목적지까지 가는 방법을 물을 때", "note": "목적지까지 가는 방법을 물을 때 가장 기본이 되는 표현이에요. get to는 '도착하다'라는 느낌이 있어서 How do I go to ~?보다 길을 물을 때 더 자연스러워요. Where is ~?는 위치만 묻는 말이라 의미가 조금 달라요." },
+    { "id": "could-you", "ko": "~해 주시겠어요?", "en": "Could you ~?", "meaning": "상대에게 공손하게 부탁할 때", "note": "상대에게 무언가를 부탁할 때 쓰는 공손한 표현이에요. Can you ~?보다 정중하고, Would you ~?와 비슷한 정도예요. 뒤에는 동사원형이 오고, please를 넣으면 더 부드러워져요." },
+    { "id": "do-you-have", "ko": "~ 있나요?", "en": "Do you have ~?", "meaning": "가게나 호텔에 원하는 물건·서비스가 있는지 물을 때", "note": "가게, 호텔, 식당에 원하는 물건이나 서비스가 있는지 물을 때 써요. 주어가 상대(you)라서 '그쪽에 ~가 있나요?'라는 느낌이에요. 어떤 장소에 무언가가 존재하는지 물을 땐 Is there ~?를 쓰기도 해요." },
+    { "id": "here-for", "ko": "~하러 왔어요", "en": "I'm here for ~.", "meaning": "방문 목적을 말할 때", "note": "입국 심사나 방문한 곳에서 목적을 말할 때 써요. for 뒤에는 sightseeing, a conference 같은 명사가 와요. 동사를 쓰고 싶다면 I'm here to visit ~처럼 to를 써요." },
+    { "id": "reservation-for", "ko": "~로 예약했어요", "en": "I have a reservation for ~.", "meaning": "예약했다는 사실을 알릴 때", "note": "호텔, 식당, 렌터카 등에서 예약했다고 알릴 때 쓰는 표현이에요. for 뒤에는 인원, 기간, 시간, 예약한 대상이 올 수 있어요. 예약자 이름은 under Kim처럼 under를 써서 말해요." },
+    { "id": "how-much", "ko": "~ 얼마예요?", "en": "How much is ~?", "meaning": "가격을 물을 때", "note": "물건이나 서비스의 가격을 물을 때 써요. 대상이 여러 개면 How much are ~?로 바꿔요. How many는 개수를 물을 때 쓰니 헷갈리지 않도록 주의하세요." },
+    { "id": "pay-with", "ko": "~로 계산할 수 있을까요?", "en": "Can I pay with ~?", "meaning": "지불 수단을 물어볼 때", "note": "지불 수단을 물을 때 쓰는 표현이에요. with는 카드, 현금, 앱 결제 등 모든 수단에 쓸 수 있어요. by는 by card처럼 관사 없이 쓸 때, in은 in cash나 in dollars처럼 현금·통화 앞에 주로 써요." },
+    { "id": "where-can-i", "ko": "어디서 ~할 수 있나요?", "en": "Where can I ~?", "meaning": "어떤 일을 할 수 있는 장소를 물을 때", "note": "어떤 일을 할 수 있는 장소를 물을 때 써요. 뒤에 동사원형을 넣어 Where can I buy ~?, Where can I find ~?처럼 활용해요. Where do I ~?도 비슷하게 쓰지만, can을 쓰면 '할 수 있는 곳'에 초점이 맞춰져요." },
+    { "id": "lost-my", "ko": "~을 잃어버렸어요", "en": "I lost my ~.", "meaning": "물건을 잃어버렸다고 알릴 때", "note": "물건을 잃어버렸다고 알릴 때 쓰는 기본 표현이에요. lose의 과거형은 lost로 불규칙이에요. 어디에 두고 왔는지 알 때는 I left my ~ (in/at ~)라고 하는 게 더 자연스러워요." },
+    { "id": "is-it-okay-to", "ko": "~해도 괜찮을까요?", "en": "Is it okay to ~?", "meaning": "어떤 행동을 해도 되는지 허락을 구할 때", "note": "어떤 행동을 해도 되는지 허락을 구할 때 써요. 뒤에 동사원형이 오고, Is it okay if I ~?로 바꿔 말할 수도 있어요. Can I ~?보다 조금 더 조심스럽게 들려요." },
+    { "id": "have-instead", "ko": "대신 ~로 주실 수 있을까요?", "en": "Could I have ~ instead?", "meaning": "주문이나 구성을 다른 것으로 바꿔 달라고 할 때", "note": "주문 구성이나 제공받는 것을 다른 것으로 바꿔 달라고 할 때 써요. instead는 문장 끝에 와서 '대신에'라는 뜻을 더해요. 바꾸기 전 대상을 말하려면 instead of fries처럼 of를 붙여요." }
+  ],
+  "items": [
+    { "id": "travel-basic-id-like-01", "pattern": "id-like",
+      "partner": { "en": "Do you have a seating preference?", "ko": "원하시는 좌석이 있으세요?" },
+      "en": "___ a window seat, please.", "answer": "I'd like",
+      "ko": "창가 자리**로 주세요**.",
+      "alts": [
+        { "w": "I want", "t": "near", "m": "뜻은 통하지만 조금 직설적으로 들려요. 원하는 걸 더 공손하게 말하는 표현은요?" },
+        { "w": "I would like", "t": "ok", "m": "맞아요! 말할 때는 보통 앞의 두 단어를 줄여서 더 자연스럽게 말해요." },
+        { "w": "I like", "t": "wrong", "m": "I like는 '좋아해요'라는 뜻이에요. 지금 원하는 걸 부탁하는 표현이 필요해요." }
+      ] },
+    { "id": "travel-basic-id-like-02", "pattern": "id-like",
+      "partner": { "en": "Good evening. How can I help you?", "ko": "안녕하세요. 무엇을 도와드릴까요?" },
+      "en": "Hi, ___ to check in, please.", "answer": "I'd like",
+      "ko": "안녕하세요, 체크인**하고 싶어요**.",
+      "alts": [
+        { "w": "I want", "t": "near", "m": "뜻은 통하지만 호텔 프런트에선 조금 퉁명스럽게 들려요. 더 공손한 표현을 써 보세요." },
+        { "w": "I'd love", "t": "near", "m": "'정말 하고 싶어요'처럼 들뜬 느낌이에요. 담담하고 공손하게 원하는 걸 말해 보세요." },
+        { "w": "I like", "t": "wrong", "m": "I like to는 '평소에 ~하는 걸 좋아해요'라는 뜻이 돼요." }
+      ] },
+    { "id": "travel-basic-id-like-03", "pattern": "id-like",
+      "partner": { "en": "Are you ready to order?", "ko": "주문하시겠어요?" },
+      "en": "Yes, ___ the grilled salmon.", "answer": "I'd like",
+      "ko": "네, 연어구이**로 할게요**.",
+      "alts": [
+        { "w": "I'll have", "t": "ok", "m": "좋아요! 주문할 때 자주 써요. 원하는 걸 공손하게 말하는 다른 표현도 연습해 봐요." },
+        { "w": "I want", "t": "near", "m": "뜻은 통하지만 식당에서는 조금 어린아이 말투처럼 들릴 수 있어요. 더 공손하게 말해 보세요." },
+        { "w": "I'd like to", "t": "wrong", "m": "to 뒤에는 동사가 와야 해요. 바로 음식 이름이 오니까 to를 빼 보세요." }
+      ] },
+
+    { "id": "travel-basic-can-i-get-01", "pattern": "can-i-get",
+      "partner": { "en": "Hi there! What can I get for you?", "ko": "안녕하세요! 뭐 드릴까요?" },
+      "en": "___ an iced latte?", "answer": "Can I get",
+      "ko": "아이스 라테 하나 **주실 수 있나요**?",
+      "alts": [
+        { "w": "Can I have", "t": "ok", "m": "좋아요! 같은 뜻이에요. 미국 카페에서 더 흔히 들리는 동사로도 말해 봐요." },
+        { "w": "Can you get", "t": "wrong", "m": "'당신이 가져갈래요?'가 돼요. 받는 사람이 나라는 점을 생각해 보세요." },
+        { "w": "Can I take", "t": "wrong", "m": "take는 '가져가다'에 가까워요. 직원에게 달라고 할 때 쓰는 동사를 떠올려 보세요." }
+      ] },
+    { "id": "travel-basic-can-i-get-02", "pattern": "can-i-get",
+      "partner": { "en": "Is there anything else I can get you?", "ko": "더 필요하신 거 있으세요?" },
+      "en": "Yes, ___ some more water?", "answer": "Can I get",
+      "ko": "네, 물 좀 더 **주실 수 있나요**?",
+      "alts": [
+        { "w": "Can I give", "t": "wrong", "m": "give는 내가 '주는' 거예요. 내가 받는 입장에서 쓰는 동사는요?" },
+        { "w": "May I get", "t": "near", "m": "틀리진 않지만 조금 격식 있어요. 식당에서 더 가볍게 쓰는 조동사를 생각해 보세요." },
+        { "w": "Can I want", "t": "wrong", "m": "can 뒤에 want는 어색해요. '얻다, 받다'를 뜻하는 동사를 써 보세요." }
+      ] },
+    { "id": "travel-basic-can-i-get-03", "pattern": "can-i-get",
+      "partner": { "en": "Here's your change.", "ko": "거스름돈 여기 있습니다." },
+      "en": "Thanks. ___ a receipt, too?", "answer": "Can I get",
+      "ko": "감사합니다. 영수증도 **주실 수 있나요**?",
+      "alts": [
+        { "w": "Can I receive", "t": "near", "m": "receive는 '받다'지만 딱딱하게 들려요. 일상에서 더 가볍게 쓰는 동사가 있어요." },
+        { "w": "Can you get", "t": "wrong", "m": "주어가 you면 상대가 받는 게 돼요. 영수증을 받는 건 나예요." },
+        { "w": "Could I get", "t": "ok", "m": "좋아요! 조금 더 공손한 말이에요. 가볍게 말하는 기본형도 연습해 봐요." }
+      ] },
+
+    { "id": "travel-basic-is-there-nearby-01", "pattern": "is-there-nearby",
+      "partner": { "en": "Is there anything else you need?", "ko": "더 필요하신 건 없으세요?" },
+      "en": "Yes. ___ a pharmacy nearby?", "answer": "Is there",
+      "ko": "네. 근처에 약국이 **있나요**?",
+      "alts": [
+        { "w": "Are there", "t": "wrong", "m": "약국 하나(a pharmacy)를 찾고 있어요. 단수에 맞는 be동사를 써 보세요." },
+        { "w": "Is it", "t": "wrong", "m": "it은 이미 아는 대상을 가리켜요. 무언가가 '있는지' 물을 때 쓰는 짝꿍 단어가 있어요." },
+        { "w": "Do you have", "t": "near", "m": "가게에 물건이 있는지 물을 때 어울려요. 근처에 어떤 장소가 있는지 물을 땐요?" }
+      ] },
+    { "id": "travel-basic-is-there-nearby-02", "pattern": "is-there-nearby",
+      "partner": { "en": "You look lost. Can I help?", "ko": "길을 잃으신 것 같네요. 도와드릴까요?" },
+      "en": "Thanks! Is there an ATM ___?", "answer": "nearby",
+      "ko": "고마워요! **근처에** ATM이 있나요?",
+      "alts": [
+        { "w": "near", "t": "near", "m": "near 뒤에는 보통 기준이 되는 장소가 와요. 문장 끝에 혼자 쓸 수 있는 형태는요?" },
+        { "w": "around", "t": "ok", "m": "좋아요! 이것도 자연스러워요. '가까이에'라는 뜻의 다른 한 단어도 익혀 봐요." },
+        { "w": "close", "t": "wrong", "m": "close만 문장 끝에 두면 어색해요. '근처에'를 뜻하는 한 단어를 써 보세요." }
+      ] },
+    { "id": "travel-basic-is-there-nearby-03", "pattern": "is-there-nearby",
+      "partner": { "en": "Your room is on the fifth floor.", "ko": "객실은 5층입니다." },
+      "en": "Thanks. ___ a convenience store nearby?", "answer": "Is there",
+      "ko": "감사합니다. 근처에 편의점이 **있나요**?",
+      "alts": [
+        { "w": "There is", "t": "wrong", "m": "평서문 순서예요. 질문이니까 두 단어의 순서를 바꿔 보세요." },
+        { "w": "Is here", "t": "wrong", "m": "here는 '여기'라는 장소예요. 무언가가 있는지 물을 때 쓰는 짝꿍 단어가 따로 있어요." }
+      ] },
+
+    { "id": "travel-basic-how-get-to-01", "pattern": "how-get-to",
+      "partner": { "en": "Excuse me, do you need help?", "ko": "실례지만, 도움이 필요하세요?" },
+      "en": "Yes. ___ the train station?", "answer": "How do I get to",
+      "ko": "네. 기차역**에 어떻게 가요**?",
+      "alts": [
+        { "w": "How do I go to", "t": "near", "m": "통하긴 하지만, 길을 물을 땐 '도착하다' 느낌의 다른 동사를 더 많이 써요." },
+        { "w": "Where is", "t": "wrong", "m": "위치만 묻는 말이에요. 가는 방법을 묻는 표현을 써 보세요." },
+        { "w": "How can I go", "t": "wrong", "m": "go 뒤에 장소가 오려면 전치사가 필요해요. 길을 물을 때 더 흔한 동사도 있어요." }
+      ] },
+    { "id": "travel-basic-how-get-to-02", "pattern": "how-get-to",
+      "partner": { "en": "Is there anything I can help you with today?", "ko": "오늘 도와드릴 일이 있을까요?" },
+      "en": "Yes. ___ Central Park from here?", "answer": "How do I get to",
+      "ko": "네. 여기서 센트럴 파크**에 어떻게 가요**?",
+      "alts": [
+        { "w": "How do I get", "t": "near", "m": "거의 다 왔어요! 목적지 앞에 방향을 나타내는 작은 단어가 빠졌어요." },
+        { "w": "How I get to", "t": "wrong", "m": "질문이니까 조동사가 주어 앞에 와야 해요." },
+        { "w": "How do I arrive at", "t": "near", "m": "arrive는 '도착하다'지만 길을 물을 때는 잘 안 써요. 더 흔한 동사를 생각해 보세요." }
+      ] },
+    { "id": "travel-basic-how-get-to-03", "pattern": "how-get-to",
+      "partner": { "en": "Sorry, this line is closed for repairs today.", "ko": "죄송하지만 이 노선은 오늘 공사로 운행하지 않아요." },
+      "en": "Oh no. Then ___ the airport?", "answer": "How do I get to",
+      "ko": "이런. 그럼 공항**에 어떻게 가요**?",
+      "alts": [
+        { "w": "How to get to", "t": "wrong", "m": "'가는 법'이라는 명사구가 돼요. 직접 묻는 질문 형태로 만들어 보세요." },
+        { "w": "How do I come to", "t": "wrong", "m": "come은 상대가 있는 쪽으로 '오는' 거예요. 목적지에 닿는 느낌의 동사를 써 보세요." },
+        { "w": "How can I get to", "t": "ok", "m": "좋아요! 같은 뜻이에요. do를 쓴 기본 질문 형태도 연습해 봐요." }
+      ] },
+
+    { "id": "travel-basic-could-you-01", "pattern": "could-you",
+      "partner": { "en": "Where to?", "ko": "어디로 가세요?" },
+      "en": "___ take me to this address?", "answer": "Could you",
+      "ko": "이 주소로 가 **주시겠어요**?",
+      "alts": [
+        { "w": "Can you", "t": "near", "m": "뜻은 통하지만 조금 덜 공손해요. 과거형 조동사로 바꾸면 더 정중해져요." },
+        { "w": "Could I", "t": "wrong", "m": "주어가 I면 내가 하겠다는 말이 돼요. 상대에게 부탁해 보세요." },
+        { "w": "Would you like", "t": "wrong", "m": "'~하시겠어요?' 하고 권하는 말이에요. 부탁하는 표현이 필요해요." }
+      ] },
+    { "id": "travel-basic-could-you-02", "pattern": "could-you",
+      "partner": { "en": "Wow, what a view, right?", "ko": "와, 경치 정말 멋지죠?" },
+      "en": "It's amazing! ___ take a picture of us?", "answer": "Could you",
+      "ko": "정말 멋져요! 저희 사진 좀 찍어 **주시겠어요**?",
+      "alts": [
+        { "w": "Would you", "t": "ok", "m": "좋아요! 이것도 공손한 부탁이에요. '~해 줄 수 있으세요?' 느낌의 다른 조동사도 써 봐요." },
+        { "w": "Do you", "t": "wrong", "m": "'평소에 찍나요?'라는 뜻이 돼요. 부탁할 땐 조동사를 써 보세요." },
+        { "w": "Can you", "t": "near", "m": "통하지만 처음 보는 사람에겐 조금 가볍게 들려요. 더 공손한 조동사는요?" }
+      ] },
+    { "id": "travel-basic-could-you-03", "pattern": "could-you",
+      "partner": { "en": "Here's your room key. Enjoy your stay.", "ko": "객실 키 여기 있습니다. 편안히 머무세요." },
+      "en": "Thank you. And ___ call me a taxi for tomorrow morning?", "answer": "Could you",
+      "ko": "감사합니다. 그리고 내일 아침에 택시 좀 불러 **주시겠어요**?",
+      "alts": [
+        { "w": "Should you", "t": "wrong", "m": "should는 '~해야 한다'는 의무예요. 부탁할 때 쓰는 조동사를 써 보세요." },
+        { "w": "Can you", "t": "near", "m": "통하지만 호텔 직원에게는 조금 더 정중한 조동사가 잘 어울려요." },
+        { "w": "Could I", "t": "wrong", "m": "내가 택시를 부르겠다는 말이 돼요. 직원에게 부탁하는 형태로 바꿔 보세요." }
+      ] },
+
+    { "id": "travel-basic-do-you-have-01", "pattern": "do-you-have",
+      "partner": { "en": "That jacket looks great on you.", "ko": "그 재킷 정말 잘 어울리시네요." },
+      "en": "Thanks. ___ this in a smaller size?", "answer": "Do you have",
+      "ko": "감사해요. 이거 더 작은 사이즈로 **있나요**?",
+      "alts": [
+        { "w": "Is there", "t": "near", "m": "있는지 묻는 건 맞지만, 가게에 물건이 있냐고 물을 땐 상대(you)를 주어로 써요." },
+        { "w": "Are you have", "t": "wrong", "m": "be동사와 have는 함께 쓸 수 없어요. 일반동사 질문을 만들어 보세요." },
+        { "w": "Have you", "t": "near", "m": "영국식으로 쓰기도 하지만 어색하게 들릴 수 있어요. 조동사로 시작해 보세요." }
+      ] },
+    { "id": "travel-basic-do-you-have-02", "pattern": "do-you-have",
+      "partner": { "en": "I'm sorry, check-in isn't until three.", "ko": "죄송하지만 체크인은 3시부터예요." },
+      "en": "I see. ___ a place to keep my luggage until then?", "answer": "Do you have",
+      "ko": "알겠습니다. 그때까지 짐을 맡길 곳이 **있나요**?",
+      "alts": [
+        { "w": "Is there", "t": "ok", "m": "좋아요! 이것도 자연스러워요. 호텔(상대)이 갖고 있는지 묻는 방식으로도 말해 봐요." },
+        { "w": "Do you has", "t": "wrong", "m": "you와 함께 쓰는 동사 형태를 다시 확인해 보세요." },
+        { "w": "Does you have", "t": "wrong", "m": "you에는 does가 아닌 다른 조동사를 써요." }
+      ] },
+    { "id": "travel-basic-do-you-have-03", "pattern": "do-you-have",
+      "partner": { "en": "Here's the menu. I'll be right back.", "ko": "메뉴 여기 있습니다. 금방 다시 올게요." },
+      "en": "Thanks. ___ any vegetarian dishes?", "answer": "Do you have",
+      "ko": "감사합니다. 채식 메뉴 **있나요**?",
+      "alts": [
+        { "w": "Are there", "t": "ok", "m": "좋아요! 자연스러워요. 식당(상대)을 주어로 묻는 방식도 연습해 봐요." },
+        { "w": "Have you got", "t": "ok", "m": "영국식으로 맞는 표현이에요! 미국에서 더 흔한 형태로도 말해 봐요." },
+        { "w": "Do you has", "t": "wrong", "m": "조동사 do 뒤에는 동사원형이 와요." }
+      ] },
+
+    { "id": "travel-basic-here-for-01", "pattern": "here-for",
+      "partner": { "en": "What's the purpose of your visit?", "ko": "방문 목적이 무엇인가요?" },
+      "en": "___ sightseeing.", "answer": "I'm here for",
+      "ko": "관광**하러 왔어요**.",
+      "alts": [
+        { "w": "I'm here to", "t": "wrong", "m": "to 뒤에는 동사가 와야 해요. sightseeing은 명사라 다른 전치사가 필요해요." },
+        { "w": "I came for", "t": "near", "m": "뜻은 통해요. 지금 여기 와 있다는 상태로 말하는 더 흔한 표현이 있어요." },
+        { "w": "I'm for", "t": "wrong", "m": "'여기에'라는 말이 빠졌어요." }
+      ] },
+    { "id": "travel-basic-here-for-02", "pattern": "here-for",
+      "partner": { "en": "Are you traveling for business or pleasure?", "ko": "출장이세요, 여행이세요?" },
+      "en": "Business. ___ a conference.", "answer": "I'm here for",
+      "ko": "출장이요. 콘퍼런스 참석**하러 왔어요**.",
+      "alts": [
+        { "w": "I'm here on", "t": "near", "m": "on은 business, vacation 같은 단어와 써요. 행사나 목적 앞에 쓰는 전치사는요?" },
+        { "w": "I'm here to", "t": "wrong", "m": "to 뒤에는 동사가 와야 해요. 명사 a conference가 바로 오려면요?" },
+        { "w": "I'm going for", "t": "wrong", "m": "going은 앞으로 갈 때 써요. 이미 도착한 상태예요." }
+      ] },
+    { "id": "travel-basic-here-for-03", "pattern": "here-for",
+      "partner": { "en": "Hi, how can I help you?", "ko": "안녕하세요, 무엇을 도와드릴까요?" },
+      "en": "Hi, ___ the two o'clock city tour.", "answer": "I'm here for",
+      "ko": "안녕하세요, 2시 시티 투어 **때문에 왔어요**.",
+      "alts": [
+        { "w": "I'm here at", "t": "wrong", "m": "at은 시간이나 장소 앞에 써요. 목적을 나타내는 전치사를 써 보세요." },
+        { "w": "I'm here to", "t": "wrong", "m": "to 뒤에는 동사가 와야 해요. 투어(명사)가 바로 오려면요?" },
+        { "w": "I'm here with", "t": "wrong", "m": "with는 '~와 함께'예요. 투어 때문에 왔다는 목적을 나타내 보세요." }
+      ] },
+
+    { "id": "travel-basic-reservation-for-01", "pattern": "reservation-for",
+      "partner": { "en": "Welcome to the Grand Hotel. Checking in?", "ko": "그랜드 호텔에 오신 걸 환영합니다. 체크인하시나요?" },
+      "en": "Yes, ___ two nights under Kim.", "answer": "I have a reservation for",
+      "ko": "네, 김이라는 이름으로 2박 **예약했어요**.",
+      "alts": [
+        { "w": "I made a reservation for", "t": "ok", "m": "맞아요! 예약한 행동에 초점을 둔 말이에요. 예약을 '가지고 있다'는 표현도 많이 써요." },
+        { "w": "I have a reservation of", "t": "wrong", "m": "of는 기간이나 인원 앞에 쓰지 않아요. '~동안, ~용'을 뜻하는 전치사를 써 보세요." },
+        { "w": "I have a reserve for", "t": "wrong", "m": "reserve는 동사예요. 명사 형태로 바꿔 보세요." }
+      ] },
+    { "id": "travel-basic-reservation-for-02", "pattern": "reservation-for",
+      "partner": { "en": "Good evening. Do you have a reservation?", "ko": "안녕하세요. 예약하셨나요?" },
+      "en": "Yes, ___ four at seven.", "answer": "I have a reservation for",
+      "ko": "네, 7시에 4명으로 **예약했어요**.",
+      "alts": [
+        { "w": "I have reservation for", "t": "wrong", "m": "reservation 앞에 빠진 작은 단어가 있어요." },
+        { "w": "I have a booking for", "t": "ok", "m": "맞아요! 영국에서 특히 많이 써요. 미국에서 더 흔한 단어도 익혀 봐요." },
+        { "w": "I reserved for", "t": "near", "m": "reserve 뒤에는 보통 예약한 대상(a table)이 와요. 예약이 '있다'고 말해 보세요." }
+      ] },
+    { "id": "travel-basic-reservation-for-03", "pattern": "reservation-for",
+      "partner": { "en": "Next, please. Are you picking up a rental car?", "ko": "다음 분이요. 렌터카 찾으러 오셨나요?" },
+      "en": "Yes, ___ a compact car under Lee.", "answer": "I have a reservation for",
+      "ko": "네, Lee라는 이름으로 소형차를 **예약했어요**.",
+      "alts": [
+        { "w": "I have an reservation for", "t": "wrong", "m": "reservation은 자음 소리로 시작해요. 관사를 다시 확인해 보세요." },
+        { "w": "I have a reservation to", "t": "wrong", "m": "to 뒤엔 동사가 와요. 예약한 차가 바로 오려면 다른 전치사가 필요해요." },
+        { "w": "I'm reserved for", "t": "wrong", "m": "'내가 예약된 상태'라는 이상한 말이 돼요. 예약을 가지고 있다고 말해 보세요." }
+      ] },
+
+    { "id": "travel-basic-how-much-01", "pattern": "how-much",
+      "partner": { "en": "That scarf is very popular this season.", "ko": "그 스카프 이번 시즌에 인기가 많아요." },
+      "en": "It's pretty. ___ it?", "answer": "How much is",
+      "ko": "예쁘네요. 이거 **얼마예요**?",
+      "alts": [
+        { "w": "How much does", "t": "wrong", "m": "does 뒤엔 동사가 와야 해요. 뒤에 it만 있으니 be동사를 써 보세요." },
+        { "w": "How many is", "t": "wrong", "m": "many는 개수를 셀 때 써요. 가격을 물을 땐요?" },
+        { "w": "What price is", "t": "near", "m": "뜻은 통하지만 어색해요. 가격을 묻는 가장 기본 표현을 써 보세요." }
+      ] },
+    { "id": "travel-basic-how-much-02", "pattern": "how-much",
+      "partner": { "en": "Tickets for the observation deck are sold here.", "ko": "전망대 티켓은 여기서 판매합니다." },
+      "en": "Great. ___ an adult ticket?", "answer": "How much is",
+      "ko": "좋네요. 성인 티켓은 **얼마예요**?",
+      "alts": [
+        { "w": "How much are", "t": "wrong", "m": "티켓 한 장(an adult ticket)이니까 단수에 맞는 동사를 써요." },
+        { "w": "How much cost", "t": "wrong", "m": "cost를 쓰려면 문장 구조가 달라져요. 여기선 be동사를 써 보세요." },
+        { "w": "How many is", "t": "wrong", "m": "many는 셀 수 있는 개수를 물을 때예요. 금액을 묻는 단어로 바꿔 보세요." }
+      ] },
+    { "id": "travel-basic-how-much-03", "pattern": "how-much",
+      "partner": { "en": "Here we are. This is your hotel.", "ko": "도착했습니다. 여기가 호텔이에요." },
+      "en": "Thank you. ___ the fare?", "answer": "How much is",
+      "ko": "감사합니다. 요금이 **얼마예요**?",
+      "alts": [
+        { "w": "What is", "t": "ok", "m": "좋아요! 요금을 물을 때 이것도 자연스러워요. 금액을 직접 묻는 표현도 익혀 둬요." },
+        { "w": "How much does", "t": "wrong", "m": "does를 쓰면 뒤에 동사가 필요해요. 요금이 '얼마인지' be동사로 물어보세요." },
+        { "w": "How many is", "t": "wrong", "m": "many는 개수를 물을 때 써요. 돈의 양을 물을 땐 다른 단어를 써요." }
+      ] },
+
+    { "id": "travel-basic-pay-with-01", "pattern": "pay-with",
+      "partner": { "en": "That'll be $30.21. Cash or credit?", "ko": "30.21달러입니다. 현금이세요, 카드세요?" },
+      "en": "___ Apple Pay?", "answer": "Can I pay with",
+      "ko": "애플페이**로 계산할 수 있을까요**?",
+      "alts": [
+        { "w": "Can I pay by", "t": "wrong", "m": "by는 지불 수단이 카드일 때 잘 어울려요. 그렇다면 카드를 포함하여 모든 지불 수단에 쓸 수 있는 전치사는 무엇일까요?" },
+        { "w": "Can I pay in", "t": "near", "m": "in은 in cash, in dollars처럼 현금이나 통화 앞에 써요. 결제 앱 앞에는요?" },
+        { "w": "Can I buy with", "t": "wrong", "m": "buy는 물건을 '사다'예요. 값을 치른다는 동사를 써 보세요." }
+      ] },
+    { "id": "travel-basic-pay-with-02", "pattern": "pay-with",
+      "partner": { "en": "Here's your check. No rush.", "ko": "계산서 여기 있습니다. 천천히 하세요." },
+      "en": "Thanks. ___ a credit card?", "answer": "Can I pay with",
+      "ko": "감사합니다. 신용카드**로 계산할 수 있을까요**?",
+      "alts": [
+        { "w": "Can I pay by", "t": "near", "m": "by는 by card처럼 관사 없이 써요. 뒤에 a가 있으니 다른 전치사가 자연스러워요." },
+        { "w": "Can I pay for", "t": "wrong", "m": "pay for 뒤에는 산 물건이 와요. 지불 수단 앞에 쓰는 전치사는요?" },
+        { "w": "Can I pay on", "t": "wrong", "m": "on은 지불 수단 앞에 쓰지 않아요. '~을 가지고'라는 뜻의 전치사를 떠올려 보세요." }
+      ] },
+    { "id": "travel-basic-pay-with-03", "pattern": "pay-with",
+      "partner": { "en": "Would you like to pay now or at checkout?", "ko": "지금 결제하시겠어요, 체크아웃 때 하시겠어요?" },
+      "en": "Now, please. ___ this travel card?", "answer": "Can I pay with",
+      "ko": "지금 할게요. 이 트래블 카드**로 계산할 수 있을까요**?",
+      "alts": [
+        { "w": "Can I pay by", "t": "near", "m": "by card처럼 관사 없이 쓸 땐 괜찮지만, this가 붙으면 다른 전치사가 자연스러워요." },
+        { "w": "Can I use with", "t": "wrong", "m": "use 뒤에는 바로 목적어가 와요. '계산하다'라는 동사로 다시 말해 보세요." },
+        { "w": "Can I pay to", "t": "wrong", "m": "to 뒤에는 돈을 받는 사람이 와요. 결제 수단 앞의 전치사는요?" }
+      ] },
+
+    { "id": "travel-basic-where-can-i-01", "pattern": "where-can-i",
+      "partner": { "en": "Hello! Do you need any help?", "ko": "안녕하세요! 도움이 필요하세요?" },
+      "en": "Yes. ___ catch the hotel shuttle?", "answer": "Where can I",
+      "ko": "네. 호텔 셔틀은 **어디서 탈 수 있나요**?",
+      "alts": [
+        { "w": "Where I can", "t": "wrong", "m": "질문이니까 조동사와 주어의 순서를 바꿔야 해요." },
+        { "w": "Where do I", "t": "ok", "m": "자연스러워요! 이번엔 '~할 수 있다'는 가능을 뜻하는 조동사로 연습해 봐요." },
+        { "w": "Where should I", "t": "near", "m": "'어디서 타야 하나요'라는 뜻이 돼요. '탈 수 있나요'에 맞는 조동사는요?" }
+      ] },
+    { "id": "travel-basic-where-can-i-02", "pattern": "where-can-i",
+      "partner": { "en": "Sorry, we don't exchange money here.", "ko": "죄송하지만 여기서는 환전을 안 해요." },
+      "en": "Oh, then ___ exchange money?", "answer": "Where can I",
+      "ko": "아, 그럼 환전은 **어디서 할 수 있나요**?",
+      "alts": [
+        { "w": "Where can", "t": "wrong", "m": "누가 하는지 주어가 빠졌어요." },
+        { "w": "Where is", "t": "wrong", "m": "Where is 뒤엔 장소나 물건이 와요. 동사 exchange와 어울리는 구조를 써 보세요." },
+        { "w": "Where I can", "t": "wrong", "m": "평서문 순서예요. 묻는 문장에서는 조동사를 주어 앞으로 보내요." }
+      ] },
+    { "id": "travel-basic-where-can-i-03", "pattern": "where-can-i",
+      "partner": { "en": "The tour starts in twenty minutes.", "ko": "투어는 20분 후에 시작합니다." },
+      "en": "Great. ___ buy some water before we go?", "answer": "Where can I",
+      "ko": "좋아요. 출발 전에 물은 **어디서 살 수 있나요**?",
+      "alts": [
+        { "w": "What can I", "t": "wrong", "m": "What은 '무엇'을 물어요. 장소를 묻는 의문사로 바꿔 보세요." },
+        { "w": "Where could I", "t": "ok", "m": "좋아요! 조금 더 공손한 말이에요. 기본형 조동사로도 연습해 봐요." },
+        { "w": "Where can I to", "t": "wrong", "m": "조동사 뒤에는 to 없이 동사원형이 바로 와요." }
+      ] },
+
+    { "id": "travel-basic-lost-my-01", "pattern": "lost-my",
+      "partner": { "en": "Lost and found. How can I help you?", "ko": "분실물 센터입니다. 무엇을 도와드릴까요?" },
+      "en": "___ passport somewhere in the station.", "answer": "I lost my",
+      "ko": "역 어딘가에서 여권**을 잃어버렸어요**.",
+      "alts": [
+        { "w": "I lose my", "t": "wrong", "m": "이미 일어난 일이니까 과거형으로 바꿔 보세요." },
+        { "w": "I missed my", "t": "wrong", "m": "miss는 '놓치다, 그리워하다'예요. 물건을 잃어버렸을 땐 다른 동사를 써요." },
+        { "w": "I've lost my", "t": "ok", "m": "맞아요! 지금도 못 찾았다는 느낌을 줘요. 단순 과거형으로도 연습해 봐요." }
+      ] },
+    { "id": "travel-basic-lost-my-02", "pattern": "lost-my",
+      "partner": { "en": "Good morning. Is everything all right?", "ko": "좋은 아침입니다. 별일 없으시죠?" },
+      "en": "Not really. ___ room key.", "answer": "I lost my",
+      "ko": "아뇨, 사실 방 키**를 잃어버렸어요**.",
+      "alts": [
+        { "w": "I lost the", "t": "near", "m": "틀리진 않지만, 내 방 키라는 걸 드러내는 단어가 더 자연스러워요." },
+        { "w": "I forgot my", "t": "near", "m": "forget은 '깜빡 두고 오다'예요. 어디 있는지 모를 땐 다른 동사를 써요." },
+        { "w": "I lost me", "t": "wrong", "m": "me는 목적어 형태예요. '나의'에 해당하는 형태를 써 보세요." }
+      ] },
+    { "id": "travel-basic-lost-my-03", "pattern": "lost-my",
+      "partner": { "en": "What seems to be the problem?", "ko": "무슨 문제가 있으신가요?" },
+      "en": "___ wallet. I think I dropped it on the subway.", "answer": "I lost my",
+      "ko": "지갑**을 잃어버렸어요**. 지하철에서 떨어뜨린 것 같아요.",
+      "alts": [
+        { "w": "I losted my", "t": "wrong", "m": "lose의 과거형은 불규칙이에요. 다시 확인해 보세요." },
+        { "w": "I lost", "t": "near", "m": "wallet 앞에 누구의 지갑인지 알려 주는 단어가 필요해요." },
+        { "w": "I left my", "t": "near", "m": "left는 어디에 두고 왔는지 알 때 써요. 어디서 사라졌는지 모를 땐요?" }
+      ] },
+
+    { "id": "travel-basic-is-it-okay-to-01", "pattern": "is-it-okay-to",
+      "partner": { "en": "Welcome to the museum. Enjoy your visit.", "ko": "박물관에 오신 걸 환영합니다. 즐거운 관람 되세요." },
+      "en": "Thanks. ___ take pictures inside?", "answer": "Is it okay to",
+      "ko": "감사합니다. 안에서 사진 찍어**도 괜찮을까요**?",
+      "alts": [
+        { "w": "Is it okay", "t": "near", "m": "거의 다 왔어요! 동사 take 앞에 작은 단어가 하나 필요해요." },
+        { "w": "Is it okay for", "t": "wrong", "m": "for 뒤엔 사람이나 명사가 와요. 동사 앞에 쓰는 단어를 생각해 보세요." },
+        { "w": "Is it alright to", "t": "ok", "m": "좋아요! 같은 뜻이에요. 일상에서 조금 더 자주 쓰는 단어로도 말해 봐요." }
+      ] },
+    { "id": "travel-basic-is-it-okay-to-02", "pattern": "is-it-okay-to",
+      "partner": { "en": "Here's your coffee. Enjoy!", "ko": "커피 나왔습니다. 맛있게 드세요!" },
+      "en": "Thanks. ___ sit here for a while?", "answer": "Is it okay to",
+      "ko": "감사해요. 여기 잠깐 앉아 있어**도 괜찮을까요**?",
+      "alts": [
+        { "w": "Is okay to", "t": "wrong", "m": "주어 it이 빠졌어요." },
+        { "w": "Is it okay that", "t": "wrong", "m": "that 뒤엔 주어와 동사가 와요. 바로 동사가 오려면요?" },
+        { "w": "Is it fine to", "t": "ok", "m": "좋아요! 비슷한 뜻이에요. 허락을 구할 때 가장 흔한 단어로도 연습해 봐요." }
+      ] },
+    { "id": "travel-basic-is-it-okay-to-03", "pattern": "is-it-okay-to",
+      "partner": { "en": "The seatbelt sign is off now.", "ko": "이제 좌석벨트 표시등이 꺼졌습니다." },
+      "en": "___ recline my seat a little?", "answer": "Is it okay to",
+      "ko": "좌석을 조금 뒤로 젖혀**도 괜찮을까요**?",
+      "alts": [
+        { "w": "Is it okay if", "t": "near", "m": "if 뒤에는 주어(I)가 와야 해요. 바로 동사가 오려면요?" },
+        { "w": "It is okay to", "t": "wrong", "m": "평서문 순서예요. 질문이니까 순서를 바꿔 보세요." },
+        { "w": "Is it ok to", "t": "ok", "m": "맞아요! 줄여 쓴 철자예요. 철자를 다 쓴 형태도 익혀 둬요." }
+      ] },
+
+    { "id": "travel-basic-have-instead-01", "pattern": "have-instead",
+      "partner": { "en": "The steak comes with fries.", "ko": "스테이크에는 감자튀김이 같이 나와요." },
+      "en": "___ a salad instead?", "answer": "Could I have",
+      "ko": "대신 샐러드로 **주실 수 있을까요**?",
+      "alts": [
+        { "w": "Could you have", "t": "wrong", "m": "you가 주어면 상대가 먹는 게 돼요. 내가 받는 입장으로 말해 보세요." },
+        { "w": "Can I have", "t": "ok", "m": "좋아요! 조금 더 공손한 조동사로도 연습해 봐요." },
+        { "w": "Could I change", "t": "near", "m": "change를 쓰면 구조가 바뀌어요(change it to ~). 받는다는 뜻의 동사를 써 보세요." }
+      ] },
+    { "id": "travel-basic-have-instead-02", "pattern": "have-instead",
+      "partner": { "en": "Sorry, we're out of oat milk.", "ko": "죄송해요, 귀리 우유가 다 떨어졌어요." },
+      "en": "That's okay. Could I have almond milk ___?", "answer": "instead",
+      "ko": "괜찮아요. **대신** 아몬드 우유로 주실 수 있을까요?",
+      "alts": [
+        { "w": "instead of", "t": "wrong", "m": "of 뒤에는 바꾸기 전 대상이 와야 해요. 문장 끝에 혼자 쓸 땐요?" },
+        { "w": "rather", "t": "wrong", "m": "rather는 '차라리, 오히려'라는 뜻으로 이렇게 문장 끝에 쓰지 않아요." },
+        { "w": "either", "t": "wrong", "m": "either는 부정문에서 '~도'라는 뜻이에요. '대신에'를 뜻하는 단어는요?" }
+      ] },
+    { "id": "travel-basic-have-instead-03", "pattern": "have-instead",
+      "partner": { "en": "We have a room with two single beds available.", "ko": "싱글 침대 두 개짜리 방이 있습니다." },
+      "en": "___ one with a double bed instead?", "answer": "Could I have",
+      "ko": "대신 더블 침대 방으로 **주실 수 있을까요**?",
+      "alts": [
+        { "w": "Could I get", "t": "ok", "m": "좋아요! 비슷한 뜻이에요. '갖다'를 뜻하는 기본 동사로도 말해 봐요." },
+        { "w": "Could I take", "t": "near", "m": "'제가 고를게요'에 가까운 느낌이에요. 방을 받는다는 뜻의 동사가 더 자연스러워요." },
+        { "w": "Could you have", "t": "wrong", "m": "you가 주어면 직원이 방을 갖는 게 돼요. 주어를 나로 바꿔 보세요." }
+      ] }
+  ]
+}

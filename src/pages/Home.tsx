@@ -9,18 +9,26 @@ import Icon, { type IconName } from '../components/Icon';
 import Mascot from '../components/Mascot';
 import { db } from '../db';
 import { saveSettings, useSettings } from '../lib/settings';
-import { comprehension, computeStreak, estimateVocab, goalMet, reviewAccuracy, studied } from '../lib/stats';
+import { comprehension, computeStreak, dayTime, dayTotal, estimateVocab, goalMet, reviewAccuracy, studied } from '../lib/stats';
 import { WEEKDAYS_KO, dayOfWeek, formatClock, shiftDate, studyDateOf, weekOf } from '../lib/time';
 import type { DailyRow, StudyMode } from '../types';
 
 const STREAK_GOALS = [7, 14, 30, 50, 100, 150, 200, 300, 365, 500, 700, 1000, 1500, 2000];
 const MODE_TABS: { key: string; icon: IconName; label: string; mode?: StudyMode }[] = [
   { key: 'grammar', icon: 'gbook', label: '문법', mode: 'grammar' },
-  { key: 'expr', icon: 'chat', label: '표현' },
-  { key: 'talk', icon: 'talk', label: '실전 회화' },
+  { key: 'expr', icon: 'chat', label: '표현', mode: 'expr' },
+  { key: 'talk', icon: 'talk', label: '실전 회화', mode: 'talk' },
   { key: 'listen', icon: 'headphones', label: '리스닝', mode: 'listening' },
 ];
-const MODE_TITLE: Record<string, string> = { vocab: '어휘 학습', grammar: '문법 학습', listening: '리스닝 학습' };
+const MODE_TITLE: Record<string, string> = { vocab: '어휘 학습', grammar: '문법 학습', listening: '리스닝 학습', expr: '표현 학습', talk: '실전 회화 학습' };
+const HOME_MODES: StudyMode[] = ['vocab', 'grammar', 'listening', 'expr', 'talk'];
+const BAR_MODES: [StudyMode, string][] = [
+  ['vocab', '#9d86ef'],
+  ['grammar', '#6eb0e8'],
+  ['expr', '#ec6f86'],
+  ['talk', '#8fbf4d'],
+  ['listening', '#f39a4b'],
+];
 
 export default function Home() {
   const nav = useNavigate();
@@ -28,7 +36,7 @@ export default function Home() {
   const today = studyDateOf();
   const daily = useLiveQuery(() => db.daily.toArray(), []);
   const streak = useLiveQuery(() => computeStreak(), []);
-  const homeMode: StudyMode = settings?.homeMode === 'grammar' || settings?.homeMode === 'listening' ? settings.homeMode : 'vocab';
+  const homeMode: StudyMode = settings && HOME_MODES.includes(settings.homeMode) ? settings.homeMode : 'vocab';
   const acc = useLiveQuery(() => reviewAccuracy(7, new Date(), homeMode), [homeMode]);
   const [start, setStart] = useState<StudyMode | null>(null);
   const comp = useLiveQuery(() => comprehension(), []);
@@ -42,7 +50,7 @@ export default function Home() {
   const t = byDate.get(today);
   const vocabTotal = t?.total ?? 0;
   const total = homeMode === 'vocab' ? vocabTotal : (t?.byMode?.[homeMode]?.total ?? 0);
-  const goal = homeMode === 'grammar' ? settings.grammarGoal : homeMode === 'listening' ? settings.listeningGoal : settings.dailyGoal;
+  const goal = homeMode === 'grammar' ? settings.grammarGoal : homeMode === 'listening' ? settings.listeningGoal : homeMode === 'expr' ? settings.exprGoal : homeMode === 'talk' ? settings.talkGoal : settings.dailyGoal;
   const pct = Math.round((total / goal) * 100);
   const met = total >= goal;
   const last7 = Array.from({ length: 7 }, (_, i) => shiftDate(today, i - 6));
@@ -91,7 +99,17 @@ export default function Home() {
           </div>
           <button
             className={`today-btn m-${homeMode}`}
-            onClick={() => (homeMode === 'vocab' ? (met ? setExtraOpen(true) : nav('/quiz')) : setStart(homeMode))}
+            onClick={() =>
+              homeMode === 'vocab'
+                ? met
+                  ? setExtraOpen(true)
+                  : nav('/quiz')
+                : homeMode === 'expr'
+                  ? nav(met ? `/expr/quiz?target=${total + 15}` : '/expr/quiz')
+                  : homeMode === 'talk'
+                    ? nav('/talk')
+                    : setStart(homeMode)
+            }
           >
             <Icon name={met ? 'star' : 'book'} size={24} />
             {homeMode === 'vocab' ? (met ? '추가 어휘' : '오늘의 어휘') : met ? '추가 학습' : '오늘의 학습'}
@@ -105,7 +123,7 @@ export default function Home() {
             <button
               key={m.key}
               className={`mode-tab ${m.key} ${m.mode && homeMode === m.mode ? 'active' : ''}`}
-              onClick={() => (m.mode ? void saveSettings({ homeMode: m.mode }) : showToast(`${m.label} 학습은 준비 중이에요`))}
+              onClick={() => m.mode && void saveSettings({ homeMode: m.mode })}
               aria-label={m.label}
             >
               <Icon name={m.icon} size={26} />
@@ -132,10 +150,10 @@ export default function Home() {
         <WeekBars days={last7} byDate={byDate} today={today} />
         <div className="time-row">
           <span>시간</span>
-          <b>{formatClock(t?.timeMs ?? 0)}</b>
+          <b>{formatClock(dayTime(t))}</b>
           <i />
           <span>문제</span>
-          <b>{total}</b>
+          <b>{dayTotal(t)}</b>
         </div>
       </Link>
 
@@ -169,7 +187,9 @@ export default function Home() {
           current={goal}
           onClose={() => setGoalOpen(false)}
           onSave={(n) => {
-            void saveSettings(homeMode === 'grammar' ? { grammarGoal: n } : homeMode === 'listening' ? { listeningGoal: n } : { dailyGoal: n });
+            void saveSettings(
+              homeMode === 'grammar' ? { grammarGoal: n } : homeMode === 'listening' ? { listeningGoal: n } : homeMode === 'expr' ? { exprGoal: n } : homeMode === 'talk' ? { talkGoal: n } : { dailyGoal: n },
+            );
             setGoalOpen(false);
           }}
         />
@@ -232,15 +252,20 @@ function StreakCard({ today, byDate, goal, streak }: { today: string; byDate: Ma
 }
 
 function WeekBars({ days, byDate, today }: { days: string[]; byDate: Map<string, DailyRow>; today: string }) {
-  const max = Math.max(1, ...days.map((d) => byDate.get(d)?.total ?? 0));
+  const max = Math.max(1, ...days.map((d) => dayTotal(byDate.get(d))));
   return (
     <div className="week-bars">
       {days.map((d) => {
-        const n = byDate.get(d)?.total ?? 0;
+        const row = byDate.get(d);
         return (
           <div key={d} className="wb-col">
             <div className="wb-track">
-              <span className="wb-fill" style={{ height: `${(n / max) * 100}%` }} />
+              <div className="wb-stack" style={{ height: `${(dayTotal(row) / max) * 100}%` }}>
+                {BAR_MODES.map(([m, c]) => {
+                  const n = dayTotal(row, m);
+                  return n > 0 ? <span key={m} className="wb-fill" style={{ flexGrow: n, background: c }} /> : null;
+                })}
+              </div>
             </div>
             <span className={`wb-x ${d === today ? 'today' : ''}`}>{d === today ? '오늘' : WEEKDAYS_KO[dayOfWeek(d)]}</span>
           </div>

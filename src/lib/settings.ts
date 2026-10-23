@@ -22,6 +22,11 @@ export const DEFAULT_SETTINGS: Settings = {
   listeningSpeed: 'real',
   studyTheme: 'dino',
   homeMode: 'vocab',
+  exprGoal: 15,
+  exprCourse: null,
+  talkGoal: 10,
+  talkLevel: 'B1',
+  talkInput: 'keyboard',
 };
 
 async function read(): Promise<Settings> {

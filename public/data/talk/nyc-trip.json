@@ -1,0 +1,437 @@
+{
+  "story": {
+    "id": "nyc-trip",
+    "title": "뉴욕 첫 여행 대작전",
+    "subtitle": "공항부터 브로드웨이까지",
+    "category": "여행",
+    "cefr": "A2",
+    "scene": "city"
+  },
+  "episodes": [
+    {
+      "id": "nyc-trip-01",
+      "title": "입국 심사 통과하기",
+      "partner": "입국 심사관",
+      "mission": "드디어 뉴욕 JFK 공항 도착!\n입국 심사를 무사히 통과해 봐요.",
+      "lines": [
+        { "who": "npc", "en": "Next, please. May I see your passport?", "ko": "다음 분이요. 여권 좀 보여 주시겠어요?" },
+        {
+          "who": "me",
+          "ko": "안녕하세요. 여기 있어요.",
+          "answer": "Hi. Here you go.",
+          "accept": ["Hello. Here it is.", "Hi. Here you are.", "Hello. Here's my passport."],
+          "keys": [
+            { "k": "here you go|here it is|here you are|here's my passport|here is my passport", "tip": "물건을 건넬 때는 Here you go라고 해요." }
+          ],
+          "hint": "'여기 있어요'는 물건을 건넬 때 쓰는 Here you go로 표현해 보세요.",
+          "words": [{ "ko": "여기 있어요", "en": "here you go" }],
+          "expr": {
+            "en": "Here you go",
+            "ko": "여기 있어요",
+            "note": "상대에게 물건을 건네며 하는 가장 흔한 말이에요. Here you are, Here it is도 같은 뜻으로 쓸 수 있어요. 가게에서 돈이나 카드를 건넬 때도 자주 써요."
+          }
+        },
+        { "who": "npc", "en": "What's the purpose of your visit?", "ko": "방문 목적이 뭔가요?" },
+        {
+          "who": "me",
+          "ko": "관광하러 왔어요. 첫 뉴욕 여행이에요.",
+          "answer": "I'm here for sightseeing. It's my first trip to New York.",
+          "accept": [
+            "I'm here for sightseeing. This is my first time in New York.",
+            "I came here for sightseeing. It's my first trip to New York.",
+            "Sightseeing. It's my first time in New York."
+          ],
+          "keys": [
+            { "k": "sightseeing", "tip": "'관광'은 sightseeing이라고 해요." },
+            { "k": "first trip|first time", "tip": "'첫 여행'은 my first trip 또는 my first time이라고 해요." }
+          ],
+          "hint": "'관광하러'는 for sightseeing, '첫 여행'은 my first trip으로 표현해 보세요.",
+          "words": [
+            { "ko": "관광", "en": "sightseeing" },
+            { "ko": "첫", "en": "first" }
+          ]
+        },
+        { "who": "npc", "en": "Welcome. How long will you stay?", "ko": "환영해요. 얼마나 머무를 건가요?" },
+        {
+          "who": "me",
+          "ko": "일주일 동안 머무를 거예요.",
+          "answer": "I'll stay for a week.",
+          "accept": ["I'm staying for one week.", "For a week.", "I will stay for one week."],
+          "keys": [{ "k": "a week|one week", "tip": "'일주일'은 a week 또는 one week라고 해요." }],
+          "hint": "'일주일 동안'은 for a week로 표현해 보세요.",
+          "words": [{ "ko": "일주일", "en": "a week" }]
+        },
+        { "who": "npc", "en": "Where are you staying?", "ko": "어디에서 묵나요?" },
+        {
+          "who": "me",
+          "ko": "브루클린에 있는 호텔에 묵어요.",
+          "answer": "I'm staying at a hotel in Brooklyn.",
+          "accept": ["At a hotel in Brooklyn.", "I'll stay at a hotel in Brooklyn.", "I'm staying in a hotel in Brooklyn."],
+          "keys": [
+            { "k": "hotel", "tip": "숙소 종류인 hotel을 꼭 말해 주세요." },
+            { "k": "brooklyn", "tip": "'브루클린에'는 in Brooklyn이라고 해요." }
+          ],
+          "hint": "'~에 묵다'는 stay at, '브루클린에'는 in Brooklyn으로 표현해 보세요.",
+          "words": [
+            { "ko": "묵어요", "en": "stay" },
+            { "ko": "호텔", "en": "hotel" }
+          ],
+          "expr": {
+            "en": "I'm staying at ~",
+            "ko": "~에 묵고 있어요",
+            "note": "숙소를 말할 때는 현재진행형 I'm staying at을 써요. 지금 머물고 있거나 곧 머물 곳을 자연스럽게 나타내요. 호텔, 친구 집 등 어디에나 쓸 수 있어요."
+          }
+        },
+        { "who": "npc", "en": "Do you have a return ticket?", "ko": "돌아가는 항공권 있어요?" },
+        {
+          "who": "me",
+          "ko": "네, 다음 주 금요일에 서울로 돌아가요.",
+          "answer": "Yes, I fly back to Seoul next Friday.",
+          "accept": [
+            "Yes. I'm going back to Seoul next Friday.",
+            "Yes, I return to Seoul next Friday.",
+            "Yes, I'm flying back to Seoul next Friday."
+          ],
+          "keys": [
+            { "k": "back|return", "tip": "'돌아가다'는 go back, fly back 또는 return으로 표현해요." },
+            { "k": "next friday", "tip": "'다음 주 금요일'은 next Friday라고 해요." }
+          ],
+          "hint": "'돌아가요'는 fly back, '다음 주 금요일'은 next Friday로 표현해 보세요.",
+          "words": [
+            { "ko": "돌아가요", "en": "fly back" },
+            { "ko": "다음 주 금요일", "en": "next Friday" }
+          ]
+        },
+        { "who": "npc", "en": "All right. Enjoy your stay in New York.", "ko": "좋아요. 뉴욕에서 즐거운 시간 보내세요." },
+        {
+          "who": "me",
+          "ko": "감사합니다. 좋은 하루 보내세요!",
+          "answer": "Thank you. Have a nice day!",
+          "accept": ["Thanks. Have a good day!", "Thank you so much. Have a great day!", "Thanks a lot. Have a nice day!"],
+          "keys": [{ "k": "have a nice day|have a good day|have a great day", "tip": "헤어질 때는 Have a nice day라고 인사해요." }],
+          "hint": "'좋은 하루 보내세요'는 Have a nice day로 표현해 보세요.",
+          "words": [{ "ko": "좋은 하루", "en": "a nice day" }]
+        }
+      ]
+    },
+    {
+      "id": "nyc-trip-02",
+      "title": "호텔 체크인하기",
+      "partner": "호텔 직원 마이크",
+      "mission": "브루클린의 호텔에 도착했어요.\n직원 마이크와 체크인해 봐요.",
+      "lines": [
+        { "who": "npc", "en": "Hi, welcome! I'm Mike. Are you checking in today?", "ko": "안녕하세요, 환영해요! 저는 마이크예요. 오늘 체크인하시나요?" },
+        {
+          "who": "me",
+          "ko": "네, 체크인하고 싶어요. 김 이름으로 예약했어요.",
+          "answer": "Yes, I'd like to check in. I have a reservation under Kim.",
+          "accept": [
+            "Yes, I want to check in. I have a reservation under Kim.",
+            "Yes. I booked a room under Kim.",
+            "Yes, I'd like to check in. The reservation is under Kim."
+          ],
+          "keys": [
+            { "k": "reservation|booked", "tip": "'예약했어요'는 I have a reservation이나 I booked로 말해요." },
+            { "k": "under kim", "tip": "'~ 이름으로'는 under를 써서 under Kim이라고 해요." }
+          ],
+          "hint": "'~ 이름으로 예약했어요'는 I have a reservation under ~로 표현해 보세요.",
+          "words": [
+            { "ko": "예약했어요", "en": "have a reservation" },
+            { "ko": "체크인", "en": "check in" }
+          ],
+          "expr": {
+            "en": "under (이름)",
+            "ko": "~의 이름으로",
+            "note": "예약자 이름을 말할 때는 전치사 under를 써요. I have a reservation under Kim처럼 말하면 돼요. 식당 예약을 확인할 때도 똑같이 쓸 수 있어요."
+          }
+        },
+        { "who": "npc", "en": "Let me see... Yes, six nights. Can I see your passport and a credit card?", "ko": "확인해 볼게요... 네, 6박이시네요. 여권과 신용카드 좀 보여 주시겠어요?" },
+        {
+          "who": "me",
+          "ko": "물론이죠. 여기 있어요. 일찍 체크인할 수 있나요?",
+          "answer": "Sure. Here you go. Can I check in early?",
+          "accept": [
+            "Of course. Here you are. Can I check in early?",
+            "Sure, here it is. Is early check-in possible?",
+            "Sure. Here you go. Is it possible to check in early?"
+          ],
+          "keys": [
+            { "k": "here you go|here you are|here it is", "tip": "물건을 건넬 때는 Here you go, 기억나죠?" },
+            { "k": "early", "tip": "'일찍'은 early라고 해요." }
+          ],
+          "hint": "'일찍 체크인하다'는 check in early로 표현해 보세요.",
+          "words": [{ "ko": "일찍", "en": "early" }]
+        },
+        { "who": "npc", "en": "Yes, your room is ready. It's on the tenth floor.", "ko": "네, 방이 준비됐어요. 10층이에요." },
+        {
+          "who": "me",
+          "ko": "잘됐네요! 조식이 포함되어 있나요?",
+          "answer": "Great! Is breakfast included?",
+          "accept": ["Perfect! Does the room come with breakfast?", "Great. Is breakfast included in the price?", "Nice! Do I get free breakfast?"],
+          "keys": [{ "k": "breakfast", "tip": "'조식'은 breakfast라고 해요." }],
+          "hint": "'포함되어 있다'는 included로 표현해 보세요. Is ~ included?처럼요.",
+          "words": [
+            { "ko": "조식", "en": "breakfast" },
+            { "ko": "포함되어", "en": "included" }
+          ],
+          "expr": {
+            "en": "Is ~ included?",
+            "ko": "~가 포함되어 있나요?",
+            "note": "요금에 무엇이 들어 있는지 물을 때 Is ~ included?를 써요. Is tax included?, Is the tip included?처럼 여행에서 아주 유용해요."
+          }
+        },
+        { "who": "npc", "en": "Yes, it's from seven to ten in the lobby cafe.", "ko": "네, 7시부터 10시까지 로비 카페에서요." },
+        {
+          "who": "me",
+          "ko": "와이파이 비밀번호가 뭐예요?",
+          "answer": "What's the Wi-Fi password?",
+          "accept": ["What is the Wi-Fi password?", "Can I have the Wi-Fi password?", "Could you tell me the Wi-Fi password?"],
+          "keys": [{ "k": "wi fi password|wifi password", "tip": "'와이파이 비밀번호'는 Wi-Fi password라고 해요." }],
+          "hint": "'비밀번호'는 password예요. What's the ~?로 물어보세요.",
+          "words": [{ "ko": "비밀번호", "en": "password" }]
+        },
+        { "who": "npc", "en": "It's on your key card. Anything else?", "ko": "키 카드에 적혀 있어요. 다른 건 필요 없으세요?" },
+        {
+          "who": "me",
+          "ko": "브로드웨이 공연을 보고 싶어요. 추천해 주실 수 있어요?",
+          "answer": "I want to see a Broadway show. Can you recommend one?",
+          "accept": [
+            "I'd like to see a Broadway show. Do you have any recommendations?",
+            "I want to watch a Broadway show. Can you recommend a good one?",
+            "I'd love to see a Broadway show. What do you recommend?"
+          ],
+          "keys": [
+            { "k": "broadway show", "tip": "'브로드웨이 공연'은 a Broadway show라고 해요." },
+            { "k": "recommend|recommendations", "tip": "'추천하다'는 recommend예요." }
+          ],
+          "hint": "'공연을 보다'는 see a show, '추천하다'는 recommend로 표현해 보세요.",
+          "words": [
+            { "ko": "공연", "en": "show" },
+            { "ko": "추천해", "en": "recommend" }
+          ]
+        },
+        { "who": "npc", "en": "Oh, I love Broadway! Try the TKTS booth in Times Square. You can get cheap tickets there.", "ko": "오, 저 브로드웨이 정말 좋아해요! 타임스스퀘어에 있는 TKTS 부스에 가 보세요. 거기서 표를 싸게 살 수 있어요." },
+        {
+          "who": "me",
+          "ko": "좋은 팁이네요. 고마워요, 마이크!",
+          "answer": "That's a great tip. Thanks, Mike!",
+          "accept": ["Great tip. Thank you, Mike!", "That's really helpful. Thanks a lot, Mike!", "Good tip! Thanks, Mike!"],
+          "keys": [
+            { "k": "tip|helpful", "tip": "'좋은 팁'은 a great tip이라고 해요." },
+            { "k": "thanks|thank you", "tip": "고마움은 Thanks나 Thank you로 표현해요." }
+          ],
+          "hint": "'좋은 팁'은 a great tip으로 표현해 보세요.",
+          "words": [{ "ko": "팁", "en": "tip" }]
+        },
+        { "who": "npc", "en": "Anytime. Enjoy the city!", "ko": "언제든지요. 뉴욕을 즐기세요!" }
+      ]
+    },
+    {
+      "id": "nyc-trip-03",
+      "title": "지하철에서 길 묻기",
+      "partner": "뉴요커 로사",
+      "mission": "TKTS 부스가 있는 타임스스퀘어에 가려고 해요.\n지하철역에서 옆 사람에게 길을 물어봐요.",
+      "lines": [
+        {
+          "who": "me",
+          "ko": "실례합니다. 타임스스퀘어에 가는 열차가 뭐예요?",
+          "answer": "Excuse me. Which train goes to Times Square?",
+          "accept": [
+            "Excuse me. Which train should I take to Times Square?",
+            "Excuse me, how do I get to Times Square?",
+            "Excuse me. What train do I take for Times Square?"
+          ],
+          "keys": [
+            { "k": "excuse me", "tip": "모르는 사람에게 말을 걸 때는 Excuse me로 시작해요." },
+            { "k": "times square", "tip": "목적지 Times Square를 꼭 말해 주세요." }
+          ],
+          "hint": "말을 걸 때는 Excuse me, '어떤 열차'는 which train으로 물어보세요.",
+          "words": [
+            { "ko": "실례합니다", "en": "excuse me" },
+            { "ko": "열차", "en": "train" }
+          ]
+        },
+        { "who": "npc", "en": "Take the Q train. It's that platform over there.", "ko": "Q 열차를 타세요. 저쪽 승강장이에요." },
+        {
+          "who": "me",
+          "ko": "표는 어디서 사요?",
+          "answer": "Where can I buy a ticket?",
+          "accept": ["Where do I buy a ticket?", "Where can I get a ticket?", "Where can I buy tickets?"],
+          "keys": [
+            { "k": "where", "tip": "장소를 물을 때는 Where로 시작해요." },
+            { "k": "ticket|tickets", "tip": "'표'는 ticket이라고 해요." }
+          ],
+          "hint": "'어디서 ~할 수 있어요?'는 Where can I ~?로 물어보세요.",
+          "words": [{ "ko": "표", "en": "ticket" }]
+        },
+        { "who": "npc", "en": "You don't need one. Just tap your credit card at the gate.", "ko": "표는 필요 없어요. 개찰구에서 신용카드를 대기만 하면 돼요." },
+        {
+          "who": "me",
+          "ko": "정말요? 편리하네요. 몇 정거장 가야 해요?",
+          "answer": "Really? That's convenient. How many stops is it?",
+          "accept": [
+            "Really? That's so convenient. How many stops?",
+            "Wow, that's convenient. How many stops is it from here?",
+            "Really? That's easy. How many stops is it?"
+          ],
+          "keys": [{ "k": "how many stops", "tip": "'몇 정거장'은 how many stops라고 해요." }],
+          "hint": "'편리하다'는 convenient, '몇 정거장'은 how many stops로 표현해 보세요.",
+          "words": [
+            { "ko": "편리하네요", "en": "convenient" },
+            { "ko": "정거장", "en": "stop" }
+          ],
+          "expr": {
+            "en": "How many stops?",
+            "ko": "몇 정거장이에요?",
+            "note": "지하철이나 버스의 정거장은 stop이라고 해요. How many stops is it?으로 남은 거리를 물어볼 수 있어요. 내릴 곳을 물을 때는 Which stop do I get off at?이라고 해요."
+          }
+        },
+        { "who": "npc", "en": "About eight stops. Actually, I'm going there too. You can come with me.", "ko": "여덟 정거장쯤이요. 사실 저도 거기 가요. 저랑 같이 가요." },
+        {
+          "who": "me",
+          "ko": "정말 친절하시네요! 저는 한국에서 왔어요.",
+          "answer": "That's so kind of you! I'm from Korea.",
+          "accept": ["You're so kind! I'm from Korea.", "That's very nice of you! I'm from Korea.", "How kind of you! I come from Korea."],
+          "keys": [
+            { "k": "kind|nice", "tip": "'친절하다'는 kind나 nice로 표현해요." },
+            { "k": "korea", "tip": "'한국에서 왔어요'는 I'm from Korea라고 해요." }
+          ],
+          "hint": "'정말 친절하시네요'는 That's so kind of you로 표현해 보세요.",
+          "words": [{ "ko": "친절하시네요", "en": "kind" }],
+          "expr": {
+            "en": "That's so kind of you",
+            "ko": "정말 친절하시네요",
+            "note": "누군가 호의를 베풀 때 고마움을 담아 하는 말이에요. kind 대신 nice를 써도 돼요. 뒤에 Thank you를 붙이면 더 정중해요."
+          }
+        },
+        { "who": "npc", "en": "Welcome to New York! I'm Rosa. I work at a theater on Broadway.", "ko": "뉴욕에 온 걸 환영해요! 저는 로사예요. 브로드웨이 극장에서 일해요." },
+        {
+          "who": "me",
+          "ko": "와, 멋져요! 오늘 밤에 브로드웨이 공연을 볼 거예요.",
+          "answer": "Wow, cool! I'm going to see a Broadway show tonight.",
+          "accept": [
+            "Wow, that's cool! I'm seeing a Broadway show tonight.",
+            "That's amazing! I'll watch a Broadway show tonight.",
+            "Cool! I'm going to a Broadway show tonight."
+          ],
+          "keys": [
+            { "k": "broadway show", "tip": "'브로드웨이 공연'은 a Broadway show라고 해요." },
+            { "k": "tonight", "tip": "'오늘 밤'은 tonight이라고 해요." }
+          ],
+          "hint": "가까운 계획은 I'm going to ~, '오늘 밤'은 tonight으로 표현해 보세요.",
+          "words": [{ "ko": "오늘 밤", "en": "tonight" }]
+        },
+        { "who": "npc", "en": "Nice! Oh, this is our stop. Let's get off here.", "ko": "좋네요! 아, 여기가 우리 역이에요. 여기서 내려요." },
+        {
+          "who": "me",
+          "ko": "도와주셔서 정말 고마워요, 로사.",
+          "answer": "Thank you so much for your help, Rosa.",
+          "accept": ["Thanks so much for helping me, Rosa.", "Thank you for your help, Rosa.", "Thanks a lot for the help, Rosa."],
+          "keys": [
+            { "k": "thank you|thanks", "tip": "고마움은 Thank you나 Thanks로 표현해요." },
+            { "k": "help|helping", "tip": "'도와줘서'는 for your help라고 해요." }
+          ],
+          "hint": "'~해 줘서 고마워요'는 Thank you for ~로 표현해 보세요.",
+          "words": [{ "ko": "도와주셔서", "en": "for your help" }]
+        },
+        { "who": "npc", "en": "My pleasure. Enjoy the show!", "ko": "천만에요. 공연 재미있게 봐요!" }
+      ]
+    },
+    {
+      "id": "nyc-trip-04",
+      "title": "극장에서 다시 만난 로사",
+      "partner": "극장 안내원 로사",
+      "mission": "TKTS에서 산 표로 극장에 왔어요.\n그런데 안내원 얼굴이 낯익어요!",
+      "lines": [
+        { "who": "npc", "en": "Hi, can I see your ticket? Wait... it's you! From the subway!", "ko": "안녕하세요, 표 좀 볼 수 있을까요? 잠깐만요... 당신이네요! 지하철에서 만난!" },
+        {
+          "who": "me",
+          "ko": "로사! 또 만났네요! 세상 정말 좁네요.",
+          "answer": "Rosa! We meet again! What a small world!",
+          "accept": ["Rosa! Nice to see you again! It's a small world!", "Hi, Rosa! We meet again! Small world!", "Rosa! What a small world!"],
+          "keys": [{ "k": "small world", "tip": "우연히 아는 사람을 만나면 small world라고 해요." }],
+          "hint": "'세상 정말 좁네요'는 What a small world로 표현해 보세요.",
+          "words": [{ "ko": "세상", "en": "world" }],
+          "expr": {
+            "en": "What a small world!",
+            "ko": "세상 참 좁네요!",
+            "note": "뜻밖의 장소에서 아는 사람을 만났을 때 쓰는 표현이에요. It's a small world!라고도 해요. 서로 아는 사람이 겹친다는 걸 알았을 때도 쓸 수 있어요."
+          }
+        },
+        { "who": "npc", "en": "Did you get your ticket at TKTS?", "ko": "TKTS에서 표 샀어요?" },
+        {
+          "who": "me",
+          "ko": "네, 마이크가 거기 가 보라고 했어요. 반값이었어요!",
+          "answer": "Yes, Mike told me to go there. It was half price!",
+          "accept": [
+            "Yes, Mike at my hotel told me about it. It was half price!",
+            "Yeah, Mike said I should go there. It was half price!",
+            "Yes, Mike told me to try it. I got it for half price!"
+          ],
+          "keys": [
+            { "k": "mike", "tip": "알려 준 사람 Mike를 주어로 말해 보세요." },
+            { "k": "half price", "tip": "'반값'은 half price라고 해요." }
+          ],
+          "hint": "'~하라고 했어요'는 told me to ~, '반값'은 half price로 표현해 보세요.",
+          "words": [{ "ko": "반값", "en": "half price" }]
+        },
+        { "who": "npc", "en": "Great deal! Your seat is in row F. Follow me.", "ko": "잘 샀네요! 좌석은 F열이에요. 따라오세요." },
+        {
+          "who": "me",
+          "ko": "화장실은 어디예요?",
+          "answer": "Where's the restroom?",
+          "accept": ["Where is the restroom?", "Where's the bathroom?", "Excuse me, where is the restroom?"],
+          "keys": [{ "k": "restroom|bathroom", "tip": "미국에서는 '화장실'을 restroom이나 bathroom이라고 해요." }],
+          "hint": "미국의 공공장소에서 '화장실'은 restroom으로 표현해 보세요.",
+          "words": [{ "ko": "화장실", "en": "restroom" }]
+        },
+        { "who": "npc", "en": "It's downstairs, next to the bar. The show starts in ten minutes.", "ko": "아래층 바 옆에 있어요. 공연은 10분 뒤에 시작해요." },
+        { "who": "npc", "en": "So, it's intermission. How do you like the show so far?", "ko": "자, 중간 휴식 시간이에요. 지금까지 공연 어때요?" },
+        {
+          "who": "me",
+          "ko": "정말 좋아요! 노래가 최고예요.",
+          "answer": "I love it! The songs are amazing.",
+          "accept": ["It's great! The songs are the best.", "I really love it! The music is amazing.", "It's wonderful! The songs are amazing."],
+          "keys": [{ "k": "songs|music", "tip": "'노래'는 songs, '음악'은 music이에요." }],
+          "hint": "'정말 좋아요'는 I love it, '최고예요'는 amazing으로 표현해 보세요.",
+          "words": [
+            { "ko": "노래", "en": "song" },
+            { "ko": "최고", "en": "amazing" }
+          ]
+        },
+        { "who": "npc", "en": "Right? The second half is even better.", "ko": "그렇죠? 2부는 훨씬 더 좋아요." },
+        {
+          "who": "me",
+          "ko": "너무 기대돼요! 이번 여행 최고의 밤이에요.",
+          "answer": "I can't wait! This is the best night of my trip.",
+          "accept": [
+            "I can't wait! It's the best night of my trip.",
+            "I can't wait to see it! This is the best night of my trip.",
+            "I can't wait! Tonight is the best night of this trip."
+          ],
+          "keys": [
+            { "k": "can't wait|cannot wait", "tip": "'너무 기대돼요'는 I can't wait라고 해요." },
+            { "k": "best night", "tip": "'최고의 밤'은 the best night라고 해요." }
+          ],
+          "hint": "'너무 기대돼요'는 I can't wait, '최고의 밤'은 the best night로 표현해 보세요.",
+          "words": [{ "ko": "최고의 밤", "en": "the best night" }],
+          "expr": {
+            "en": "I can't wait!",
+            "ko": "너무 기대돼요!",
+            "note": "무언가를 몹시 기다릴 때 쓰는 표현이에요. 직역하면 '기다릴 수 없어요'지만 '빨리 하고 싶어요'라는 뜻이에요. I can't wait to see it!처럼 뒤에 to를 붙여도 돼요."
+          }
+        },
+        { "who": "npc", "en": "I'm so happy to hear that. Enjoy the rest of your trip!", "ko": "그 말을 들으니 정말 기뻐요. 남은 여행도 즐겁게 보내요!" },
+        {
+          "who": "me",
+          "ko": "고마워요, 로사. 뉴욕은 절대 못 잊을 거예요.",
+          "answer": "Thanks, Rosa. I'll never forget New York.",
+          "accept": ["Thank you, Rosa. I will never forget New York.", "Thanks so much, Rosa. I'll never forget New York.", "Thank you, Rosa. I'll never forget this city."],
+          "keys": [{ "k": "never forget", "tip": "'절대 못 잊다'는 never forget이라고 해요." }],
+          "hint": "'절대 ~하지 않을 거예요'는 I'll never ~로 표현해 보세요.",
+          "words": [{ "ko": "잊을", "en": "forget" }]
+        }
+      ]
+    }
+  ]
+}

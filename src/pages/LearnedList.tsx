@@ -38,6 +38,14 @@ export default function LearnedList({ kind }: { kind: 'learned' | 'bookmarks' })
         const t = topics.get(s.topic);
         out.push({ id: s.id, en: s.en, ko: s.ko, sub: t ? `레벨 ${t.level} · ${t.title}` : undefined, link: `/grammar-dict/${s.topic}`, due: c.due, marked: marks.has(s.id) });
       }
+    } else if (m === 'expr') {
+      const pats = new Map((await db.epatterns.toArray()).map((t) => [t.key, t]));
+      for (const c of ids) {
+        const it = await db.eitems.get(c.itemId);
+        if (!it) continue;
+        const pt = pats.get(it.pkey);
+        out.push({ id: it.id, en: it.en.replace('___', it.answer), ko: it.ko.replace(/\*\*/g, ''), sub: pt?.ko, link: `/expr-dict/${encodeURIComponent(it.pkey)}`, due: c.due, marked: marks.has(it.id) });
+      }
     } else {
       const pool = new Map((await listenPool()).map((p) => [p.id, p]));
       for (const c of ids) {
@@ -48,7 +56,7 @@ export default function LearnedList({ kind }: { kind: 'learned' | 'bookmarks' })
     return out;
   }, [m, kind]);
 
-  const title = kind === 'bookmarks' ? '북마크' : m === 'grammar' ? '내가 학습한 문법' : '내가 학습한 문장';
+  const title = kind === 'bookmarks' ? '북마크' : m === 'grammar' ? '내가 학습한 문법' : m === 'expr' ? '내가 학습한 표현' : '내가 학습한 문장';
 
   return (
     <div className="screen sub">

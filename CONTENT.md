@@ -54,3 +54,19 @@
 3. `npm run content:validate` → 오류 0개 확인.
 4. `npm test`와 `npm run build`로 매니페스트 재생성과 빌드가 되는지 확인한다.
 5. 커밋 메시지에 추가한 레벨과 개수를 적고 push. 배포되면 폰에서 앱을 열 때 자동으로 새 팩을 받는다.
+
+## 표현 코스 (`public/data/expr/<course>.json`)
+
+- `{ id, title, group, stars(1~3), icon('cup'|'plane'), order, patterns[], items[] }`
+- 패턴 `{ id, ko('~로 계산할 수 있을까요?'), en('Can I pay with ~?'), meaning, note, order }`
+- 문제 `{ id: '<course>-<pattern>-NN', pkey: '<course>:<pattern>', partner{en,ko}, en(빈칸 ___ 하나), answer(패턴 단어들), ko(정답 부분을 **…**로), alts[{w,t:'ok'|'near'|'wrong',m}], order }`
+- 패턴마다 문제 2개 이상, alts 는 오답 노트에 그대로 보이므로 '왜 아닌지'를 해요체로 100자 이내
+
+## 회화 스토리 (`public/data/talk/<story>.json`)
+
+- `{ id, title, subtitle, category(일상|연애|학교|직장|여행|스페셜), cefr(A1~C2), scene(street|campus|office|city|home|cafe), order, episodes[] }`
+- 에피소드 `{ id, title, partner, mission, lines[] }`, 내 대사 4개 이상
+- 상대 대사 `{ who:'npc', en, ko }`, 내 대사 `{ who:'me', ko, answer, accept[1개 이상], keys[{k:'표현|다른 표현', tip}], hint, words[{ko,en}], expr?{en,ko,note} }`
+- keys 의 각 변형은 answer 와 모든 accept 에 통째 단어로 들어 있어야 하고, words.ko 는 ko 안에 있어야 한다 (검증기가 확인)
+- 채점기는 `src/lib/__tests__/content-grading.test.ts` 로 모든 answer/accept 가 별 3개인지 확인한다
+

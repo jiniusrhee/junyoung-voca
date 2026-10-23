@@ -20,10 +20,13 @@ Vite + React + TypeScript, Dexie(IndexedDB), ts-fsrs(복습 스케줄), vite-plu
 ## 학습 모드 (docs/SPEC.md 에 실제 앱 관찰 기록)
 
 - 어휘 `/quiz`, 문법 `/grammar` (단어 카드 배열, `src/lib/grammar.ts`), 리스닝 `/listening` (객관식 단어 버튼 / 주관식 음성·키보드, `src/lib/listening.ts`), 발음 구분 연습 `/pairs`
+- 표현 `/expr` (코스 지도 → `/expr/quiz` 패턴 빈칸, 길이 보기 → 힌트 → 정답, `src/lib/expr.ts`), 코스 선택 `/expr/courses`, 일별 학습 문장 `/expr/notebook`, 표현 사전 `/expr-dict/:key`
+- 실전 회화 `/talk` (스토리 캐러셀·문장 복습·카테고리) → `/talk/:story/:ep` (인트로 → 대화 → 결과), 난이도 `/talk/level`(CEFR), 채점은 AI 없이 핵심 표현 포함 + 단어 겹침 F1 (`src/lib/talk.ts`), 진행은 kv `talkProgress`, 좋아요한 표현은 kv `myExpressions`
+- 장면 그림은 `components/SceneArt.tsx`(직접 그린 SVG), 문장 자판은 `components/SentenceKeyboard.tsx`
 - 어휘 외 모드의 복습 카드는 `mcards` 테이블(`${mode}:${itemId}`), 하루 기록은 `daily.byMode`, 기록 함수는 `src/lib/modeStudy.ts`
-- 문법 데이터 `public/data/grammar/g-XX.json` (주제 + 설명글 + 문장), 발음 데이터 `public/data/pairs/pairs.json`, 검증 `npm run content:validate` 와 `node scripts/validate-extra.mjs`
+- 문법 데이터 `public/data/grammar/g-XX.json` (주제 + 설명글 + 문장), 발음 데이터 `public/data/pairs/pairs.json`, 표현 코스 `public/data/expr/<course>.json`, 회화 스토리 `public/data/talk/<story>.json`, 검증 `npm run content:validate` (규칙은 `scripts/lib/validate-extra.mjs`)
 - 리스닝 문장은 어휘 예문과 문법 문장을 재사용
-- 아직 없는 것: 표현 학습, 실전 회화 (실제 앱 화면 확인 필요)
+- 제외: 리그, 캐릭터 꾸미기, 유료 원어민 음성, 발음 정밀 진단, AI 질문 답변
 
 ## 로직
 

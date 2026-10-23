@@ -1,0 +1,459 @@
+{
+  "story": {
+    "id": "first-date",
+    "title": "소개팅에서 생긴 일",
+    "subtitle": "어색함을 깨는 대화의 기술",
+    "category": "연애",
+    "cefr": "B1",
+    "scene": "cafe"
+  },
+  "episodes": [
+    {
+      "id": "first-date-01",
+      "title": "카페에서 첫 만남",
+      "partner": "소개팅 상대 에마",
+      "mission": "직장 동료 제이크가 소개해 준 에마를 만나는 날이에요.\n카페에서 자연스럽게 첫인사를 건네 봐요.",
+      "lines": [
+        {
+          "who": "me",
+          "ko": "안녕하세요, 혹시 에마 씨세요? 제이크 친구예요.",
+          "answer": "Hi, are you Emma by any chance? I'm Jake's friend.",
+          "accept": ["Hi, you must be Emma. I'm Jake's friend.", "Hello, are you Emma? I'm a friend of Jake's.", "Excuse me, are you Emma? I'm Jake's friend."],
+          "keys": [
+            { "k": "emma", "tip": "상대 이름 Emma를 넣어 확인해 보세요." },
+            { "k": "jake's friend|friend of jake's", "tip": "'제이크 친구'는 Jake's friend라고 해요." }
+          ],
+          "hint": "'혹시'는 문장 끝에 by any chance를 붙여 표현해 보세요.",
+          "words": [
+            { "ko": "혹시", "en": "by any chance" },
+            { "ko": "친구", "en": "friend" }
+          ],
+          "expr": {
+            "en": "by any chance",
+            "ko": "혹시",
+            "note": "조심스럽게 무언가를 물을 때 문장 끝에 붙이는 표현이에요. Are you Emma by any chance?처럼 쓰면 훨씬 부드럽게 들려요. 질문이 무례하게 들릴까 걱정될 때 쓰기 좋아요."
+          }
+        },
+        { "who": "npc", "en": "Yes, that's me! Nice to meet you. Jake's told me a lot about you.", "ko": "네, 저예요! 만나서 반가워요. 제이크한테 얘기 많이 들었어요." },
+        {
+          "who": "me",
+          "ko": "좋은 얘기만 들으셨길 바라요. 기다리게 해서 죄송해요.",
+          "answer": "Only good things, I hope. Sorry to keep you waiting.",
+          "accept": ["Good things, I hope. Sorry I kept you waiting.", "I hope it was all good. Sorry for keeping you waiting.", "Only good things, I hope! Sorry to make you wait."],
+          "keys": [
+            { "k": "i hope", "tip": "'~이길 바라요'는 I hope로 표현해요." },
+            { "k": "keep you waiting|kept you waiting|keeping you waiting|make you wait", "tip": "'기다리게 해서 죄송해요'는 Sorry to keep you waiting이라고 해요." }
+          ],
+          "hint": "'좋은 얘기만'은 Only good things, '기다리게 하다'는 keep you waiting으로 표현해 보세요.",
+          "words": [{ "ko": "기다리게", "en": "keep waiting" }],
+          "expr": {
+            "en": "Sorry to keep you waiting",
+            "ko": "기다리게 해서 미안해요",
+            "note": "약속에 조금 늦었거나 상대를 기다리게 했을 때 쓰는 정중한 사과예요. 식당이나 회사에서 직원이 손님에게도 자주 써요. Thanks for waiting으로 바꿔 말해도 좋아요."
+          }
+        },
+        { "who": "npc", "en": "Don't worry, I just got here too. Shall we order?", "ko": "걱정 마세요, 저도 방금 왔어요. 주문할까요?" },
+        {
+          "who": "me",
+          "ko": "좋아요. 뭐 마실래요? 제가 살게요.",
+          "answer": "Sure. What would you like? It's on me.",
+          "accept": ["Sounds good. What would you like to drink? It's my treat.", "Okay. What do you want to drink? I'll get this.", "Sure. What can I get you? This one's on me."],
+          "keys": [{ "k": "on me|my treat|i'll get this", "tip": "'제가 살게요'는 It's on me라고 해요." }],
+          "hint": "'뭐 마실래요?'는 What would you like?, '제가 살게요'는 It's on me로 표현해 보세요.",
+          "words": [{ "ko": "제가 살게요", "en": "It's on me" }]
+        },
+        { "who": "npc", "en": "Oh, thank you! I'll have an iced latte, please. Then I'll get the next one.", "ko": "오, 고마워요! 아이스 라테로 할게요. 그럼 다음엔 제가 살게요." },
+        {
+          "who": "me",
+          "ko": "좋아요. 그런데 제이크랑은 어떻게 아는 사이예요?",
+          "answer": "Deal. So, how do you know Jake?",
+          "accept": ["Okay, deal. By the way, how do you know Jake?", "Sounds good. So how do you know Jake?", "Great. So, how did you meet Jake?"],
+          "keys": [{ "k": "how do you know jake|how did you meet jake", "tip": "'어떻게 아는 사이예요?'는 How do you know ~?라고 물어요." }],
+          "hint": "제안을 받아들일 때는 Deal, '~를 어떻게 알아요?'는 How do you know ~?로 물어보세요.",
+          "words": [{ "ko": "어떻게 아는", "en": "how do you know" }]
+        },
+        { "who": "npc", "en": "We went to university together. He's like a brother to me. What about you?", "ko": "대학교를 같이 다녔어요. 저한테는 친오빠 같은 사람이에요. 그쪽은요?" },
+        {
+          "who": "me",
+          "ko": "같은 팀에서 일해요. 제이크는 회의 때마다 우리를 웃겨요.",
+          "answer": "We work on the same team. He always makes us laugh in meetings.",
+          "accept": [
+            "We're on the same team at work. He always makes us laugh during meetings.",
+            "We work together on the same team. He's always funny in meetings.",
+            "We're on the same team. He always cracks us up in meetings."
+          ],
+          "keys": [
+            { "k": "same team", "tip": "'같은 팀'은 the same team이라고 해요." },
+            { "k": "meetings", "tip": "'회의'는 meeting, 여러 번이면 meetings예요." }
+          ],
+          "hint": "'같은 팀에서 일하다'는 work on the same team, '웃기다'는 make us laugh로 표현해 보세요.",
+          "words": [
+            { "ko": "같은 팀", "en": "the same team" },
+            { "ko": "웃겨요", "en": "make us laugh" }
+          ]
+        },
+        { "who": "npc", "en": "That sounds just like Jake! Oh, our drinks are ready.", "ko": "딱 제이크답네요! 아, 음료 나왔어요." },
+        {
+          "who": "me",
+          "ko": "제가 가져올게요. 잠깐만요.",
+          "answer": "I'll go get them. Just a second.",
+          "accept": ["Let me grab them. Just a moment.", "I'll get them. One second.", "I'll go grab them. Be right back."],
+          "keys": [{ "k": "get|grab", "tip": "'가져오다'는 get이나 grab으로 간단히 말해요." }],
+          "hint": "'가져오다'는 get이나 grab, '잠깐만요'는 Just a second로 표현해 보세요.",
+          "words": [
+            { "ko": "가져올게요", "en": "get" },
+            { "ko": "잠깐만요", "en": "just a second" }
+          ]
+        },
+        { "who": "npc", "en": "Thanks! I'll keep our seats.", "ko": "고마워요! 자리 지키고 있을게요." }
+      ]
+    },
+    {
+      "id": "first-date-02",
+      "title": "공통점 찾기",
+      "partner": "소개팅 상대 에마",
+      "mission": "음료를 받아 자리에 앉았어요.\n서로의 취미를 물으며 공통점을 찾아봐요.",
+      "lines": [
+        { "who": "npc", "en": "So, what do you usually do on weekends?", "ko": "그래서, 주말에는 보통 뭐 해요?" },
+        {
+          "who": "me",
+          "ko": "보통 집에서 요리하거나 영화를 봐요. 에마 씨는요?",
+          "answer": "I usually cook at home or watch movies. How about you?",
+          "accept": ["I usually cook at home or watch films. What about you?", "Usually I cook or watch movies at home. How about you, Emma?", "I often cook at home or watch movies. What about you?"],
+          "keys": [
+            { "k": "cook", "tip": "'요리하다'는 cook이에요." },
+            { "k": "movies|films", "tip": "'영화'는 movies라고 해요." },
+            { "k": "how about you|what about you", "tip": "'~는요?'라고 되물을 때는 How about you?라고 해요." }
+          ],
+          "hint": "'~하거나'는 or로 잇고, '~는요?'는 How about you?로 되물어 보세요.",
+          "words": [
+            { "ko": "요리", "en": "cook" },
+            { "ko": "영화", "en": "movie" }
+          ]
+        },
+        { "who": "npc", "en": "I love movies too! But I'm more of an outdoor person. I go hiking almost every weekend.", "ko": "저도 영화 좋아해요! 그런데 저는 밖에 나가는 걸 더 좋아해요. 거의 주말마다 등산 가요." },
+        {
+          "who": "me",
+          "ko": "진짜요? 저도 등산 좋아하는데 요즘 통 못 갔어요.",
+          "answer": "Really? I like hiking too, but I haven't been in ages.",
+          "accept": [
+            "Really? I love hiking too, but I haven't gone in a long time.",
+            "No way! I like hiking too, but I haven't been for ages.",
+            "Really? I enjoy hiking too, but I haven't gone hiking for a long time."
+          ],
+          "keys": [
+            { "k": "hiking", "tip": "'등산'은 hiking이라고 해요." },
+            { "k": "in ages|for ages|in a long time|for a long time|in a while", "tip": "'오랫동안 못 했다'는 I haven't ~ in ages라고 해요." }
+          ],
+          "hint": "'오랫동안 못 갔어요'는 I haven't been in ages로 표현해 보세요.",
+          "words": [
+            { "ko": "등산", "en": "hiking" },
+            { "ko": "요즘 통", "en": "in ages" }
+          ],
+          "expr": {
+            "en": "in ages",
+            "ko": "오랫동안",
+            "note": "아주 오랜 시간을 과장해서 말하는 구어 표현이에요. I haven't seen you in ages!는 오랜만에 만난 친구에게 자주 하는 인사예요. in a long time과 같은 뜻이지만 더 친근하게 들려요."
+          }
+        },
+        { "who": "npc", "en": "Then you should join my hiking group sometime! Do you have a favorite mountain?", "ko": "그럼 언제 저희 등산 모임에 같이 가요! 좋아하는 산 있어요?" },
+        {
+          "who": "me",
+          "ko": "북한산을 제일 좋아해요. 정상에서 보는 경치가 끝내줘요.",
+          "answer": "My favorite is Bukhansan. The view from the top is amazing.",
+          "accept": [
+            "I like Bukhansan the most. The view from the top is incredible.",
+            "Bukhansan is my favorite. The view from the top is breathtaking.",
+            "I love Bukhansan the most. You get an amazing view from the top."
+          ],
+          "keys": [
+            { "k": "bukhansan", "tip": "산 이름 Bukhansan을 말해 주세요." },
+            { "k": "view", "tip": "'경치'는 view라고 해요." },
+            { "k": "from the top", "tip": "'정상에서'는 from the top이라고 해요." }
+          ],
+          "hint": "'제일 좋아하는'은 favorite, '정상에서 보는 경치'는 the view from the top으로 표현해 보세요.",
+          "words": [
+            { "ko": "경치", "en": "view" },
+            { "ko": "정상", "en": "top" }
+          ]
+        },
+        { "who": "npc", "en": "Oh, I've been there once! It was tough, but worth it. And what kind of movies do you like?", "ko": "아, 저도 한 번 가 봤어요! 힘들었지만 그럴 가치가 있었어요. 그럼 어떤 영화 좋아해요?" },
+        {
+          "who": "me",
+          "ko": "로맨틱 코미디를 좋아해요. 좀 뻔하긴 하지만요.",
+          "answer": "I'm into romantic comedies. They're a bit predictable, though.",
+          "accept": [
+            "I like romantic comedies. They're kind of predictable, though.",
+            "I'm a big fan of romantic comedies, even though they're a bit predictable.",
+            "Romantic comedies. I know they're a little predictable."
+          ],
+          "keys": [
+            { "k": "romantic comedies", "tip": "'로맨틱 코미디'는 romantic comedies라고 해요." },
+            { "k": "predictable", "tip": "'뻔하다'는 predictable이라고 해요." }
+          ],
+          "hint": "'~를 좋아하다'는 be into ~, '뻔하다'는 predictable로 표현해 보세요.",
+          "words": [
+            { "ko": "로맨틱 코미디", "en": "romantic comedy" },
+            { "ko": "뻔하긴", "en": "predictable" }
+          ],
+          "expr": {
+            "en": "be into ~",
+            "ko": "~를 좋아하다, ~에 빠져 있다",
+            "note": "취미나 관심사를 말할 때 like보다 자연스럽게 쓰는 구어 표현이에요. I'm into hiking these days처럼 요즘 빠져 있는 것을 말할 때 딱 좋아요. 상대에게 What are you into?라고 물을 수도 있어요."
+          }
+        },
+        { "who": "npc", "en": "Ha! Me too. Predictable can be comforting sometimes.", "ko": "하하! 저도요. 가끔은 뻔한 게 위로가 되잖아요." },
+        {
+          "who": "me",
+          "ko": "맞아요! 우리 공통점이 꽤 많네요.",
+          "answer": "Exactly! We have a lot in common.",
+          "accept": ["Right! Looks like we have a lot in common.", "Totally! We have quite a lot in common.", "I agree! It seems we have a lot in common."],
+          "keys": [{ "k": "in common", "tip": "'공통점이 있다'는 have ~ in common이라고 해요." }],
+          "hint": "'공통점이 많다'는 have a lot in common으로 표현해 보세요.",
+          "words": [{ "ko": "공통점", "en": "in common" }]
+        },
+        { "who": "npc", "en": "We really do. I'm glad Jake set us up.", "ko": "정말 그러네요. 제이크가 소개해 줘서 다행이에요." },
+        {
+          "who": "me",
+          "ko": "저도요. 처음엔 좀 긴장했는데 지금은 편해요.",
+          "answer": "Me too. I was a bit nervous at first, but now I feel relaxed.",
+          "accept": [
+            "Same here. I was a little nervous at first, but I'm comfortable now.",
+            "Me too. I was kind of nervous at first, but now I'm relaxed.",
+            "So am I. I was nervous at first, but I feel at ease now."
+          ],
+          "keys": [
+            { "k": "nervous", "tip": "'긴장하다'는 nervous를 써요." },
+            { "k": "at first", "tip": "'처음엔'은 at first라고 해요." }
+          ],
+          "hint": "'긴장한'은 nervous, '처음엔'은 at first로 표현해 보세요.",
+          "words": [
+            { "ko": "긴장했는데", "en": "nervous" },
+            { "ko": "처음엔", "en": "at first" }
+          ]
+        },
+        { "who": "npc", "en": "Honestly, so was I!", "ko": "솔직히 저도 그랬어요!" }
+      ]
+    },
+    {
+      "id": "first-date-03",
+      "title": "커피를 쏟았어요!",
+      "partner": "소개팅 상대 에마",
+      "mission": "분위기가 좋았는데, 손짓하다 커피를 쏟고 말았어요!\n당황하지 말고 상황을 수습해 봐요.",
+      "lines": [
+        { "who": "npc", "en": "Oh! Careful, your coffee!", "ko": "어머! 조심해요, 커피!" },
+        {
+          "who": "me",
+          "ko": "아, 정말 죄송해요! 옷에 튀었어요?",
+          "answer": "Oh no, I'm so sorry! Did it get on your clothes?",
+          "accept": ["Oh no, I'm so sorry! Did any get on your clothes?", "I'm so sorry! Did it get on you?", "Oh my gosh, I'm sorry! Did I get any on your clothes?"],
+          "keys": [
+            { "k": "sorry", "tip": "급할 때는 I'm so sorry로 먼저 사과해요." },
+            { "k": "get on|get any on", "tip": "'~에 묻다, 튀다'는 get on으로 표현해요." }
+          ],
+          "hint": "'옷에 튀다'는 get on your clothes로 표현해 보세요.",
+          "words": [
+            { "ko": "옷", "en": "clothes" },
+            { "ko": "튀었어요", "en": "get on" }
+          ]
+        },
+        { "who": "npc", "en": "Just a little on my sleeve. It's fine, really.", "ko": "소매에 조금이요. 정말 괜찮아요." },
+        {
+          "who": "me",
+          "ko": "냅킨 좀 가져올게요. 제가 좀 덤벙대요.",
+          "answer": "Let me grab some napkins. I'm a bit clumsy.",
+          "accept": ["I'll get some napkins. I can be a little clumsy.", "Let me get you some napkins. I'm kind of clumsy.", "Let me grab some napkins. I'm so clumsy sometimes."],
+          "keys": [
+            { "k": "napkins", "tip": "'냅킨'은 napkin이에요. 여러 장이면 napkins라고 해요." },
+            { "k": "clumsy", "tip": "'덤벙대다'는 clumsy로 표현해요." }
+          ],
+          "hint": "'제가 ~할게요'는 Let me ~, '덤벙대는'은 clumsy로 표현해 보세요.",
+          "words": [
+            { "ko": "냅킨", "en": "napkin" },
+            { "ko": "덤벙대요", "en": "clumsy" }
+          ],
+          "expr": {
+            "en": "Let me ~",
+            "ko": "제가 ~할게요",
+            "note": "상대를 위해 무언가를 하겠다고 나설 때 쓰는 표현이에요. Let me help you, Let me get that처럼 정중하면서도 적극적인 인상을 줘요. I'll ~보다 상대를 배려하는 느낌이 있어요."
+          }
+        },
+        { "who": "npc", "en": "Thanks. Don't worry, it happens to everyone.", "ko": "고마워요. 걱정 마요, 누구나 그럴 수 있어요." },
+        {
+          "who": "me",
+          "ko": "그렇게 말해 줘서 고마워요. 세탁비는 제가 낼게요.",
+          "answer": "Thanks for saying that. I'll pay for the dry cleaning.",
+          "accept": ["That's nice of you to say. I'll pay for the dry cleaning.", "Thank you for understanding. Let me pay for the dry cleaning.", "Thanks for saying so. I'll cover the dry cleaning."],
+          "keys": [
+            { "k": "pay for|cover", "tip": "'~의 비용을 내다'는 pay for라고 해요." },
+            { "k": "dry cleaning", "tip": "'세탁비'는 the dry cleaning으로 말해요." }
+          ],
+          "hint": "'~의 비용을 내다'는 pay for, '세탁'은 dry cleaning으로 표현해 보세요.",
+          "words": [{ "ko": "세탁비", "en": "dry cleaning" }]
+        },
+        { "who": "npc", "en": "No way, it's just an old sweater! Besides, now we have a funny story to tell Jake.", "ko": "에이, 그냥 낡은 스웨터인걸요! 게다가 이제 제이크한테 들려줄 웃긴 얘깃거리가 생겼잖아요." },
+        {
+          "who": "me",
+          "ko": "하하, 맞아요. 제이크가 엄청 놀리겠네요.",
+          "answer": "Ha, that's true. Jake is going to tease me so much.",
+          "accept": ["Ha, true. Jake will tease me forever.", "That's true. Jake's going to tease me about it.", "Ha, you're right. Jake will never stop teasing me."],
+          "keys": [
+            { "k": "jake|jake's", "tip": "주어 Jake를 넣어 말해 보세요." },
+            { "k": "tease|teasing", "tip": "'놀리다'는 tease라고 해요." }
+          ],
+          "hint": "'놀리다'는 tease, '~하겠네요'는 be going to로 표현해 보세요.",
+          "words": [{ "ko": "놀리겠네요", "en": "tease" }]
+        },
+        { "who": "npc", "en": "Definitely! So, what's your most embarrassing moment ever?", "ko": "그렇겠죠! 그런데 살면서 제일 창피했던 순간이 언제예요?" },
+        {
+          "who": "me",
+          "ko": "음, 이게 2위예요. 1위는 다음에 말해 줄게요.",
+          "answer": "Well, this one is number two. I'll tell you number one next time.",
+          "accept": [
+            "Hmm, this is number two. I'll save number one for next time.",
+            "Well, this is my second most embarrassing. I'll tell you the first one next time.",
+            "This one comes second. I'll tell you the worst one next time."
+          ],
+          "keys": [{ "k": "next time", "tip": "'다음에'는 next time이라고 해요." }],
+          "hint": "'1위, 2위'는 number one, number two, '다음에'는 next time으로 표현해 보세요.",
+          "words": [
+            { "ko": "2위", "en": "number two" },
+            { "ko": "다음에", "en": "next time" }
+          ]
+        },
+        { "who": "npc", "en": "Next time, huh? I'm going to hold you to that.", "ko": "다음에요? 그 말 꼭 지켜야 해요." },
+        {
+          "who": "me",
+          "ko": "약속할게요. 일단 커피부터 새로 사 올게요.",
+          "answer": "I promise. But first, let me get you a new coffee.",
+          "accept": ["I promise. First, let me buy you another coffee.", "Promise. But first, I'll get you a fresh coffee.", "I promise. First, let me get you another one."],
+          "keys": [
+            { "k": "promise", "tip": "'약속할게요'는 I promise라고 해요." },
+            { "k": "let me get you|let me buy you|i'll get you", "tip": "'~를 사 줄게요'는 let me get you ~라고 해요." }
+          ],
+          "hint": "'약속해요'는 I promise, '~를 사다 줄게요'는 let me get you ~로 표현해 보세요.",
+          "words": [
+            { "ko": "약속할게요", "en": "I promise" },
+            { "ko": "새로", "en": "new" }
+          ]
+        },
+        { "who": "npc", "en": "Deal. But this time, no hand gestures!", "ko": "좋아요. 그런데 이번엔 손짓 금지예요!" }
+      ]
+    },
+    {
+      "id": "first-date-04",
+      "title": "두 번째 만남 약속하기",
+      "partner": "소개팅 상대 에마",
+      "mission": "어느새 카페 마감 시간이에요.\n에마에게 다음 만남을 자연스럽게 제안해 봐요.",
+      "lines": [
+        { "who": "npc", "en": "Wow, it's already nine. The cafe is closing soon.", "ko": "와, 벌써 9시예요. 카페 곧 문 닫겠네요." },
+        {
+          "who": "me",
+          "ko": "시간 정말 빨리 갔네요. 오늘 정말 즐거웠어요.",
+          "answer": "Time really flew. I had a great time today.",
+          "accept": ["Time went by so fast. I really enjoyed today.", "Wow, time flies. I had a really good time today.", "Time went by really quickly. I had a lot of fun today."],
+          "keys": [
+            { "k": "flew|flies|went by", "tip": "'시간이 빨리 가다'는 time flies, 과거형은 time flew라고 해요." },
+            { "k": "great time|good time|enjoyed|fun", "tip": "'즐거웠어요'는 I had a great time이라고 해요." }
+          ],
+          "hint": "'시간이 빨리 갔다'는 Time flew, '즐거웠어요'는 I had a great time으로 표현해 보세요.",
+          "words": [{ "ko": "즐거웠어요", "en": "had a great time" }],
+          "expr": {
+            "en": "Time flies",
+            "ko": "시간이 쏜살같이 가요",
+            "note": "즐거운 시간이 금방 지나갔을 때 쓰는 표현이에요. 과거형으로 Time flew라고 하거나 Time flies when you're having fun이라고 길게 말하기도 해요. 데이트를 마무리할 때 분위기를 살려 줘요."
+          }
+        },
+        { "who": "npc", "en": "Me too. I didn't expect to laugh this much.", "ko": "저도요. 이렇게 많이 웃을 줄 몰랐어요." },
+        {
+          "who": "me",
+          "ko": "다음 주에 같이 저녁 먹을래요?",
+          "answer": "Would you like to have dinner with me next week?",
+          "accept": ["Do you want to grab dinner next week?", "Would you like to get dinner together next week?", "How about having dinner together next week?"],
+          "keys": [
+            { "k": "dinner", "tip": "'저녁 식사'는 dinner예요." },
+            { "k": "next week", "tip": "'다음 주'는 next week라고 해요." }
+          ],
+          "hint": "정중하게 제안할 때는 Would you like to ~?, '저녁 먹다'는 have dinner로 표현해 보세요.",
+          "words": [
+            { "ko": "저녁", "en": "dinner" },
+            { "ko": "다음 주", "en": "next week" }
+          ]
+        },
+        { "who": "npc", "en": "I'd love to! What did you have in mind?", "ko": "좋아요! 생각해 둔 곳 있어요?" },
+        {
+          "who": "me",
+          "ko": "회사 근처에 맛있는 이탈리안 식당을 알아요.",
+          "answer": "I know a great Italian place near my office.",
+          "accept": ["I know a really good Italian restaurant near my office.", "There's a great Italian place near my work.", "I know a nice Italian restaurant close to my office."],
+          "keys": [
+            { "k": "italian", "tip": "'이탈리안'은 Italian이라고 해요." },
+            { "k": "place|restaurant", "tip": "'식당'은 격식 없이 place라고 해도 돼요." }
+          ],
+          "hint": "'식당'은 격식 없이 place, '~ 근처'는 near로 표현해 보세요.",
+          "words": [
+            { "ko": "식당", "en": "place" },
+            { "ko": "근처", "en": "near" }
+          ]
+        },
+        { "who": "npc", "en": "Perfect, I love pasta. Is Friday okay for you?", "ko": "완벽해요, 파스타 정말 좋아해요. 금요일 괜찮아요?" },
+        {
+          "who": "me",
+          "ko": "금요일 좋아요. 번호 알려 줄래요? 예약하고 문자할게요.",
+          "answer": "Friday works for me. Can I get your number? I'll text you after I book.",
+          "accept": [
+            "Friday is good for me. Could I have your number? I'll text you once I make a reservation.",
+            "Friday works. Can I have your number? I'll text you after I book a table.",
+            "Friday's perfect. Can I get your number? I'll text you when I book."
+          ],
+          "keys": [
+            { "k": "friday|friday's", "tip": "'금요일'은 Friday예요." },
+            { "k": "number", "tip": "'번호'는 your number라고 해요." },
+            { "k": "text you", "tip": "'문자하다'는 text를 동사로 써서 text you라고 해요." }
+          ],
+          "hint": "'(일정이) 괜찮다'는 works for me, '문자하다'는 text로 표현해 보세요.",
+          "words": [
+            { "ko": "번호", "en": "number" },
+            { "ko": "문자할게요", "en": "text" }
+          ],
+          "expr": {
+            "en": "~ works for me",
+            "ko": "~가 저한테 괜찮아요",
+            "note": "약속 시간이나 장소가 괜찮다고 할 때 쓰는 표현이에요. Friday works for me처럼 요일이나 시간을 주어로 써요. 안 될 때는 Friday doesn't work for me라고 해요."
+          }
+        },
+        { "who": "npc", "en": "Sure. Here, give me your phone... There you go.", "ko": "그럼요. 휴대폰 줘 봐요... 여기요." },
+        {
+          "who": "me",
+          "ko": "고마워요. 늦었으니까 역까지 바래다줄게요.",
+          "answer": "Thanks. It's getting late, so let me walk you to the station.",
+          "accept": ["Thank you. It's late, so I'll walk you to the station.", "Thanks. It's getting late. Can I walk you to the station?", "Thanks. Let me walk you to the station since it's late."],
+          "keys": [
+            { "k": "late", "tip": "'늦었으니까'는 It's getting late라고 해요." },
+            { "k": "walk you to the station", "tip": "'~까지 바래다주다'는 walk you to ~라고 해요." }
+          ],
+          "hint": "'바래다주다'는 walk you to ~, '늦어지다'는 It's getting late로 표현해 보세요.",
+          "words": [
+            { "ko": "바래다줄게요", "en": "walk you" },
+            { "ko": "역", "en": "station" }
+          ]
+        },
+        { "who": "npc", "en": "That's sweet of you. Thank you.", "ko": "다정하네요. 고마워요." },
+        {
+          "who": "me",
+          "ko": "그럼 금요일에 봐요. 조심히 들어가요!",
+          "answer": "See you on Friday, then. Get home safe!",
+          "accept": ["See you Friday, then. Get home safely!", "Then I'll see you on Friday. Get home safe!", "See you on Friday. Have a safe trip home!"],
+          "keys": [
+            { "k": "see you", "tip": "'~에 봐요'는 See you ~라고 해요." },
+            { "k": "friday", "tip": "'금요일에'는 on Friday라고 해요." },
+            { "k": "safe|safely", "tip": "'조심히 들어가요'는 Get home safe라고 해요." }
+          ],
+          "hint": "'~에 봐요'는 See you on ~, '조심히 들어가요'는 Get home safe로 표현해 보세요.",
+          "words": [{ "ko": "조심히", "en": "safe" }]
+        },
+        { "who": "npc", "en": "See you Friday! And I'm still waiting for that number one story.", "ko": "금요일에 봐요! 그리고 그 1위 이야기, 아직 기다리고 있어요." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,622 @@
+{
+  "course": { "id": "daily-levelup", "title": "일상 영어 - 레벨 업", "group": "일상 영어", "stars": 2, "icon": "cup" },
+  "patterns": [
+    {
+      "id": "could-use",
+      "ko": "~가 있으면 좋겠어요",
+      "en": "I could use ~.",
+      "meaning": "무언가가 필요하다고 가볍게 말할 때",
+      "note": "'~를 쓸 수 있다'가 아니라 '~가 있으면 좋겠다, ~가 필요하다'라는 뜻이에요. I need ~보다 부드럽고 가볍게 들려서 휴식, 커피, 도움처럼 일상적인 것에 자주 써요. 도움을 청할 때 I could use a hand.도 아주 흔해요."
+    },
+    {
+      "id": "no-way",
+      "ko": "~할 리가 없어요",
+      "en": "There's no way ~.",
+      "meaning": "절대 그럴 리 없다고 강하게 말할 때",
+      "note": "불가능하다고 강하게 확신할 때 쓰는 구어체 표현이에요. 뒤에 바로 문장이 와서 There's no way he's 20.처럼 써요. No way!만 따로 쓰면 '말도 안 돼!'라는 감탄이 돼요."
+    },
+    {
+      "id": "into",
+      "ko": "~에 빠져 있어요",
+      "en": "I'm into ~.",
+      "meaning": "요즘 좋아하거나 관심 있는 것을 말할 때",
+      "note": "I like ~보다 '요즘 푹 빠져 있다'는 느낌이 강한 구어체 표현이에요. 취미, 음악, 음식에 두루 쓰고, 사람에게 쓰면 '그 사람한테 관심 있다'는 뜻이 돼요. 질문할 때는 What are you into?처럼 be동사로 물어요."
+    },
+    {
+      "id": "worth",
+      "ko": "~할 만해요",
+      "en": "It's worth ~ing.",
+      "meaning": "시간이나 돈을 들여 해 볼 만하다고 말할 때",
+      "note": "worth 뒤에는 동사의 -ing 형태나 명사가 와요. It's worth it.은 '그럴 만한 가치가 있어'라는 뜻으로 아주 자주 써요. worth to ~처럼 to부정사를 쓰는 실수가 많아요."
+    },
+    {
+      "id": "ended-up",
+      "ko": "결국 ~하게 됐어요",
+      "en": "I ended up ~ing.",
+      "meaning": "계획과 다르게 결국 어떤 결과가 되었을 때",
+      "note": "예상이나 계획과 달리 '어쩌다 보니 결국 ~하게 됐다'는 흐름을 말할 때 써요. end up 뒤에는 -ing 형태나 장소가 와요. finally는 '기다린 끝에 마침내'라는 뜻이라 느낌이 달라요."
+    },
+    {
+      "id": "might-want-to",
+      "ko": "~하는 게 좋을 거예요",
+      "en": "You might want to ~.",
+      "meaning": "부드럽게 조언하거나 권할 때",
+      "note": "'너 ~하고 싶을지도 몰라'가 아니라 '~하는 게 좋을걸요'라는 완곡한 조언이에요. You should ~보다 훨씬 부드러워서 낯선 사람이나 윗사람에게도 쓸 수 있어요. You may want to ~도 같은 뜻이에요."
+    },
+    {
+      "id": "not-a-fan-of",
+      "ko": "~은 별로 안 좋아해요",
+      "en": "I'm not a fan of ~.",
+      "meaning": "무언가를 좋아하지 않는다고 부드럽게 말할 때",
+      "note": "I don't like ~보다 덜 직설적이라 상대 기분을 덜 상하게 해요. 사람뿐 아니라 음식, 날씨, 습관 등 무엇에든 써요. 더 부드럽게는 I'm not a big fan of ~라고 해요."
+    },
+    {
+      "id": "whats-the-point",
+      "ko": "~해 봤자 무슨 소용이에요?",
+      "en": "What's the point of ~ing?",
+      "meaning": "어떤 일이 의미 없다고 느낄 때",
+      "note": "'~해 봤자 무슨 의미가 있어?'라는 회의적인 느낌의 표현이에요. of 뒤에는 동사의 -ing 형태나 명사가 와요. 말투에 따라 짜증스럽게 들릴 수 있으니 상황을 가려 써요. That's the point.는 반대로 '바로 그게 핵심이야'라는 뜻이에요."
+    },
+    {
+      "id": "been-meaning-to",
+      "ko": "안 그래도 ~하려고 했어요",
+      "en": "I've been meaning to ~.",
+      "meaning": "계속 하려고 마음먹었지만 아직 못 했을 때",
+      "note": "한동안 하려고 생각했는데 아직 못 한 일을 말할 때 써요. 상대가 먼저 그 이야기를 꺼냈을 때 '안 그래도 ~하려고 했어'라는 뉘앙스로 자주 쓰여요. meaning 뒤에는 to + 동사원형이 와요."
+    },
+    {
+      "id": "no-wonder",
+      "ko": "어쩐지 ~하더라",
+      "en": "No wonder ~.",
+      "meaning": "이유를 듣고 그제야 이해가 될 때",
+      "note": "'놀랄 일이 아니다'라는 뜻으로, 이유를 알고 나서 '어쩐지!'라고 반응할 때 써요. 뒤에 바로 문장을 붙여 No wonder you're tired.처럼 말해요. 원래는 It's no wonder ~인데 대화에서는 줄여서 많이 써요."
+    },
+    {
+      "id": "turns-out",
+      "ko": "알고 보니 ~더라고요",
+      "en": "It turns out ~.",
+      "meaning": "예상과 다른 사실을 나중에 알게 됐을 때",
+      "note": "처음 생각과 달리 '알고 보니 ~였다'는 사실을 전할 때 써요. 지난 일을 말할 때는 It turned out ~처럼 과거형도 많이 써요. 친구끼리는 It을 빼고 Turns out ~이라고도 해요."
+    },
+    {
+      "id": "would-rather",
+      "ko": "차라리 ~할래요",
+      "en": "I'd rather ~ (than ~).",
+      "meaning": "두 가지 중 더 나은 쪽을 고를 때",
+      "note": "I'd rather는 I would rather의 줄임말이고 뒤에는 동사원형이 와요. 비교 대상은 than으로 이어요. 하기 싫을 때는 I'd rather not.이라고 짧고 부드럽게 거절할 수 있어요. I'd better(~하는 게 좋겠다)와 헷갈리지 마세요."
+    },
+    {
+      "id": "in-the-mood-for",
+      "ko": "~가 당겨요",
+      "en": "I'm in the mood for ~.",
+      "meaning": "지금 무언가가 먹고 싶거나 하고 싶을 때",
+      "note": "지금 이 순간 특정한 것이 당긴다고 말할 때 써요. 뒤에는 명사나 -ing가 오고, 동사원형을 쓰려면 I'm in the mood to ~라고 해요. 내키지 않을 때는 I'm not in the mood.라고 짧게 말해요."
+    },
+    {
+      "id": "its-about-time",
+      "ko": "진작 그랬어야지 / 이제야 ~하네",
+      "en": "It's about time ~.",
+      "meaning": "진작 했어야 할 일이 이제야 일어났을 때",
+      "note": "'이제야 ~하네', '진작 그랬어야지'라는 느낌을 담은 표현이에요. 뒤에 문장이 오면 It's about time you got a job.처럼 과거형 동사를 쓰는 게 특징이에요. 짧게 It's about time!이라고만 해도 '드디어!'라는 반응이 돼요."
+    }
+  ],
+  "items": [
+    {
+      "id": "daily-levelup-could-use-01",
+      "pattern": "could-use",
+      "partner": { "en": "You've been working all day. Want a coffee?", "ko": "하루 종일 일했잖아. 커피 마실래?" },
+      "en": "Yes, please. ___ a break.",
+      "answer": "I could use",
+      "ko": "응, 좋아. 좀 쉬어야 **할 것 같아**.",
+      "alts": [
+        { "w": "I can use", "t": "wrong", "m": "그러면 '쓸 수 있다'는 능력의 뜻이 돼요. 조동사를 바꾸면 '있으면 좋겠다'는 뜻이 돼요." },
+        { "w": "I need", "t": "ok", "m": "맞아요, 뜻은 같아요! 다만 조금 더 가볍고 자연스럽게 말하는 표현도 있어요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-could-use-02",
+      "pattern": "could-use",
+      "partner": { "en": "Do you need help with those bags?", "ko": "그 짐 좀 들어 줄까?" },
+      "en": "Actually, yes. ___ a hand.",
+      "answer": "I could use",
+      "ko": "사실 응. 좀 도와주면 **좋겠어**.",
+      "alts": [
+        { "w": "I could need", "t": "wrong", "m": "need는 이렇게 조동사 뒤에 잘 쓰지 않아요. '쓰다'라는 뜻의 동사를 넣어 보세요." },
+        { "w": "I want", "t": "near", "m": "뜻은 통하지만 '손을 원한다'처럼 들릴 수 있어요. 도움이 필요하다고 말하는 관용 표현을 써 보세요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-could-use-03",
+      "pattern": "could-use",
+      "partner": { "en": "How was your week?", "ko": "이번 주 어땠어?" },
+      "en": "Crazy busy. ___ a long vacation.",
+      "answer": "I could use",
+      "ko": "엄청 바빴어. 긴 휴가가 **있으면 좋겠다**.",
+      "alts": [
+        { "w": "I could have", "t": "wrong", "m": "그건 '가질 수도 있었다'는 뜻으로 들릴 수 있어요. 필요하다는 뜻을 만드는 다른 동사를 써 보세요." },
+        { "w": "I'd like", "t": "near", "m": "원한다는 뜻은 통하지만, 지쳐서 절실하다는 느낌은 덜해요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-no-way-01",
+      "pattern": "no-way",
+      "partner": { "en": "I heard Tom is moving to Canada.", "ko": "톰이 캐나다로 이사 간대." },
+      "en": "___ he's leaving. He just bought a house here.",
+      "answer": "There's no way",
+      "ko": "걔가 떠날 **리가 없어**. 여기 집 산 지 얼마 안 됐는데.",
+      "alts": [
+        { "w": "It's no way", "t": "wrong", "m": "이 표현은 it으로 시작하지 않아요. '~이 있다'고 말할 때 쓰는 구문으로 시작해 보세요." },
+        { "w": "No way", "t": "near", "m": "감탄으로는 좋지만, 뒤에 문장을 이을 때는 앞부분을 더 붙여 주는 게 자연스러워요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-no-way-02",
+      "pattern": "no-way",
+      "partner": { "en": "Can you finish the report by noon?", "ko": "보고서 정오까지 끝낼 수 있어요?" },
+      "en": "Sorry, ___ I can finish it that fast.",
+      "answer": "there's no way",
+      "ko": "죄송해요, 그렇게 빨리 끝내는 건 **도저히 불가능해요**.",
+      "alts": [
+        { "w": "there's no chance", "t": "ok", "m": "맞아요, 같은 느낌이에요! 이번엔 '방법'이라는 뜻의 단어로 말해 볼까요?" },
+        { "w": "there isn't way", "t": "wrong", "m": "way 앞에 관사가 없으면 어색해요. 명사를 강하게 부정하는 다른 단어를 써 보세요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-no-way-03",
+      "pattern": "no-way",
+      "partner": { "en": "Let's just walk there. It's only thirty minutes.", "ko": "그냥 걸어가자. 30분밖에 안 걸려." },
+      "en": "___ I'm walking that far in these heels.",
+      "answer": "There's no way",
+      "ko": "이 힐 신고 그렇게 멀리 걷는 건 **말도 안 돼**.",
+      "alts": [
+        { "w": "There is no way", "t": "ok", "m": "맞아요! 다만 말할 때는 줄여서 더 자연스럽게 말해요." },
+        { "w": "There's not way", "t": "wrong", "m": "not은 명사 앞에 바로 쓸 수 없어요. 명사를 부정하는 다른 단어를 써 보세요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-into-01",
+      "pattern": "into",
+      "partner": { "en": "What do you do in your free time?", "ko": "시간 날 때 뭐 해?" },
+      "en": "Lately, ___ rock climbing.",
+      "answer": "I'm into",
+      "ko": "요즘엔 클라이밍에 **빠져 있어**.",
+      "alts": [
+        { "w": "I'm in", "t": "wrong", "m": "in은 그냥 안에 있다는 뜻이에요. 안으로 빠져드는 방향을 나타내는 전치사를 써 보세요." },
+        { "w": "I'm crazy about", "t": "ok", "m": "맞아요, 더 강한 표현이에요! 이번엔 더 짧고 가볍게 말하는 표현을 써 볼까요?" },
+        { "w": "I'm interested", "t": "wrong", "m": "뒤에 대상을 이으려면 전치사가 필요해요. 그리고 더 짧은 구어체 표현이 있어요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-into-02",
+      "pattern": "into",
+      "partner": { "en": "Whoa, you have so many plants!", "ko": "와, 식물 진짜 많다!" },
+      "en": "I know. ___ gardening these days.",
+      "answer": "I'm into",
+      "ko": "그치. 요즘 식물 키우기에 **빠져 있어**.",
+      "alts": [
+        { "w": "I like", "t": "near", "m": "뜻은 통하지만 요즘 푹 빠져 있다는 느낌은 잘 안 살아요." },
+        { "w": "I'm in", "t": "wrong", "m": "in은 그냥 안에 있다는 뜻이에요. 무언가에 빠져드는 방향을 나타내는 전치사를 써 보세요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-into-03",
+      "pattern": "into",
+      "partner": { "en": "I just started learning the guitar.", "ko": "나 기타 배우기 시작했어." },
+      "en": "Cool! What kind of music ___?",
+      "answer": "are you into",
+      "ko": "멋지다! 요즘 어떤 음악**에 빠져 있어**?",
+      "alts": [
+        { "w": "do you into", "t": "wrong", "m": "이 표현은 be동사와 함께 쓰여서 do로 질문을 만들 수 없어요." },
+        { "w": "do you like", "t": "ok", "m": "맞아요, 자연스러운 질문이에요! 이번엔 '빠져 있다'는 구어체 표현으로 물어볼까요?" },
+        { "w": "are you in", "t": "wrong", "m": "in은 그냥 안에 있다는 뜻이에요. 무언가에 빠져드는 방향을 나타내는 전치사를 써 보세요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-worth-01",
+      "pattern": "worth",
+      "partner": { "en": "Is that new museum any good?", "ko": "새로 생긴 박물관 괜찮아?" },
+      "en": "Yeah, ___ visiting at least once.",
+      "answer": "it's worth",
+      "ko": "응, 한 번쯤은 가 **볼 만해**.",
+      "alts": [
+        { "w": "it's worthy", "t": "wrong", "m": "worthy 뒤에는 -ing가 바로 올 수 없어요. 형용사 형태를 바꿔 보세요." },
+        { "w": "it worth", "t": "wrong", "m": "worth는 동사가 아니라서 앞에 be동사가 꼭 필요해요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-worth-02",
+      "pattern": "worth",
+      "partner": { "en": "The tickets are kind of expensive, though.", "ko": "근데 표가 좀 비싸더라." },
+      "en": "Trust me, ___ it.",
+      "answer": "it's worth",
+      "ko": "믿어 봐, 그만한 **가치가 있어**.",
+      "alts": [
+        { "w": "it's worthy", "t": "wrong", "m": "worthy 뒤에는 it을 바로 쓸 수 없어요. 더 짧은 형태로 써 보세요." },
+        { "w": "it's worth for", "t": "wrong", "m": "worth 뒤에는 전치사 없이 바로 명사나 -ing가 와요." },
+        { "w": "it's valuable", "t": "near", "m": "값어치가 있다는 뜻은 통하지만, 돈이나 시간을 들일 만하다는 뜻으로는 잘 안 써요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-worth-03",
+      "pattern": "worth",
+      "partner": { "en": "Should I fix my old laptop or buy a new one?", "ko": "옛날 노트북 고칠까, 새로 살까?" },
+      "en": "Honestly, I don't think ___ fixing.",
+      "answer": "it's worth",
+      "ko": "솔직히 고칠 **만한 가치는** 없는 것 같아.",
+      "alts": [
+        { "w": "it worths", "t": "wrong", "m": "worth는 동사가 아니에요. be동사와 함께 써야 해요." },
+        { "w": "it's worth to", "t": "wrong", "m": "worth 뒤에는 to부정사가 오지 않고 -ing가 바로 와요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-ended-up-01",
+      "pattern": "ended-up",
+      "partner": { "en": "Did you go to the gym yesterday?", "ko": "어제 헬스장 갔어?" },
+      "en": "No, ___ staying home and watching TV.",
+      "answer": "I ended up",
+      "ko": "아니, **결국** 집에서 TV만 봤어.",
+      "alts": [
+        { "w": "I ended", "t": "wrong", "m": "end만 쓰면 '끝냈다'는 뜻이 돼요. 결과를 나타내려면 뒤에 짧은 부사가 하나 더 필요해요." },
+        { "w": "I end up", "t": "wrong", "m": "어제 일이니 과거형으로 써야 해요." },
+        { "w": "I finally", "t": "wrong", "m": "finally는 '마침내'라는 뜻이고 뒤의 -ing와도 맞지 않아요. 계획과 다른 결과를 말하는 표현을 써 보세요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-ended-up-02",
+      "pattern": "ended-up",
+      "partner": { "en": "I thought you were just getting a coffee.", "ko": "커피만 사러 간 줄 알았는데." },
+      "en": "I know, but ___ buying a whole cake.",
+      "answer": "I ended up",
+      "ko": "그러게, 근데 **어쩌다 보니** 케이크를 통째로 사 버렸어.",
+      "alts": [
+        { "w": "I happened", "t": "wrong", "m": "happen 뒤에는 -ing가 바로 오지 않아요. 결국 그렇게 됐다는 표현을 써 보세요." },
+        { "w": "I wound up", "t": "ok", "m": "맞아요, 같은 뜻의 구어체 표현이에요! 이번엔 더 흔한 표현으로 말해 볼까요?" }
+      ]
+    },
+    {
+      "id": "daily-levelup-ended-up-03",
+      "pattern": "ended-up",
+      "partner": { "en": "How was your trip to Busan?", "ko": "부산 여행 어땠어?" },
+      "en": "Great! It rained, so ___ spending all day at a cafe.",
+      "answer": "I ended up",
+      "ko": "좋았어! 비가 와서 **결국** 하루 종일 카페에 있었어.",
+      "alts": [
+        { "w": "I was ended up", "t": "wrong", "m": "수동태가 아니에요. be동사 없이 과거형만으로 말해요." },
+        { "w": "I end up", "t": "wrong", "m": "지나간 여행 이야기니 과거형으로 써야 해요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-might-want-to-01",
+      "pattern": "might-want-to",
+      "partner": { "en": "I'm heading out for a walk.", "ko": "나 산책하러 나간다." },
+      "en": "___ take an umbrella. It looks like rain.",
+      "answer": "You might want to",
+      "ko": "우산 챙겨 가**는 게 좋을 거야**. 비 올 것 같아.",
+      "alts": [
+        { "w": "You should", "t": "ok", "m": "맞아요, 뜻은 같아요! 다만 조금 더 부드럽게 권하는 표현도 있어요." },
+        { "w": "You might want", "t": "wrong", "m": "want 뒤에 동사를 이으려면 연결해 주는 말이 하나 더 필요해요." },
+        { "w": "You must", "t": "near", "m": "너무 강하게 들려서 명령처럼 느껴질 수 있어요. 완곡하게 권하는 표현을 써 보세요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-might-want-to-02",
+      "pattern": "might-want-to",
+      "partner": { "en": "I'm going to wear these new shoes for the hike.", "ko": "이 새 신발 신고 등산 갈 거야." },
+      "en": "Hmm, ___ break them in first.",
+      "answer": "you might want to",
+      "ko": "음, 먼저 좀 길들이**는 게 좋을걸**.",
+      "alts": [
+        { "w": "you may want to", "t": "ok", "m": "맞아요, 같은 뜻이에요! 일상 대화에서는 다른 조동사로 더 자주 말해요." },
+        { "w": "you had better", "t": "near", "m": "'안 그러면 큰일 난다'는 경고처럼 들릴 수 있어요. 더 부드럽게 권해 보세요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-might-want-to-03",
+      "pattern": "might-want-to",
+      "partner": { "en": "Excuse me, is this the line for tickets?", "ko": "실례지만, 여기가 표 사는 줄인가요?" },
+      "en": "No, ___ ask at the front desk.",
+      "answer": "you might want to",
+      "ko": "아니요, 안내 데스크에 물어보시**는 게 좋을 거예요**.",
+      "alts": [
+        { "w": "you might", "t": "wrong", "m": "그러면 '물어볼지도 몰라요'라는 추측이 돼요. 권하는 뜻을 만들려면 동사가 하나 더 필요해요." },
+        { "w": "you want to", "t": "near", "m": "구어에서 쓰기도 하지만 조금 직설적이에요. 조동사를 넣어 더 부드럽게 말해 보세요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-not-a-fan-of-01",
+      "pattern": "not-a-fan-of",
+      "partner": { "en": "Want to try the cilantro salad?", "ko": "고수 샐러드 먹어 볼래?" },
+      "en": "No thanks. ___ cilantro.",
+      "answer": "I'm not a fan of",
+      "ko": "괜찮아. 고수는 **별로 안 좋아해**.",
+      "alts": [
+        { "w": "I'm not fan of", "t": "wrong", "m": "fan은 셀 수 있는 명사라서 앞에 관사가 필요해요." },
+        { "w": "I don't like", "t": "ok", "m": "맞아요! 다만 조금 직설적으로 들려요. 더 부드럽게 말하는 표현도 있어요." },
+        { "w": "I'm not a fan", "t": "wrong", "m": "뒤에 좋아하지 않는 대상을 이으려면 전치사가 필요해요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-not-a-fan-of-02",
+      "pattern": "not-a-fan-of",
+      "partner": { "en": "Let's go to that crowded bar downtown.", "ko": "시내에 사람 많은 그 술집 가자." },
+      "en": "Honestly, ___ crowded places.",
+      "answer": "I'm not a fan of",
+      "ko": "솔직히 난 사람 많은 곳은 **별로야**.",
+      "alts": [
+        { "w": "I'm not a fan for", "t": "wrong", "m": "fan과 함께 쓰는 전치사가 틀렸어요. '~의 팬'이라고 할 때 쓰는 전치사를 떠올려 보세요." },
+        { "w": "I'm not a big fan of", "t": "ok", "m": "맞아요, 아주 자연스러워요! 이번엔 big 없이 기본 형태로 말해 봐요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-not-a-fan-of-03",
+      "pattern": "not-a-fan-of",
+      "partner": { "en": "It's going to snow all weekend!", "ko": "주말 내내 눈 온대!" },
+      "en": "Oh no. ___ winter at all.",
+      "answer": "I'm not a fan of",
+      "ko": "아, 이런. 난 겨울은 정말 **별로야**.",
+      "alts": [
+        { "w": "I'm no fan of", "t": "ok", "m": "맞는 표현이에요! 다만 조금 강하게 들려요. 더 흔한 형태로 말해 봐요." },
+        { "w": "I'm not like", "t": "wrong", "m": "like는 동사라서 be동사와 함께 부정하지 않아요. 그리고 더 부드러운 표현이 있어요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-whats-the-point-01",
+      "pattern": "whats-the-point",
+      "partner": { "en": "You should clean your room.", "ko": "방 좀 치워." },
+      "en": "___ cleaning it? It'll be messy again tomorrow.",
+      "answer": "What's the point of",
+      "ko": "치워 봤자 **무슨 소용이야**? 내일이면 또 지저분해질 텐데.",
+      "alts": [
+        { "w": "What's the point to", "t": "wrong", "m": "point 뒤에 -ing가 오려면 다른 전치사가 필요해요." },
+        { "w": "Why bother", "t": "ok", "m": "맞아요, 비슷한 느낌이에요! 이번엔 '요점'을 뜻하는 명사를 넣어 말해 볼까요?" },
+        { "w": "What's the use of", "t": "ok", "m": "맞아요, 같은 뜻이에요! 이번엔 더 흔히 쓰는 다른 명사로 말해 볼까요?" }
+      ]
+    },
+    {
+      "id": "daily-levelup-whats-the-point-02",
+      "pattern": "whats-the-point",
+      "partner": { "en": "Let's get there early to get good seats.", "ko": "좋은 자리 잡게 일찍 가자." },
+      "en": "___ going early? All the seats are reserved.",
+      "answer": "What's the point of",
+      "ko": "일찍 가는 게 **무슨 의미가 있어**? 전부 지정석인데.",
+      "alts": [
+        { "w": "What's point of", "t": "wrong", "m": "point 앞에 관사가 빠졌어요." },
+        { "w": "What's the meaning of", "t": "near", "m": "단어나 말의 뜻을 묻는 것처럼 들려요. '소용, 요점'을 뜻하는 다른 명사를 써 보세요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-whats-the-point-03",
+      "pattern": "whats-the-point",
+      "partner": { "en": "I'm going to wash my car today.", "ko": "나 오늘 세차할 거야." },
+      "en": "But it's going to rain. ___ washing it now?",
+      "answer": "What's the point of",
+      "ko": "근데 비 온대. 지금 세차해 봤자 **무슨 소용이야**?",
+      "alts": [
+        { "w": "What's the point in", "t": "ok", "m": "맞아요, 같은 뜻이에요! 이번엔 더 기본적인 전치사로 말해 봐요." },
+        { "w": "What is the point", "t": "wrong", "m": "뒤에 -ing를 이으려면 전치사가 필요해요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-been-meaning-to-01",
+      "pattern": "been-meaning-to",
+      "partner": { "en": "Have you called your grandma lately?", "ko": "요즘 할머니께 전화드렸어?" },
+      "en": "Not yet. ___ call her all week.",
+      "answer": "I've been meaning to",
+      "ko": "아직. 일주일 내내 전화드리**려고 했는데**.",
+      "alts": [
+        { "w": "I've been wanting to", "t": "ok", "m": "맞아요, 비슷한 뜻이에요! 이번엔 '마음먹다'라는 뉘앙스의 동사로 말해 볼까요?" },
+        { "w": "I've meant to", "t": "near", "m": "틀린 건 아니지만, 계속 마음에 두고 있었다는 느낌을 살리려면 진행형이 더 자연스러워요." },
+        { "w": "I've been mean to", "t": "wrong", "m": "그러면 '못되게 굴었다'는 뜻이 돼요. 진행형에 맞는 동사 형태를 써 보세요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-been-meaning-to-02",
+      "pattern": "been-meaning-to",
+      "partner": { "en": "You still haven't seen that movie?", "ko": "아직도 그 영화 안 봤어?" },
+      "en": "No, but ___ watch it.",
+      "answer": "I've been meaning to",
+      "ko": "응, 근데 안 그래도 보**려고 했어**.",
+      "alts": [
+        { "w": "I've been meaning", "t": "wrong", "m": "뒤에 동사원형이 이어지려면 연결해 주는 말이 필요해요." },
+        { "w": "I was going to", "t": "ok", "m": "맞아요, 뜻이 통해요! 이번엔 한동안 계속 마음먹고 있었다는 느낌을 살려 볼까요?" }
+      ]
+    },
+    {
+      "id": "daily-levelup-been-meaning-to-03",
+      "pattern": "been-meaning-to",
+      "partner": { "en": "Did you get my message about the party?", "ko": "파티 관련해서 보낸 메시지 봤어?" },
+      "en": "Yes! ___ reply to you. Sorry!",
+      "answer": "I've been meaning to",
+      "ko": "응! 안 그래도 답장하**려고 했어**. 미안!",
+      "alts": [
+        { "w": "I'm meaning to", "t": "wrong", "m": "한동안 계속 마음먹어 왔다는 뜻이니 현재완료진행형으로 써야 해요." },
+        { "w": "I've been planning to", "t": "ok", "m": "맞아요, 자연스러워요! 다만 계획보다는 '마음은 있었다'는 느낌의 표현을 연습해 봐요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-no-wonder-01",
+      "pattern": "no-wonder",
+      "partner": { "en": "I only slept two hours last night.", "ko": "어젯밤에 두 시간밖에 못 잤어." },
+      "en": "___ you look so tired.",
+      "answer": "No wonder",
+      "ko": "**어쩐지** 엄청 피곤해 보이더라.",
+      "alts": [
+        { "w": "No surprise", "t": "near", "m": "뜻은 비슷하지만 뒤에 바로 문장을 붙이면 어색해요. '어쩐지'에 딱 맞는 짧은 표현을 써 보세요." },
+        { "w": "I wonder", "t": "wrong", "m": "그건 '궁금하다'는 뜻이에요. 이유를 알고 이해됐다는 표현을 써 보세요." },
+        { "w": "No wondering", "t": "wrong", "m": "-ing 형태가 아니라 명사 그대로 써요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-no-wonder-02",
+      "pattern": "no-wonder",
+      "partner": { "en": "That restaurant was on TV last week.", "ko": "그 식당 지난주에 TV에 나왔대." },
+      "en": "Really? ___ it's always so busy.",
+      "answer": "No wonder",
+      "ko": "진짜? **어쩐지** 항상 사람이 많더라.",
+      "alts": [
+        { "w": "Of course", "t": "near", "m": "'당연하지'라는 뜻이라 느낌이 조금 달라요. 이유를 듣고 이해됐다는 표현을 써 보세요." },
+        { "w": "It's no wonder", "t": "ok", "m": "맞아요, 원래 형태예요! 대화에서는 앞부분을 빼고 더 짧게 말해요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-no-wonder-03",
+      "pattern": "no-wonder",
+      "partner": { "en": "The heater has been broken since this morning.", "ko": "아침부터 히터가 고장 났어요." },
+      "en": "Oh, ___ it's freezing in here.",
+      "answer": "no wonder",
+      "ko": "아, **어쩐지** 여기 너무 춥더라고요.",
+      "alts": [
+        { "w": "no wonders", "t": "wrong", "m": "이 표현에서는 명사를 복수형으로 쓰지 않아요." },
+        { "w": "that's why", "t": "ok", "m": "맞아요, 뜻이 통해요! 이번엔 '어쩐지'에 딱 맞는 두 단어 표현으로 말해 봐요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-turns-out-01",
+      "pattern": "turns-out",
+      "partner": { "en": "Did you find your wallet?", "ko": "지갑 찾았어?" },
+      "en": "Yeah, ___ it was in my car the whole time.",
+      "answer": "it turns out",
+      "ko": "응, **알고 보니** 계속 차 안에 있었더라고.",
+      "alts": [
+        { "w": "it turned out", "t": "ok", "m": "맞아요, 지난 일이라 이것도 자연스러워요! 대화에서는 현재형으로도 정말 많이 말해요." },
+        { "w": "it turns", "t": "wrong", "m": "turn만 쓰면 '돌다'라는 뜻이 돼요. '드러나다'는 뜻이 되려면 짧은 부사가 필요해요." },
+        { "w": "actually", "t": "near", "m": "'사실은'이라는 뜻은 통하지만, 나중에 알게 됐다는 느낌은 잘 안 살아요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-turns-out-02",
+      "pattern": "turns-out",
+      "partner": { "en": "Is your new coworker nice?", "ko": "새로 온 동료 괜찮아?" },
+      "en": "Yeah. ___ we went to the same high school!",
+      "answer": "It turns out",
+      "ko": "응. **알고 보니** 우리 같은 고등학교 나왔더라!",
+      "alts": [
+        { "w": "It turns up", "t": "wrong", "m": "turn up은 '나타나다'라는 뜻이에요. '드러나다'는 뜻을 만드는 다른 부사를 써 보세요." },
+        { "w": "Turns out", "t": "ok", "m": "맞아요, 친구끼리는 이렇게 줄여서도 말해요! 이번엔 주어까지 넣어 말해 봐요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-turns-out-03",
+      "pattern": "turns-out",
+      "partner": { "en": "Why did you cancel your trip?", "ko": "여행은 왜 취소했어?" },
+      "en": "___ my passport expired last month.",
+      "answer": "It turns out",
+      "ko": "**알고 보니** 여권이 지난달에 만료됐더라고.",
+      "alts": [
+        { "w": "It turned out", "t": "ok", "m": "맞아요, 이것도 자연스러워요! 대화에서는 현재형으로 말하는 경우도 많아요." },
+        { "w": "I found out", "t": "ok", "m": "맞아요, 같은 상황에 쓸 수 있어요! 이번엔 '알고 보니'라는 패턴으로 말해 봐요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-would-rather-01",
+      "pattern": "would-rather",
+      "partner": { "en": "Do you want to go out for dinner?", "ko": "저녁 먹으러 나갈래?" },
+      "en": "___ stay home than go out in this rain.",
+      "answer": "I'd rather",
+      "ko": "이 빗속에 나가느니 **차라리** 집에 있을래.",
+      "alts": [
+        { "w": "I'd prefer", "t": "wrong", "m": "prefer 뒤에는 동사원형이 바로 오지 않아요. than과 짝을 이루는 표현을 써 보세요." },
+        { "w": "I'd better", "t": "wrong", "m": "그건 '~하는 게 좋겠다'는 충고예요. 둘 중 하나를 고르는 표현을 써 보세요." },
+        { "w": "I would rather", "t": "ok", "m": "맞아요! 다만 말할 때는 줄여서 더 자연스럽게 말해요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-would-rather-02",
+      "pattern": "would-rather",
+      "partner": { "en": "Should we take the bus or a taxi?", "ko": "버스 탈까, 택시 탈까?" },
+      "en": "___ walk, actually. It's a nice day.",
+      "answer": "I'd rather",
+      "ko": "난 **차라리** 걷고 싶어. 날씨 좋잖아.",
+      "alts": [
+        { "w": "I rather", "t": "wrong", "m": "rather 앞에 조동사가 빠졌어요." },
+        { "w": "I'd like to", "t": "near", "m": "뜻은 통하지만 다른 선택지와 비교해서 고르는 느낌은 잘 안 살아요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-would-rather-03",
+      "pattern": "would-rather",
+      "partner": { "en": "Do you want to talk about what happened?", "ko": "무슨 일 있었는지 얘기해 볼래?" },
+      "en": "Thanks, but ___ not talk about it right now.",
+      "answer": "I'd rather",
+      "ko": "고마워, 근데 지금은 얘기 안 하는 **게 낫겠어**.",
+      "alts": [
+        { "w": "I'd better", "t": "wrong", "m": "그건 '안 그러면 곤란하다'는 충고예요. 내가 원하는 쪽을 고르는 표현을 써 보세요." },
+        { "w": "I'd prefer", "t": "wrong", "m": "prefer는 뒤에 not을 바로 붙이지 않아요. 짧고 부드럽게 거절할 때 쓰는 다른 표현을 떠올려 보세요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-in-the-mood-for-01",
+      "pattern": "in-the-mood-for",
+      "partner": { "en": "What do you want for lunch?", "ko": "점심 뭐 먹고 싶어?" },
+      "en": "Hmm, ___ something spicy.",
+      "answer": "I'm in the mood for",
+      "ko": "음, 뭔가 매운 게 **당기네**.",
+      "alts": [
+        { "w": "I'm in the mood of", "t": "wrong", "m": "mood 뒤의 전치사가 틀렸어요. 원하는 대상을 나타내는 전치사를 써 보세요." },
+        { "w": "I feel like", "t": "ok", "m": "맞아요, 아주 자연스러워요! 이번엔 '기분'이라는 단어를 넣은 표현으로 말해 봐요." },
+        { "w": "I'm in mood for", "t": "wrong", "m": "mood 앞에 관사가 빠졌어요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-in-the-mood-for-02",
+      "pattern": "in-the-mood-for",
+      "partner": { "en": "Want to watch an action movie tonight?", "ko": "오늘 밤에 액션 영화 볼래?" },
+      "en": "Actually, ___ a comedy.",
+      "answer": "I'm in the mood for",
+      "ko": "사실 오늘은 코미디가 **당겨**.",
+      "alts": [
+        { "w": "I'm in the mood", "t": "wrong", "m": "뒤에 원하는 것을 이으려면 전치사가 필요해요." },
+        { "w": "I want", "t": "near", "m": "뜻은 통하지만 지금 그런 기분이라는 느낌은 잘 안 살아요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-in-the-mood-for-03",
+      "pattern": "in-the-mood-for",
+      "partner": { "en": "Let's go dancing tonight!", "ko": "오늘 밤에 춤추러 가자!" },
+      "en": "Hmm, I don't know. ___ a quiet night at home.",
+      "answer": "I'm in the mood for",
+      "ko": "음, 글쎄. 오늘은 집에서 조용히 보내고 **싶은 기분이야**.",
+      "alts": [
+        { "w": "I'm on the mood for", "t": "wrong", "m": "mood와 함께 쓰는 전치사가 틀렸어요. 어떤 기분 '안에' 있다고 생각해 보세요." },
+        { "w": "I'm in a mood for", "t": "near", "m": "in a mood는 '기분이 언짢다'는 뜻으로 들릴 수 있어요. 관사를 바꿔 보세요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-its-about-time-01",
+      "pattern": "its-about-time",
+      "partner": { "en": "I finally bought a new phone.", "ko": "나 드디어 휴대폰 새로 샀어." },
+      "en": "___! Yours was so old.",
+      "answer": "It's about time",
+      "ko": "**진작 바꿨어야지**! 네 거 엄청 오래됐었잖아.",
+      "alts": [
+        { "w": "It's time", "t": "near", "m": "'~할 시간이야'라는 뜻이라 '이제야!'라는 느낌이 안 살아요. 짧은 단어를 하나 더 넣어 보세요." },
+        { "w": "Finally", "t": "ok", "m": "맞아요, '드디어!'라는 뜻으로 잘 통해요! 이번엔 '진작 그랬어야지'라는 패턴으로 말해 봐요." },
+        { "w": "It's about the time", "t": "wrong", "m": "이 표현에서는 time 앞에 관사를 쓰지 않아요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-its-about-time-02",
+      "pattern": "its-about-time",
+      "partner": { "en": "The bus is finally here.", "ko": "버스 드디어 왔다." },
+      "en": "___. We've been waiting for forty minutes!",
+      "answer": "It's about time",
+      "ko": "**이제야 오네**. 40분이나 기다렸잖아!",
+      "alts": [
+        { "w": "It's on time", "t": "wrong", "m": "그건 '제시간에 왔다'는 뜻이라 정반대예요." },
+        { "w": "About time", "t": "ok", "m": "맞아요, 친구끼리는 이렇게 줄여서도 말해요! 이번엔 주어와 동사까지 넣어 말해 봐요." }
+      ]
+    },
+    {
+      "id": "daily-levelup-its-about-time-03",
+      "pattern": "its-about-time",
+      "partner": { "en": "I'm finally going to see a doctor about my back.", "ko": "드디어 허리 때문에 병원에 가 보려고." },
+      "en": "Good. ___ you did something about it.",
+      "answer": "It's about time",
+      "ko": "잘 생각했어. 이제 뭐라도 할 **때가 됐지**.",
+      "alts": [
+        { "w": "it's time", "t": "near", "m": "말은 되지만 '진작 했어야 했다'는 느낌이 덜해요. 짧은 단어 하나를 더 넣어 보세요." },
+        { "w": "it's about the time", "t": "wrong", "m": "이 표현에서는 time 앞에 관사를 쓰지 않아요." }
+      ]
+    }
+  ]
+}

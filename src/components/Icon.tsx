@@ -16,6 +16,8 @@ export type IconName =
   | 'turtle'
   | 'play'
   | 'chat'
+  | 'plane'
+  | 'cup'
   | 'note'
   | 'bulb'
   | 'keyboard'
@@ -43,7 +45,10 @@ export type IconName =
   | 'gbook'
   | 'talk'
   | 'headphones'
-  | 'bookmark';
+  | 'bookmark'
+  | 'shift'
+  | 'retry'
+  | 'lock';
 
 interface Props {
   name: IconName;
@@ -302,7 +307,35 @@ const PATHS: Record<IconName, ReactElement> = {
       <rect x="16.5" y="13.5" width="5" height="7.5" rx="2" fill="currentColor" stroke="none" />
     </g>
   ),
+  shift: <path d="M12 3 3 12h5v8h8v-8h5z" fill="currentColor" stroke="none" />,
+  retry: (
+    <g strokeWidth={2.6}>
+      <path d="M20 12a8 8 0 1 1-2.6-5.9" />
+      <polyline points="20 3 20 8 15 8" />
+    </g>
+  ),
+  lock: (
+    <g>
+      <rect x="5" y="10" width="14" height="11" rx="2.5" fill="currentColor" stroke="none" />
+      <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+    </g>
+  ),
   bookmark: <path d="M6 3h12v18l-6-4.5L6 21z" fill="currentColor" stroke="none" />,
+  plane: (
+    <path
+      d="M21 15.5v-1.8l-7.5-4.6V4.2a1.5 1.5 0 0 0-3 0v4.9L3 13.7v1.8l7.5-2.3v4.9l-2 1.5v1.4l3.5-1 3.5 1v-1.4l-2-1.5v-4.9z"
+      fill="currentColor"
+      stroke="none"
+    />
+  ),
+  cup: (
+    <g>
+      <path d="M4 8h12v6.5A4.5 4.5 0 0 1 11.5 19h-3A4.5 4.5 0 0 1 4 14.5z" fill="currentColor" stroke="none" />
+      <path d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16" strokeWidth={2} />
+      <path d="M7.5 3.5c0 1.2 1 1.2 1 2.4M11.5 3.5c0 1.2 1 1.2 1 2.4" strokeWidth={1.6} />
+      <line x1="3" y1="21" x2="17" y2="21" strokeWidth={2} />
+    </g>
+  ),
   clock: (
     <g>
       <circle cx="12" cy="12" r="9.5" fill="#cfe0f7" stroke="none" />

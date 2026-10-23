@@ -96,7 +96,7 @@ export interface ReviewRow {
   wrongs?: WrongNote[];
 }
 
-export type StudyMode = 'vocab' | 'grammar' | 'listening' | 'pairs';
+export type StudyMode = 'vocab' | 'grammar' | 'listening' | 'pairs' | 'expr' | 'talk';
 
 export interface ModeDay {
   total: number;
@@ -164,6 +164,78 @@ export interface GrammarSentence {
   pack: string;
 }
 
+export interface ExprCourse {
+  id: string;
+  title: string;
+  group: string;
+  stars: number;
+  icon?: string;
+  order: number;
+  pack: string;
+}
+
+export interface ExprPattern {
+  /** `${course}:${id}` */
+  key: string;
+  id: string;
+  course: string;
+  ko: string;
+  en: string;
+  meaning: string;
+  note: string;
+  order: number;
+}
+
+export interface ExprItem {
+  id: string;
+  course: string;
+  /** 패턴 key (`${course}:${pattern}`) */
+  pkey: string;
+  partner: { en: string; ko: string };
+  en: string;
+  answer: string;
+  ko: string;
+  alts?: Alt[];
+  order: number;
+}
+
+export interface TalkKey {
+  k: string;
+  tip: string;
+}
+
+export interface TalkLine {
+  who: 'npc' | 'me';
+  en?: string;
+  ko: string;
+  answer?: string;
+  accept?: string[];
+  keys?: TalkKey[];
+  hint?: string;
+  words?: { ko: string; en: string }[];
+  expr?: { en: string; ko: string; note: string };
+}
+
+export interface TalkEpisode {
+  id: string;
+  title: string;
+  partner: string;
+  mission: string;
+  lines: TalkLine[];
+}
+
+export interface TalkStory {
+  id: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  cefr: string;
+  scene: string;
+  episodes: TalkEpisode[];
+  pack: string;
+  order: number;
+}
+
 export interface DailyRow {
   date: string;
   total: number;
@@ -225,4 +297,9 @@ export interface Settings {
   studyTheme: 'sky' | 'dino';
   /** 홈 메인 카드에 보이는 학습 모드 */
   homeMode: StudyMode;
+  exprGoal: number;
+  exprCourse: string | null;
+  talkGoal: number;
+  talkLevel: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
+  talkInput: 'voice' | 'keyboard';
 }

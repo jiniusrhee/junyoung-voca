@@ -143,3 +143,112 @@ export function validatePairs(packs) {
   }
   return { errors, stages };
 }
+
+// ---------------- 표현 학습 ----------------
+const WORD_RE = /^[A-Za-z0-9][A-Za-z0-9'\-]*[.?!,]?$/;
+export function validateExpr(packs) {
+  const errors = [];
+  const ids = new Set();
+  let items = 0;
+  let patterns = 0;
+  for (const { file, text } of packs) {
+    let d;
+    try {
+      d = JSON.parse(text);
+    } catch (e) {
+      errors.push(`${file}: JSON 파싱 실패 (${e.message})`);
+      continue;
+    }
+    const c = d.course;
+    if (!c || !/^[a-z0-9-]+$/.test(c.id ?? '') || !c.title || !c.group || ![1, 2, 3].includes(c.stars)) errors.push(`${file}: course(id,title,group,stars 1~3) 오류`);
+    const pids = new Set();
+    for (const [i, p] of (d.patterns ?? []).entries()) {
+      patterns++;
+      const at = `${file} pattern#${i + 1} (${p?.id})`;
+      if (!/^[a-z0-9-]+$/.test(p.id ?? '') || pids.has(p.id)) errors.push(`${at}: id 형식/중복`);
+      pids.add(p.id);
+      for (const k of ['ko', 'en', 'meaning', 'note']) if (typeof p[k] !== 'string' || !p[k]) errors.push(`${at}: ${k} 누락`);
+    }
+    const perPattern = new Map();
+    for (const [i, it] of (d.items ?? []).entries()) {
+      items++;
+      const at = `${file} item#${i + 1} (${it?.id})`;
+      if (typeof it.id !== 'string' || ids.has(it.id)) errors.push(`${at}: id 누락/중복`);
+      ids.add(it.id);
+      if (!pids.has(it.pattern)) errors.push(`${at}: 없는 pattern (${it.pattern})`);
+      perPattern.set(it.pattern, (perPattern.get(it.pattern) ?? 0) + 1);
+      if (!it.partner || typeof it.partner.en !== 'string' || typeof it.partner.ko !== 'string') errors.push(`${at}: partner.en/ko 누락`);
+      if (typeof it.en !== 'string' || (it.en.match(/___/g) || []).length !== 1) errors.push(`${at}: en에 ___ 1개`);
+      if (typeof it.answer !== 'string' || !it.answer.trim()) errors.push(`${at}: answer 누락`);
+      else for (const w of it.answer.trim().split(/\s+/)) if (!/^[A-Za-z][A-Za-z'\-]*$/.test(w)) errors.push(`${at}: answer 단어 형식 (${w})`);
+      if (typeof it.ko !== 'string' || (it.ko.match(/\*\*/g) || []).length !== 2) errors.push(`${at}: ko에 **강조** 1쌍`);
+      for (const [k, a] of (it.alts ?? []).entries()) {
+        if (typeof a?.w !== 'string' || !a.w.trim() || !['ok', 'near', 'wrong'].includes(a.t) || typeof a.m !== 'string' || a.m.length > 100)
+          errors.push(`${at} alt#${k + 1}: w/t/m 형식`);
+        else if (a.w.trim().toLowerCase() === it.answer?.trim().toLowerCase()) errors.push(`${at} alt#${k + 1}: 정답과 같음`);
+      }
+    }
+    for (const id of pids) if ((perPattern.get(id) ?? 0) < 2) errors.push(`${file}: pattern ${id} 문제가 2개 미만`);
+  }
+  return { errors, items, patterns };
+}
+
+// ---------------- 실전 회화 ----------------
+const normT = (s) => s.toLowerCase().replace(/[’`]/g, "'").replace(/[^a-z0-9' ]/g, ' ').replace(/\s+/g, ' ').trim();
+export function validateTalk(packs) {
+  const errors = [];
+  const ids = new Set();
+  let episodes = 0;
+  let lines = 0;
+  for (const { file, text } of packs) {
+    let d;
+    try {
+      d = JSON.parse(text);
+    } catch (e) {
+      errors.push(`${file}: JSON 파싱 실패 (${e.message})`);
+      continue;
+    }
+    const s = d.story;
+    if (!s || !/^[a-z0-9-]+$/.test(s.id ?? '') || !s.title || !s.subtitle || !s.category || !/^(A1|A2|B1|B2|C1|C2)$/.test(s.cefr ?? '') || !s.scene)
+      errors.push(`${file}: story(id,title,subtitle,category,cefr,scene) 오류`);
+    for (const [ei, ep] of (d.episodes ?? []).entries()) {
+      episodes++;
+      const eat = `${file} ep#${ei + 1} (${ep?.id})`;
+      if (typeof ep.id !== 'string' || ids.has(ep.id)) errors.push(`${eat}: id 누락/중복`);
+      ids.add(ep.id);
+      for (const k of ['title', 'mission', 'partner']) if (typeof ep[k] !== 'string' || !ep[k]) errors.push(`${eat}: ${k} 누락`);
+      const me = (ep.lines ?? []).filter((l) => l.who === 'me');
+      if (me.length < 4) errors.push(`${eat}: 내 대사는 4개 이상`);
+      for (const [li, l] of (ep.lines ?? []).entries()) {
+        const lat = `${eat} line#${li + 1}`;
+        if (l.who === 'npc') {
+          if (typeof l.en !== 'string' || typeof l.ko !== 'string') errors.push(`${lat}: npc는 en, ko`);
+          continue;
+        }
+        if (l.who !== 'me') {
+          errors.push(`${lat}: who는 npc/me`);
+          continue;
+        }
+        lines++;
+        for (const k of ['ko', 'answer', 'hint']) if (typeof l[k] !== 'string' || !l[k]) errors.push(`${lat}: ${k} 누락`);
+        if (!Array.isArray(l.accept) || l.accept.length < 1) errors.push(`${lat}: accept 1개 이상`);
+        if (!Array.isArray(l.keys) || l.keys.length < 1 || l.keys.length > 3) errors.push(`${lat}: keys 1~3개`);
+        else
+          for (const [ki, k] of l.keys.entries()) {
+            if (typeof k?.k !== 'string' || typeof k?.tip !== 'string') {
+              errors.push(`${lat} key#${ki + 1}: k, tip`);
+              continue;
+            }
+            const vars = k.k.split('|').map(normT);
+            for (const sent of [l.answer, ...(l.accept ?? [])]) {
+              const n = ` ${normT(sent ?? '')} `;
+              if (!vars.some((v) => n.includes(` ${v} `))) errors.push(`${lat} key#${ki + 1}: '${k.k}'가 문장에 없음 → ${sent}`);
+            }
+          }
+        for (const [wi, w] of (l.words ?? []).entries()) if (typeof w?.ko !== 'string' || typeof w?.en !== 'string' || !l.ko.includes(w.ko)) errors.push(`${lat} word#${wi + 1}: ko는 대사 안의 말`);
+        if (l.expr && (typeof l.expr.en !== 'string' || typeof l.expr.ko !== 'string' || typeof l.expr.note !== 'string')) errors.push(`${lat}: expr 형식`);
+      }
+    }
+  }
+  return { errors, episodes, lines };
+}

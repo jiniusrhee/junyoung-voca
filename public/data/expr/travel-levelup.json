@@ -1,0 +1,412 @@
+{
+  "course": { "id": "travel-levelup", "title": "여행 영어 - 레벨 업", "group": "여행 영어", "stars": 2, "icon": "plane" },
+  "patterns": [
+    { "id": "would-it-be-possible", "ko": "~하는 게 가능할까요?", "en": "Would it be possible to ~?", "meaning": "들어주기 어려울 수 있는 부탁을 아주 공손하게 할 때", "note": "들어주기 어려울 수 있는 부탁을 아주 공손하게 할 때 써요. Can I ~?나 Could you ~?보다 한층 조심스럽고 정중하게 들려요. 뒤에 to+동사원형이 오고, 다른 사람이 하는 일이면 for me to ~처럼 써요." },
+    { "id": "i-was-told", "ko": "~라고 들었는데요", "en": "I was told ~.", "meaning": "안내받은 내용을 근거로 확인하거나 이의를 제기할 때", "note": "누군가에게 안내받은 내용을 근거로 확인하거나 이의를 제기할 때 써요. 직접 따지는 대신 '그렇게 들었다'고 말해서 부드럽게 들려요. I heard ~보다 '공식적으로 안내받았다'는 느낌이 강해요." },
+    { "id": "is-included", "ko": "~도 포함인가요?", "en": "Is ~ included?", "meaning": "가격에 무엇이 포함되는지 확인할 때", "note": "가격에 어떤 항목이 포함되어 있는지 확인할 때 써요. include의 과거분사 included로 '포함된' 상태를 나타내요. 무엇에 포함되는지 말하려면 Is tax included in the price?처럼 in을 붙여요." },
+    { "id": "im-afraid", "ko": "죄송하지만 ~예요", "en": "I'm afraid ~.", "meaning": "아쉽거나 곤란한 소식을 부드럽게 전할 때", "note": "아쉽거나 곤란한 소식, 불만을 부드럽게 꺼낼 때 써요. 여기서 afraid는 '무섭다'가 아니라 '유감이지만'이라는 뜻이에요. I'm afraid not(아쉽지만 아니에요)처럼 짧게 대답할 때도 써요." },
+    { "id": "do-you-happen-to", "ko": "혹시 ~하세요?", "en": "Do you happen to ~?", "meaning": "혹시나 하고 조심스럽게 물을 때", "note": "상대가 알거나 가지고 있을지 확실하지 않을 때 '혹시' 하고 조심스럽게 물어요. Do you know ~?보다 부담을 덜 주는 공손한 말투예요. 뒤에는 know, have 같은 동사원형이 와요." },
+    { "id": "recommend-for", "ko": "~로 뭘 추천하세요?", "en": "What do you recommend for ~?", "meaning": "현지인이나 직원에게 추천을 부탁할 때", "note": "현지인이나 직원에게 추천을 부탁할 때 써요. for 뒤에는 dessert, a rainy day처럼 용도나 상황이 와요. What would you recommend ~?라고 하면 조금 더 공손해져요." },
+    { "id": "id-prefer", "ko": "~가 더 좋겠어요", "en": "I'd prefer ~.", "meaning": "선택지 중 원하는 쪽을 정중하게 말할 때", "note": "선택지 중 원하는 것을 정중하게 말할 때 써요. I prefer는 평소 취향이고, I'd prefer는 지금 이 상황에서의 선택이에요. 뒤에 명사나 to+동사원형이 오고, 비슷한 I'd rather 뒤에는 동사원형이 바로 와요." },
+    { "id": "could-you-hold", "ko": "~ 좀 맡아(잡아) 두실 수 있나요?", "en": "Could you hold ~?", "meaning": "짐 보관이나 자리·물건을 잡아 달라고 부탁할 때", "note": "짐을 잠시 맡기거나 자리·물건을 잡아 두어 달라고 부탁할 때 써요. keep보다 '잠깐 붙잡아 둔다'는 느낌이 강해요. 전화에서 쓰는 hold on은 '잠깐 기다리다'라는 다른 뜻이니 주의하세요." },
+    { "id": "running-late", "ko": "~에 늦을 것 같아요", "en": "I'm running late for ~.", "meaning": "약속이나 일정에 늦어질 때 미리 알릴 때", "note": "약속이나 일정에 늦어지고 있을 때 미리 알리는 표현이에요. I'm late for ~는 이미 늦었다는 뜻이고, 진행형은 '늦어지는 중'이라 미리 연락할 때 자연스러워요. for 뒤에는 flight, reservation 같은 일정이 와요." },
+    { "id": "is-there-any-way", "ko": "~할 방법이 없을까요?", "en": "Is there any way ~?", "meaning": "어려운 상황에서 가능한 방법을 찾을 때", "note": "어려운 상황에서 혹시 가능한 방법이 있는지 물을 때 써요. 뒤에 I can ~이나 to+동사원형이 와요. 붙여 쓴 anyway는 '어쨌든'이라는 다른 단어라 주의하세요." },
+    { "id": "go-with", "ko": "~로 할게요", "en": "I'll go with ~.", "meaning": "여러 선택지 중 하나를 고를 때", "note": "여러 선택지 중 하나를 고를 때 쓰는 자연스러운 표현이에요. I'll take ~, I'll have ~와 비슷하지만 '그걸로 갈게요'처럼 결정하는 느낌이 있어요. 망설이다 고를 땐 I think I'll go with ~라고 해요." },
+    { "id": "mind-if-i", "ko": "~해도 될까요?", "en": "Mind if I ~?", "meaning": "가볍고 자연스럽게 허락을 구할 때", "note": "Do you mind if I ~?를 줄인 가벼운 표현으로, 허락을 구할 때 써요. mind는 '꺼리다'라서 괜찮다고 답할 땐 No, go ahead처럼 No로 답해요. 격식 있는 자리에서는 줄이지 않은 형태가 더 공손해요." },
+    { "id": "how-long-take", "ko": "~하는 데 얼마나 걸려요?", "en": "How long does it take to ~?", "meaning": "소요 시간을 물을 때", "note": "어떤 일을 하는 데 시간이 얼마나 걸리는지 물을 때 써요. 뒤에 to+동사원형으로 무엇을 하는지 말해요. 비용을 물을 땐 How much does it cost to ~?로 바꿔요." },
+    { "id": "make-it", "ko": "~로 해 주실 수 있나요?", "en": "Could you make it ~?", "meaning": "시간·개수·크기를 바꿔 달라고 할 때", "note": "시간, 개수, 크기 등을 다른 것으로 바꿔 달라고 할 때 써요. it은 지금 이야기하는 예약이나 주문 전체를 가리켜요. Could you change it to ~?보다 짧고 자연스러운 회화 표현이에요." }
+  ],
+  "items": [
+    { "id": "travel-levelup-would-it-be-possible-01", "pattern": "would-it-be-possible",
+      "partner": { "en": "Just a reminder, check-out is at 11 a.m.", "ko": "참고로 체크아웃은 오전 11시입니다." },
+      "en": "___ check out a bit later, around one?", "answer": "Would it be possible to",
+      "ko": "조금 늦게, 1시쯤 체크아웃**하는 게 가능할까요**?",
+      "alts": [
+        { "w": "Would it possible to", "t": "wrong", "m": "be동사가 빠졌어요. '가능한 상태일까요'를 완성해 보세요." },
+        { "w": "Is it possible to", "t": "ok", "m": "좋아요! 뜻이 같아요. 조동사를 넣으면 한층 더 조심스럽고 공손해져요." },
+        { "w": "Would it be possible for", "t": "wrong", "m": "for 뒤엔 사람이 와요(for me). 바로 동사가 오려면요?" }
+      ] },
+    { "id": "travel-levelup-would-it-be-possible-02", "pattern": "would-it-be-possible",
+      "partner": { "en": "You're in 32B. That's a middle seat.", "ko": "좌석은 32B, 가운데 자리입니다." },
+      "en": "___ switch to an aisle seat?", "answer": "Would it be possible to",
+      "ko": "통로 쪽 자리로 바꾸**는 게 가능할까요**?",
+      "alts": [
+        { "w": "Will it be possible to", "t": "near", "m": "미래를 묻는 말이라 조금 덜 조심스러워요. 가정의 느낌을 주는 조동사를 써 보세요." },
+        { "w": "Would it be possible", "t": "near", "m": "거의 다 왔어요! 동사 switch 앞에 필요한 작은 단어가 있어요." },
+        { "w": "Would be possible to", "t": "wrong", "m": "주어 it이 빠졌어요." }
+      ] },
+    { "id": "travel-levelup-would-it-be-possible-03", "pattern": "would-it-be-possible",
+      "partner": { "en": "I'm sorry, we're fully booked tonight.", "ko": "죄송하지만 오늘 밤은 예약이 꽉 찼어요." },
+      "en": "Oh, I see. ___ sit at the bar, then?", "answer": "Would it be possible to",
+      "ko": "아, 그렇군요. 그럼 바 자리에 앉**는 게 가능할까요**?",
+      "alts": [
+        { "w": "Could it be possible to", "t": "near", "m": "어색하게 들려요. 가정의 느낌을 주는 다른 조동사를 써 보세요." },
+        { "w": "Would it be possibly to", "t": "wrong", "m": "possibly는 부사예요. be동사 뒤에는 형용사가 와요." },
+        { "w": "Is it possible to", "t": "ok", "m": "좋아요! 통하는 말이에요. 조동사를 넣어 더 조심스럽게 묻는 형태도 연습해 봐요." }
+      ] },
+
+    { "id": "travel-levelup-i-was-told-01", "pattern": "i-was-told",
+      "partner": { "en": "I'm sorry, breakfast isn't included in your rate.", "ko": "죄송하지만 고객님 요금에는 조식이 포함되어 있지 않아요." },
+      "en": "Really? ___ it was included when I booked.", "answer": "I was told",
+      "ko": "정말요? 예약할 때 포함이라**고 들었는데요**.",
+      "alts": [
+        { "w": "I told", "t": "wrong", "m": "'내가 말했다'가 돼요. 누군가 나에게 말해 준 상황이에요." },
+        { "w": "I was telling", "t": "wrong", "m": "'내가 말하고 있었다'가 돼요. 남에게서 들은 수동 형태로 바꿔 보세요." },
+        { "w": "I heard", "t": "ok", "m": "자연스러워요! 직원에게 '안내받았다'는 느낌을 살리는 수동 표현도 연습해 봐요." }
+      ] },
+    { "id": "travel-levelup-i-was-told-02", "pattern": "i-was-told",
+      "partner": { "en": "Flight 302 is now boarding at Gate 12.", "ko": "302편은 지금 12번 게이트에서 탑승 중입니다." },
+      "en": "Gate 12? ___ it was Gate 20.", "answer": "I was told",
+      "ko": "12번 게이트요? 20번이라**고 들었는데요**.",
+      "alts": [
+        { "w": "I was said", "t": "wrong", "m": "say는 사람을 주어로 이런 수동형을 만들지 않아요. '알려 주다'를 뜻하는 동사를 써 보세요." },
+        { "w": "I've been told", "t": "ok", "m": "맞아요! 현재완료로도 써요. 단순 과거형으로도 연습해 봐요." },
+        { "w": "I was tell", "t": "wrong", "m": "be동사 뒤에는 과거분사 형태가 와야 해요." }
+      ] },
+    { "id": "travel-levelup-i-was-told-03", "pattern": "i-was-told",
+      "partner": { "en": "It's a flat rate of sixty dollars to downtown.", "ko": "시내까지는 60달러 고정 요금이에요." },
+      "en": "Hmm, ___ it would be about forty.", "answer": "I was told",
+      "ko": "음, 40달러 정도라**고 들었는데요**.",
+      "alts": [
+        { "w": "I was told that", "t": "ok", "m": "맞아요! 다만 that은 생략할 수 있어서 빼고 더 짧게 말하는 경우가 많아요." },
+        { "w": "I told", "t": "wrong", "m": "'내가 말했다'가 돼요. 누군가가 나에게 알려 준 수동 형태로 바꿔 보세요." },
+        { "w": "I was hearing", "t": "wrong", "m": "hear는 이렇게 진행형으로 잘 안 써요. 누군가 알려 준 수동 형태로 말해 보세요." }
+      ] },
+
+    { "id": "travel-levelup-is-included-01", "pattern": "is-included",
+      "partner": { "en": "The room rate is $180 per night.", "ko": "객실 요금은 1박에 180달러입니다." },
+      "en": "Is breakfast ___?", "answer": "included",
+      "ko": "조식도 **포함인가요**?",
+      "alts": [
+        { "w": "include", "t": "wrong", "m": "'포함된' 상태를 말하려면 동사 형태를 바꿔야 해요." },
+        { "w": "including", "t": "wrong", "m": "'~을 포함하여'라는 뜻이라 문장 끝에 혼자 쓰지 않아요. 상태를 나타내는 형태는요?" },
+        { "w": "contained", "t": "wrong", "m": "contain은 안에 '들어 있다'예요. 가격에 포함됐는지 물을 땐 다른 단어를 써요." }
+      ] },
+    { "id": "travel-levelup-is-included-02", "pattern": "is-included",
+      "partner": { "en": "We also offer an audio guide in Korean.", "ko": "한국어 오디오 가이드도 있습니다." },
+      "en": "Great. ___ in the ticket price?", "answer": "Is it included",
+      "ko": "좋네요. 그것도 입장료에 **포함인가요**?",
+      "alts": [
+        { "w": "Is it include", "t": "wrong", "m": "'포함된' 상태니까 동사 형태를 바꿔 보세요." },
+        { "w": "Does it include", "t": "wrong", "m": "'그게 무언가를 포함하나요'가 돼요. 가이드가 가격 안에 들어가는지 물어보세요." },
+        { "w": "Is that included", "t": "ok", "m": "맞아요! 이것도 자연스러워요. 대명사 it으로도 연습해 봐요." }
+      ] },
+    { "id": "travel-levelup-is-included-03", "pattern": "is-included",
+      "partner": { "en": "Here's your bill. Thank you for dining with us!", "ko": "계산서 여기 있습니다. 찾아 주셔서 감사합니다!" },
+      "en": "Thank you. Is the tip ___?", "answer": "included",
+      "ko": "감사합니다. 팁도 **포함인가요**?",
+      "alts": [
+        { "w": "include", "t": "wrong", "m": "be동사 뒤에서 '포함된' 상태를 나타내려면 형태를 바꿔야 해요." },
+        { "w": "included in", "t": "wrong", "m": "in 뒤에는 무엇에 포함되는지 대상이 와야 해요. 여기선 문장이 끝나요." },
+        { "w": "inclusive", "t": "near", "m": "'포함한'이라는 뜻이지만 주로 가격 표기에 써요. 회화에서 더 흔한 형태를 써 보세요." }
+      ] },
+
+    { "id": "travel-levelup-im-afraid-01", "pattern": "im-afraid",
+      "partner": { "en": "Is everything okay with your room?", "ko": "객실은 괜찮으신가요?" },
+      "en": "___ the air conditioner isn't working.", "answer": "I'm afraid",
+      "ko": "**죄송하지만** 에어컨이 작동을 안 해요.",
+      "alts": [
+        { "w": "I'm scared", "t": "wrong", "m": "scared는 정말 '무섭다'는 뜻이에요. 곤란한 소식을 부드럽게 꺼내는 표현이 있어요." },
+        { "w": "I'm afraid of", "t": "wrong", "m": "of 뒤엔 무서워하는 대상이 와요. 문장을 이어 갈 땐 of 없이 써요." },
+        { "w": "I'm sorry", "t": "ok", "m": "좋아요! 비슷하게 쓸 수 있어요. 불편한 소식을 더 부드럽게 전하는 표현도 연습해 봐요." }
+      ] },
+    { "id": "travel-levelup-im-afraid-02", "pattern": "im-afraid",
+      "partner": { "en": "How was everything tonight?", "ko": "오늘 식사는 어떠셨어요?" },
+      "en": "It was great, but ___ there's a mistake on the bill.", "answer": "I'm afraid",
+      "ko": "아주 맛있었어요. 그런데 **죄송하지만** 계산서가 잘못된 것 같아요.",
+      "alts": [
+        { "w": "I'm afraid that", "t": "ok", "m": "맞아요! 다만 that은 생략할 수 있어서 빼고 더 짧게 말하는 경우가 많아요." },
+        { "w": "I'm afraid of", "t": "wrong", "m": "of가 붙으면 '~을 무서워해요'가 돼요. 소식을 전할 땐 of를 빼요." },
+        { "w": "I fear", "t": "near", "m": "뜻은 비슷하지만 너무 무겁고 딱딱하게 들려요. 회화에서 흔한 표현을 써 보세요." }
+      ] },
+    { "id": "travel-levelup-im-afraid-03", "pattern": "im-afraid",
+      "partner": { "en": "Shall we head to the next stop?", "ko": "이제 다음 장소로 갈까요?" },
+      "en": "___ I have to go back to the hotel now.", "answer": "I'm afraid",
+      "ko": "**아쉽지만** 저는 이제 호텔로 돌아가야 해요.",
+      "alts": [
+        { "w": "I'm worried", "t": "near", "m": "'걱정돼요'라는 뜻이에요. 아쉬운 소식을 부드럽게 전하는 표현은요?" },
+        { "w": "I afraid", "t": "wrong", "m": "be동사가 빠졌어요." },
+        { "w": "I'm afraid of", "t": "wrong", "m": "of 뒤에는 두려워하는 대상이 와요. 아쉬운 소식을 전할 땐 of 없이 써요." }
+      ] },
+
+    { "id": "travel-levelup-do-you-happen-to-01", "pattern": "do-you-happen-to",
+      "partner": { "en": "Hi, you look a little lost.", "ko": "안녕하세요, 길을 좀 헤매시는 것 같네요." },
+      "en": "I am! ___ know where the bus stop is?", "answer": "Do you happen to",
+      "ko": "맞아요! **혹시** 버스 정류장이 어디 있는지 아세요?",
+      "alts": [
+        { "w": "Do you happen", "t": "near", "m": "거의 다 왔어요! 동사 know 앞에 작은 단어가 하나 필요해요." },
+        { "w": "Are you happen to", "t": "wrong", "m": "happen은 일반동사예요. be동사 대신 다른 조동사로 질문해 보세요." },
+        { "w": "Did you happen to", "t": "near", "m": "과거 일을 물을 때 써요. 지금 알고 있는지 묻는 거예요." }
+      ] },
+    { "id": "travel-levelup-do-you-happen-to-02", "pattern": "do-you-happen-to",
+      "partner": { "en": "Is there anything else I can do for you?", "ko": "더 도와드릴 일이 있을까요?" },
+      "en": "Yes, ___ have a phone charger I could borrow?", "answer": "Do you happen to",
+      "ko": "네, **혹시** 빌릴 수 있는 휴대폰 충전기 있으세요?",
+      "alts": [
+        { "w": "Do you happened to", "t": "wrong", "m": "조동사 do 뒤에는 동사원형이 와요." },
+        { "w": "Does you happen to", "t": "wrong", "m": "you에는 does가 아닌 다른 조동사를 써요." },
+        { "w": "Do you happen", "t": "near", "m": "동사 have와 이어 주는 작은 단어가 빠졌어요." }
+      ] },
+    { "id": "travel-levelup-do-you-happen-to-03", "pattern": "do-you-happen-to",
+      "partner": { "en": "Sorry, we're out of that size.", "ko": "죄송해요, 그 사이즈는 품절이에요." },
+      "en": "Oh. ___ know if another store has it?", "answer": "Do you happen to",
+      "ko": "아. **혹시** 다른 매장에는 있는지 아세요?",
+      "alts": [
+        { "w": "Do you maybe", "t": "near", "m": "말은 통하지만 조금 어색해요. '우연히 ~하다'라는 동사로 '혹시'를 표현해 보세요." },
+        { "w": "Are you happen to", "t": "wrong", "m": "be동사와 happen은 함께 쓰지 않아요. 일반동사 질문을 만들어 보세요." },
+        { "w": "Do you happen", "t": "near", "m": "거의 다 왔어요! 뒤의 know와 연결하는 작은 단어가 필요해요." }
+      ] },
+
+    { "id": "travel-levelup-recommend-for-01", "pattern": "recommend-for",
+      "partner": { "en": "Did you enjoy your meal?", "ko": "식사는 맛있게 하셨어요?" },
+      "en": "Yes! ___ dessert?", "answer": "What do you recommend for",
+      "ko": "네! 디저트**로는 뭘 추천하세요**?",
+      "alts": [
+        { "w": "What do you recommend", "t": "near", "m": "거의 다 왔어요! 뒤의 dessert와 이어 주는 전치사가 빠졌어요." },
+        { "w": "What you recommend for", "t": "wrong", "m": "질문이니까 조동사가 필요해요." },
+        { "w": "What would you recommend for", "t": "ok", "m": "좋아요! 조금 더 공손한 말이에요. do를 쓴 기본형도 연습해 봐요." }
+      ] },
+    { "id": "travel-levelup-recommend-for-02", "pattern": "recommend-for",
+      "partner": { "en": "Is this your first time in Seattle?", "ko": "시애틀은 처음이세요?" },
+      "en": "Yes, it is. ___ a rainy day?", "answer": "What do you recommend for",
+      "ko": "네, 처음이에요. 비 오는 날**에는 뭘 추천하세요**?",
+      "alts": [
+        { "w": "What do you recommend on", "t": "near", "m": "on a rainy day도 쓰지만, 상황에 맞는 걸 추천받을 땐 다른 전치사가 더 자연스러워요." },
+        { "w": "What do you recommend", "t": "near", "m": "a rainy day 앞에 '~에 맞는'을 뜻하는 전치사가 필요해요." },
+        { "w": "What are you recommend for", "t": "wrong", "m": "recommend는 일반동사라 be동사가 아닌 do로 질문해요." }
+      ] },
+    { "id": "travel-levelup-recommend-for-03", "pattern": "recommend-for",
+      "partner": { "en": "Welcome! Let me know if you need any help.", "ko": "어서 오세요! 도움이 필요하시면 말씀하세요." },
+      "en": "Thanks. ___ a gift for my mom?", "answer": "What do you recommend for",
+      "ko": "감사해요. 엄마 선물**로 뭘 추천하세요**?",
+      "alts": [
+        { "w": "What do you recommend to", "t": "wrong", "m": "to 뒤엔 추천받는 사람이 와요. 선물 '용도'를 나타내는 전치사를 써 보세요." },
+        { "w": "What can you recommend for", "t": "ok", "m": "좋아요! 비슷한 뜻이에요. do를 쓴 기본형도 연습해 봐요." },
+        { "w": "What do you recommend as", "t": "near", "m": "as도 통하지만 '~용으로'를 뜻하는 더 흔한 전치사가 있어요." }
+      ] },
+
+    { "id": "travel-levelup-id-prefer-01", "pattern": "id-prefer",
+      "partner": { "en": "Would you like a window or an aisle seat?", "ko": "창가 자리와 통로 자리 중 어디로 드릴까요?" },
+      "en": "___ an aisle seat, if possible.", "answer": "I'd prefer",
+      "ko": "가능하면 통로 자리**가 더 좋겠어요**.",
+      "alts": [
+        { "w": "I prefer", "t": "near", "m": "평소 취향을 말하는 느낌이에요. 지금 고르는 상황이라면 조동사를 줄여 붙여 보세요." },
+        { "w": "I'd rather", "t": "near", "m": "rather 뒤에는 동사원형이 와요. 명사가 바로 오려면 다른 동사가 필요해요." },
+        { "w": "I'd prefer to", "t": "wrong", "m": "to 뒤에는 동사가 와야 해요. 바로 명사가 오니 to를 빼 보세요." }
+      ] },
+    { "id": "travel-levelup-id-prefer-02", "pattern": "id-prefer",
+      "partner": { "en": "We have rooms on the second floor or the tenth floor.", "ko": "2층이나 10층에 방이 있습니다." },
+      "en": "___ a higher floor, please.", "answer": "I'd prefer",
+      "ko": "높은 층**이 더 좋겠어요**.",
+      "alts": [
+        { "w": "I would prefer", "t": "ok", "m": "맞아요! 말할 때는 보통 앞의 두 단어를 줄여서 더 자연스럽게 말해요." },
+        { "w": "I prefer", "t": "near", "m": "늘 그렇다는 취향처럼 들려요. 이번 선택을 정중하게 말하는 형태로 바꿔 보세요." },
+        { "w": "I'd preferred", "t": "wrong", "m": "조동사 뒤에는 동사원형이 와요." }
+      ] },
+    { "id": "travel-levelup-id-prefer-03", "pattern": "id-prefer",
+      "partner": { "en": "Would you like to sit inside or on the patio?", "ko": "실내에 앉으시겠어요, 테라스에 앉으시겠어요?" },
+      "en": "___ to sit inside. It's a bit chilly.", "answer": "I'd prefer",
+      "ko": "안에 앉는 **게 더 좋겠어요**. 좀 쌀쌀하네요.",
+      "alts": [
+        { "w": "I'd rather", "t": "wrong", "m": "rather 뒤엔 to 없이 바로 동사가 와요. 뒤에 to가 있으니 다른 동사를 써 보세요." },
+        { "w": "I'd like", "t": "ok", "m": "좋아요! 원하는 걸 말하는 표현이에요. 둘 중 '더 좋은 쪽'을 고르는 동사로도 말해 봐요." },
+        { "w": "I prefer", "t": "near", "m": "평소 취향처럼 들려요. 지금 이 자리에서의 선택이니 조동사를 넣어 보세요." }
+      ] },
+
+    { "id": "travel-levelup-could-you-hold-01", "pattern": "could-you-hold",
+      "partner": { "en": "You're all checked out. Anything else?", "ko": "체크아웃 다 되셨습니다. 더 필요하신 건요?" },
+      "en": "Yes. ___ my bags until five?", "answer": "Could you hold",
+      "ko": "네. 5시까지 제 짐 좀 **맡아 주실 수 있나요**?",
+      "alts": [
+        { "w": "Could you keep", "t": "ok", "m": "좋아요! 자연스러워요. 호텔에서 '잠시 보관하다'라는 뜻으로 자주 쓰는 다른 동사도 있어요." },
+        { "w": "Could you take", "t": "near", "m": "take는 '가져가다'라서 짐을 아예 가져가는 느낌이에요. 잠시 맡아 두는 동사는요?" },
+        { "w": "Could you save", "t": "wrong", "m": "save는 자리나 돈을 아껴 둘 때 써요. 짐을 맡아 둘 땐요?" }
+      ] },
+    { "id": "travel-levelup-could-you-hold-02", "pattern": "could-you-hold",
+      "partner": { "en": "We have one table left at eight, but it'll go fast.", "ko": "8시에 한 자리 남았는데 금방 찰 거예요." },
+      "en": "___ it for me? I'll be there on time.", "answer": "Could you hold",
+      "ko": "그 자리 좀 **잡아 두실 수 있나요**? 시간 맞춰 갈게요.",
+      "alts": [
+        { "w": "Could you hold on", "t": "wrong", "m": "hold on은 '잠깐 기다리다'예요. 뒤에 목적어가 바로 오게 써 보세요." },
+        { "w": "Could you save", "t": "ok", "m": "좋아요! 자리를 맡아 둘 때 써요. 같은 상황에서 자주 쓰는 다른 동사도 연습해 봐요." },
+        { "w": "Could you book", "t": "near", "m": "book은 '예약하다'예요. 잠깐 '붙잡아 두다'라는 동사를 써 보세요." }
+      ] },
+    { "id": "travel-levelup-could-you-hold-03", "pattern": "could-you-hold",
+      "partner": { "en": "This is the last one in your size.", "ko": "고객님 사이즈로는 이게 마지막이에요." },
+      "en": "___ this for me? I'll come back in an hour.", "answer": "Could you hold",
+      "ko": "이거 좀 **따로 빼 두실 수 있나요**? 한 시간 후에 다시 올게요.",
+      "alts": [
+        { "w": "Could you keep", "t": "ok", "m": "좋아요! 통하는 표현이에요. 가게에서 물건을 잡아 둘 때 더 흔히 쓰는 동사도 있어요." },
+        { "w": "Could you hold on", "t": "wrong", "m": "hold on은 '잠깐만요'라는 뜻이 돼요. 물건을 바로 목적어로 받는 형태로 써 보세요." },
+        { "w": "Could you have", "t": "wrong", "m": "have는 '가지다'라 직원이 갖는 게 돼요. 잠시 붙잡아 두는 동사를 써 보세요." }
+      ] },
+
+    { "id": "travel-levelup-running-late-01", "pattern": "running-late",
+      "partner": { "en": "Traffic's pretty bad today.", "ko": "오늘 차가 꽤 막히네요." },
+      "en": "Oh no. ___ my flight.", "answer": "I'm running late for",
+      "ko": "이런. 비행기 시간**에 늦을 것 같아요**.",
+      "alts": [
+        { "w": "I'm late for", "t": "near", "m": "'이미 늦었다'는 뜻이에요. 늦어지고 있는 중이라는 진행형 표현을 써 보세요." },
+        { "w": "I'm running out for", "t": "wrong", "m": "run out은 '다 떨어지다'예요. 늦어지는 상황을 말해 보세요." },
+        { "w": "I'm running late to", "t": "near", "m": "to도 쓰긴 하지만 일정 앞에서는 다른 전치사가 더 흔해요." }
+      ] },
+    { "id": "travel-levelup-running-late-02", "pattern": "running-late",
+      "partner": { "en": "Hello, Bella Cucina. How can I help you?", "ko": "벨라 쿠치나입니다. 무엇을 도와드릴까요?" },
+      "en": "Hi, ___ my seven o'clock reservation.", "answer": "I'm running late for",
+      "ko": "안녕하세요, 7시 예약**에 좀 늦을 것 같아요**.",
+      "alts": [
+        { "w": "I'm late for", "t": "near", "m": "이미 늦었다는 말이 돼요. 아직 가는 중이라는 느낌을 살려 보세요." },
+        { "w": "I'm running later for", "t": "wrong", "m": "비교급이 아니에요. '늦게'라는 기본 형태를 써요." },
+        { "w": "I'm going late for", "t": "wrong", "m": "go late는 어색해요. '늦어지는 중'을 뜻하는 다른 동사를 써 보세요." }
+      ] },
+    { "id": "travel-levelup-running-late-03", "pattern": "running-late",
+      "partner": { "en": "The bus leaves in ten minutes. Where are you?", "ko": "버스가 10분 후에 출발해요. 어디세요?" },
+      "en": "Sorry, ___ the tour. I'm almost there!", "answer": "I'm running late for",
+      "ko": "죄송해요, 투어**에 좀 늦을 것 같아요**. 거의 다 왔어요!",
+      "alts": [
+        { "w": "I'm running late", "t": "near", "m": "전치사 하나가 빠졌어요. 늦는 대상(투어) 앞에 붙는 단어는요?" },
+        { "w": "I'm run late for", "t": "wrong", "m": "be동사 뒤에는 진행형(-ing)이 와요." },
+        { "w": "I'm late to", "t": "near", "m": "'이미 늦었다'는 느낌이에요. 늦어지는 중이라는 진행형으로 말해 보세요." }
+      ] },
+
+    { "id": "travel-levelup-is-there-any-way-01", "pattern": "is-there-any-way",
+      "partner": { "en": "I'm sorry, this flight is fully booked.", "ko": "죄송하지만 이 항공편은 만석입니다." },
+      "en": "___ I can get on the next one?", "answer": "Is there any way",
+      "ko": "다음 비행기라도 탈 **방법이 없을까요**?",
+      "alts": [
+        { "w": "Is there some way", "t": "near", "m": "통하지만 이런 질문에서는 '어떤 ~라도'를 뜻하는 단어를 더 자주 써요." },
+        { "w": "Is there any ways", "t": "wrong", "m": "여기서 way는 단수로 써요." },
+        { "w": "There is any way", "t": "wrong", "m": "평서문 순서예요. 질문이니까 순서를 바꿔 보세요." }
+      ] },
+    { "id": "travel-levelup-is-there-any-way-02", "pattern": "is-there-any-way",
+      "partner": { "en": "Sorry, today's tickets are sold out.", "ko": "죄송하지만 오늘 티켓은 매진이에요." },
+      "en": "Oh no. ___ to get in later today?", "answer": "Is there any way",
+      "ko": "이런. 오늘 늦게라도 들어갈 **방법이 없을까요**?",
+      "alts": [
+        { "w": "Is there a way", "t": "ok", "m": "좋아요! 통하는 표현이에요. '어떻게든'이라는 간절함을 더하는 단어도 있어요." },
+        { "w": "Is there any way how", "t": "wrong", "m": "way 자체에 '방법'이라는 뜻이 있어 how는 필요 없어요." },
+        { "w": "Is there anyway", "t": "near", "m": "붙여 쓰면 '어쨌든'이라는 부사가 돼요. 띄어 써 보세요." }
+      ] },
+    { "id": "travel-levelup-is-there-any-way-03", "pattern": "is-there-any-way",
+      "partner": { "en": "Just so you know, our front desk closes at midnight.", "ko": "참고로 저희 프런트는 자정에 문을 닫아요." },
+      "en": "My flight lands at 1 a.m. ___ I could check in late?", "answer": "Is there any way",
+      "ko": "제 비행기가 새벽 1시에 도착해요. 늦게 체크인할 **방법이 없을까요**?",
+      "alts": [
+        { "w": "Is there anyway", "t": "near", "m": "한 단어로 붙이면 '어쨌든'이라는 뜻이 돼요. 두 단어로 나눠 써 보세요." },
+        { "w": "Are there any way", "t": "wrong", "m": "way가 단수니까 be동사도 단수로 맞춰요." },
+        { "w": "Is there a way", "t": "ok", "m": "맞아요! 자연스러워요. '혹시라도'의 느낌을 더하는 단어로도 말해 봐요." }
+      ] },
+
+    { "id": "travel-levelup-go-with-01", "pattern": "go-with",
+      "partner": { "en": "We have oat, almond, and soy milk.", "ko": "귀리 우유, 아몬드 우유, 두유가 있어요." },
+      "en": "___ oat milk, please.", "answer": "I'll go with",
+      "ko": "귀리 우유**로 할게요**.",
+      "alts": [
+        { "w": "I'll go to", "t": "wrong", "m": "go to는 장소로 '가다'예요. 고를 때 쓰는 전치사는요?" },
+        { "w": "I go with", "t": "near", "m": "현재형이면 평소 습관처럼 들려요. 지금 결정하는 느낌을 살려 보세요." },
+        { "w": "I'll take", "t": "ok", "m": "좋아요! 고를 때 많이 써요. '그걸로 갈게요'라는 느낌의 표현도 연습해 봐요." }
+      ] },
+    { "id": "travel-levelup-go-with-02", "pattern": "go-with",
+      "partner": { "en": "Do you like the blue one or the black one better?", "ko": "파란색이 좋으세요, 검은색이 좋으세요?" },
+      "en": "Hmm... ___ the black one.", "answer": "I'll go with",
+      "ko": "음... 검은색**으로 할게요**.",
+      "alts": [
+        { "w": "I'll go for", "t": "ok", "m": "좋아요! 같은 뜻으로 써요. 전치사만 다른 비슷한 표현도 익혀 봐요." },
+        { "w": "I'll going with", "t": "wrong", "m": "will 뒤에는 동사원형이 와요." },
+        { "w": "I'll go", "t": "near", "m": "뒤의 the black one과 이어 주는 전치사가 빠졌어요." }
+      ] },
+    { "id": "travel-levelup-go-with-03", "pattern": "go-with",
+      "partner": { "en": "We have a half-day tour and a full-day tour.", "ko": "반나절 투어와 하루 종일 투어가 있어요." },
+      "en": "I think ___ the half-day tour.", "answer": "I'll go with",
+      "ko": "반나절 투어**로 할까 봐요**.",
+      "alts": [
+        { "w": "I'll go to", "t": "wrong", "m": "go to는 어디로 '가다'예요. 선택할 때 쓰는 전치사를 써 보세요." },
+        { "w": "I'm going with", "t": "ok", "m": "맞아요! 이미 마음을 정한 느낌이에요. will을 쓴 형태도 연습해 봐요." },
+        { "w": "I'll go by", "t": "wrong", "m": "by는 교통수단 앞에 써요. 고를 때 쓰는 전치사는요?" }
+      ] },
+
+    { "id": "travel-levelup-mind-if-i-01", "pattern": "mind-if-i",
+      "partner": { "en": "It's so crowded in here today.", "ko": "오늘 여기 정말 붐비네요." },
+      "en": "I know. ___ sit here?", "answer": "Mind if I",
+      "ko": "그러게요. 여기 앉**아도 될까요**?",
+      "alts": [
+        { "w": "Do you mind if I", "t": "ok", "m": "맞아요! 줄이지 않은 더 정중한 형태예요. 가볍게 줄인 형태도 연습해 봐요." },
+        { "w": "Mind if", "t": "near", "m": "누가 앉는지 주어가 빠졌어요." },
+        { "w": "Mind I", "t": "wrong", "m": "'만약 ~한다면'을 뜻하는 작은 단어가 빠졌어요." }
+      ] },
+    { "id": "travel-levelup-mind-if-i-02", "pattern": "mind-if-i",
+      "partner": { "en": "Feel free to look around.", "ko": "편하게 둘러보세요." },
+      "en": "Thanks. ___ take a photo of this painting?", "answer": "Mind if I",
+      "ko": "감사해요. 이 그림 사진 좀 찍**어도 될까요**?",
+      "alts": [
+        { "w": "Mind if me", "t": "wrong", "m": "if 뒤에는 주어 형태가 와야 해요." },
+        { "w": "Mind if I'm", "t": "wrong", "m": "be동사가 들어가면 뒤의 take와 이어지지 않아요." },
+        { "w": "Mind that I", "t": "wrong", "m": "that이 아니라 '만약 ~한다면'을 뜻하는 단어를 써요." }
+      ] },
+    { "id": "travel-levelup-mind-if-i-03", "pattern": "mind-if-i",
+      "partner": { "en": "Hi! Is this your first time flying to Paris?", "ko": "안녕하세요! 파리 가는 비행기는 처음이세요?" },
+      "en": "It is! By the way, ___ open the window shade?", "answer": "Mind if I",
+      "ko": "네! 그런데 창문 가리개 좀 열**어도 될까요**?",
+      "alts": [
+        { "w": "Do you mind if I", "t": "ok", "m": "좋아요! 더 정중한 형태예요. 옆자리 승객에게 가볍게 말하는 줄인 형태도 써 봐요." },
+        { "w": "Mind if I'll", "t": "wrong", "m": "if 뒤에는 will 없이 현재형을 써요." },
+        { "w": "Mind to", "t": "wrong", "m": "mind 뒤에는 to가 오지 않아요. 내가 해도 될지 묻는 형태로 써 보세요." }
+      ] },
+
+    { "id": "travel-levelup-how-long-take-01", "pattern": "how-long-take",
+      "partner": { "en": "The airport is pretty far from here.", "ko": "공항은 여기서 꽤 멀어요." },
+      "en": "___ get there by taxi?", "answer": "How long does it take to",
+      "ko": "택시로 거기까지 가**는 데 얼마나 걸려요**?",
+      "alts": [
+        { "w": "How long does it take", "t": "near", "m": "거의 다 왔어요! 동사 get 앞에 작은 단어가 하나 필요해요." },
+        { "w": "How long does it takes to", "t": "wrong", "m": "does 뒤에는 동사원형이 와요." },
+        { "w": "How much does it take to", "t": "wrong", "m": "much는 비용이나 양을 물어요. 시간을 물을 땐요?" }
+      ] },
+    { "id": "travel-levelup-how-long-take-02", "pattern": "how-long-take",
+      "partner": { "en": "The lasagna is made fresh to order.", "ko": "라자냐는 주문 즉시 새로 만들어요." },
+      "en": "Sounds good. ___ make it?", "answer": "How long does it take to",
+      "ko": "좋네요. 만드**는 데 얼마나 걸려요**?",
+      "alts": [
+        { "w": "How long will it take to", "t": "ok", "m": "좋아요! 앞으로 걸릴 시간을 묻는 말이에요. 일반적인 소요 시간을 묻는 기본형도 연습해요." },
+        { "w": "How long is it take to", "t": "wrong", "m": "take는 일반동사라 be동사가 아닌 다른 조동사로 질문해요." },
+        { "w": "How long it takes to", "t": "wrong", "m": "직접 묻는 질문이니까 조동사를 앞에 써요." }
+      ] },
+    { "id": "travel-levelup-how-long-take-03", "pattern": "how-long-take",
+      "partner": { "en": "We offer laundry service for our guests.", "ko": "투숙객을 위한 세탁 서비스가 있어요." },
+      "en": "Great. ___ get my clothes back?", "answer": "How long does it take to",
+      "ko": "좋네요. 옷을 돌려받**는 데 얼마나 걸려요**?",
+      "alts": [
+        { "w": "How long time does it take to", "t": "wrong", "m": "long 자체가 시간을 뜻해요. time은 빼도 돼요." },
+        { "w": "How long does it take for", "t": "wrong", "m": "for 뒤엔 사람이나 대상이 와요. 동사 get 앞에는요?" },
+        { "w": "How long does take to", "t": "wrong", "m": "주어 it이 빠졌어요." }
+      ] },
+
+    { "id": "travel-levelup-make-it-01", "pattern": "make-it",
+      "partner": { "en": "We can book you a table at six thirty.", "ko": "6시 반으로 예약해 드릴 수 있어요." },
+      "en": "Hmm, ___ seven instead?", "answer": "Could you make it",
+      "ko": "음, 대신 7시로 **해 주실 수 있나요**?",
+      "alts": [
+        { "w": "Could you make", "t": "near", "m": "거의 다 왔어요! 무엇을 바꾸는지 가리키는 작은 단어가 빠졌어요." },
+        { "w": "Could you change it", "t": "near", "m": "change를 쓰면 to seven처럼 to가 필요해요. 바로 7시가 오려면 다른 동사를 써요." },
+        { "w": "Could you do it", "t": "near", "m": "통할 수는 있지만, '~로 만들다'라는 느낌의 동사가 더 자연스러워요." }
+      ] },
+    { "id": "travel-levelup-make-it-02", "pattern": "make-it",
+      "partner": { "en": "One small iced Americano, right?", "ko": "아이스 아메리카노 스몰 사이즈 한 잔 맞으시죠?" },
+      "en": "Actually, ___ a large?", "answer": "Could you make it",
+      "ko": "아, 라지로 **해 주실 수 있나요**?",
+      "alts": [
+        { "w": "Can you make it", "t": "ok", "m": "좋아요! 통하는 말이에요. 조금 더 공손한 조동사로도 말해 봐요." },
+        { "w": "Could you make it to", "t": "wrong", "m": "make it to는 '~에 도착하다'라는 뜻이 돼요. 사이즈를 바꿀 땐 to를 빼요." },
+        { "w": "Could you made it", "t": "wrong", "m": "조동사 뒤에는 동사원형이 와요." }
+      ] },
+    { "id": "travel-levelup-make-it-03", "pattern": "make-it",
+      "partner": { "en": "So that's one adult ticket for the 3 p.m. show.", "ko": "오후 3시 공연 성인 한 장이요." },
+      "en": "Oh, ___ two? My friend is coming too.", "answer": "Could you make it",
+      "ko": "아, 두 장으로 **해 주실 수 있나요**? 친구도 오거든요.",
+      "alts": [
+        { "w": "Could you make", "t": "near", "m": "바꿀 대상(지금 주문)을 가리키는 작은 대명사가 빠졌어요." },
+        { "w": "Could you make them", "t": "near", "m": "지금 주문 전체를 하나로 가리키니까 단수 대명사가 자연스러워요." },
+        { "w": "Could you change it", "t": "near", "m": "change를 쓰려면 to two처럼 to가 필요해요. 바로 숫자가 오려면 다른 동사를 써요." }
+      ] }
+  ]
+}

@@ -1,0 +1,523 @@
+{
+  "story": {
+    "id": "la-neighbors",
+    "title": "LA 인싸의 스몰토크 챌린지",
+    "subtitle": "스몰토크가 만든 특별한 한 달",
+    "category": "일상",
+    "cefr": "B1",
+    "scene": "street"
+  },
+  "episodes": [
+    {
+      "id": "la-neighbors-01",
+      "title": "옆집 이웃과 첫인사",
+      "partner": "Jake (옆집 이웃)",
+      "mission": "이사 온 지 일주일째, 아직 이웃과 인사도 못 했어요.\n옆집 Jake에게 먼저 말을 걸어 봐요.",
+      "lines": [
+        { "who": "npc", "en": "Oh, hey there! You must be the new neighbor.", "ko": "어, 안녕하세요! 새로 이사 오신 분이군요." },
+        {
+          "who": "me",
+          "ko": "네, 지난주에 이사 왔어요. 저는 준이라고 해요.",
+          "answer": "Yeah, I just moved in last week. I'm Jun.",
+          "accept": [
+            "Yes, I moved in last week. My name is Jun.",
+            "That's me! I just moved in last week. I'm Jun.",
+            "Yes, I moved here last week. I'm Jun."
+          ],
+          "keys": [
+            { "k": "moved in|moved here", "tip": "'이사 왔어요'는 move in의 과거형 moved in으로 말해요." },
+            { "k": "last week", "tip": "'지난주에'는 last week예요." }
+          ],
+          "hint": "'이사 오다'는 move in으로, '지난주에'는 last week로 표현해 보세요.",
+          "words": [
+            { "ko": "이사 왔어요", "en": "moved in" },
+            { "ko": "지난주에", "en": "last week" }
+          ]
+        },
+        { "who": "npc", "en": "Welcome to the neighborhood, Jun! I'm Jake. How are you settling in?", "ko": "동네에 오신 걸 환영해요, 준! 저는 Jake예요. 적응은 잘 하고 있어요?" },
+        {
+          "who": "me",
+          "ko": "아직 박스 푸는 중이지만, 동네가 정말 마음에 들어요.",
+          "answer": "I'm still unpacking, but I really love the neighborhood.",
+          "accept": [
+            "I'm still unpacking boxes, but I love this neighborhood.",
+            "Still unpacking, but I really like the neighborhood.",
+            "I'm still unpacking, but I'm loving the neighborhood so far."
+          ],
+          "keys": [
+            { "k": "unpacking", "tip": "'박스 푸는 중'은 unpack을 진행형으로 써서 unpacking이라고 해요." },
+            { "k": "neighborhood", "tip": "'동네'는 neighborhood라고 해요." },
+            { "k": "love|like|loving", "tip": "'마음에 들어요'는 love나 like로 간단히 말하면 돼요." }
+          ],
+          "hint": "'짐을 풀다'는 unpack으로, '동네'는 neighborhood로 표현해 보세요.",
+          "words": [
+            { "ko": "박스 푸는 중", "en": "unpacking" },
+            { "ko": "동네", "en": "neighborhood" }
+          ]
+        },
+        { "who": "npc", "en": "Ha, I remember those days. It took me a whole month to unpack everything.", "ko": "하하, 저도 그때가 기억나요. 저는 다 푸는 데 꼬박 한 달 걸렸어요." },
+        {
+          "who": "me",
+          "ko": "그런데 혹시 이 근처에 괜찮은 카페 있어요?",
+          "answer": "By the way, is there a good coffee shop around here?",
+          "accept": [
+            "By the way, do you know any good cafes around here?",
+            "Is there a nice coffee shop near here?",
+            "By the way, are there any good cafes nearby?"
+          ],
+          "keys": [
+            { "k": "around here|near here|nearby", "tip": "'이 근처에'는 around here나 nearby로 말해요." },
+            { "k": "coffee shop|cafe|cafes", "tip": "'카페'는 coffee shop이나 cafe라고 해요." }
+          ],
+          "hint": "'그런데'는 by the way로, '이 근처에'는 around here로 표현해 보세요.",
+          "words": [
+            { "ko": "그런데", "en": "by the way" },
+            { "ko": "이 근처에", "en": "around here" }
+          ],
+          "expr": {
+            "en": "by the way",
+            "ko": "그런데, 그건 그렇고",
+            "note": "by the way는 대화 주제를 자연스럽게 바꿀 때 쓰는 말이에요. 문자에서는 줄여서 BTW라고도 써요. 갑자기 질문하기 전에 붙이면 훨씬 부드럽게 들려요."
+          }
+        },
+        { "who": "npc", "en": "Oh, definitely. Sunny Bean on Fifth Street. Their cold brew is amazing.", "ko": "아, 그럼요. 5번가에 있는 Sunny Bean이요. 거기 콜드브루가 끝내줘요." },
+        {
+          "who": "me",
+          "ko": "좋네요! 내일 아침에 한번 가 볼게요.",
+          "answer": "Sounds great! I'll check it out tomorrow morning.",
+          "accept": [
+            "Great! I'll go there tomorrow morning.",
+            "Nice! I'll try it tomorrow morning.",
+            "That sounds great. I'll check it out tomorrow morning."
+          ],
+          "keys": [
+            { "k": "check it out|go there|try it", "tip": "'가 볼게요'는 I'll check it out이라고 하면 자연스러워요." },
+            { "k": "tomorrow morning", "tip": "'내일 아침에'는 tomorrow morning이에요." }
+          ],
+          "hint": "'한번 가 보다'는 check it out으로, '내일 아침'은 tomorrow morning으로 말해 보세요.",
+          "words": [
+            { "ko": "한번 가 볼게요", "en": "I'll check it out" },
+            { "ko": "내일 아침에", "en": "tomorrow morning" }
+          ],
+          "expr": {
+            "en": "check it out",
+            "ko": "한번 가 보다, 직접 확인해 보다",
+            "note": "check out은 어떤 장소나 물건을 직접 가서 보거나 경험해 본다는 뜻이에요. 추천을 받았을 때 I'll check it out이라고 하면 관심을 보여 주는 좋은 반응이 돼요."
+          }
+        },
+        { "who": "npc", "en": "Tell them Jake sent you. Maybe they'll give you a free cookie.", "ko": "Jake가 보냈다고 말해요. 쿠키 하나 공짜로 줄지도 몰라요." },
+        {
+          "who": "me",
+          "ko": "하하, 그럴게요. 만나서 반가웠어요, Jake!",
+          "answer": "Ha, I will. It was nice meeting you, Jake!",
+          "accept": [
+            "Haha, I will. Nice to meet you, Jake!",
+            "I will! It was great meeting you, Jake.",
+            "Ha, will do. Nice meeting you, Jake!"
+          ],
+          "keys": [
+            { "k": "nice meeting you|nice to meet you|great meeting you", "tip": "헤어질 때 '만나서 반가웠어요'는 Nice meeting you라고 해요." }
+          ],
+          "hint": "헤어질 때는 It was nice meeting you로 인사해 보세요.",
+          "words": [
+            { "ko": "만나서 반가웠어요", "en": "nice meeting you" }
+          ]
+        },
+        { "who": "npc", "en": "You too, Jun. If you ever need anything, just knock!", "ko": "저도요, 준. 필요한 거 있으면 언제든 문 두드려요!" }
+      ]
+    },
+    {
+      "id": "la-neighbors-02",
+      "title": "단골 카페의 바리스타",
+      "partner": "Maria (카페 바리스타)",
+      "mission": "Jake가 추천한 카페에 왔어요.\n바리스타와 가볍게 수다를 떨어 봐요.",
+      "lines": [
+        { "who": "npc", "en": "Hi there! What can I get started for you?", "ko": "안녕하세요! 뭐로 준비해 드릴까요?" },
+        {
+          "who": "me",
+          "ko": "콜드브루 한 잔 주세요. 옆집 사는 Jake가 여기 강력 추천했어요.",
+          "answer": "Can I get a cold brew, please? My neighbor Jake highly recommended this place.",
+          "accept": [
+            "I'll have a cold brew, please. My neighbor Jake recommended this place.",
+            "A cold brew, please. Jake from next door really recommended this place.",
+            "Could I get a cold brew? My neighbor Jake highly recommended it."
+          ],
+          "keys": [
+            { "k": "cold brew", "tip": "콜드브루는 영어로도 그대로 cold brew라고 해요." },
+            { "k": "recommended", "tip": "'추천했어요'는 recommend의 과거형 recommended로 말해요." }
+          ],
+          "hint": "주문은 Can I get ~?으로, '강력 추천했어요'는 highly recommended로 표현해 보세요.",
+          "words": [
+            { "ko": "강력 추천했어요", "en": "highly recommended" },
+            { "ko": "옆집", "en": "next door" }
+          ],
+          "expr": {
+            "en": "highly recommend",
+            "ko": "강력 추천하다",
+            "note": "highly는 '높이'가 아니라 '매우, 강력하게'라는 뜻으로 recommend와 자주 짝을 이뤄요. 리뷰를 쓰거나 무언가를 추천할 때 I highly recommend it!처럼 정말 많이 쓰여요."
+          }
+        },
+        { "who": "npc", "en": "Jake? Oh, he's one of our regulars! He's here almost every morning.", "ko": "Jake요? 아, 우리 단골이에요! 거의 매일 아침 와요." },
+        {
+          "who": "me",
+          "ko": "그럴 것 같았어요. 그나저나 오늘 날씨 진짜 좋네요.",
+          "answer": "I figured. Anyway, it's such a beautiful day today.",
+          "accept": [
+            "I thought so. Anyway, the weather is really nice today.",
+            "I guessed that. Anyway, it's a beautiful day today.",
+            "I figured! The weather is so nice today."
+          ],
+          "keys": [
+            { "k": "figured|thought so|guessed", "tip": "'그럴 것 같았어요'는 I figured나 I thought so로 짧게 말해요." },
+            { "k": "beautiful day|nice day|weather", "tip": "'날씨 좋네요'는 It's a beautiful day나 The weather is nice라고 해요." }
+          ],
+          "hint": "'그럴 것 같았어요'는 I figured로, '날씨 좋네요'는 such a beautiful day로 말해 보세요.",
+          "words": [
+            { "ko": "그나저나", "en": "anyway" },
+            { "ko": "날씨 진짜 좋네요", "en": "such a beautiful day" }
+          ]
+        },
+        { "who": "npc", "en": "Right? I'm so ready for the weekend, though. Got any plans?", "ko": "그렇죠? 그래도 저는 주말만 기다리고 있어요. 계획 있어요?" },
+        {
+          "who": "me",
+          "ko": "아직 없어요. 이 동네에서 할 만한 거 추천해 줄 수 있어요?",
+          "answer": "Not yet. Can you recommend anything fun to do around here?",
+          "accept": [
+            "Nothing yet. Do you have any recommendations for things to do around here?",
+            "Not really. What's fun to do around here?",
+            "Not yet. Any recommendations for things to do in this area?"
+          ],
+          "keys": [
+            { "k": "not yet|nothing yet|not really", "tip": "'아직 없어요'는 Not yet이나 Nothing yet으로 짧게 답해요." },
+            { "k": "to do", "tip": "'할 만한 거'는 things to do처럼 뒤에 to do를 붙여 말해요." }
+          ],
+          "hint": "'할 만한 것'은 things to do로, '이 동네에서'는 around here로 표현해 보세요.",
+          "words": [
+            { "ko": "할 만한 거", "en": "things to do" },
+            { "ko": "추천해 줄 수 있어요", "en": "can you recommend" }
+          ]
+        },
+        { "who": "npc", "en": "Oh, you have to check out the farmers market on Sunday. The fresh strawberries are unreal.", "ko": "아, 일요일에 열리는 파머스 마켓은 꼭 가 봐야 해요. 신선한 딸기가 말도 안 되게 맛있어요." },
+        {
+          "who": "me",
+          "ko": "재밌겠네요! 몇 시에 열어요?",
+          "answer": "That sounds fun! What time does it open?",
+          "accept": [
+            "Sounds fun! When does it open?",
+            "That sounds like fun. What time does it start?",
+            "Oh, sounds fun! What time does it open?"
+          ],
+          "keys": [
+            { "k": "sounds fun|sounds like fun", "tip": "'재밌겠네요'는 That sounds fun이라고 해요." },
+            { "k": "what time|when", "tip": "'몇 시에'는 What time이나 When으로 물어요." }
+          ],
+          "hint": "'~하겠네요'는 That sounds ~로, '몇 시에'는 What time으로 말해 보세요.",
+          "words": [
+            { "ko": "재밌겠네요", "en": "that sounds fun" },
+            { "ko": "몇 시에", "en": "what time" }
+          ],
+          "expr": {
+            "en": "That sounds fun",
+            "ko": "재밌겠다",
+            "note": "sound는 '~하게 들리다'라는 뜻이라 상대가 말한 계획에 반응할 때 딱이에요. That sounds great, That sounds tough처럼 뒤의 형용사만 바꿔 다양하게 쓸 수 있어요."
+          }
+        },
+        { "who": "npc", "en": "Eight to one. Go early, though. It gets packed by ten.", "ko": "8시부터 1시까지요. 그래도 일찍 가요. 10시쯤이면 사람으로 꽉 차거든요." },
+        {
+          "who": "me",
+          "ko": "꿀팁 고마워요! 아, 그리고 콜드브루 진짜 맛있어요.",
+          "answer": "Thanks for the tip! Oh, and this cold brew is really good.",
+          "accept": [
+            "Thanks for the tip! And the cold brew is amazing.",
+            "Thank you for the tip! This cold brew is so good.",
+            "Thanks for the great tip! Oh, and the cold brew is really good."
+          ],
+          "keys": [
+            { "k": "thanks|thank you", "tip": "고마움은 Thanks for ~로 이유를 붙여 말해요." },
+            { "k": "tip", "tip": "'꿀팁'은 tip 하나로 충분해요." }
+          ],
+          "hint": "'꿀팁 고마워요'는 Thanks for the tip으로 말해 보세요.",
+          "words": [
+            { "ko": "꿀팁", "en": "tip" },
+            { "ko": "진짜 맛있어요", "en": "really good" }
+          ]
+        },
+        { "who": "npc", "en": "Glad you like it! I've got your name on the cup now, so see you tomorrow, Jun!", "ko": "맘에 든다니 다행이에요! 이제 컵에 이름도 적었으니, 내일 봐요, 준!" }
+      ]
+    },
+    {
+      "id": "la-neighbors-03",
+      "title": "공원에서 만난 강아지",
+      "partner": "Linda (강아지 산책 중인 주민)",
+      "mission": "파머스 마켓에 가는 길, 귀여운 강아지를 만났어요.\n주인에게 말을 걸어 봐요.",
+      "lines": [
+        {
+          "who": "me",
+          "ko": "강아지 정말 귀엽네요! 쓰다듬어도 괜찮을까요?",
+          "answer": "Your dog is so cute! Is it okay if I pet him?",
+          "accept": [
+            "What a cute dog! Can I pet him?",
+            "Your dog is adorable! May I pet him?",
+            "Your dog is so cute! Is it okay to pet him?"
+          ],
+          "keys": [
+            { "k": "cute|adorable", "tip": "'귀엽네요'는 cute나 adorable로 말해요." },
+            { "k": "pet", "tip": "동물을 '쓰다듬다'는 pet이라는 동사를 써요." }
+          ],
+          "hint": "허락을 구할 땐 Is it okay if I ~?로, '쓰다듬다'는 pet으로 말해 보세요.",
+          "words": [
+            { "ko": "쓰다듬어도 괜찮을까요", "en": "is it okay if I pet" },
+            { "ko": "귀엽네요", "en": "cute, adorable" }
+          ],
+          "expr": {
+            "en": "Is it okay if I ~?",
+            "ko": "~해도 괜찮을까요?",
+            "note": "Is it okay if I ~?는 상대에게 정중하게 허락을 구하는 표현이에요. Can I ~?보다 조심스럽고 부드럽게 들려요. 처음 보는 사람에게 부탁할 때 특히 좋아요."
+          }
+        },
+        { "who": "npc", "en": "Of course! This is Biscuit. He loves meeting new people.", "ko": "물론이죠! 얘는 Biscuit이에요. 새로운 사람 만나는 걸 정말 좋아해요." },
+        {
+          "who": "me",
+          "ko": "안녕, Biscuit! 무슨 종이에요?",
+          "answer": "Hi, Biscuit! What breed is he?",
+          "accept": [
+            "Hey, Biscuit! What kind of dog is he?",
+            "Hello, Biscuit! What breed is he?",
+            "Hi there, Biscuit! What breed is your dog?"
+          ],
+          "keys": [
+            { "k": "what breed|what kind of dog", "tip": "강아지의 '종'은 breed라서 What breed is he?로 물어요." }
+          ],
+          "hint": "개나 고양이의 '품종'은 breed라는 단어로 물어보세요.",
+          "words": [
+            { "ko": "무슨 종", "en": "what breed" }
+          ]
+        },
+        { "who": "npc", "en": "He's a corgi mix. We just got back from a hike at Griffith Park.", "ko": "코기 믹스예요. 방금 그리피스 공원에서 하이킹하고 돌아왔어요." },
+        {
+          "who": "me",
+          "ko": "오, 저도 전부터 거기 가 보고 싶었어요. 초보자한테 어려운가요?",
+          "answer": "Oh, I've been meaning to go there. Is it hard for beginners?",
+          "accept": [
+            "Oh, I've been wanting to go there. Is it difficult for beginners?",
+            "I've always wanted to go there. Is it tough for beginners?",
+            "Oh, I've been meaning to check it out. Is it hard for a beginner?"
+          ],
+          "keys": [
+            { "k": "been meaning to|been wanting to|always wanted to", "tip": "'전부터 ~하고 싶었어요'는 I've been meaning to ~로 말해요." },
+            { "k": "beginners|beginner", "tip": "'초보자'는 beginner예요." }
+          ],
+          "hint": "'계속 ~하려고 했다'는 I've been meaning to로, '초보자'는 beginner로 말해 보세요.",
+          "words": [
+            { "ko": "가 보고 싶었어요", "en": "I've been meaning to go" },
+            { "ko": "초보자", "en": "beginner" }
+          ],
+          "expr": {
+            "en": "I've been meaning to ~",
+            "ko": "(전부터) ~하려고 했어요",
+            "note": "I've been meaning to ~는 예전부터 하려고 마음먹었지만 아직 못 했다는 뉘앙스예요. I've been meaning to call you처럼 미뤄 둔 일을 말할 때 자주 써요."
+          }
+        },
+        { "who": "npc", "en": "Not at all. The trail to the observatory is pretty easy, and the view is incredible.", "ko": "전혀요. 천문대까지 가는 길은 꽤 쉽고, 경치가 끝내줘요." },
+        {
+          "who": "me",
+          "ko": "좋네요. 아, 저는 근처로 막 이사 왔어요. 준이라고 해요.",
+          "answer": "Perfect. Oh, I just moved in nearby. I'm Jun.",
+          "accept": [
+            "Great. By the way, I just moved here. I'm Jun.",
+            "Nice. Oh, I just moved to the area. My name is Jun.",
+            "Perfect. I just moved in down the street. I'm Jun."
+          ],
+          "keys": [
+            { "k": "just moved", "tip": "'막 이사 왔어요'는 I just moved ~로 말해요." }
+          ],
+          "hint": "'막 이사 왔다'는 I just moved in으로, '근처로'는 nearby로 표현해 보세요.",
+          "words": [
+            { "ko": "막 이사 왔어요", "en": "just moved in" },
+            { "ko": "근처로", "en": "nearby" }
+          ]
+        },
+        { "who": "npc", "en": "Welcome! I'm Linda. Hey, we're having a block party on Saturday. You should come!", "ko": "환영해요! 저는 Linda예요. 참, 토요일에 블록 파티를 하는데 꼭 와요!" },
+        {
+          "who": "me",
+          "ko": "블록 파티요? 제가 가도 정말 괜찮을까요?",
+          "answer": "A block party? Are you sure it's okay if I come?",
+          "accept": [
+            "A block party? Is it really okay for me to come?",
+            "A block party? Are you sure I can come?",
+            "A block party? Is it okay if I join?"
+          ],
+          "keys": [
+            { "k": "block party", "tip": "동네 주민들이 길에서 여는 파티는 block party라고 해요." },
+            { "k": "okay|i can come", "tip": "'가도 괜찮을까요?'는 Is it okay if I come?처럼 물어요." }
+          ],
+          "hint": "앞에서 써 본 Is it okay if I ~?를 다시 활용해 보세요.",
+          "words": [
+            { "ko": "가도 정말 괜찮을까요", "en": "are you sure it's okay if I come" }
+          ]
+        },
+        { "who": "npc", "en": "Absolutely! Everyone brings a dish. It's the best way to meet the whole street.", "ko": "당연하죠! 다들 음식을 하나씩 가져와요. 동네 사람들을 다 만날 수 있는 최고의 방법이에요." },
+        {
+          "who": "me",
+          "ko": "그럼 꼭 갈게요! 한국 음식을 좀 만들어 갈게요.",
+          "answer": "Then I'll definitely be there! I'll bring some Korean food.",
+          "accept": [
+            "Then I'll be there for sure! I'll make some Korean food.",
+            "I'll definitely come! I'll bring a Korean dish.",
+            "Count me in! I'll make some Korean food to bring."
+          ],
+          "keys": [
+            { "k": "korean", "tip": "'한국 음식'은 Korean food나 Korean dish라고 해요." },
+            { "k": "bring|make", "tip": "'만들어 갈게요'는 I'll bring이나 I'll make로 말해요." }
+          ],
+          "hint": "'꼭 갈게요'는 I'll definitely be there로, '가져가다'는 bring으로 말해 보세요.",
+          "words": [
+            { "ko": "꼭 갈게요", "en": "I'll definitely be there" },
+            { "ko": "한국 음식", "en": "Korean food" }
+          ]
+        },
+        { "who": "npc", "en": "Ooh, everyone's going to love that. See you Saturday, Jun!", "ko": "오, 다들 엄청 좋아하겠네요. 토요일에 봐요, 준!" }
+      ]
+    },
+    {
+      "id": "la-neighbors-04",
+      "title": "블록 파티의 주인공",
+      "partner": "Jake (옆집 이웃)",
+      "mission": "드디어 블록 파티 날이에요.\n직접 만든 김치전으로 분위기를 띄워 봐요.",
+      "lines": [
+        { "who": "npc", "en": "Jun! You made it! What's that amazing smell?", "ko": "준! 왔군요! 이 맛있는 냄새는 뭐예요?" },
+        {
+          "who": "me",
+          "ko": "김치전이에요. 한국식 짭짤한 팬케이크 같은 거예요.",
+          "answer": "These are kimchi pancakes. They're kind of like savory Korean pancakes.",
+          "accept": [
+            "It's kimchi jeon. It's kind of like a savory Korean pancake.",
+            "They're kimchi pancakes. They're like a Korean savory pancake.",
+            "Kimchi pancakes! Kind of like a savory pancake from Korea."
+          ],
+          "keys": [
+            { "k": "kimchi", "tip": "김치는 영어로도 그대로 kimchi라고 해요." },
+            { "k": "like", "tip": "'~ 같은 거예요'는 kind of like ~로 비슷한 것에 빗대어 말해요." },
+            { "k": "savory", "tip": "'짭짤한'은 단맛이 아닌 짠맛, 감칠맛을 뜻하는 savory로 말해요." }
+          ],
+          "hint": "'~ 같은 것'은 kind of like로, '짭짤한'은 savory로 표현해 보세요.",
+          "words": [
+            { "ko": "짭짤한", "en": "savory" },
+            { "ko": "같은 거예요", "en": "kind of like" }
+          ],
+          "expr": {
+            "en": "kind of like ~",
+            "ko": "약간 ~ 같은",
+            "note": "kind of like ~는 낯선 것을 상대가 아는 것에 빗대 설명할 때 아주 유용해요. 정확히 같지는 않지만 비슷하다는 느낌을 줘요. 외국 친구에게 한국 음식을 소개할 때 꼭 써 보세요."
+          }
+        },
+        { "who": "npc", "en": "Wow, these are incredible! Can I get the recipe?", "ko": "와, 이거 대박이에요! 레시피 좀 알려 줄 수 있어요?" },
+        {
+          "who": "me",
+          "ko": "물론이죠! 생각보다 훨씬 쉬워요.",
+          "answer": "Of course! It's way easier than you think.",
+          "accept": [
+            "Sure! It's much easier than you think.",
+            "Of course! It's a lot easier than it looks.",
+            "Absolutely! It's way easier than you'd think."
+          ],
+          "keys": [
+            { "k": "easier than", "tip": "'생각보다 쉬워요'는 비교급 easier than you think로 말해요." }
+          ],
+          "hint": "'생각보다 훨씬 쉽다'는 way easier than you think로 표현해 보세요.",
+          "words": [
+            { "ko": "생각보다", "en": "than you think" },
+            { "ko": "훨씬 쉬워요", "en": "way easier" }
+          ]
+        },
+        { "who": "npc", "en": "By the way, I heard you're already on a first-name basis with Maria at Sunny Bean.", "ko": "그런데 듣자 하니 벌써 Sunny Bean의 Maria랑 이름 부르는 사이라면서요." },
+        {
+          "who": "me",
+          "ko": "네, 매일 아침 가거든요. 이제 제 주문을 외우고 있어요.",
+          "answer": "Yeah, I go there every morning. She knows my order by heart now.",
+          "accept": [
+            "Yes, I go every morning. She remembers my order now.",
+            "Yeah, I'm there every morning. She knows my usual order by heart now.",
+            "I go there every morning, so she already knows my order."
+          ],
+          "keys": [
+            { "k": "every morning", "tip": "'매일 아침'은 every morning이에요." },
+            { "k": "my order|my usual order", "tip": "'제 주문'은 my order라고 해요." }
+          ],
+          "hint": "'외우고 있다'는 know ~ by heart로 표현해 보세요.",
+          "words": [
+            { "ko": "외우고 있어요", "en": "knows by heart" },
+            { "ko": "매일 아침", "en": "every morning" }
+          ]
+        },
+        { "who": "npc", "en": "Ha! Look at you. A month ago you didn't know a single person here.", "ko": "하하! 대단한데요. 한 달 전만 해도 여기 아는 사람이 한 명도 없었잖아요." },
+        {
+          "who": "me",
+          "ko": "그러게요. 다 Jake 덕분이에요. 첫날부터 정말 따뜻하게 맞아 줬잖아요.",
+          "answer": "I know. It's all thanks to you. You made me feel welcome from day one.",
+          "accept": [
+            "Right. It's all thanks to you. You made me feel so welcome from the first day.",
+            "I know! It's thanks to you. You were so welcoming from day one.",
+            "True. It's all thanks to you for making me feel welcome from day one."
+          ],
+          "keys": [
+            { "k": "thanks to you", "tip": "'~ 덕분이에요'는 thanks to ~로 말해요." },
+            { "k": "day one|the first day", "tip": "'첫날부터'는 from day one이라고 하면 자연스러워요." }
+          ],
+          "hint": "'~ 덕분이다'는 thanks to you로, '첫날부터'는 from day one으로 말해 보세요.",
+          "words": [
+            { "ko": "덕분이에요", "en": "thanks to" },
+            { "ko": "첫날부터", "en": "from day one" },
+            { "ko": "따뜻하게 맞아 줬잖아요", "en": "made me feel welcome" }
+          ],
+          "expr": {
+            "en": "from day one",
+            "ko": "첫날부터, 처음부터",
+            "note": "from day one은 어떤 일이 시작된 바로 그 순간부터라는 뜻이에요. from the beginning보다 더 생생하고 구어적인 느낌이에요."
+          }
+        },
+        { "who": "npc", "en": "Aw, come on. You did the hard part. So, how's LA treating you so far?", "ko": "에이, 무슨 소리예요. 어려운 건 준이 다 했죠. 그래서, LA 생활은 어때요?" },
+        {
+          "who": "me",
+          "ko": "최고예요. 한 달 만에 정말 집처럼 느껴져요.",
+          "answer": "It's been amazing. After just one month, it really feels like home.",
+          "accept": [
+            "It's the best. After only a month, it already feels like home.",
+            "Amazing! It really feels like home after just a month.",
+            "It's been great. It already feels like home after one month."
+          ],
+          "keys": [
+            { "k": "feels like home", "tip": "'집처럼 느껴져요'는 It feels like home이라고 해요." },
+            { "k": "month", "tip": "'한 달'은 a month나 one month로 말해요." }
+          ],
+          "hint": "'집처럼 편하다'는 feels like home으로 표현해 보세요.",
+          "words": [
+            { "ko": "집처럼 느껴져요", "en": "feels like home" },
+            { "ko": "한 달 만에", "en": "after just a month" }
+          ]
+        },
+        { "who": "npc", "en": "That's what I love to hear. Now go grab some tacos before Linda's husband eats them all!", "ko": "그 말 들으니 좋네요. 이제 Linda 남편이 다 먹어 치우기 전에 타코 좀 챙겨 와요!" },
+        {
+          "who": "me",
+          "ko": "하하, 바로 갈게요! 다들 이렇게 반겨 줘서 정말 고마워요.",
+          "answer": "Haha, on my way! Thank you all for making me feel so welcome.",
+          "accept": [
+            "Ha, I'm going right now! Thanks for making me feel so welcome.",
+            "On my way! Thank you all for welcoming me.",
+            "Haha, I'll go right now! Thanks for being so welcoming."
+          ],
+          "keys": [
+            { "k": "thank you|thanks", "tip": "감사 인사는 Thank you나 Thanks로 시작해요." },
+            { "k": "welcome|welcoming", "tip": "'반겨 주다'는 make me feel welcome이나 welcoming으로 말해요." }
+          ],
+          "hint": "'반겨 줘서 고마워요'는 Thanks for making me feel welcome으로 말해 보세요.",
+          "words": [
+            { "ko": "바로 갈게요", "en": "on my way" },
+            { "ko": "반겨 줘서", "en": "making me feel welcome" }
+          ]
+        },
+        { "who": "npc", "en": "Anytime, neighbor. Welcome to the block!", "ko": "언제든지요, 이웃님. 우리 동네에 온 걸 환영해요!" }
+      ]
+    }
+  ]
+}

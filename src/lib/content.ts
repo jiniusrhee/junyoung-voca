@@ -1,5 +1,5 @@
 import { db } from '../db';
-import type { GrammarSentence, GrammarTopic, WordEntry } from '../types';
+import type { Alt, GrammarSentence, GrammarTopic, TalkEpisode, WordEntry } from '../types';
 
 interface FileRef {
   file: string;
@@ -11,7 +11,22 @@ interface Manifest {
   packs: (FileRef & { count: number; levels: number[] })[];
   grammar?: FileRef[];
   pairs?: FileRef[];
+  expr?: FileRef[];
+  talk?: FileRef[];
 }
+
+interface RawExpr {
+  course: { id: string; title: string; group: string; stars: number; icon?: string };
+  patterns: { id: string; ko: string; en: string; meaning: string; note: string }[];
+  items: { id: string; pattern: string; partner: { en: string; ko: string }; en: string; answer: string; ko: string; alts?: Alt[] }[];
+}
+
+interface RawTalk {
+  story: { id: string; title: string; subtitle: string; category: string; cefr: string; scene: string };
+  episodes: TalkEpisode[];
+}
+
+const COURSE_ORDER = ['daily-basic', 'daily-levelup', 'travel-basic', 'travel-levelup'];
 
 type RawTopic = Omit<GrammarTopic, 'levelNum' | 'pack' | 'order'>;
 type RawSentence = Omit<GrammarSentence, 'levelNum' | 'pack'>;
@@ -77,16 +92,61 @@ export async function syncContent(): Promise<{ updated: string[] }> {
     updated.push(key);
   }
 
+  for (const [ci, x] of (manifest.expr ?? []).entries()) {
+    const key = `expr/${x.file}`;
+    const prev = await db.packs.get(key);
+    if (prev && prev.hash === x.hash) continue;
+    const r = await fetch(`${base}data/expr/${x.file}`, { cache: 'no-cache' });
+    if (!r.ok) continue;
+    const d = (await r.json()) as RawExpr;
+    const cid = d.course.id;
+    const order = COURSE_ORDER.indexOf(cid) >= 0 ? COURSE_ORDER.indexOf(cid) : 10 + ci;
+    await db.transaction('rw', [db.ecourses, db.epatterns, db.eitems, db.packs], async () => {
+      await db.epatterns.where('course').equals(cid).delete();
+      await db.eitems.where('course').equals(cid).delete();
+      await db.ecourses.put({ ...d.course, order, pack: key });
+      await db.epatterns.bulkPut(d.patterns.map((p, i) => ({ ...p, key: `${cid}:${p.id}`, course: cid, order: i })));
+      await db.eitems.bulkPut(
+        d.items.map((it, i) => ({ id: it.id, course: cid, pkey: `${cid}:${it.pattern}`, partner: it.partner, en: it.en, answer: it.answer, ko: it.ko, alts: it.alts, order: i })),
+      );
+      await db.packs.put({ file: key, hash: x.hash, count: d.items.length, updatedAt: Date.now() });
+    });
+    updated.push(key);
+  }
+
+  for (const [si, t] of (manifest.talk ?? []).entries()) {
+    const key = `talk/${t.file}`;
+    const prev = await db.packs.get(key);
+    if (prev && prev.hash === t.hash) continue;
+    const r = await fetch(`${base}data/talk/${t.file}`, { cache: 'no-cache' });
+    if (!r.ok) continue;
+    const d = (await r.json()) as RawTalk;
+    await db.tstories.put({ ...d.story, episodes: d.episodes, pack: key, order: si });
+    await db.packs.put({ file: key, hash: t.hash, count: d.episodes.length, updatedAt: Date.now() });
+    updated.push(key);
+  }
+
   const known = new Set([
     ...manifest.packs.map((p) => p.file),
     ...(manifest.grammar ?? []).map((g) => `grammar/${g.file}`),
     ...(manifest.pairs ?? []).map((p) => `pairs/${p.file}`),
+    ...(manifest.expr ?? []).map((p) => `expr/${p.file}`),
+    ...(manifest.talk ?? []).map((p) => `talk/${p.file}`),
   ]);
   const stale = (await db.packs.toArray()).filter((x) => !known.has(x.file));
   for (const s of stale) {
     if (s.file.startsWith('grammar/')) {
       await db.gtopics.where('pack').equals(s.file).delete();
       await db.gsentences.where('pack').equals(s.file).delete();
+    } else if (s.file.startsWith('expr/')) {
+      const c = await db.ecourses.where('pack').equals(s.file).first();
+      if (c) {
+        await db.epatterns.where('course').equals(c.id).delete();
+        await db.eitems.where('course').equals(c.id).delete();
+        await db.ecourses.delete(c.id);
+      }
+    } else if (s.file.startsWith('talk/')) {
+      await db.tstories.where('pack').equals(s.file).delete();
     } else if (!s.file.startsWith('pairs/')) {
       await db.words.where('pack').equals(s.file).delete();
     }

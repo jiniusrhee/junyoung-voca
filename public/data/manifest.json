@@ -261,5 +261,49 @@
       "file": "pairs.json",
       "hash": "2b462555a1af"
     }
+  ],
+  "expr": [
+    {
+      "file": "daily-basic.json",
+      "hash": "5fe57e0bc47a"
+    },
+    {
+      "file": "daily-levelup.json",
+      "hash": "715e0e90c30d"
+    },
+    {
+      "file": "travel-basic.json",
+      "hash": "7aaac0cb984f"
+    },
+    {
+      "file": "travel-levelup.json",
+      "hash": "5e55f59f375a"
+    }
+  ],
+  "talk": [
+    {
+      "file": "first-campus.json",
+      "hash": "1690f9adb253"
+    },
+    {
+      "file": "first-date.json",
+      "hash": "046fc9bfec8b"
+    },
+    {
+      "file": "la-neighbors.json",
+      "hash": "bd846e870d46"
+    },
+    {
+      "file": "london-homestay.json",
+      "hash": "26805a8c0770"
+    },
+    {
+      "file": "nyc-trip.json",
+      "hash": "dc56e567f6a1"
+    },
+    {
+      "file": "office-rookie.json",
+      "hash": "7d7db6e95cd7"
+    }
   ]
 }

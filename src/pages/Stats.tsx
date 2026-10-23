@@ -5,9 +5,9 @@ import Icon from '../components/Icon';
 import { db } from '../db';
 import { MASTERY_KO, MASTERY_ORDER, masteryOf, type Mastery } from '../lib/scheduler';
 import { useSettings } from '../lib/settings';
-import { comprehension, estimateVocab, goalMet, reviewAccuracy } from '../lib/stats';
+import { comprehension, dayTime, dayTotal, estimateVocab, goalMet, reviewAccuracy } from '../lib/stats';
 import { WEEKDAYS_KO, dayOfWeek, formatClock, shiftDate, studyDateOf } from '../lib/time';
-import type { DailyRow } from '../types';
+import type { DailyRow, StudyMode } from '../types';
 
 type Tab = 'period' | 'study' | 'vocab';
 
@@ -49,7 +49,9 @@ export default function Stats() {
         ))}
       </nav>
       {tab === 'period' && <PeriodTab byDate={byDate} daily={daily} today={today} acc={acc ?? null} />}
-      {tab === 'study' && <StudyModes daily={daily} today={today} goals={{ vocab: settings.dailyGoal, grammar: settings.grammarGoal, listening: settings.listeningGoal }} />}
+      {tab === 'study' && (
+        <StudyModes daily={daily} today={today} goals={{ vocab: settings.dailyGoal, grammar: settings.grammarGoal, expr: settings.exprGoal, talk: settings.talkGoal, listening: settings.listeningGoal }} />
+      )}
       {tab === 'vocab' && <VocabTab level={settings.level ?? 10} />}
     </div>
   );
@@ -63,9 +65,10 @@ function PeriodTab({ byDate, daily, today, acc }: { byDate: Map<string, DailyRow
   const fresh = t?.newWords ?? 0;
   const sum = Math.max(1, fresh + reviews);
   const dow = dayOfWeek(today);
-  const sameDow = daily.filter((d) => dayOfWeek(d.date) === dow && d.total > 0);
-  const avgMin = sameDow.length ? Math.round(sameDow.reduce((s, d) => s + d.timeMs, 0) / sameDow.length / 60000) : 0;
-  const avgQ = sameDow.length ? Math.round(sameDow.reduce((s, d) => s + d.total, 0) / sameDow.length) : 0;
+  const sameDow = daily.filter((d) => dayOfWeek(d.date) === dow && dayTotal(d) > 0);
+  const avgMin = sameDow.length ? Math.round(sameDow.reduce((s, d) => s + dayTime(d), 0) / sameDow.length / 60000) : 0;
+  const avgQ = sameDow.length ? Math.round(sameDow.reduce((s, d) => s + dayTotal(d), 0) / sameDow.length) : 0;
+  const others = (['grammar', 'expr', 'talk', 'listening'] as const).filter((m) => (t?.byMode?.[m]?.total ?? 0) > 0);
 
   return (
     <>
@@ -77,7 +80,7 @@ function PeriodTab({ byDate, daily, today, acc }: { byDate: Map<string, DailyRow
           </span>
           <div>
             <span>총 학습 시간</span>
-            <b>{formatClock(t?.timeMs ?? 0)}</b>
+            <b>{formatClock(dayTime(t))}</b>
           </div>
         </div>
         <div className="s-tile">
@@ -86,7 +89,7 @@ function PeriodTab({ byDate, daily, today, acc }: { byDate: Map<string, DailyRow
           </span>
           <div>
             <span>총 학습 문제</span>
-            <b>{t?.total ?? 0}</b>
+            <b>{dayTotal(t)}</b>
           </div>
         </div>
       </div>
@@ -110,6 +113,29 @@ function PeriodTab({ byDate, daily, today, acc }: { byDate: Map<string, DailyRow
           </p>
         </div>
       </div>
+      {others.map((m) => {
+        const md = t!.byMode![m]!;
+        const sm = Math.max(1, md.newItems + md.reviews);
+        return (
+          <div key={m} className={`s-card mode-sum m-${m}`}>
+            <span className="ms-icon">
+              <Icon name={MODE_ICON[m]} size={22} />
+            </span>
+            <div className="ms-body">
+              <div className="ms-head">
+                <b>{SMODE_LABEL[m]}</b>
+              </div>
+              <div className="ms-bar">
+                <span className="new" style={{ width: `${(md.newItems / sm) * 100}%` }} />
+                <span className="rev" style={{ width: `${(md.reviews / sm) * 100}%` }} />
+              </div>
+              <p className="ms-legend">
+                새 문제 <b className="y">{md.newItems}</b> 복습 문제 <b className="b">{md.reviews}</b>
+              </p>
+            </div>
+          </div>
+        );
+      })}
       <div className="s-card habit">
         <span className="habit-icon">
           <Icon name="chart" size={22} />
@@ -140,7 +166,7 @@ function Heatmap({ byDate, today }: { byDate: Map<string, DailyRow>; today: stri
   // 최근 52주를 26주씩 두 줄로 (일요일 시작)
   const end = shiftDate(today, 6 - dayOfWeek(today));
   const start = shiftDate(end, -(52 * 7) + 1);
-  const max = Math.max(1, ...[...byDate.values()].map((d) => d.total));
+  const max = Math.max(1, ...[...byDate.values()].map((d) => dayTotal(d)));
   const level = (n: number) => (n <= 0 ? 0 : n < max * 0.25 ? 1 : n < max * 0.5 ? 2 : n < max * 0.75 ? 3 : 4);
   const blocks = [0, 1].map((b) =>
     Array.from({ length: 26 }, (_, w) => Array.from({ length: 7 }, (_, d) => shiftDate(start, (b * 26 + w) * 7 + d))),
@@ -167,7 +193,7 @@ function Heatmap({ byDate, today }: { byDate: Map<string, DailyRow>; today: stri
             {weeks.map((wk, i) => (
               <div key={i} className="heat-col">
                 {wk.map((d) => (
-                  <i key={d} className={`hc l${d > today ? 'x' : level(byDate.get(d)?.total ?? 0)}`} title={d} />
+                  <i key={d} className={`hc l${d > today ? 'x' : level(dayTotal(byDate.get(d)))}`} title={d} />
                 ))}
               </div>
             ))}
@@ -185,11 +211,11 @@ function TimeChart({ byDate, today }: { byDate: Map<string, DailyRow>; today: st
     const n = range === 'week' ? 7 : 30;
     points = Array.from({ length: n }, (_, i) => {
       const d = shiftDate(today, i - (n - 1));
-      return { label: d, ms: byDate.get(d)?.timeMs ?? 0 };
+      return { label: d, ms: dayTime(byDate.get(d)) };
     });
   } else {
     const months = new Map<string, number>();
-    for (const [d, r] of byDate) months.set(d.slice(0, 7), (months.get(d.slice(0, 7)) ?? 0) + r.timeMs);
+    for (const [d, r] of byDate) months.set(d.slice(0, 7), (months.get(d.slice(0, 7)) ?? 0) + dayTime(r));
     const keys = [...months.keys()].sort();
     const want = range === 'year' ? 12 : Math.max(keys.length, 1);
     const last = today.slice(0, 7);
@@ -249,8 +275,9 @@ function TimeChart({ byDate, today }: { byDate: Map<string, DailyRow>; today: st
 
 /* ---------------- 학습별 ---------------- */
 
-type SMode = 'vocab' | 'grammar' | 'listening';
-const SMODE_LABEL: Record<SMode, string> = { vocab: '어휘', grammar: '문법', listening: '리스닝' };
+type SMode = Exclude<StudyMode, 'pairs'>;
+const SMODE_LABEL: Record<SMode, string> = { vocab: '어휘', grammar: '문법', expr: '표현', talk: '실전 회화', listening: '리스닝' };
+const MODE_ICON = { grammar: 'gbook', expr: 'chat', talk: 'talk', listening: 'headphones' } as const;
 
 /** 어휘 외 모드의 하루 기록을 어휘와 같은 모양으로 */
 function viewOf(d: DailyRow, mode: SMode, goal: number): DailyRow {

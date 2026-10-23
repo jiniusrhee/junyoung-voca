@@ -1,0 +1,464 @@
+{
+  "story": {
+    "id": "london-homestay",
+    "title": "런던 홈스테이 일기",
+    "subtitle": "영국 가족과 보낸 한 학기",
+    "category": "여행",
+    "cefr": "B1",
+    "scene": "home"
+  },
+  "episodes": [
+    {
+      "id": "london-homestay-01",
+      "title": "홈스테이 가족과 첫인사",
+      "partner": "호스트 맘 사라",
+      "mission": "한 학기 동안 지낼 런던 홈스테이 집에 도착했어요.\n호스트 맘 사라와 첫인사를 나눠 봐요.",
+      "lines": [
+        { "who": "npc", "en": "Hello, you must be our new student! I'm Sarah. Come on in.", "ko": "안녕하세요, 새로 온 학생이군요! 저는 사라예요. 어서 들어와요." },
+        {
+          "who": "me",
+          "ko": "안녕하세요, 사라. 드디어 만나서 정말 반가워요.",
+          "answer": "Hi, Sarah. It's so nice to finally meet you.",
+          "accept": ["Hello, Sarah. It's great to finally meet you.", "Hi, Sarah. So nice to meet you at last.", "Hi, Sarah. I'm so glad to finally meet you."],
+          "keys": [
+            { "k": "meet you", "tip": "처음 만났을 때는 nice to meet you라고 해요." },
+            { "k": "finally|at last", "tip": "'드디어'는 finally나 at last로 표현해요." }
+          ],
+          "hint": "'드디어'는 finally, '만나서 반가워요'는 nice to meet you로 표현해 보세요.",
+          "words": [{ "ko": "드디어", "en": "finally" }]
+        },
+        { "who": "npc", "en": "Likewise! How was your flight?", "ko": "저도요! 비행은 어땠어요?" },
+        {
+          "who": "me",
+          "ko": "좀 길었지만 괜찮았어요. 그냥 조금 피곤해요.",
+          "answer": "It was a bit long, but it was fine. I'm just a little tired.",
+          "accept": ["It was long, but okay. I'm just a bit tired.", "A bit long, but not bad. I'm just a little tired.", "It was quite long, but fine. I'm just a bit tired."],
+          "keys": [
+            { "k": "long", "tip": "'길었어요'는 It was long이라고 해요." },
+            { "k": "tired", "tip": "'피곤하다'는 tired예요." }
+          ],
+          "hint": "'좀, 조금'은 a bit나 a little, '피곤해요'는 tired로 표현해 보세요.",
+          "words": [
+            { "ko": "피곤해요", "en": "tired" },
+            { "ko": "좀", "en": "a bit" }
+          ]
+        },
+        { "who": "npc", "en": "Of course you are. Fancy a cuppa? I've just put the kettle on.", "ko": "당연히 그렇겠죠. 차 한잔할래요? 방금 주전자를 올려놨어요." },
+        {
+          "who": "me",
+          "ko": "네, 주세요. 우유는 조금만 넣어 주세요.",
+          "answer": "Yes, please. Just a little milk, please.",
+          "accept": ["That would be lovely, thanks. Just a little milk, please.", "Yes, please. With a little milk, please.", "I'd love one, thanks. Just a splash of milk, please."],
+          "keys": [
+            { "k": "yes please|i'd love one|that would be lovely", "tip": "권유를 받아들일 때는 Yes, please라고 해요." },
+            { "k": "milk", "tip": "'우유'는 milk예요." }
+          ],
+          "hint": "권유를 받아들일 때는 Yes, please, '조금'은 a little로 표현해 보세요.",
+          "words": [
+            { "ko": "우유", "en": "milk" },
+            { "ko": "조금만", "en": "just a little" }
+          ],
+          "expr": {
+            "en": "Yes, please",
+            "ko": "네, 주세요",
+            "note": "Would you like ~?나 Fancy ~? 같은 권유에 응할 때 쓰는 기본 표현이에요. 그냥 Yes라고만 하면 퉁명스럽게 들릴 수 있어요. 거절할 때는 No, thank you라고 해요."
+          }
+        },
+        { "who": "npc", "en": "Here you are. Now, a few house rules. Dinner is at half six, and please take your shoes off inside.", "ko": "여기요. 자, 집안 규칙 몇 가지요. 저녁은 6시 반이고, 집 안에서는 신발을 벗어 주세요." },
+        {
+          "who": "me",
+          "ko": "알겠어요. 한국에서도 집에서 신발을 벗어요.",
+          "answer": "No problem. We take our shoes off at home in Korea too.",
+          "accept": ["Got it. In Korea, we also take our shoes off at home.", "Sure. We take off our shoes at home in Korea as well.", "Okay. We also take our shoes off inside in Korea."],
+          "keys": [
+            { "k": "take our shoes off|take off our shoes", "tip": "'신발을 벗다'는 take off one's shoes라고 해요." },
+            { "k": "korea", "tip": "'한국에서도'는 in Korea too라고 해요." }
+          ],
+          "hint": "'신발을 벗다'는 take one's shoes off, '~도'는 문장 끝 too로 표현해 보세요.",
+          "words": [{ "ko": "신발을 벗어요", "en": "take off one's shoes" }]
+        },
+        { "who": "npc", "en": "Oh, brilliant. And please keep your showers short. The hot water runs out quickly.", "ko": "오, 잘됐네요. 그리고 샤워는 짧게 해 주세요. 온수가 금방 떨어지거든요." },
+        {
+          "who": "me",
+          "ko": "명심할게요. 제 방 좀 보여 주실래요? 짐을 풀고 싶어서요.",
+          "answer": "I'll keep that in mind. Could you show me my room? I'd like to unpack.",
+          "accept": [
+            "I'll remember that. Can you show me my room? I want to unpack.",
+            "I'll keep that in mind. Could I see my room? I'd like to unpack my things.",
+            "Sure, I'll remember. Could you show me my room? I want to unpack."
+          ],
+          "keys": [
+            { "k": "keep that in mind|remember", "tip": "'명심할게요'는 I'll keep that in mind라고 해요." },
+            { "k": "unpack", "tip": "'짐을 풀다'는 unpack이라고 해요." }
+          ],
+          "hint": "'명심할게요'는 I'll keep that in mind, '짐을 풀다'는 unpack으로 표현해 보세요.",
+          "words": [
+            { "ko": "명심할게요", "en": "keep in mind" },
+            { "ko": "짐을 풀고", "en": "unpack" }
+          ],
+          "expr": {
+            "en": "keep ~ in mind",
+            "ko": "~을 명심하다",
+            "note": "들은 내용을 잊지 않고 기억하겠다는 뜻이에요. I'll keep that in mind는 조언이나 규칙을 들었을 때 공손하게 답하기 좋아요. 회사에서도 자주 쓰는 표현이에요."
+          }
+        },
+        { "who": "npc", "en": "Of course. It's upstairs, the second door on the left. My son Oliver is right next door.", "ko": "물론이죠. 위층 왼쪽 두 번째 문이에요. 바로 옆방은 제 아들 올리버 방이고요." },
+        {
+          "who": "me",
+          "ko": "감사해요. 여기서 지내는 게 정말 기대돼요.",
+          "answer": "Thank you. I'm really looking forward to living here.",
+          "accept": ["Thanks. I'm looking forward to staying with you.", "Thank you so much. I'm really looking forward to living with you all.", "Thanks a lot. I'm looking forward to my stay here."],
+          "keys": [{ "k": "looking forward to", "tip": "'~가 기대돼요'는 I'm looking forward to ~라고 해요." }],
+          "hint": "'~가 기대돼요'는 I'm looking forward to ~ing로 표현해 보세요.",
+          "words": [{ "ko": "기대돼요", "en": "looking forward to" }]
+        },
+        { "who": "npc", "en": "So are we. Make yourself at home!", "ko": "우리도요. 집처럼 편하게 지내요!" }
+      ]
+    },
+    {
+      "id": "london-homestay-02",
+      "title": "선데이 로스트 저녁 식사",
+      "partner": "호스트 대디 데이비드",
+      "mission": "일요일 저녁, 가족들과 선데이 로스트를 먹어요.\n호스트 대디 데이비드와 식탁에서 이야기해 봐요.",
+      "lines": [
+        { "who": "npc", "en": "Right, dinner's ready! It's a proper Sunday roast tonight. Help yourself.", "ko": "자, 저녁 준비됐어요! 오늘은 제대로 된 선데이 로스트예요. 마음껏 먹어요." },
+        {
+          "who": "me",
+          "ko": "와, 냄새 정말 좋네요! 선데이 로스트는 처음 먹어 봐요.",
+          "answer": "Wow, it smells amazing! This is my first Sunday roast.",
+          "accept": [
+            "Wow, that smells great! It's my first time having a Sunday roast.",
+            "It smells amazing! I've never had a Sunday roast before.",
+            "Wow, it smells so good! This is my first time trying a Sunday roast."
+          ],
+          "keys": [
+            { "k": "smells", "tip": "'냄새가 좋다'는 smell을 써서 It smells good이라고 해요." },
+            { "k": "sunday roast", "tip": "음식 이름 Sunday roast를 그대로 말해요." }
+          ],
+          "hint": "'냄새가 좋다'는 It smells amazing, '처음'은 my first ~로 표현해 보세요.",
+          "words": [
+            { "ko": "냄새", "en": "smell" },
+            { "ko": "처음", "en": "first" }
+          ]
+        },
+        { "who": "npc", "en": "Really? Then you're in for a treat. Try the Yorkshire pudding with some gravy.", "ko": "정말요? 그럼 기대해도 좋아요. 요크셔푸딩에 그레이비를 얹어 먹어 봐요." },
+        {
+          "who": "me",
+          "ko": "음, 정말 맛있어요! 이거 어떻게 만드는 거예요?",
+          "answer": "Mmm, this is delicious! How do you make it?",
+          "accept": ["Mmm, it's really good! How do you make this?", "This is so tasty! How do you make it?", "Wow, it's delicious! How did you make this?"],
+          "keys": [{ "k": "how do you make|how did you make", "tip": "'어떻게 만들어요?'는 How do you make it?이라고 물어요." }],
+          "hint": "'맛있다'는 delicious, '어떻게 만들어요?'는 How do you make ~?로 표현해 보세요.",
+          "words": [
+            { "ko": "맛있어요", "en": "delicious" },
+            { "ko": "만드는", "en": "make" }
+          ]
+        },
+        { "who": "npc", "en": "It's just flour, eggs and milk. Sarah's mum taught me. So, what's a typical Sunday dinner in Korea?", "ko": "그냥 밀가루, 달걀, 우유예요. 사라 어머니께 배웠죠. 그런데 한국에서는 일요일 저녁에 보통 뭘 먹어요?" },
+        {
+          "who": "me",
+          "ko": "딱히 정해진 건 없지만, 저희 가족은 보통 고기를 구워 먹어요.",
+          "answer": "Nothing in particular, but my family usually has Korean barbecue.",
+          "accept": [
+            "There's no special dish, but my family usually has Korean barbecue.",
+            "It depends, but my family usually grills meat.",
+            "Nothing special, but my family often has Korean barbecue."
+          ],
+          "keys": [
+            { "k": "usually|often", "tip": "'보통'은 usually로 표현해요." },
+            { "k": "barbecue|grills meat|grill meat", "tip": "'고기를 구워 먹다'는 have Korean barbecue라고 하면 쉬워요." }
+          ],
+          "hint": "'딱히 없다'는 Nothing in particular, '고기를 구워 먹다'는 have Korean barbecue로 표현해 보세요.",
+          "words": [
+            { "ko": "보통", "en": "usually" },
+            { "ko": "고기를 구워 먹어요", "en": "have Korean barbecue" }
+          ],
+          "expr": {
+            "en": "Nothing in particular",
+            "ko": "딱히 없어요",
+            "note": "특별히 정해진 것이 없을 때 쓰는 표현이에요. What are you doing tonight?에 Nothing in particular라고 답할 수 있어요. 뒤에 but을 붙여 설명을 이어 가면 대화가 자연스러워요."
+          }
+        },
+        { "who": "npc", "en": "Korean barbecue! I've always wanted to try it. Is it spicy?", "ko": "한국식 바비큐! 늘 먹어 보고 싶었어요. 매워요?" },
+        {
+          "who": "me",
+          "ko": "고기는 안 매워요. 언젠가 제가 한국 음식을 해 드릴게요.",
+          "answer": "The meat isn't spicy. I'll cook Korean food for you someday.",
+          "accept": [
+            "The meat isn't spicy at all. I'll make Korean food for you one day.",
+            "It's not spicy. Someday I'll cook some Korean food for you.",
+            "The meat itself isn't spicy. I'll cook you Korean food someday."
+          ],
+          "keys": [
+            { "k": "spicy", "tip": "'맵다'는 spicy라고 해요." },
+            { "k": "cook|make", "tip": "'음식을 해 주다'는 cook이나 make를 써요." },
+            { "k": "someday|one day", "tip": "'언젠가'는 someday나 one day라고 해요." }
+          ],
+          "hint": "'언젠가'는 someday, '~에게 음식을 해 주다'는 cook ~ for you로 표현해 보세요.",
+          "words": [
+            { "ko": "언젠가", "en": "someday" },
+            { "ko": "매워요", "en": "spicy" }
+          ]
+        },
+        { "who": "npc", "en": "That'd be lovely. Oliver would love it too. More potatoes?", "ko": "그럼 정말 좋겠네요. 올리버도 좋아할 거예요. 감자 더 줄까요?" },
+        {
+          "who": "me",
+          "ko": "아뇨, 괜찮아요. 배불러요. 설거지는 제가 도울게요.",
+          "answer": "No, thanks. I'm full. Let me help with the washing-up.",
+          "accept": ["No, thank you. I'm full. Let me help with the dishes.", "I'm fine, thanks. I'm stuffed. Can I help with the washing-up?", "No, thanks. I'm full. I'll help you wash up."],
+          "keys": [
+            { "k": "full|stuffed", "tip": "'배부르다'는 I'm full이라고 해요." },
+            { "k": "help", "tip": "'돕다'는 help예요. Let me help ~로 말해 보세요." }
+          ],
+          "hint": "'배불러요'는 I'm full, '설거지'는 영국에서 the washing-up이라고 해요.",
+          "words": [
+            { "ko": "배불러요", "en": "full" },
+            { "ko": "설거지", "en": "the washing-up" }
+          ],
+          "expr": {
+            "en": "the washing-up",
+            "ko": "설거지",
+            "note": "영국에서는 설거지를 the washing-up이라고 하고, 미국에서는 보통 do the dishes라고 해요. 식사 후 Let me help with the washing-up이라고 하면 좋은 인상을 줄 수 있어요."
+          }
+        },
+        { "who": "npc", "en": "You're our guest! But all right, if you insist. Thanks, love.", "ko": "손님이잖아요! 하지만 정 그렇다면 좋아요. 고마워요." },
+        {
+          "who": "me",
+          "ko": "별말씀을요. 저녁 정말 잘 먹었어요.",
+          "answer": "Don't mention it. Thank you for a lovely dinner.",
+          "accept": ["No problem. Thanks for a lovely dinner.", "It's nothing. Thank you for the wonderful dinner.", "My pleasure. Thanks for such a lovely dinner."],
+          "keys": [
+            { "k": "thank you|thanks", "tip": "'잘 먹었어요'는 영어로 Thank you for ~라고 고마움을 표현해요." },
+            { "k": "dinner", "tip": "'저녁'은 dinner예요." }
+          ],
+          "hint": "'별말씀을요'는 Don't mention it, '저녁 잘 먹었어요'는 Thank you for a lovely dinner로 표현해 보세요.",
+          "words": [{ "ko": "별말씀을요", "en": "don't mention it" }]
+        }
+      ]
+    },
+    {
+      "id": "london-homestay-03",
+      "title": "늦은 귀가, 진심으로 사과하기",
+      "partner": "호스트 맘 사라",
+      "mission": "연락도 없이 밤늦게 집에 들어왔어요.\n걱정하며 기다린 사라에게 진심으로 사과해 봐요.",
+      "lines": [
+        { "who": "npc", "en": "There you are! It's almost midnight. I was so worried about you.", "ko": "왔군요! 거의 자정이에요. 정말 걱정했어요." },
+        {
+          "who": "me",
+          "ko": "정말 죄송해요. 연락드렸어야 했는데.",
+          "answer": "I'm really sorry. I should have called you.",
+          "accept": ["I'm so sorry. I should have texted you.", "I'm really sorry. I should've let you know.", "I'm terribly sorry. I should have called."],
+          "keys": [
+            { "k": "sorry", "tip": "사과는 I'm really sorry로 시작해요." },
+            { "k": "should have|should've", "tip": "'~했어야 했는데'는 should have + 과거분사로 표현해요." }
+          ],
+          "hint": "'~했어야 했는데'는 should have p.p.로 표현해 보세요.",
+          "words": [{ "ko": "연락드렸어야", "en": "should have called" }],
+          "expr": {
+            "en": "I should have ~",
+            "ko": "~했어야 했는데",
+            "note": "하지 않은 일을 후회하거나 사과할 때 쓰는 표현이에요. 말할 때는 should've로 줄여 발음해요. I should have texted you처럼 쓰면 미안한 마음이 잘 전해져요."
+          }
+        },
+        { "who": "npc", "en": "What happened? Are you all right?", "ko": "무슨 일 있었어요? 괜찮아요?" },
+        {
+          "who": "me",
+          "ko": "네, 괜찮아요. 지하철이 한 시간 넘게 지연됐어요.",
+          "answer": "Yes, I'm fine. The Tube was delayed for over an hour.",
+          "accept": ["I'm okay. The Tube was delayed for more than an hour.", "Yes, I'm all right. The underground was delayed for over an hour.", "I'm fine. My train was delayed for over an hour."],
+          "keys": [
+            { "k": "delayed", "tip": "'지연되다'는 be delayed라고 해요." },
+            { "k": "over an hour|more than an hour", "tip": "'한 시간 넘게'는 over an hour라고 해요." }
+          ],
+          "hint": "런던 지하철은 the Tube, '지연되다'는 be delayed로 표현해 보세요.",
+          "words": [
+            { "ko": "지하철", "en": "the Tube" },
+            { "ko": "지연됐어요", "en": "was delayed" }
+          ]
+        },
+        { "who": "npc", "en": "Oh, you poor thing. But why didn't you answer your phone?", "ko": "아이고, 고생했네요. 그런데 왜 전화를 안 받았어요?" },
+        {
+          "who": "me",
+          "ko": "휴대폰 배터리가 다 됐어요. 변명은 아니지만요.",
+          "answer": "My phone battery died. That's no excuse, though.",
+          "accept": ["My phone died. But that's no excuse.", "My battery ran out. That's not an excuse, though.", "My phone ran out of battery. I know that's no excuse."],
+          "keys": [
+            { "k": "died|ran out", "tip": "'배터리가 다 되다'는 die나 run out을 써요." },
+            { "k": "excuse", "tip": "'변명'은 excuse라고 해요." }
+          ],
+          "hint": "'배터리가 다 되다'는 die, '변명'은 excuse로 표현해 보세요.",
+          "words": [
+            { "ko": "배터리가 다 됐어요", "en": "battery died" },
+            { "ko": "변명", "en": "excuse" }
+          ]
+        },
+        { "who": "npc", "en": "Well, I'm just glad you're safe. Next time, borrow someone's phone and give me a ring.", "ko": "뭐, 무사하니 다행이에요. 다음엔 다른 사람 전화라도 빌려서 연락 줘요." },
+        {
+          "who": "me",
+          "ko": "그럴게요. 다시는 이런 일 없을 거예요.",
+          "answer": "I will. It won't happen again.",
+          "accept": ["I will. I promise it won't happen again.", "Okay, I will. This won't happen again.", "Sure. It will never happen again."],
+          "keys": [{ "k": "happen again", "tip": "'다시는 이런 일 없을 거예요'는 It won't happen again이라고 해요." }],
+          "hint": "사과를 마무리할 때는 It won't happen again을 써 보세요.",
+          "words": [{ "ko": "다시는", "en": "again" }],
+          "expr": {
+            "en": "It won't happen again",
+            "ko": "다시는 이런 일 없을 거예요",
+            "note": "실수를 사과하면서 다시 그러지 않겠다고 약속하는 표현이에요. 앞에 I promise를 붙이면 더 진심이 느껴져요. 직장에서 실수했을 때도 자주 써요."
+          }
+        },
+        { "who": "npc", "en": "Good. Have you eaten anything? There's some leftover shepherd's pie.", "ko": "좋아요. 뭐 좀 먹었어요? 남은 셰퍼드 파이가 있어요." },
+        {
+          "who": "me",
+          "ko": "아직 못 먹었어요. 데워 먹어도 될까요?",
+          "answer": "Not yet. Do you mind if I heat it up?",
+          "accept": ["Not yet. Can I heat it up?", "I haven't eaten yet. Is it okay if I warm it up?", "No, not yet. Could I heat some up?"],
+          "keys": [{ "k": "heat|warm", "tip": "'데우다'는 heat up이나 warm up이라고 해요." }],
+          "hint": "'~해도 될까요?'는 Do you mind if I ~?, '데우다'는 heat up으로 표현해 보세요.",
+          "words": [{ "ko": "데워", "en": "heat up" }]
+        },
+        { "who": "npc", "en": "Of course. It's in the fridge. Two minutes in the microwave should do it.", "ko": "물론이죠. 냉장고에 있어요. 전자레인지에 2분이면 될 거예요." },
+        {
+          "who": "me",
+          "ko": "감사해요. 그리고 안 주무시고 기다려 주셔서 고마워요. 안녕히 주무세요.",
+          "answer": "Thank you. And thanks for waiting up for me. Good night.",
+          "accept": ["Thanks. And thank you for waiting for me. Good night.", "Thank you for staying up for me. Good night, Sarah.", "Thanks for waiting up. Sleep well."],
+          "keys": [
+            { "k": "waiting|staying up", "tip": "'자지 않고 기다리다'는 wait up for라고 해요." },
+            { "k": "good night|sleep well", "tip": "밤 인사는 Good night이나 Sleep well이라고 해요." }
+          ],
+          "hint": "'자지 않고 기다리다'는 wait up for, '안녕히 주무세요'는 Good night로 표현해 보세요.",
+          "words": [{ "ko": "기다려 주셔서", "en": "waiting up for me" }]
+        },
+        { "who": "npc", "en": "Night, love. Sleep tight.", "ko": "잘 자요. 푹 자고요." }
+      ]
+    },
+    {
+      "id": "london-homestay-04",
+      "title": "히드로 공항 가는 길",
+      "partner": "호스트 대디 데이비드",
+      "mission": "한 학기가 끝나고 한국으로 돌아가는 날이에요.\n공항까지 태워 주는 데이비드와 작별 인사를 나눠요.",
+      "lines": [
+        { "who": "npc", "en": "Got everything? Passport, ticket, that huge suitcase?", "ko": "다 챙겼어요? 여권, 항공권, 그 커다란 캐리어도요?" },
+        {
+          "who": "me",
+          "ko": "네, 다 챙겼어요. 공항까지 태워다 주셔서 감사해요.",
+          "answer": "Yes, I've got everything. Thanks for giving me a lift to the airport.",
+          "accept": [
+            "Yes, I have everything. Thank you for driving me to the airport.",
+            "Yep, got everything. Thanks for taking me to the airport.",
+            "Yes, I've got everything. Thanks for giving me a ride to the airport."
+          ],
+          "keys": [
+            { "k": "thanks for|thank you for", "tip": "'~해 주셔서 감사해요'는 Thanks for ~ing라고 해요." },
+            { "k": "airport", "tip": "'공항'은 airport예요." }
+          ],
+          "hint": "'태워다 주다'는 영국에서 give ~ a lift, 미국에서 give ~ a ride라고 해요.",
+          "words": [
+            { "ko": "태워다", "en": "give a lift" },
+            { "ko": "공항", "en": "airport" }
+          ],
+          "expr": {
+            "en": "give someone a lift",
+            "ko": "~를 차로 태워 주다",
+            "note": "영국에서는 차로 태워 주는 것을 lift, 미국에서는 ride라고 해요. Can you give me a lift?처럼 부탁할 때도 쓸 수 있어요."
+          }
+        },
+        { "who": "npc", "en": "No worries. I can't believe the term's already over. Time flies, doesn't it?", "ko": "천만에요. 학기가 벌써 끝났다니 믿기지 않네요. 시간 참 빠르죠?" },
+        {
+          "who": "me",
+          "ko": "정말 그래요. 어제 도착한 것 같은데 말이에요.",
+          "answer": "It really does. It feels like I arrived yesterday.",
+          "accept": ["It does. It feels like I just arrived yesterday.", "Yes, it really does. It feels like I got here yesterday.", "I know. It feels like only yesterday that I arrived."],
+          "keys": [
+            { "k": "feels like", "tip": "'~인 것 같아요'는 It feels like ~로 표현해요." },
+            { "k": "yesterday", "tip": "'어제'는 yesterday예요." }
+          ],
+          "hint": "'~한 것 같아요'는 It feels like ~로 표현해 보세요.",
+          "words": [
+            { "ko": "어제", "en": "yesterday" },
+            { "ko": "도착한", "en": "arrived" }
+          ]
+        },
+        { "who": "npc", "en": "So, what will you miss most about London?", "ko": "그래서, 런던에서 뭐가 제일 그리울 것 같아요?" },
+        {
+          "who": "me",
+          "ko": "솔직히 말하면, 날씨 빼고 다 그리울 거예요!",
+          "answer": "To be honest, I'll miss everything except the weather!",
+          "accept": [
+            "Honestly, I'll miss everything but the weather!",
+            "To be honest, I'm going to miss everything except the weather!",
+            "Honestly? I'll miss everything apart from the weather!"
+          ],
+          "keys": [
+            { "k": "miss everything", "tip": "'다 그리울 거예요'는 I'll miss everything이라고 해요." },
+            { "k": "except|but|apart from", "tip": "'~ 빼고'는 except나 but으로 표현해요." },
+            { "k": "weather", "tip": "'날씨'는 weather예요." }
+          ],
+          "hint": "'솔직히 말하면'은 To be honest, '~ 빼고'는 except로 표현해 보세요.",
+          "words": [
+            { "ko": "솔직히", "en": "to be honest" },
+            { "ko": "날씨", "en": "weather" },
+            { "ko": "빼고", "en": "except" }
+          ]
+        },
+        { "who": "npc", "en": "Ha! Fair enough. We'll miss you too, you know. Especially your bibimbap.", "ko": "하하! 그럴 만하죠. 우리도 많이 보고 싶을 거예요. 특히 당신이 만든 비빔밥이요." },
+        {
+          "who": "me",
+          "ko": "다들 정말 잘해 주셨어요. 진짜 가족처럼 느껴졌어요.",
+          "answer": "You were all so good to me. You really felt like family.",
+          "accept": [
+            "You've all been so kind to me. You really felt like my family.",
+            "Everyone was so good to me. It really felt like family.",
+            "You all treated me so well. You felt like my real family."
+          ],
+          "keys": [
+            { "k": "felt like", "tip": "'~처럼 느껴졌어요'는 felt like ~로 표현해요." },
+            { "k": "family", "tip": "'가족'은 family예요." }
+          ],
+          "hint": "'잘해 주다'는 be good to me, '가족처럼 느껴지다'는 feel like family로 표현해 보세요.",
+          "words": [
+            { "ko": "잘해 주셨어요", "en": "were good to me" },
+            { "ko": "가족", "en": "family" }
+          ]
+        },
+        { "who": "npc", "en": "That means a lot. Promise you'll keep in touch?", "ko": "그 말 정말 고마워요. 계속 연락하겠다고 약속해요?" },
+        {
+          "who": "me",
+          "ko": "물론이죠. 서울에 오시면 제가 구경시켜 드릴게요.",
+          "answer": "Of course. If you ever come to Seoul, I'll show you around.",
+          "accept": ["Definitely. If you come to Seoul, I'll show you around.", "Of course! When you visit Seoul, I'll show you around.", "Sure. If you ever visit Seoul, let me show you around."],
+          "keys": [
+            { "k": "seoul", "tip": "'서울에 오시면'은 If you come to Seoul이라고 해요." },
+            { "k": "show you around", "tip": "'구경시켜 주다'는 show ~ around라고 해요." }
+          ],
+          "hint": "'~에 오시면'은 If you ever come to ~, '구경시켜 주다'는 show you around로 표현해 보세요.",
+          "words": [{ "ko": "구경시켜", "en": "show around" }],
+          "expr": {
+            "en": "show someone around",
+            "ko": "~에게 여기저기 구경시켜 주다",
+            "note": "손님에게 동네나 도시, 회사 등을 안내해 줄 때 쓰는 표현이에요. I'll show you around는 다정한 초대의 말로 자주 쓰여요. 부탁할 때는 Could you show me around?라고 해요."
+          }
+        },
+        { "who": "npc", "en": "We'll hold you to that! Right, here we are. Terminal 2.", "ko": "그 약속 꼭 지켜요! 자, 다 왔어요. 2터미널이에요." },
+        {
+          "who": "me",
+          "ko": "모든 게 다 감사했어요. 사라와 올리버에게도 안부 전해 주세요.",
+          "answer": "Thank you for everything. Please say hi to Sarah and Oliver for me.",
+          "accept": [
+            "Thanks for everything. Say hello to Sarah and Oliver for me.",
+            "Thank you for everything. Please give my love to Sarah and Oliver.",
+            "Thanks so much for everything. Tell Sarah and Oliver I said hi."
+          ],
+          "keys": [
+            { "k": "for everything", "tip": "'모든 게 감사했어요'는 Thank you for everything이라고 해요." },
+            { "k": "sarah and oliver", "tip": "안부를 전할 사람 Sarah and Oliver를 말해 주세요." }
+          ],
+          "hint": "'모든 게 감사했어요'는 Thank you for everything, '안부 전해 주세요'는 say hi to ~ for me로 표현해 보세요.",
+          "words": [{ "ko": "안부 전해", "en": "say hi" }]
+        },
+        { "who": "npc", "en": "Will do. Safe flight, and don't be a stranger!", "ko": "그럴게요. 조심히 가요, 그리고 연락 끊지 말고요!" }
+      ]
+    }
+  ]
+}

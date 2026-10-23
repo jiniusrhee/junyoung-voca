@@ -1,0 +1,529 @@
+{
+  "story": {
+    "id": "office-rookie",
+    "title": "신입사원 생존기",
+    "subtitle": "실리콘밸리 스타트업 첫 출근",
+    "category": "직장",
+    "cefr": "B2",
+    "scene": "office"
+  },
+  "episodes": [
+    {
+      "id": "office-rookie-01",
+      "title": "첫 출근, 매니저와의 인사",
+      "partner": "Priya (팀 매니저)",
+      "mission": "실리콘밸리 스타트업 첫 출근 날이에요.\n매니저에게 좋은 첫인상을 남겨 봐요.",
+      "lines": [
+        { "who": "npc", "en": "Jun! Welcome aboard. Did you find the office okay?", "ko": "준! 합류를 환영해요. 사무실은 잘 찾아왔어요?" },
+        {
+          "who": "me",
+          "ko": "네, 쉽게 찾았어요. 드디어 팀에 합류하게 돼서 정말 설레요.",
+          "answer": "Yes, no trouble at all. I'm really excited to finally be joining the team.",
+          "accept": [
+            "Yes, it was easy to find. I'm so excited to finally join the team.",
+            "I did, thanks. I'm thrilled to be joining the team.",
+            "Yeah, no problem. I'm really excited to finally be part of the team."
+          ],
+          "keys": [
+            { "k": "excited|thrilled", "tip": "'설레요'는 I'm excited to ~로 표현해요." },
+            { "k": "join|joining|part of", "tip": "'팀에 합류하다'는 join the team이나 be part of the team이라고 해요." }
+          ],
+          "hint": "'~하게 돼서 설레요'는 I'm excited to ~로, '합류하다'는 join으로 말해 보세요.",
+          "words": [
+            { "ko": "합류하게 돼서", "en": "to be joining" },
+            { "ko": "설레요", "en": "I'm excited" }
+          ]
+        },
+        { "who": "npc", "en": "We're thrilled to have you. First things first, IT should have your laptop ready by ten.", "ko": "우리도 준이 와서 너무 좋아요. 우선, IT팀에서 10시까지 노트북을 준비해 줄 거예요." },
+        {
+          "who": "me",
+          "ko": "좋아요. 그동안 제가 미리 봐 두면 좋을 자료가 있을까요?",
+          "answer": "Great. In the meantime, is there anything I should read up on?",
+          "accept": [
+            "Sounds good. Meanwhile, is there anything I should look over?",
+            "Great. In the meantime, are there any docs I should read?",
+            "Perfect. Is there anything I should review in the meantime?"
+          ],
+          "keys": [
+            { "k": "in the meantime|meanwhile", "tip": "'그동안'은 in the meantime이나 meanwhile로 말해요." },
+            { "k": "should", "tip": "'~하면 좋을'은 should로 자연스럽게 표현해요." }
+          ],
+          "hint": "'그동안'은 in the meantime으로, '미리 공부해 두다'는 read up on으로 표현해 보세요.",
+          "words": [
+            { "ko": "그동안", "en": "in the meantime" },
+            { "ko": "미리 봐 두면", "en": "read up on" },
+            { "ko": "자료", "en": "docs, materials" }
+          ],
+          "expr": {
+            "en": "read up on ~",
+            "ko": "~에 대해 미리 찾아 공부해 두다",
+            "note": "read up on은 어떤 주제를 자료를 찾아 읽으며 미리 공부한다는 뜻이에요. 회의나 업무를 준비할 때 I'll read up on it before the meeting처럼 자주 써요."
+          }
+        },
+        { "who": "npc", "en": "Love the initiative! Check out our onboarding doc in Notion. It covers our tech stack and how the team works.", "ko": "적극적인 자세 좋네요! 노션에 있는 온보딩 문서를 확인해 봐요. 기술 스택이랑 팀이 일하는 방식이 정리돼 있어요." },
+        {
+          "who": "me",
+          "ko": "알겠습니다. 그런데 처음에 모르는 게 생기면 누구에게 물어보면 될까요?",
+          "answer": "Will do. And if I have questions at first, who should I reach out to?",
+          "accept": [
+            "Got it. Who should I reach out to if I have any questions?",
+            "Will do. Who is the best person to ask if I get stuck?",
+            "Sure. If I have questions early on, who should I go to?"
+          ],
+          "keys": [
+            { "k": "who", "tip": "'누구에게'는 Who should I ~?로 시작해요." },
+            { "k": "reach out to|ask|go to", "tip": "'물어보다, 연락하다'는 업무 상황에 잘 맞는 reach out to로 말해요." }
+          ],
+          "hint": "'알겠습니다'는 Will do로, '(도움을 청하러) 연락하다'는 reach out to로 말해 보세요.",
+          "words": [
+            { "ko": "알겠습니다", "en": "will do" },
+            { "ko": "물어보면 될까요", "en": "who should I reach out to" }
+          ],
+          "expr": {
+            "en": "reach out to ~",
+            "ko": "~에게 연락하다, 도움을 청하다",
+            "note": "reach out to는 직장에서 누군가에게 연락하거나 도움을 요청할 때 아주 많이 쓰는 표현이에요. contact보다 부드럽고 친근하게 들려요. 이메일 끝에 Feel free to reach out anytime처럼도 자주 써요."
+          }
+        },
+        { "who": "npc", "en": "Tom, one of our senior engineers, will be your onboarding buddy. He sits right next to you, so don't be shy.", "ko": "시니어 엔지니어 Tom이 온보딩 버디가 되어 줄 거예요. 바로 옆자리니까 어려워하지 말아요." },
+        {
+          "who": "me",
+          "ko": "든든하네요. 첫 주에 제가 집중했으면 하는 일이 있을까요?",
+          "answer": "That's reassuring. Is there anything you'd like me to focus on in my first week?",
+          "accept": [
+            "Good to know. What should I focus on during my first week?",
+            "That's a relief. Is there anything I should focus on this first week?",
+            "Great. What would you like me to focus on in my first week?"
+          ],
+          "keys": [
+            { "k": "focus on", "tip": "'~에 집중하다'는 focus on이에요." },
+            { "k": "first week", "tip": "'첫 주'는 first week라고 해요." }
+          ],
+          "hint": "'든든하네요'는 That's reassuring으로, '~에 집중하다'는 focus on으로 말해 보세요.",
+          "words": [
+            { "ko": "든든하네요", "en": "that's reassuring" },
+            { "ko": "집중했으면 하는", "en": "you'd like me to focus on" },
+            { "ko": "첫 주에", "en": "in my first week" }
+          ]
+        },
+        { "who": "npc", "en": "Honestly? Just get your dev environment set up and ship one small bug fix. No pressure.", "ko": "솔직히요? 개발 환경 세팅하고 작은 버그 하나만 고쳐서 배포해 봐요. 부담 갖지 말고요." },
+        {
+          "who": "me",
+          "ko": "그 정도는 충분히 할 수 있어요. 기회 주셔서 감사합니다.",
+          "answer": "I can definitely handle that. Thanks for the opportunity.",
+          "accept": [
+            "I think I can handle that. Thank you for this opportunity.",
+            "That sounds doable. Thanks for giving me this chance.",
+            "I can definitely do that. Thank you for the opportunity."
+          ],
+          "keys": [
+            { "k": "thanks|thank you", "tip": "감사 인사는 Thanks for ~나 Thank you for ~로 말해요." },
+            { "k": "opportunity|chance", "tip": "'기회'는 opportunity나 chance예요." }
+          ],
+          "hint": "'감당할 수 있다'는 handle로, '기회'는 opportunity로 표현해 보세요.",
+          "words": [
+            { "ko": "충분히 할 수 있어요", "en": "I can definitely handle that" },
+            { "ko": "기회", "en": "opportunity" }
+          ]
+        },
+        { "who": "npc", "en": "We're lucky to have you. Let's grab lunch with the team at noon.", "ko": "준이 와 줘서 다행이에요. 12시에 팀원들이랑 같이 점심 먹어요." }
+      ]
+    },
+    {
+      "id": "office-rookie-02",
+      "title": "데일리 스탠드업",
+      "partner": "Tom (사수, 시니어 엔지니어)",
+      "mission": "입사 2주 차, 첫 데일리 스탠드업이에요.\n진행 상황을 공유하고 막힌 부분을 말해 봐요.",
+      "lines": [
+        { "who": "npc", "en": "Alright, Jun, you're up. What did you work on yesterday?", "ko": "자, 준 차례예요. 어제는 뭐 작업했어요?" },
+        {
+          "who": "me",
+          "ko": "어제는 로그인 페이지 버그를 고치고 PR을 올렸어요.",
+          "answer": "Yesterday I fixed the bug on the login page and opened a PR.",
+          "accept": [
+            "I fixed the login page bug yesterday and put up a PR.",
+            "Yesterday, I worked on the login page bug and opened a pull request.",
+            "I fixed the bug on the login page and submitted a PR yesterday."
+          ],
+          "keys": [
+            { "k": "login page", "tip": "'로그인 페이지'는 login page예요." },
+            { "k": "pr|pull request", "tip": "'PR을 올리다'는 open a PR이나 put up a PR이라고 해요." }
+          ],
+          "hint": "'버그를 고치다'는 fix a bug로, 'PR을 올리다'는 open a PR로 말해 보세요.",
+          "words": [
+            { "ko": "PR을 올렸어요", "en": "opened a PR" },
+            { "ko": "고치고", "en": "fixed" }
+          ]
+        },
+        { "who": "npc", "en": "Nice. I'll review it right after this. What's on your plate today?", "ko": "좋아요. 이거 끝나고 바로 리뷰할게요. 오늘은 뭐 할 거예요?" },
+        {
+          "who": "me",
+          "ko": "오늘은 결제 API 연동 작업을 시작할 거예요.",
+          "answer": "Today I'm going to start working on the payment API integration.",
+          "accept": [
+            "Today I'll start on the payment API integration.",
+            "I'm starting the payment API integration today.",
+            "I plan to start integrating the payment API today."
+          ],
+          "keys": [
+            { "k": "payment api", "tip": "'결제 API'는 payment API라고 해요." },
+            { "k": "start|starting", "tip": "'시작하다'는 start나 start on을 써요." }
+          ],
+          "hint": "'~을 시작할 거예요'는 I'm going to start working on ~으로 표현해 보세요.",
+          "words": [
+            { "ko": "결제", "en": "payment" },
+            { "ko": "연동", "en": "integration" }
+          ]
+        },
+        { "who": "npc", "en": "Sounds good. Any blockers?", "ko": "좋네요. 막히는 거 있어요?" },
+        {
+          "who": "me",
+          "ko": "사실 하나 있어요. 아직 스테이징 서버 접근 권한이 없어요.",
+          "answer": "Actually, yes. I still don't have access to the staging server.",
+          "accept": [
+            "Actually, one thing. I still don't have access to the staging server.",
+            "Yes, one. I don't have staging server access yet.",
+            "Actually, I still can't access the staging server."
+          ],
+          "keys": [
+            { "k": "access", "tip": "'접근 권한'은 access라고 해요. have access to ~ 형태로 써요." },
+            { "k": "staging", "tip": "'스테이징 서버'는 staging server예요." }
+          ],
+          "hint": "'~에 대한 권한이 있다'는 have access to로, '아직'은 still로 말해 보세요.",
+          "words": [
+            { "ko": "접근 권한", "en": "access" },
+            { "ko": "아직", "en": "still, yet" }
+          ],
+          "expr": {
+            "en": "have access to ~",
+            "ko": "~에 접근할 수 있다, ~을 쓸 권한이 있다",
+            "note": "have access to는 시스템이나 자료를 사용할 권한이 있다는 뜻이에요. 직장에서 Can you give me access to ~?처럼 권한을 요청할 때 정말 자주 써요."
+          }
+        },
+        { "who": "npc", "en": "Ah, that's on me. I'll ping DevOps right after standup.", "ko": "아, 그건 제가 챙겼어야 했네요. 스탠드업 끝나자마자 DevOps팀에 연락할게요." },
+        {
+          "who": "me",
+          "ko": "감사해요. 그리고 언제 시간 될 때 코드베이스 구조를 차근차근 설명해 주실 수 있을까요?",
+          "answer": "Thanks. Also, could you walk me through the codebase structure sometime?",
+          "accept": [
+            "Thank you. Also, do you have time to walk me through the codebase?",
+            "Thanks. Could you take some time to go over the codebase structure with me?",
+            "Appreciate it. Would you be able to walk me through the codebase at some point?"
+          ],
+          "keys": [
+            { "k": "walk me through|go over", "tip": "'차근차근 설명해 주다'는 walk me through로 말해요." },
+            { "k": "codebase", "tip": "'코드베이스'는 그대로 codebase라고 해요." }
+          ],
+          "hint": "'차근차근 설명해 주다'는 walk me through로 표현해 보세요.",
+          "words": [
+            { "ko": "차근차근 설명해 주실", "en": "walk me through" },
+            { "ko": "구조", "en": "structure" }
+          ],
+          "expr": {
+            "en": "walk someone through ~",
+            "ko": "~을 차근차근 설명해 주다",
+            "note": "walk someone through는 옆에서 함께 걸어가듯 단계별로 설명해 준다는 뜻이에요. 업무를 처음 배울 때 Could you walk me through it?이라고 부탁하면 아주 자연스러워요."
+          }
+        },
+        { "who": "npc", "en": "Sure thing. How about two o'clock? I'll book a room.", "ko": "물론이죠. 2시 어때요? 회의실 잡아 둘게요." },
+        {
+          "who": "me",
+          "ko": "2시 좋아요. 그 전에 질문 목록을 정리해 둘게요.",
+          "answer": "Two works for me. I'll put together a list of questions before then.",
+          "accept": [
+            "Two o'clock works. I'll prepare a list of questions before then.",
+            "Two works for me. I'll have my questions ready by then.",
+            "That works for me. I'll put together some questions beforehand."
+          ],
+          "keys": [
+            { "k": "works", "tip": "일정을 수락할 때 '~ 좋아요'는 ~ works for me라고 해요." },
+            { "k": "questions", "tip": "'질문 목록'은 a list of questions예요." }
+          ],
+          "hint": "일정 수락은 ~ works for me로, '정리하다'는 put together로 말해 보세요.",
+          "words": [
+            { "ko": "2시 좋아요", "en": "two works for me" },
+            { "ko": "정리해 둘게요", "en": "put together" }
+          ]
+        },
+        { "who": "npc", "en": "Perfect. Great update, Jun. Okay, Kevin, you're next.", "ko": "좋아요. 깔끔한 업데이트였어요, 준. 자, Kevin 다음 차례예요." }
+      ]
+    },
+    {
+      "id": "office-rookie-03",
+      "title": "디자이너와 커피챗",
+      "partner": "Kevin (프로덕트 디자이너)",
+      "mission": "새 결제 화면 디자인이 나왔는데 일정이 빠듯해요.\n디자이너와 커피챗하며 범위를 조율해 봐요.",
+      "lines": [
+        { "who": "npc", "en": "Hey Jun, thanks for grabbing coffee with me. How are you liking it here so far?", "ko": "준, 같이 커피 마셔 줘서 고마워요. 지금까지 회사 생활은 어때요?" },
+        {
+          "who": "me",
+          "ko": "지금까지 정말 좋아요. 좀 정신없긴 한데 많이 배우고 있어요.",
+          "answer": "I'm loving it so far. It's been a bit hectic, but I'm learning a lot.",
+          "accept": [
+            "I really like it so far. It's a little hectic, but I'm learning a lot.",
+            "So far so good. It's been hectic, but I'm learning so much.",
+            "It's been great. A bit hectic, but I'm learning a ton."
+          ],
+          "keys": [
+            { "k": "hectic", "tip": "'정신없는'은 바쁘고 어수선하다는 뜻의 hectic으로 말해요." },
+            { "k": "learning", "tip": "'배우고 있다'는 I'm learning ~으로 표현해요." }
+          ],
+          "hint": "'정신없다'는 hectic으로, '많이 배우다'는 learn a lot으로 말해 보세요.",
+          "words": [
+            { "ko": "정신없긴 한데", "en": "a bit hectic" },
+            { "ko": "많이 배우고 있어요", "en": "I'm learning a lot" }
+          ]
+        },
+        { "who": "npc", "en": "That's startup life for you! So, did you get a chance to look at the new checkout designs?", "ko": "그게 바로 스타트업이죠! 그런데 새 결제 화면 디자인은 볼 기회 있었어요?" },
+        {
+          "who": "me",
+          "ko": "네, 봤어요. 솔직히 정말 멋지던데요. 특히 애니메이션이요.",
+          "answer": "Yes, I did. Honestly, they look amazing, especially the animations.",
+          "accept": [
+            "I did. To be honest, they look great, especially the animations.",
+            "Yeah, I checked them out. Honestly, they're amazing, especially the animations.",
+            "Yes. Honestly, I love them, especially the animations."
+          ],
+          "keys": [
+            { "k": "honestly|to be honest", "tip": "'솔직히'는 honestly나 to be honest로 말해요." },
+            { "k": "especially", "tip": "'특히'는 especially예요." }
+          ],
+          "hint": "'솔직히'는 honestly로, '특히 ~이요'는 especially ~로 덧붙여 보세요.",
+          "words": [
+            { "ko": "솔직히", "en": "honestly" },
+            { "ko": "특히", "en": "especially" }
+          ]
+        },
+        { "who": "npc", "en": "Thanks! I'm glad you like them. Do you think we can ship everything by Friday?", "ko": "고마워요! 맘에 든다니 다행이에요. 금요일까지 전부 배포할 수 있을 것 같아요?" },
+        {
+          "who": "me",
+          "ko": "음, 금요일까지 전부 끝내기는 좀 무리일 것 같아요.",
+          "answer": "Hmm, getting all of it done by Friday might be a bit of a stretch.",
+          "accept": [
+            "Hmm, finishing everything by Friday might be a stretch.",
+            "Well, I think doing all of it by Friday would be tough.",
+            "Hmm, I'm not sure we can get everything done by Friday."
+          ],
+          "keys": [
+            { "k": "by friday", "tip": "'금요일까지'는 마감을 뜻하는 by Friday로 말해요." },
+            { "k": "stretch|tough|not sure", "tip": "'무리일 것 같아요'는 might be a stretch처럼 부드럽게 말해요." }
+          ],
+          "hint": "'좀 무리다'는 a bit of a stretch로, '~까지'는 by로 표현해 보세요.",
+          "words": [
+            { "ko": "무리일 것 같아요", "en": "might be a stretch" },
+            { "ko": "금요일까지", "en": "by Friday" }
+          ],
+          "expr": {
+            "en": "a bit of a stretch",
+            "ko": "좀 무리인, 버거운",
+            "note": "stretch는 원래 '늘이다'라는 뜻인데, a stretch는 능력이나 시간을 한계까지 끌어 써야 하는 일을 말해요. 직장에서 일정이 빠듯하다고 부드럽게 말할 때 유용해요."
+          }
+        },
+        { "who": "npc", "en": "Yeah, I was worried about that too. What do you suggest?", "ko": "네, 저도 그게 걱정이었어요. 어떻게 하면 좋을까요?" },
+        {
+          "who": "me",
+          "ko": "핵심 결제 흐름을 먼저 배포하고, 애니메이션은 다음 스프린트로 미루면 어떨까요?",
+          "answer": "What if we ship the core checkout flow first and push the animations to the next sprint?",
+          "accept": [
+            "How about we launch the core checkout flow first and move the animations to the next sprint?",
+            "Maybe we could ship the main checkout flow first and push the animations to the next sprint.",
+            "What if we release the core flow first and save the animations for the next sprint?"
+          ],
+          "keys": [
+            { "k": "what if|how about|maybe we could", "tip": "대안을 제안할 때는 What if we ~?로 부드럽게 말해요." },
+            { "k": "first", "tip": "'먼저'는 first를 동사구 뒤에 붙여 말해요." },
+            { "k": "next sprint", "tip": "'다음 스프린트'는 the next sprint예요." }
+          ],
+          "hint": "제안은 What if we ~?로, '미루다'는 push A to B로 표현해 보세요.",
+          "words": [
+            { "ko": "핵심", "en": "core" },
+            { "ko": "결제 흐름", "en": "checkout flow" },
+            { "ko": "미루면", "en": "push (to)" }
+          ],
+          "expr": {
+            "en": "What if we ~?",
+            "ko": "~하면 어떨까요?",
+            "note": "What if we ~?는 상대 의견을 존중하면서 대안을 제시할 때 좋은 표현이에요. 명령처럼 들리지 않아서 회의에서 다른 의견을 낼 때도 부드럽게 들려요."
+          }
+        },
+        { "who": "npc", "en": "That actually makes a lot of sense. Let's run it by Priya this afternoon.", "ko": "그거 정말 일리 있네요. 오늘 오후에 Priya한테 한번 얘기해 봐요." },
+        {
+          "who": "me",
+          "ko": "좋아요. 제가 Priya와 회의 일정을 잡을게요.",
+          "answer": "Sounds good. I'll set up a meeting with her.",
+          "accept": [
+            "Great. I'll schedule a meeting with her.",
+            "Sounds good. I'll set up a quick meeting with Priya.",
+            "Perfect. I'll put a meeting on her calendar."
+          ],
+          "keys": [
+            { "k": "meeting", "tip": "'회의'는 meeting이에요." },
+            { "k": "set up|schedule|put", "tip": "'회의 일정을 잡다'는 set up a meeting이나 schedule a meeting이라고 해요." }
+          ],
+          "hint": "'회의를 잡다'는 set up a meeting으로 표현해 보세요.",
+          "words": [
+            { "ko": "회의 일정을 잡을게요", "en": "I'll set up a meeting" }
+          ]
+        },
+        { "who": "npc", "en": "Awesome. I like working with you, Jun. You're not afraid to speak up.", "ko": "좋아요. 준이랑 일하는 거 즐거워요. 할 말은 하는 사람이잖아요." },
+        {
+          "who": "me",
+          "ko": "그렇게 말해 줘서 고마워요. 저도 같이 일하는 게 정말 즐거워요.",
+          "answer": "Thanks, I appreciate that. I'm really enjoying working with you too.",
+          "accept": [
+            "Thank you, that means a lot. I enjoy working with you too.",
+            "Thanks! I'm enjoying working with you as well.",
+            "I appreciate it. I really like working with you too."
+          ],
+          "keys": [
+            { "k": "thanks|thank you|appreciate", "tip": "칭찬에는 Thanks, I appreciate that으로 답해요." },
+            { "k": "working with you", "tip": "'같이 일하는 것'은 working with you라고 해요." }
+          ],
+          "hint": "칭찬에는 I appreciate that으로, '즐겁다'는 enjoy -ing로 말해 보세요.",
+          "words": [
+            { "ko": "말해 줘서 고마워요", "en": "I appreciate that" },
+            { "ko": "같이 일하는 게", "en": "working with you" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "office-rookie-04",
+      "title": "첫 1:1 미팅",
+      "partner": "Priya (팀 매니저)",
+      "mission": "입사 한 달, 매니저와 첫 1:1 미팅이에요.\n피드백을 듣고 다음 목표를 이야기해 봐요.",
+      "lines": [
+        { "who": "npc", "en": "So, Jun, it's been a month already. How are you feeling?", "ko": "자, 준, 벌써 한 달이 됐네요. 요즘 어때요?" },
+        {
+          "who": "me",
+          "ko": "시간 정말 빠르네요! 이제야 좀 감이 잡히는 것 같아요.",
+          "answer": "Time flies! I feel like I'm finally getting the hang of things.",
+          "accept": [
+            "Time really flies! I think I'm finally getting the hang of it.",
+            "Wow, time flies. I feel like I'm getting used to things now.",
+            "Time flies! I think I'm finally settling in."
+          ],
+          "keys": [
+            { "k": "time flies|time really flies", "tip": "'시간 빠르네요'는 Time flies라고 해요." },
+            { "k": "getting the hang of|getting used to|settling in", "tip": "'감이 잡히다, 익숙해지다'는 get the hang of ~로 말해요." }
+          ],
+          "hint": "'시간 빠르다'는 Time flies로, '감을 잡다'는 get the hang of로 표현해 보세요.",
+          "words": [
+            { "ko": "시간 정말 빠르네요", "en": "time flies" },
+            { "ko": "감이 잡히는", "en": "getting the hang of" }
+          ],
+          "expr": {
+            "en": "get the hang of ~",
+            "ko": "~의 요령을 터득하다, 감을 잡다",
+            "note": "get the hang of는 처음엔 어렵던 일에 점점 감을 잡고 익숙해진다는 뜻이에요. 새 업무나 도구를 배울 때 I'm getting the hang of it처럼 진행형으로 많이 써요."
+          }
+        },
+        { "who": "npc", "en": "That's great to hear. And the team has noticed. Kevin said your checkout plan saved the launch.", "ko": "다행이네요. 팀원들도 다 알아요. Kevin이 준의 결제 계획 덕분에 출시를 살렸다고 하더라고요." },
+        {
+          "who": "me",
+          "ko": "그렇게 말해 주다니 고맙네요. 그래도 다 같이 해낸 일이에요.",
+          "answer": "That's really nice of him to say. It was a team effort, though.",
+          "accept": [
+            "That's kind of him. But it was really a team effort.",
+            "I appreciate that. It was a team effort, though.",
+            "That's nice to hear. Honestly, it was a team effort."
+          ],
+          "keys": [
+            { "k": "team effort", "tip": "'다 같이 해낸 일'은 a team effort라고 해요." }
+          ],
+          "hint": "칭찬받은 공을 나눌 때는 It was a team effort라고 말해 보세요.",
+          "words": [
+            { "ko": "다 같이 해낸 일", "en": "a team effort" },
+            { "ko": "말해 주다니 고맙네요", "en": "that's nice of him to say" }
+          ]
+        },
+        { "who": "npc", "en": "Fair enough. Now, is there anything you'd like to get more involved in?", "ko": "그렇죠. 그럼 더 깊이 참여해 보고 싶은 일이 있어요?" },
+        {
+          "who": "me",
+          "ko": "네, 다음 기능은 처음부터 끝까지 제가 책임지고 맡아 보고 싶어요.",
+          "answer": "Yes, I'd love to take ownership of the next feature from start to finish.",
+          "accept": [
+            "Yes, I'd like to own the next feature from start to finish.",
+            "Actually, I'd love to lead the next feature from start to finish.",
+            "Yeah, I want to take ownership of the next feature end to end."
+          ],
+          "keys": [
+            { "k": "next feature", "tip": "'다음 기능'은 the next feature예요." },
+            { "k": "start to finish|end to end", "tip": "'처음부터 끝까지'는 from start to finish라고 해요." }
+          ],
+          "hint": "'책임지고 맡다'는 take ownership of로, '처음부터 끝까지'는 from start to finish로 말해 보세요.",
+          "words": [
+            { "ko": "책임지고 맡아 보고 싶어요", "en": "I'd love to take ownership of" },
+            { "ko": "처음부터 끝까지", "en": "from start to finish" }
+          ],
+          "expr": {
+            "en": "take ownership of ~",
+            "ko": "~을 책임지고 맡다",
+            "note": "take ownership of는 단순히 일을 받는 게 아니라 결과까지 책임지고 이끈다는 뜻이에요. 실리콘밸리 회사들이 특히 중요하게 여기는 태도라서 면접이나 평가에서도 자주 나와요."
+          }
+        },
+        { "who": "npc", "en": "I love that. We're building a referral program next quarter. Want to lead it?", "ko": "좋아요. 다음 분기에 친구 추천 프로그램을 만들 건데, 맡아 볼래요?" },
+        {
+          "who": "me",
+          "ko": "물론이죠! 다만 큰 기능은 처음이라 중간중간 피드백을 받고 싶어요.",
+          "answer": "Absolutely! But since it's my first big feature, I'd appreciate some feedback along the way.",
+          "accept": [
+            "Definitely! Since it's my first big feature, though, I'd love some feedback along the way.",
+            "Of course! It's my first big feature, so I'd appreciate regular feedback.",
+            "Absolutely. But it's my first big project, so could I get feedback along the way?"
+          ],
+          "keys": [
+            { "k": "feedback", "tip": "'피드백'은 feedback이에요. 셀 수 없는 명사라 a를 붙이지 않아요." },
+            { "k": "first big", "tip": "'처음 맡는 큰 기능'은 my first big feature라고 해요." }
+          ],
+          "hint": "'~해 주시면 감사하겠다'는 I'd appreciate ~로, '중간중간'은 along the way로 표현해 보세요.",
+          "words": [
+            { "ko": "중간중간", "en": "along the way" },
+            { "ko": "피드백을 받고 싶어요", "en": "I'd appreciate some feedback" }
+          ]
+        },
+        { "who": "npc", "en": "Of course. Let's do weekly check-ins, and Tom can pair with you on the tricky parts.", "ko": "물론이죠. 매주 점검 미팅을 하고, 까다로운 부분은 Tom이 같이 봐 줄 거예요." },
+        {
+          "who": "me",
+          "ko": "완벽해요. 이렇게 지원해 주시면 해낼 자신 있어요.",
+          "answer": "Perfect. With that kind of support, I feel confident I can pull it off.",
+          "accept": [
+            "Perfect. With that support, I'm confident I can do it.",
+            "That's perfect. With this kind of support, I feel really confident.",
+            "Great. With that much support, I'm sure I can pull it off."
+          ],
+          "keys": [
+            { "k": "support", "tip": "'지원'은 support예요." },
+            { "k": "confident|sure", "tip": "'자신 있다'는 I feel confident라고 해요." }
+          ],
+          "hint": "'자신 있다'는 feel confident로, '해내다'는 pull it off로 말해 보세요.",
+          "words": [
+            { "ko": "지원해 주시면", "en": "with that kind of support" },
+            { "ko": "해낼 자신 있어요", "en": "I feel confident I can pull it off" }
+          ]
+        },
+        { "who": "npc", "en": "I have no doubt. Honestly, hiring you was one of the best decisions we made this year.", "ko": "전혀 걱정 안 해요. 솔직히 준을 채용한 건 올해 최고의 결정 중 하나였어요." },
+        {
+          "who": "me",
+          "ko": "그 말씀 들으니 정말 힘이 나요. 기대에 꼭 부응할게요.",
+          "answer": "That means a lot to me. I'll do my best to live up to your expectations.",
+          "accept": [
+            "That really means a lot. I'll make sure to live up to your expectations.",
+            "Wow, that means so much. I'll work hard to live up to it.",
+            "Thank you, that means a lot. I won't let you down."
+          ],
+          "keys": [
+            { "k": "means a lot|means so much", "tip": "'그 말씀이 큰 힘이 돼요'는 That means a lot이라고 해요." },
+            { "k": "live up to|let you down", "tip": "'기대에 부응하다'는 live up to your expectations라고 해요." }
+          ],
+          "hint": "감동을 전할 땐 That means a lot으로, '부응하다'는 live up to로 말해 보세요.",
+          "words": [
+            { "ko": "힘이 나요", "en": "that means a lot" },
+            { "ko": "기대에 꼭 부응할게요", "en": "live up to your expectations" }
+          ]
+        },
+        { "who": "npc", "en": "You already have. Now go get some rest. It's Friday!", "ko": "이미 충분히 그러고 있어요. 이제 가서 좀 쉬어요. 금요일이잖아요!" }
+      ]
+    }
+  ]
+}

@@ -3,10 +3,18 @@ import type { DailyRow, StudyMode } from '../types';
 import { isKnownOrSolid } from './scheduler';
 import { STREAK_MIN_QUESTIONS, shiftDate, studyDateOf } from './time';
 
-/** 그날 모든 모드에서 푼 문제 수 */
-export function dayTotal(d: DailyRow | undefined): number {
+/** 그날 푼 문제 수 (mode 없으면 모든 모드 합) */
+export function dayTotal(d: DailyRow | undefined, mode?: StudyMode): number {
   if (!d) return 0;
+  if (mode === 'vocab') return d.total;
+  if (mode) return d.byMode?.[mode]?.total ?? 0;
   return d.total + Object.values(d.byMode ?? {}).reduce((s, m) => s + (m?.total ?? 0), 0);
+}
+
+/** 그날 모든 모드의 학습 시간 */
+export function dayTime(d: DailyRow | undefined): number {
+  if (!d) return 0;
+  return d.timeMs + Object.values(d.byMode ?? {}).reduce((s, m) => s + (m?.timeMs ?? 0), 0);
 }
 
 export function studied(d: DailyRow | undefined): boolean {
