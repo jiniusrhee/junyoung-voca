@@ -305,5 +305,9 @@
       "file": "office-rookie.json",
       "hash": "7d7db6e95cd7"
     }
-  ]
+  ],
+  "progress": {
+    "file": "progress.json",
+    "hash": "6d142df6b2c4"
+  }
 }
