@@ -7306,3 +7306,423 @@ sup.beta.pill {
 .qmark {
   cursor: pointer;
 }
+
+/* ================= 단어 사전 상세 (2026 구성) ================= */
+.wd-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 54px;
+  margin: 0 -16px;
+  padding: 0 10px;
+}
+.def-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--sub);
+}
+.def-toggle span {
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.72rem;
+}
+.def-toggle.on span {
+  background: var(--purple);
+  color: #fff;
+}
+.word-ipa {
+  text-align: center;
+  color: var(--sub);
+  font-size: 0.98rem;
+  margin: -4px 0 10px;
+  letter-spacing: 0.01em;
+}
+.listen-row {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+.listen-row .listen-pill {
+  border-radius: 22px 0 0 22px;
+  padding-right: 16px;
+}
+.listen-more {
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-left: none;
+  border-radius: 0 22px 22px 0;
+  color: var(--sub);
+  font-size: 1.1rem;
+}
+.listen-row .lw-pop {
+  top: 100%;
+  right: calc(50% - 120px);
+}
+.mean-tags {
+  position: relative;
+  justify-content: flex-end;
+}
+.mean-plus {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: var(--surface-2);
+  color: var(--sub);
+  font-weight: 700;
+}
+.mean-plus.on {
+  background: var(--purple);
+  color: #fff;
+}
+.mean-nuance {
+  color: var(--sub);
+  font-size: 0.92rem;
+  margin-top: 6px;
+  word-break: keep-all;
+}
+.mean-def {
+  font-style: italic;
+  font-size: 0.98rem;
+  margin-top: 8px;
+  color: var(--text);
+}
+.mean-fold {
+  position: absolute;
+  right: 14px;
+  top: 112px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--surface-2);
+  color: var(--sub);
+}
+.mean-fold svg {
+  transform: rotate(90deg);
+}
+.mean-fold svg.up {
+  transform: rotate(-90deg);
+}
+.mean-card {
+  position: relative;
+}
+.mean-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.mean-foot .wb-add {
+  margin: 0;
+  flex: none;
+}
+.forms-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px 14px;
+}
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+.form-row:last-child {
+  border-bottom: none;
+}
+.form-row b {
+  font-size: 1rem;
+}
+.form-row span {
+  color: var(--sub);
+  font-size: 0.82rem;
+}
+.form-row svg {
+  margin-left: auto;
+  color: var(--muted);
+}
+.wd-close {
+  position: fixed;
+  right: 20px;
+  bottom: calc(26px + env(safe-area-inset-bottom));
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #3a3d43;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+:root:not([data-theme='dark']) .wd-close {
+  background: #fff;
+  color: #333;
+}
+.word-page {
+  padding-bottom: 100px;
+}
+
+/* ================= 발음 구분 연습 (카드 방식) ================= */
+.pair-quiz {
+  background: var(--bg);
+}
+.pair-dots {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.pair-dots span {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+.pair-dots span.cur {
+  outline: 2px solid var(--purple);
+}
+.pair-dots span.o::after {
+  content: 'O';
+  color: #3fbf6a;
+}
+.pair-dots span.x::after {
+  content: 'X';
+  color: #e0465a;
+}
+.pair-target {
+  margin: 30px 10px 26px;
+  padding: 36px 16px;
+  border-radius: 24px;
+  background: var(--surface);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pair-target b {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+.pair-target small {
+  color: var(--sub);
+  font-size: 0.95rem;
+}
+.pair-quiz .pair-q {
+  text-align: center;
+  font-size: 1.15rem;
+  margin-bottom: 20px;
+}
+.pair-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 0 10px;
+}
+.pair-cardbtn {
+  height: 290px;
+  border-radius: 22px;
+  padding: 10px;
+  background: var(--surface);
+  border: 3px solid transparent;
+}
+.card-back {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.25) 0 6px, transparent 7px),
+    radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.2) 0 5px, transparent 6px),
+    radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.2) 0 4px, transparent 5px),
+    linear-gradient(160deg, #6dc8f5, #3fa9e8);
+  border: 4px solid #2f8fd0;
+}
+.card-num {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.85);
+  color: #1f6fa8;
+  font-weight: 800;
+  font-size: 1.3rem;
+}
+.pair-cardbtn.playing .card-back {
+  box-shadow: 0 0 0 5px rgba(124, 92, 245, 0.55);
+}
+.card-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  height: 100%;
+  padding: 8px;
+  text-align: center;
+}
+.card-face b {
+  font-size: 1.3rem;
+  line-height: 1.3;
+  word-break: break-word;
+}
+.say-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 14px;
+  background: var(--surface-2);
+  font-size: 0.82rem;
+  color: var(--sub);
+}
+.pair-cardbtn.right {
+  border-color: #3fbf6a;
+}
+.pair-cardbtn.wrong {
+  border-color: #e0465a;
+}
+.pair-quiz .pair-play {
+  margin-top: 22px;
+}
+.pair-speaker.on {
+  box-shadow: 0 0 0 8px rgba(124, 92, 245, 0.3);
+}
+.pair-foot.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 10px 24px calc(14px + env(safe-area-inset-bottom));
+  background: var(--surface);
+  border-radius: 24px 24px 0 0;
+}
+.pair-foot.two .tool-btn {
+  font-size: 0.78rem;
+  color: var(--sub);
+}
+.pair-foot.two .tool-btn:disabled {
+  opacity: 0.35;
+}
+.pair-result {
+  color: var(--text);
+  background: var(--bg);
+  gap: 18px;
+}
+.pr-title {
+  font-size: 1.5rem;
+  margin-top: 30px;
+}
+.pr-card {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+  padding: 36px 16px 22px;
+  border-radius: 18px;
+  background: var(--surface);
+  text-align: center;
+}
+.pr-mode {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 32px;
+  border-radius: 20px;
+  background: var(--purple);
+  color: #fff;
+  font-weight: 800;
+}
+.pr-stage {
+  display: block;
+  font-size: 1.5rem;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.pr-marks {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 18px 0 14px;
+}
+.pr-marks span {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+}
+.pr-marks .o {
+  color: #3fbf6a;
+}
+.pr-marks .x {
+  color: #e0465a;
+}
+.pr-score {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+.pr-bubble {
+  position: relative;
+  width: 100%;
+  padding: 18px 16px;
+  border-radius: 18px;
+  background: var(--surface);
+  text-align: center;
+}
+.pr-bubble p {
+  margin-top: 6px;
+  color: var(--sub);
+  white-space: pre-line;
+  font-size: 0.92rem;
+}
+.pr-bubble::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  border: 10px solid transparent;
+  border-top-color: var(--surface);
+}
+.pr-ok {
+  width: 100%;
+  margin-top: auto;
+}
+.pair-quiz .pair-q.hard {
+  margin: 40px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pair-quiz .pair-q.hard small {
+  color: var(--sub);
+  font-size: 0.86rem;
+}
+.pair-cardbtn.open .card-face b {
+  font-size: 1.1rem;
+}

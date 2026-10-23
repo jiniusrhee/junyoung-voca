@@ -45,6 +45,12 @@ export interface WordEntry {
   nuance?: string;
   etymology?: string;
   tags?: string[];
+  /** 미국식 발음 기호 (/…/) */
+  ipa?: string;
+  /** 영영 풀이 */
+  def?: string;
+  /** 변화형: "abandoned (과거·과거분사)" */
+  forms?: string[];
 }
 
 export interface StoredWord extends WordEntry {
