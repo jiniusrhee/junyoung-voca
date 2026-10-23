@@ -6902,3 +6902,15 @@ sup.beta.pill {
 .vh-list li small {
   color: var(--muted);
 }
+.lw-imported {
+  margin: 10px 18px 4px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--surface-2);
+  font-size: 0.8rem;
+  color: var(--sub);
+  line-height: 1.5;
+}
+.lw-imported b {
+  color: var(--text);
+}
