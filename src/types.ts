@@ -90,8 +90,78 @@ export interface ReviewRow {
   elapsedMs: number;
   isNew: boolean;
   isTest?: boolean;
+  /** 어휘 외 학습 모드 (없으면 어휘) */
+  studyMode?: StudyMode;
   sentenceIdx?: number;
   wrongs?: WrongNote[];
+}
+
+export type StudyMode = 'vocab' | 'grammar' | 'listening' | 'pairs';
+
+export interface ModeDay {
+  total: number;
+  newItems: number;
+  reviews: number;
+  correct: number;
+  timeMs: number;
+}
+
+/** 문법·리스닝 등 어휘 외 모드의 복습 카드 (FSRS) */
+export interface MCardRow {
+  /** `${mode}:${itemId}` */
+  id: string;
+  mode: StudyMode;
+  itemId: string;
+  due: Date;
+  stability: number;
+  difficulty: number;
+  elapsed_days: number;
+  scheduled_days: number;
+  learning_steps: number;
+  reps: number;
+  lapses: number;
+  state: number;
+  last_review?: Date;
+}
+
+export interface BookmarkRow {
+  /** `${mode}:${itemId}` */
+  key: string;
+  mode: StudyMode;
+  itemId: string;
+  ts: number;
+}
+
+export interface LessonBlock {
+  t: 'p' | 'ex' | 'tip' | 'chunks' | 'h';
+  text?: string;
+  en?: string;
+  ko?: string;
+  hl?: string;
+  parts?: { text: string; label?: string }[];
+}
+
+export interface GrammarTopic {
+  id: string;
+  /** "16-2" */
+  level: string;
+  levelNum: number;
+  title: string;
+  category: string;
+  lesson: { summary: string; blocks: LessonBlock[] };
+  pack: string;
+  order: number;
+}
+
+export interface GrammarSentence {
+  id: string;
+  topic: string;
+  ko: string;
+  en: string;
+  distractors: string[];
+  alts?: { en: string; note: string }[];
+  levelNum: number;
+  pack: string;
 }
 
 export interface DailyRow {
@@ -105,6 +175,8 @@ export interface DailyRow {
   knownNew?: number;
   /** 그날의 하루 목표 (트로피 판정용) */
   goal?: number;
+  /** 어휘 외 모드별 기록 */
+  byMode?: Partial<Record<StudyMode, ModeDay>>;
 }
 
 export interface PackRow {
@@ -142,4 +214,15 @@ export interface Settings {
   theme: 'system' | 'dark' | 'light';
   /** 홈 왼쪽 위에 보이는 이름 */
   nickname: string;
+  grammarGoal: number;
+  grammarLevel: number | null;
+  listeningGoal: number;
+  listeningLevel: number | null;
+  listeningMode: 'mc' | 'subjective';
+  listeningInput: 'voice' | 'keyboard';
+  listeningSpeed: 'real' | 'slow';
+  /** 학습 화면 배경 테마 */
+  studyTheme: 'sky' | 'dino';
+  /** 홈 메인 카드에 보이는 학습 모드 */
+  homeMode: StudyMode;
 }

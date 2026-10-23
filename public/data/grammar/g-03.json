@@ -1,0 +1,600 @@
+{
+  "topics": [
+    {
+      "id": "participle-adj", "level": "21-1", "title": "감정을 나타내는 분사 (-ing vs -ed)", "category": "분사",
+      "lesson": {
+        "summary": "감정을 불러일으키는 쪽은 -ing, 감정을 느끼는 쪽은 -ed를 써요.",
+        "blocks": [
+          { "t": "p", "text": "지루한 수업이 끝나고 친구한테 'I was so boring.'이라고 말한 적 있나요? 안타깝게도 이 말은 '나 너무 재미없는 사람이었어'라는 뜻이 돼요. 왜 그런지 같이 알아봐요." },
+          { "t": "h", "text": "감정 동사에서 나온 두 가지 형용사" },
+          { "t": "p", "text": "bore(지루하게 하다), surprise(놀라게 하다), interest(흥미를 끌다)처럼 영어의 감정 동사는 대부분 '누군가에게 감정을 일으킨다'는 뜻이에요. 여기에 -ing를 붙이느냐 -ed를 붙이느냐에 따라 의미가 갈려요." },
+          { "t": "ex", "en": "The movie was boring.", "ko": "그 영화는 지루했어.", "hl": "boring" },
+          { "t": "ex", "en": "I was bored.", "ko": "나는 지루했어.", "hl": "bored" },
+          { "t": "p", "text": "영화는 나를 지루하게 '만든' 쪽이니까 ==-ing==, 나는 지루함을 '느낀' 쪽이니까 ==-ed==예요. 원인 쪽에는 -ing, 감정을 받는 쪽에는 -ed라고 기억하면 쉬워요." },
+          { "t": "chunks", "parts": [ { "text": "The news", "label": "감정의 원인" }, { "text": "was shocking", "label": "-ing: 충격을 주는" }, { "text": "to everyone", "label": "받는 사람" } ] },
+          { "t": "chunks", "parts": [ { "text": "Everyone", "label": "감정을 느끼는 사람" }, { "text": "was shocked", "label": "-ed: 충격을 받은" }, { "text": "by the news", "label": "원인" } ] },
+          { "t": "h", "text": "자주 쓰는 짝꿍들" },
+          { "t": "p", "text": "interesting / interested, exciting / excited, tiring / tired, confusing / confused, disappointing / disappointed. 모두 같은 규칙을 따라요. 하나만 제대로 이해하면 나머지는 저절로 따라와요." },
+          { "t": "tip", "text": "사람이 주어라고 무조건 -ed를 쓰는 건 아니에요. 'He is boring.'은 '그는 (남을) 지루하게 하는 사람이야', 즉 재미없는 사람이라는 뜻이고, 'He is bored.'는 '그는 지금 지루해하고 있어'라는 뜻이에요." },
+          { "t": "tip", "text": "-ed 형용사는 짝꿍 전치사와 함께 외우면 좋아요. **interested in**, **excited about**, **tired of**, **disappointed with**처럼요." }
+        ]
+      }
+    },
+    {
+      "id": "participle-modifier", "level": "21-2", "title": "명사를 꾸며주는 분사", "category": "분사",
+      "lesson": {
+        "summary": "-ing는 '~하고 있는', p.p.는 '~된'이라는 뜻으로 명사를 꾸며요.",
+        "blocks": [
+          { "t": "p", "text": "'자고 있는 아기', '깨진 유리'처럼 우리말에서는 동사로 명사를 꾸미는 일이 정말 많죠? 영어에서는 이럴 때 분사를 써요. 동사에 -ing나 -ed를 붙여서 형용사처럼 쓰는 거예요." },
+          { "t": "h", "text": "-ing는 능동, p.p.는 수동" },
+          { "t": "p", "text": "명사가 직접 그 동작을 **하고 있으면** 현재분사(-ing), 명사가 그 동작을 **당했으면** 과거분사(p.p.)를 써요." },
+          { "t": "ex", "en": "Look at the sleeping baby.", "ko": "자고 있는 아기 좀 봐.", "hl": "sleeping" },
+          { "t": "ex", "en": "Don't touch the broken glass.", "ko": "깨진 유리 만지지 마.", "hl": "broken" },
+          { "t": "p", "text": "아기는 스스로 자고 있으니까 sleeping, 유리는 누군가에 의해 깨진 거니까 broken이에요. 명사 입장에서 '내가 하는 거야, 당한 거야?'를 물어보면 돼요." },
+          { "t": "h", "text": "분사가 길어지면 명사 뒤로" },
+          { "t": "p", "text": "분사 한 단어만 있을 때는 명사 앞에 오지만, 뒤에 다른 말이 붙어서 길어지면 ==명사 뒤==로 자리를 옮겨요." },
+          { "t": "ex", "en": "The man standing by the door is my uncle.", "ko": "문 옆에 서 있는 남자는 우리 삼촌이야.", "hl": "standing by the door" },
+          { "t": "chunks", "parts": [ { "text": "The language", "label": "명사" }, { "text": "spoken in Brazil", "label": "꾸며주는 분사구" }, { "text": "is Portuguese", "label": "동사 + 보어" } ] },
+          { "t": "ex", "en": "I got a letter written in English.", "ko": "영어로 쓰인 편지를 받았어.", "hl": "written in English" },
+          { "t": "tip", "text": "명사 뒤의 분사구는 '관계대명사 + be동사'가 빠진 모양이라고 생각하면 해석이 쉬워져요. the man (who is) standing by the door처럼요." }
+        ]
+      }
+    },
+    {
+      "id": "participle-clause", "level": "22-1", "title": "분사구문", "category": "분사",
+      "lesson": {
+        "summary": "접속사와 주어를 빼고 동사를 -ing로 바꾸면 문장이 짧고 매끄러워져요.",
+        "blocks": [
+          { "t": "p", "text": "'책을 읽으면서 벤치에 앉아 있었어'를 영어로 하면 while이나 and가 꼭 필요할 것 같죠? 그런데 원어민은 이걸 훨씬 짧게 말해요. 바로 분사구문 덕분이에요." },
+          { "t": "ex", "en": "She sat on the bench reading a book.", "ko": "그녀는 책을 읽으며 벤치에 앉아 있었어.", "hl": "reading a book" },
+          { "t": "h", "text": "분사구문 만드는 3단계" },
+          { "t": "p", "text": "1) 접속사(when, while, because 등)를 지워요. 2) 두 문장의 주어가 같으면 주어도 지워요. 3) 남은 동사를 **-ing**로 바꿔요. 이게 전부예요." },
+          { "t": "ex", "en": "Opening the door, I saw a strange cat.", "ko": "문을 열었더니 이상한 고양이가 보였어.", "hl": "Opening the door" },
+          { "t": "p", "text": "분사구문은 문장 앞에도, 뒤에도 올 수 있어요. 앞에 올 때는 보통 쉼표로 끊어 주고, 뒤에 올 때는 쉼표 없이 바로 이어 쓰는 경우가 많아요. 뜻은 문맥에 맞춰 '~하면서', '~하다가', '~해서'로 자연스럽게 풀면 돼요." },
+          { "t": "chunks", "parts": [ { "text": "He fell asleep", "label": "주절" }, { "text": "watching TV", "label": "분사구문: ~하다가" } ] },
+          { "t": "h", "text": "수동과 부정" },
+          { "t": "p", "text": "주어가 동작을 당하는 거라면 Being p.p.가 되는데, 이때 being은 보통 생략해서 ==p.p.로 바로 시작==해요. 부정은 분사 바로 앞에 **not**을 붙여요." },
+          { "t": "ex", "en": "He came home covered in mud.", "ko": "그는 진흙투성이가 되어 집에 왔어.", "hl": "covered in mud" },
+          { "t": "ex", "en": "I stood there not knowing what to say.", "ko": "뭐라고 해야 할지 몰라서 그냥 서 있었어.", "hl": "not knowing" },
+          { "t": "tip", "text": "분사구문의 주어는 주절의 주어와 같아야 해요. 'Walking home, the rain started.'라고 하면 비가 걸어서 집에 간 셈이 되니 조심하세요." }
+        ]
+      }
+    },
+    {
+      "id": "relative-who-which", "level": "23-1", "title": "관계대명사 who, which, that", "category": "관계사",
+      "lesson": {
+        "summary": "명사 뒤에 문장으로 설명을 붙일 때 사람은 who, 사물은 which, 둘 다 that을 써요.",
+        "blocks": [
+          { "t": "p", "text": "'캐나다에 사는 친구'처럼 명사 앞에 긴 설명을 붙이는 건 우리말에선 자연스럽죠. 그런데 영어는 순서가 반대예요. 명사를 먼저 말하고, 설명은 그 뒤에 붙여요. 이때 다리 역할을 하는 게 관계대명사예요." },
+          { "t": "ex", "en": "I have a friend who lives in Canada.", "ko": "나 캐나다에 사는 친구 있어.", "hl": "who lives in Canada" },
+          { "t": "chunks", "parts": [ { "text": "a friend", "label": "꾸밈을 받는 명사 (선행사)" }, { "text": "who", "label": "연결 고리" }, { "text": "lives in Canada", "label": "설명" } ] },
+          { "t": "h", "text": "사람이면 who, 사물이면 which" },
+          { "t": "p", "text": "앞에 있는 명사(선행사)가 사람이면 **who**, 사물이나 동물이면 **which**를 써요. **that**은 둘 다에 쓸 수 있어서 회화에서는 that이 정말 자주 나와요." },
+          { "t": "ex", "en": "This is the book that changed my life.", "ko": "이게 내 인생을 바꾼 책이야.", "hl": "that changed my life" },
+          { "t": "h", "text": "목적격은 생략할 수 있어요" },
+          { "t": "p", "text": "관계대명사 바로 뒤에 주어가 나오면, 관계대명사가 목적어 역할을 하고 있다는 뜻이에요. 이럴 때는 ==관계대명사를 생략==해도 돼요. 아래 문장은 The cake you made was delicious.라고 해도 똑같아요." },
+          { "t": "ex", "en": "The cake that you made was delicious.", "ko": "네가 만든 케이크 진짜 맛있었어.", "hl": "that you made" },
+          { "t": "tip", "text": "관계대명사가 이미 목적어 자리를 차지했으니까 뒤에 목적어를 또 쓰면 안 돼요. 'the cake that you made it'은 틀린 문장이에요." },
+          { "t": "tip", "text": "관계대명사가 주어 역할일 때 뒤에 오는 동사는 선행사에 수를 맞춰요. a friend who **lives**, friends who **live**처럼요." }
+        ]
+      }
+    },
+    {
+      "id": "relative-what", "level": "23-2", "title": "관계대명사 what", "category": "관계사",
+      "lesson": {
+        "summary": "what은 '~하는 것'이라는 뜻으로, 선행사를 자기 안에 품고 있는 관계대명사예요.",
+        "blocks": [
+          { "t": "p", "text": "'내가 필요한 건 휴가야'에서 '~한 것'은 영어로 어떻게 말할까요? the thing that I need라고 해도 되지만, 이걸 한 단어로 줄인 게 바로 **what**이에요." },
+          { "t": "ex", "en": "What I need is a long vacation.", "ko": "나한테 필요한 건 긴 휴가야.", "hl": "What I need" },
+          { "t": "chunks", "parts": [ { "text": "What I need", "label": "주어: 내가 필요한 것" }, { "text": "is", "label": "동사" }, { "text": "a long vacation", "label": "보어" } ] },
+          { "t": "h", "text": "what = the thing(s) that" },
+          { "t": "p", "text": "who, which, that은 앞에 꾸며줄 명사가 꼭 있어야 하지만, what은 자기 안에 이미 '것(the thing)'을 품고 있어요. 그래서 ==what 앞에는 명사가 오지 않아요==." },
+          { "t": "ex", "en": "I can't believe what he said.", "ko": "걔가 한 말을 믿을 수가 없어.", "hl": "what he said" },
+          { "t": "p", "text": "what이 이끄는 덩어리는 문장에서 주어, 목적어, 보어 어디든 들어갈 수 있어요. 덩어리 전체를 하나의 큰 명사라고 생각하면 돼요." },
+          { "t": "ex", "en": "This is exactly what I wanted.", "ko": "이게 딱 내가 원하던 거야.", "hl": "what I wanted" },
+          { "t": "tip", "text": "'the thing what I wanted'처럼 명사 뒤에 what을 쓰면 틀려요. 앞에 명사가 있으면 that이나 which, 없으면 what이에요." },
+          { "t": "tip", "text": "what 덩어리가 주어일 때는 보통 단수 취급해요. What I need **is** ~처럼요." }
+        ]
+      }
+    },
+    {
+      "id": "relative-adverb", "level": "24-1", "title": "관계부사 where, when, why", "category": "관계사",
+      "lesson": {
+        "summary": "장소는 where, 시간은 when, 이유는 why로 명사 뒤에 완전한 문장을 붙여요.",
+        "blocks": [
+          { "t": "p", "text": "'우리가 처음 만난 카페'를 영어로 말할 때 which를 써야 할까요, where를 써야 할까요? 정답은 where예요. 뒤에 오는 문장에서 빠진 게 '장소'이기 때문이에요." },
+          { "t": "ex", "en": "This is the cafe where we first met.", "ko": "여기가 우리가 처음 만난 카페야.", "hl": "where we first met" },
+          { "t": "chunks", "parts": [ { "text": "the cafe", "label": "장소 명사" }, { "text": "where", "label": "= in which" }, { "text": "we first met", "label": "완전한 문장" } ] },
+          { "t": "h", "text": "관계대명사랑 뭐가 달라요?" },
+          { "t": "p", "text": "관계대명사 뒤에는 주어나 목적어가 빠진 **불완전한 문장**이 오지만, 관계부사 뒤에는 ==빠진 것 없는 완전한 문장==이 와요. we first met은 그 자체로 완전하니까 where가 맞아요." },
+          { "t": "ex", "en": "I remember the day when I got my first job.", "ko": "첫 직장 구했던 날이 아직도 기억나.", "hl": "when I got my first job" },
+          { "t": "ex", "en": "Tell me the reason why you were late.", "ko": "늦은 이유를 말해 봐.", "hl": "why you were late" },
+          { "t": "p", "text": "시간 명사(the day, the year) 뒤에는 when, 이유(the reason) 뒤에는 why를 써요. 회화에서는 the day나 the reason을 빼고 when, why만 쓰거나, 반대로 관계부사를 빼고 명사만 남기는 경우도 많아요." },
+          { "t": "h", "text": "how는 조금 특별해요" },
+          { "t": "p", "text": "방법을 말할 때는 how나 the way 중 **하나만** 써야 해요. This is how I learned English. 또는 This is the way I learned English. 둘 다 좋지만 the way how는 틀린 표현이에요." },
+          { "t": "tip", "text": "'That's why ~'는 '그래서 ~한 거야', 'That's because ~'는 '그건 ~ 때문이야'예요. 원인과 결과의 방향이 반대니까 헷갈리지 마세요." }
+        ]
+      }
+    },
+    {
+      "id": "comparative", "level": "25-1", "title": "비교급", "category": "비교",
+      "lesson": {
+        "summary": "둘을 비교할 땐 -er나 more로 '더 ~한'을 만들고 than으로 비교 대상을 이어요.",
+        "blocks": [
+          { "t": "p", "text": "키, 가격, 날씨처럼 둘 중 어느 쪽이 더한지 말할 일이 하루에도 몇 번씩 있죠? 영어에서는 형용사나 부사의 모양을 바꿔서 '더 ~한'을 표현해요." },
+          { "t": "h", "text": "-er일까, more일까?" },
+          { "t": "p", "text": "짧은 단어(1음절, -y로 끝나는 2음절)는 끝에 **-er**를 붙이고, 긴 단어는 앞에 **more**를 붙여요. tall → taller, easy → easier, difficult → more difficult처럼요." },
+          { "t": "ex", "en": "My brother is taller than me.", "ko": "우리 형이 나보다 키 커.", "hl": "taller than" },
+          { "t": "ex", "en": "English is more difficult than I thought.", "ko": "영어는 생각보다 어려워.", "hl": "more difficult than" },
+          { "t": "chunks", "parts": [ { "text": "My brother", "label": "A" }, { "text": "is taller", "label": "비교급" }, { "text": "than me", "label": "비교 대상 B" } ] },
+          { "t": "p", "text": "good → better, bad → worse, many/much → more처럼 모양이 완전히 바뀌는 불규칙 비교급도 있어요. 이건 그냥 통째로 외워 두는 게 제일 빨라요." },
+          { "t": "h", "text": "비교급을 강조하고 싶을 때" },
+          { "t": "p", "text": "'훨씬 더'라고 할 때는 very가 아니라 ==much, a lot, far==를 비교급 앞에 써요." },
+          { "t": "ex", "en": "This bag is much cheaper than that one.", "ko": "이 가방이 저거보다 훨씬 싸.", "hl": "much cheaper" },
+          { "t": "tip", "text": "'more taller'처럼 -er와 more를 같이 쓰면 안 돼요. 둘 중 하나만 골라요. 그리고 비교 대상 앞은 then이 아니라 **than**이에요." },
+          { "t": "tip", "text": "'비교급 and 비교급'은 '점점 더 ~한'이라는 뜻이에요. It's getting **colder and colder**.는 '점점 추워지고 있어'예요." }
+        ]
+      }
+    },
+    {
+      "id": "superlative", "level": "25-2", "title": "최상급", "category": "비교",
+      "lesson": {
+        "summary": "셋 이상 중에서 '가장 ~한'을 말할 땐 the + -est 또는 the most를 써요.",
+        "blocks": [
+          { "t": "p", "text": "'우리 반에서 제일 똑똑한 애', '내 인생 최고의 피자'처럼 최고를 말하고 싶을 때가 있죠. 이럴 때 쓰는 게 최상급이에요." },
+          { "t": "ex", "en": "She is the smartest student in our class.", "ko": "그녀는 우리 반에서 제일 똑똑한 학생이야.", "hl": "the smartest" },
+          { "t": "chunks", "parts": [ { "text": "the", "label": "하나뿐이니까 the" }, { "text": "smartest", "label": "최상급" }, { "text": "student", "label": "명사" }, { "text": "in our class", "label": "범위" } ] },
+          { "t": "h", "text": "만드는 법은 비교급과 같아요" },
+          { "t": "p", "text": "짧은 단어는 **-est**, 긴 단어는 앞에 **most**를 붙여요. 불규칙도 비교급과 짝을 이뤄요. good → better → best, bad → worse → worst처럼요." },
+          { "t": "ex", "en": "That was the most boring movie I've ever seen.", "ko": "그건 내가 본 영화 중에 제일 지루했어.", "hl": "the most boring" },
+          { "t": "h", "text": "범위는 in이나 of로" },
+          { "t": "p", "text": "장소나 집단(in Korea, in my class) 앞에는 ==in==, 같은 종류 여럿(of all, of the three) 앞에는 ==of==를 써요. '내가 ~해 본 것 중에'라는 뜻의 I've ever ~도 최상급과 정말 잘 어울려요." },
+          { "t": "ex", "en": "This is the best pizza I've ever had.", "ko": "이건 내가 먹어 본 피자 중에 최고야.", "hl": "the best pizza I've ever had" },
+          { "t": "tip", "text": "'one of the 최상급'은 '가장 ~한 것들 중 하나'라는 뜻이라 뒤에 반드시 **복수 명사**가 와요. one of the best **days**처럼요." },
+          { "t": "tip", "text": "최상급 앞에는 보통 the를 붙이지만, like ~ the most처럼 동사를 꾸밀 때는 like ~ best나 like ~ most라고 the 없이 말하기도 해요." }
+        ]
+      }
+    },
+    {
+      "id": "as-as", "level": "25-3", "title": "as ~ as 원급 비교", "category": "비교",
+      "lesson": {
+        "summary": "as + 원래 모양 + as는 '~만큼 ~한'이라는 뜻으로 둘이 비슷하다는 걸 말해요.",
+        "blocks": [
+          { "t": "p", "text": "비교한다고 꼭 누가 더 크다고 말해야 하는 건 아니에요. '엄마만큼 키가 커'처럼 둘이 비슷하다고 말할 때는 as ~ as를 써요." },
+          { "t": "ex", "en": "My sister is as tall as my mom.", "ko": "우리 언니는 엄마만큼 키가 커.", "hl": "as tall as" },
+          { "t": "chunks", "parts": [ { "text": "as", "label": "~만큼" }, { "text": "tall", "label": "원래 모양 (원급)" }, { "text": "as my mom", "label": "비교 대상" } ] },
+          { "t": "p", "text": "두 as 사이에는 비교급이 아니라 ==원래 모양 그대로==의 형용사나 부사가 들어가요. as taller as처럼 쓰면 틀려요." },
+          { "t": "h", "text": "부정하면 '~만큼 ~하지 않은'" },
+          { "t": "p", "text": "not as ~ as는 '~만큼 ~하지 않다'는 뜻이에요. 결국 뒤에 오는 쪽이 더하다는 얘기죠. 부정문에서는 앞의 as 대신 so를 쓰기도 해요." },
+          { "t": "ex", "en": "This phone isn't as expensive as I thought.", "ko": "이 폰 생각만큼 비싸진 않네.", "hl": "isn't as expensive as" },
+          { "t": "h", "text": "덩어리로 외우면 좋은 표현" },
+          { "t": "p", "text": "**as soon as possible**(가능한 한 빨리), **as much as you want**(원하는 만큼), **twice as big as**(두 배만큼 큰)처럼 덩어리로 외워 두면 바로 써먹을 수 있어요." },
+          { "t": "ex", "en": "This room is twice as big as mine.", "ko": "이 방은 내 방보다 두 배는 커.", "hl": "twice as big as" },
+          { "t": "tip", "text": "비교하는 대상끼리 종류를 맞춰야 해요. '네 영어 실력은 나만큼 좋아'는 Your English is as good as **mine**.이에요. me라고 하면 영어 실력과 사람을 비교하는 셈이 돼요." }
+        ]
+      }
+    },
+    {
+      "id": "conditional-2", "level": "26-1", "title": "가정법 과거", "category": "가정법",
+      "lesson": {
+        "summary": "지금 현실과 반대되는 상상은 'if + 과거형, would + 동사원형'으로 말해요.",
+        "blocks": [
+          { "t": "p", "text": "'시간만 있으면 여행 더 다닐 텐데...' 이런 말 자주 하죠? 실제로는 시간이 없다는 얘기예요. 이렇게 지금 현실과 반대되는 상상을 할 때 쓰는 게 가정법 과거예요." },
+          { "t": "ex", "en": "I would travel more if I had more time.", "ko": "시간만 더 있으면 여행 더 많이 다닐 텐데.", "hl": "if I had more time" },
+          { "t": "chunks", "parts": [ { "text": "I would travel more", "label": "would + 동사원형" }, { "text": "if I had more time", "label": "if + 과거형" } ] },
+          { "t": "h", "text": "지금 얘기인데 왜 과거형이에요?" },
+          { "t": "p", "text": "동사를 한 시제 뒤로 보내면 '현실에서 한 발짝 멀어진다'는 느낌이 생겨요. 그래서 모양은 과거형이지만 뜻은 ==현재에 대한 상상==이에요." },
+          { "t": "p", "text": "if 쪽에는 과거형, 나머지 쪽에는 **would / could / might + 동사원형**을 써요. if절은 앞에 와도 되고 뒤에 와도 돼요. 앞에 올 때는 쉼표를 찍어 주는 게 보통이에요." },
+          { "t": "ex", "en": "If I knew her number, I'd call her.", "ko": "걔 번호만 알면 전화할 텐데.", "hl": "If I knew her number" },
+          { "t": "h", "text": "be동사는 were" },
+          { "t": "p", "text": "가정법에서는 주어가 I나 he여도 be동사를 **were**로 쓰는 게 원칙이에요. 대표 표현이 바로 If I were you(내가 너라면)예요." },
+          { "t": "ex", "en": "I wouldn't do that if I were you.", "ko": "내가 너라면 그거 안 해.", "hl": "if I were you" },
+          { "t": "tip", "text": "실제로 일어날 수 있는 일이면 그냥 현재형을 써요. If it rains, I will stay home.(비 오면 집에 있을게)은 실제 가능성, If I won the lottery, I would quit.(복권 당첨되면 그만둘 텐데)은 상상이에요." },
+          { "t": "tip", "text": "일상 회화에서는 If I was ~도 많이 들리지만, 시험이나 글에서는 were가 안전해요." }
+        ]
+      }
+    },
+    {
+      "id": "conditional-3", "level": "26-2", "title": "가정법 과거완료", "category": "가정법",
+      "lesson": {
+        "summary": "과거 사실과 반대되는 상상은 'if + had p.p., would have p.p.'로 말해요.",
+        "blocks": [
+          { "t": "p", "text": "'그때 알았더라면 전화했을 텐데.' 이미 지나간 일을 두고 아쉬워할 때가 있죠. 과거에 일어나지 않은 일을 상상할 때는 시제를 한 번 더 뒤로 보내요." },
+          { "t": "ex", "en": "I would have called you if I had known.", "ko": "알았으면 너한테 전화했을 거야.", "hl": "if I had known" },
+          { "t": "chunks", "parts": [ { "text": "I would have called you", "label": "would have + p.p." }, { "text": "if I had known", "label": "if + had p.p." } ] },
+          { "t": "h", "text": "가정법 과거와 비교해 봐요" },
+          { "t": "p", "text": "가정법 과거는 '지금'의 반대, 가정법 과거완료는 ==그때(과거)==의 반대예요. 그래서 if절은 과거완료(had p.p.), 주절은 would have p.p.가 돼요." },
+          { "t": "ex", "en": "If I had studied harder, I would have passed.", "ko": "더 열심히 공부했으면 합격했을 텐데.", "hl": "If I had studied harder" },
+          { "t": "p", "text": "would 대신 **could have p.p.**(~할 수 있었을 텐데), **might have p.p.**(~했을지도 몰라)를 넣으면 뉘앙스를 바꿀 수 있어요." },
+          { "t": "ex", "en": "I could have helped you if you had asked.", "ko": "부탁했으면 도와줄 수 있었을 텐데.", "hl": "could have helped" },
+          { "t": "tip", "text": "if절에는 would를 넣지 않아요. 'If I would have known'은 원어민도 가끔 말하지만 틀린 표현이에요. if 쪽은 **had p.p.**만 기억하세요." },
+          { "t": "tip", "text": "말할 때는 would have를 줄여서 would've라고 하는 경우가 많아요. 발음이 비슷해서 'would of'로 잘못 쓰는 원어민도 있을 정도예요." }
+        ]
+      }
+    },
+    {
+      "id": "i-wish", "level": "27-1", "title": "I wish 가정법", "category": "가정법",
+      "lesson": {
+        "summary": "I wish 뒤에 과거형을 쓰면 지금에 대한 아쉬움, had p.p.를 쓰면 과거에 대한 후회예요.",
+        "blocks": [
+          { "t": "p", "text": "'프랑스어 할 줄 알면 좋을 텐데', '그 말 하지 말걸'. 이루어지지 않은 바람이나 후회를 말할 때 영어에서는 I wish를 써요." },
+          { "t": "h", "text": "지금에 대한 아쉬움: I wish + 과거형" },
+          { "t": "ex", "en": "I wish I could speak French.", "ko": "프랑스어 할 줄 알면 좋을 텐데.", "hl": "could speak" },
+          { "t": "p", "text": "실제로는 프랑스어를 못 한다는 뜻이에요. 가정법 과거처럼 ==현재 일을 과거형으로== 말해요. be동사는 were를 쓰는 게 원칙이에요." },
+          { "t": "chunks", "parts": [ { "text": "I wish", "label": "바람" }, { "text": "I could speak French", "label": "과거형 = 현재의 반대" } ] },
+          { "t": "h", "text": "과거에 대한 후회: I wish + had p.p." },
+          { "t": "ex", "en": "I wish I hadn't said that.", "ko": "그 말 하지 말걸.", "hl": "hadn't said" },
+          { "t": "p", "text": "이미 말해 버린 걸 후회하는 거죠. 지나간 일을 반대로 바라는 거니까 한 단계 더 뒤로 가서 **had p.p.**를 써요." },
+          { "t": "h", "text": "남이 바뀌길 바랄 땐 would" },
+          { "t": "p", "text": "상대방이나 상황이 달라지길 바랄 때는 **I wish ~ would**를 써요. 살짝 짜증이나 불만이 섞인 느낌이에요." },
+          { "t": "ex", "en": "I wish it would stop raining.", "ko": "비 좀 그쳤으면 좋겠다.", "hl": "would stop" },
+          { "t": "tip", "text": "이룰 수 있는 소망에는 wish 대신 hope를 써요. I hope you get the job.(네가 합격하면 좋겠어)은 실제로 가능성이 있는 바람이에요." }
+        ]
+      }
+    },
+    {
+      "id": "as-if", "level": "27-2", "title": "as if 가정법", "category": "가정법",
+      "lesson": {
+        "summary": "as if 뒤에 가정법을 쓰면 '실제로는 아니지만 마치 ~인 것처럼'이라는 뜻이 돼요.",
+        "blocks": [
+          { "t": "p", "text": "다 아는 척하는 친구, 주변에 한 명쯤 있죠? 실제로는 모르면서 다 아는 것처럼 말할 때 영어로는 as if를 써요." },
+          { "t": "ex", "en": "He talks as if he knew everything.", "ko": "걔는 자기가 다 아는 것처럼 말해.", "hl": "as if he knew everything" },
+          { "t": "chunks", "parts": [ { "text": "He talks", "label": "실제 상황 (현재)" }, { "text": "as if", "label": "마치 ~처럼" }, { "text": "he knew everything", "label": "과거형 = 사실은 아님" } ] },
+          { "t": "h", "text": "같은 때의 상상은 과거형" },
+          { "t": "p", "text": "주절과 ==같은 시점==의 일을 반대로 상상할 때는 as if 뒤에 과거형을 써요. be동사는 were가 원칙이에요." },
+          { "t": "ex", "en": "Don't treat me as if I were a child.", "ko": "나 애 취급하지 마.", "hl": "as if I were a child" },
+          { "t": "h", "text": "그보다 앞선 일은 had p.p." },
+          { "t": "p", "text": "주절보다 ==앞선 시점==의 일을 상상할 때는 **had p.p.**를 써요. 아무 일도 없었던 것처럼 행동했다는 건, 그 전에 분명 무슨 일이 있었다는 뜻이죠." },
+          { "t": "ex", "en": "He acted as if nothing had happened.", "ko": "그는 아무 일도 없었다는 듯이 행동했어.", "hl": "as if nothing had happened" },
+          { "t": "tip", "text": "as though도 as if와 똑같은 뜻이에요. 회화에서는 like를 쓰기도 하지만, 글에서는 as if나 as though가 더 안전해요." },
+          { "t": "tip", "text": "정말 그럴 가능성이 있을 땐 현재형도 써요. It looks as if it's going to rain.(비가 올 것 같아)은 실제로 비가 올 수도 있는 상황이에요." }
+        ]
+      }
+    },
+    {
+      "id": "time-reason-conj", "level": "28-1", "title": "시간과 이유의 접속사", "category": "접속사",
+      "lesson": {
+        "summary": "when, while, until, because, since 같은 접속사로 두 문장을 시간과 이유로 이어요.",
+        "blocks": [
+          { "t": "p", "text": "'집에 도착하면 전화해', '감기 걸려서 집에 있었어'. 이렇게 두 가지 일을 시간 순서나 원인으로 묶을 때 접속사가 필요해요." },
+          { "t": "h", "text": "시간을 나타내는 접속사" },
+          { "t": "p", "text": "**when**(~할 때), **while**(~하는 동안), **before**(~ 전에), **after**(~ 후에), **until**(~할 때까지), **as soon as**(~하자마자). 모두 뒤에 주어 + 동사가 와요." },
+          { "t": "ex", "en": "Call me when you get home.", "ko": "집에 도착하면 전화해.", "hl": "when you get home" },
+          { "t": "chunks", "parts": [ { "text": "Call me", "label": "주절" }, { "text": "when", "label": "접속사" }, { "text": "you get home", "label": "주어 + 동사 (현재형)" } ] },
+          { "t": "p", "text": "시간 접속사 뒤에서는 미래 일이라도 ==현재형==을 써요. when you will get home이 아니라 when you get home이에요." },
+          { "t": "ex", "en": "I fell asleep while I was watching the movie.", "ko": "영화 보다가 잠들어 버렸어.", "hl": "while I was watching" },
+          { "t": "h", "text": "이유를 나타내는 접속사" },
+          { "t": "p", "text": "**because**는 이유를 가장 분명하게 짚을 때, **since**와 **as**는 '~니까'처럼 상대도 아는 이유를 가볍게 말할 때 자주 써요." },
+          { "t": "ex", "en": "Let's stay inside since it's raining.", "ko": "비 오니까 그냥 안에 있자.", "hl": "since it's raining" },
+          { "t": "tip", "text": "during과 because of 뒤에는 명사만 와요. during the movie, because of the rain처럼요. 주어 + 동사가 오면 while, because를 쓰세요." },
+          { "t": "tip", "text": "since에는 '~ 이후로'라는 시간 뜻도 있어요. I haven't seen him since we graduated.는 '졸업한 이후로 걔를 못 봤어'예요." }
+        ]
+      }
+    },
+    {
+      "id": "although", "level": "28-2", "title": "양보의 접속사 although, even though", "category": "접속사",
+      "lesson": {
+        "summary": "although와 even though는 '~이지만, ~인데도'라는 뜻으로 예상과 다른 결과를 이어요.",
+        "blocks": [
+          { "t": "p", "text": "아파도 출근하고, 슬퍼도 웃을 때가 있죠. 이렇게 예상과 반대되는 일을 한 문장으로 말할 때 although를 써요." },
+          { "t": "ex", "en": "I went to work although I was sick.", "ko": "아팠는데도 출근했어.", "hl": "although I was sick" },
+          { "t": "chunks", "parts": [ { "text": "I went to work", "label": "실제로 한 일" }, { "text": "although", "label": "~이지만" }, { "text": "I was sick", "label": "예상과 반대되는 상황" } ] },
+          { "t": "h", "text": "even though는 더 강하게" },
+          { "t": "p", "text": "even though는 although보다 ==감정이 더 실린== 느낌이에요. '그렇게 ~했는데도!'라는 놀람이나 억울함이 묻어나요. though만 써도 같은 뜻인데, 조금 더 가볍고 구어적이에요." },
+          { "t": "ex", "en": "He failed the test even though he studied hard.", "ko": "그는 열심히 공부했는데도 시험에 떨어졌어.", "hl": "even though" },
+          { "t": "h", "text": "despite와는 뭐가 달라요?" },
+          { "t": "p", "text": "although 뒤에는 **주어 + 동사**, despite 뒤에는 **명사**가 와요. 뜻은 비슷하지만 들어가는 자리가 달라요." },
+          { "t": "ex", "en": "Despite the rain, we went out.", "ko": "비가 오는데도 우리는 나갔어.", "hl": "Despite the rain" },
+          { "t": "tip", "text": "although와 but은 한 문장에 같이 쓰지 않아요. 'Although I was sick, but I went to work.'는 틀린 문장이에요. 둘 중 하나만 고르세요." },
+          { "t": "tip", "text": "even if는 '설령 ~하더라도'라는 가정이에요. 이미 일어난 사실에는 even though, 아직 모르는 일에는 even if를 써요." }
+        ]
+      }
+    },
+    {
+      "id": "so-that", "level": "28-3", "title": "so ~ that과 so that", "category": "접속사",
+      "lesson": {
+        "summary": "so + 형용사 + that은 '너무 ~해서 ~하다'(결과), so that은 '~하도록'(목적)이에요.",
+        "blocks": [
+          { "t": "p", "text": "so와 that이 붙어 다니는데 뜻이 두 가지라서 헷갈렸던 적 있나요? 둘 사이에 형용사가 끼어 있느냐 없느냐만 보면 쉽게 구별돼요." },
+          { "t": "h", "text": "so + 형용사/부사 + that: 너무 ~해서" },
+          { "t": "ex", "en": "I was so tired that I fell asleep immediately.", "ko": "너무 피곤해서 바로 곯아떨어졌어.", "hl": "so tired that" },
+          { "t": "chunks", "parts": [ { "text": "I was so tired", "label": "원인 (정도)" }, { "text": "that I fell asleep immediately", "label": "결과" } ] },
+          { "t": "p", "text": "so 뒤의 형용사나 부사가 '얼마나' 그랬는지를 말하고, that 뒤에 그 ==결과==가 나와요. 회화에서는 that을 빼고 말하는 경우도 많아요." },
+          { "t": "p", "text": "명사가 들어가면 so 대신 **such a + 형용사 + 명사**를 써요. such a nice day처럼요." },
+          { "t": "ex", "en": "It was such a nice day that we went hiking.", "ko": "날씨가 너무 좋아서 우리는 등산을 갔어.", "hl": "such a nice day" },
+          { "t": "h", "text": "so that: ~하도록, ~하려고" },
+          { "t": "p", "text": "so that이 딱 붙어 있으면 ==목적==을 나타내요. 뒤에는 보통 can, could, will, would 같은 조동사가 함께 와요." },
+          { "t": "ex", "en": "I saved money so that I could buy a laptop.", "ko": "노트북 사려고 돈을 모았어.", "hl": "so that I could" },
+          { "t": "tip", "text": "too를 쓰면 문장 모양이 달라져요. The soup was **too hot to eat**.는 The soup was **so hot that** I couldn't eat it.과 같은 뜻이에요. too 뒤에는 that절이 오지 않아요." }
+        ]
+      }
+    },
+    {
+      "id": "it-that-emphasis", "level": "29-1", "title": "It ~ that 강조 구문", "category": "특수 구문",
+      "lesson": {
+        "summary": "It is/was와 that 사이에 강조하고 싶은 말을 넣으면 '바로 ~가'라는 느낌이 돼요.",
+        "blocks": [
+          { "t": "p", "text": "'창문 깬 건 내가 아니라 민수야!' 이렇게 특정 부분을 콕 집어 말하고 싶을 때, 영어에는 강조 전용 틀이 있어요. 바로 It ~ that 구문이에요." },
+          { "t": "ex", "en": "Minsu broke the window.", "ko": "민수가 창문을 깼어.", "hl": "Minsu" },
+          { "t": "ex", "en": "It was Minsu who broke the window.", "ko": "창문 깬 건 바로 민수였어.", "hl": "It was Minsu who" },
+          { "t": "chunks", "parts": [ { "text": "It was", "label": "틀 시작" }, { "text": "Minsu", "label": "강조할 말" }, { "text": "who broke the window", "label": "나머지 문장" } ] },
+          { "t": "h", "text": "만드는 법" },
+          { "t": "p", "text": "1) 강조할 말을 골라요. 2) 그걸 It is(was)와 that 사이에 넣어요. 3) 나머지 문장을 그대로 that 뒤에 붙여요. 원래 문장이 과거면 It was, 현재면 It is를 써요." },
+          { "t": "p", "text": "강조하는 게 사람이면 that 대신 **who**를 많이 써요. 장소나 시간 표현도 강조할 수 있는데, 이때는 ==that==을 쓰는 게 기본이에요." },
+          { "t": "ex", "en": "It was in Busan that I first met her.", "ko": "내가 그녀를 처음 만난 건 바로 부산에서였어.", "hl": "It was in Busan that" },
+          { "t": "tip", "text": "강조 구문인지 헷갈리면 It is/was와 that을 지워 보세요. 남은 말로 완전한 문장이 만들어지면 강조 구문이에요. (In Busan I first met her.)" },
+          { "t": "tip", "text": "that 자리에 what을 쓰면 안 돼요. 'It was Minsu what broke the window.'는 틀린 문장이에요." }
+        ]
+      }
+    },
+    {
+      "id": "inversion", "level": "29-2", "title": "부정어 도치", "category": "특수 구문",
+      "lesson": {
+        "summary": "never, rarely, little 같은 부정어를 문장 맨 앞에 두면 주어와 동사의 순서가 뒤바뀌어요.",
+        "blocks": [
+          { "t": "p", "text": "영화 대사나 연설에서 'Never have I seen ~' 같은 문장 들어 본 적 있나요? 평범하게 I have never seen이라고 해도 되는데 왜 순서를 바꿨을까요? 바로 ==강조==하고 싶어서예요." },
+          { "t": "ex", "en": "I have never seen such a beautiful sunset.", "ko": "이렇게 아름다운 노을은 본 적이 없어.", "hl": "have never seen" },
+          { "t": "ex", "en": "Never have I seen such a beautiful sunset.", "ko": "이렇게 아름다운 노을은 정말 처음 봐.", "hl": "Never have I seen" },
+          { "t": "chunks", "parts": [ { "text": "Never", "label": "부정어를 맨 앞으로" }, { "text": "have", "label": "조동사" }, { "text": "I", "label": "주어" }, { "text": "seen such a beautiful sunset", "label": "나머지" } ] },
+          { "t": "h", "text": "의문문 어순을 떠올려요" },
+          { "t": "p", "text": "부정어가 맨 앞에 오면 뒤는 **의문문처럼** 조동사 + 주어 순서가 돼요. have나 can 같은 조동사가 있으면 그걸 앞으로 보내고, 일반동사만 있으면 **do / does / did**를 불러와요." },
+          { "t": "ex", "en": "Little did I know that he was lying.", "ko": "걔가 거짓말하고 있다는 건 꿈에도 몰랐어.", "hl": "Little did I know" },
+          { "t": "p", "text": "did가 시제를 가져갔으니까 뒤의 동사는 ==동사원형==이 돼요. Little did I knew가 아니라 Little did I know예요." },
+          { "t": "h", "text": "자주 나오는 부정어" },
+          { "t": "p", "text": "**never**(결코 ~않다), **rarely / seldom**(좀처럼 ~않다), **little**(전혀 ~않다), **hardly ~ when**(~하자마자), **not once**(한 번도 ~않다)가 대표적이에요. 부정어는 아니지만 **only then**(그제서야)도 같은 식으로 도치돼요." },
+          { "t": "tip", "text": "도치는 격식 있고 극적인 느낌이 강해요. 친구랑 수다 떨 땐 평범한 어순이 더 자연스러우니, 글이나 발표에서 힘을 주고 싶을 때 써 보세요." }
+        ]
+      }
+    },
+    {
+      "id": "reported-speech", "level": "30-1", "title": "간접화법", "category": "특수 구문",
+      "lesson": {
+        "summary": "남의 말을 전할 땐 따옴표 없이 시제와 대명사를 내 입장에 맞게 바꿔요.",
+        "blocks": [
+          { "t": "p", "text": "'걔가 피곤하다고 했어'처럼 남의 말을 옮기는 일, 정말 자주 하죠? 들은 말을 그대로 옮기면 직접화법, 내 말로 바꿔서 전하면 간접화법이에요." },
+          { "t": "ex", "en": "I'm tired.", "ko": "(그녀가 한 말) 나 피곤해.", "hl": "I'm" },
+          { "t": "ex", "en": "She said that she was tired.", "ko": "그녀가 피곤하다고 했어.", "hl": "she was" },
+          { "t": "chunks", "parts": [ { "text": "She said", "label": "전달 동사 (과거)" }, { "text": "that", "label": "생략 가능" }, { "text": "she was tired", "label": "시제를 한 칸 뒤로" } ] },
+          { "t": "h", "text": "시제는 한 칸 뒤로" },
+          { "t": "p", "text": "전달하는 동사(said, told)가 과거면, 옮기는 말의 시제도 ==한 칸 과거로== 내려가요. am → was, will → would, can → could, 과거 → had p.p.처럼요. I, you 같은 대명사도 전하는 사람 입장에서 바꿔 줘요." },
+          { "t": "ex", "en": "He told me that he would call later.", "ko": "그가 나중에 전화하겠다고 했어.", "hl": "would call" },
+          { "t": "p", "text": "say는 뒤에 바로 that절이 오고, tell은 **tell + 사람 + that절**처럼 듣는 사람을 꼭 넣어요." },
+          { "t": "h", "text": "질문과 명령을 전할 때" },
+          { "t": "p", "text": "질문은 **asked + 의문사(또는 if) + 주어 + 동사**처럼 평서문 어순으로 바꿔요. 부탁이나 명령은 **told + 사람 + to 동사원형**, 하지 말라는 말은 **not to**를 써요." },
+          { "t": "ex", "en": "My mom asked me where I had been.", "ko": "엄마가 나한테 어디 갔었냐고 물으셨어.", "hl": "where I had been" },
+          { "t": "tip", "text": "'asked me where had I been'처럼 의문문 어순을 그대로 두면 틀려요. 간접화법에서는 질문도 ==주어 + 동사== 순서예요." }
+        ]
+      }
+    },
+    {
+      "id": "not-only", "level": "30-2", "title": "not only A but also B", "category": "특수 구문",
+      "lesson": {
+        "summary": "not only A but also B는 'A뿐만 아니라 B도'라는 뜻이고, A와 B는 같은 모양으로 맞춰요.",
+        "blocks": [
+          { "t": "p", "text": "친구를 칭찬할 때 '똑똑하고 친절해'라고 해도 되지만, '똑똑할 뿐만 아니라 친절하기까지 해'라고 하면 훨씬 힘이 실리죠. 영어에서는 not only A but also B로 이 느낌을 살려요." },
+          { "t": "ex", "en": "She is not only smart but also kind.", "ko": "그녀는 똑똑할 뿐만 아니라 친절하기까지 해.", "hl": "not only smart but also kind" },
+          { "t": "chunks", "parts": [ { "text": "not only", "label": "~뿐만 아니라" }, { "text": "smart", "label": "A" }, { "text": "but also", "label": "~도" }, { "text": "kind", "label": "B (더 강조)" } ] },
+          { "t": "h", "text": "A와 B는 같은 모양으로" },
+          { "t": "p", "text": "A와 B 자리에는 ==같은 품사, 같은 형태==가 와야 해요. 형용사면 형용사끼리, 명사면 명사끼리, 전치사구면 전치사구끼리 짝을 맞춰요." },
+          { "t": "ex", "en": "Exercise is good not only for your body but also for your mind.", "ko": "운동은 몸뿐만 아니라 마음에도 좋아.", "hl": "not only for your body but also for your mind" },
+          { "t": "p", "text": "also는 생략해도 괜찮아요. not only A but B라고만 해도 뜻이 통해요." },
+          { "t": "h", "text": "주어로 쓸 때는 B에 맞춰요" },
+          { "t": "p", "text": "not only A but also B가 주어 자리에 오면 동사는 **B**에 수를 맞춰요. 뒤에 나온 B가 진짜 주인공이거든요." },
+          { "t": "ex", "en": "Not only my brother but also my parents were there.", "ko": "형뿐만 아니라 부모님도 거기 계셨어.", "hl": "my parents were" },
+          { "t": "tip", "text": "B as well as A도 같은 뜻이에요. 순서가 반대라는 점만 주의하세요. She is kind as well as smart.는 She is not only smart but also kind.와 같은 말이에요." },
+          { "t": "tip", "text": "'not only ~ and also'처럼 and를 쓰면 틀려요. not only의 짝꿍은 항상 **but**이에요." }
+        ]
+      }
+    }
+  ],
+  "sentences": [
+    { "id": "participle-adj-01", "topic": "participle-adj", "ko": "강의 내내 너무 지루했어.", "en": "I was so bored during the lecture.", "distractors": ["boring"] },
+    { "id": "participle-adj-02", "topic": "participle-adj", "ko": "그 소식은 모두에게 충격적이었어.", "en": "The news was shocking to everyone.", "distractors": ["shocked", "by"],
+      "alts": [ { "en": "Everyone was shocked by the news.", "note": "충격을 받은 사람(everyone)을 주어로 하면 shocked by를 써요." } ] },
+    { "id": "participle-adj-03", "topic": "participle-adj", "ko": "너 한국사에 관심 있어?", "en": "Are you interested in Korean history?", "distractors": ["interesting", "on"] },
+    { "id": "participle-adj-04", "topic": "participle-adj", "ko": "이 수학 문제 너무 헷갈려.", "en": "This math problem is so confusing.", "distractors": ["confused"] },
+    { "id": "participle-adj-05", "topic": "participle-adj", "ko": "그녀는 시험 점수에 실망한 표정이었어.", "en": "She looked disappointed with her test score.", "distractors": ["disappointing"] },
+    { "id": "participle-adj-06", "topic": "participle-adj", "ko": "우리 다들 여행 생각에 신나 있었어.", "en": "We were all excited about the trip.", "distractors": ["exciting"] },
+    { "id": "participle-adj-07", "topic": "participle-adj", "ko": "이렇게 힘든 하루를 보내고 나니 완전 녹초야.", "en": "I'm exhausted after such a tiring day.", "distractors": ["tired", "exhausting"] },
+
+    { "id": "participle-modifier-01", "topic": "participle-modifier", "ko": "미나 옆에 앉아 있는 남자애 누구야?", "en": "Who is the boy sitting next to Mina?", "distractors": ["sat", "sits"] },
+    { "id": "participle-modifier-02", "topic": "participle-modifier", "ko": "깨진 유리 만지지 마.", "en": "Don't touch the broken glass.", "distractors": ["breaking", "broke"] },
+    { "id": "participle-modifier-03", "topic": "participle-modifier", "ko": "브라질에서 쓰는 언어는 포르투갈어야.", "en": "The language spoken in Brazil is Portuguese.", "distractors": ["speaking", "spoke"] },
+    { "id": "participle-modifier-04", "topic": "participle-modifier", "ko": "밖에서 개가 짖고 있어.", "en": "There's a dog barking outside.", "distractors": ["barked"],
+      "alts": [ { "en": "There's a barking dog outside.", "note": "한 단어 분사는 명사 앞에 둘 수도 있어요. '짖는 개가 밖에 있다'는 느낌이에요." } ] },
+    { "id": "participle-modifier-05", "topic": "participle-modifier", "ko": "갓 구운 빵 냄새 너무 좋아.", "en": "I love the smell of freshly baked bread.", "distractors": ["baking", "fresh"] },
+    { "id": "participle-modifier-06", "topic": "participle-modifier", "ko": "줄 서서 기다리던 사람들이 피곤해 보였어.", "en": "The people waiting in line looked tired.", "distractors": ["waited", "tiring"] },
+    { "id": "participle-modifier-07", "topic": "participle-modifier", "ko": "그녀가 파리에서 찍은 사진을 보여줬어.", "en": "She showed me a picture taken in Paris.", "distractors": ["taking", "took", "to"],
+      "alts": [ { "en": "She showed a picture taken in Paris to me.", "note": "to me를 뒤로 보내도 되지만 showed me ~ 쪽이 더 자연스러워요." } ] },
+
+    { "id": "participle-clause-01", "topic": "participle-clause", "ko": "그녀는 책을 읽으며 벤치에 앉아 있었어.", "en": "She sat on the bench reading a book.", "distractors": ["read", "reads"],
+      "alts": [ { "en": "She sat reading a book on the bench.", "note": "분사구문을 동사 바로 뒤에 붙여도 자연스러워요." } ] },
+    { "id": "participle-clause-02", "topic": "participle-clause", "ko": "무거운 상자를 옮기다가 허리를 다쳤어.", "en": "I hurt my back moving the heavy boxes.", "distractors": ["moved", "move"] },
+    { "id": "participle-clause-03", "topic": "participle-clause", "ko": "그는 문을 쾅 닫으며 방에서 나갔어.", "en": "He walked out of the room slamming the door.", "distractors": ["slammed", "slams"] },
+    { "id": "participle-clause-04", "topic": "participle-clause", "ko": "그는 소파에서 TV를 보다가 잠들었어.", "en": "He fell asleep watching TV on the couch.", "distractors": ["watched", "watches"],
+      "alts": [ { "en": "He fell asleep on the couch watching TV.", "note": "장소를 먼저 말하고 분사구문을 뒤에 둬도 같은 뜻이에요." } ] },
+    { "id": "participle-clause-05", "topic": "participle-clause", "ko": "아빠는 라디오를 들으면서 저녁을 하셨어.", "en": "My dad cooked dinner listening to the radio.", "distractors": ["listened", "listen"] },
+    { "id": "participle-clause-06", "topic": "participle-clause", "ko": "그는 진흙투성이가 되어 집에 왔어.", "en": "He came home covered in mud.", "distractors": ["covering", "covers"] },
+    { "id": "participle-clause-07", "topic": "participle-clause", "ko": "뭐라고 해야 할지 몰라서 그냥 서 있었어.", "en": "I stood there not knowing what to say.", "distractors": ["didn't", "knew"] },
+
+    { "id": "relative-who-which-01", "topic": "relative-who-which", "ko": "나 캐나다에 사는 친구 있어.", "en": "I have a friend who lives in Canada.", "distractors": ["which", "live"] },
+    { "id": "relative-who-which-02", "topic": "relative-who-which", "ko": "이게 내 인생을 바꾼 책이야.", "en": "This is the book that changed my life.", "distractors": ["who", "which"],
+      "alts": [ { "en": "This is the book which changed my life.", "note": "사물을 꾸밀 때는 that 대신 which를 써도 돼요." } ] },
+    { "id": "relative-who-which-03", "topic": "relative-who-which", "ko": "아까 너한테 전화한 분 우리 엄마였어.", "en": "The woman who called you was my mom.", "distractors": ["which", "whom"] },
+    { "id": "relative-who-which-04", "topic": "relative-who-which", "ko": "이거 시내 가는 버스야?", "en": "Is this the bus that goes downtown?", "distractors": ["who", "go"] },
+    { "id": "relative-who-which-05", "topic": "relative-who-which", "ko": "네가 만든 케이크 진짜 맛있었어.", "en": "The cake that you made was delicious.", "distractors": ["who", "it"],
+      "alts": [ { "en": "The cake you made was delicious.", "note": "목적격 관계대명사 that은 빼도 돼요. 회화에서는 빼는 쪽이 더 흔해요." } ] },
+    { "id": "relative-who-which-06", "topic": "relative-who-which", "ko": "일본어 할 줄 아는 사람이 필요해.", "en": "I need someone who can speak Japanese.", "distractors": ["which", "speaks"] },
+    { "id": "relative-who-which-07", "topic": "relative-who-which", "ko": "우리 작년 여름에 갔던 식당 기억나?", "en": "Do you remember the restaurant which we visited last summer?", "distractors": ["who", "where"],
+      "alts": [ { "en": "Do you remember the restaurant we visited last summer?", "note": "목적격이라서 which를 생략할 수 있어요." } ] },
+
+    { "id": "relative-what-01", "topic": "relative-what", "ko": "나한테 필요한 건 긴 휴가야.", "en": "What I need is a long vacation.", "distractors": ["that", "which"],
+      "alts": [ { "en": "A long vacation is what I need.", "note": "순서를 바꾸면 '긴 휴가야말로 내게 필요한 거야'처럼 휴가가 먼저 들려요." } ] },
+    { "id": "relative-what-02", "topic": "relative-what", "ko": "걔가 한 말을 믿을 수가 없어.", "en": "I can't believe what he said.", "distractors": ["that", "which"] },
+    { "id": "relative-what-03", "topic": "relative-what", "ko": "이게 딱 내가 원하던 거야.", "en": "This is exactly what I wanted.", "distractors": ["that", "which"] },
+    { "id": "relative-what-04", "topic": "relative-what", "ko": "인터넷에서 보는 걸 다 믿지는 마.", "en": "Don't believe what you see online.", "distractors": ["that", "it"] },
+    { "id": "relative-what-05", "topic": "relative-what", "ko": "나한테 해 준 거 정말 고마워.", "en": "Thank you for what you did for me.", "distractors": ["that", "which"] },
+    { "id": "relative-what-06", "topic": "relative-what", "ko": "내가 놀란 건 그의 차분한 목소리였어.", "en": "What surprised me was his calm voice.", "distractors": ["which", "surprising"],
+      "alts": [ { "en": "His calm voice was what surprised me.", "note": "그의 목소리를 주어로 내세워 순서를 바꿔 말할 수도 있어요." } ] },
+    { "id": "relative-what-07", "topic": "relative-what", "ko": "정말 중요한 것에 집중해야 해.", "en": "You should focus on what really matters.", "distractors": ["that", "matter"] },
+
+    { "id": "relative-adverb-01", "topic": "relative-adverb", "ko": "여기가 우리가 처음 만난 카페야.", "en": "This is the cafe where we first met.", "distractors": ["which", "when"] },
+    { "id": "relative-adverb-02", "topic": "relative-adverb", "ko": "첫 직장 구했던 날이 아직도 기억나.", "en": "I remember the day when I got my first job.", "distractors": ["where", "which"],
+      "alts": [ { "en": "I remember the day I got my first job.", "note": "the day 뒤의 when은 생략해도 자연스러워요." } ] },
+    { "id": "relative-adverb-03", "topic": "relative-adverb", "ko": "늦은 이유를 말해 봐.", "en": "Tell me the reason why you were late.", "distractors": ["because", "which"],
+      "alts": [
+        { "en": "Tell me why you were late.", "note": "the reason을 빼고 why만 써도 같은 뜻이에요. 회화에선 이쪽이 더 흔해요." },
+        { "en": "Tell me the reason you were late.", "note": "why를 빼고 the reason만 남겨도 돼요." }
+      ] },
+    { "id": "relative-adverb-04", "topic": "relative-adverb", "ko": "서울은 내가 태어난 도시야.", "en": "Seoul is the city where I was born.", "distractors": ["which", "when"] },
+    { "id": "relative-adverb-05", "topic": "relative-adverb", "ko": "우리 주차할 만한 곳 알아?", "en": "Do you know a place where we can park?", "distractors": ["which", "there"] },
+    { "id": "relative-adverb-06", "topic": "relative-adverb", "ko": "그래서 너한테 전화 안 한 거야.", "en": "That's why I didn't call you.", "distractors": ["because", "what"] },
+    { "id": "relative-adverb-07", "topic": "relative-adverb", "ko": "이게 내가 영어를 배운 방법이야.", "en": "This is how I learned English.", "distractors": ["the", "way", "what"],
+      "alts": [ { "en": "This is the way I learned English.", "note": "how 대신 the way를 써도 돼요. 단, the way how처럼 둘을 같이 쓰면 틀려요." } ] },
+
+    { "id": "comparative-01", "topic": "comparative", "ko": "우리 형이 나보다 키 커.", "en": "My brother is taller than me.", "distractors": ["tall", "then", "more"] },
+    { "id": "comparative-02", "topic": "comparative", "ko": "이 가방이 저거보다 훨씬 싸.", "en": "This bag is much cheaper than that one.", "distractors": ["very", "cheap"] },
+    { "id": "comparative-03", "topic": "comparative", "ko": "새 폰이 예전 폰보다 나아.", "en": "My new phone is better than my old one.", "distractors": ["good", "more"] },
+    { "id": "comparative-04", "topic": "comparative", "ko": "영어는 생각보다 어려워.", "en": "English is more difficult than I thought.", "distractors": ["most", "then", "harder"],
+      "alts": [ { "en": "English is harder than I thought.", "note": "difficult 대신 hard를 쓰면 more 없이 harder가 돼요." } ] },
+    { "id": "comparative-05", "topic": "comparative", "ko": "조금만 더 천천히 말해 줄 수 있어?", "en": "Could you speak a little more slowly?", "distractors": ["slow", "most"] },
+    { "id": "comparative-06", "topic": "comparative", "ko": "나는 겨울보다 여름이 더 좋아.", "en": "I like summer more than winter.", "distractors": ["most", "better"],
+      "alts": [ { "en": "I like summer better than winter.", "note": "like를 비교할 땐 more 대신 better도 많이 써요." } ] },
+    { "id": "comparative-07", "topic": "comparative", "ko": "날씨가 점점 따뜻해지고 있어.", "en": "It's getting warmer and warmer.", "distractors": ["more", "warm"] },
+
+    { "id": "superlative-01", "topic": "superlative", "ko": "그녀는 우리 반에서 제일 똑똑한 학생이야.", "en": "She is the smartest student in our class.", "distractors": ["smarter", "most", "of"] },
+    { "id": "superlative-02", "topic": "superlative", "ko": "이건 내가 먹어 본 피자 중에 최고야.", "en": "This is the best pizza I've ever had.", "distractors": ["better", "most"] },
+    { "id": "superlative-03", "topic": "superlative", "ko": "한국에서 제일 인기 있는 스포츠가 뭐야?", "en": "What's the most popular sport in Korea?", "distractors": ["more", "much"] },
+    { "id": "superlative-04", "topic": "superlative", "ko": "에베레스트산은 세계에서 가장 높은 산이야.", "en": "Mount Everest is the highest mountain in the world.", "distractors": ["higher", "of"] },
+    { "id": "superlative-05", "topic": "superlative", "ko": "어제는 내 인생 최악의 날 중 하루였어.", "en": "Yesterday was one of the worst days of my life.", "distractors": ["day", "worse"] },
+    { "id": "superlative-06", "topic": "superlative", "ko": "너는 어느 계절이 제일 좋아?", "en": "Which season do you like the most?", "distractors": ["more", "best"],
+      "alts": [
+        { "en": "Which season do you like best?", "note": "like the most 대신 like best도 자주 써요." },
+        { "en": "Which season do you like most?", "note": "동사를 꾸미는 most 앞의 the는 빼도 돼요." }
+      ] },
+    { "id": "superlative-07", "topic": "superlative", "ko": "그건 내가 본 영화 중에 제일 지루했어.", "en": "That was the most boring movie I've ever seen.", "distractors": ["more", "bored"] },
+
+    { "id": "as-as-01", "topic": "as-as", "ko": "우리 언니는 엄마만큼 키가 커.", "en": "My sister is as tall as my mom.", "distractors": ["taller", "than"] },
+    { "id": "as-as-02", "topic": "as-as", "ko": "이 폰 생각만큼 비싸진 않네.", "en": "This phone isn't as expensive as I thought.", "distractors": ["more", "than", "so"],
+      "alts": [ { "en": "This phone isn't so expensive as I thought.", "note": "부정문에서는 앞의 as 대신 so를 써도 돼요. 조금 예스러운 느낌이에요." } ] },
+    { "id": "as-as-03", "topic": "as-as", "ko": "가능한 한 빨리 다시 전화 줘.", "en": "Please call me back as soon as possible.", "distractors": ["sooner", "than"] },
+    { "id": "as-as-04", "topic": "as-as", "ko": "나는 언니만큼 노래를 잘하진 못해.", "en": "I don't sing as well as my sister.", "distractors": ["good", "better"] },
+    { "id": "as-as-05", "topic": "as-as", "ko": "이 방은 내 방보다 두 배는 커.", "en": "This room is twice as big as mine.", "distractors": ["bigger", "than"] },
+    { "id": "as-as-06", "topic": "as-as", "ko": "먹고 싶은 만큼 먹어.", "en": "Eat as much as you want.", "distractors": ["many", "more"] },
+    { "id": "as-as-07", "topic": "as-as", "ko": "네 영어 실력도 딱 나만큼 좋아.", "en": "Your English is just as good as mine.", "distractors": ["better", "me"],
+      "alts": [ { "en": "Your English is as good as mine.", "note": "just를 빼면 '딱 그만큼'이라는 강조가 약해져요." } ] },
+
+    { "id": "conditional-2-01", "topic": "conditional-2", "ko": "시간만 더 있으면 여행 더 많이 다닐 텐데.", "en": "I would travel more if I had more time.", "distractors": ["will", "have"],
+      "alts": [ { "en": "If I had more time I would travel more.", "note": "if절을 앞에 둬도 같은 뜻이에요. 글로 쓸 땐 if절 뒤에 쉼표를 찍어요." } ] },
+    { "id": "conditional-2-02", "topic": "conditional-2", "ko": "복권 당첨되면 뭐 할 거야?", "en": "What would you do if you won the lottery?", "distractors": ["will", "win"] },
+    { "id": "conditional-2-03", "topic": "conditional-2", "ko": "걔 번호만 알면 전화할 텐데.", "en": "I'd call her if I knew her number.", "distractors": ["know", "will"],
+      "alts": [ { "en": "If I knew her number I'd call her.", "note": "조건을 먼저 말하는 순서예요. 글로 쓸 땐 if절 뒤에 쉼표를 찍어요." } ] },
+    { "id": "conditional-2-04", "topic": "conditional-2", "ko": "내가 너라면 그거 안 해.", "en": "I wouldn't do that if I were you.", "distractors": ["am", "won't"],
+      "alts": [ { "en": "If I were you I wouldn't do that.", "note": "If I were you를 앞에 두면 '내가 너라면 말이야' 하고 조언을 먼저 꺼내는 느낌이에요." } ] },
+    { "id": "conditional-2-05", "topic": "conditional-2", "ko": "비만 안 오면 나갈 수 있을 텐데.", "en": "We could go out if it weren't raining.", "distractors": ["can", "isn't"] },
+    { "id": "conditional-2-06", "topic": "conditional-2", "ko": "네가 올 수 있으면 정말 좋을 텐데.", "en": "It would be great if you could come.", "distractors": ["will", "can"] },
+    { "id": "conditional-2-07", "topic": "conditional-2", "ko": "그 차가 좀 더 싸면 살 텐데.", "en": "I would buy that car if it were cheaper.", "distractors": ["will", "is"],
+      "alts": [ { "en": "If it were cheaper I would buy that car.", "note": "if절을 앞에 둬도 같은 뜻이에요." } ] },
+
+    { "id": "conditional-3-01", "topic": "conditional-3", "ko": "알았으면 너한테 전화했을 거야.", "en": "I would have called you if I had known.", "distractors": ["knew", "will"],
+      "alts": [ { "en": "If I had known I would have called you.", "note": "if절을 앞에 둬도 같은 뜻이에요. 글로 쓸 땐 if절 뒤에 쉼표를 찍어요." } ] },
+    { "id": "conditional-3-02", "topic": "conditional-3", "ko": "안 뛰었으면 우리 기차 놓쳤을 거야.", "en": "We would have missed the train if we hadn't run.", "distractors": ["didn't", "will"] },
+    { "id": "conditional-3-03", "topic": "conditional-3", "ko": "더 열심히 공부했으면 걔 안 떨어졌을 텐데.", "en": "She wouldn't have failed if she had studied harder.", "distractors": ["has", "won't"] },
+    { "id": "conditional-3-04", "topic": "conditional-3", "ko": "네가 나였으면 어떻게 했겠어?", "en": "What would you have done if you had been me?", "distractors": ["did", "were"] },
+    { "id": "conditional-3-05", "topic": "conditional-3", "ko": "부탁했으면 도와줄 수 있었을 텐데.", "en": "I could have helped you if you had asked.", "distractors": ["can", "ask"],
+      "alts": [ { "en": "If you had asked I could have helped you.", "note": "'부탁만 했으면'처럼 조건을 먼저 강조하는 순서예요." } ] },
+    { "id": "conditional-3-06", "topic": "conditional-3", "ko": "넘어지지만 않았으면 그가 경주에서 이겼을 거야.", "en": "He would have won the race if he hadn't fallen.", "distractors": ["didn't", "fell"] },
+    { "id": "conditional-3-07", "topic": "conditional-3", "ko": "알람만 울렸으면 안 늦었을 텐데.", "en": "I wouldn't have been late if my alarm had gone off.", "distractors": ["went", "was"],
+      "alts": [ { "en": "If my alarm had gone off I wouldn't have been late.", "note": "if절을 앞에 둬도 같은 뜻이에요." } ] },
+
+    { "id": "i-wish-01", "topic": "i-wish", "ko": "비 좀 그쳤으면 좋겠다.", "en": "I wish it would stop raining.", "distractors": ["will", "stops"] },
+    { "id": "i-wish-02", "topic": "i-wish", "ko": "프랑스어 할 줄 알면 좋을 텐데.", "en": "I wish I could speak French.", "distractors": ["can", "speaking"] },
+    { "id": "i-wish-03", "topic": "i-wish", "ko": "네가 지금 여기 나랑 같이 있으면 좋을 텐데.", "en": "I wish you were here with me.", "distractors": ["are", "will"] },
+    { "id": "i-wish-04", "topic": "i-wish", "ko": "그 말 하지 말걸.", "en": "I wish I hadn't said that.", "distractors": ["didn't", "haven't"] },
+    { "id": "i-wish-05", "topic": "i-wish", "ko": "학교 다닐 때 공부 좀 더 열심히 할걸.", "en": "I wish I had studied harder in school.", "distractors": ["have", "would"] },
+    { "id": "i-wish-06", "topic": "i-wish", "ko": "벌써 금요일이면 좋겠다.", "en": "I wish it were Friday already.", "distractors": ["is", "was"],
+      "alts": [ { "en": "I wish it was Friday already.", "note": "회화에서는 were 대신 was도 많이 써요. 글에서는 were가 원칙이에요." } ] },
+    { "id": "i-wish-07", "topic": "i-wish", "ko": "부모님이 나를 좀 더 이해해 주시면 좋겠어.", "en": "I wish my parents understood me better.", "distractors": ["understand", "will"] },
+
+    { "id": "as-if-01", "topic": "as-if", "ko": "걔는 자기가 다 아는 것처럼 말해.", "en": "He talks as if he knew everything.", "distractors": ["know", "though"],
+      "alts": [ { "en": "He talks as though he knew everything.", "note": "as if 대신 as though를 써도 같은 뜻이에요." } ] },
+    { "id": "as-if-02", "topic": "as-if", "ko": "그녀는 귀신이라도 본 것 같은 얼굴이야.", "en": "She looks as if she had seen a ghost.", "distractors": ["have", "saw"] },
+    { "id": "as-if-03", "topic": "as-if", "ko": "나 애 취급하지 마.", "en": "Don't treat me as if I were a child.", "distractors": ["am", "be"] },
+    { "id": "as-if-04", "topic": "as-if", "ko": "그는 아무 일도 없었다는 듯이 행동했어.", "en": "He acted as if nothing had happened.", "distractors": ["has", "happens", "though"],
+      "alts": [ { "en": "He acted as though nothing had happened.", "note": "as though도 as if와 같은 뜻이에요." } ] },
+    { "id": "as-if-05", "topic": "as-if", "ko": "꿈꾸고 있는 것 같은 기분이야.", "en": "I feel as if I were dreaming.", "distractors": ["be", "dreamed"] },
+    { "id": "as-if-06", "topic": "as-if", "ko": "그녀는 마치 부자인 것처럼 돈을 써.", "en": "She spends money as if she were rich.", "distractors": ["is", "be"] },
+    { "id": "as-if-07", "topic": "as-if", "ko": "할아버지는 그 일을 어제 일처럼 기억하셔.", "en": "My grandpa remembers it as if it were yesterday.", "distractors": ["is", "will"] },
+
+    { "id": "time-reason-conj-01", "topic": "time-reason-conj", "ko": "집에 도착하면 전화해.", "en": "Call me when you get home.", "distractors": ["will", "during"] },
+    { "id": "time-reason-conj-02", "topic": "time-reason-conj", "ko": "영화 보다가 잠들어 버렸어.", "en": "I fell asleep while I was watching the movie.", "distractors": ["during", "for"],
+      "alts": [ { "en": "I fell asleep while watching the movie.", "note": "주어가 같으면 I was를 빼고 while watching으로 줄일 수 있어요." } ] },
+    { "id": "time-reason-conj-03", "topic": "time-reason-conj", "ko": "밥 먹기 전에 손 씻어.", "en": "Wash your hands before you eat.", "distractors": ["after", "will"] },
+    { "id": "time-reason-conj-04", "topic": "time-reason-conj", "ko": "네가 돌아올 때까지 여기서 기다릴게.", "en": "I'll wait here until you come back.", "distractors": ["by", "will"] },
+    { "id": "time-reason-conj-05", "topic": "time-reason-conj", "ko": "감기 걸려서 집에 있었어.", "en": "I stayed home because I had a cold.", "distractors": ["of", "so"] },
+    { "id": "time-reason-conj-06", "topic": "time-reason-conj", "ko": "도착하자마자 문자 줘.", "en": "Text me as soon as you arrive.", "distractors": ["will", "arrived"] },
+    { "id": "time-reason-conj-07", "topic": "time-reason-conj", "ko": "비 오니까 그냥 안에 있자.", "en": "Let's stay inside since it's raining.", "distractors": ["because", "during"],
+      "alts": [ { "en": "Let's stay inside because it's raining.", "note": "because를 쓰면 이유를 좀 더 분명하게 짚는 느낌이에요." } ] },
+
+    { "id": "although-01", "topic": "although", "ko": "아팠는데도 출근했어.", "en": "I went to work although I was sick.", "distractors": ["despite", "however"] },
+    { "id": "although-02", "topic": "although", "ko": "그녀는 슬펐지만 웃었어.", "en": "She smiled even though she was sad.", "distractors": ["despite", "if"],
+      "alts": [ { "en": "She smiled though she was sad.", "note": "even을 빼고 though만 써도 돼요. even이 있으면 더 강조돼요." } ] },
+    { "id": "although-03", "topic": "although", "ko": "엄청 추웠는데도 우리는 수영하러 갔어.", "en": "We went swimming although it was freezing.", "distractors": ["despite", "because"] },
+    { "id": "although-04", "topic": "although", "ko": "그는 열심히 공부했는데도 시험에 떨어졌어.", "en": "He failed the test even though he studied hard.", "distractors": ["because", "despite"],
+      "alts": [ { "en": "He failed the test though he studied hard.", "note": "though만 써도 뜻은 같지만 억울한 느낌은 조금 약해져요." } ] },
+    { "id": "although-05", "topic": "although", "ko": "진짜 피곤했는데도 잠이 안 왔어.", "en": "I couldn't sleep although I was really tired.", "distractors": ["despite", "so"] },
+    { "id": "although-06", "topic": "although", "ko": "우리는 자주 싸우지만 여전히 친구야.", "en": "We're still friends even though we argue a lot.", "distractors": ["despite", "since"] },
+    { "id": "although-07", "topic": "although", "ko": "그는 부자인데도 작은 집에 살아.", "en": "He lives in a small house although he's rich.", "distractors": ["despite", "because"] },
+
+    { "id": "so-that-01", "topic": "so-that", "ko": "너무 피곤해서 바로 곯아떨어졌어.", "en": "I was so tired that I fell asleep immediately.", "distractors": ["very", "too"],
+      "alts": [ { "en": "I was so tired I fell asleep immediately.", "note": "회화에서는 결과를 나타내는 that을 자주 생략해요." } ] },
+    { "id": "so-that-02", "topic": "so-that", "ko": "수프가 너무 뜨거워서 먹을 수가 없었어.", "en": "The soup was so hot that I couldn't eat it.", "distractors": ["too", "very"] },
+    { "id": "so-that-03", "topic": "so-that", "ko": "그녀가 말을 너무 빨리 해서 아무도 못 알아들었어.", "en": "She spoke so quickly that nobody understood her.", "distractors": ["such", "very"],
+      "alts": [ { "en": "She spoke so quickly nobody understood her.", "note": "that을 빼고 말해도 같은 뜻이에요." } ] },
+    { "id": "so-that-04", "topic": "so-that", "ko": "날씨가 너무 좋아서 우리는 등산을 갔어.", "en": "It was such a nice day that we went hiking.", "distractors": ["so", "very"] },
+    { "id": "so-that-05", "topic": "so-that", "ko": "노트북 사려고 돈을 모았어.", "en": "I saved money so that I could buy a laptop.", "distractors": ["can", "such"],
+      "alts": [ { "en": "I saved money so I could buy a laptop.", "note": "구어에서는 목적의 so that에서도 that을 자주 빼요." } ] },
+    { "id": "so-that-06", "topic": "so-that", "ko": "다들 들을 수 있게 좀 더 크게 말해.", "en": "Speak louder so that everyone can hear you.", "distractors": ["such", "too"] },
+    { "id": "so-that-07", "topic": "so-that", "ko": "버스 안 놓치려고 일찍 나왔어.", "en": "I left early so that I wouldn't miss the bus.", "distractors": ["won't", "such"] },
+
+    { "id": "it-that-emphasis-01", "topic": "it-that-emphasis", "ko": "창문 깬 건 바로 민수였어.", "en": "It was Minsu who broke the window.", "distractors": ["what", "is"] },
+    { "id": "it-that-emphasis-02", "topic": "it-that-emphasis", "ko": "내가 그녀를 처음 만난 건 바로 부산에서였어.", "en": "It was in Busan that I first met her.", "distractors": ["where", "is"],
+      "alts": [ { "en": "It was in Busan that I met her first.", "note": "first를 문장 끝에 둬도 같은 뜻이에요." } ] },
+    { "id": "it-that-emphasis-03", "topic": "it-that-emphasis", "ko": "항상 날 응원해 주는 건 우리 엄마야.", "en": "It's my mom who always supports me.", "distractors": ["which", "that"],
+      "alts": [ { "en": "It's my mom that always supports me.", "note": "사람을 강조할 때는 who 대신 that을 써도 돼요." } ] },
+    { "id": "it-that-emphasis-04", "topic": "it-that-emphasis", "ko": "내가 지갑을 잃어버린 건 바로 어제였어.", "en": "It was yesterday that I lost my wallet.", "distractors": ["what", "is"] },
+    { "id": "it-that-emphasis-05", "topic": "it-that-emphasis", "ko": "사람을 행복하게 하는 건 돈이 아니야.", "en": "It's not money that makes people happy.", "distractors": ["what", "make"] },
+    { "id": "it-that-emphasis-06", "topic": "it-that-emphasis", "ko": "어젯밤에 나한테 전화한 게 너였어?", "en": "Was it you who called me last night?", "distractors": ["which", "were"] },
+    { "id": "it-that-emphasis-07", "topic": "it-that-emphasis", "ko": "나를 못 자게 한 건 바로 그 커피였어.", "en": "It was the coffee that kept me awake.", "distractors": ["what", "who"] },
+
+    { "id": "inversion-01", "topic": "inversion", "ko": "이렇게 아름다운 노을은 정말 처음 봐.", "en": "Never have I seen such a beautiful sunset.", "distractors": ["I've", "saw"],
+      "alts": [ { "en": "I have never seen such a beautiful sunset.", "note": "평범한 어순이에요. 뜻은 같지만 강조하는 느낌은 약해요." } ] },
+    { "id": "inversion-02", "topic": "inversion", "ko": "걔가 거짓말하고 있다는 건 꿈에도 몰랐어.", "en": "Little did I know that he was lying.", "distractors": ["knew", "didn't"] },
+    { "id": "inversion-03", "topic": "inversion", "ko": "요즘 우리는 외식을 거의 안 해.", "en": "Rarely do we eat out these days.", "distractors": ["eats", "are"],
+      "alts": [ { "en": "We rarely eat out these days.", "note": "도치 없이 말하면 훨씬 일상적인 말투가 돼요." } ] },
+    { "id": "inversion-04", "topic": "inversion", "ko": "도착하자마자 비가 오기 시작했어.", "en": "Hardly had I arrived when it started to rain.", "distractors": ["did", "arrive"] },
+    { "id": "inversion-05", "topic": "inversion", "ko": "그제서야 내 실수를 깨달았어.", "en": "Only then did I realize my mistake.", "distractors": ["realized", "was"] },
+    { "id": "inversion-06", "topic": "inversion", "ko": "무슨 일이 있어도 이 문은 절대 열면 안 돼.", "en": "Under no circumstances should you open this door.", "distractors": ["opened", "don't"] },
+    { "id": "inversion-07", "topic": "inversion", "ko": "그녀는 고맙다는 말을 한 번도 안 했어.", "en": "Not once did she say thank you.", "distractors": ["said", "says"],
+      "alts": [ { "en": "She did not once say thank you.", "note": "도치하지 않아도 되지만 '단 한 번도!' 하는 강조가 약해져요." } ] },
+
+    { "id": "reported-speech-01", "topic": "reported-speech", "ko": "그녀가 피곤하다고 했어.", "en": "She said that she was tired.", "distractors": ["is", "told"],
+      "alts": [ { "en": "She said she was tired.", "note": "say 뒤의 that은 생략해도 돼요." } ] },
+    { "id": "reported-speech-02", "topic": "reported-speech", "ko": "그가 나중에 전화하겠다고 했어.", "en": "He told me that he would call later.", "distractors": ["will", "said"],
+      "alts": [ { "en": "He told me he would call later.", "note": "tell 뒤의 that도 생략할 수 있어요." } ] },
+    { "id": "reported-speech-03", "topic": "reported-speech", "ko": "엄마가 나한테 어디 갔었냐고 물으셨어.", "en": "My mom asked me where I had been.", "distractors": ["have", "did"] },
+    { "id": "reported-speech-04", "topic": "reported-speech", "ko": "선생님이 숙제 다 했냐고 물어보셨어.", "en": "The teacher asked if I had finished my homework.", "distractors": ["have", "that"] },
+    { "id": "reported-speech-05", "topic": "reported-speech", "ko": "그는 열쇠를 잃어버렸다고 했어.", "en": "He said he had lost his keys.", "distractors": ["has", "told"] },
+    { "id": "reported-speech-06", "topic": "reported-speech", "ko": "그녀가 나한테 걱정하지 말라고 했어.", "en": "She told me not to worry.", "distractors": ["don't", "said"] },
+    { "id": "reported-speech-07", "topic": "reported-speech", "ko": "그 사람들이 나한테 몇 시냐고 물었어.", "en": "They asked me what time it was.", "distractors": ["is", "said"] },
+
+    { "id": "not-only-01", "topic": "not-only", "ko": "그녀는 똑똑할 뿐만 아니라 친절하기까지 해.", "en": "She is not only smart but also kind.", "distractors": ["and", "too"] },
+    { "id": "not-only-02", "topic": "not-only", "ko": "그는 영어뿐만 아니라 중국어도 해.", "en": "He speaks not only English but also Chinese.", "distractors": ["and", "as"] },
+    { "id": "not-only-03", "topic": "not-only", "ko": "형뿐만 아니라 부모님도 거기 계셨어.", "en": "Not only my brother but also my parents were there.", "distractors": ["was", "and"] },
+    { "id": "not-only-04", "topic": "not-only", "ko": "이 앱은 무료일 뿐만 아니라 쓰기도 쉬워.", "en": "This app is not only free but also easy to use.", "distractors": ["and", "too"],
+      "alts": [ { "en": "This app is not only free but easy to use.", "note": "also는 생략해도 괜찮아요." } ] },
+    { "id": "not-only-05", "topic": "not-only", "ko": "우리는 파리뿐만 아니라 로마도 갔어.", "en": "We visited not only Paris but also Rome.", "distractors": ["and", "both"] },
+    { "id": "not-only-06", "topic": "not-only", "ko": "그 콘서트는 길기만 한 게 아니라 지루하기까지 했어.", "en": "The concert was not only long but also boring.", "distractors": ["bored", "and"] },
+    { "id": "not-only-07", "topic": "not-only", "ko": "운동은 몸뿐만 아니라 마음에도 좋아.", "en": "Exercise is good not only for your body but also for your mind.", "distractors": ["and", "to"] }
+  ]
+}

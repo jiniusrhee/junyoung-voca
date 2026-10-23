@@ -2,6 +2,7 @@ import { useLiveQuery } from 'dexie-react-hooks';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ExtraStudySheet from '../components/ExtraStudySheet';
+import ModeStart from '../components/ModeStart';
 import GaugeRing from '../components/GaugeRing';
 import GoalModal from '../components/GoalModal';
 import Icon, { type IconName } from '../components/Icon';
@@ -10,15 +11,16 @@ import { db } from '../db';
 import { saveSettings, useSettings } from '../lib/settings';
 import { comprehension, computeStreak, estimateVocab, goalMet, reviewAccuracy, studied } from '../lib/stats';
 import { WEEKDAYS_KO, dayOfWeek, formatClock, shiftDate, studyDateOf, weekOf } from '../lib/time';
-import type { DailyRow } from '../types';
+import type { DailyRow, StudyMode } from '../types';
 
 const STREAK_GOALS = [7, 14, 30, 50, 100, 150, 200, 300, 365, 500, 700, 1000, 1500, 2000];
-const MODE_TABS: { key: string; icon: IconName; label: string }[] = [
-  { key: 'grammar', icon: 'gbook', label: '문법' },
+const MODE_TABS: { key: string; icon: IconName; label: string; mode?: StudyMode }[] = [
+  { key: 'grammar', icon: 'gbook', label: '문법', mode: 'grammar' },
   { key: 'expr', icon: 'chat', label: '표현' },
   { key: 'talk', icon: 'talk', label: '실전 회화' },
-  { key: 'listen', icon: 'headphones', label: '리스닝' },
+  { key: 'listen', icon: 'headphones', label: '리스닝', mode: 'listening' },
 ];
+const MODE_TITLE: Record<string, string> = { vocab: '어휘 학습', grammar: '문법 학습', listening: '리스닝 학습' };
 
 export default function Home() {
   const nav = useNavigate();
@@ -26,7 +28,9 @@ export default function Home() {
   const today = studyDateOf();
   const daily = useLiveQuery(() => db.daily.toArray(), []);
   const streak = useLiveQuery(() => computeStreak(), []);
-  const acc = useLiveQuery(() => reviewAccuracy(), []);
+  const homeMode: StudyMode = settings?.homeMode === 'grammar' || settings?.homeMode === 'listening' ? settings.homeMode : 'vocab';
+  const acc = useLiveQuery(() => reviewAccuracy(7, new Date(), homeMode), [homeMode]);
+  const [start, setStart] = useState<StudyMode | null>(null);
   const comp = useLiveQuery(() => comprehension(), []);
   const testDate = useLiveQuery(async () => (await db.kv.get('levelTestDate'))?.value as string | undefined, []);
   const [goalOpen, setGoalOpen] = useState(false);
@@ -36,8 +40,9 @@ export default function Home() {
 
   const byDate = new Map((daily ?? []).map((d) => [d.date, d]));
   const t = byDate.get(today);
-  const total = t?.total ?? 0;
-  const goal = settings.dailyGoal;
+  const vocabTotal = t?.total ?? 0;
+  const total = homeMode === 'vocab' ? vocabTotal : (t?.byMode?.[homeMode]?.total ?? 0);
+  const goal = homeMode === 'grammar' ? settings.grammarGoal : homeMode === 'listening' ? settings.listeningGoal : settings.dailyGoal;
   const pct = Math.round((total / goal) * 100);
   const met = total >= goal;
   const last7 = Array.from({ length: 7 }, (_, i) => shiftDate(today, i - 6));
@@ -60,13 +65,15 @@ export default function Home() {
       </header>
       {toast && <div className="home-toast">{toast}</div>}
 
-      <StreakCard today={today} byDate={byDate} goal={goal} streak={streak ?? 0} />
+      <StreakCard today={today} byDate={byDate} goal={settings.dailyGoal} streak={streak ?? 0} />
 
       <section className="main-card">
         <div className="main-body">
-          <span className="ribbon">
-            <Icon name="trophy" size={22} />
-          </span>
+          {met && (
+            <span className="ribbon">
+              <Icon name="trophy" size={22} />
+            </span>
+          )}
           <div className="main-mascot">
             <Mascot size={150} mood={met ? 'cheer' : 'happy'} />
           </div>
@@ -75,24 +82,32 @@ export default function Home() {
               <Link to="/stats" className="acc-line">
                 <Icon name="shield" size={14} /> 복습 정답률 {acc == null ? '-' : `${Math.round(acc * 100)}%`} <Icon name="chevron" size={12} />
               </Link>
-              <h2>어휘 학습</h2>
+              <h2>{MODE_TITLE[homeMode]}</h2>
               <button className="goal-line-btn" onClick={() => setGoalOpen(true)}>
                 하루 목표 <b>{goal}</b> 개 <Icon name="pencil" size={15} />
               </button>
             </div>
             <GaugeRing value={total / goal} label={String(pct)} />
           </div>
-          <button className="today-btn" onClick={() => (met ? setExtraOpen(true) : nav('/quiz'))}>
+          <button
+            className={`today-btn m-${homeMode}`}
+            onClick={() => (homeMode === 'vocab' ? (met ? setExtraOpen(true) : nav('/quiz')) : setStart(homeMode))}
+          >
             <Icon name={met ? 'star' : 'book'} size={24} />
-            {met ? '추가 어휘' : '오늘의 어휘'}
+            {homeMode === 'vocab' ? (met ? '추가 어휘' : '오늘의 어휘') : met ? '추가 학습' : '오늘의 학습'}
           </button>
         </div>
         <div className="mode-tabs">
-          <span className="mode-tab active" aria-label="어휘 학습">
+          <button className={`mode-tab vocab ${homeMode === 'vocab' ? 'active' : ''}`} onClick={() => void saveSettings({ homeMode: 'vocab' })} aria-label="어휘 학습">
             <Icon name="bookPerson" size={30} />
-          </span>
+          </button>
           {MODE_TABS.map((m) => (
-            <button key={m.key} className={`mode-tab ${m.key}`} onClick={() => showToast(`${m.label} 학습은 준비 중이에요`)} aria-label={m.label}>
+            <button
+              key={m.key}
+              className={`mode-tab ${m.key} ${m.mode && homeMode === m.mode ? 'active' : ''}`}
+              onClick={() => (m.mode ? void saveSettings({ homeMode: m.mode }) : showToast(`${m.label} 학습은 준비 중이에요`))}
+              aria-label={m.label}
+            >
               <Icon name={m.icon} size={26} />
             </button>
           ))}
@@ -154,11 +169,12 @@ export default function Home() {
           current={goal}
           onClose={() => setGoalOpen(false)}
           onSave={(n) => {
-            void saveSettings({ dailyGoal: n });
+            void saveSettings(homeMode === 'grammar' ? { grammarGoal: n } : homeMode === 'listening' ? { listeningGoal: n } : { dailyGoal: n });
             setGoalOpen(false);
           }}
         />
       )}
+      {start && <ModeStart mode={start} onClose={() => setStart(null)} />}
       {extraOpen && <ExtraStudySheet todayTotal={total} onClose={() => setExtraOpen(false)} onStart={(target) => nav(`/quiz?target=${target}`)} />}
     </div>
   );

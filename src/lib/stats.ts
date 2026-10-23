@@ -1,10 +1,16 @@
 import { db } from '../db';
-import type { DailyRow } from '../types';
+import type { DailyRow, StudyMode } from '../types';
 import { isKnownOrSolid } from './scheduler';
 import { STREAK_MIN_QUESTIONS, shiftDate, studyDateOf } from './time';
 
+/** 그날 모든 모드에서 푼 문제 수 */
+export function dayTotal(d: DailyRow | undefined): number {
+  if (!d) return 0;
+  return d.total + Object.values(d.byMode ?? {}).reduce((s, m) => s + (m?.total ?? 0), 0);
+}
+
 export function studied(d: DailyRow | undefined): boolean {
-  return (d?.total ?? 0) >= STREAK_MIN_QUESTIONS;
+  return dayTotal(d) >= STREAK_MIN_QUESTIONS;
 }
 
 export function goalMet(d: DailyRow | undefined, currentGoal: number): boolean {
@@ -13,7 +19,7 @@ export function goalMet(d: DailyRow | undefined, currentGoal: number): boolean {
 
 export async function computeStreak(now: Date = new Date()): Promise<number> {
   const rows = await db.daily.toArray();
-  const totals = new Map(rows.map((r) => [r.date, r.total]));
+  const totals = new Map(rows.map((r) => [r.date, dayTotal(r)]));
   let date = studyDateOf(now);
   // 오늘 아직 기준을 못 채웠으면 어제부터 센다 (오늘은 아직 끊긴 게 아님)
   if ((totals.get(date) ?? 0) < STREAK_MIN_QUESTIONS) date = shiftDate(date, -1);
@@ -53,9 +59,13 @@ export async function countAvailableNew(): Promise<number> {
 }
 
 /** 최근 7일 복습 문제 정답률(힌트 없이 한 번에 맞힌 비율) */
-export async function reviewAccuracy(days = 7, now: Date = new Date()): Promise<number | null> {
+export async function reviewAccuracy(days = 7, now: Date = new Date(), mode: StudyMode = 'vocab'): Promise<number | null> {
   const from = shiftDate(studyDateOf(now), -(days - 1));
-  const rows = await db.reviews.where('studyDate').aboveOrEqual(from).filter((r) => !r.isNew && !r.isTest).toArray();
+  const rows = await db.reviews
+    .where('studyDate')
+    .aboveOrEqual(from)
+    .filter((r) => !r.isNew && !r.isTest && (r.studyMode ?? 'vocab') === mode)
+    .toArray();
   if (!rows.length) return null;
   return rows.filter((r) => r.firstTry && r.hints === 0).length / rows.length;
 }

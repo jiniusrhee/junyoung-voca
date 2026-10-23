@@ -49,7 +49,7 @@ export default function Stats() {
         ))}
       </nav>
       {tab === 'period' && <PeriodTab byDate={byDate} daily={daily} today={today} acc={acc ?? null} />}
-      {tab === 'study' && <StudyTab byDate={byDate} daily={daily} today={today} goal={settings.dailyGoal} />}
+      {tab === 'study' && <StudyModes daily={daily} today={today} goals={{ vocab: settings.dailyGoal, grammar: settings.grammarGoal, listening: settings.listeningGoal }} />}
       {tab === 'vocab' && <VocabTab level={settings.level ?? 10} />}
     </div>
   );
@@ -249,7 +249,37 @@ function TimeChart({ byDate, today }: { byDate: Map<string, DailyRow>; today: st
 
 /* ---------------- 학습별 ---------------- */
 
-function StudyTab({ byDate, daily, today, goal }: { byDate: Map<string, DailyRow>; daily: DailyRow[]; today: string; goal: number }) {
+type SMode = 'vocab' | 'grammar' | 'listening';
+const SMODE_LABEL: Record<SMode, string> = { vocab: '어휘', grammar: '문법', listening: '리스닝' };
+
+/** 어휘 외 모드의 하루 기록을 어휘와 같은 모양으로 */
+function viewOf(d: DailyRow, mode: SMode, goal: number): DailyRow {
+  if (mode === 'vocab') return d;
+  const m = d.byMode?.[mode];
+  return { date: d.date, total: m?.total ?? 0, newWords: m?.newItems ?? 0, reviews: m?.reviews ?? 0, correct: m?.correct ?? 0, timeMs: m?.timeMs ?? 0, knownNew: 0, goal };
+}
+
+function StudyModes({ daily, today, goals }: { daily: DailyRow[]; today: string; goals: Record<SMode, number> }) {
+  const [mode, setMode] = useState<SMode>('vocab');
+  const rows = daily.map((d) => viewOf(d, mode, goals[mode]));
+  const byDate = new Map(rows.map((d) => [d.date, d]));
+  return (
+    <>
+      <div className="study-chips">
+        {(Object.keys(SMODE_LABEL) as SMode[]).map((m) => (
+          <button key={m} className={`chip-btn ${mode === m ? 'active' : ''}`} onClick={() => setMode(m)}>
+            {SMODE_LABEL[m]}
+          </button>
+        ))}
+      </div>
+      <StudyTab key={mode} mode={mode} byDate={byDate} daily={rows} today={today} goal={goals[mode]} />
+    </>
+  );
+}
+
+function StudyTab({ mode, byDate, daily, today, goal }: { mode: SMode; byDate: Map<string, DailyRow>; daily: DailyRow[]; today: string; goal: number }) {
+  const label = SMODE_LABEL[mode];
+  const unit = mode === 'vocab' ? '단어' : '문장';
   const [offset, setOffset] = useState(0);
   const trophies = daily.filter((d) => goalMet(d, goal)).length;
   const totalQ = daily.reduce((s, d) => s + d.total, 0);
@@ -266,14 +296,11 @@ function StudyTab({ byDate, daily, today, goal }: { byDate: Map<string, DailyRow
 
   return (
     <>
-      <div className="study-chips">
-        <span className="chip-btn active">어휘</span>
-      </div>
-      <h2 className="stats-h2">어휘 학습</h2>
+      <h2 className="stats-h2">{label} 학습</h2>
       <div className="s-card kv">
         <div className="kv-row">
           <span>
-            <Icon name="trophy" size={20} className="ic-gold" /> 어휘 트로피 <i className="qmark">?</i>
+            <Icon name="trophy" size={20} className="ic-gold" /> {label} 트로피 <i className="qmark">?</i>
           </span>
           <b>{trophies.toLocaleString()}</b>
         </div>
@@ -352,13 +379,13 @@ function StudyTab({ byDate, daily, today, goal }: { byDate: Map<string, DailyRow
           </div>
           <ul>
             <li>
-              <i className="sw new" /> 새로 배운 단어 <b>{newLearned}</b>
+              <i className="sw new" /> 새로 배운 {unit} <b>{newLearned}</b>
             </li>
             <li>
               <i className="sw known" /> 이미 아는 단어 <b>{tot('knownNew')}</b>
             </li>
             <li>
-              <i className="sw review" /> 복습 단어 <b>{tot('reviews')}</b>
+              <i className="sw review" /> 복습 {unit} <b>{tot('reviews')}</b>
             </li>
             <li>
               <i className="sw ring" /> 복습 정답률 <i className="qmark">?</i> <b>{accAll == null ? '-' : `${accAll}%`}</b>

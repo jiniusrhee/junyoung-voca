@@ -82,6 +82,12 @@ export class StudyPicker {
   }
 
   private async pickNew(): Promise<Question | null> {
+    const book = ((await db.kv.get('wordbook'))?.value as string[] | undefined) ?? [];
+    for (const id of [...book].reverse()) {
+      if (this.cardIds.has(id)) continue;
+      const w = await db.words.get(id);
+      if (w) return { word: w, sentenceIdx: 0, isNew: true, card: null };
+    }
     const [lo, hi] = newWordRange(this.level, this.difficulty);
     for (let widen = 0; widen < MAX_LEVEL; widen++) {
       const from = Math.max(MIN_LEVEL, lo - widen);

@@ -42,7 +42,8 @@ export type IconName =
   | 'clock'
   | 'gbook'
   | 'talk'
-  | 'headphones';
+  | 'headphones'
+  | 'bookmark';
 
 interface Props {
   name: IconName;
@@ -301,6 +302,7 @@ const PATHS: Record<IconName, ReactElement> = {
       <rect x="16.5" y="13.5" width="5" height="7.5" rx="2" fill="currentColor" stroke="none" />
     </g>
   ),
+  bookmark: <path d="M6 3h12v18l-6-4.5L6 21z" fill="currentColor" stroke="none" />,
   clock: (
     <g>
       <circle cx="12" cy="12" r="9.5" fill="#cfe0f7" stroke="none" />

@@ -1,5 +1,5 @@
 import Dexie, { type EntityTable } from 'dexie';
-import type { CardRow, DailyRow, FavoriteRow, KvRow, PackRow, ReviewRow, StoredWord } from './types';
+import type { BookmarkRow, CardRow, DailyRow, FavoriteRow, GrammarSentence, GrammarTopic, KvRow, MCardRow, PackRow, ReviewRow, StoredWord } from './types';
 
 export const db = new Dexie('junyoung-voca') as Dexie & {
   words: EntityTable<StoredWord, 'id'>;
@@ -9,6 +9,10 @@ export const db = new Dexie('junyoung-voca') as Dexie & {
   packs: EntityTable<PackRow, 'file'>;
   kv: EntityTable<KvRow, 'key'>;
   favorites: EntityTable<FavoriteRow, 'key'>;
+  gtopics: EntityTable<GrammarTopic, 'id'>;
+  gsentences: EntityTable<GrammarSentence, 'id'>;
+  mcards: EntityTable<MCardRow, 'id'>;
+  bookmarks: EntityTable<BookmarkRow, 'key'>;
 };
 
 db.version(1).stores({
@@ -22,4 +26,11 @@ db.version(1).stores({
 
 db.version(2).stores({
   favorites: 'key, wordId, ts',
+});
+
+db.version(3).stores({
+  gtopics: 'id, levelNum, pack, order',
+  gsentences: 'id, topic, levelNum, pack',
+  mcards: 'id, mode, due, state, [mode+due], [mode+state]',
+  bookmarks: 'key, mode, ts',
 });

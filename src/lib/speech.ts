@@ -78,14 +78,18 @@ export function canSpeak(): boolean {
   return typeof window !== 'undefined' && 'speechSynthesis' in window;
 }
 
-/** 폰 내장 음성으로 읽기. slow=듣기평가 속도 */
-export function speak(text: string, slow = false): void {
-  if (!canSpeak()) return;
+/** 폰 내장 음성으로 읽기. slow=듣기평가 속도, factor=추가 배속(0.5, 0.8) */
+export function speak(text: string, slow = false, factor = 1, onEnd?: () => void): void {
+  if (!canSpeak()) {
+    onEnd?.();
+    return;
+  }
   try {
     window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
     u.lang = 'en-US';
-    u.rate = slow ? 0.72 : 0.98;
+    u.rate = (slow ? 0.72 : 0.98) * factor;
+    if (onEnd) u.onend = () => onEnd();
     const voices = window.speechSynthesis.getVoices();
     const voice = voices.find((v) => v.lang.replace('_', '-').startsWith('en-US')) ?? voices.find((v) => v.lang.startsWith('en'));
     if (voice) u.voice = voice;

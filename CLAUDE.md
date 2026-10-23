@@ -17,6 +17,14 @@ Vite + React + TypeScript, Dexie(IndexedDB), ts-fsrs(복습 스케줄), vite-plu
 - 퀴즈(`src/pages/Quiz.tsx`): 하늘색 배경, 레벨 탭이 붙은 카드(`components/QuizCard.tsx`), New / N일 전 / N일 뒤 복습 배지, 앱 자체 자판(`components/Keyboard.tsx`, 폰 기본 키보드를 띄우지 않음), 보라색 입력 말풍선, 힌트 2단계(앞 1/3 → 정답 보기), 정답 입력 시 자동 채점, 오답 시 분홍 카드 + 설명 말풍선(초록/노랑/빨강), 정답 후 패널(`components/AfterPanel.tsx`: 다른 예문·오답 노트·말해보기·단어 정보, 실전 속도/다시 듣기/다음 문제), 하루 목표 달성 트로피 팝업.
 - 홈: 연속 학습 카드(주간 출석), 진행률 링 + 오늘의 어휘/추가 학습 버튼, 하루 목표 팝업, 학습 정보, 나의 어휘력, 좋아하는 문장/오답노트/학습한 어휘/사전 목록. 하단 탭: 어휘·기록·사전·설정.
 
+## 학습 모드 (docs/SPEC.md 에 실제 앱 관찰 기록)
+
+- 어휘 `/quiz`, 문법 `/grammar` (단어 카드 배열, `src/lib/grammar.ts`), 리스닝 `/listening` (객관식 단어 버튼 / 주관식 음성·키보드, `src/lib/listening.ts`), 발음 구분 연습 `/pairs`
+- 어휘 외 모드의 복습 카드는 `mcards` 테이블(`${mode}:${itemId}`), 하루 기록은 `daily.byMode`, 기록 함수는 `src/lib/modeStudy.ts`
+- 문법 데이터 `public/data/grammar/g-XX.json` (주제 + 설명글 + 문장), 발음 데이터 `public/data/pairs/pairs.json`, 검증 `npm run content:validate` 와 `node scripts/validate-extra.mjs`
+- 리스닝 문장은 어휘 예문과 문법 문장을 재사용
+- 아직 없는 것: 표현 학습, 실전 회화 (실제 앱 화면 확인 필요)
+
 ## 로직
 
 - `src/lib/scheduler.ts` FSRS 래퍼와 등급 규칙. 처음 본 단어를 깨끗하게 맞히면 KNOWN_WORD_DAYS(180일) 뒤로.

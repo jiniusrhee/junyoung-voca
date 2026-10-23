@@ -10,6 +10,7 @@ import { MASTERY_KO, masteryOf } from '../lib/scheduler';
 import { speak } from '../lib/speech';
 import { fullSentence } from '../lib/text';
 import { formatAfter } from '../lib/time';
+import { toggleWordbook, useWordbook } from '../lib/wordbook';
 import { POS_KO, type Tone } from '../types';
 
 const RATING_KO: Record<number, string> = { 1: '틀림', 2: '헷갈림', 3: '정답', 4: '쉬움' };
@@ -22,6 +23,7 @@ export default function WordDetail() {
   const card = useLiveQuery(() => db.cards.get(wordId), [wordId]);
   const logs = useLiveQuery(() => db.reviews.where('wordId').equals(wordId).reverse().sortBy('ts'), [wordId]);
   const [exIdx, setExIdx] = useState(0);
+  const wordbook = useWordbook();
   const refs = {
     nuance: useRef<HTMLHeadingElement>(null),
     etym: useRef<HTMLHeadingElement>(null),
@@ -105,6 +107,9 @@ export default function WordDetail() {
           ) : (
             <span>아직 학습하지 않은 단어예요</span>
           )}
+          <button className={`wb-add ${wordbook?.includes(word.id) ? 'on' : ''}`} onClick={() => void toggleWordbook(word.id)}>
+            {wordbook?.includes(word.id) ? '✓ 단어장에 담김' : '+ 단어장에 추가'}
+          </button>
         </div>
       </section>
 

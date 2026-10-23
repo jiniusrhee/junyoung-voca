@@ -5,6 +5,13 @@ import { syncContent } from './lib/content';
 import { useSettings } from './lib/settings';
 import { useApplyTheme } from './lib/theme';
 import AllLearning from './pages/AllLearning';
+import GrammarDict, { GrammarLesson } from './pages/GrammarDict';
+import GrammarQuiz from './pages/GrammarQuiz';
+import Guide from './pages/Guide';
+import LearnedList from './pages/LearnedList';
+import ListeningQuiz from './pages/ListeningQuiz';
+import Pairs, { PairQuiz } from './pages/Pairs';
+import Wordbook from './pages/Wordbook';
 import Dictionary from './pages/Dictionary';
 import Favorites from './pages/Favorites';
 import Home from './pages/Home';
@@ -34,6 +41,16 @@ function Shell() {
         <Route path="/quiz" element={needsOnboarding ? <Navigate to="/welcome" replace /> : <Quiz mode="study" />} />
         <Route path="/stats" element={<Stats />} />
         <Route path="/all" element={<AllLearning />} />
+        <Route path="/grammar" element={<GrammarQuiz />} />
+        <Route path="/listening" element={<ListeningQuiz />} />
+        <Route path="/grammar-dict" element={<GrammarDict />} />
+        <Route path="/grammar-dict/:id" element={<GrammarLesson />} />
+        <Route path="/pairs" element={<Pairs />} />
+        <Route path="/pairs/:stage/:mode" element={<PairQuiz />} />
+        <Route path="/learned/:mode" element={<LearnedList kind="learned" />} />
+        <Route path="/bookmarks/:mode" element={<LearnedList kind="bookmarks" />} />
+        <Route path="/wordbook" element={<Wordbook />} />
+        <Route path="/guide" element={<Guide />} />
         <Route path="/dict" element={<Dictionary />} />
         <Route path="/words" element={<Words />} />
         <Route path="/words/:id" element={<WordDetail />} />

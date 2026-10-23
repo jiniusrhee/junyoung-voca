@@ -9,7 +9,7 @@
     "build": "tsc --noEmit -p tsconfig.json && vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "content:validate": "node scripts/validate-content.mjs",
+    "content:validate": "node scripts/validate-content.mjs && node scripts/validate-extra.mjs",
     "content:manifest": "node scripts/build-manifest.mjs",
     "content:coverage": "node scripts/coverage.mjs",
     "icons": "node scripts/make-icons.mjs"

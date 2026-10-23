@@ -241,5 +241,25 @@
         30
       ]
     }
+  ],
+  "grammar": [
+    {
+      "file": "g-01.json",
+      "hash": "c3fea94852df"
+    },
+    {
+      "file": "g-02.json",
+      "hash": "e9465d9a1fe8"
+    },
+    {
+      "file": "g-03.json",
+      "hash": "d15933099324"
+    }
+  ],
+  "pairs": [
+    {
+      "file": "pairs.json",
+      "hash": "2b462555a1af"
+    }
   ]
 }

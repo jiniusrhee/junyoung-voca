@@ -13,6 +13,15 @@ export const DEFAULT_SETTINGS: Settings = {
   newWordDifficulty: 'normal',
   theme: 'system',
   nickname: '준영',
+  grammarGoal: 10,
+  grammarLevel: null,
+  listeningGoal: 10,
+  listeningLevel: null,
+  listeningMode: 'mc',
+  listeningInput: 'voice',
+  listeningSpeed: 'real',
+  studyTheme: 'dino',
+  homeMode: 'vocab',
 };
 
 async function read(): Promise<Settings> {

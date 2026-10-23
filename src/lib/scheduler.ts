@@ -23,6 +23,16 @@ export interface Outcome {
   elapsedMs: number;
 }
 
+/** 어떤 모드든 FSRS 카드 필드에 등급을 적용 */
+export function scheduleFields<T extends Omit<Card, 'state'> & { state: number }>(row: T, grade: Grade, now: Date = new Date()): T {
+  const { card } = scheduler.next({ ...row, state: row.state as State } as Card, now, grade);
+  return { ...row, ...card };
+}
+
+export function emptyFields(now: Date = new Date()): Card {
+  return createEmptyCard(now);
+}
+
 export function newCardRow(wordId: string, now: Date = new Date()): CardRow {
   const c = createEmptyCard(now);
   return { wordId, ...c };
