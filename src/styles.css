@@ -7043,3 +7043,266 @@ sup.beta.pill {
   transform: translateX(-50%);
   width: min(100%, 520px);
 }
+
+/* ================= 연속 학습 화면 ================= */
+.streak-page {
+  background: var(--bg);
+  padding-bottom: 30px;
+}
+.streak-head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 200px;
+  padding: 0 10px;
+  margin: 0 -16px 10px;
+  background: linear-gradient(180deg, #1b1830, #26213f);
+}
+.streak-head .icon-btn.light {
+  color: #b9a3ff;
+}
+.streak-ym {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 110px;
+  color: #fff;
+}
+.streak-ym span {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+.streak-ym b {
+  font-size: 3rem;
+  line-height: 1;
+}
+.streak-mascot {
+  margin-left: auto;
+  margin-right: 30px;
+}
+.streak-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  color: #fff;
+}
+.streak-sum {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 16px;
+}
+.ss-left {
+  flex: 0 0 42%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-right: 1px solid var(--line);
+  font-size: 0.86rem;
+  color: var(--sub);
+}
+.ss-left b {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.9rem;
+  color: var(--text);
+}
+.ss-left b svg {
+  color: #ff8a3d;
+}
+.ss-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  font-size: 0.95rem;
+}
+.ss-right > span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.ss-right > span:first-child b {
+  margin-left: auto;
+  font-size: 1.2rem;
+}
+.ss-bar {
+  position: relative;
+  height: 24px;
+  border-radius: 12px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.ss-bar i {
+  display: block;
+  height: 100%;
+  background: #7a3b3b;
+}
+.ss-bar em {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-style: normal;
+  font-size: 0.78rem;
+  color: #ddd;
+}
+.streak-cal {
+  padding: 10px 10px 14px;
+}
+.cal-head {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 0.86rem;
+  color: var(--sub);
+  padding: 4px 0 10px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 6px;
+}
+.cal-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin: 4px 0;
+}
+.cal-cell {
+  position: relative;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  color: var(--sub);
+}
+.cal-cell.on {
+  background: #3a3a1e;
+}
+.cal-cell.on.start {
+  border-radius: 27px 0 0 27px;
+}
+.cal-cell.on.end {
+  border-radius: 0 27px 27px 0;
+}
+.cal-cell.on.start.end {
+  border-radius: 27px;
+}
+.cal-cell.today {
+  outline: 2px solid #8b6cf6;
+  outline-offset: -2px;
+  border-radius: 12px;
+}
+.cal-cell.future {
+  color: var(--muted);
+}
+.cal-cell .stamp {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+.cal-cell .stamp.gold {
+  background: linear-gradient(140deg, #ffd65a, #f0a500);
+  color: #fff;
+  box-shadow: inset 0 -3px 0 #c98400;
+}
+.cal-cell .stamp.star {
+  background: #8b6cf6;
+  color: #fff;
+}
+.cal-dleft {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  color: var(--sub);
+  font-size: 0.9rem;
+}
+.medal-card,
+.pen-card {
+  padding: 18px 16px;
+}
+.medal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.86rem;
+  color: var(--sub);
+}
+.medal-head b {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+.medal-bar {
+  position: relative;
+  height: 18px;
+  margin: 28px 20px 10px 6px;
+  border-radius: 9px;
+  background: var(--surface-2);
+}
+.medal-bar i {
+  display: block;
+  height: 100%;
+  border-radius: 9px;
+  background: #e9c257;
+}
+.medal {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #6b6f78;
+  filter: grayscale(1);
+}
+.medal.got {
+  filter: none;
+}
+.medal.bronze.got {
+  color: #c97b3a;
+}
+.medal.silver.got {
+  color: #b9c2cc;
+}
+.medal.gold.got {
+  color: #f2b800;
+}
+.pen-card {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.pen-card > b {
+  font-size: 1.05rem;
+}
+.pen-count {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+.pen-count svg {
+  color: #f0a500;
+}
+.pen-use {
+  width: 100%;
+  margin-top: 6px;
+}
+.help-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 6px 4px 16px;
+  word-break: keep-all;
+}
+.goal-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+.qmark {
+  cursor: pointer;
+}

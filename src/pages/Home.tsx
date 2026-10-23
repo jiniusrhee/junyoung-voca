@@ -10,11 +10,11 @@ import Mascot from '../components/Mascot';
 import { db } from '../db';
 import { saveSettings, useSettings } from '../lib/settings';
 import { getImported, importedRange, inRange, type DayRange } from '../lib/imported';
-import { comprehension, computeStreak, dayTime, dayTotal, displayVocab, goalMet, reviewAccuracy, studied, vocabDateText } from '../lib/stats';
+import { STREAK_GOALS } from './Streak';
+import { comprehension, computeStreak, dayTime, dayTotal, displayVocab, getRepairedDays, goalMet, reviewAccuracy, studied, vocabDateText } from '../lib/stats';
 import { WEEKDAYS_KO, dayOfWeek, formatClock, shiftDate, studyDateOf, weekOf } from '../lib/time';
 import type { DailyRow, StudyMode } from '../types';
 
-const STREAK_GOALS = [7, 14, 30, 50, 100, 150, 200, 300, 365, 500, 700, 1000, 1500, 2000];
 const MODE_TABS: { key: string; icon: IconName; label: string; mode?: StudyMode }[] = [
   { key: 'grammar', icon: 'gbook', label: '문법', mode: 'grammar' },
   { key: 'expr', icon: 'chat', label: '표현', mode: 'expr' },
@@ -38,6 +38,7 @@ export default function Home() {
   const daily = useLiveQuery(() => db.daily.toArray(), []);
   const streak = useLiveQuery(() => computeStreak(), []);
   const imp = useLiveQuery(() => getImported(), []);
+  const repaired = useLiveQuery(() => getRepairedDays(), []);
   const homeMode: StudyMode = settings && HOME_MODES.includes(settings.homeMode) ? settings.homeMode : 'vocab';
   const acc = useLiveQuery(() => reviewAccuracy(7, new Date(), homeMode), [homeMode]);
   const [start, setStart] = useState<StudyMode | null>(null);
@@ -82,7 +83,7 @@ export default function Home() {
       </header>
       {toast && <div className="home-toast">{toast}</div>}
 
-      <StreakCard today={today} byDate={byDate} goal={settings.dailyGoal} streak={streak ?? 0} range={importedRange(imp)} />
+      <StreakCard today={today} byDate={byDate} goal={settings.dailyGoal} streak={streak ?? 0} range={importedRange(imp)} target={settings.streakGoal} repaired={repaired} />
 
       <section className="main-card">
         <div className="main-body">
@@ -209,14 +210,14 @@ export default function Home() {
   );
 }
 
-function StreakCard({ today, byDate, goal, streak, range }: { today: string; byDate: Map<string, DailyRow>; goal: number; streak: number; range: DayRange | null }) {
+function StreakCard({ today, byDate, goal, streak, range, target: manual, repaired }: { today: string; byDate: Map<string, DailyRow>; goal: number; streak: number; range: DayRange | null; target?: number; repaired?: Set<string> }) {
   const week = weekOf(today);
-  const did = (d: string) => studied(byDate.get(d)) || inRange(range, d);
+  const did = (d: string) => studied(byDate.get(d)) || inRange(range, d) || !!repaired?.has(d);
   const alive = did(today) || did(shiftDate(today, -1));
   const inRun = (d: string) => d <= today && (did(d) || (d === today && alive));
-  const target = STREAK_GOALS.find((g) => g > streak) ?? streak + 100;
+  const target = manual ?? (STREAK_GOALS.find((g) => g > streak) ?? streak + 100);
   return (
-    <Link to="/stats" className="streak-card">
+    <Link to="/streak" className="streak-card">
       <span className="flame-big">
         <Icon name="flame" size={44} />
       </span>

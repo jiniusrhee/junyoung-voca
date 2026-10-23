@@ -1,5 +1,6 @@
 import { Rating, State, type Grade } from 'ts-fsrs';
 import { db } from '../db';
+import { computeStreak, grantRepairPen } from './stats';
 import type { MCardRow, ModeDay, StudyMode, WrongNote } from '../types';
 import { emptyFields, scheduleFields } from './scheduler';
 import { studyDateOf } from './time';
@@ -67,6 +68,7 @@ export async function recordModeAnswer(mode: StudyMode, itemId: string, o: ModeO
     m.timeMs += Math.min(o.elapsedMs, 5 * 60_000);
     byMode[mode] = m;
     await db.daily.put({ ...d, byMode });
+    void computeStreak().then(grantRepairPen);
     return { total: m.total, metNow: before < goal && m.total >= goal };
   });
   return { row, grade, isNew, ...result };

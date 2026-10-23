@@ -26,11 +26,38 @@ export function goalMet(d: DailyRow | undefined, currentGoal: number): boolean {
   return !!d && d.total >= (d.goal ?? currentGoal);
 }
 
+/** 복구펜으로 채운 날 */
+export async function getRepairedDays(): Promise<Set<string>> {
+  return new Set(((await db.kv.get('repairedDays'))?.value as string[] | undefined) ?? []);
+}
+
+/** 복구펜 1개를 써서 하루를 학습한 날로 채운다 */
+export async function repairDay(date: string): Promise<boolean> {
+  const pens = ((await db.kv.get('repairPens'))?.value as number | undefined) ?? 0;
+  if (pens <= 0) return false;
+  const days = await getRepairedDays();
+  days.add(date);
+  await db.kv.put({ key: 'repairedDays', value: [...days] });
+  await db.kv.put({ key: 'repairPens', value: pens - 1 });
+  return true;
+}
+
+/** 연속 학습이 30일 단위에 닿으면 복구펜 1개 지급 */
+export async function grantRepairPen(streak: number): Promise<void> {
+  if (streak <= 0 || streak % 30 !== 0) return;
+  const last = ((await db.kv.get('repairPenAt'))?.value as number | undefined) ?? 0;
+  if (last >= streak) return;
+  const pens = ((await db.kv.get('repairPens'))?.value as number | undefined) ?? 0;
+  await db.kv.put({ key: 'repairPens', value: pens + 1 });
+  await db.kv.put({ key: 'repairPenAt', value: streak });
+}
+
 export async function computeStreak(now: Date = new Date()): Promise<number> {
   const rows = await db.daily.toArray();
   const range = importedRange(await getImported());
+  const repaired = await getRepairedDays();
   const totals = new Map(rows.map((r) => [r.date, dayTotal(r)]));
-  const ok = (d: string) => (totals.get(d) ?? 0) >= STREAK_MIN_QUESTIONS || inRange(range, d);
+  const ok = (d: string) => (totals.get(d) ?? 0) >= STREAK_MIN_QUESTIONS || inRange(range, d) || repaired.has(d);
   let date = studyDateOf(now);
   // 오늘 아직 기준을 못 채웠으면 어제부터 센다 (오늘은 아직 끊긴 게 아님)
   if (!ok(date)) date = shiftDate(date, -1);

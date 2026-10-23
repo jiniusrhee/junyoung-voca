@@ -53,5 +53,6 @@ export async function applyImported(data: ImportedProgress): Promise<void> {
     if (data.levels.listening > best) await db.kv.put({ key: 'listeningBest', value: data.levels.listening });
   }
   if (Object.keys(patch).length) await saveSettings(patch);
+  if (data.repairPens != null && (await db.kv.get('repairPens')) == null) await db.kv.put({ key: 'repairPens', value: data.repairPens });
   await applyImportedKnown(data);
 }

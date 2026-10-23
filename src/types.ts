@@ -297,6 +297,8 @@ export interface Settings {
   studyTheme: 'sky' | 'dino';
   /** 홈 메인 카드에 보이는 학습 모드 */
   homeMode: StudyMode;
+  /** 연속 학습 목표(일). 없으면 다음 단계 자동 */
+  streakGoal?: number;
   exprGoal: number;
   exprCourse: string | null;
   talkGoal: number;
@@ -316,6 +318,8 @@ export interface ImportedProgress {
   percentile?: number;
   vocabHistory?: { date: string; vocab: number; level?: number }[];
   learnedCount?: number;
+  /** 보유한 복구펜 */
+  repairPens?: number;
   learnedWords?: string[];
   /** 날짜별(YYYY-MM-DD) 학습한 단어 */
   learnedDays?: Record<string, string[]>;

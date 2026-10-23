@@ -9,7 +9,7 @@ import VocabSettings from '../components/VocabSettings';
 import QuizCard, { FilledSentence, KoSentence, type CardBadge } from '../components/QuizCard';
 import WrongItem from '../components/WrongItem';
 import { db } from '../db';
-import { comprehension, estimateVocab } from '../lib/stats';
+import { comprehension, computeStreak, estimateVocab, grantRepairPen } from '../lib/stats';
 import { syncContent } from '../lib/content';
 import { maybeAdjustLevel } from '../lib/level';
 import { LEVEL_TEST_QUESTIONS } from '../lib/levelLogic';
@@ -211,6 +211,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         d.timeMs += Math.min(outcome.elapsedMs, 5 * 60_000);
         d.goal = s.dailyGoal;
         await db.daily.put(d);
+        void computeStreak().then(grantRepairPen);
         return { total: d.total, metNow: before < s.dailyGoal && d.total >= s.dailyGoal };
       });
 
