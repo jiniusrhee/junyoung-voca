@@ -6,6 +6,7 @@ import Icon from '../components/Icon';
 import Keyboard from '../components/Keyboard';
 import Mascot from '../components/Mascot';
 import QuizCard, { FilledSentence, KoSentence, type CardBadge } from '../components/QuizCard';
+import WrongItem from '../components/WrongItem';
 import { db } from '../db';
 import { syncContent } from '../lib/content';
 import { maybeAdjustLevel } from '../lib/level';
@@ -51,7 +52,6 @@ const freshLive = (q: Question): Live => ({
   startedAt: Date.now(),
 });
 
-const TONE_TAG: Record<Tone, string> = { green: '유의어', yellow: '아쉬워요', red: '오답' };
 
 export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const settings = useSettings();
@@ -68,6 +68,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const [sayResult, setSayResult] = useState<{ tone: Tone; msg: string } | null>(null);
   const [listening, setListening] = useState(false);
   const [voiceError, setVoiceError] = useState<string | null>(null);
+  const [heard, setHeard] = useState<string | null>(null);
   const [showSettings, setShowSettings] = useState(false);
   const [goalReached, setGoalReached] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
@@ -94,6 +95,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     setOverlay(null);
     setSayResult(null);
     setVoiceError(null);
+    setHeard(null);
     setFlash(null);
     setLevelHelp(false);
     setCardKey((k) => k + 1);
@@ -279,6 +281,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     try {
       const alts = await recognizeOnce();
       const s = sentenceOf(live.q);
+      setHeard(alts[0] ?? null);
       if (containsAnswer(alts, s.answer, live.q.word.word)) {
         await finalize(live, 'voice');
       } else {
@@ -477,13 +480,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
             </p>
             {answered.wrongs.length === 0 && <p className="overlay-empty">이번 문제는 틀린 답 없이 맞혔어요!</p>}
             {answered.wrongs.map((x, i) => (
-              <div key={i} className="wrong-item">
-                <div className="wrong-head">
-                  <span className="wrong-w">{x.w}</span>
-                  <span className={`tag ${x.tone}`}>{TONE_TAG[x.tone]}</span>
-                </div>
-                <p>{x.m}</p>
-              </div>
+              <WrongItem key={i} w={x.w} tone={x.tone} m={x.m} />
             ))}
             {(sentence.alts ?? []).filter((a) => !answered.wrongs.some((x) => normalize(x.w) === normalize(a.w))).length > 0 && (
               <>
@@ -492,15 +489,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
                   .filter((a) => !answered.wrongs.some((x) => normalize(x.w) === normalize(a.w)))
                   .map((a, i) => {
                     const tone: Tone = a.t === 'ok' ? 'green' : a.t === 'near' ? 'yellow' : 'red';
-                    return (
-                      <div key={i} className="wrong-item soft">
-                        <div className="wrong-head">
-                          <span className="wrong-w">{a.w}</span>
-                          <span className={`tag ${tone}`}>{TONE_TAG[tone]}</span>
-                        </div>
-                        <p>{a.m}</p>
-                      </div>
-                    );
+                    return <WrongItem key={i} w={a.w} tone={tone} m={a.m} soft />;
                   })}
               </>
             )}
@@ -628,15 +617,25 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
           <Keyboard onChar={typeChar} onBackspace={backspace} onSpace={space} onEnter={submit} onSettings={() => setShowSettings(true)} />
         </div>
       ) : (
-        <div className="quiz-input voice">
-          <p className="voice-status">{listening ? '듣고 있어요… 빈칸 단어를 말해 보세요' : voiceError ?? '마이크를 누르고 빈칸에 들어갈 말을 말해 보세요'}</p>
-          <div className="voice-row">
+        <div className="voice-zone">
+          <div className="voice-bubble-row">
+            {voiceError ? (
+              <span className="voice-error">{voiceError}</span>
+            ) : heard || live.input ? (
+              <span className="bubble link">{heard ?? live.input}</span>
+            ) : (
+              <span className="voice-hint">{listening ? '듣고 있어요…' : '마이크를 누르고 빈칸에 들어갈 말을 말해 보세요'}</span>
+            )}
+          </div>
+          <div className={`voice-halo ${listening ? 'listening' : ''}`}>
+            <button className="mic-big" onClick={() => void answerByVoice()} aria-label={listening ? '듣는 중' : '말하기'}>
+              {listening ? <span className="stop-square" /> : <Icon name="mic" size={40} />}
+            </button>
+          </div>
+          <div className="voice-bar">
             <button className="tool-btn" onClick={hint} disabled={live.showedAnswer}>
               {live.hints === 0 ? <Icon name="question" size={26} className="ic-purple" /> : <Icon name="check" size={26} className="ic-green" />}
               <span>{live.hints === 0 ? '힌트 보기' : '정답 보기'}</span>
-            </button>
-            <button className={`mic-big ${listening ? 'listening' : ''}`} onClick={() => void answerByVoice()} aria-label="말하기">
-              <Icon name="mic" size={38} />
             </button>
             <button className="tool-btn" onClick={() => setInputMode('keyboard')}>
               <Icon name="keyboard" size={26} className="ic-purple" />

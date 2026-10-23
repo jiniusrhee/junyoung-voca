@@ -1,18 +1,19 @@
 import { useLiveQuery } from 'dexie-react-hooks';
+import { useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Icon from '../components/Icon';
 import { FilledSentence, KoSentence } from '../components/QuizCard';
 import SubHeader from '../components/SubHeader';
+import WrongItem from '../components/WrongItem';
 import { db } from '../db';
 import { MASTERY_KO, masteryOf } from '../lib/scheduler';
-import { canSpeak, speak } from '../lib/speech';
+import { speak } from '../lib/speech';
 import { fullSentence } from '../lib/text';
 import { formatAfter } from '../lib/time';
 import { POS_KO, type Tone } from '../types';
 
 const RATING_KO: Record<number, string> = { 1: '틀림', 2: '헷갈림', 3: '정답', 4: '쉬움' };
 const ALT_TONE: Record<string, Tone> = { ok: 'green', near: 'yellow', wrong: 'red' };
-const TAG: Record<Tone, string> = { green: '유의어', yellow: '아쉬워요', red: '오답' };
 
 export default function WordDetail() {
   const { id = '' } = useParams();
@@ -20,6 +21,12 @@ export default function WordDetail() {
   const word = useLiveQuery(() => db.words.get(wordId), [wordId]);
   const card = useLiveQuery(() => db.cards.get(wordId), [wordId]);
   const logs = useLiveQuery(() => db.reviews.where('wordId').equals(wordId).reverse().sortBy('ts'), [wordId]);
+  const [exIdx, setExIdx] = useState(0);
+  const refs = {
+    nuance: useRef<HTMLHeadingElement>(null),
+    etym: useRef<HTMLHeadingElement>(null),
+    alts: useRef<HTMLHeadingElement>(null),
+  };
 
   if (word === undefined) {
     return (
@@ -39,78 +46,92 @@ export default function WordDetail() {
   }
   const mastery = card ? masteryOf(card) : null;
   const alts = word.sentences.flatMap((s) => s.alts ?? []).filter((a, i, arr) => arr.findIndex((b) => b.w.toLowerCase() === a.w.toLowerCase()) === i);
+  const ex = word.sentences[exIdx % word.sentences.length];
+  const go = (k: keyof typeof refs) => refs[k].current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
   return (
-    <div className="screen sub">
-      <SubHeader title="단어 정보" />
-      <section className="word-hero">
-        <div className="word-hero-top">
-          <span className="word-big">{word.word}</span>
-          {canSpeak() && (
-            <button className="icon-btn" onClick={() => speak(word.word)} aria-label="발음 듣기">
-              <Icon name="speaker" size={22} />
+    <div className="screen sub word-page">
+      <SubHeader title="" />
+      <section className="dict-hero">
+        <h1 className="word-big">{word.word}</h1>
+        <button className="listen-pill" onClick={() => speak(word.word)}>
+          <Icon name="speaker" size={16} /> 발음 듣기
+        </button>
+      </section>
+      <nav className="dict-tabs">
+        <button className="active">뜻</button>
+        <button onClick={() => go('nuance')} disabled={!word.nuance}>
+          뉘앙스
+        </button>
+        <button onClick={() => go('etym')} disabled={!word.etymology}>
+          어원
+        </button>
+        <button onClick={() => go('alts')} disabled={!alts.length}>
+          헷갈리는 답
+        </button>
+      </nav>
+
+      <section className="mean-card">
+        <div className="mean-tags">
+          <span className="chip">{POS_KO[word.pos]}</span>
+          <span className="chip level">레벨 {word.level}</span>
+        </div>
+        <p className="mean-text">{word.meanings.join(', ')}</p>
+        <div className="ex-box">
+          <span className="box-tag">예문</span>
+          {word.sentences.length > 1 && (
+            <button className="ex-next" onClick={() => setExIdx((i) => i + 1)} aria-label="다음 예문">
+              <Icon name="chevron" size={18} />
             </button>
           )}
-        </div>
-        <div className="word-tags">
-          <span className="chip">{POS_KO[word.pos]}</span>
-          <span className="chip blue">레벨 {word.level}</span>
-          {mastery && <span className={`chip m-${mastery}`}>{MASTERY_KO[mastery]}</span>}
-        </div>
-        <p className="word-mean">{word.meanings.join(', ')}</p>
-        {card && (
-          <p className="muted small">
-            {formatAfter(card.due)} 복습 · 학습 {card.reps}회 · 잊음 {card.lapses}회
+          {ex.ctx && <p className="ctx">{ex.ctx}</p>}
+          <p className="ex-en">
+            <FilledSentence sentence={ex} />
           </p>
-        )}
+          <p className="ex-ko">
+            <KoSentence ko={ex.ko} />
+          </p>
+          {ex.note && <p className="note left">※ {ex.note}</p>}
+          <button className="ex-listen" onClick={() => speak(fullSentence(ex.en, ex.answer))} aria-label="예문 듣기">
+            <Icon name="speaker" size={18} />
+          </button>
+        </div>
+        <div className="mean-record">
+          <span className="box-tag">기록</span>
+          {card ? (
+            <span>
+              총 {card.reps}회 학습, {formatAfter(card.due)} 복습{mastery ? ` · ${MASTERY_KO[mastery]}` : ''}
+            </span>
+          ) : (
+            <span>아직 학습하지 않은 단어예요</span>
+          )}
+        </div>
       </section>
-
-      <h3 className="sec-title">예문</h3>
-      {word.sentences.map((s, i) => (
-        <div key={i} className="sent-item">
-          {s.ctx && <p className="ctx">{s.ctx}</p>}
-          <p className="sent-en">
-            <FilledSentence sentence={s} />
-          </p>
-          <p className="sent-ko">
-            <KoSentence ko={s.ko} />
-          </p>
-          {s.note && <p className="note">※ {s.note}</p>}
-          <div className="sent-actions">
-            <button className="icon-btn small" onClick={() => speak(fullSentence(s.en, s.answer))} aria-label="듣기">
-              <Icon name="speaker" size={18} />
-            </button>
-          </div>
-        </div>
-      ))}
 
       {word.nuance && (
         <>
-          <h3 className="sec-title">뉘앙스</h3>
+          <h3 className="sec-title" ref={refs.nuance}>
+            뉘앙스
+          </h3>
           <div className="text-card">{word.nuance}</div>
         </>
       )}
       {word.etymology && (
         <>
-          <h3 className="sec-title">어원</h3>
+          <h3 className="sec-title" ref={refs.etym}>
+            어원
+          </h3>
           <div className="text-card">{word.etymology}</div>
         </>
       )}
       {alts.length > 0 && (
         <>
-          <h3 className="sec-title">헷갈리기 쉬운 답</h3>
-          {alts.map((a, i) => {
-            const tone = ALT_TONE[a.t];
-            return (
-              <div key={i} className="wrong-item">
-                <div className="wrong-head">
-                  <span className="wrong-w">{a.w}</span>
-                  <span className={`tag ${tone}`}>{TAG[tone]}</span>
-                </div>
-                <p>{a.m}</p>
-              </div>
-            );
-          })}
+          <h3 className="sec-title" ref={refs.alts}>
+            헷갈리기 쉬운 답
+          </h3>
+          {alts.map((a, i) => (
+            <WrongItem key={i} w={a.w} tone={ALT_TONE[a.t]} m={a.m} />
+          ))}
         </>
       )}
       {logs && logs.length > 0 && (

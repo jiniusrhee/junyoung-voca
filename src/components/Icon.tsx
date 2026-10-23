@@ -28,7 +28,12 @@ export type IconName =
   | 'wave'
   | 'backspace'
   | 'list'
-  | 'caret';
+  | 'caret'
+  | 'bell'
+  | 'hourglass'
+  | 'xcircle'
+  | 'bookPerson'
+  | 'shield';
 
 interface Props {
   name: IconName;
@@ -216,4 +221,37 @@ const PATHS: Record<IconName, ReactElement> = {
     </g>
   ),
   caret: <path d="M6 9l6 6 6-6z" fill="currentColor" stroke="none" />,
+  bell: (
+    <g fill="currentColor" stroke="none">
+      <path d="M12 2.5a1.6 1.6 0 0 1 1.6 1.6v.6A6.5 6.5 0 0 1 18.5 11v4.2l1.8 2.3c.4.5 0 1.3-.7 1.3H4.4c-.7 0-1.1-.8-.7-1.3l1.8-2.3V11a6.5 6.5 0 0 1 4.9-6.3v-.6A1.6 1.6 0 0 1 12 2.5z" />
+      <path d="M9.5 20h5a2.5 2.5 0 0 1-5 0z" />
+    </g>
+  ),
+  hourglass: (
+    <g fill="currentColor" stroke="none">
+      <rect x="5" y="2.5" width="14" height="2.4" rx="1.2" />
+      <rect x="5" y="19.1" width="14" height="2.4" rx="1.2" />
+      <path d="M7 5h10c0 3.5-3 5.2-3 7s3 3.5 3 7H7c0-3.5 3-5.2 3-7S7 8.5 7 5z" />
+    </g>
+  ),
+  xcircle: (
+    <g>
+      <circle cx="9" cy="10" r="6.5" stroke="#3fb67a" strokeWidth={2.4} />
+      <line x1="13" y1="13" x2="21" y2="21" stroke="#f0566a" strokeWidth={2.6} />
+      <line x1="21" y1="13" x2="13" y2="21" stroke="#f0566a" strokeWidth={2.6} />
+    </g>
+  ),
+  bookPerson: (
+    <g fill="currentColor" stroke="none">
+      <circle cx="12" cy="5.5" r="3.2" />
+      <path d="M2 10.5c3.6-1.2 7-.8 9.3 1.3v9.6c-2.4-1.8-5.7-2.1-9.3-1z" />
+      <path d="M22 10.5c-3.6-1.2-7-.8-9.3 1.3v9.6c2.4-1.8 5.7-2.1 9.3-1z" />
+    </g>
+  ),
+  shield: (
+    <g>
+      <path d="M12 2.5l7.5 3v6c0 4.6-3.2 8.4-7.5 10-4.3-1.6-7.5-5.4-7.5-10v-6z" fill="currentColor" stroke="none" />
+      <polyline points="8.5 12 11 14.5 15.5 9.5" stroke="#fff" strokeWidth={2.2} />
+    </g>
+  ),
 };

@@ -14,6 +14,7 @@ export default function Stats() {
   const comp = useLiveQuery(() => comprehension(), []);
   const learned = useLiveQuery(() => db.cards.count(), []);
   const [range, setRange] = useState<7 | 30>(7);
+  const [tab, setTab] = useState<'period' | 'study' | 'vocab'>('study');
   const [month, setMonth] = useState(() => {
     const [y, m] = studyDateOf().split('-').map(Number);
     return { y, m };
@@ -53,10 +54,25 @@ export default function Stats() {
 
   return (
     <div className="screen stats">
-      <h1 className="page-title">학습 기록</h1>
+      <nav className="stats-tabs">
+        <button className={tab === 'period' ? 'active' : ''} onClick={() => setTab('period')}>
+          기간별
+        </button>
+        <button className={tab === 'study' ? 'active' : ''} onClick={() => setTab('study')}>
+          학습별
+        </button>
+        <button className={tab === 'vocab' ? 'active' : ''} onClick={() => setTab('vocab')}>
+          어휘력
+        </button>
+      </nav>
 
+      {tab === 'study' && (
+        <>
+      <div className="study-chips">
+        <span className="chip-btn active">어휘</span>
+      </div>
+      <h2 className="stats-h2">어휘 학습</h2>
       <section className="info-card">
-        <h3>어휘 학습</h3>
         <div className="kv-row">
           <span>
             <Icon name="trophy" size={18} className="ic-gold" /> 어휘 트로피
@@ -131,6 +147,10 @@ export default function Stats() {
         </div>
       </section>
 
+        </>
+      )}
+
+      {tab === 'period' && (
       <section className="info-card streak-box">
         <div className="streak-summary">
           <div>
@@ -185,6 +205,9 @@ export default function Stats() {
         </div>
       </section>
 
+      )}
+
+      {tab === 'vocab' && (
       <section className="vocab-card">
         <p className="vocab-card-title">나의 어휘력</p>
         <div className="trophy-big">
@@ -206,6 +229,7 @@ export default function Stats() {
         </div>
         <p className="vocab-foot">추정치는 현재 레벨과 최근 새 단어를 처음부터 알았던 비율로 계산해요.</p>
       </section>
+      )}
     </div>
   );
 }

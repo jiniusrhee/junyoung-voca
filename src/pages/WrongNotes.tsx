@@ -2,10 +2,9 @@ import { useLiveQuery } from 'dexie-react-hooks';
 import { Link } from 'react-router-dom';
 import { FilledSentence, KoSentence } from '../components/QuizCard';
 import SubHeader from '../components/SubHeader';
+import WrongItem from '../components/WrongItem';
 import { db } from '../db';
-import type { Tone } from '../types';
 
-const TAG: Record<Tone, string> = { green: '유의어', yellow: '아쉬워요', red: '오답' };
 
 export default function WrongNotes() {
   const rows = useLiveQuery(async () => {
@@ -37,13 +36,7 @@ export default function WrongNotes() {
             </p>
           </Link>
           {(r.wrongs ?? []).map((x, i) => (
-            <div key={i} className="wrong-item">
-              <div className="wrong-head">
-                <span className="wrong-w">{x.w}</span>
-                <span className={`tag ${x.tone}`}>{TAG[x.tone]}</span>
-              </div>
-              <p>{x.m}</p>
-            </div>
+            <WrongItem key={i} w={x.w} tone={x.tone} m={x.m} />
           ))}
           <p className="note-date">{new Date(r.ts).toLocaleDateString('ko-KR', { month: 'long', day: 'numeric' })}</p>
         </div>

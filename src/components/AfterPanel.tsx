@@ -31,7 +31,9 @@ export default function AfterPanel(p: Props) {
   return (
     <div className="after">
       <div className="bubble-row">
-        <span className="bubble">{p.answer}</span>
+        <button className="bubble link" onClick={p.onInfo}>
+          {p.answer}
+        </button>
       </div>
       <div className="after-tools">
         <Tool icon="chat" label="다른 예문" onClick={p.onExamples} />
