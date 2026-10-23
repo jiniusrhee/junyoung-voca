@@ -16,6 +16,7 @@ export type IconName =
   | 'turtle'
   | 'play'
   | 'chat'
+  | 'plus'
   | 'plane'
   | 'cup'
   | 'note'
@@ -321,6 +322,7 @@ const PATHS: Record<IconName, ReactElement> = {
     </g>
   ),
   bookmark: <path d="M6 3h12v18l-6-4.5L6 21z" fill="currentColor" stroke="none" />,
+  plus: <path d="M12 5v14M5 12h14" strokeWidth={2.6} />,
   plane: (
     <path
       d="M21 15.5v-1.8l-7.5-4.6V4.2a1.5 1.5 0 0 0-3 0v4.9L3 13.7v1.8l7.5-2.3v4.9l-2 1.5v1.4l3.5-1 3.5 1v-1.4l-2-1.5v-4.9z"

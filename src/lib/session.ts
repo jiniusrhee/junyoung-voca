@@ -1,5 +1,6 @@
 import { State } from 'ts-fsrs';
 import { db } from '../db';
+import { getWordbook } from './wordbook';
 import type { CardRow, Settings, StoredWord } from '../types';
 import { LEVEL_TEST_QUESTIONS, MAX_LEVEL, MIN_LEVEL, finalLevelFrom, newWordRange, nextTestLevel, type TestRecord } from './levelLogic';
 
@@ -82,7 +83,7 @@ export class StudyPicker {
   }
 
   private async pickNew(): Promise<Question | null> {
-    const book = ((await db.kv.get('wordbook'))?.value as string[] | undefined) ?? [];
+    const book = await getWordbook();
     for (const id of [...book].reverse()) {
       if (this.cardIds.has(id)) continue;
       const w = await db.words.get(id);

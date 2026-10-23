@@ -241,7 +241,7 @@ function StreakCard({ today, byDate, goal, streak, range }: { today: string; byD
               .join(' ');
             return (
               <span key={d} className={cls}>
-                {goalMet(row, goal) ? (
+                {goalMet(row, goal) || (!row && inRange(range, d)) ? (
                   <span className="stamp gold">
                     <Icon name="trophy" size={16} />
                   </span>

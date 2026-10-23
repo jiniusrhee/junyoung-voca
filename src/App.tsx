@@ -16,7 +16,7 @@ import LearnedList from './pages/LearnedList';
 import LearnedMenu, { LearnedWords } from './pages/Learned';
 import ListeningQuiz from './pages/ListeningQuiz';
 import Pairs, { PairQuiz } from './pages/Pairs';
-import Wordbook from './pages/Wordbook';
+import Wordbook, { WordbookDetail } from './pages/Wordbook';
 import Dictionary from './pages/Dictionary';
 import Favorites from './pages/Favorites';
 import Home from './pages/Home';
@@ -71,6 +71,7 @@ function Shell() {
         <Route path="/learned/:mode" element={<LearnedList kind="learned" />} />
         <Route path="/bookmarks/:mode" element={<LearnedList kind="bookmarks" />} />
         <Route path="/wordbook" element={<Wordbook />} />
+        <Route path="/wordbook/:id" element={<WordbookDetail />} />
         <Route path="/guide" element={<Guide />} />
         <Route path="/dict" element={<Dictionary />} />
         <Route path="/words" element={<LearnedMenu />} />
