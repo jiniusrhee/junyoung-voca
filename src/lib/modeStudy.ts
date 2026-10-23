@@ -68,9 +68,9 @@ export async function recordModeAnswer(mode: StudyMode, itemId: string, o: ModeO
     m.timeMs += Math.min(o.elapsedMs, 5 * 60_000);
     byMode[mode] = m;
     await db.daily.put({ ...d, byMode });
-    void computeStreak().then(grantRepairPen);
     return { total: m.total, metNow: before < goal && m.total >= goal };
   });
+  void computeStreak().then(grantRepairPen).catch(() => undefined);
   return { row, grade, isNew, ...result };
 }
 

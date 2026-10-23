@@ -213,9 +213,9 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         d.timeMs += Math.min(outcome.elapsedMs, 5 * 60_000);
         d.goal = s.dailyGoal;
         await db.daily.put(d);
-        void computeStreak().then(grantRepairPen);
         return { total: d.total, metNow: before < s.dailyGoal && d.total >= s.dailyGoal };
       });
+      void computeStreak().then(grantRepairPen).catch(() => undefined);
 
       pickerRef.current?.noteAnswered(l.q.word.id);
       if (testRef.current) {
