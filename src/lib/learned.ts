@@ -1,5 +1,6 @@
 import { db } from '../db';
 import type { CardRow, ReviewRow, StoredWord } from '../types';
+import { getImported } from './imported';
 import { masteryOf } from './scheduler';
 import { studyDateOf } from './time';
 
@@ -124,4 +125,20 @@ export function logText(l: ReviewRow): string {
   if (l.firstTry && l.hints === 0) return '한 번에 정답';
   if (l.firstTry) return `힌트 ${l.hints}번`;
   return `오답 ${l.wrongAttempts}번`;
+}
+
+/** 말해보카에서 들여온 그날의 단어: 이 앱에 있는 단어는 카드로, 없는 단어는 글자만 */
+export async function importedDay(date: string): Promise<{ rows: LearnedRow[]; plain: string[] }> {
+  const imp = await getImported();
+  const list = imp?.learnedDays?.[date] ?? [];
+  if (!list.length) return { rows: [], plain: [] };
+  const byWord = new Map((await db.words.toArray()).map((w) => [w.word.toLowerCase(), w]));
+  const rows: LearnedRow[] = [];
+  const plain: string[] = [];
+  for (const w of list) {
+    const hit = byWord.get(w);
+    if (hit) rows.push({ word: hit, card: (await db.cards.get(hit.id)) ?? undefined, logs: [], note: `${imp!.source}에서 학습` });
+    else plain.push(w);
+  }
+  return { rows, plain };
 }

@@ -317,6 +317,8 @@ export interface ImportedProgress {
   vocabHistory?: { date: string; vocab: number; level?: number }[];
   learnedCount?: number;
   learnedWords?: string[];
+  /** 날짜별(YYYY-MM-DD) 학습한 단어 */
+  learnedDays?: Record<string, string[]>;
   stats?: Partial<Record<StudyMode, { trophies?: number; questions?: number; timeMs?: number }>>;
   notes?: string[];
 }

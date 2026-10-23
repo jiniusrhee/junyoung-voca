@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Icon from '../components/Icon';
 import SubHeader from '../components/SubHeader';
-import { LEARNED_KINDS, learnedCounts, learnedList, logText, type LearnedKind, type LearnedRow } from '../lib/learned';
+import { LEARNED_KINDS, importedDay, learnedCounts, learnedList, logText, type LearnedKind, type LearnedRow } from '../lib/learned';
 import { speak } from '../lib/speech';
 import { shiftDate, studyDateOf } from '../lib/time';
 import { toggleWordbook, useWordbook } from '../lib/wordbook';
@@ -64,7 +64,11 @@ export function LearnedWords() {
   const [menu, setMenu] = useState<string | null>(null);
   const book = useWordbook();
   const rows = useLiveQuery(() => learnedList(k, date), [k, date]);
-  const list = (rows ?? []).filter((r) => filter === 'all' || r.logs.some((l) => !l.firstTry || l.showedAnswer));
+  const extra = useLiveQuery(() => (k === 'daily' ? importedDay(date) : Promise.resolve({ rows: [], plain: [] })), [k, date]);
+  const have = new Set((rows ?? []).map((r) => r.word.id));
+  const merged = [...(rows ?? []), ...(extra?.rows ?? []).filter((r) => !have.has(r.word.id))];
+  const list = merged.filter((r) => filter === 'all' || r.logs.some((l) => !l.firstTry || l.showedAnswer));
+  const plain = filter === 'all' ? (extra?.plain ?? []) : [];
   const label = date === today ? '오늘' : date === shiftDate(today, -1) ? '어제' : date.slice(5).replace('-', '.');
   const reveal = (id: string) =>
     setRevealed((s) => {
@@ -118,7 +122,7 @@ export function LearnedWords() {
         )}
       </div>
 
-      {rows && list.length === 0 && (
+      {rows && extra && list.length === 0 && plain.length === 0 && (
         <div className="lw-empty">
           <Icon name="xcircle" size={28} />
           <p>표시할 어휘가 없어요.</p>
@@ -127,6 +131,14 @@ export function LearnedWords() {
       <div className="lw-list">
         {list.map((r) => (
           <WordCard key={r.word.id} row={r} hide={hide} open={revealed.has(r.word.id)} onToggle={() => reveal(r.word.id)} showLog={showLog} menu={menu === r.word.id} onMenu={() => setMenu((m) => (m === r.word.id ? null : r.word.id))} inBook={book?.includes(r.word.id) ?? false} />
+        ))}
+        {plain.map((w) => (
+          <div key={w} className="lw-card plain">
+            <button className="lw-body" onClick={() => speak(w)}>
+              <b className="lw-en">{w}</b>
+              <span className="lw-log">말해보카에서 학습 · 이 앱 단어 팩에는 아직 없는 단어</span>
+            </button>
+          </div>
         ))}
       </div>
       {list.length > 0 && (
