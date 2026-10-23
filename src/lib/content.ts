@@ -1,5 +1,6 @@
 import { db } from '../db';
-import type { Alt, GrammarSentence, GrammarTopic, TalkEpisode, WordEntry } from '../types';
+import type { Alt, GrammarSentence, GrammarTopic, ImportedProgress, TalkEpisode, WordEntry } from '../types';
+import { applyImported, applyImportedKnown } from './imported';
 
 interface FileRef {
   file: string;
@@ -13,6 +14,7 @@ interface Manifest {
   pairs?: FileRef[];
   expr?: FileRef[];
   talk?: FileRef[];
+  progress?: FileRef;
 }
 
 interface RawExpr {
@@ -152,5 +154,20 @@ export async function syncContent(): Promise<{ updated: string[] }> {
     }
     await db.packs.delete(s.file);
   }
+  if (manifest.progress) {
+    const key = 'progress';
+    const prev = await db.packs.get(key);
+    if (!prev || prev.hash !== manifest.progress.hash) {
+      const r = await fetch(`${base}data/${manifest.progress.file}`, { cache: 'no-cache' });
+      if (r.ok) {
+        await applyImported((await r.json()) as ImportedProgress);
+        await db.packs.put({ file: key, hash: manifest.progress.hash, count: 0, updatedAt: Date.now() });
+        updated.push(key);
+      }
+    }
+  }
+  // 새 단어 팩이 들어왔으면 들여온 '아는 단어'를 다시 반영
+  if (updated.length) await applyImportedKnown();
+
   return { updated };
 }

@@ -9,7 +9,8 @@ import Icon, { type IconName } from '../components/Icon';
 import Mascot from '../components/Mascot';
 import { db } from '../db';
 import { saveSettings, useSettings } from '../lib/settings';
-import { comprehension, computeStreak, dayTime, dayTotal, estimateVocab, goalMet, reviewAccuracy, studied } from '../lib/stats';
+import { getImported, importedRange, inRange, type DayRange } from '../lib/imported';
+import { comprehension, computeStreak, dayTime, dayTotal, displayVocab, goalMet, reviewAccuracy, studied, vocabDateText } from '../lib/stats';
 import { WEEKDAYS_KO, dayOfWeek, formatClock, shiftDate, studyDateOf, weekOf } from '../lib/time';
 import type { DailyRow, StudyMode } from '../types';
 
@@ -36,6 +37,7 @@ export default function Home() {
   const today = studyDateOf();
   const daily = useLiveQuery(() => db.daily.toArray(), []);
   const streak = useLiveQuery(() => computeStreak(), []);
+  const imp = useLiveQuery(() => getImported(), []);
   const homeMode: StudyMode = settings && HOME_MODES.includes(settings.homeMode) ? settings.homeMode : 'vocab';
   const acc = useLiveQuery(() => reviewAccuracy(7, new Date(), homeMode), [homeMode]);
   const [start, setStart] = useState<StudyMode | null>(null);
@@ -73,7 +75,7 @@ export default function Home() {
       </header>
       {toast && <div className="home-toast">{toast}</div>}
 
-      <StreakCard today={today} byDate={byDate} goal={settings.dailyGoal} streak={streak ?? 0} />
+      <StreakCard today={today} byDate={byDate} goal={settings.dailyGoal} streak={streak ?? 0} range={importedRange(imp)} />
 
       <section className="main-card">
         <div className="main-body">
@@ -164,9 +166,9 @@ export default function Home() {
           </span>
           <div className="power-text">
             <p>
-              어휘력 약 <em>{estimateVocab(settings.level ?? 10, comp ?? null).toLocaleString()}</em>개
+              어휘력 약 <em>{displayVocab(settings.level ?? 10, comp ?? null, imp, testDate).toLocaleString()}</em>개
             </p>
-            <span>{testDate ? `${testDate} 측정 결과` : '아직 측정하지 않았어요'}</span>
+            <span>{vocabDateText(imp, testDate) ?? '아직 측정하지 않았어요'}</span>
           </div>
           <Icon name="chevron" size={18} className="muted-ic" />
         </Link>
@@ -200,10 +202,11 @@ export default function Home() {
   );
 }
 
-function StreakCard({ today, byDate, goal, streak }: { today: string; byDate: Map<string, DailyRow>; goal: number; streak: number }) {
+function StreakCard({ today, byDate, goal, streak, range }: { today: string; byDate: Map<string, DailyRow>; goal: number; streak: number; range: DayRange | null }) {
   const week = weekOf(today);
-  const alive = studied(byDate.get(today)) || studied(byDate.get(shiftDate(today, -1)));
-  const inRun = (d: string) => d <= today && (studied(byDate.get(d)) || (d === today && alive));
+  const did = (d: string) => studied(byDate.get(d)) || inRange(range, d);
+  const alive = did(today) || did(shiftDate(today, -1));
+  const inRun = (d: string) => d <= today && (did(d) || (d === today && alive));
   const target = STREAK_GOALS.find((g) => g > streak) ?? streak + 100;
   return (
     <Link to="/stats" className="streak-card">
@@ -235,7 +238,7 @@ function StreakCard({ today, byDate, goal, streak }: { today: string; byDate: Ma
                   <span className="stamp gold">
                     <Icon name="trophy" size={16} />
                   </span>
-                ) : studied(row) ? (
+                ) : did(d) ? (
                   <span className="stamp star">
                     <Icon name="star" size={16} />
                   </span>

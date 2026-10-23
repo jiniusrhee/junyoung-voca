@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { loadPacks, validatePacks } from './lib/validate.mjs';
 import { loadDir, validateExpr, validateGrammar, validatePairs, validateTalk } from './lib/validate-extra.mjs';
@@ -40,5 +40,15 @@ const manifest = {
   expr: expr.map(({ file, text }) => ({ file, hash: hash(text) })),
   talk: talk.map(({ file, text }) => ({ file, hash: hash(text) })),
 };
+const progressFile = fileURLToPath(new URL('../public/data/progress.json', import.meta.url));
+if (existsSync(progressFile)) {
+  const text = readFileSync(progressFile, 'utf8');
+  const prog = JSON.parse(text);
+  if (!prog.source || !/^\d{4}-\d{2}-\d{2}$/.test(prog.asOf)) {
+    console.error('오류: progress.json 에 source/asOf 가 필요합니다');
+    process.exit(1);
+  }
+  manifest.progress = { file: 'progress.json', hash: hash(text) };
+}
 writeFileSync(out, JSON.stringify(manifest, null, 2) + '\n');
 console.log(`manifest.json 생성: 단어 팩 ${manifest.packs.length}개(${count}단어), 문법 팩 ${grammar.length}개(${g.sentences}문장), 발음 팩 ${pairs.length}개, 표현 코스 ${expr.length}개(${x.items}문제), 회화 스토리 ${talk.length}개(${t.episodes}에피소드)`);

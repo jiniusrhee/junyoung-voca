@@ -38,6 +38,23 @@ export function newCardRow(wordId: string, now: Date = new Date()): CardRow {
   return { wordId, ...c };
 }
 
+/** 다른 앱에서 이미 익힌 단어로 들여온 카드: KNOWN_WORD_DAYS 뒤에 한 번 확인 */
+export function knownCardRow(wordId: string, now: Date = new Date()): CardRow {
+  const c = createEmptyCard(now);
+  return {
+    wordId,
+    ...c,
+    due: addDays(now, KNOWN_WORD_DAYS),
+    stability: KNOWN_WORD_DAYS,
+    scheduled_days: KNOWN_WORD_DAYS,
+    state: State.Review,
+    learning_steps: 0,
+    reps: 1,
+    last_review: now,
+    known: true,
+  };
+}
+
 function toCard(row: CardRow): Card {
   return {
     due: row.due,

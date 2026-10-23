@@ -5,9 +5,10 @@ import Icon from '../components/Icon';
 import { db } from '../db';
 import { MASTERY_KO, MASTERY_ORDER, masteryOf, type Mastery } from '../lib/scheduler';
 import { useSettings } from '../lib/settings';
-import { comprehension, dayTime, dayTotal, estimateVocab, goalMet, reviewAccuracy } from '../lib/stats';
+import { getImported } from '../lib/imported';
+import { comprehension, dayTime, dayTotal, displayVocab, goalMet, reviewAccuracy, vocabDateText } from '../lib/stats';
 import { WEEKDAYS_KO, dayOfWeek, formatClock, shiftDate, studyDateOf } from '../lib/time';
-import type { DailyRow, StudyMode } from '../types';
+import type { DailyRow, ImportedProgress, StudyMode } from '../types';
 
 type Tab = 'period' | 'study' | 'vocab';
 
@@ -19,6 +20,7 @@ export default function Stats() {
   const setTab = (t: Tab) => setParams(t === 'period' ? {} : { tab: t }, { replace: true });
   const daily = useLiveQuery(() => db.daily.toArray(), []);
   const acc = useLiveQuery(() => reviewAccuracy(), []);
+  const imp = useLiveQuery(() => getImported(), []);
   if (!settings || !daily) return <div className="screen" />;
 
   const byDate = new Map(daily.map((d) => [d.date, d]));
@@ -50,9 +52,9 @@ export default function Stats() {
       </nav>
       {tab === 'period' && <PeriodTab byDate={byDate} daily={daily} today={today} acc={acc ?? null} />}
       {tab === 'study' && (
-        <StudyModes daily={daily} today={today} goals={{ vocab: settings.dailyGoal, grammar: settings.grammarGoal, expr: settings.exprGoal, talk: settings.talkGoal, listening: settings.listeningGoal }} />
+        <StudyModes daily={daily} today={today} imp={imp ?? null} goals={{ vocab: settings.dailyGoal, grammar: settings.grammarGoal, expr: settings.exprGoal, talk: settings.talkGoal, listening: settings.listeningGoal }} />
       )}
-      {tab === 'vocab' && <VocabTab level={settings.level ?? 10} />}
+      {tab === 'vocab' && <VocabTab level={settings.level ?? 10} imp={imp ?? null} />}
     </div>
   );
 }
@@ -286,7 +288,7 @@ function viewOf(d: DailyRow, mode: SMode, goal: number): DailyRow {
   return { date: d.date, total: m?.total ?? 0, newWords: m?.newItems ?? 0, reviews: m?.reviews ?? 0, correct: m?.correct ?? 0, timeMs: m?.timeMs ?? 0, knownNew: 0, goal };
 }
 
-function StudyModes({ daily, today, goals }: { daily: DailyRow[]; today: string; goals: Record<SMode, number> }) {
+function StudyModes({ daily, today, goals, imp }: { daily: DailyRow[]; today: string; goals: Record<SMode, number>; imp: ImportedProgress | null }) {
   const [mode, setMode] = useState<SMode>('vocab');
   const rows = daily.map((d) => viewOf(d, mode, goals[mode]));
   const byDate = new Map(rows.map((d) => [d.date, d]));
@@ -299,18 +301,18 @@ function StudyModes({ daily, today, goals }: { daily: DailyRow[]; today: string;
           </button>
         ))}
       </div>
-      <StudyTab key={mode} mode={mode} byDate={byDate} daily={rows} today={today} goal={goals[mode]} />
+      <StudyTab key={mode} mode={mode} byDate={byDate} daily={rows} today={today} goal={goals[mode]} extra={imp?.stats?.[mode]} />
     </>
   );
 }
 
-function StudyTab({ mode, byDate, daily, today, goal }: { mode: SMode; byDate: Map<string, DailyRow>; daily: DailyRow[]; today: string; goal: number }) {
+function StudyTab({ mode, byDate, daily, today, goal, extra }: { mode: SMode; byDate: Map<string, DailyRow>; daily: DailyRow[]; today: string; goal: number; extra?: { trophies?: number; questions?: number; timeMs?: number } }) {
   const label = SMODE_LABEL[mode];
   const unit = mode === 'vocab' ? '단어' : '문장';
   const [offset, setOffset] = useState(0);
-  const trophies = daily.filter((d) => goalMet(d, goal)).length;
-  const totalQ = daily.reduce((s, d) => s + d.total, 0);
-  const totalTime = daily.reduce((s, d) => s + d.timeMs, 0);
+  const trophies = daily.filter((d) => goalMet(d, goal)).length + (extra?.trophies ?? 0);
+  const totalQ = daily.reduce((s, d) => s + d.total, 0) + (extra?.questions ?? 0);
+  const totalTime = daily.reduce((s, d) => s + d.timeMs, 0) + (extra?.timeMs ?? 0);
   const end = shiftDate(today, -offset * 7);
   const days = Array.from({ length: 7 }, (_, i) => shiftDate(end, i - 6));
   const rows = days.map((d) => byDate.get(d));
@@ -426,7 +428,7 @@ function StudyTab({ mode, byDate, daily, today, goal }: { mode: SMode; byDate: M
 
 /* ---------------- 어휘력 ---------------- */
 
-function VocabTab({ level }: { level: number }) {
+function VocabTab({ level, imp }: { level: number; imp: ImportedProgress | null }) {
   const nav = useNavigate();
   const comp = useLiveQuery(() => comprehension(), []);
   const testDate = useLiveQuery(async () => (await db.kv.get('levelTestDate'))?.value as string | undefined, []);
@@ -443,7 +445,8 @@ function VocabTab({ level }: { level: number }) {
     return { byLevel, mastery, total: cards.length };
   }, []);
   const maxL = Math.max(1, ...(data?.byLevel ?? [1]));
-  const dateText = testDate ? `${testDate.slice(0, 4)}년 ${Number(testDate.slice(5, 7))}월 ${Number(testDate.slice(8))}일 측정` : '측정 전';
+  const dt = vocabDateText(imp, testDate);
+  const dateText = dt ? dt.replace(/^(\d{4})-(\d{2})-(\d{2})/, (_, y, m, d) => `${y}년 ${Number(m)}월 ${Number(d)}일`) : '측정 전';
 
   return (
     <>
@@ -457,7 +460,7 @@ function VocabTab({ level }: { level: number }) {
         </div>
         <div className="gold-inner">
           <span>내가 알고 있는 어휘</span>
-          <b className="laurel">{estimateVocab(level, comp ?? null).toLocaleString()} 개</b>
+          <b className="laurel">{displayVocab(level, comp ?? null, imp, testDate).toLocaleString()} 개</b>
           <span>나의 어휘 이해도</span>
           <b className="laurel">{comp == null ? '-' : `${(comp * 100).toFixed(2)} %`}</b>
           <span>현재 레벨</span>

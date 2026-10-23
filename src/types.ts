@@ -303,3 +303,17 @@ export interface Settings {
   talkLevel: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
   talkInput: 'voice' | 'keyboard';
 }
+
+/** 말해보카에서 옮겨온 학습 기록 (public/data/progress.json) */
+export interface ImportedProgress {
+  source: string;
+  /** 기록을 읽은 날 (YYYY-MM-DD) */
+  asOf: string;
+  streak?: { days: number; asOf: string };
+  levels?: { vocab?: number; grammar?: number; listening?: number };
+  vocabSize?: number;
+  learnedCount?: number;
+  learnedWords?: string[];
+  stats?: Partial<Record<StudyMode, { trophies?: number; questions?: number; timeMs?: number }>>;
+  notes?: string[];
+}
