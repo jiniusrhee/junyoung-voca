@@ -1,261 +1,660 @@
 {
   "words": [
     {
-      "id": "accomplish", "word": "accomplish", "pos": "v", "level": 9,
-      "meanings": ["완수하다, 이루다"],
+      "id": "accomplish",
+      "word": "accomplish",
+      "pos": "v",
+      "level": 9,
+      "meanings": [
+        "완수하다, 이루다"
+      ],
       "sentences": [
         {
-          "en": "We ___ a lot in a short time.", "ko": "우리는 짧은 시간에 많은 것을 **이루었다**.", "answer": "accomplished",
+          "en": "We ___ a lot in a short time.",
+          "ko": "우리는 짧은 시간에 많은 것을 **이루었다**.",
+          "answer": "accomplished",
           "ctx": "프로젝트를 마치고",
           "alts": [
-            { "w": "achieved", "t": "ok", "m": "achieved도 맞지만, 일을 끝까지 해냈다는 느낌의 단어를 생각해 보세요." },
-            { "w": "completed", "t": "near", "m": "completed는 정해진 일을 '완료했다'예요. a lot과 함께 쓰면 어색해요." },
-            { "w": "succeeded", "t": "wrong", "m": "succeeded는 목적어를 바로 받지 않아요(succeed in)." }
+            {
+              "w": "achieved",
+              "t": "ok",
+              "m": "achieved도 맞지만, 일을 끝까지 해냈다는 느낌의 단어를 생각해 보세요."
+            },
+            {
+              "w": "completed",
+              "t": "near",
+              "m": "completed는 정해진 일을 '완료했다'예요. a lot과 함께 쓰면 어색해요."
+            },
+            {
+              "w": "succeeded",
+              "t": "wrong",
+              "m": "succeeded는 목적어를 바로 받지 않아요(succeed in)."
+            }
           ]
         },
         {
-          "en": "She set out to ___ three goals this year.", "ko": "그녀는 올해 세 가지 목표를 **달성하기로** 마음먹었다.", "answer": "accomplish",
+          "en": "She set out to ___ three goals this year.",
+          "ko": "그녀는 올해 세 가지 목표를 **달성하기로** 마음먹었다.",
+          "answer": "accomplish",
           "note": "목표를 끝까지 해낸다는 뜻",
           "alts": [
-            { "w": "achieve", "t": "ok", "m": "achieve도 맞지만, 과제를 끝까지 해내는 느낌의 다른 단어를 생각해 보세요." },
-            { "w": "finish", "t": "near", "m": "finish는 '끝내다'예요. 목표를 이루는 말로는 어색해요." },
-            { "w": "succeed", "t": "wrong", "m": "succeed는 목적어를 바로 받지 않아요(succeed in)." }
+            {
+              "w": "achieve",
+              "t": "ok",
+              "m": "achieve도 맞지만, 과제를 끝까지 해내는 느낌의 다른 단어를 생각해 보세요."
+            },
+            {
+              "w": "finish",
+              "t": "near",
+              "m": "finish는 '끝내다'예요. 목표를 이루는 말로는 어색해요."
+            },
+            {
+              "w": "succeed",
+              "t": "wrong",
+              "m": "succeed는 목적어를 바로 받지 않아요(succeed in)."
+            }
           ]
         }
       ],
       "nuance": "achieve는 '목표에 도달', accomplish는 '임무·과제를 끝까지 해내다'. 형용사 accomplished는 '기량이 뛰어난'.",
-      "etymology": "라틴어 ad + complere(채우다) → '끝까지 채우다'"
+      "etymology": "라틴어 ad + complere(채우다) → '끝까지 채우다'",
+      "ipa": "/əˈkɑːmplɪʃ/",
+      "def": "to succeed in doing or completing something",
+      "forms": [
+        "accomplished (과거·과거분사)",
+        "accomplishing (현재분사)",
+        "accomplishment (명사)",
+        "accomplished (형용사: 뛰어난)"
+      ]
     },
     {
-      "id": "accumulate", "word": "accumulate", "pos": "v", "level": 9,
-      "meanings": ["축적하다, 쌓이다"],
+      "id": "accumulate",
+      "word": "accumulate",
+      "pos": "v",
+      "level": 9,
+      "meanings": [
+        "축적하다, 쌓이다"
+      ],
       "sentences": [
         {
-          "en": "Dust had ___ on the shelves.", "ko": "선반에 먼지가 **쌓여** 있었다.", "answer": "accumulated",
+          "en": "Dust had ___ on the shelves.",
+          "ko": "선반에 먼지가 **쌓여** 있었다.",
+          "answer": "accumulated",
           "ctx": "오랜만에 대청소하며",
           "alts": [
-            { "w": "collected", "t": "ok", "m": "collected도 맞지만, 서서히 쌓인 느낌의 다른 단어를 생각해 보세요." },
-            { "w": "piled", "t": "near", "m": "piled는 piled up처럼 up과 함께 쓰는 게 자연스러워요." },
-            { "w": "stacked", "t": "wrong", "m": "stacked는 물건을 차곡차곡 '쌓았다'예요. 먼지에는 쓰지 않아요." }
+            {
+              "w": "collected",
+              "t": "ok",
+              "m": "collected도 맞지만, 서서히 쌓인 느낌의 다른 단어를 생각해 보세요."
+            },
+            {
+              "w": "piled",
+              "t": "near",
+              "m": "piled는 piled up처럼 up과 함께 쓰는 게 자연스러워요."
+            },
+            {
+              "w": "stacked",
+              "t": "wrong",
+              "m": "stacked는 물건을 차곡차곡 '쌓았다'예요. 먼지에는 쓰지 않아요."
+            }
           ]
         },
         {
-          "en": "Over time, small savings ___ into a large sum.", "ko": "시간이 지나면 작은 저축이 큰 금액으로 **쌓인다**.", "answer": "accumulate",
+          "en": "Over time, small savings ___ into a large sum.",
+          "ko": "시간이 지나면 작은 저축이 큰 금액으로 **쌓인다**.",
+          "answer": "accumulate",
           "alts": [
-            { "w": "grow", "t": "ok", "m": "grow into도 맞지만, 조금씩 쌓인다는 느낌의 단어를 생각해 보세요." },
-            { "w": "collect", "t": "near", "m": "collect는 주로 의도적으로 '모으다'예요. 저절로 쌓이는 것을 생각해 보세요." },
-            { "w": "add", "t": "wrong", "m": "add는 add up to처럼 써야 해요. into와는 어울리지 않아요." }
+            {
+              "w": "grow",
+              "t": "ok",
+              "m": "grow into도 맞지만, 조금씩 쌓인다는 느낌의 단어를 생각해 보세요."
+            },
+            {
+              "w": "collect",
+              "t": "near",
+              "m": "collect는 주로 의도적으로 '모으다'예요. 저절로 쌓이는 것을 생각해 보세요."
+            },
+            {
+              "w": "add",
+              "t": "wrong",
+              "m": "add는 add up to처럼 써야 해요. into와는 어울리지 않아요."
+            }
           ]
         }
       ],
       "nuance": "collect는 의도적으로 '모으다', accumulate는 서서히 '쌓이다/쌓다'(자·타동사 모두). 명사 accumulation.",
-      "etymology": "라틴어 ad + cumulus(더미) → '더미로 쌓다'"
+      "etymology": "라틴어 ad + cumulus(더미) → '더미로 쌓다'",
+      "ipa": "/əˈkjuːmjəleɪt/",
+      "def": "to gradually collect or increase in amount over time",
+      "forms": [
+        "accumulated (과거·과거분사)",
+        "accumulating (현재분사)",
+        "accumulation (명사)"
+      ]
     },
     {
-      "id": "adequate", "word": "adequate", "pos": "adj", "level": 9,
-      "meanings": ["충분한, 적절한"],
+      "id": "adequate",
+      "word": "adequate",
+      "pos": "adj",
+      "level": 9,
+      "meanings": [
+        "충분한, 적절한"
+      ],
       "sentences": [
         {
-          "en": "The room has ___ space for ten people.", "ko": "그 방은 열 명이 쓰기에 **충분한** 공간이 있다.", "answer": "adequate",
+          "en": "The room has ___ space for ten people.",
+          "ko": "그 방은 열 명이 쓰기에 **충분한** 공간이 있다.",
+          "answer": "adequate",
           "ctx": "회의실을 예약하며",
           "alts": [
-            { "w": "enough", "t": "ok", "m": "enough도 맞지만, 조금 더 격식 있는 단어를 생각해 보세요." },
-            { "w": "wide", "t": "near", "m": "wide는 폭이 '넓은'이에요. 인원에 맞게 충분한 공간을 생각해 보세요." },
-            { "w": "plenty", "t": "wrong", "m": "plenty는 plenty of처럼 of와 함께 써야 해요." }
+            {
+              "w": "enough",
+              "t": "ok",
+              "m": "enough도 맞지만, 조금 더 격식 있는 단어를 생각해 보세요."
+            },
+            {
+              "w": "wide",
+              "t": "near",
+              "m": "wide는 폭이 '넓은'이에요. 인원에 맞게 충분한 공간을 생각해 보세요."
+            },
+            {
+              "w": "plenty",
+              "t": "wrong",
+              "m": "plenty는 plenty of처럼 of와 함께 써야 해요."
+            }
           ]
         },
         {
-          "en": "His answer was not ___ to the question.", "ko": "그의 대답은 질문에 **적절하지** 않았다.", "answer": "adequate",
+          "en": "His answer was not ___ to the question.",
+          "ko": "그의 대답은 질문에 **적절하지** 않았다.",
+          "answer": "adequate",
           "note": "질문에 충분히 답하지 못했다는 뜻",
           "alts": [
-            { "w": "appropriate", "t": "near", "m": "appropriate는 상황에 '알맞은'이에요. 필요한 만큼 충분한지를 생각해 보세요." },
-            { "w": "suitable", "t": "near", "m": "suitable은 '어울리는'이에요. 대답이 충분하고 적절한지를 생각해 보세요." },
-            { "w": "enough", "t": "wrong", "m": "enough는 이 자리에서 to the question과 어울리지 않아요." }
+            {
+              "w": "appropriate",
+              "t": "near",
+              "m": "appropriate는 상황에 '알맞은'이에요. 필요한 만큼 충분한지를 생각해 보세요."
+            },
+            {
+              "w": "suitable",
+              "t": "near",
+              "m": "suitable은 '어울리는'이에요. 대답이 충분하고 적절한지를 생각해 보세요."
+            },
+            {
+              "w": "enough",
+              "t": "wrong",
+              "m": "enough는 이 자리에서 to the question과 어울리지 않아요."
+            }
           ]
         }
       ],
       "nuance": "enough보다 격식체. '넉넉하다'가 아니라 '필요한 만큼은 된다'는 뉘앙스. 반대는 inadequate.",
-      "etymology": "라틴어 ad + aequus(같은) → '필요에 맞춘'"
+      "etymology": "라틴어 ad + aequus(같은) → '필요에 맞춘'",
+      "ipa": "/ˈædɪkwət/",
+      "def": "enough in quantity or good enough for a purpose",
+      "forms": [
+        "adequately (부사)",
+        "adequacy (명사)",
+        "inadequate (반의어)"
+      ]
     },
     {
-      "id": "ambiguous", "word": "ambiguous", "pos": "adj", "level": 9,
-      "meanings": ["모호한, 애매한"],
+      "id": "ambiguous",
+      "word": "ambiguous",
+      "pos": "adj",
+      "level": 9,
+      "meanings": [
+        "모호한, 애매한"
+      ],
       "sentences": [
         {
-          "en": "The ending of the movie was ___.", "ko": "그 영화의 결말은 **모호했다**.", "answer": "ambiguous",
+          "en": "The ending of the movie was ___.",
+          "ko": "그 영화의 결말은 **모호했다**.",
+          "answer": "ambiguous",
           "ctx": "영화를 보고 나와서",
           "alts": [
-            { "w": "unclear", "t": "ok", "m": "unclear도 맞지만, 두 가지 이상으로 해석된다는 뜻을 살려 보세요." },
-            { "w": "vague", "t": "near", "m": "vague는 막연하고 '흐릿한'이에요. 여러 가지로 해석될 수 있는 결말을 생각해 보세요." },
-            { "w": "mysterious", "t": "near", "m": "mysterious는 '신비로운'이에요. 해석이 갈리는 결말을 생각해 보세요." }
+            {
+              "w": "unclear",
+              "t": "ok",
+              "m": "unclear도 맞지만, 두 가지 이상으로 해석된다는 뜻을 살려 보세요."
+            },
+            {
+              "w": "vague",
+              "t": "near",
+              "m": "vague는 막연하고 '흐릿한'이에요. 여러 가지로 해석될 수 있는 결말을 생각해 보세요."
+            },
+            {
+              "w": "mysterious",
+              "t": "near",
+              "m": "mysterious는 '신비로운'이에요. 해석이 갈리는 결말을 생각해 보세요."
+            }
           ]
         },
         {
-          "en": "His ___ answer left us confused.", "ko": "그의 **애매한** 답변은 우리를 혼란스럽게 했다.", "answer": "ambiguous",
+          "en": "His ___ answer left us confused.",
+          "ko": "그의 **애매한** 답변은 우리를 혼란스럽게 했다.",
+          "answer": "ambiguous",
           "note": "여러 뜻으로 해석될 수 있다는 뜻",
           "alts": [
-            { "w": "vague", "t": "ok", "m": "vague도 맞지만, 여러 뜻으로 해석될 수 있는 모호함을 생각해 보세요." },
-            { "w": "confusing", "t": "near", "m": "confusing은 뒤의 confused와 뜻이 겹쳐요. 해석이 갈리는 대답을 생각해 보세요." },
-            { "w": "ambitious", "t": "wrong", "m": "ambitious는 '야심 찬'이에요. 철자가 비슷해 헷갈리기 쉬워요." }
+            {
+              "w": "vague",
+              "t": "ok",
+              "m": "vague도 맞지만, 여러 뜻으로 해석될 수 있는 모호함을 생각해 보세요."
+            },
+            {
+              "w": "confusing",
+              "t": "near",
+              "m": "confusing은 뒤의 confused와 뜻이 겹쳐요. 해석이 갈리는 대답을 생각해 보세요."
+            },
+            {
+              "w": "ambitious",
+              "t": "wrong",
+              "m": "ambitious는 '야심 찬'이에요. 철자가 비슷해 헷갈리기 쉬워요."
+            }
           ]
         }
       ],
       "nuance": "두 가지 이상으로 해석될 수 있는 '중의적' 모호함. vague는 그냥 '막연하고 불분명한'. 명사 ambiguity.",
-      "etymology": "라틴어 ambi(양쪽) + agere(이끌다) → '양쪽으로 이끄는'"
+      "etymology": "라틴어 ambi(양쪽) + agere(이끌다) → '양쪽으로 이끄는'",
+      "ipa": "/æmˈbɪɡjuəs/",
+      "def": "having more than one possible meaning; not clear",
+      "forms": [
+        "ambiguity (명사)",
+        "ambiguously (부사)",
+        "unambiguous (반의어)"
+      ]
     },
     {
-      "id": "anticipate", "word": "anticipate", "pos": "v", "level": 9,
-      "meanings": ["예상하다, 기대하다"],
+      "id": "anticipate",
+      "word": "anticipate",
+      "pos": "v",
+      "level": 9,
+      "meanings": [
+        "예상하다, 기대하다"
+      ],
       "sentences": [
         {
-          "en": "We ___ a large crowd at the concert.", "ko": "우리는 콘서트에 많은 인파가 올 것으로 **예상한다**.", "answer": "anticipate",
+          "en": "We ___ a large crowd at the concert.",
+          "ko": "우리는 콘서트에 많은 인파가 올 것으로 **예상한다**.",
+          "answer": "anticipate",
           "ctx": "공연 준비 회의",
           "alts": [
-            { "w": "expect", "t": "ok", "m": "expect도 맞지만, 미리 예상하고 대비한다는 느낌의 단어를 생각해 보세요." },
-            { "w": "predict", "t": "near", "m": "predict는 미래를 '예측하다'예요. 예상하고 대비하는 뉘앙스를 생각해 보세요." },
-            { "w": "wait", "t": "wrong", "m": "wait는 wait for처럼 써야 하고 '기다리다'라는 뜻이에요." }
+            {
+              "w": "expect",
+              "t": "ok",
+              "m": "expect도 맞지만, 미리 예상하고 대비한다는 느낌의 단어를 생각해 보세요."
+            },
+            {
+              "w": "predict",
+              "t": "near",
+              "m": "predict는 미래를 '예측하다'예요. 예상하고 대비하는 뉘앙스를 생각해 보세요."
+            },
+            {
+              "w": "wait",
+              "t": "wrong",
+              "m": "wait는 wait for처럼 써야 하고 '기다리다'라는 뜻이에요."
+            }
           ]
         },
         {
-          "en": "The company ___ the demand and increased production.", "ko": "그 회사는 수요를 **예측하고** 생산을 늘렸다.", "answer": "anticipated",
+          "en": "The company ___ the demand and increased production.",
+          "ko": "그 회사는 수요를 **예측하고** 생산을 늘렸다.",
+          "answer": "anticipated",
           "note": "미리 내다보고 대비했다는 뜻",
           "alts": [
-            { "w": "predicted", "t": "ok", "m": "predicted도 맞지만, 예측하고 미리 대비했다는 느낌의 단어를 생각해 보세요." },
-            { "w": "guessed", "t": "near", "m": "guessed는 근거 없는 '짐작'이에요. 수요를 내다보고 대비한 것을 생각해 보세요." },
-            { "w": "prepared", "t": "wrong", "m": "prepared는 prepared for처럼 써요. the demand를 바로 받지 않아요." }
+            {
+              "w": "predicted",
+              "t": "ok",
+              "m": "predicted도 맞지만, 예측하고 미리 대비했다는 느낌의 단어를 생각해 보세요."
+            },
+            {
+              "w": "guessed",
+              "t": "near",
+              "m": "guessed는 근거 없는 '짐작'이에요. 수요를 내다보고 대비한 것을 생각해 보세요."
+            },
+            {
+              "w": "prepared",
+              "t": "wrong",
+              "m": "prepared는 prepared for처럼 써요. the demand를 바로 받지 않아요."
+            }
           ]
         }
       ],
       "nuance": "expect와 비슷하지만 anticipate는 '예상하고 미리 대비한다'는 느낌이 들어 있다. 'anticipate -ing'.",
-      "etymology": "라틴어 ante(앞서) + capere(잡다) → '미리 잡다'"
+      "etymology": "라틴어 ante(앞서) + capere(잡다) → '미리 잡다'",
+      "ipa": "/ænˈtɪsəpeɪt/",
+      "def": "to expect something and prepare for it",
+      "forms": [
+        "anticipated (과거·과거분사)",
+        "anticipating (현재분사)",
+        "anticipation (명사)"
+      ]
     },
     {
-      "id": "apparent", "word": "apparent", "pos": "adj", "level": 9,
-      "meanings": ["명백한", "겉보기의"],
+      "id": "apparent",
+      "word": "apparent",
+      "pos": "adj",
+      "level": 9,
+      "meanings": [
+        "명백한",
+        "겉보기의"
+      ],
       "sentences": [
         {
-          "en": "It was ___ that she was tired.", "ko": "그녀가 피곤하다는 것이 **분명했다**.", "answer": "apparent",
+          "en": "It was ___ that she was tired.",
+          "ko": "그녀가 피곤하다는 것이 **분명했다**.",
+          "answer": "apparent",
           "ctx": "친구의 표정을 보고",
           "alts": [
-            { "w": "obvious", "t": "ok", "m": "obvious도 맞지만, 겉으로 드러나 보인다는 느낌의 격식 있는 단어를 생각해 보세요." },
-            { "w": "visible", "t": "near", "m": "visible은 눈에 '보이는'이에요. that절과 함께 분명하다는 말을 생각해 보세요." },
-            { "w": "sure", "t": "wrong", "m": "sure는 사람이 '확신하는'이에요. It was sure that은 쓰지 않아요." }
+            {
+              "w": "obvious",
+              "t": "ok",
+              "m": "obvious도 맞지만, 겉으로 드러나 보인다는 느낌의 격식 있는 단어를 생각해 보세요."
+            },
+            {
+              "w": "visible",
+              "t": "near",
+              "m": "visible은 눈에 '보이는'이에요. that절과 함께 분명하다는 말을 생각해 보세요."
+            },
+            {
+              "w": "sure",
+              "t": "wrong",
+              "m": "sure는 사람이 '확신하는'이에요. It was sure that은 쓰지 않아요."
+            }
           ]
         },
         {
-          "en": "His ___ calm hid his nervousness.", "ko": "그의 **겉으로 보이는** 침착함은 불안을 감추고 있었다.", "answer": "apparent",
+          "en": "His ___ calm hid his nervousness.",
+          "ko": "그의 **겉으로 보이는** 침착함은 불안을 감추고 있었다.",
+          "answer": "apparent",
           "note": "겉보기엔 그렇지만 실제는 다르다는 뜻",
           "alts": [
-            { "w": "outward", "t": "ok", "m": "outward도 맞지만, '보기엔 그렇지만 실제는 다른'이라는 뜻을 살려 보세요." },
-            { "w": "obvious", "t": "near", "m": "obvious는 '명백한'이에요. 겉보기만 그런 침착함을 생각해 보세요." },
-            { "w": "fake", "t": "near", "m": "fake는 '가짜의'예요. 겉으로 그렇게 보였다는 말을 생각해 보세요." }
+            {
+              "w": "outward",
+              "t": "ok",
+              "m": "outward도 맞지만, '보기엔 그렇지만 실제는 다른'이라는 뜻을 살려 보세요."
+            },
+            {
+              "w": "obvious",
+              "t": "near",
+              "m": "obvious는 '명백한'이에요. 겉보기만 그런 침착함을 생각해 보세요."
+            },
+            {
+              "w": "fake",
+              "t": "near",
+              "m": "fake는 '가짜의'예요. 겉으로 그렇게 보였다는 말을 생각해 보세요."
+            }
           ]
         }
       ],
       "nuance": "'명백한'(obvious)과 '겉보기엔 그런(실제는 다를 수 있음)' 두 뜻이 있어 문맥 주의. 부사 apparently는 '듣자 하니, 보기에는'.",
-      "etymology": "라틴어 apparere(나타나다)"
+      "etymology": "라틴어 apparere(나타나다)",
+      "ipa": "/əˈpærənt/",
+      "def": "easy to see or understand; seeming real but perhaps not",
+      "forms": [
+        "apparently (부사)"
+      ]
     },
     {
-      "id": "approximately", "word": "approximately", "pos": "adv", "level": 9,
-      "meanings": ["대략, 약"],
+      "id": "approximately",
+      "word": "approximately",
+      "pos": "adv",
+      "level": 9,
+      "meanings": [
+        "대략, 약"
+      ],
       "sentences": [
         {
-          "en": "The trip takes ___ three hours.", "ko": "그 여행은 **대략** 세 시간이 걸린다.", "answer": "approximately",
+          "en": "The trip takes ___ three hours.",
+          "ko": "그 여행은 **대략** 세 시간이 걸린다.",
+          "answer": "approximately",
           "ctx": "여행 일정을 짜며",
           "alts": [
-            { "w": "about", "t": "ok", "m": "about도 맞지만, 조금 더 격식 있는 단어를 생각해 보세요." },
-            { "w": "almost", "t": "near", "m": "almost는 '거의'로 3시간에 조금 못 미친다는 뜻이에요." },
-            { "w": "probably", "t": "wrong", "m": "probably는 '아마'예요. 수치 앞에서 '대략'을 뜻하지 않아요." }
+            {
+              "w": "about",
+              "t": "ok",
+              "m": "about도 맞지만, 조금 더 격식 있는 단어를 생각해 보세요."
+            },
+            {
+              "w": "almost",
+              "t": "near",
+              "m": "almost는 '거의'로 3시간에 조금 못 미친다는 뜻이에요."
+            },
+            {
+              "w": "probably",
+              "t": "wrong",
+              "m": "probably는 '아마'예요. 수치 앞에서 '대략'을 뜻하지 않아요."
+            }
           ]
         },
         {
-          "en": "There were ___ 200 people at the event.", "ko": "행사에 **약** 200명이 참석했다.", "answer": "approximately",
+          "en": "There were ___ 200 people at the event.",
+          "ko": "행사에 **약** 200명이 참석했다.",
+          "answer": "approximately",
           "alts": [
-            { "w": "around", "t": "ok", "m": "around도 맞지만, 조금 더 격식 있는 단어를 생각해 보세요." },
-            { "w": "nearly", "t": "near", "m": "nearly는 '거의'로 200명에 조금 못 미친다는 느낌이에요." },
-            { "w": "over", "t": "wrong", "m": "over는 '~이 넘는'이에요. '약'과는 뜻이 달라요." }
+            {
+              "w": "around",
+              "t": "ok",
+              "m": "around도 맞지만, 조금 더 격식 있는 단어를 생각해 보세요."
+            },
+            {
+              "w": "nearly",
+              "t": "near",
+              "m": "nearly는 '거의'로 200명에 조금 못 미친다는 느낌이에요."
+            },
+            {
+              "w": "over",
+              "t": "wrong",
+              "m": "over는 '~이 넘는'이에요. '약'과는 뜻이 달라요."
+            }
           ]
         }
       ],
       "nuance": "about, around의 격식체. 수치 앞에 쓴다. 약자 approx.",
-      "etymology": "라틴어 ad + proximus(가장 가까운)"
+      "etymology": "라틴어 ad + proximus(가장 가까운)",
+      "ipa": "/əˈprɑːksɪmətli/",
+      "def": "close to a particular number or time but not exactly",
+      "forms": [
+        "approximate (형용사: 대략의)",
+        "approximation (명사)"
+      ]
     },
     {
-      "id": "attribute", "word": "attribute", "pos": "v", "level": 9,
-      "meanings": ["~의 결과로 보다, ~탓으로 하다", "속성, 자질"],
+      "id": "attribute",
+      "word": "attribute",
+      "pos": "v",
+      "level": 9,
+      "meanings": [
+        "~의 결과로 보다, ~탓으로 하다",
+        "속성, 자질"
+      ],
       "sentences": [
         {
-          "en": "She ___ her success to hard work.", "ko": "그녀는 성공을 노력의 **결과로 본다**.", "answer": "attributes",
+          "en": "She ___ her success to hard work.",
+          "ko": "그녀는 성공을 노력의 **결과로 본다**.",
+          "answer": "attributes",
           "ctx": "인터뷰 기사에서",
           "note": "성공의 원인을 노력으로 본다는 뜻",
           "alts": [
-            { "w": "owes", "t": "ok", "m": "owes도 맞지만 '덕분이다'라는 감사의 느낌이에요. 원인으로 돌린다는 단어를 생각해 보세요." },
-            { "w": "connects", "t": "near", "m": "connects는 '연결하다'예요. 원인으로 돌린다는 뜻을 생각해 보세요." },
-            { "w": "blames", "t": "wrong", "m": "blames는 나쁜 결과를 '탓하다'예요. 성공에는 어울리지 않아요." }
+            {
+              "w": "owes",
+              "t": "ok",
+              "m": "owes도 맞지만 '덕분이다'라는 감사의 느낌이에요. 원인으로 돌린다는 단어를 생각해 보세요."
+            },
+            {
+              "w": "connects",
+              "t": "near",
+              "m": "connects는 '연결하다'예요. 원인으로 돌린다는 뜻을 생각해 보세요."
+            },
+            {
+              "w": "blames",
+              "t": "wrong",
+              "m": "blames는 나쁜 결과를 '탓하다'예요. 성공에는 어울리지 않아요."
+            }
           ]
         },
         {
-          "en": "Patience is an important ___ for a teacher.", "ko": "인내심은 교사에게 중요한 **자질**이다.", "answer": "attribute",
+          "en": "Patience is an important ___ for a teacher.",
+          "ko": "인내심은 교사에게 중요한 **자질**이다.",
+          "answer": "attribute",
           "alts": [
-            { "w": "quality", "t": "ok", "m": "quality도 맞지만, '속성, 특성'을 뜻하는 다른 단어를 생각해 보세요." },
-            { "w": "ability", "t": "near", "m": "ability는 '할 수 있는 능력'이에요. 사람이 지닌 성질이나 특성을 생각해 보세요." },
-            { "w": "skill", "t": "near", "m": "skill은 배워서 익힌 '기술'이에요. 사람이 지닌 특성을 생각해 보세요." }
+            {
+              "w": "quality",
+              "t": "ok",
+              "m": "quality도 맞지만, '속성, 특성'을 뜻하는 다른 단어를 생각해 보세요."
+            },
+            {
+              "w": "ability",
+              "t": "near",
+              "m": "ability는 '할 수 있는 능력'이에요. 사람이 지닌 성질이나 특성을 생각해 보세요."
+            },
+            {
+              "w": "skill",
+              "t": "near",
+              "m": "skill은 배워서 익힌 '기술'이에요. 사람이 지닌 특성을 생각해 보세요."
+            }
           ]
         }
       ],
       "nuance": "'attribute A to B'(A를 B 때문이라고 보다). 명사일 땐 강세가 앞(AT-tribute)으로 '속성, 특성'.",
-      "etymology": "라틴어 ad + tribuere(할당하다) → '~에게 돌리다'"
+      "etymology": "라틴어 ad + tribuere(할당하다) → '~에게 돌리다'",
+      "ipa": "/əˈtrɪbjuːt/",
+      "def": "to say that something is caused by a particular thing",
+      "forms": [
+        "attributed (과거·과거분사)",
+        "attributing (현재분사)",
+        "attribute (명사: 속성)",
+        "attribution (명사)"
+      ]
     },
     {
-      "id": "capacity", "word": "capacity", "pos": "n", "level": 9,
-      "meanings": ["수용력", "능력"],
+      "id": "capacity",
+      "word": "capacity",
+      "pos": "n",
+      "level": 9,
+      "meanings": [
+        "수용력",
+        "능력"
+      ],
       "sentences": [
         {
-          "en": "The stadium has a ___ of 50,000.", "ko": "그 경기장은 **수용 인원**이 5만 명이다.", "answer": "capacity",
+          "en": "The stadium has a ___ of 50,000.",
+          "ko": "그 경기장은 **수용 인원**이 5만 명이다.",
+          "answer": "capacity",
           "note": "최대로 수용할 수 있는 인원",
           "alts": [
-            { "w": "size", "t": "near", "m": "size는 '크기'예요. 몇 명을 수용할 수 있는지를 생각해 보세요." },
-            { "w": "volume", "t": "near", "m": "volume은 '부피, 음량'이에요. 사람 수용 인원과는 달라요." },
-            { "w": "capability", "t": "wrong", "m": "capability는 '능력, 역량'이에요. 수용 인원에는 쓰지 않아요." }
+            {
+              "w": "size",
+              "t": "near",
+              "m": "size는 '크기'예요. 몇 명을 수용할 수 있는지를 생각해 보세요."
+            },
+            {
+              "w": "volume",
+              "t": "near",
+              "m": "volume은 '부피, 음량'이에요. 사람 수용 인원과는 달라요."
+            },
+            {
+              "w": "capability",
+              "t": "wrong",
+              "m": "capability는 '능력, 역량'이에요. 수용 인원에는 쓰지 않아요."
+            }
           ]
         },
         {
-          "en": "She has a great ___ for learning languages.", "ko": "그녀는 언어를 배우는 **능력**이 뛰어나다.", "answer": "capacity",
+          "en": "She has a great ___ for learning languages.",
+          "ko": "그녀는 언어를 배우는 **능력**이 뛰어나다.",
+          "answer": "capacity",
           "alts": [
-            { "w": "talent", "t": "ok", "m": "talent도 맞지만 '재능'이에요. 받아들일 수 있는 그릇을 생각해 보세요." },
-            { "w": "ability", "t": "near", "m": "ability는 주로 ability to처럼 써요. for와 어울리는 단어를 생각해 보세요." },
-            { "w": "skill", "t": "near", "m": "skill은 익힌 '기술'이에요. 배우는 잠재적 능력을 생각해 보세요." }
+            {
+              "w": "talent",
+              "t": "ok",
+              "m": "talent도 맞지만 '재능'이에요. 받아들일 수 있는 그릇을 생각해 보세요."
+            },
+            {
+              "w": "ability",
+              "t": "near",
+              "m": "ability는 주로 ability to처럼 써요. for와 어울리는 단어를 생각해 보세요."
+            },
+            {
+              "w": "skill",
+              "t": "near",
+              "m": "skill은 익힌 '기술'이에요. 배우는 잠재적 능력을 생각해 보세요."
+            }
           ]
         }
       ],
       "nuance": "'담을 수 있는 양'과 '잠재적 능력' 두 뜻. ability는 실제 할 수 있는 능력, capacity는 '받아들일 수 있는 그릇'.",
-      "etymology": "라틴어 capax(담을 수 있는) ← capere(잡다)"
+      "etymology": "라틴어 capax(담을 수 있는) ← capere(잡다)",
+      "ipa": "/kəˈpæsəti/",
+      "def": "the amount something can hold or produce; ability to do something",
+      "forms": [
+        "capacities (복수)"
+      ]
     },
     {
-      "id": "circumstance", "word": "circumstance", "pos": "n", "level": 9,
-      "meanings": ["상황, 사정"],
+      "id": "circumstance",
+      "word": "circumstance",
+      "pos": "n",
+      "level": 9,
+      "meanings": [
+        "상황, 사정"
+      ],
       "sentences": [
         {
-          "en": "Under the ___, we had no choice.", "ko": "그런 **상황**에서는 선택의 여지가 없었다.", "answer": "circumstances",
+          "en": "Under the ___, we had no choice.",
+          "ko": "그런 **상황**에서는 선택의 여지가 없었다.",
+          "answer": "circumstances",
           "ctx": "어려운 결정을 설명하며",
           "alts": [
-            { "w": "situation", "t": "near", "m": "situation은 under와 잘 쓰지 않아요(in this situation). under the와 어울리는 단어를 생각해 보세요." },
-            { "w": "condition", "t": "near", "m": "condition은 '조건, 상태'예요. under the와 함께 쓰는 '사정'이라는 관용 표현을 생각해 보세요." },
-            { "w": "case", "t": "wrong", "m": "case는 in that case처럼 in과 써요. under와는 어울리지 않아요." }
+            {
+              "w": "situation",
+              "t": "near",
+              "m": "situation은 under와 잘 쓰지 않아요(in this situation). under the와 어울리는 단어를 생각해 보세요."
+            },
+            {
+              "w": "condition",
+              "t": "near",
+              "m": "condition은 '조건, 상태'예요. under the와 함께 쓰는 '사정'이라는 관용 표현을 생각해 보세요."
+            },
+            {
+              "w": "case",
+              "t": "wrong",
+              "m": "case는 in that case처럼 in과 써요. under와는 어울리지 않아요."
+            }
           ]
         },
         {
-          "en": "He left the company due to personal ___.", "ko": "그는 개인적인 **사정**으로 회사를 떠났다.", "answer": "circumstances",
+          "en": "He left the company due to personal ___.",
+          "ko": "그는 개인적인 **사정**으로 회사를 떠났다.",
+          "answer": "circumstances",
           "ctx": "퇴사 소식을 전하며",
           "alts": [
-            { "w": "reasons", "t": "ok", "m": "reasons도 맞지만, 개인적인 '사정'을 뜻하는 다른 단어를 생각해 보세요." },
-            { "w": "matters", "t": "ok", "m": "matters도 맞지만, 주로 복수로 쓰는 '사정, 형편'이라는 단어를 생각해 보세요." },
-            { "w": "situation", "t": "near", "m": "situation은 단수라 a가 필요해요. 주로 복수로 쓰는 '사정'을 생각해 보세요." }
+            {
+              "w": "reasons",
+              "t": "ok",
+              "m": "reasons도 맞지만, 개인적인 '사정'을 뜻하는 다른 단어를 생각해 보세요."
+            },
+            {
+              "w": "matters",
+              "t": "ok",
+              "m": "matters도 맞지만, 주로 복수로 쓰는 '사정, 형편'이라는 단어를 생각해 보세요."
+            },
+            {
+              "w": "situation",
+              "t": "near",
+              "m": "situation은 단수라 a가 필요해요. 주로 복수로 쓰는 '사정'을 생각해 보세요."
+            }
           ]
         }
       ],
       "nuance": "주로 복수형. situation은 '현재 처한 상태', circumstances는 그 상태를 만든 '주변 조건들'. 'under no circumstances'(절대로 ~않다).",
-      "etymology": "라틴어 circum(둘레) + stare(서다) → '둘러서 있는 것'"
+      "etymology": "라틴어 circum(둘레) + stare(서다) → '둘러서 있는 것'",
+      "ipa": "/ˈsɝːkəmstæns/",
+      "def": "a fact or condition connected with an event or situation",
+      "forms": [
+        "circumstances (복수)",
+        "circumstantial (형용사: 정황상의)"
+      ]
     }
   ]
 }

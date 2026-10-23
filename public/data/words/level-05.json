@@ -1,257 +1,658 @@
 {
   "words": [
     {
-      "id": "improve", "word": "improve", "pos": "v", "level": 5,
-      "meanings": ["향상시키다, 나아지다"],
+      "id": "improve",
+      "word": "improve",
+      "pos": "v",
+      "level": 5,
+      "meanings": [
+        "향상시키다, 나아지다"
+      ],
       "sentences": [
         {
-          "en": "I want to ___ my English speaking skills.", "ko": "영어 말하기 실력을 **향상시키고** 싶다.", "answer": "improve",
+          "en": "I want to ___ my English speaking skills.",
+          "ko": "영어 말하기 실력을 **향상시키고** 싶다.",
+          "answer": "improve",
           "ctx": "새해 목표를 세우며",
           "alts": [
-            { "w": "develop", "t": "near", "m": "develop(발전시키다)도 쓸 순 있지만, 외국어 실력 향상을 말할 때 가장 자연스러운 단어는 뭘까요?" },
-            { "w": "enhance", "t": "near", "m": "enhance는 격식체로 질을 높일 때 써요. 실력이 나아지는 것엔 더 흔한 단어가 있어요." },
-            { "w": "upgrade", "t": "wrong", "m": "upgrade는 기기나 등급을 올릴 때 써요. 실력에는 어울리지 않아요." }
+            {
+              "w": "develop",
+              "t": "near",
+              "m": "develop(발전시키다)도 쓸 순 있지만, 외국어 실력 향상을 말할 때 가장 자연스러운 단어는 뭘까요?"
+            },
+            {
+              "w": "enhance",
+              "t": "near",
+              "m": "enhance는 격식체로 질을 높일 때 써요. 실력이 나아지는 것엔 더 흔한 단어가 있어요."
+            },
+            {
+              "w": "upgrade",
+              "t": "wrong",
+              "m": "upgrade는 기기나 등급을 올릴 때 써요. 실력에는 어울리지 않아요."
+            }
           ]
         },
         {
-          "en": "Her health has ___ a lot since last year.", "ko": "그녀의 건강은 작년 이후 많이 **좋아졌다**.", "answer": "improved",
+          "en": "Her health has ___ a lot since last year.",
+          "ko": "그녀의 건강은 작년 이후 많이 **좋아졌다**.",
+          "answer": "improved",
           "note": "전보다 나아졌다는 뜻",
           "alts": [
-            { "w": "recovered", "t": "near", "m": "recovered는 '회복했다'로 주로 사람이 주어예요. 건강이 나아진 것을 생각해 보세요." },
-            { "w": "developed", "t": "wrong", "m": "developed는 '발달했다'예요. 건강이 좋아졌다는 말과 어울리지 않아요." },
-            { "w": "bettered", "t": "wrong", "m": "bettered는 이런 뜻으로 거의 쓰지 않아요. '좋아지다'를 뜻하는 동사를 생각해 보세요." }
+            {
+              "w": "recovered",
+              "t": "near",
+              "m": "recovered는 '회복했다'로 주로 사람이 주어예요. 건강이 나아진 것을 생각해 보세요."
+            },
+            {
+              "w": "developed",
+              "t": "wrong",
+              "m": "developed는 '발달했다'예요. 건강이 좋아졌다는 말과 어울리지 않아요."
+            },
+            {
+              "w": "bettered",
+              "t": "wrong",
+              "m": "bettered는 이런 뜻으로 거의 쓰지 않아요. '좋아지다'를 뜻하는 동사를 생각해 보세요."
+            }
           ]
         }
       ],
       "nuance": "스스로 나아지는 것(자동사)과 무엇을 개선하는 것(타동사) 둘 다 가능. enhance는 격식체로 '질을 더 높이다'.",
-      "etymology": "고대 프랑스어 en prou '이익이 되게' → '더 좋게 만들다'"
+      "etymology": "고대 프랑스어 en prou '이익이 되게' → '더 좋게 만들다'",
+      "ipa": "/ɪmˈpruːv/",
+      "def": "to become better or to make something better",
+      "forms": [
+        "improved (과거·과거분사)",
+        "improving (현재분사)",
+        "improvement (명사)"
+      ]
     },
     {
-      "id": "prepare", "word": "prepare", "pos": "v", "level": 5,
-      "meanings": ["준비하다"],
+      "id": "prepare",
+      "word": "prepare",
+      "pos": "v",
+      "level": 5,
+      "meanings": [
+        "준비하다"
+      ],
       "sentences": [
         {
-          "en": "She is ___ dinner for the guests.", "ko": "그녀는 손님들을 위해 저녁을 **준비하고** 있다.", "answer": "preparing",
+          "en": "She is ___ dinner for the guests.",
+          "ko": "그녀는 손님들을 위해 저녁을 **준비하고** 있다.",
+          "answer": "preparing",
           "ctx": "손님이 오기 전",
           "alts": [
-            { "w": "making", "t": "ok", "m": "making도 맞지만, 차려 내는 과정 전체를 뜻하는 단어를 생각해 보세요." },
-            { "w": "arranging", "t": "near", "m": "arranging은 '배치하다, 정리하다'예요. 음식을 마련하는 것을 생각해 보세요." },
-            { "w": "ready", "t": "wrong", "m": "ready는 형용사예요. is 뒤에 -ing 형태의 동사가 필요해요." }
+            {
+              "w": "making",
+              "t": "ok",
+              "m": "making도 맞지만, 차려 내는 과정 전체를 뜻하는 단어를 생각해 보세요."
+            },
+            {
+              "w": "arranging",
+              "t": "near",
+              "m": "arranging은 '배치하다, 정리하다'예요. 음식을 마련하는 것을 생각해 보세요."
+            },
+            {
+              "w": "ready",
+              "t": "wrong",
+              "m": "ready는 형용사예요. is 뒤에 -ing 형태의 동사가 필요해요."
+            }
           ]
         },
         {
-          "en": "We need to ___ for the exam.", "ko": "우리는 시험에 **대비해야** 한다.", "answer": "prepare",
+          "en": "We need to ___ for the exam.",
+          "ko": "우리는 시험에 **대비해야** 한다.",
+          "answer": "prepare",
           "alts": [
-            { "w": "study", "t": "ok", "m": "study for도 맞지만, '대비하다'를 정확히 뜻하는 단어를 생각해 보세요." },
-            { "w": "plan", "t": "near", "m": "plan for는 '계획하다'예요. 시험에 대비하는 것을 생각해 보세요." },
-            { "w": "ready", "t": "wrong", "m": "ready는 형용사예요. get ready처럼 써야 해요." }
+            {
+              "w": "study",
+              "t": "ok",
+              "m": "study for도 맞지만, '대비하다'를 정확히 뜻하는 단어를 생각해 보세요."
+            },
+            {
+              "w": "plan",
+              "t": "near",
+              "m": "plan for는 '계획하다'예요. 시험에 대비하는 것을 생각해 보세요."
+            },
+            {
+              "w": "ready",
+              "t": "wrong",
+              "m": "ready는 형용사예요. get ready처럼 써야 해요."
+            }
           ]
         }
       ],
       "nuance": "'prepare 음식/자료'(만들어 준비하다)와 'prepare for 행사'(~에 대비하다)를 구분. 'be prepared to'는 '~할 각오가 되어 있다'.",
-      "etymology": "라틴어 prae(미리) + parare(마련하다)"
+      "etymology": "라틴어 prae(미리) + parare(마련하다)",
+      "ipa": "/prɪˈpɛr/",
+      "def": "to make something or someone ready for something",
+      "forms": [
+        "prepared (과거·과거분사)",
+        "preparing (현재분사)",
+        "preparation (명사)"
+      ]
     },
     {
-      "id": "suggest", "word": "suggest", "pos": "v", "level": 5,
-      "meanings": ["제안하다", "암시하다"],
+      "id": "suggest",
+      "word": "suggest",
+      "pos": "v",
+      "level": 5,
+      "meanings": [
+        "제안하다",
+        "암시하다"
+      ],
       "sentences": [
         {
-          "en": "Can you ___ a good restaurant nearby?", "ko": "근처에 좋은 식당을 **추천해** 줄 수 있나요?", "answer": "suggest",
+          "en": "Can you ___ a good restaurant nearby?",
+          "ko": "근처에 좋은 식당을 **추천해** 줄 수 있나요?",
+          "answer": "suggest",
           "ctx": "여행지에서 현지인에게",
           "note": "좋은 곳을 골라 알려 달라는 뜻",
           "alts": [
-            { "w": "recommend", "t": "ok", "m": "recommend도 맞지만, '제안하다'라는 뜻도 있는 다른 단어를 생각해 보세요." },
-            { "w": "propose", "t": "near", "m": "propose는 공식 제안이나 청혼에 써요. 식당을 추천하는 말엔 어색해요." },
-            { "w": "introduce", "t": "wrong", "m": "introduce는 사람을 '소개하다'예요. 식당을 추천할 땐 쓰지 않아요." }
+            {
+              "w": "recommend",
+              "t": "ok",
+              "m": "recommend도 맞지만, '제안하다'라는 뜻도 있는 다른 단어를 생각해 보세요."
+            },
+            {
+              "w": "propose",
+              "t": "near",
+              "m": "propose는 공식 제안이나 청혼에 써요. 식당을 추천하는 말엔 어색해요."
+            },
+            {
+              "w": "introduce",
+              "t": "wrong",
+              "m": "introduce는 사람을 '소개하다'예요. 식당을 추천할 땐 쓰지 않아요."
+            }
           ]
         },
         {
-          "en": "He ___ that we take a break.", "ko": "그는 우리가 쉬자고 **제안했다**.", "answer": "suggested",
+          "en": "He ___ that we take a break.",
+          "ko": "그는 우리가 쉬자고 **제안했다**.",
+          "answer": "suggested",
           "alts": [
-            { "w": "proposed", "t": "ok", "m": "proposed도 맞지만 격식체예요. 더 일상적인 단어를 생각해 보세요." },
-            { "w": "recommended", "t": "ok", "m": "recommended도 맞지만, '제안했다'를 가장 자연스럽게 말해 보세요." },
-            { "w": "advised", "t": "near", "m": "advised는 '조언했다'로 윗사람이 권하는 느낌이에요. 함께 하자고 제안한 것을 생각해 보세요." }
+            {
+              "w": "proposed",
+              "t": "ok",
+              "m": "proposed도 맞지만 격식체예요. 더 일상적인 단어를 생각해 보세요."
+            },
+            {
+              "w": "recommended",
+              "t": "ok",
+              "m": "recommended도 맞지만, '제안했다'를 가장 자연스럽게 말해 보세요."
+            },
+            {
+              "w": "advised",
+              "t": "near",
+              "m": "advised는 '조언했다'로 윗사람이 권하는 느낌이에요. 함께 하자고 제안한 것을 생각해 보세요."
+            }
           ]
         }
       ],
       "nuance": "'suggest 사람 to 동사'는 틀린 표현. 'suggest -ing' 또는 'suggest that 주어 (should) 동사원형'. '암시하다'라는 뜻도 있다.",
-      "etymology": "라틴어 sub(아래에서) + gerere(가져오다) → '슬며시 가져다 놓다'"
+      "etymology": "라틴어 sub(아래에서) + gerere(가져오다) → '슬며시 가져다 놓다'",
+      "ipa": "/səˈdʒɛst/",
+      "def": "to put forward an idea or plan for others to consider",
+      "forms": [
+        "suggested (과거·과거분사)",
+        "suggesting (현재분사)",
+        "suggestion (명사)"
+      ]
     },
     {
-      "id": "receive", "word": "receive", "pos": "v", "level": 5,
-      "meanings": ["받다"],
+      "id": "receive",
+      "word": "receive",
+      "pos": "v",
+      "level": 5,
+      "meanings": [
+        "받다"
+      ],
       "sentences": [
         {
-          "en": "Did you ___ my email yesterday?", "ko": "어제 내 이메일 **받았어**?", "answer": "receive",
+          "en": "Did you ___ my email yesterday?",
+          "ko": "어제 내 이메일 **받았어**?",
+          "answer": "receive",
           "ctx": "업무 메신저에서",
           "alts": [
-            { "w": "get", "t": "ok", "m": "get도 맞지만 구어체예요. 조금 더 격식 있는 단어를 생각해 보세요." },
-            { "w": "accept", "t": "near", "m": "accept는 '받아들이다'로 동의의 뜻이 있어요. 단순히 받았는지를 묻고 있어요." },
-            { "w": "take", "t": "wrong", "m": "take는 '가져가다, 잡다'예요. 이메일을 받았냐는 말에는 어울리지 않아요." }
+            {
+              "w": "get",
+              "t": "ok",
+              "m": "get도 맞지만 구어체예요. 조금 더 격식 있는 단어를 생각해 보세요."
+            },
+            {
+              "w": "accept",
+              "t": "near",
+              "m": "accept는 '받아들이다'로 동의의 뜻이 있어요. 단순히 받았는지를 묻고 있어요."
+            },
+            {
+              "w": "take",
+              "t": "wrong",
+              "m": "take는 '가져가다, 잡다'예요. 이메일을 받았냐는 말에는 어울리지 않아요."
+            }
           ]
         },
         {
-          "en": "She ___ a letter from her old friend.", "ko": "그녀는 옛 친구에게서 편지를 **받았다**.", "answer": "received",
+          "en": "She ___ a letter from her old friend.",
+          "ko": "그녀는 옛 친구에게서 편지를 **받았다**.",
+          "answer": "received",
           "alts": [
-            { "w": "got", "t": "ok", "m": "got도 맞지만 구어체예요. 조금 더 격식 있는 단어를 생각해 보세요." },
-            { "w": "accepted", "t": "near", "m": "accepted는 '받아들였다'로 의지가 담겨 있어요. 단순히 받은 것을 생각해 보세요." },
-            { "w": "took", "t": "wrong", "m": "took은 '가져갔다'예요. 편지를 받은 상황과 달라요." }
+            {
+              "w": "got",
+              "t": "ok",
+              "m": "got도 맞지만 구어체예요. 조금 더 격식 있는 단어를 생각해 보세요."
+            },
+            {
+              "w": "accepted",
+              "t": "near",
+              "m": "accepted는 '받아들였다'로 의지가 담겨 있어요. 단순히 받은 것을 생각해 보세요."
+            },
+            {
+              "w": "took",
+              "t": "wrong",
+              "m": "took은 '가져갔다'예요. 편지를 받은 상황과 달라요."
+            }
           ]
         }
       ],
       "nuance": "get보다 격식체. accept는 '받아들이다'(동의)라는 의지가 들어가고, receive는 단순히 '받다'. 철자 ei 순서 주의.",
-      "etymology": "라틴어 re(다시) + capere(잡다) → '받아 잡다'"
+      "etymology": "라틴어 re(다시) + capere(잡다) → '받아 잡다'",
+      "ipa": "/rɪˈsiːv/",
+      "def": "to get or be given something",
+      "forms": [
+        "received (과거·과거분사)",
+        "receiving (현재분사)",
+        "receipt (명사: 영수증, 수령)",
+        "recipient (명사: 받는 사람)"
+      ]
     },
     {
-      "id": "allow", "word": "allow", "pos": "v", "level": 5,
-      "meanings": ["허락하다"],
+      "id": "allow",
+      "word": "allow",
+      "pos": "v",
+      "level": 5,
+      "meanings": [
+        "허락하다"
+      ],
       "sentences": [
         {
-          "en": "My parents don't ___ me to stay out late.", "ko": "부모님은 내가 늦게까지 밖에 있는 걸 **허락하지** 않으신다.", "answer": "allow",
+          "en": "My parents don't ___ me to stay out late.",
+          "ko": "부모님은 내가 늦게까지 밖에 있는 걸 **허락하지** 않으신다.",
+          "answer": "allow",
           "ctx": "통금 시간을 이야기하며",
           "alts": [
-            { "w": "permit", "t": "ok", "m": "permit도 맞지만 격식체예요. 더 일상적인 단어를 생각해 보세요." },
-            { "w": "want", "t": "near", "m": "want는 '원하다'예요. 허락해 주지 않는다는 말을 생각해 보세요." },
-            { "w": "let", "t": "wrong", "m": "let은 뒤에 to 없이 동사원형을 써요(let me stay)." }
+            {
+              "w": "permit",
+              "t": "ok",
+              "m": "permit도 맞지만 격식체예요. 더 일상적인 단어를 생각해 보세요."
+            },
+            {
+              "w": "want",
+              "t": "near",
+              "m": "want는 '원하다'예요. 허락해 주지 않는다는 말을 생각해 보세요."
+            },
+            {
+              "w": "let",
+              "t": "wrong",
+              "m": "let은 뒤에 to 없이 동사원형을 써요(let me stay)."
+            }
           ]
         },
         {
-          "en": "Smoking is not ___ in this building.", "ko": "이 건물에서는 흡연이 **허용되지** 않습니다.", "answer": "allowed",
+          "en": "Smoking is not ___ in this building.",
+          "ko": "이 건물에서는 흡연이 **허용되지** 않습니다.",
+          "answer": "allowed",
           "alts": [
-            { "w": "permitted", "t": "ok", "m": "permitted도 맞지만 더 격식 있는 말이에요. 일상적인 단어를 생각해 보세요." },
-            { "w": "accepted", "t": "near", "m": "accepted는 '받아들여지는'이에요. 규칙상 허용되는지를 말해 보세요." },
-            { "w": "let", "t": "wrong", "m": "let은 수동태로 잘 쓰지 않아요. 다른 단어를 생각해 보세요." }
+            {
+              "w": "permitted",
+              "t": "ok",
+              "m": "permitted도 맞지만 더 격식 있는 말이에요. 일상적인 단어를 생각해 보세요."
+            },
+            {
+              "w": "accepted",
+              "t": "near",
+              "m": "accepted는 '받아들여지는'이에요. 규칙상 허용되는지를 말해 보세요."
+            },
+            {
+              "w": "let",
+              "t": "wrong",
+              "m": "let은 수동태로 잘 쓰지 않아요. 다른 단어를 생각해 보세요."
+            }
           ]
         }
       ],
-      "nuance": "'allow 사람 to 동사'. permit은 더 격식체(공식 허가), let은 구어체('let 사람 동사원형')."
+      "nuance": "'allow 사람 to 동사'. permit은 더 격식체(공식 허가), let은 구어체('let 사람 동사원형').",
+      "ipa": "/əˈlaʊ/",
+      "def": "to let someone do something; to permit",
+      "forms": [
+        "allowed (과거·과거분사)",
+        "allowing (현재분사)",
+        "allowance (명사: 허용량, 용돈)"
+      ]
     },
     {
-      "id": "available", "word": "available", "pos": "adj", "level": 5,
-      "meanings": ["이용할 수 있는", "시간이 있는"],
+      "id": "available",
+      "word": "available",
+      "pos": "adj",
+      "level": 5,
+      "meanings": [
+        "이용할 수 있는",
+        "시간이 있는"
+      ],
       "sentences": [
         {
-          "en": "Is this seat ___?", "ko": "이 자리 **비어 있나요**?", "answer": "available",
+          "en": "Is this seat ___?",
+          "ko": "이 자리 **비어 있나요**?",
+          "answer": "available",
           "ctx": "붐비는 카페에서",
           "note": "앉아도 되는 빈자리냐는 뜻",
           "alts": [
-            { "w": "empty", "t": "ok", "m": "empty도 맞지만, 이용할 수 있는지를 묻는 더 정중한 단어를 생각해 보세요." },
-            { "w": "vacant", "t": "near", "m": "vacant는 건물·방이 비었을 때 주로 써요. 자리를 이용할 수 있는지 물어보세요." },
-            { "w": "taken", "t": "wrong", "m": "taken을 쓰면 '누가 앉았나요?'라는 반대 질문이 돼요." }
+            {
+              "w": "empty",
+              "t": "ok",
+              "m": "empty도 맞지만, 이용할 수 있는지를 묻는 더 정중한 단어를 생각해 보세요."
+            },
+            {
+              "w": "vacant",
+              "t": "near",
+              "m": "vacant는 건물·방이 비었을 때 주로 써요. 자리를 이용할 수 있는지 물어보세요."
+            },
+            {
+              "w": "taken",
+              "t": "wrong",
+              "m": "taken을 쓰면 '누가 앉았나요?'라는 반대 질문이 돼요."
+            }
           ]
         },
         {
-          "en": "The doctor is not ___ until Monday.", "ko": "그 의사는 월요일까지 **시간이 안 된다**.", "answer": "available",
+          "en": "The doctor is not ___ until Monday.",
+          "ko": "그 의사는 월요일까지 **시간이 안 된다**.",
+          "answer": "available",
           "alts": [
-            { "w": "free", "t": "ok", "m": "free도 맞지만 구어체예요. 더 격식 있는 말을 생각해 보세요." },
-            { "w": "busy", "t": "wrong", "m": "is not busy면 '바쁘지 않다'로 반대 뜻이 돼요." },
-            { "w": "possible", "t": "wrong", "m": "possible은 사람을 주어로 쓰지 않아요. 진료가 가능한지를 다른 단어로 말해 보세요." }
+            {
+              "w": "free",
+              "t": "ok",
+              "m": "free도 맞지만 구어체예요. 더 격식 있는 말을 생각해 보세요."
+            },
+            {
+              "w": "busy",
+              "t": "wrong",
+              "m": "is not busy면 '바쁘지 않다'로 반대 뜻이 돼요."
+            },
+            {
+              "w": "possible",
+              "t": "wrong",
+              "m": "possible은 사람을 주어로 쓰지 않아요. 진료가 가능한지를 다른 단어로 말해 보세요."
+            }
           ]
         }
       ],
       "nuance": "물건이면 '구할 수 있는', 사람이면 '시간이 있는, 만날 수 있는'. 'available for/to'.",
-      "etymology": "라틴어 valere(가치 있다, 힘이 있다) → '쓸 수 있는'"
+      "etymology": "라틴어 valere(가치 있다, 힘이 있다) → '쓸 수 있는'",
+      "ipa": "/əˈveɪləbəl/",
+      "def": "able to be used or obtained; free to see or talk to people",
+      "forms": [
+        "availability (명사)",
+        "unavailable (반의어)"
+      ]
     },
     {
-      "id": "serious", "word": "serious", "pos": "adj", "level": 5,
-      "meanings": ["심각한", "진지한"],
+      "id": "serious",
+      "word": "serious",
+      "pos": "adj",
+      "level": 5,
+      "meanings": [
+        "심각한",
+        "진지한"
+      ],
       "sentences": [
         {
-          "en": "This is a ___ problem that needs attention.", "ko": "이것은 관심이 필요한 **심각한** 문제다.", "answer": "serious",
+          "en": "This is a ___ problem that needs attention.",
+          "ko": "이것은 관심이 필요한 **심각한** 문제다.",
+          "answer": "serious",
           "alts": [
-            { "w": "big", "t": "ok", "m": "big도 맞지만, 심각함을 더 분명히 나타내는 단어를 생각해 보세요." },
-            { "w": "severe", "t": "near", "m": "severe는 정도가 '극심한'이에요. 중요하게 다뤄야 할 문제를 생각해 보세요." },
-            { "w": "important", "t": "near", "m": "important는 '중요한'이에요. 상황이 나쁘다는 뜻을 생각해 보세요." }
+            {
+              "w": "big",
+              "t": "ok",
+              "m": "big도 맞지만, 심각함을 더 분명히 나타내는 단어를 생각해 보세요."
+            },
+            {
+              "w": "severe",
+              "t": "near",
+              "m": "severe는 정도가 '극심한'이에요. 중요하게 다뤄야 할 문제를 생각해 보세요."
+            },
+            {
+              "w": "important",
+              "t": "near",
+              "m": "important는 '중요한'이에요. 상황이 나쁘다는 뜻을 생각해 보세요."
+            }
           ]
         },
         {
-          "en": "Are you ___ about moving to Canada?", "ko": "캐나다로 이사하는 거 **진심이야**?", "answer": "serious",
+          "en": "Are you ___ about moving to Canada?",
+          "ko": "캐나다로 이사하는 거 **진심이야**?",
+          "answer": "serious",
           "ctx": "친구의 깜짝 발표에",
           "note": "농담이 아니라 진심이냐는 뜻",
           "alts": [
-            { "w": "sure", "t": "near", "m": "sure는 '확실한'이에요. 농담이 아니라 진심인지 묻고 있어요." },
-            { "w": "kidding", "t": "wrong", "m": "kidding은 '농담하는'이에요. 진심인지를 묻는 말과 반대예요." },
-            { "w": "real", "t": "wrong", "m": "real은 사람의 마음이 진지하다고 말할 때 쓰지 않아요." }
+            {
+              "w": "sure",
+              "t": "near",
+              "m": "sure는 '확실한'이에요. 농담이 아니라 진심인지 묻고 있어요."
+            },
+            {
+              "w": "kidding",
+              "t": "wrong",
+              "m": "kidding은 '농담하는'이에요. 진심인지를 묻는 말과 반대예요."
+            },
+            {
+              "w": "real",
+              "t": "wrong",
+              "m": "real은 사람의 마음이 진지하다고 말할 때 쓰지 않아요."
+            }
           ]
         }
       ],
-      "nuance": "'심각한'과 '진지한' 두 뜻. severe는 정도가 '극심한', grave는 매우 격식체의 '중대한'."
+      "nuance": "'심각한'과 '진지한' 두 뜻. severe는 정도가 '극심한', grave는 매우 격식체의 '중대한'.",
+      "ipa": "/ˈsɪriəs/",
+      "def": "bad or dangerous; not joking; thoughtful and sincere",
+      "forms": [
+        "seriously (부사)",
+        "seriousness (명사)"
+      ]
     },
     {
-      "id": "recently", "word": "recently", "pos": "adv", "level": 5,
-      "meanings": ["최근에"],
+      "id": "recently",
+      "word": "recently",
+      "pos": "adv",
+      "level": 5,
+      "meanings": [
+        "최근에"
+      ],
       "sentences": [
         {
-          "en": "I ___ moved to a new apartment.", "ko": "나는 **최근에** 새 아파트로 이사했다.", "answer": "recently",
+          "en": "I ___ moved to a new apartment.",
+          "ko": "나는 **최근에** 새 아파트로 이사했다.",
+          "answer": "recently",
           "ctx": "집들이에 초대하며",
           "alts": [
-            { "w": "just", "t": "ok", "m": "just도 맞지만 '방금, 막'이라는 느낌이에요. '최근에'를 생각해 보세요." },
-            { "w": "lately", "t": "near", "m": "lately는 주로 현재완료와 함께 써요. 과거 시제엔 다른 단어가 자연스러워요." },
-            { "w": "nowadays", "t": "wrong", "m": "nowadays는 '요즘'이라 과거 시제와 함께 쓰지 않아요." }
+            {
+              "w": "just",
+              "t": "ok",
+              "m": "just도 맞지만 '방금, 막'이라는 느낌이에요. '최근에'를 생각해 보세요."
+            },
+            {
+              "w": "lately",
+              "t": "near",
+              "m": "lately는 주로 현재완료와 함께 써요. 과거 시제엔 다른 단어가 자연스러워요."
+            },
+            {
+              "w": "nowadays",
+              "t": "wrong",
+              "m": "nowadays는 '요즘'이라 과거 시제와 함께 쓰지 않아요."
+            }
           ]
         },
         {
-          "en": "Have you seen any good movies ___?", "ko": "**최근에** 좋은 영화 본 거 있어?", "answer": "recently",
+          "en": "Have you seen any good movies ___?",
+          "ko": "**최근에** 좋은 영화 본 거 있어?",
+          "answer": "recently",
           "alts": [
-            { "w": "lately", "t": "ok", "m": "lately도 맞지만, 과거 시제에도 두루 쓰는 단어를 생각해 보세요." },
-            { "w": "nowadays", "t": "near", "m": "nowadays는 '요즘'이라 현재 시제와 잘 어울려요. 현재완료에는 다른 말이 자연스러워요." },
-            { "w": "before", "t": "wrong", "m": "before는 '전에'라서 '최근에'라는 뜻과 달라요." }
+            {
+              "w": "lately",
+              "t": "ok",
+              "m": "lately도 맞지만, 과거 시제에도 두루 쓰는 단어를 생각해 보세요."
+            },
+            {
+              "w": "nowadays",
+              "t": "near",
+              "m": "nowadays는 '요즘'이라 현재 시제와 잘 어울려요. 현재완료에는 다른 말이 자연스러워요."
+            },
+            {
+              "w": "before",
+              "t": "wrong",
+              "m": "before는 '전에'라서 '최근에'라는 뜻과 달라요."
+            }
           ]
         }
       ],
-      "nuance": "lately와 비슷하지만 lately는 주로 현재완료와 함께 쓰고, recently는 과거 시제에도 자연스럽다."
+      "nuance": "lately와 비슷하지만 lately는 주로 현재완료와 함께 쓰고, recently는 과거 시제에도 자연스럽다.",
+      "ipa": "/ˈriːsəntli/",
+      "def": "not long ago; a short time ago",
+      "forms": [
+        "recent (형용사: 최근의)"
+      ]
     },
     {
-      "id": "environment", "word": "environment", "pos": "n", "level": 5,
-      "meanings": ["환경"],
+      "id": "environment",
+      "word": "environment",
+      "pos": "n",
+      "level": 5,
+      "meanings": [
+        "환경"
+      ],
       "sentences": [
         {
-          "en": "We should protect the ___ for future generations.", "ko": "우리는 미래 세대를 위해 **환경**을 보호해야 한다.", "answer": "environment",
+          "en": "We should protect the ___ for future generations.",
+          "ko": "우리는 미래 세대를 위해 **환경**을 보호해야 한다.",
+          "answer": "environment",
           "alts": [
-            { "w": "earth", "t": "ok", "m": "earth도 맞지만, 자연과 주변 조건 전체를 가리키는 단어를 생각해 보세요." },
-            { "w": "nature", "t": "near", "m": "nature는 보통 the 없이 써요. the와 어울리는 단어를 생각해 보세요." },
-            { "w": "surroundings", "t": "near", "m": "surroundings는 '바로 주변'이에요. 자연환경 전체를 생각해 보세요." }
+            {
+              "w": "earth",
+              "t": "ok",
+              "m": "earth도 맞지만, 자연과 주변 조건 전체를 가리키는 단어를 생각해 보세요."
+            },
+            {
+              "w": "nature",
+              "t": "near",
+              "m": "nature는 보통 the 없이 써요. the와 어울리는 단어를 생각해 보세요."
+            },
+            {
+              "w": "surroundings",
+              "t": "near",
+              "m": "surroundings는 '바로 주변'이에요. 자연환경 전체를 생각해 보세요."
+            }
           ]
         },
         {
-          "en": "She grew up in a loving family ___.", "ko": "그녀는 사랑이 넘치는 가정 **환경**에서 자랐다.", "answer": "environment",
+          "en": "She grew up in a loving family ___.",
+          "ko": "그녀는 사랑이 넘치는 가정 **환경**에서 자랐다.",
+          "answer": "environment",
           "note": "자라난 주변 여건이라는 뜻",
           "alts": [
-            { "w": "atmosphere", "t": "near", "m": "atmosphere는 '분위기'예요. 자라는 데 영향을 준 주변 여건 전체를 생각해 보세요." },
-            { "w": "background", "t": "near", "m": "family background는 '집안 배경'이에요. 자라난 주변 여건을 생각해 보세요." },
-            { "w": "nature", "t": "wrong", "m": "nature는 '자연, 본성'이에요. 가정의 여건과는 달라요." }
+            {
+              "w": "atmosphere",
+              "t": "near",
+              "m": "atmosphere는 '분위기'예요. 자라는 데 영향을 준 주변 여건 전체를 생각해 보세요."
+            },
+            {
+              "w": "background",
+              "t": "near",
+              "m": "family background는 '집안 배경'이에요. 자라난 주변 여건을 생각해 보세요."
+            },
+            {
+              "w": "nature",
+              "t": "wrong",
+              "m": "nature는 '자연, 본성'이에요. 가정의 여건과는 달라요."
+            }
           ]
         }
       ],
       "nuance": "자연환경(the environment)과 주변 상황·분위기(working environment) 모두. 형용사 environmental. 철자에서 n을 빠뜨리기 쉽다.",
-      "etymology": "프랑스어 environ(주위에) → '둘러싼 것'"
+      "etymology": "프랑스어 environ(주위에) → '둘러싼 것'",
+      "ipa": "/ɪnˈvaɪrənmənt/",
+      "def": "the natural world; the conditions in which someone lives or works",
+      "forms": [
+        "environments (복수)",
+        "environmental (형용사)",
+        "environmentally (부사)"
+      ]
     },
     {
-      "id": "experience", "word": "experience", "pos": "n", "level": 5,
-      "meanings": ["경험", "경력"],
+      "id": "experience",
+      "word": "experience",
+      "pos": "n",
+      "level": 5,
+      "meanings": [
+        "경험",
+        "경력"
+      ],
       "sentences": [
         {
-          "en": "She has ten years of ___ as a nurse.", "ko": "그녀는 간호사로 10년의 **경험**이 있다.", "answer": "experience",
+          "en": "She has ten years of ___ as a nurse.",
+          "ko": "그녀는 간호사로 10년의 **경험**이 있다.",
+          "answer": "experience",
           "ctx": "이력서를 검토하며",
           "note": "일하며 쌓은 경력이라는 뜻",
           "alts": [
-            { "w": "work", "t": "ok", "m": "work도 쓸 수 있지만, 일하며 쌓인 것을 뜻하는 단어를 생각해 보세요." },
-            { "w": "career", "t": "near", "m": "career는 직업 인생 전체예요. ten years of와 쓰면 어색해요." },
-            { "w": "history", "t": "wrong", "m": "history는 '역사, 이력'이에요. 일하며 쌓은 것을 생각해 보세요." }
+            {
+              "w": "work",
+              "t": "ok",
+              "m": "work도 쓸 수 있지만, 일하며 쌓인 것을 뜻하는 단어를 생각해 보세요."
+            },
+            {
+              "w": "career",
+              "t": "near",
+              "m": "career는 직업 인생 전체예요. ten years of와 쓰면 어색해요."
+            },
+            {
+              "w": "history",
+              "t": "wrong",
+              "m": "history는 '역사, 이력'이에요. 일하며 쌓은 것을 생각해 보세요."
+            }
           ]
         },
         {
-          "en": "Traveling alone was a great ___ for me.", "ko": "혼자 여행한 것은 나에게 멋진 **경험**이었다.", "answer": "experience",
+          "en": "Traveling alone was a great ___ for me.",
+          "ko": "혼자 여행한 것은 나에게 멋진 **경험**이었다.",
+          "answer": "experience",
           "ctx": "여행을 돌아보며",
           "alts": [
-            { "w": "adventure", "t": "ok", "m": "adventure도 맞지만 '모험'이에요. 더 일반적인 단어를 생각해 보세요." },
-            { "w": "memory", "t": "near", "m": "memory는 '추억, 기억'이에요. 직접 겪은 일 자체를 생각해 보세요." },
-            { "w": "chance", "t": "wrong", "m": "chance는 '기회'예요. 직접 겪은 일과는 달라요." }
+            {
+              "w": "adventure",
+              "t": "ok",
+              "m": "adventure도 맞지만 '모험'이에요. 더 일반적인 단어를 생각해 보세요."
+            },
+            {
+              "w": "memory",
+              "t": "near",
+              "m": "memory는 '추억, 기억'이에요. 직접 겪은 일 자체를 생각해 보세요."
+            },
+            {
+              "w": "chance",
+              "t": "wrong",
+              "m": "chance는 '기회'예요. 직접 겪은 일과는 달라요."
+            }
           ]
         }
       ],
       "nuance": "'경력'으로서의 경험은 셀 수 없고(experience), '한 번의 체험'은 셀 수 있다(an experience). 동사로 '겪다'도 가능.",
-      "etymology": "라틴어 experiri(시험하다, 겪어 보다)"
+      "etymology": "라틴어 experiri(시험하다, 겪어 보다)",
+      "ipa": "/ɪkˈspɪriəns/",
+      "def": "knowledge or skill gained from doing something; an event you live through",
+      "forms": [
+        "experiences (복수)",
+        "experienced (형용사: 경험 많은)",
+        "experience (동사: 경험하다)"
+      ]
     }
   ]
 }

@@ -1,261 +1,664 @@
 {
   "words": [
     {
-      "id": "paradigm", "word": "paradigm", "pos": "n", "level": 14,
-      "meanings": ["패러다임, 전형적인 틀"],
+      "id": "paradigm",
+      "word": "paradigm",
+      "pos": "n",
+      "level": 14,
+      "meanings": [
+        "패러다임, 전형적인 틀"
+      ],
       "sentences": [
         {
-          "en": "The internet created a new ___ for communication.", "ko": "인터넷은 소통의 새로운 **패러다임**을 만들었다.", "answer": "paradigm",
+          "en": "The internet created a new ___ for communication.",
+          "ko": "인터넷은 소통의 새로운 **패러다임**을 만들었다.",
+          "answer": "paradigm",
           "alts": [
-            { "w": "framework", "t": "ok", "m": "framework도 맞지만, 시대의 사고 틀 전체를 뜻하는 단어가 따로 있어요." },
-            { "w": "model", "t": "near", "m": "model은 구체적인 '모형'이에요. 사고방식 전체의 틀은요?" },
-            { "w": "pattern", "t": "near", "m": "pattern은 반복되는 '양식'이에요. 소통 방식의 새로운 틀은요?" }
+            {
+              "w": "framework",
+              "t": "ok",
+              "m": "framework도 맞지만, 시대의 사고 틀 전체를 뜻하는 단어가 따로 있어요."
+            },
+            {
+              "w": "model",
+              "t": "near",
+              "m": "model은 구체적인 '모형'이에요. 사고방식 전체의 틀은요?"
+            },
+            {
+              "w": "pattern",
+              "t": "near",
+              "m": "pattern은 반복되는 '양식'이에요. 소통 방식의 새로운 틀은요?"
+            }
           ]
         },
         {
-          "en": "This discovery led to a ___ shift in physics.", "ko": "이 발견은 물리학의 **패러다임** 전환을 이끌었다.", "answer": "paradigm",
+          "en": "This discovery led to a ___ shift in physics.",
+          "ko": "이 발견은 물리학의 **패러다임** 전환을 이끌었다.",
+          "answer": "paradigm",
           "ctx": "과학 다큐를 보며",
           "note": "학문의 기본 사고 틀이 통째로 바뀐 것",
           "alts": [
-            { "w": "major", "t": "near", "m": "major shift도 말은 되지만, 사고 틀 전체가 바뀌는 전환을 뜻하는 단어가 있어요." },
-            { "w": "model", "t": "wrong", "m": "model shift라는 표현은 쓰지 않아요." },
-            { "w": "paradise", "t": "wrong", "m": "paradise는 '천국'이에요. 철자가 비슷한 다른 단어예요." }
+            {
+              "w": "major",
+              "t": "near",
+              "m": "major shift도 말은 되지만, 사고 틀 전체가 바뀌는 전환을 뜻하는 단어가 있어요."
+            },
+            {
+              "w": "model",
+              "t": "wrong",
+              "m": "model shift라는 표현은 쓰지 않아요."
+            },
+            {
+              "w": "paradise",
+              "t": "wrong",
+              "m": "paradise는 '천국'이에요. 철자가 비슷한 다른 단어예요."
+            }
           ]
         }
       ],
       "nuance": "한 시대나 분야가 세상을 보는 '기본 틀'. model은 구체적인 모형, paradigm은 사고방식 전체. 'paradigm shift'(패러다임 전환). g는 묵음.",
-      "etymology": "그리스어 para(옆에) + deiknynai(보이다) → '옆에 놓고 보여 주는 예'"
+      "etymology": "그리스어 para(옆에) + deiknynai(보이다) → '옆에 놓고 보여 주는 예'",
+      "ipa": "/ˈpærədaɪm/",
+      "def": "a typical example or model of how something works",
+      "forms": [
+        "paradigms (복수)",
+        "paradigmatic (형용사)"
+      ]
     },
     {
-      "id": "perceive", "word": "perceive", "pos": "v", "level": 14,
-      "meanings": ["인식하다, 감지하다", "~로 여기다"],
+      "id": "perceive",
+      "word": "perceive",
+      "pos": "v",
+      "level": 14,
+      "meanings": [
+        "인식하다, 감지하다",
+        "~로 여기다"
+      ],
       "sentences": [
         {
-          "en": "Dogs can ___ sounds that humans cannot hear.", "ko": "개는 사람이 들을 수 없는 소리를 **감지할** 수 있다.", "answer": "perceive",
+          "en": "Dogs can ___ sounds that humans cannot hear.",
+          "ko": "개는 사람이 들을 수 없는 소리를 **감지할** 수 있다.",
+          "answer": "perceive",
           "alts": [
-            { "w": "detect", "t": "ok", "m": "detect도 맞지만, 감각으로 알아차린다는 뜻의 다른 단어를 떠올려 보세요." },
-            { "w": "hear", "t": "ok", "m": "hear도 맞지만, 뒤에 hear가 또 나와요. '감각으로 알아차리다'는 다른 단어는요?" },
-            { "w": "notice", "t": "near", "m": "notice는 '눈치채다'예요. 감각으로 감지하는 능력을 말하는 단어는요?" }
+            {
+              "w": "detect",
+              "t": "ok",
+              "m": "detect도 맞지만, 감각으로 알아차린다는 뜻의 다른 단어를 떠올려 보세요."
+            },
+            {
+              "w": "hear",
+              "t": "ok",
+              "m": "hear도 맞지만, 뒤에 hear가 또 나와요. '감각으로 알아차리다'는 다른 단어는요?"
+            },
+            {
+              "w": "notice",
+              "t": "near",
+              "m": "notice는 '눈치채다'예요. 감각으로 감지하는 능력을 말하는 단어는요?"
+            }
           ]
         },
         {
-          "en": "She is ___ as a strong leader.", "ko": "그녀는 강한 리더로 **인식된다**.", "answer": "perceived",
+          "en": "She is ___ as a strong leader.",
+          "ko": "그녀는 강한 리더로 **인식된다**.",
+          "answer": "perceived",
           "note": "사람들에게 그렇게 여겨진다는 뜻",
           "alts": [
-            { "w": "seen", "t": "ok", "m": "seen도 맞지만, '~로 받아들여진다'는 격식 있는 단어를 떠올려 보세요." },
-            { "w": "recognized", "t": "near", "m": "recognized는 '인정받다'예요. 사람들에게 그렇게 여겨진다는 단어는요?" },
-            { "w": "known", "t": "near", "m": "known as는 '~로 알려진'이에요. 사람들이 받아들이는 이미지를 말하는 단어는요?" }
+            {
+              "w": "seen",
+              "t": "ok",
+              "m": "seen도 맞지만, '~로 받아들여진다'는 격식 있는 단어를 떠올려 보세요."
+            },
+            {
+              "w": "recognized",
+              "t": "near",
+              "m": "recognized는 '인정받다'예요. 사람들에게 그렇게 여겨진다는 단어는요?"
+            },
+            {
+              "w": "known",
+              "t": "near",
+              "m": "known as는 '~로 알려진'이에요. 사람들이 받아들이는 이미지를 말하는 단어는요?"
+            }
           ]
         }
       ],
       "nuance": "감각으로 '알아차리다'와 '~라고 받아들이다' 두 뜻. notice는 우연히 눈치채는 것, perceive는 해석이 들어간 인식. 명사 perception.",
-      "etymology": "라틴어 per(완전히) + capere(잡다) → '온전히 받아들이다'"
+      "etymology": "라틴어 per(완전히) + capere(잡다) → '온전히 받아들이다'",
+      "ipa": "/pɚˈsiːv/",
+      "def": "to notice or become aware of something; to see in a certain way",
+      "forms": [
+        "perceived (과거·과거분사)",
+        "perceiving (현재분사)",
+        "perception (명사)",
+        "perceptive (형용사: 통찰력 있는)"
+      ]
     },
     {
-      "id": "persist", "word": "persist", "pos": "v", "level": 14,
-      "meanings": ["지속되다", "끈질기게 계속하다"],
+      "id": "persist",
+      "word": "persist",
+      "pos": "v",
+      "level": 14,
+      "meanings": [
+        "지속되다",
+        "끈질기게 계속하다"
+      ],
       "sentences": [
         {
-          "en": "If the pain ___, see a doctor.", "ko": "통증이 **계속되면** 의사를 찾아가세요.", "answer": "persists",
+          "en": "If the pain ___, see a doctor.",
+          "ko": "통증이 **계속되면** 의사를 찾아가세요.",
+          "answer": "persists",
           "ctx": "약국에서 약을 사며",
           "alts": [
-            { "w": "continues", "t": "ok", "m": "continues도 맞지만, 사라지지 않고 버틴다는 느낌의 단어가 있어요." },
-            { "w": "lasts", "t": "near", "m": "lasts는 보통 기간과 함께 써요(lasts two days)." },
-            { "w": "remains", "t": "near", "m": "remains는 보통 뒤에 보어가 와요(remains the same)." }
+            {
+              "w": "continues",
+              "t": "ok",
+              "m": "continues도 맞지만, 사라지지 않고 버틴다는 느낌의 단어가 있어요."
+            },
+            {
+              "w": "lasts",
+              "t": "near",
+              "m": "lasts는 보통 기간과 함께 써요(lasts two days)."
+            },
+            {
+              "w": "remains",
+              "t": "near",
+              "m": "remains는 보통 뒤에 보어가 와요(remains the same)."
+            }
           ]
         },
         {
-          "en": "She ___ in asking questions despite his silence.", "ko": "그가 침묵해도 그녀는 **끈질기게** 질문을 계속했다.", "answer": "persisted",
+          "en": "She ___ in asking questions despite his silence.",
+          "ko": "그가 침묵해도 그녀는 **끈질기게** 질문을 계속했다.",
+          "answer": "persisted",
           "note": "반응이 없어도 굽히지 않고 계속했다는 뜻",
           "alts": [
-            { "w": "continued", "t": "near", "m": "continued는 in과 함께 쓰지 않아요. 끈질기게 버티며 계속했다는 단어는요?" },
-            { "w": "insisted", "t": "near", "m": "insisted는 '고집했다·주장했다'로 보통 on과 써요." },
-            { "w": "kept", "t": "wrong", "m": "kept는 in 없이 kept asking으로 써야 해요." }
+            {
+              "w": "continued",
+              "t": "near",
+              "m": "continued는 in과 함께 쓰지 않아요. 끈질기게 버티며 계속했다는 단어는요?"
+            },
+            {
+              "w": "insisted",
+              "t": "near",
+              "m": "insisted는 '고집했다·주장했다'로 보통 on과 써요."
+            },
+            {
+              "w": "kept",
+              "t": "wrong",
+              "m": "kept는 in 없이 kept asking으로 써야 해요."
+            }
           ]
         }
       ],
       "nuance": "'persist in -ing'(고집스럽게 계속하다). continue는 중립적, persist는 어려움·반대에도 '버티며 계속'. 형용사 persistent(끈질긴, 지속적인).",
-      "etymology": "라틴어 per(끝까지) + sistere(서 있다) → '끝까지 서 있다'"
+      "etymology": "라틴어 per(끝까지) + sistere(서 있다) → '끝까지 서 있다'",
+      "ipa": "/pɚˈsɪst/",
+      "def": "to continue to exist; to keep doing something despite difficulty",
+      "forms": [
+        "persisted (과거·과거분사)",
+        "persisting (현재분사)",
+        "persistent (형용사)",
+        "persistence (명사)"
+      ]
     },
     {
-      "id": "plausible", "word": "plausible", "pos": "adj", "level": 14,
-      "meanings": ["그럴듯한, 타당해 보이는"],
+      "id": "plausible",
+      "word": "plausible",
+      "pos": "adj",
+      "level": 14,
+      "meanings": [
+        "그럴듯한, 타당해 보이는"
+      ],
       "sentences": [
         {
-          "en": "His excuse sounded ___, so we believed him.", "ko": "그의 변명이 **그럴듯해서** 우리는 그를 믿었다.", "answer": "plausible",
+          "en": "His excuse sounded ___, so we believed him.",
+          "ko": "그의 변명이 **그럴듯해서** 우리는 그를 믿었다.",
+          "answer": "plausible",
           "ctx": "지각한 동료 이야기를 하며",
           "alts": [
-            { "w": "reasonable", "t": "ok", "m": "reasonable도 맞지만, '믿을 만해 보이는'이라는 뉘앙스의 단어가 있어요." },
-            { "w": "possible", "t": "near", "m": "possible은 '가능한'이에요. 그럴듯하게 들린다는 단어는요?" },
-            { "w": "probable", "t": "near", "m": "probable은 실제로 '일어날 가능성이 큰' 거예요." }
+            {
+              "w": "reasonable",
+              "t": "ok",
+              "m": "reasonable도 맞지만, '믿을 만해 보이는'이라는 뉘앙스의 단어가 있어요."
+            },
+            {
+              "w": "possible",
+              "t": "near",
+              "m": "possible은 '가능한'이에요. 그럴듯하게 들린다는 단어는요?"
+            },
+            {
+              "w": "probable",
+              "t": "near",
+              "m": "probable은 실제로 '일어날 가능성이 큰' 거예요."
+            }
           ]
         },
         {
-          "en": "There is no ___ explanation for the accident.", "ko": "그 사고에 대한 **타당한** 설명이 없다.", "answer": "plausible",
+          "en": "There is no ___ explanation for the accident.",
+          "ko": "그 사고에 대한 **타당한** 설명이 없다.",
+          "answer": "plausible",
           "alts": [
-            { "w": "reasonable", "t": "ok", "m": "reasonable도 맞지만, 그럴듯하게 납득되는 설명을 뜻하는 단어가 있어요." },
-            { "w": "valid", "t": "near", "m": "valid는 논리적·법적으로 '유효한'이에요. 그럴듯한 설명엔 다른 단어를 써요." },
-            { "w": "proper", "t": "near", "m": "proper는 '적절한·제대로 된'이라 설명의 설득력과는 달라요." }
+            {
+              "w": "reasonable",
+              "t": "ok",
+              "m": "reasonable도 맞지만, 그럴듯하게 납득되는 설명을 뜻하는 단어가 있어요."
+            },
+            {
+              "w": "valid",
+              "t": "near",
+              "m": "valid는 논리적·법적으로 '유효한'이에요. 그럴듯한 설명엔 다른 단어를 써요."
+            },
+            {
+              "w": "proper",
+              "t": "near",
+              "m": "proper는 '적절한·제대로 된'이라 설명의 설득력과는 달라요."
+            }
           ]
         }
       ],
       "nuance": "'믿을 만해 보이는'. 사실인지는 모르지만 설득력이 있다는 뉘앙스. probable은 실제로 '일어날 가능성이 큰'. 반대는 implausible.",
-      "etymology": "라틴어 plaudere(박수치다) → '박수받을 만한, 받아들일 만한'"
+      "etymology": "라틴어 plaudere(박수치다) → '박수받을 만한, 받아들일 만한'",
+      "ipa": "/ˈplɔːzəbəl/",
+      "def": "seeming likely to be true or reasonable",
+      "forms": [
+        "plausibly (부사)",
+        "plausibility (명사)",
+        "implausible (반의어)"
+      ]
     },
     {
-      "id": "predominant", "word": "predominant", "pos": "adj", "level": 14,
-      "meanings": ["지배적인, 두드러진"],
+      "id": "predominant",
+      "word": "predominant",
+      "pos": "adj",
+      "level": 14,
+      "meanings": [
+        "지배적인, 두드러진"
+      ],
       "sentences": [
         {
-          "en": "Blue is the ___ color in her paintings.", "ko": "파란색은 그녀의 그림에서 **지배적인** 색이다.", "answer": "predominant",
+          "en": "Blue is the ___ color in her paintings.",
+          "ko": "파란색은 그녀의 그림에서 **지배적인** 색이다.",
+          "answer": "predominant",
           "ctx": "미술관에서",
           "alts": [
-            { "w": "main", "t": "ok", "m": "main도 맞지만, 다른 색을 압도한다는 느낌의 단어가 있어요." },
-            { "w": "dominant", "t": "ok", "m": "dominant도 맞지만, '두드러지게 많은'을 뜻하는 다른 격식어를 떠올려 보세요." },
-            { "w": "ruling", "t": "wrong", "m": "ruling은 권력이 '지배하는'이라 색깔엔 쓰지 않아요." }
+            {
+              "w": "main",
+              "t": "ok",
+              "m": "main도 맞지만, 다른 색을 압도한다는 느낌의 단어가 있어요."
+            },
+            {
+              "w": "dominant",
+              "t": "ok",
+              "m": "dominant도 맞지만, '두드러지게 많은'을 뜻하는 다른 격식어를 떠올려 보세요."
+            },
+            {
+              "w": "ruling",
+              "t": "wrong",
+              "m": "ruling은 권력이 '지배하는'이라 색깔엔 쓰지 않아요."
+            }
           ]
         },
         {
-          "en": "Fear was the ___ emotion in the room.", "ko": "두려움이 그 방의 **주된** 감정이었다.", "answer": "predominant",
+          "en": "Fear was the ___ emotion in the room.",
+          "ko": "두려움이 그 방의 **주된** 감정이었다.",
+          "answer": "predominant",
           "note": "여러 감정 중 가장 강하게 두드러진",
           "alts": [
-            { "w": "main", "t": "ok", "m": "main도 맞지만, 다른 감정을 압도할 만큼 두드러진다는 단어가 있어요." },
-            { "w": "major", "t": "near", "m": "major는 '주요한' 여럿 중 하나일 때 써요. 가장 압도적인 하나는요?" },
-            { "w": "prevalent", "t": "near", "m": "prevalent는 '널리 퍼진'이라 방 안의 감정 하나엔 어색해요." }
+            {
+              "w": "main",
+              "t": "ok",
+              "m": "main도 맞지만, 다른 감정을 압도할 만큼 두드러진다는 단어가 있어요."
+            },
+            {
+              "w": "major",
+              "t": "near",
+              "m": "major는 '주요한' 여럿 중 하나일 때 써요. 가장 압도적인 하나는요?"
+            },
+            {
+              "w": "prevalent",
+              "t": "near",
+              "m": "prevalent는 '널리 퍼진'이라 방 안의 감정 하나엔 어색해요."
+            }
           ]
         }
       ],
       "nuance": "여럿 중 '가장 힘이 세거나 수가 많은'. main은 중립적, predominant는 다른 것을 압도하는 느낌. 부사 predominantly(주로).",
-      "etymology": "라틴어 prae(앞서) + dominari(지배하다)"
+      "etymology": "라틴어 prae(앞서) + dominari(지배하다)",
+      "ipa": "/prɪˈdɑːmɪnənt/",
+      "def": "most common, noticeable or powerful",
+      "forms": [
+        "predominantly (부사)",
+        "predominate (동사)",
+        "predominance (명사)"
+      ]
     },
     {
-      "id": "preliminary", "word": "preliminary", "pos": "adj", "level": 14,
-      "meanings": ["예비의, 준비 단계의"],
+      "id": "preliminary",
+      "word": "preliminary",
+      "pos": "adj",
+      "level": 14,
+      "meanings": [
+        "예비의, 준비 단계의"
+      ],
       "sentences": [
         {
-          "en": "The ___ results look promising.", "ko": "**예비** 결과는 희망적으로 보인다.", "answer": "preliminary",
+          "en": "The ___ results look promising.",
+          "ko": "**예비** 결과는 희망적으로 보인다.",
+          "answer": "preliminary",
           "ctx": "실험 결과 발표에서",
           "note": "최종 결과 전에 먼저 나온 결과",
           "alts": [
-            { "w": "initial", "t": "ok", "m": "initial도 맞지만, 본격적인 결과 전 '예비' 단계를 강조하는 단어가 있어요." },
-            { "w": "preparatory", "t": "near", "m": "preparatory는 '준비를 위한'이라 결과엔 잘 쓰지 않아요." },
-            { "w": "spare", "t": "wrong", "m": "spare는 '여분의'예요. '예비'를 그대로 옮기면 안 돼요." }
+            {
+              "w": "initial",
+              "t": "ok",
+              "m": "initial도 맞지만, 본격적인 결과 전 '예비' 단계를 강조하는 단어가 있어요."
+            },
+            {
+              "w": "preparatory",
+              "t": "near",
+              "m": "preparatory는 '준비를 위한'이라 결과엔 잘 쓰지 않아요."
+            },
+            {
+              "w": "spare",
+              "t": "wrong",
+              "m": "spare는 '여분의'예요. '예비'를 그대로 옮기면 안 돼요."
+            }
           ]
         },
         {
-          "en": "We held a ___ meeting before the official talks.", "ko": "우리는 공식 회담 전에 **사전** 회의를 열었다.", "answer": "preliminary",
+          "en": "We held a ___ meeting before the official talks.",
+          "ko": "우리는 공식 회담 전에 **사전** 회의를 열었다.",
+          "answer": "preliminary",
           "alts": [
-            { "w": "preparatory", "t": "ok", "m": "preparatory도 맞지만, 본 회담 앞에 여는 회의엔 더 흔한 단어가 있어요." },
-            { "w": "previous", "t": "near", "m": "previous는 '이전의'라 지난번 회의라는 뜻이 돼요." },
-            { "w": "prior", "t": "near", "m": "prior는 보통 prior to로 쓰고, 명사 앞에선 '이전의'라는 뜻이에요." }
+            {
+              "w": "preparatory",
+              "t": "ok",
+              "m": "preparatory도 맞지만, 본 회담 앞에 여는 회의엔 더 흔한 단어가 있어요."
+            },
+            {
+              "w": "previous",
+              "t": "near",
+              "m": "previous는 '이전의'라 지난번 회의라는 뜻이 돼요."
+            },
+            {
+              "w": "prior",
+              "t": "near",
+              "m": "prior는 보통 prior to로 쓰고, 명사 앞에선 '이전의'라는 뜻이에요."
+            }
           ]
         }
       ],
       "nuance": "본격적인 것 '앞에 오는'. initial은 단순히 '처음의', preliminary는 본 작업을 위한 준비라는 뜻이 강하다. 명사로 '예선'(preliminaries).",
-      "etymology": "라틴어 prae(앞) + limen(문지방) → '문지방 앞의'"
+      "etymology": "라틴어 prae(앞) + limen(문지방) → '문지방 앞의'",
+      "ipa": "/prɪˈlɪmɪnɛri/",
+      "def": "happening before a more important action or event",
+      "forms": [
+        "preliminaries (명사 복수: 예비 단계)"
+      ]
     },
     {
-      "id": "prevalent", "word": "prevalent", "pos": "adj", "level": 14,
-      "meanings": ["널리 퍼진, 흔한"],
+      "id": "prevalent",
+      "word": "prevalent",
+      "pos": "adj",
+      "level": 14,
+      "meanings": [
+        "널리 퍼진, 흔한"
+      ],
       "sentences": [
         {
-          "en": "Smartphone use is ___ among teenagers.", "ko": "스마트폰 사용은 십 대 사이에 **널리 퍼져** 있다.", "answer": "prevalent",
+          "en": "Smartphone use is ___ among teenagers.",
+          "ko": "스마트폰 사용은 십 대 사이에 **널리 퍼져** 있다.",
+          "answer": "prevalent",
           "alts": [
-            { "w": "common", "t": "ok", "m": "common도 맞지만, 널리 퍼져 있다는 뜻의 격식 있는 단어가 있어요." },
-            { "w": "popular", "t": "near", "m": "popular는 '인기 있는'이에요. 사용이 만연하다는 단어는요?" },
-            { "w": "spread", "t": "wrong", "m": "spread를 그대로 쓰면 어색해요. '널리 퍼진'이라는 형용사가 필요해요." }
+            {
+              "w": "common",
+              "t": "ok",
+              "m": "common도 맞지만, 널리 퍼져 있다는 뜻의 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "popular",
+              "t": "near",
+              "m": "popular는 '인기 있는'이에요. 사용이 만연하다는 단어는요?"
+            },
+            {
+              "w": "spread",
+              "t": "wrong",
+              "m": "spread를 그대로 쓰면 어색해요. '널리 퍼진'이라는 형용사가 필요해요."
+            }
           ]
         },
         {
-          "en": "The disease is more ___ in warm climates.", "ko": "그 질병은 따뜻한 기후에서 더 **흔하다**.", "answer": "prevalent",
+          "en": "The disease is more ___ in warm climates.",
+          "ko": "그 질병은 따뜻한 기후에서 더 **흔하다**.",
+          "answer": "prevalent",
           "ctx": "건강 기사를 읽으며",
           "alts": [
-            { "w": "common", "t": "ok", "m": "common도 맞지만, 질병이 '만연한' 정도를 말하는 격식 있는 단어가 있어요." },
-            { "w": "frequent", "t": "near", "m": "frequent는 '자주 일어나는'이라 질병의 분포엔 덜 자연스러워요." },
-            { "w": "popular", "t": "wrong", "m": "popular는 '인기 있는'이라 질병엔 쓰지 않아요." }
+            {
+              "w": "common",
+              "t": "ok",
+              "m": "common도 맞지만, 질병이 '만연한' 정도를 말하는 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "frequent",
+              "t": "near",
+              "m": "frequent는 '자주 일어나는'이라 질병의 분포엔 덜 자연스러워요."
+            },
+            {
+              "w": "popular",
+              "t": "wrong",
+              "m": "popular는 '인기 있는'이라 질병엔 쓰지 않아요."
+            }
           ]
         }
       ],
       "nuance": "특정 시기·지역에 '만연한'. common보다 격식체이고 '퍼져 있음'에 초점. 명사 prevalence(유병률, 보급률).",
-      "etymology": "라틴어 praevalere(더 힘이 세다) → '우세한'"
+      "etymology": "라틴어 praevalere(더 힘이 세다) → '우세한'",
+      "ipa": "/ˈprɛvələnt/",
+      "def": "existing very commonly or happening often",
+      "forms": [
+        "prevalence (명사)",
+        "prevail (동사: 우세하다)"
+      ]
     },
     {
-      "id": "profound", "word": "profound", "pos": "adj", "level": 14,
-      "meanings": ["깊은, 심오한", "엄청난"],
+      "id": "profound",
+      "word": "profound",
+      "pos": "adj",
+      "level": 14,
+      "meanings": [
+        "깊은, 심오한",
+        "엄청난"
+      ],
       "sentences": [
         {
-          "en": "The book had a ___ effect on my thinking.", "ko": "그 책은 내 사고에 **깊은** 영향을 주었다.", "answer": "profound",
+          "en": "The book had a ___ effect on my thinking.",
+          "ko": "그 책은 내 사고에 **깊은** 영향을 주었다.",
+          "answer": "profound",
           "ctx": "인생 책을 소개하며",
           "alts": [
-            { "w": "deep", "t": "ok", "m": "deep도 맞지만, 영향이 '아주 깊은'을 뜻하는 격식 있는 단어가 있어요." },
-            { "w": "huge", "t": "near", "m": "huge는 '거대한'이에요. 깊이 스며든 영향을 말하는 단어는요?" },
-            { "w": "serious", "t": "wrong", "m": "serious는 '심각한'이라 좋은 영향에는 어울리지 않아요." }
+            {
+              "w": "deep",
+              "t": "ok",
+              "m": "deep도 맞지만, 영향이 '아주 깊은'을 뜻하는 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "huge",
+              "t": "near",
+              "m": "huge는 '거대한'이에요. 깊이 스며든 영향을 말하는 단어는요?"
+            },
+            {
+              "w": "serious",
+              "t": "wrong",
+              "m": "serious는 '심각한'이라 좋은 영향에는 어울리지 않아요."
+            }
           ]
         },
         {
-          "en": "She asked a ___ question about life.", "ko": "그녀는 삶에 대해 **심오한** 질문을 했다.", "answer": "profound",
+          "en": "She asked a ___ question about life.",
+          "ko": "그녀는 삶에 대해 **심오한** 질문을 했다.",
+          "answer": "profound",
           "alts": [
-            { "w": "deep", "t": "ok", "m": "deep도 맞지만, 좀 더 격식 있는 단어를 떠올려 보세요." },
-            { "w": "philosophical", "t": "near", "m": "philosophical은 '철학적인'이에요. 깊이 있는 질문을 뜻하는 단어는요?" },
-            { "w": "difficult", "t": "near", "m": "difficult는 '어려운'일 뿐 깊이를 말하진 않아요." }
+            {
+              "w": "deep",
+              "t": "ok",
+              "m": "deep도 맞지만, 좀 더 격식 있는 단어를 떠올려 보세요."
+            },
+            {
+              "w": "philosophical",
+              "t": "near",
+              "m": "philosophical은 '철학적인'이에요. 깊이 있는 질문을 뜻하는 단어는요?"
+            },
+            {
+              "w": "difficult",
+              "t": "near",
+              "m": "difficult는 '어려운'일 뿐 깊이를 말하진 않아요."
+            }
           ]
         }
       ],
       "nuance": "deep의 격식체이지만 물리적 깊이에는 쓰지 않는다. 감정·영향·지식이 '아주 깊은'. 부사 profoundly(깊이).",
-      "etymology": "라틴어 pro(앞으로) + fundus(바닥) → '바닥까지 이르는'"
+      "etymology": "라틴어 pro(앞으로) + fundus(바닥) → '바닥까지 이르는'",
+      "ipa": "/prəˈfaʊnd/",
+      "def": "very great or deep; showing great knowledge or understanding",
+      "forms": [
+        "profoundly (부사)",
+        "profundity (명사)"
+      ]
     },
     {
-      "id": "prolong", "word": "prolong", "pos": "v", "level": 14,
-      "meanings": ["연장하다, 길게 끌다"],
+      "id": "prolong",
+      "word": "prolong",
+      "pos": "v",
+      "level": 14,
+      "meanings": [
+        "연장하다, 길게 끌다"
+      ],
       "sentences": [
         {
-          "en": "Regular exercise can ___ your life.", "ko": "규칙적인 운동은 수명을 **연장할** 수 있다.", "answer": "prolong",
+          "en": "Regular exercise can ___ your life.",
+          "ko": "규칙적인 운동은 수명을 **연장할** 수 있다.",
+          "answer": "prolong",
           "ctx": "건강 강의에서",
           "alts": [
-            { "w": "extend", "t": "ok", "m": "extend도 맞지만, 기간을 '길게 늘인다'는 느낌의 단어가 있어요." },
-            { "w": "lengthen", "t": "near", "m": "lengthen은 물건 길이를 늘이는 느낌이 강해요." },
-            { "w": "increase", "t": "wrong", "m": "increase는 양을 '늘리다'라 수명 자체를 목적어로 쓰면 어색해요." }
+            {
+              "w": "extend",
+              "t": "ok",
+              "m": "extend도 맞지만, 기간을 '길게 늘인다'는 느낌의 단어가 있어요."
+            },
+            {
+              "w": "lengthen",
+              "t": "near",
+              "m": "lengthen은 물건 길이를 늘이는 느낌이 강해요."
+            },
+            {
+              "w": "increase",
+              "t": "wrong",
+              "m": "increase는 양을 '늘리다'라 수명 자체를 목적어로 쓰면 어색해요."
+            }
           ]
         },
         {
-          "en": "There is no point in ___ this discussion.", "ko": "이 논의를 **길게 끌어도** 소용없다.", "answer": "prolonging",
+          "en": "There is no point in ___ this discussion.",
+          "ko": "이 논의를 **길게 끌어도** 소용없다.",
+          "answer": "prolonging",
           "ctx": "결론 없는 회의 중에",
           "note": "필요 이상으로 오래 끈다는 뜻",
           "alts": [
-            { "w": "extending", "t": "near", "m": "extending은 중립적인 '연장'이에요. 쓸데없이 길게 끈다는 느낌의 단어는요?" },
-            { "w": "continuing", "t": "near", "m": "continuing은 그냥 '계속하는' 거예요." },
-            { "w": "dragging", "t": "wrong", "m": "dragging은 out과 함께 써야 '질질 끌다'가 돼요." }
+            {
+              "w": "extending",
+              "t": "near",
+              "m": "extending은 중립적인 '연장'이에요. 쓸데없이 길게 끈다는 느낌의 단어는요?"
+            },
+            {
+              "w": "continuing",
+              "t": "near",
+              "m": "continuing은 그냥 '계속하는' 거예요."
+            },
+            {
+              "w": "dragging",
+              "t": "wrong",
+              "m": "dragging은 out과 함께 써야 '질질 끌다'가 돼요."
+            }
           ]
         }
       ],
       "nuance": "extend는 중립적 '연장', prolong은 '필요 이상으로 오래 끈다'는 부정적 느낌이 섞이기도 한다. 형용사 prolonged(장기간의).",
-      "etymology": "라틴어 pro(앞으로) + longus(긴) → '앞으로 길게 하다'"
+      "etymology": "라틴어 pro(앞으로) + longus(긴) → '앞으로 길게 하다'",
+      "ipa": "/prəˈlɔːŋ/",
+      "def": "to make something last longer",
+      "forms": [
+        "prolonged (과거·과거분사)",
+        "prolonging (현재분사)",
+        "prolonged (형용사: 장기간의)",
+        "prolongation (명사)"
+      ]
     },
     {
-      "id": "provoke", "word": "provoke", "pos": "v", "level": 14,
-      "meanings": ["유발하다", "화나게 하다, 자극하다"],
+      "id": "provoke",
+      "word": "provoke",
+      "pos": "v",
+      "level": 14,
+      "meanings": [
+        "유발하다",
+        "화나게 하다, 자극하다"
+      ],
       "sentences": [
         {
-          "en": "The article ___ a heated debate.", "ko": "그 기사는 뜨거운 논쟁을 **불러일으켰다**.", "answer": "provoked",
+          "en": "The article ___ a heated debate.",
+          "ko": "그 기사는 뜨거운 논쟁을 **불러일으켰다**.",
+          "answer": "provoked",
           "ctx": "기사 댓글을 보며",
           "alts": [
-            { "w": "caused", "t": "ok", "m": "caused도 맞지만, 논란·분노 같은 강한 반응을 일으킬 때 쓰는 단어가 있어요." },
-            { "w": "aroused", "t": "near", "m": "aroused는 감정·흥미를 '불러일으켰다'예요. 논쟁엔 다른 단어가 더 자연스러워요." },
-            { "w": "invoked", "t": "wrong", "m": "invoked는 법·이름을 '들먹였다'는 뜻이에요." }
+            {
+              "w": "caused",
+              "t": "ok",
+              "m": "caused도 맞지만, 논란·분노 같은 강한 반응을 일으킬 때 쓰는 단어가 있어요."
+            },
+            {
+              "w": "aroused",
+              "t": "near",
+              "m": "aroused는 감정·흥미를 '불러일으켰다'예요. 논쟁엔 다른 단어가 더 자연스러워요."
+            },
+            {
+              "w": "invoked",
+              "t": "wrong",
+              "m": "invoked는 법·이름을 '들먹였다'는 뜻이에요."
+            }
           ]
         },
         {
-          "en": "Don't ___ the dog; it might bite.", "ko": "그 개를 **자극하지** 마, 물 수도 있어.", "answer": "provoke",
+          "en": "Don't ___ the dog; it might bite.",
+          "ko": "그 개를 **자극하지** 마, 물 수도 있어.",
+          "answer": "provoke",
           "ctx": "산책 중에 개를 만나",
           "alts": [
-            { "w": "tease", "t": "ok", "m": "tease도 맞지만, 화나게 '자극하다'라는 단어를 떠올려 보세요." },
-            { "w": "bother", "t": "near", "m": "bother는 '귀찮게 하다'예요. 화를 돋운다는 단어는요?" },
-            { "w": "stimulate", "t": "wrong", "m": "stimulate는 성장·활동을 '촉진하다'예요. 화나게 한다는 뜻이 아니에요." }
+            {
+              "w": "tease",
+              "t": "ok",
+              "m": "tease도 맞지만, 화나게 '자극하다'라는 단어를 떠올려 보세요."
+            },
+            {
+              "w": "bother",
+              "t": "near",
+              "m": "bother는 '귀찮게 하다'예요. 화를 돋운다는 단어는요?"
+            },
+            {
+              "w": "stimulate",
+              "t": "wrong",
+              "m": "stimulate는 성장·활동을 '촉진하다'예요. 화나게 한다는 뜻이 아니에요."
+            }
           ]
         }
       ],
       "nuance": "반응·감정을 '일으키다'. cause는 중립적, provoke는 보통 분노·논란 같은 강한 반응. 형용사 provocative(도발적인).",
-      "etymology": "라틴어 pro(앞으로) + vocare(부르다) → '불러내다'"
+      "etymology": "라틴어 pro(앞으로) + vocare(부르다) → '불러내다'",
+      "ipa": "/prəˈvoʊk/",
+      "def": "to cause a reaction; to deliberately make someone angry",
+      "forms": [
+        "provoked (과거·과거분사)",
+        "provoking (현재분사)",
+        "provocation (명사)",
+        "provocative (형용사)"
+      ]
     }
   ]
 }

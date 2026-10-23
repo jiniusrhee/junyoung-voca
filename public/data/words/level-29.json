@@ -1,262 +1,644 @@
 {
   "words": [
     {
-      "id": "idiosyncrasy", "word": "idiosyncrasy", "pos": "n", "level": 29,
-      "meanings": ["(개인의) 특이한 습성, 기벽"],
+      "id": "idiosyncrasy",
+      "word": "idiosyncrasy",
+      "pos": "n",
+      "level": 29,
+      "meanings": [
+        "(개인의) 특이한 습성, 기벽"
+      ],
       "sentences": [
         {
-          "en": "One of his ___ is eating dessert before dinner.", "ko": "그의 **특이한 습성** 중 하나는 저녁 식사 전에 디저트를 먹는 것이다.", "answer": "idiosyncrasies",
+          "en": "One of his ___ is eating dessert before dinner.",
+          "ko": "그의 **특이한 습성** 중 하나는 저녁 식사 전에 디저트를 먹는 것이다.",
+          "answer": "idiosyncrasies",
           "note": "그 사람만의 별나고 독특한 습성이라는 뜻",
           "alts": [
-            { "w": "quirks", "t": "ok", "m": "quirks도 맞지만, 개인만의 독특한 기질을 뜻하는 격식 있는 단어가 있어요." },
-            { "w": "habits", "t": "near", "m": "habits는 습관 일반이에요. 그 사람만의 별나고 독특한 습성은요?" },
-            { "w": "habit", "t": "wrong", "m": "habit처럼 단수는 안 돼요. One of his 뒤에는 복수 명사가 와야 해요." }
+            {
+              "w": "quirks",
+              "t": "ok",
+              "m": "quirks도 맞지만, 개인만의 독특한 기질을 뜻하는 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "habits",
+              "t": "near",
+              "m": "habits는 습관 일반이에요. 그 사람만의 별나고 독특한 습성은요?"
+            },
+            {
+              "w": "habit",
+              "t": "wrong",
+              "m": "habit처럼 단수는 안 돼요. One of his 뒤에는 복수 명사가 와야 해요."
+            }
           ]
         },
         {
-          "en": "Every language has its own ___.", "ko": "모든 언어에는 그 나름의 **독특한 특성**이 있다.", "answer": "idiosyncrasies",
+          "en": "Every language has its own ___.",
+          "ko": "모든 언어에는 그 나름의 **독특한 특성**이 있다.",
+          "answer": "idiosyncrasies",
           "ctx": "외국어를 배우다가",
           "alts": [
-            { "w": "characteristics", "t": "ok", "m": "characteristics도 맞지만, 남과 다른 별난 특징을 강조하는 단어가 있어요." },
-            { "w": "features", "t": "near", "m": "features는 특징 일반이에요. 그 언어만의 독특하고 별난 특성은요?" },
-            { "w": "rules", "t": "near", "m": "rules는 '규칙'이에요. 그 언어만의 독특한 특성을 뜻하는 단어는요?" }
+            {
+              "w": "characteristics",
+              "t": "ok",
+              "m": "characteristics도 맞지만, 남과 다른 별난 특징을 강조하는 단어가 있어요."
+            },
+            {
+              "w": "features",
+              "t": "near",
+              "m": "features는 특징 일반이에요. 그 언어만의 독특하고 별난 특성은요?"
+            },
+            {
+              "w": "rules",
+              "t": "near",
+              "m": "rules는 '규칙'이에요. 그 언어만의 독특한 특성을 뜻하는 단어는요?"
+            }
           ]
         }
       ],
       "nuance": "그 사람(또는 사물)에게만 있는 '남과 다른 별난 특징'. habit은 습관 일반, idiosyncrasy는 유독 그 사람다운 독특함. 형용사 idiosyncratic.",
-      "etymology": "그리스어 idios(자기만의) + synkrasis(혼합, 기질) → '자기만의 기질'"
+      "etymology": "그리스어 idios(자기만의) + synkrasis(혼합, 기질) → '자기만의 기질'",
+      "ipa": "/ˌɪdiəˈsɪŋkrəsi/",
+      "def": "an unusual habit or way of behaving that someone has",
+      "forms": [
+        "idiosyncrasies (복수)",
+        "idiosyncratic (형용사)"
+      ]
     },
     {
-      "id": "impetuous", "word": "impetuous", "pos": "adj", "level": 29,
-      "meanings": ["충동적인, 성급한"],
+      "id": "impetuous",
+      "word": "impetuous",
+      "pos": "adj",
+      "level": 29,
+      "meanings": [
+        "충동적인, 성급한"
+      ],
       "sentences": [
         {
-          "en": "In an ___ moment, he quit his job.", "ko": "**충동적인** 순간에 그는 직장을 그만두었다.", "answer": "impetuous",
+          "en": "In an ___ moment, he quit his job.",
+          "ko": "**충동적인** 순간에 그는 직장을 그만두었다.",
+          "answer": "impetuous",
           "ctx": "퇴사 이야기를 들으며",
           "alts": [
-            { "w": "impulsive", "t": "ok", "m": "impulsive도 맞지만, 감정에 휩쓸린 격한 기세가 더 느껴지는 단어가 있어요." },
-            { "w": "angry", "t": "near", "m": "angry는 '화난'이에요. 결과를 생각 않고 급히 행동한 순간은요?" },
-            { "w": "emotional", "t": "near", "m": "emotional은 '감정적인'이에요. 앞뒤 안 재고 성급하게 행동하는 순간은요?" }
+            {
+              "w": "impulsive",
+              "t": "ok",
+              "m": "impulsive도 맞지만, 감정에 휩쓸린 격한 기세가 더 느껴지는 단어가 있어요."
+            },
+            {
+              "w": "angry",
+              "t": "near",
+              "m": "angry는 '화난'이에요. 결과를 생각 않고 급히 행동한 순간은요?"
+            },
+            {
+              "w": "emotional",
+              "t": "near",
+              "m": "emotional은 '감정적인'이에요. 앞뒤 안 재고 성급하게 행동하는 순간은요?"
+            }
           ]
         },
         {
-          "en": "She regretted her ___ decision to buy the car.", "ko": "그녀는 차를 사기로 한 **성급한** 결정을 후회했다.", "answer": "impetuous",
+          "en": "She regretted her ___ decision to buy the car.",
+          "ko": "그녀는 차를 사기로 한 **성급한** 결정을 후회했다.",
+          "answer": "impetuous",
           "note": "감정에 휩쓸려 앞뒤 안 재고 결정했다는 뜻",
           "alts": [
-            { "w": "hasty", "t": "ok", "m": "hasty도 맞지만, 감정에 휩쓸려 덜컥 결정했다는 느낌의 단어가 있어요." },
-            { "w": "quick", "t": "near", "m": "quick은 '빠른'이에요. 결과를 생각하지 않고 성급하게 내린 결정은요?" },
-            { "w": "careless", "t": "near", "m": "careless는 '부주의한'이에요. 감정에 휩쓸려 서두른 결정은요?" }
+            {
+              "w": "hasty",
+              "t": "ok",
+              "m": "hasty도 맞지만, 감정에 휩쓸려 덜컥 결정했다는 느낌의 단어가 있어요."
+            },
+            {
+              "w": "quick",
+              "t": "near",
+              "m": "quick은 '빠른'이에요. 결과를 생각하지 않고 성급하게 내린 결정은요?"
+            },
+            {
+              "w": "careless",
+              "t": "near",
+              "m": "careless는 '부주의한'이에요. 감정에 휩쓸려 서두른 결정은요?"
+            }
           ]
         }
       ],
       "nuance": "결과를 생각하지 않고 '감정에 휩쓸려 급히 행동하는'. impulsive와 거의 같지만 impetuous는 격한 기세가 더 느껴진다. 명사 impetuosity.",
-      "etymology": "라틴어 impetus(돌진, 기세) ← in + petere(향해 가다)"
+      "etymology": "라틴어 impetus(돌진, 기세) ← in + petere(향해 가다)",
+      "ipa": "/ɪmˈpɛtʃuəs/",
+      "def": "acting quickly without thinking about the results",
+      "forms": [
+        "impetuously (부사)",
+        "impetuosity (명사)"
+      ]
     },
     {
-      "id": "incorrigible", "word": "incorrigible", "pos": "adj", "level": 29,
-      "meanings": ["고칠 수 없는, 구제 불능의"],
+      "id": "incorrigible",
+      "word": "incorrigible",
+      "pos": "adj",
+      "level": 29,
+      "meanings": [
+        "고칠 수 없는, 구제 불능의"
+      ],
       "sentences": [
         {
-          "en": "He is an ___ liar who cannot be trusted.", "ko": "그는 믿을 수 없는 **구제 불능의** 거짓말쟁이다.", "answer": "incorrigible",
+          "en": "He is an ___ liar who cannot be trusted.",
+          "ko": "그는 믿을 수 없는 **구제 불능의** 거짓말쟁이다.",
+          "answer": "incorrigible",
           "note": "나쁜 버릇을 고칠 수 없을 만큼 굳었다는 뜻",
           "alts": [
-            { "w": "incurable", "t": "ok", "m": "incurable도 맞지만, '바로잡을 수 없다'는 어원의 단어가 있어요." },
-            { "w": "awful", "t": "near", "m": "awful은 '끔찍한'이에요. 버릇을 고칠 수 없을 만큼 굳어졌다는 단어는요?" },
-            { "w": "unchangeable", "t": "near", "m": "unchangeable은 사물이 변하지 않는 거예요. 나쁜 버릇을 고칠 수 없는 사람은요?" }
+            {
+              "w": "incurable",
+              "t": "ok",
+              "m": "incurable도 맞지만, '바로잡을 수 없다'는 어원의 단어가 있어요."
+            },
+            {
+              "w": "awful",
+              "t": "near",
+              "m": "awful은 '끔찍한'이에요. 버릇을 고칠 수 없을 만큼 굳어졌다는 단어는요?"
+            },
+            {
+              "w": "unchangeable",
+              "t": "near",
+              "m": "unchangeable은 사물이 변하지 않는 거예요. 나쁜 버릇을 고칠 수 없는 사람은요?"
+            }
           ]
         },
         {
-          "en": "She is an ___ optimist, even in hard times.", "ko": "그녀는 힘든 시기에도 **못 말리는** 낙천주의자다.", "answer": "incorrigible",
+          "en": "She is an ___ optimist, even in hard times.",
+          "ko": "그녀는 힘든 시기에도 **못 말리는** 낙천주의자다.",
+          "answer": "incorrigible",
           "ctx": "늘 긍정적인 친구",
           "alts": [
-            { "w": "eternal", "t": "ok", "m": "eternal도 맞지만, '못 말리는'이라는 장난스러운 느낌을 살린 단어가 있어요." },
-            { "w": "endless", "t": "near", "m": "endless는 '끝없는'이에요. 바뀔 여지 없이 못 말리는 낙천가는요?" },
-            { "w": "unstoppable", "t": "near", "m": "unstoppable은 '막을 수 없는'이에요. 고칠 수 없다는 뜻을 살린 단어는요?" }
+            {
+              "w": "eternal",
+              "t": "ok",
+              "m": "eternal도 맞지만, '못 말리는'이라는 장난스러운 느낌을 살린 단어가 있어요."
+            },
+            {
+              "w": "endless",
+              "t": "near",
+              "m": "endless는 '끝없는'이에요. 바뀔 여지 없이 못 말리는 낙천가는요?"
+            },
+            {
+              "w": "unstoppable",
+              "t": "near",
+              "m": "unstoppable은 '막을 수 없는'이에요. 고칠 수 없다는 뜻을 살린 단어는요?"
+            }
           ]
         }
       ],
       "nuance": "나쁜 버릇이 '교정할 수 없을 만큼 굳어진'. 가볍게 농담조로 '못 말리는'이라고도 쓴다. hopeless는 희망이 없는 것, incorrigible은 바뀔 여지가 없는 것.",
-      "etymology": "라틴어 in(아닌) + corrigere(바로잡다) → '바로잡을 수 없는'"
+      "etymology": "라틴어 in(아닌) + corrigere(바로잡다) → '바로잡을 수 없는'",
+      "ipa": "/ɪnˈkɔːrɪdʒəbəl/",
+      "def": "having bad habits that cannot be changed or corrected",
+      "forms": [
+        "incorrigibly (부사)"
+      ]
     },
     {
-      "id": "indefatigable", "word": "indefatigable", "pos": "adj", "level": 29,
-      "meanings": ["지칠 줄 모르는, 끈기 있는"],
+      "id": "indefatigable",
+      "word": "indefatigable",
+      "pos": "adj",
+      "level": 29,
+      "meanings": [
+        "지칠 줄 모르는, 끈기 있는"
+      ],
       "sentences": [
         {
-          "en": "She is an ___ campaigner for human rights.", "ko": "그녀는 인권을 위한 **지칠 줄 모르는** 운동가다.", "answer": "indefatigable",
+          "en": "She is an ___ campaigner for human rights.",
+          "ko": "그녀는 인권을 위한 **지칠 줄 모르는** 운동가다.",
+          "answer": "indefatigable",
           "alts": [
-            { "w": "active", "t": "near", "m": "active는 '활동적인'이에요. 아무리 오래 해도 지치지 않는다는 단어는요?" },
-            { "w": "energetic", "t": "near", "m": "energetic은 '활기찬'이에요. 피로를 모르고 계속한다는 단어는요?" },
-            { "w": "tireless", "t": "wrong", "m": "tireless는 뜻은 맞지만 앞의 an과 어울리지 않아요. 모음으로 시작하는 단어는요?" }
+            {
+              "w": "active",
+              "t": "near",
+              "m": "active는 '활동적인'이에요. 아무리 오래 해도 지치지 않는다는 단어는요?"
+            },
+            {
+              "w": "energetic",
+              "t": "near",
+              "m": "energetic은 '활기찬'이에요. 피로를 모르고 계속한다는 단어는요?"
+            },
+            {
+              "w": "tireless",
+              "t": "wrong",
+              "m": "tireless는 뜻은 맞지만 앞의 an과 어울리지 않아요. 모음으로 시작하는 단어는요?"
+            }
           ]
         },
         {
-          "en": "His ___ energy amazed his colleagues.", "ko": "그의 **끝없는** 에너지는 동료들을 놀라게 했다.", "answer": "indefatigable",
+          "en": "His ___ energy amazed his colleagues.",
+          "ko": "그의 **끝없는** 에너지는 동료들을 놀라게 했다.",
+          "answer": "indefatigable",
           "ctx": "야근하는 동료를 보며",
           "alts": [
-            { "w": "endless", "t": "ok", "m": "endless도 맞지만, 지칠 줄 모른다는 뜻의 격식 있는 단어가 있어요." },
-            { "w": "unlimited", "t": "near", "m": "unlimited는 양이 '무제한'이에요. 피로를 모르고 계속되는 에너지는요?" },
-            { "w": "infinite", "t": "near", "m": "infinite는 수학적인 '무한'이에요. 지칠 줄 모르는 에너지는요?" }
+            {
+              "w": "endless",
+              "t": "ok",
+              "m": "endless도 맞지만, 지칠 줄 모른다는 뜻의 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "unlimited",
+              "t": "near",
+              "m": "unlimited는 양이 '무제한'이에요. 피로를 모르고 계속되는 에너지는요?"
+            },
+            {
+              "w": "infinite",
+              "t": "near",
+              "m": "infinite는 수학적인 '무한'이에요. 지칠 줄 모르는 에너지는요?"
+            }
           ]
         }
       ],
       "nuance": "아무리 오래 해도 '피로를 모르는 듯 계속하는'. tireless와 같지만 더 격식체. 발음 [인디패티거블].",
-      "etymology": "라틴어 in(아닌) + defatigare(지치게 하다) → '지치게 할 수 없는'"
+      "etymology": "라틴어 in(아닌) + defatigare(지치게 하다) → '지치게 할 수 없는'",
+      "ipa": "/ˌɪndɪˈfætɪɡəbəl/",
+      "def": "never getting tired or giving up",
+      "forms": [
+        "indefatigably (부사)"
+      ]
     },
     {
-      "id": "insidious", "word": "insidious", "pos": "adj", "level": 29,
-      "meanings": ["서서히 퍼지는, 교활하게 해를 끼치는"],
+      "id": "insidious",
+      "word": "insidious",
+      "pos": "adj",
+      "level": 29,
+      "meanings": [
+        "서서히 퍼지는, 교활하게 해를 끼치는"
+      ],
       "sentences": [
         {
-          "en": "High blood pressure is an ___ disease with few symptoms.", "ko": "고혈압은 증상이 거의 없이 **서서히 진행되는** 병이다.", "answer": "insidious",
+          "en": "High blood pressure is an ___ disease with few symptoms.",
+          "ko": "고혈압은 증상이 거의 없이 **서서히 진행되는** 병이다.",
+          "answer": "insidious",
           "ctx": "건강 검진을 받으며",
           "note": "모르는 새 조금씩 진행돼 해를 끼친다는 뜻",
           "alts": [
-            { "w": "invisible", "t": "near", "m": "invisible은 '보이지 않는'이에요. 모르는 새 서서히 해를 끼치는 병은요?" },
-            { "w": "undetected", "t": "near", "m": "undetected는 '발견되지 않은'이에요. 모르는 새 조금씩 해를 끼치는 병은요?" },
-            { "w": "slow", "t": "wrong", "m": "slow는 앞의 an과 맞지 않고, 해를 끼친다는 뜻도 없어요." }
+            {
+              "w": "invisible",
+              "t": "near",
+              "m": "invisible은 '보이지 않는'이에요. 모르는 새 서서히 해를 끼치는 병은요?"
+            },
+            {
+              "w": "undetected",
+              "t": "near",
+              "m": "undetected는 '발견되지 않은'이에요. 모르는 새 조금씩 해를 끼치는 병은요?"
+            },
+            {
+              "w": "slow",
+              "t": "wrong",
+              "m": "slow는 앞의 an과 맞지 않고, 해를 끼친다는 뜻도 없어요."
+            }
           ]
         },
         {
-          "en": "Rumors can have an ___ effect on a workplace.", "ko": "소문은 직장에 **은밀하게 해를 끼치는** 영향을 줄 수 있다.", "answer": "insidious",
+          "en": "Rumors can have an ___ effect on a workplace.",
+          "ko": "소문은 직장에 **은밀하게 해를 끼치는** 영향을 줄 수 있다.",
+          "answer": "insidious",
           "alts": [
-            { "w": "adverse", "t": "ok", "m": "adverse도 맞지만, 은밀하게 조금씩 파고든다는 느낌의 단어가 있어요." },
-            { "w": "evil", "t": "near", "m": "evil은 '사악한'이에요. 눈에 띄지 않게 조금씩 해를 끼치는 영향은요?" },
-            { "w": "awful", "t": "near", "m": "awful은 '끔찍한'이에요. 은밀하게 파고들어 해를 끼친다는 단어는요?" }
+            {
+              "w": "adverse",
+              "t": "ok",
+              "m": "adverse도 맞지만, 은밀하게 조금씩 파고든다는 느낌의 단어가 있어요."
+            },
+            {
+              "w": "evil",
+              "t": "near",
+              "m": "evil은 '사악한'이에요. 눈에 띄지 않게 조금씩 해를 끼치는 영향은요?"
+            },
+            {
+              "w": "awful",
+              "t": "near",
+              "m": "awful은 '끔찍한'이에요. 은밀하게 파고들어 해를 끼친다는 단어는요?"
+            }
           ]
         }
       ],
       "nuance": "눈에 띄지 않게 '조금씩 파고들어 해를 입히는'. dangerous는 위험 일반, insidious는 알아차렸을 때 이미 늦은 종류의 위험. sly(교활한)보다 피해에 초점.",
-      "etymology": "라틴어 insidiae(함정, 복병) ← insidere(안에 앉아 기다리다)"
+      "etymology": "라틴어 insidiae(함정, 복병) ← insidere(안에 앉아 기다리다)",
+      "ipa": "/ɪnˈsɪdiəs/",
+      "def": "spreading gradually and harmfully without being noticed",
+      "forms": [
+        "insidiously (부사)"
+      ]
     },
     {
-      "id": "laconic", "word": "laconic", "pos": "adj", "level": 29,
-      "meanings": ["말을 아끼는, 간결한"],
+      "id": "laconic",
+      "word": "laconic",
+      "pos": "adj",
+      "level": 29,
+      "meanings": [
+        "말을 아끼는, 간결한"
+      ],
       "sentences": [
         {
-          "en": "His ___ reply was simply 'No'.", "ko": "그의 **짧은** 대답은 그저 '아니오'였다.", "answer": "laconic",
+          "en": "His ___ reply was simply 'No'.",
+          "ko": "그의 **짧은** 대답은 그저 '아니오'였다.",
+          "answer": "laconic",
           "ctx": "문자 답장을 받고",
           "note": "말을 아껴 무뚝뚝할 만큼 간결하다는 뜻",
           "alts": [
-            { "w": "short", "t": "ok", "m": "short도 맞지만, 말수가 적어 무뚝뚝하다는 느낌의 단어가 있어요." },
-            { "w": "simple", "t": "near", "m": "simple은 '단순한'이에요. 말을 아껴 무뚝뚝할 만큼 간결한 대답은요?" },
-            { "w": "terse", "t": "near", "m": "terse는 짧고 쌀쌀한 느낌이에요. 원래 말수가 적은 사람의 간결함은요?" }
+            {
+              "w": "short",
+              "t": "ok",
+              "m": "short도 맞지만, 말수가 적어 무뚝뚝하다는 느낌의 단어가 있어요."
+            },
+            {
+              "w": "simple",
+              "t": "near",
+              "m": "simple은 '단순한'이에요. 말을 아껴 무뚝뚝할 만큼 간결한 대답은요?"
+            },
+            {
+              "w": "terse",
+              "t": "near",
+              "m": "terse는 짧고 쌀쌀한 느낌이에요. 원래 말수가 적은 사람의 간결함은요?"
+            }
           ]
         },
         {
-          "en": "She is ___ by nature and rarely explains herself.", "ko": "그녀는 천성이 **말을 아끼는** 편이라 자신을 거의 설명하지 않는다.", "answer": "laconic",
+          "en": "She is ___ by nature and rarely explains herself.",
+          "ko": "그녀는 천성이 **말을 아끼는** 편이라 자신을 거의 설명하지 않는다.",
+          "answer": "laconic",
           "alts": [
-            { "w": "quiet", "t": "ok", "m": "quiet도 맞지만, 말을 아껴 짧게만 말한다는 단어가 있어요." },
-            { "w": "shy", "t": "near", "m": "shy는 '수줍은'이에요. 수줍음이 아니라 말수가 적고 간결한 성격은요?" },
-            { "w": "concise", "t": "wrong", "m": "concise는 글이나 말이 간결한 거예요. 사람의 성격에는 잘 쓰지 않아요." }
+            {
+              "w": "quiet",
+              "t": "ok",
+              "m": "quiet도 맞지만, 말을 아껴 짧게만 말한다는 단어가 있어요."
+            },
+            {
+              "w": "shy",
+              "t": "near",
+              "m": "shy는 '수줍은'이에요. 수줍음이 아니라 말수가 적고 간결한 성격은요?"
+            },
+            {
+              "w": "concise",
+              "t": "wrong",
+              "m": "concise는 글이나 말이 간결한 거예요. 사람의 성격에는 잘 쓰지 않아요."
+            }
           ]
         }
       ],
       "nuance": "말이 너무 적어 '무뚝뚝하게 들릴 만큼 간결한'. concise는 글이 간결하다는 칭찬, laconic은 사람의 말수가 적다는 묘사. terse는 짧고 쌀쌀한 것.",
-      "etymology": "그리스어 Lakonikos(라코니아, 스파르타의) → 말이 짧았던 스파르타인에서"
+      "etymology": "그리스어 Lakonikos(라코니아, 스파르타의) → 말이 짧았던 스파르타인에서",
+      "ipa": "/ləˈkɑːnɪk/",
+      "def": "using very few words",
+      "forms": [
+        "laconically (부사)"
+      ]
     },
     {
-      "id": "magnanimous", "word": "magnanimous", "pos": "adj", "level": 29,
-      "meanings": ["관대한, 너그러운(특히 적이나 패자에게)"],
+      "id": "magnanimous",
+      "word": "magnanimous",
+      "pos": "adj",
+      "level": 29,
+      "meanings": [
+        "관대한, 너그러운(특히 적이나 패자에게)"
+      ],
       "sentences": [
         {
-          "en": "The winner was ___ in victory and praised her opponent.", "ko": "승자는 승리에 **관대하여** 상대를 칭찬했다.", "answer": "magnanimous",
+          "en": "The winner was ___ in victory and praised her opponent.",
+          "ko": "승자는 승리에 **관대하여** 상대를 칭찬했다.",
+          "answer": "magnanimous",
           "ctx": "결승전이 끝난 뒤",
           "note": "패자를 큰 마음으로 너그럽게 대했다는 뜻",
           "alts": [
-            { "w": "generous", "t": "ok", "m": "generous도 맞지만, 상대에게 원한 없이 큰 마음을 보인다는 단어가 있어요." },
-            { "w": "kind", "t": "near", "m": "kind는 '친절한'이에요. 패자를 큰 마음으로 품어 주는 너그러움은요?" },
-            { "w": "humble", "t": "near", "m": "humble은 '겸손한'이에요. 상대를 너그럽게 품어 준다는 단어는요?" }
+            {
+              "w": "generous",
+              "t": "ok",
+              "m": "generous도 맞지만, 상대에게 원한 없이 큰 마음을 보인다는 단어가 있어요."
+            },
+            {
+              "w": "kind",
+              "t": "near",
+              "m": "kind는 '친절한'이에요. 패자를 큰 마음으로 품어 주는 너그러움은요?"
+            },
+            {
+              "w": "humble",
+              "t": "near",
+              "m": "humble은 '겸손한'이에요. 상대를 너그럽게 품어 준다는 단어는요?"
+            }
           ]
         },
         {
-          "en": "It was ___ of him to forgive the man who wronged him.", "ko": "자신에게 잘못한 사람을 용서한 것은 그의 **너그러움**이었다.", "answer": "magnanimous",
+          "en": "It was ___ of him to forgive the man who wronged him.",
+          "ko": "자신에게 잘못한 사람을 용서한 것은 그의 **너그러움**이었다.",
+          "answer": "magnanimous",
           "alts": [
-            { "w": "generous", "t": "ok", "m": "generous도 맞지만, 원한을 품을 만한 상대를 품어 준 너그러움의 단어가 있어요." },
-            { "w": "tolerant", "t": "near", "m": "tolerant는 '참아 주는'이에요. 원한 없이 용서하는 큰 마음은요?" },
-            { "w": "generosity", "t": "wrong", "m": "generosity는 명사예요. It was ~ of him 자리엔 형용사가 와야 해요." }
+            {
+              "w": "generous",
+              "t": "ok",
+              "m": "generous도 맞지만, 원한을 품을 만한 상대를 품어 준 너그러움의 단어가 있어요."
+            },
+            {
+              "w": "tolerant",
+              "t": "near",
+              "m": "tolerant는 '참아 주는'이에요. 원한 없이 용서하는 큰 마음은요?"
+            },
+            {
+              "w": "generosity",
+              "t": "wrong",
+              "m": "generosity는 명사예요. It was ~ of him 자리엔 형용사가 와야 해요."
+            }
           ]
         }
       ],
       "nuance": "자기보다 약하거나 적대적인 상대를 '큰 마음으로 품어 주는'. generous는 베풂 일반, magnanimous는 원한을 품을 만한 상황에서의 너그러움. 명사 magnanimity.",
-      "etymology": "라틴어 magnus(큰) + animus(마음) → '큰 마음을 가진'"
+      "etymology": "라틴어 magnus(큰) + animus(마음) → '큰 마음을 가진'",
+      "ipa": "/mæɡˈnænɪməs/",
+      "def": "kind and generous, especially toward a rival or enemy",
+      "forms": [
+        "magnanimously (부사)",
+        "magnanimity (명사)"
+      ]
     },
     {
-      "id": "mercurial", "word": "mercurial", "pos": "adj", "level": 29,
-      "meanings": ["(기분이) 변덕스러운, 종잡을 수 없는"],
+      "id": "mercurial",
+      "word": "mercurial",
+      "pos": "adj",
+      "level": 29,
+      "meanings": [
+        "(기분이) 변덕스러운, 종잡을 수 없는"
+      ],
       "sentences": [
         {
-          "en": "The coach is known for his ___ temperament.", "ko": "그 감독은 **변덕스러운** 기질로 유명하다.", "answer": "mercurial",
+          "en": "The coach is known for his ___ temperament.",
+          "ko": "그 감독은 **변덕스러운** 기질로 유명하다.",
+          "answer": "mercurial",
           "note": "기분이 수은처럼 빠르게 급변한다는 뜻",
           "alts": [
-            { "w": "moody", "t": "ok", "m": "moody도 맞지만, 수은처럼 빠르게 급변하는 기질을 말하는 단어가 있어요." },
-            { "w": "changeable", "t": "near", "m": "changeable은 날씨처럼 '잘 바뀌는'이에요. 기분이 급변하는 기질은요?" },
-            { "w": "angry", "t": "wrong", "m": "angry는 '화난' 상태예요. 기분이 예측 불가하게 급변하는 기질은요?" }
+            {
+              "w": "moody",
+              "t": "ok",
+              "m": "moody도 맞지만, 수은처럼 빠르게 급변하는 기질을 말하는 단어가 있어요."
+            },
+            {
+              "w": "changeable",
+              "t": "near",
+              "m": "changeable은 날씨처럼 '잘 바뀌는'이에요. 기분이 급변하는 기질은요?"
+            },
+            {
+              "w": "angry",
+              "t": "wrong",
+              "m": "angry는 '화난' 상태예요. 기분이 예측 불가하게 급변하는 기질은요?"
+            }
           ]
         },
         {
-          "en": "Her ___ moods made her hard to work with.", "ko": "그녀의 **종잡을 수 없는** 기분 변화는 함께 일하기 어렵게 했다.", "answer": "mercurial",
+          "en": "Her ___ moods made her hard to work with.",
+          "ko": "그녀의 **종잡을 수 없는** 기분 변화는 함께 일하기 어렵게 했다.",
+          "answer": "mercurial",
           "ctx": "새 팀장과 일하며",
           "alts": [
-            { "w": "unpredictable", "t": "ok", "m": "unpredictable도 맞지만, 기분이 빠르게 급변하는 걸 말하는 단어가 있어요." },
-            { "w": "bad", "t": "near", "m": "bad는 '나쁜'이에요. 기분이 이랬다저랬다 종잡을 수 없다는 단어는요?" },
-            { "w": "moody", "t": "wrong", "m": "moody는 사람을 꾸미는 말이라 moods 앞에선 뜻이 겹쳐 어색해요." }
+            {
+              "w": "unpredictable",
+              "t": "ok",
+              "m": "unpredictable도 맞지만, 기분이 빠르게 급변하는 걸 말하는 단어가 있어요."
+            },
+            {
+              "w": "bad",
+              "t": "near",
+              "m": "bad는 '나쁜'이에요. 기분이 이랬다저랬다 종잡을 수 없다는 단어는요?"
+            },
+            {
+              "w": "moody",
+              "t": "wrong",
+              "m": "moody는 사람을 꾸미는 말이라 moods 앞에선 뜻이 겹쳐 어색해요."
+            }
           ]
         }
       ],
       "nuance": "수은처럼 '빠르게 변해 예측할 수 없는'. capricious는 변덕 일반, mercurial은 특히 기분·성격이 급변하며 재기 넘친다는 뉘앙스도 있다.",
-      "etymology": "라틴어 Mercurius(전령의 신 메르쿠리우스, 수은) → '수은처럼 유동적인'"
+      "etymology": "라틴어 Mercurius(전령의 신 메르쿠리우스, 수은) → '수은처럼 유동적인'",
+      "ipa": "/mɚˈkjʊriəl/",
+      "def": "changing mood or mind suddenly and often",
+      "forms": []
     },
     {
-      "id": "nefarious", "word": "nefarious", "pos": "adj", "level": 29,
-      "meanings": ["극악한, 사악한"],
+      "id": "nefarious",
+      "word": "nefarious",
+      "pos": "adj",
+      "level": 29,
+      "meanings": [
+        "극악한, 사악한"
+      ],
       "sentences": [
         {
-          "en": "The group was involved in ___ activities like smuggling.", "ko": "그 조직은 밀수 같은 **사악한** 활동에 관여했다.", "answer": "nefarious",
+          "en": "The group was involved in ___ activities like smuggling.",
+          "ko": "그 조직은 밀수 같은 **사악한** 활동에 관여했다.",
+          "answer": "nefarious",
           "ctx": "범죄 조직 뉴스를 보며",
           "alts": [
-            { "w": "illegal", "t": "ok", "m": "illegal도 맞지만, 범죄적으로 사악하다는 격식 있는 단어가 있어요." },
-            { "w": "evil", "t": "near", "m": "evil은 악 일반이에요. 음모·범죄 활동에 쓰는 격식 있는 단어는요?" },
-            { "w": "bad", "t": "near", "m": "bad는 너무 막연해요. 범죄적으로 사악한 활동을 말하는 단어는요?" }
+            {
+              "w": "illegal",
+              "t": "ok",
+              "m": "illegal도 맞지만, 범죄적으로 사악하다는 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "evil",
+              "t": "near",
+              "m": "evil은 악 일반이에요. 음모·범죄 활동에 쓰는 격식 있는 단어는요?"
+            },
+            {
+              "w": "bad",
+              "t": "near",
+              "m": "bad는 너무 막연해요. 범죄적으로 사악한 활동을 말하는 단어는요?"
+            }
           ]
         },
         {
-          "en": "He had ___ plans to take over the company.", "ko": "그는 회사를 장악하려는 **극악한** 계획을 갖고 있었다.", "answer": "nefarious",
+          "en": "He had ___ plans to take over the company.",
+          "ko": "그는 회사를 장악하려는 **극악한** 계획을 갖고 있었다.",
+          "answer": "nefarious",
           "note": "범죄적이고 비도덕적인 음모라는 뜻",
           "alts": [
-            { "w": "evil", "t": "ok", "m": "evil도 맞지만, 범죄적인 음모에 쓰는 격식 있는 단어가 있어요." },
-            { "w": "wicked", "t": "near", "m": "wicked는 '못된'이에요. 범죄적인 음모처럼 무거운 악을 말하는 단어는요?" },
-            { "w": "secret", "t": "near", "m": "secret은 '비밀의'예요. 계획이 사악하고 비도덕적이라는 단어는요?" }
+            {
+              "w": "evil",
+              "t": "ok",
+              "m": "evil도 맞지만, 범죄적인 음모에 쓰는 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "wicked",
+              "t": "near",
+              "m": "wicked는 '못된'이에요. 범죄적인 음모처럼 무거운 악을 말하는 단어는요?"
+            },
+            {
+              "w": "secret",
+              "t": "near",
+              "m": "secret은 '비밀의'예요. 계획이 사악하고 비도덕적이라는 단어는요?"
+            }
           ]
         }
       ],
       "nuance": "범죄적으로 '악하고 비도덕적인'. evil은 악 일반, nefarious는 특히 음모·범죄 활동에 쓰는 격식체. wicked보다 무겁다.",
-      "etymology": "라틴어 nefas(불경한 짓) ← ne(아닌) + fas(신의 법)"
+      "etymology": "라틴어 nefas(불경한 짓) ← ne(아닌) + fas(신의 법)",
+      "ipa": "/nɪˈfɛriəs/",
+      "def": "wicked, criminal or evil",
+      "forms": [
+        "nefariously (부사)"
+      ]
     },
     {
-      "id": "obsequious", "word": "obsequious", "pos": "adj", "level": 29,
-      "meanings": ["아첨하는, 비굴하게 굽실거리는"],
+      "id": "obsequious",
+      "word": "obsequious",
+      "pos": "adj",
+      "level": 29,
+      "meanings": [
+        "아첨하는, 비굴하게 굽실거리는"
+      ],
       "sentences": [
         {
-          "en": "The ___ waiter kept bowing and praising our choices.", "ko": "**비굴하게 굽실거리는** 웨이터는 계속 고개를 숙이며 우리의 선택을 칭찬했다.", "answer": "obsequious",
+          "en": "The ___ waiter kept bowing and praising our choices.",
+          "ko": "**비굴하게 굽실거리는** 웨이터는 계속 고개를 숙이며 우리의 선택을 칭찬했다.",
+          "answer": "obsequious",
           "ctx": "고급 식당에서",
           "alts": [
-            { "w": "polite", "t": "near", "m": "polite는 '예의 바른'이에요. 자존심 버리고 지나치게 굽실거리는 건요?" },
-            { "w": "kind", "t": "near", "m": "kind는 '친절한'이에요. 환심을 사려 비굴하게 구는 태도는요?" },
-            { "w": "humble", "t": "wrong", "m": "humble은 긍정적인 '겸손한'이에요. 비굴하게 아첨한다는 경멸적인 단어는요?" }
+            {
+              "w": "polite",
+              "t": "near",
+              "m": "polite는 '예의 바른'이에요. 자존심 버리고 지나치게 굽실거리는 건요?"
+            },
+            {
+              "w": "kind",
+              "t": "near",
+              "m": "kind는 '친절한'이에요. 환심을 사려 비굴하게 구는 태도는요?"
+            },
+            {
+              "w": "humble",
+              "t": "wrong",
+              "m": "humble은 긍정적인 '겸손한'이에요. 비굴하게 아첨한다는 경멸적인 단어는요?"
+            }
           ]
         },
         {
-          "en": "He was ___ toward his superiors and rude to his staff.", "ko": "그는 상사에게는 **아첨하고** 부하 직원에게는 무례했다.", "answer": "obsequious",
+          "en": "He was ___ toward his superiors and rude to his staff.",
+          "ko": "그는 상사에게는 **아첨하고** 부하 직원에게는 무례했다.",
+          "answer": "obsequious",
           "alts": [
-            { "w": "flattering", "t": "near", "m": "flattering은 옷·사진이 '돋보이게 하는'에 자주 써요. 상사에게 비굴하게 구는 태도는요?" },
-            { "w": "submissive", "t": "near", "m": "submissive는 '순종적인'이에요. 환심을 사려 지나치게 아첨하는 태도는요?" },
-            { "w": "flatter", "t": "wrong", "m": "flatter는 동사라 was 뒤에 올 수 없어요. 형용사가 필요해요." }
+            {
+              "w": "flattering",
+              "t": "near",
+              "m": "flattering은 옷·사진이 '돋보이게 하는'에 자주 써요. 상사에게 비굴하게 구는 태도는요?"
+            },
+            {
+              "w": "submissive",
+              "t": "near",
+              "m": "submissive는 '순종적인'이에요. 환심을 사려 지나치게 아첨하는 태도는요?"
+            },
+            {
+              "w": "flatter",
+              "t": "wrong",
+              "m": "flatter는 동사라 was 뒤에 올 수 없어요. 형용사가 필요해요."
+            }
           ]
         }
       ],
       "nuance": "환심을 사려고 '지나치게 복종적이고 비굴한'. polite는 예의 바른 것, obsequious는 자존심을 버린 과도한 공손함(경멸적). servile, fawning과 비슷.",
-      "etymology": "라틴어 obsequi(따르다, 순종하다) ← ob + sequi(따르다)"
+      "etymology": "라틴어 obsequi(따르다, 순종하다) ← ob + sequi(따르다)",
+      "ipa": "/əbˈsiːkwiəs/",
+      "def": "too eager to please or obey someone important",
+      "forms": [
+        "obsequiously (부사)",
+        "obsequiousness (명사)"
+      ]
     }
   ]
 }

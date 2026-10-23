@@ -1,262 +1,650 @@
 {
   "words": [
     {
-      "id": "superficial", "word": "superficial", "pos": "adj", "level": 23,
-      "meanings": ["피상적인, 깊이 없는", "표면상의"],
+      "id": "superficial",
+      "word": "superficial",
+      "pos": "adj",
+      "level": 23,
+      "meanings": [
+        "피상적인, 깊이 없는",
+        "표면상의"
+      ],
       "sentences": [
         {
-          "en": "The article offers only a ___ analysis of the issue.", "ko": "그 기사는 그 문제에 대해 **피상적인** 분석만 제공한다.", "answer": "superficial",
+          "en": "The article offers only a ___ analysis of the issue.",
+          "ko": "그 기사는 그 문제에 대해 **피상적인** 분석만 제공한다.",
+          "answer": "superficial",
           "ctx": "신문 기사를 평하며",
           "alts": [
-            { "w": "shallow", "t": "ok", "m": "shallow도 맞지만, 좀 더 격식 있는 글에 어울리는 단어를 생각해 보세요." },
-            { "w": "simple", "t": "near", "m": "simple은 '간단한'이에요. 겉만 훑고 깊이가 없다는 단어는요?" },
-            { "w": "surface", "t": "wrong", "m": "surface는 명사라 이 자리엔 어색해요. '표면적인'이라는 형용사를 떠올려 보세요." }
+            {
+              "w": "shallow",
+              "t": "ok",
+              "m": "shallow도 맞지만, 좀 더 격식 있는 글에 어울리는 단어를 생각해 보세요."
+            },
+            {
+              "w": "simple",
+              "t": "near",
+              "m": "simple은 '간단한'이에요. 겉만 훑고 깊이가 없다는 단어는요?"
+            },
+            {
+              "w": "surface",
+              "t": "wrong",
+              "m": "surface는 명사라 이 자리엔 어색해요. '표면적인'이라는 형용사를 떠올려 보세요."
+            }
           ]
         },
         {
-          "en": "Luckily, the wound was only ___.", "ko": "다행히 상처는 **표면적인** 것에 그쳤다.", "answer": "superficial",
+          "en": "Luckily, the wound was only ___.",
+          "ko": "다행히 상처는 **표면적인** 것에 그쳤다.",
+          "answer": "superficial",
           "note": "피부 겉에만 생긴 얕은 상처라는 뜻",
           "alts": [
-            { "w": "minor", "t": "ok", "m": "minor도 맞지만, 상처가 피부 겉에만 났다는 걸 말하는 단어가 있어요." },
-            { "w": "small", "t": "near", "m": "small은 크기가 작다는 거예요. 깊지 않고 겉에만 났다는 단어는요?" }
+            {
+              "w": "minor",
+              "t": "ok",
+              "m": "minor도 맞지만, 상처가 피부 겉에만 났다는 걸 말하는 단어가 있어요."
+            },
+            {
+              "w": "small",
+              "t": "near",
+              "m": "small은 크기가 작다는 거예요. 깊지 않고 겉에만 났다는 단어는요?"
+            }
           ]
         }
       ],
       "nuance": "표면에만 머물러 '깊이가 없는'. shallow와 같지만 격식체. 사람에게 쓰면 '겉모습만 중시하는'. 상처가 superficial하면 얕은 것.",
-      "etymology": "라틴어 super(위) + facies(얼굴, 표면) → '표면 위의'"
+      "etymology": "라틴어 super(위) + facies(얼굴, 표면) → '표면 위의'",
+      "ipa": "/ˌsuːpɚˈfɪʃəl/",
+      "def": "only on the surface; not thorough or deep",
+      "forms": [
+        "superficially (부사)",
+        "superficiality (명사)"
+      ]
     },
     {
-      "id": "surreptitious", "word": "surreptitious", "pos": "adj", "level": 23,
-      "meanings": ["은밀한, 남몰래 하는"],
+      "id": "surreptitious",
+      "word": "surreptitious",
+      "pos": "adj",
+      "level": 23,
+      "meanings": [
+        "은밀한, 남몰래 하는"
+      ],
       "sentences": [
         {
-          "en": "She cast a ___ glance at her watch.", "ko": "그녀는 시계를 **슬쩍** 쳐다보았다.", "answer": "surreptitious",
+          "en": "She cast a ___ glance at her watch.",
+          "ko": "그녀는 시계를 **슬쩍** 쳐다보았다.",
+          "answer": "surreptitious",
           "ctx": "지루한 회의 중에",
           "note": "남이 눈치채지 못하게 몰래 한다는 뜻",
           "alts": [
-            { "w": "quick", "t": "near", "m": "quick은 '빠른'이에요. 남몰래 들키지 않게 보는 느낌의 단어는요?" },
-            { "w": "secret", "t": "near", "m": "secret은 비밀인 상태를 말해요. 몰래 하는 행동 자체를 강조하는 단어는요?" },
-            { "w": "secretly", "t": "wrong", "m": "secretly는 부사라 명사 glance 앞에 올 수 없어요. 형용사가 필요해요." }
+            {
+              "w": "quick",
+              "t": "near",
+              "m": "quick은 '빠른'이에요. 남몰래 들키지 않게 보는 느낌의 단어는요?"
+            },
+            {
+              "w": "secret",
+              "t": "near",
+              "m": "secret은 비밀인 상태를 말해요. 몰래 하는 행동 자체를 강조하는 단어는요?"
+            },
+            {
+              "w": "secretly",
+              "t": "wrong",
+              "m": "secretly는 부사라 명사 glance 앞에 올 수 없어요. 형용사가 필요해요."
+            }
           ]
         },
         {
-          "en": "They held ___ meetings late at night.", "ko": "그들은 밤늦게 **비밀** 회합을 가졌다.", "answer": "surreptitious",
+          "en": "They held ___ meetings late at night.",
+          "ko": "그들은 밤늦게 **비밀** 회합을 가졌다.",
+          "answer": "surreptitious",
           "alts": [
-            { "w": "secret", "t": "ok", "m": "secret도 맞지만, 들키지 않으려 몰래 하는 행동을 강조하는 단어가 있어요." },
-            { "w": "private", "t": "near", "m": "private은 '사적인, 비공개의'예요. 남몰래 숨어서 한다는 단어는요?" },
-            { "w": "hidden", "t": "near", "m": "hidden은 '숨겨진' 상태예요. 몰래 숨어서 하는 행동을 뜻하는 단어는요?" }
+            {
+              "w": "secret",
+              "t": "ok",
+              "m": "secret도 맞지만, 들키지 않으려 몰래 하는 행동을 강조하는 단어가 있어요."
+            },
+            {
+              "w": "private",
+              "t": "near",
+              "m": "private은 '사적인, 비공개의'예요. 남몰래 숨어서 한다는 단어는요?"
+            },
+            {
+              "w": "hidden",
+              "t": "near",
+              "m": "hidden은 '숨겨진' 상태예요. 몰래 숨어서 하는 행동을 뜻하는 단어는요?"
+            }
           ]
         }
       ],
       "nuance": "들키지 않으려고 '몰래 하는'. secret은 알려지지 않은 상태, surreptitious는 숨기려는 행동 자체를 강조. 부사 surreptitiously(살며시).",
-      "etymology": "라틴어 sub(아래로) + rapere(빼앗다) → '몰래 가져가는'"
+      "etymology": "라틴어 sub(아래로) + rapere(빼앗다) → '몰래 가져가는'",
+      "ipa": "/ˌsɝːəpˈtɪʃəs/",
+      "def": "done secretly so that others will not notice",
+      "forms": [
+        "surreptitiously (부사)"
+      ]
     },
     {
-      "id": "tenacious", "word": "tenacious", "pos": "adj", "level": 23,
-      "meanings": ["끈질긴, 집요한"],
+      "id": "tenacious",
+      "word": "tenacious",
+      "pos": "adj",
+      "level": 23,
+      "meanings": [
+        "끈질긴, 집요한"
+      ],
       "sentences": [
         {
-          "en": "She is a ___ reporter who never gives up on a story.", "ko": "그녀는 기사를 절대 포기하지 않는 **집요한** 기자다.", "answer": "tenacious",
+          "en": "She is a ___ reporter who never gives up on a story.",
+          "ko": "그녀는 기사를 절대 포기하지 않는 **집요한** 기자다.",
+          "answer": "tenacious",
           "ctx": "기자를 소개하며",
           "alts": [
-            { "w": "persistent", "t": "ok", "m": "persistent도 맞지만, 한번 문 것은 꽉 붙잡고 놓지 않는 느낌의 단어가 있어요." },
-            { "w": "stubborn", "t": "near", "m": "stubborn은 '고집 센'이라 부정적이에요. 목표를 향한 끈기를 칭찬하는 단어는요?" },
-            { "w": "passionate", "t": "near", "m": "passionate는 '열정적인'이에요. 절대 포기하지 않고 버티는 단어를 생각해 보세요." }
+            {
+              "w": "persistent",
+              "t": "ok",
+              "m": "persistent도 맞지만, 한번 문 것은 꽉 붙잡고 놓지 않는 느낌의 단어가 있어요."
+            },
+            {
+              "w": "stubborn",
+              "t": "near",
+              "m": "stubborn은 '고집 센'이라 부정적이에요. 목표를 향한 끈기를 칭찬하는 단어는요?"
+            },
+            {
+              "w": "passionate",
+              "t": "near",
+              "m": "passionate는 '열정적인'이에요. 절대 포기하지 않고 버티는 단어를 생각해 보세요."
+            }
           ]
         },
         {
-          "en": "The team put up a ___ defense.", "ko": "그 팀은 **끈질긴** 수비를 펼쳤다.", "answer": "tenacious",
+          "en": "The team put up a ___ defense.",
+          "ko": "그 팀은 **끈질긴** 수비를 펼쳤다.",
+          "answer": "tenacious",
           "ctx": "축구 경기를 보며",
           "note": "포기하지 않고 끝까지 버텼다는 뜻",
           "alts": [
-            { "w": "strong", "t": "ok", "m": "strong도 맞지만, 끝까지 버티는 끈기를 표현하는 단어가 있어요." },
-            { "w": "stubborn", "t": "near", "m": "stubborn은 고집스럽다는 부정적 느낌이에요. 끈질기게 버티는 수비를 칭찬하는 단어는요?" },
-            { "w": "hard", "t": "wrong", "m": "hard defense는 영어에서 잘 안 써요. 끝까지 물고 늘어지는 수비를 뜻하는 단어는요?" }
+            {
+              "w": "strong",
+              "t": "ok",
+              "m": "strong도 맞지만, 끝까지 버티는 끈기를 표현하는 단어가 있어요."
+            },
+            {
+              "w": "stubborn",
+              "t": "near",
+              "m": "stubborn은 고집스럽다는 부정적 느낌이에요. 끈질기게 버티는 수비를 칭찬하는 단어는요?"
+            },
+            {
+              "w": "hard",
+              "t": "wrong",
+              "m": "hard defense는 영어에서 잘 안 써요. 끝까지 물고 늘어지는 수비를 뜻하는 단어는요?"
+            }
           ]
         }
       ],
       "nuance": "쉽게 놓지 않고 '꽉 붙잡고 버티는'(대개 긍정적). stubborn은 고집스러워 부정적, tenacious는 목표를 향한 끈기. 명사 tenacity.",
-      "etymology": "라틴어 tenax(꽉 잡는) ← tenere(잡다)"
+      "etymology": "라틴어 tenax(꽉 잡는) ← tenere(잡다)",
+      "ipa": "/təˈneɪʃəs/",
+      "def": "holding firmly to something; determined and not giving up",
+      "forms": [
+        "tenaciously (부사)",
+        "tenacity (명사)"
+      ]
     },
     {
-      "id": "trivial", "word": "trivial", "pos": "adj", "level": 23,
-      "meanings": ["사소한, 하찮은"],
+      "id": "trivial",
+      "word": "trivial",
+      "pos": "adj",
+      "level": 23,
+      "meanings": [
+        "사소한, 하찮은"
+      ],
       "sentences": [
         {
-          "en": "They argued over ___ matters like whose turn it was.", "ko": "그들은 누구 차례인지 같은 **사소한** 문제로 다퉜다.", "answer": "trivial",
+          "en": "They argued over ___ matters like whose turn it was.",
+          "ko": "그들은 누구 차례인지 같은 **사소한** 문제로 다퉜다.",
+          "answer": "trivial",
           "ctx": "다투는 룸메이트들을 보며",
           "alts": [
-            { "w": "small", "t": "ok", "m": "small도 맞지만, 신경 쓸 가치도 없이 하찮다는 느낌의 단어가 있어요." },
-            { "w": "minor", "t": "near", "m": "minor는 '비교적 덜 중요한'이에요. 아예 무시해도 될 만큼 하찮은 일은요?" },
-            { "w": "light", "t": "wrong", "m": "light는 무게나 색이 '가벼운'이에요. 문제가 하찮다는 단어를 생각해 보세요." }
+            {
+              "w": "small",
+              "t": "ok",
+              "m": "small도 맞지만, 신경 쓸 가치도 없이 하찮다는 느낌의 단어가 있어요."
+            },
+            {
+              "w": "minor",
+              "t": "near",
+              "m": "minor는 '비교적 덜 중요한'이에요. 아예 무시해도 될 만큼 하찮은 일은요?"
+            },
+            {
+              "w": "light",
+              "t": "wrong",
+              "m": "light는 무게나 색이 '가벼운'이에요. 문제가 하찮다는 단어를 생각해 보세요."
+            }
           ]
         },
         {
-          "en": "Compared to his problems, mine seem ___.", "ko": "그의 문제에 비하면 내 문제는 **하찮아** 보인다.", "answer": "trivial",
+          "en": "Compared to his problems, mine seem ___.",
+          "ko": "그의 문제에 비하면 내 문제는 **하찮아** 보인다.",
+          "answer": "trivial",
           "note": "신경 쓸 가치가 없을 만큼 작다는 뜻",
           "alts": [
-            { "w": "small", "t": "ok", "m": "small도 맞지만, '대수롭지 않다'는 느낌을 더 살린 단어가 있어요." },
-            { "w": "minor", "t": "near", "m": "minor는 '비교적 덜 중요한'이에요. 아예 대수롭지 않다는 단어는요?" },
-            { "w": "nothing", "t": "wrong", "m": "nothing은 명사예요. seem 뒤에 올 '하찮은'이라는 형용사를 떠올려 보세요." }
+            {
+              "w": "small",
+              "t": "ok",
+              "m": "small도 맞지만, '대수롭지 않다'는 느낌을 더 살린 단어가 있어요."
+            },
+            {
+              "w": "minor",
+              "t": "near",
+              "m": "minor는 '비교적 덜 중요한'이에요. 아예 대수롭지 않다는 단어는요?"
+            },
+            {
+              "w": "nothing",
+              "t": "wrong",
+              "m": "nothing은 명사예요. seem 뒤에 올 '하찮은'이라는 형용사를 떠올려 보세요."
+            }
           ]
         }
       ],
       "nuance": "신경 쓸 가치가 없을 만큼 '작고 중요하지 않은'. minor는 덜 중요한 것, trivial은 아예 무시해도 될 만한 것. 명사 trivia(잡다한 상식).",
-      "etymology": "라틴어 trivium(세 길이 만나는 곳) → '길거리에서 흔히 보는'"
+      "etymology": "라틴어 trivium(세 길이 만나는 곳) → '길거리에서 흔히 보는'",
+      "ipa": "/ˈtrɪviəl/",
+      "def": "not important or serious; small",
+      "forms": [
+        "trivially (부사)",
+        "triviality (명사)",
+        "trivialize (동사: 하찮게 여기다)"
+      ]
     },
     {
-      "id": "ubiquitous", "word": "ubiquitous", "pos": "adj", "level": 23,
-      "meanings": ["어디에나 있는, 아주 흔한"],
+      "id": "ubiquitous",
+      "word": "ubiquitous",
+      "pos": "adj",
+      "level": 23,
+      "meanings": [
+        "어디에나 있는, 아주 흔한"
+      ],
       "sentences": [
         {
-          "en": "Smartphones have become ___ in modern life.", "ko": "스마트폰은 현대 생활에서 **어디에나 있는** 것이 되었다.", "answer": "ubiquitous",
+          "en": "Smartphones have become ___ in modern life.",
+          "ko": "스마트폰은 현대 생활에서 **어디에나 있는** 것이 되었다.",
+          "answer": "ubiquitous",
           "ctx": "지하철에서 주위를 둘러보며",
           "alts": [
-            { "w": "common", "t": "ok", "m": "common도 맞지만, 피할 수 없을 만큼 어디서나 보인다는 단어가 있어요." },
-            { "w": "popular", "t": "near", "m": "popular는 '인기 있는'이에요. 어디를 가나 존재한다는 단어는요?" },
-            { "w": "everywhere", "t": "wrong", "m": "everywhere는 부사라 become 뒤에 올 수 없어요. 형용사를 떠올려 보세요." }
+            {
+              "w": "common",
+              "t": "ok",
+              "m": "common도 맞지만, 피할 수 없을 만큼 어디서나 보인다는 단어가 있어요."
+            },
+            {
+              "w": "popular",
+              "t": "near",
+              "m": "popular는 '인기 있는'이에요. 어디를 가나 존재한다는 단어는요?"
+            },
+            {
+              "w": "everywhere",
+              "t": "wrong",
+              "m": "everywhere는 부사라 become 뒤에 올 수 없어요. 형용사를 떠올려 보세요."
+            }
           ]
         },
         {
-          "en": "Coffee shops are ___ in this city.", "ko": "이 도시에는 커피숍이 **사방에** 있다.", "answer": "ubiquitous",
+          "en": "Coffee shops are ___ in this city.",
+          "ko": "이 도시에는 커피숍이 **사방에** 있다.",
+          "answer": "ubiquitous",
           "alts": [
-            { "w": "everywhere", "t": "ok", "m": "everywhere도 맞지만, '어디에나 있는'을 뜻하는 격식 있는 형용사가 있어요." },
-            { "w": "common", "t": "near", "m": "common은 '흔한'이에요. 피할 수 없을 만큼 사방에 있다는 단어는요?" },
-            { "w": "many", "t": "wrong", "m": "many는 명사 앞에 쓰는 말이라 are 뒤에 혼자 오기 어색해요." }
+            {
+              "w": "everywhere",
+              "t": "ok",
+              "m": "everywhere도 맞지만, '어디에나 있는'을 뜻하는 격식 있는 형용사가 있어요."
+            },
+            {
+              "w": "common",
+              "t": "near",
+              "m": "common은 '흔한'이에요. 피할 수 없을 만큼 사방에 있다는 단어는요?"
+            },
+            {
+              "w": "many",
+              "t": "wrong",
+              "m": "many는 명사 앞에 쓰는 말이라 are 뒤에 혼자 오기 어색해요."
+            }
           ]
         }
       ],
       "nuance": "동시에 '모든 곳에 존재하는'. common은 흔한 것, ubiquitous는 피할 수 없을 만큼 어디서나 보이는 것. 명사 ubiquity.",
-      "etymology": "라틴어 ubique(어디에나) → '어디에나 있는'"
+      "etymology": "라틴어 ubique(어디에나) → '어디에나 있는'",
+      "ipa": "/juːˈbɪkwɪtəs/",
+      "def": "seeming to be everywhere or present at the same time",
+      "forms": [
+        "ubiquitously (부사)",
+        "ubiquity (명사)"
+      ]
     },
     {
-      "id": "unanimous", "word": "unanimous", "pos": "adj", "level": 23,
-      "meanings": ["만장일치의"],
+      "id": "unanimous",
+      "word": "unanimous",
+      "pos": "adj",
+      "level": 23,
+      "meanings": [
+        "만장일치의"
+      ],
       "sentences": [
         {
-          "en": "The committee reached a ___ decision.", "ko": "위원회는 **만장일치로** 결정을 내렸다.", "answer": "unanimous",
+          "en": "The committee reached a ___ decision.",
+          "ko": "위원회는 **만장일치로** 결정을 내렸다.",
+          "answer": "unanimous",
           "ctx": "위원회 회의 결과",
           "alts": [
-            { "w": "joint", "t": "near", "m": "joint는 '공동의'예요. 반대 없이 모두가 찬성했다는 단어는요?" },
-            { "w": "final", "t": "near", "m": "final은 '최종적인'이에요. 모두가 같은 의견이었다는 단어는요?" }
+            {
+              "w": "joint",
+              "t": "near",
+              "m": "joint는 '공동의'예요. 반대 없이 모두가 찬성했다는 단어는요?"
+            },
+            {
+              "w": "final",
+              "t": "near",
+              "m": "final은 '최종적인'이에요. 모두가 같은 의견이었다는 단어는요?"
+            }
           ]
         },
         {
-          "en": "The jury was ___ in finding him not guilty.", "ko": "배심원단은 **만장일치로** 그에게 무죄를 선고했다.", "answer": "unanimous",
+          "en": "The jury was ___ in finding him not guilty.",
+          "ko": "배심원단은 **만장일치로** 그에게 무죄를 선고했다.",
+          "answer": "unanimous",
           "note": "배심원 전원의 의견이 같았다는 뜻",
           "alts": [
-            { "w": "united", "t": "ok", "m": "united도 통하지만, 배심원 전원 의견이 같았다는 정확한 단어가 있어요." },
-            { "w": "agreed", "t": "near", "m": "agreed는 '합의한'이에요. 단 한 명의 반대도 없었다는 단어는요?" },
-            { "w": "together", "t": "wrong", "m": "together는 '함께'라는 부사예요. 모두가 같은 의견이었다는 형용사를 떠올려 보세요." }
+            {
+              "w": "united",
+              "t": "ok",
+              "m": "united도 통하지만, 배심원 전원 의견이 같았다는 정확한 단어가 있어요."
+            },
+            {
+              "w": "agreed",
+              "t": "near",
+              "m": "agreed는 '합의한'이에요. 단 한 명의 반대도 없었다는 단어는요?"
+            },
+            {
+              "w": "together",
+              "t": "wrong",
+              "m": "together는 '함께'라는 부사예요. 모두가 같은 의견이었다는 형용사를 떠올려 보세요."
+            }
           ]
         }
       ],
       "nuance": "반대 없이 '모두가 같은 의견인'. 발음은 [유내니머스]. 부사 unanimously, 명사 unanimity.",
-      "etymology": "라틴어 unus(하나) + animus(마음) → '한마음인'"
+      "etymology": "라틴어 unus(하나) + animus(마음) → '한마음인'",
+      "ipa": "/juːˈnænɪməs/",
+      "def": "agreed to by everyone in a group",
+      "forms": [
+        "unanimously (부사)",
+        "unanimity (명사)"
+      ]
     },
     {
-      "id": "undulate", "word": "undulate", "pos": "v", "level": 23,
-      "meanings": ["물결치다, 완만하게 오르내리다"],
+      "id": "undulate",
+      "word": "undulate",
+      "pos": "v",
+      "level": 23,
+      "meanings": [
+        "물결치다, 완만하게 오르내리다"
+      ],
       "sentences": [
         {
-          "en": "The wheat fields ___ in the wind.", "ko": "밀밭이 바람에 **물결쳤다**.", "answer": "undulated",
+          "en": "The wheat fields ___ in the wind.",
+          "ko": "밀밭이 바람에 **물결쳤다**.",
+          "answer": "undulated",
           "ctx": "시골길을 달리며",
           "alts": [
-            { "w": "waved", "t": "ok", "m": "waved도 맞지만, 파도처럼 완만하게 오르내리는 움직임을 뜻하는 단어가 있어요." },
-            { "w": "shook", "t": "near", "m": "shook은 '흔들렸다'예요. 파도처럼 부드럽게 넘실거리는 단어는요?" },
-            { "w": "swayed", "t": "near", "m": "swayed는 좌우로 흔들렸다는 거예요. 물결처럼 오르내리는 움직임은요?" }
+            {
+              "w": "waved",
+              "t": "ok",
+              "m": "waved도 맞지만, 파도처럼 완만하게 오르내리는 움직임을 뜻하는 단어가 있어요."
+            },
+            {
+              "w": "shook",
+              "t": "near",
+              "m": "shook은 '흔들렸다'예요. 파도처럼 부드럽게 넘실거리는 단어는요?"
+            },
+            {
+              "w": "swayed",
+              "t": "near",
+              "m": "swayed는 좌우로 흔들렸다는 거예요. 물결처럼 오르내리는 움직임은요?"
+            }
           ]
         },
         {
-          "en": "The road ___ through the hills.", "ko": "길은 언덕을 따라 **굽이치며** 이어진다.", "answer": "undulates",
+          "en": "The road ___ through the hills.",
+          "ko": "길은 언덕을 따라 **굽이치며** 이어진다.",
+          "answer": "undulates",
           "note": "완만하게 오르내리며 이어진다는 뜻",
           "alts": [
-            { "w": "winds", "t": "near", "m": "winds는 좌우로 구불구불 돈다는 거예요. 언덕을 따라 오르내린다는 단어는요?" },
-            { "w": "curves", "t": "near", "m": "curves는 '굽다'예요. 위아래로 완만하게 오르내린다는 단어를 생각해 보세요." },
-            { "w": "waves", "t": "wrong", "m": "waves는 길이 이어지는 모습엔 잘 쓰지 않아요. 완만하게 오르내린다는 단어는요?" }
+            {
+              "w": "winds",
+              "t": "near",
+              "m": "winds는 좌우로 구불구불 돈다는 거예요. 언덕을 따라 오르내린다는 단어는요?"
+            },
+            {
+              "w": "curves",
+              "t": "near",
+              "m": "curves는 '굽다'예요. 위아래로 완만하게 오르내린다는 단어를 생각해 보세요."
+            },
+            {
+              "w": "waves",
+              "t": "wrong",
+              "m": "waves는 길이 이어지는 모습엔 잘 쓰지 않아요. 완만하게 오르내린다는 단어는요?"
+            }
           ]
         }
       ],
       "nuance": "파도처럼 '부드럽게 오르내리며 움직이는'. wave는 일반적인 흔들림, undulate는 규칙적이고 완만한 곡선 운동. 형용사 undulating(완만하게 굽이진).",
-      "etymology": "라틴어 unda(파도) → '파도치다'"
+      "etymology": "라틴어 unda(파도) → '파도치다'",
+      "ipa": "/ˈʌndʒəleɪt/",
+      "def": "to move or have a shape like gently rising and falling waves",
+      "forms": [
+        "undulated (과거·과거분사)",
+        "undulating (현재분사)",
+        "undulation (명사)"
+      ]
     },
     {
-      "id": "unravel", "word": "unravel", "pos": "v", "level": 23,
-      "meanings": ["(실을) 풀다", "(수수께끼를) 풀다", "무너지다"],
+      "id": "unravel",
+      "word": "unravel",
+      "pos": "v",
+      "level": 23,
+      "meanings": [
+        "(실을) 풀다",
+        "(수수께끼를) 풀다",
+        "무너지다"
+      ],
       "sentences": [
         {
-          "en": "Detectives slowly ___ the mystery.", "ko": "형사들은 천천히 그 수수께끼를 **풀어 나갔다**.", "answer": "unraveled",
+          "en": "Detectives slowly ___ the mystery.",
+          "ko": "형사들은 천천히 그 수수께끼를 **풀어 나갔다**.",
+          "answer": "unraveled",
           "ctx": "추리 드라마를 보며",
           "alts": [
-            { "w": "solved", "t": "ok", "m": "solved도 맞지만, 엉킨 실을 한 올씩 풀듯 밝혀 가는 단어가 있어요." },
-            { "w": "found", "t": "near", "m": "found는 '찾았다'예요. 복잡하게 얽힌 사건을 차근차근 밝혀낸다는 단어는요?" },
-            { "w": "untied", "t": "wrong", "m": "untied는 매듭을 '풀었다'예요. 수수께끼를 풀 때는 쓰지 않아요." }
+            {
+              "w": "solved",
+              "t": "ok",
+              "m": "solved도 맞지만, 엉킨 실을 한 올씩 풀듯 밝혀 가는 단어가 있어요."
+            },
+            {
+              "w": "found",
+              "t": "near",
+              "m": "found는 '찾았다'예요. 복잡하게 얽힌 사건을 차근차근 밝혀낸다는 단어는요?"
+            },
+            {
+              "w": "untied",
+              "t": "wrong",
+              "m": "untied는 매듭을 '풀었다'예요. 수수께끼를 풀 때는 쓰지 않아요."
+            }
           ]
         },
         {
-          "en": "His plans began to ___ after the first failure.", "ko": "첫 실패 뒤 그의 계획은 **무너지기** 시작했다.", "answer": "unravel",
+          "en": "His plans began to ___ after the first failure.",
+          "ko": "첫 실패 뒤 그의 계획은 **무너지기** 시작했다.",
+          "answer": "unravel",
           "note": "짜임이 풀리듯 조금씩 망가진다는 뜻",
           "alts": [
-            { "w": "collapse", "t": "ok", "m": "collapse도 맞지만, 짜임이 풀리듯 서서히 무너진다는 단어가 있어요." },
-            { "w": "break", "t": "near", "m": "break는 '깨지다'예요. 계획이 실 풀리듯 조금씩 무너진다는 단어는요?" },
-            { "w": "fall", "t": "wrong", "m": "fall은 '떨어지다'예요. 계획이 무너진다고 할 땐 fall apart처럼 apart가 필요해요." }
+            {
+              "w": "collapse",
+              "t": "ok",
+              "m": "collapse도 맞지만, 짜임이 풀리듯 서서히 무너진다는 단어가 있어요."
+            },
+            {
+              "w": "break",
+              "t": "near",
+              "m": "break는 '깨지다'예요. 계획이 실 풀리듯 조금씩 무너진다는 단어는요?"
+            },
+            {
+              "w": "fall",
+              "t": "wrong",
+              "m": "fall은 '떨어지다'예요. 계획이 무너진다고 할 땐 fall apart처럼 apart가 필요해요."
+            }
           ]
         }
       ],
       "nuance": "엉킨 실을 풀듯 '복잡한 것을 밝혀내다', 또는 짜임이 '풀려 망가지다'. solve는 답을 찾는 것, unravel은 얽힌 것을 한 올씩 푸는 과정.",
-      "etymology": "un(풀다) + ravel(엉키게 하다, 네덜란드어 ravelen)"
+      "etymology": "un(풀다) + ravel(엉키게 하다, 네덜란드어 ravelen)",
+      "ipa": "/ʌnˈrævəl/",
+      "def": "to separate threads; to explain a mystery; to fall apart",
+      "forms": [
+        "unraveled (과거·과거분사)",
+        "unraveling (현재분사)"
+      ]
     },
     {
-      "id": "usurp", "word": "usurp", "pos": "v", "level": 23,
-      "meanings": ["(권력·지위를) 빼앗다, 찬탈하다"],
+      "id": "usurp",
+      "word": "usurp",
+      "pos": "v",
+      "level": 23,
+      "meanings": [
+        "(권력·지위를) 빼앗다, 찬탈하다"
+      ],
       "sentences": [
         {
-          "en": "The general ___ power in a military coup.", "ko": "그 장군은 군사 쿠데타로 권력을 **찬탈했다**.", "answer": "usurped",
+          "en": "The general ___ power in a military coup.",
+          "ko": "그 장군은 군사 쿠데타로 권력을 **찬탈했다**.",
+          "answer": "usurped",
           "note": "정당한 권리 없이 권력을 차지했다는 뜻",
           "alts": [
-            { "w": "seized", "t": "ok", "m": "seized도 맞지만, 정당한 주인에게서 권력을 가로챘다는 단어가 있어요." },
-            { "w": "took", "t": "near", "m": "took은 '가졌다'예요. 권리 없이 힘으로 권력을 빼앗았다는 단어는요?" },
-            { "w": "stole", "t": "near", "m": "stole은 물건을 몰래 훔친 거예요. 권력을 힘으로 차지했다는 단어는요?" }
+            {
+              "w": "seized",
+              "t": "ok",
+              "m": "seized도 맞지만, 정당한 주인에게서 권력을 가로챘다는 단어가 있어요."
+            },
+            {
+              "w": "took",
+              "t": "near",
+              "m": "took은 '가졌다'예요. 권리 없이 힘으로 권력을 빼앗았다는 단어는요?"
+            },
+            {
+              "w": "stole",
+              "t": "near",
+              "m": "stole은 물건을 몰래 훔친 거예요. 권력을 힘으로 차지했다는 단어는요?"
+            }
           ]
         },
         {
-          "en": "Online shopping has ___ the role of department stores.", "ko": "온라인 쇼핑이 백화점의 역할을 **빼앗았다**.", "answer": "usurped",
+          "en": "Online shopping has ___ the role of department stores.",
+          "ko": "온라인 쇼핑이 백화점의 역할을 **빼앗았다**.",
+          "answer": "usurped",
           "ctx": "유통 산업 기사를 읽으며",
           "alts": [
-            { "w": "replaced", "t": "ok", "m": "replaced도 맞지만, 원래 주인의 자리를 가로챘다는 느낌의 단어가 있어요." },
-            { "w": "taken", "t": "near", "m": "taken도 쓸 순 있지만, 남의 자리를 부당하게 차지했다는 단어를 떠올려 보세요." },
-            { "w": "robbed", "t": "wrong", "m": "robbed는 rob A of B처럼 '사람'에게서 빼앗을 때 써요. 역할을 가로챘다는 단어는요?" }
+            {
+              "w": "replaced",
+              "t": "ok",
+              "m": "replaced도 맞지만, 원래 주인의 자리를 가로챘다는 느낌의 단어가 있어요."
+            },
+            {
+              "w": "taken",
+              "t": "near",
+              "m": "taken도 쓸 순 있지만, 남의 자리를 부당하게 차지했다는 단어를 떠올려 보세요."
+            },
+            {
+              "w": "robbed",
+              "t": "wrong",
+              "m": "robbed는 rob A of B처럼 '사람'에게서 빼앗을 때 써요. 역할을 가로챘다는 단어는요?"
+            }
           ]
         }
       ],
       "nuance": "권리 없이 '힘으로 자리를 차지하다'. seize는 빼앗는 행위 일반, usurp는 정당한 주인에게서 지위·권한을 가로채는 것. 명사 usurper(찬탈자).",
-      "etymology": "라틴어 usurpare(사용하여 차지하다) ← usus(사용) + rapere(빼앗다)"
+      "etymology": "라틴어 usurpare(사용하여 차지하다) ← usus(사용) + rapere(빼앗다)",
+      "ipa": "/juːˈsɝːp/",
+      "def": "to take power or a position by force or without the right",
+      "forms": [
+        "usurped (과거·과거분사)",
+        "usurping (현재분사)",
+        "usurper (명사: 찬탈자)",
+        "usurpation (명사)"
+      ]
     },
     {
-      "id": "venerable", "word": "venerable", "pos": "adj", "level": 23,
-      "meanings": ["존경할 만한, 유서 깊은"],
+      "id": "venerable",
+      "word": "venerable",
+      "pos": "adj",
+      "level": 23,
+      "meanings": [
+        "존경할 만한, 유서 깊은"
+      ],
       "sentences": [
         {
-          "en": "The ___ professor has taught here for forty years.", "ko": "그 **존경받는** 교수는 40년 동안 여기서 가르쳤다.", "answer": "venerable",
+          "en": "The ___ professor has taught here for forty years.",
+          "ko": "그 **존경받는** 교수는 40년 동안 여기서 가르쳤다.",
+          "answer": "venerable",
           "ctx": "졸업식에서",
           "alts": [
-            { "w": "respected", "t": "ok", "m": "respected도 맞지만, 오랜 세월과 지혜로 존경받는다는 단어가 있어요." },
-            { "w": "famous", "t": "near", "m": "famous는 '유명한'이에요. 나이와 연륜으로 우러러보게 된다는 단어는요?" },
-            { "w": "old", "t": "near", "m": "old는 그냥 '나이 든'이에요. 오랜 연륜 때문에 존경받는다는 단어를 생각해 보세요." }
+            {
+              "w": "respected",
+              "t": "ok",
+              "m": "respected도 맞지만, 오랜 세월과 지혜로 존경받는다는 단어가 있어요."
+            },
+            {
+              "w": "famous",
+              "t": "near",
+              "m": "famous는 '유명한'이에요. 나이와 연륜으로 우러러보게 된다는 단어는요?"
+            },
+            {
+              "w": "old",
+              "t": "near",
+              "m": "old는 그냥 '나이 든'이에요. 오랜 연륜 때문에 존경받는다는 단어를 생각해 보세요."
+            }
           ]
         },
         {
-          "en": "The ___ university was founded in the 14th century.", "ko": "그 **유서 깊은** 대학은 14세기에 세워졌다.", "answer": "venerable",
+          "en": "The ___ university was founded in the 14th century.",
+          "ko": "그 **유서 깊은** 대학은 14세기에 세워졌다.",
+          "answer": "venerable",
           "note": "오랜 역사 덕분에 권위와 존경을 받는다는 뜻",
           "alts": [
-            { "w": "historic", "t": "ok", "m": "historic도 맞지만, 오래되어 존경받는다는 느낌의 단어가 있어요." },
-            { "w": "old", "t": "near", "m": "old는 단순히 '오래된'이에요. 오래되어 권위와 존경을 받는다는 단어는요?" },
-            { "w": "traditional", "t": "near", "m": "traditional은 '전통적인'이에요. 역사가 깊어 우러러보게 되는 단어는요?" }
+            {
+              "w": "historic",
+              "t": "ok",
+              "m": "historic도 맞지만, 오래되어 존경받는다는 느낌의 단어가 있어요."
+            },
+            {
+              "w": "old",
+              "t": "near",
+              "m": "old는 단순히 '오래된'이에요. 오래되어 권위와 존경을 받는다는 단어는요?"
+            },
+            {
+              "w": "traditional",
+              "t": "near",
+              "m": "traditional은 '전통적인'이에요. 역사가 깊어 우러러보게 되는 단어는요?"
+            }
           ]
         }
       ],
       "nuance": "나이·역사·지혜 때문에 '존경을 받는'. respected는 존경받는 이유를 따지지 않지만, venerable은 오래되어 권위가 있다는 뜻이 핵심. 동사 venerate(숭배하다).",
-      "etymology": "라틴어 venerari(숭배하다) ← Venus(사랑의 여신)"
+      "etymology": "라틴어 venerari(숭배하다) ← Venus(사랑의 여신)",
+      "ipa": "/ˈvɛnərəbəl/",
+      "def": "deserving respect because of age, wisdom or history",
+      "forms": [
+        "venerate (동사: 공경하다)",
+        "veneration (명사)"
+      ]
     }
   ]
 }

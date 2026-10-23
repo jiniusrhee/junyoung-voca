@@ -1,260 +1,655 @@
 {
   "words": [
     {
-      "id": "eloquent", "word": "eloquent", "pos": "adj", "level": 19,
-      "meanings": ["유창한, 설득력 있게 말하는"],
+      "id": "eloquent",
+      "word": "eloquent",
+      "pos": "adj",
+      "level": 19,
+      "meanings": [
+        "유창한, 설득력 있게 말하는"
+      ],
       "sentences": [
         {
-          "en": "She gave an ___ speech about freedom.", "ko": "그녀는 자유에 대해 **감동적이고 유창한** 연설을 했다.", "answer": "eloquent",
+          "en": "She gave an ___ speech about freedom.",
+          "ko": "그녀는 자유에 대해 **감동적이고 유창한** 연설을 했다.",
+          "answer": "eloquent",
           "ctx": "졸업식 연설을 듣고",
           "alts": [
-            { "w": "inspiring", "t": "ok", "m": "inspiring도 맞지만, 말솜씨가 유창하고 설득력 있다는 단어가 있어요." },
-            { "w": "fluent", "t": "near", "m": "fluent는 막힘없이 말하는 거예요. 말이 아름답고 설득력 있는 건요?" },
-            { "w": "emotional", "t": "near", "m": "emotional은 '감정적인'이에요. 말솜씨가 뛰어난 연설은요?" }
+            {
+              "w": "inspiring",
+              "t": "ok",
+              "m": "inspiring도 맞지만, 말솜씨가 유창하고 설득력 있다는 단어가 있어요."
+            },
+            {
+              "w": "fluent",
+              "t": "near",
+              "m": "fluent는 막힘없이 말하는 거예요. 말이 아름답고 설득력 있는 건요?"
+            },
+            {
+              "w": "emotional",
+              "t": "near",
+              "m": "emotional은 '감정적인'이에요. 말솜씨가 뛰어난 연설은요?"
+            }
           ]
         },
         {
-          "en": "His silence was more ___ than words.", "ko": "그의 침묵은 말보다 더 **많은 것을 말해 주었다**.", "answer": "eloquent",
+          "en": "His silence was more ___ than words.",
+          "ko": "그의 침묵은 말보다 더 **많은 것을 말해 주었다**.",
+          "answer": "eloquent",
           "note": "말없이도 뜻을 잘 전달한다는 비유",
           "alts": [
-            { "w": "meaningful", "t": "ok", "m": "meaningful도 맞지만, '말을 잘하는'에서 온 비유적인 단어가 있어요." },
-            { "w": "powerful", "t": "near", "m": "powerful은 '강력한'이에요. 뜻을 잘 전한다는 비유적 단어는요?" },
-            { "w": "talkative", "t": "wrong", "m": "talkative는 '수다스러운'이라 침묵을 꾸밀 수 없어요." }
+            {
+              "w": "meaningful",
+              "t": "ok",
+              "m": "meaningful도 맞지만, '말을 잘하는'에서 온 비유적인 단어가 있어요."
+            },
+            {
+              "w": "powerful",
+              "t": "near",
+              "m": "powerful은 '강력한'이에요. 뜻을 잘 전한다는 비유적 단어는요?"
+            },
+            {
+              "w": "talkative",
+              "t": "wrong",
+              "m": "talkative는 '수다스러운'이라 침묵을 꾸밀 수 없어요."
+            }
           ]
         }
       ],
       "nuance": "fluent는 막힘없이 말하는 것, eloquent는 말이 '아름답고 설득력 있는' 것. 비유적으로 표정·침묵이 '뜻을 잘 전달하는'에도 쓴다. 명사 eloquence.",
-      "etymology": "라틴어 e(밖으로) + loqui(말하다) → '말을 잘 내는'"
+      "etymology": "라틴어 e(밖으로) + loqui(말하다) → '말을 잘 내는'",
+      "ipa": "/ˈɛləkwənt/",
+      "def": "able to express ideas clearly and persuasively in speech or writing",
+      "forms": [
+        "eloquently (부사)",
+        "eloquence (명사)"
+      ]
     },
     {
-      "id": "emulate", "word": "emulate", "pos": "v", "level": 19,
-      "meanings": ["(존경하여) 본받다, 모방하다"],
+      "id": "emulate",
+      "word": "emulate",
+      "pos": "v",
+      "level": 19,
+      "meanings": [
+        "(존경하여) 본받다, 모방하다"
+      ],
       "sentences": [
         {
-          "en": "Many young players try to ___ their heroes.", "ko": "많은 어린 선수들은 자신의 영웅을 **본받으려** 한다.", "answer": "emulate",
+          "en": "Many young players try to ___ their heroes.",
+          "ko": "많은 어린 선수들은 자신의 영웅을 **본받으려** 한다.",
+          "answer": "emulate",
           "ctx": "유소년 축구 교실에서",
           "note": "존경해서 그만큼 잘하려고 따라 한다는 뜻",
           "alts": [
-            { "w": "follow", "t": "ok", "m": "follow도 맞지만, 존경하는 사람처럼 되려고 따라 한다는 단어가 있어요." },
-            { "w": "imitate", "t": "near", "m": "imitate는 단순히 '흉내 내다'예요. 존경해서 그만큼 잘하려는 건요?" },
-            { "w": "copy", "t": "near", "m": "copy는 그대로 '베끼다'예요." }
+            {
+              "w": "follow",
+              "t": "ok",
+              "m": "follow도 맞지만, 존경하는 사람처럼 되려고 따라 한다는 단어가 있어요."
+            },
+            {
+              "w": "imitate",
+              "t": "near",
+              "m": "imitate는 단순히 '흉내 내다'예요. 존경해서 그만큼 잘하려는 건요?"
+            },
+            {
+              "w": "copy",
+              "t": "near",
+              "m": "copy는 그대로 '베끼다'예요."
+            }
           ]
         },
         {
-          "en": "The software ___ an old game console.", "ko": "그 소프트웨어는 옛 게임기를 **모방한다**.", "answer": "emulates",
+          "en": "The software ___ an old game console.",
+          "ko": "그 소프트웨어는 옛 게임기를 **모방한다**.",
+          "answer": "emulates",
           "ctx": "옛날 게임을 다시 하며",
           "alts": [
-            { "w": "simulates", "t": "ok", "m": "simulates도 통하지만, 다른 기기를 흉내 내는 프로그램엔 정해진 단어가 있어요." },
-            { "w": "imitates", "t": "near", "m": "imitates는 일반적인 '흉내'예요. 컴퓨터가 다른 기기처럼 작동하는 건요?" },
-            { "w": "copies", "t": "wrong", "m": "copies는 '복사한다'예요. 기기의 작동을 흉내 내는 건 아니에요." }
+            {
+              "w": "simulates",
+              "t": "ok",
+              "m": "simulates도 통하지만, 다른 기기를 흉내 내는 프로그램엔 정해진 단어가 있어요."
+            },
+            {
+              "w": "imitates",
+              "t": "near",
+              "m": "imitates는 일반적인 '흉내'예요. 컴퓨터가 다른 기기처럼 작동하는 건요?"
+            },
+            {
+              "w": "copies",
+              "t": "wrong",
+              "m": "copies는 '복사한다'예요. 기기의 작동을 흉내 내는 건 아니에요."
+            }
           ]
         }
       ],
       "nuance": "imitate는 단순히 따라 하기, emulate는 '그만큼 잘하려고' 따라 하는 것. 컴퓨터에서 다른 기기를 흉내 내는 emulator도 이 말.",
-      "etymology": "라틴어 aemulus(경쟁자) → '경쟁하며 따라가다'"
+      "etymology": "라틴어 aemulus(경쟁자) → '경쟁하며 따라가다'",
+      "ipa": "/ˈɛmjəleɪt/",
+      "def": "to try to be like someone you admire; to copy",
+      "forms": [
+        "emulated (과거·과거분사)",
+        "emulating (현재분사)",
+        "emulation (명사)"
+      ]
     },
     {
-      "id": "exacerbate", "word": "exacerbate", "pos": "v", "level": 19,
-      "meanings": ["악화시키다"],
+      "id": "exacerbate",
+      "word": "exacerbate",
+      "pos": "v",
+      "level": 19,
+      "meanings": [
+        "악화시키다"
+      ],
       "sentences": [
         {
-          "en": "Stress can ___ skin problems.", "ko": "스트레스는 피부 문제를 **악화시킬** 수 있다.", "answer": "exacerbate",
+          "en": "Stress can ___ skin problems.",
+          "ko": "스트레스는 피부 문제를 **악화시킬** 수 있다.",
+          "answer": "exacerbate",
           "ctx": "피부과 상담 중에",
           "alts": [
-            { "w": "worsen", "t": "ok", "m": "worsen도 맞지만, 좀 더 격식 있는 단어를 떠올려 보세요." },
-            { "w": "aggravate", "t": "ok", "m": "aggravate도 맞지만, 이미 나쁜 상태를 더 나쁘게 한다는 다른 격식어가 있어요." },
-            { "w": "deteriorate", "t": "wrong", "m": "deteriorate는 '스스로 나빠지다'라 목적어를 받지 않아요." }
+            {
+              "w": "worsen",
+              "t": "ok",
+              "m": "worsen도 맞지만, 좀 더 격식 있는 단어를 떠올려 보세요."
+            },
+            {
+              "w": "aggravate",
+              "t": "ok",
+              "m": "aggravate도 맞지만, 이미 나쁜 상태를 더 나쁘게 한다는 다른 격식어가 있어요."
+            },
+            {
+              "w": "deteriorate",
+              "t": "wrong",
+              "m": "deteriorate는 '스스로 나빠지다'라 목적어를 받지 않아요."
+            }
           ]
         },
         {
-          "en": "The drought ___ the food shortage.", "ko": "가뭄이 식량 부족을 **더 심각하게 만들었다**.", "answer": "exacerbated",
+          "en": "The drought ___ the food shortage.",
+          "ko": "가뭄이 식량 부족을 **더 심각하게 만들었다**.",
+          "answer": "exacerbated",
           "alts": [
-            { "w": "worsened", "t": "ok", "m": "worsened도 맞지만, 뉴스에서 자주 쓰는 격식 있는 단어가 있어요." },
-            { "w": "caused", "t": "near", "m": "caused는 '일으켰다'예요. 이미 있던 문제를 더 심하게 만든 건요?" },
-            { "w": "deteriorated", "t": "wrong", "m": "deteriorated는 목적어 없이 '나빠졌다'로 써요." }
+            {
+              "w": "worsened",
+              "t": "ok",
+              "m": "worsened도 맞지만, 뉴스에서 자주 쓰는 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "caused",
+              "t": "near",
+              "m": "caused는 '일으켰다'예요. 이미 있던 문제를 더 심하게 만든 건요?"
+            },
+            {
+              "w": "deteriorated",
+              "t": "wrong",
+              "m": "deteriorated는 목적어 없이 '나빠졌다'로 써요."
+            }
           ]
         }
       ],
       "nuance": "이미 나쁜 상황을 '더 나쁘게 하다'. worsen과 같지만 격식체. aggravate도 같은 뜻이지만 '짜증나게 하다'라는 구어 용법도 있다.",
-      "etymology": "라틴어 ex(강조) + acerbus(쓴, 거친) → '더 거칠게 하다'"
+      "etymology": "라틴어 ex(강조) + acerbus(쓴, 거친) → '더 거칠게 하다'",
+      "ipa": "/ɪɡˈzæsɚbeɪt/",
+      "def": "to make a bad situation or problem worse",
+      "forms": [
+        "exacerbated (과거·과거분사)",
+        "exacerbating (현재분사)",
+        "exacerbation (명사)"
+      ]
     },
     {
-      "id": "exemplify", "word": "exemplify", "pos": "v", "level": 19,
-      "meanings": ["전형적인 예가 되다, 예시하다"],
+      "id": "exemplify",
+      "word": "exemplify",
+      "pos": "v",
+      "level": 19,
+      "meanings": [
+        "전형적인 예가 되다, 예시하다"
+      ],
       "sentences": [
         {
-          "en": "This building ___ modern architecture.", "ko": "이 건물은 현대 건축의 **전형적인 예다**.", "answer": "exemplifies",
+          "en": "This building ___ modern architecture.",
+          "ko": "이 건물은 현대 건축의 **전형적인 예다**.",
+          "answer": "exemplifies",
           "ctx": "도시 건축 투어 중에",
           "alts": [
-            { "w": "represents", "t": "ok", "m": "represents도 맞지만, 그 자체가 대표적인 예라는 단어가 있어요." },
-            { "w": "shows", "t": "near", "m": "shows는 '보여 준다'예요. 그 자체가 전형적인 예가 된다는 단어는요?" },
-            { "w": "examples", "t": "wrong", "m": "examples는 명사예요. '예가 되다'라는 동사가 필요해요." }
+            {
+              "w": "represents",
+              "t": "ok",
+              "m": "represents도 맞지만, 그 자체가 대표적인 예라는 단어가 있어요."
+            },
+            {
+              "w": "shows",
+              "t": "near",
+              "m": "shows는 '보여 준다'예요. 그 자체가 전형적인 예가 된다는 단어는요?"
+            },
+            {
+              "w": "examples",
+              "t": "wrong",
+              "m": "examples는 명사예요. '예가 되다'라는 동사가 필요해요."
+            }
           ]
         },
         {
-          "en": "Her career ___ what hard work can achieve.", "ko": "그녀의 경력은 노력이 무엇을 이룰 수 있는지를 **잘 보여 준다**.", "answer": "exemplifies",
+          "en": "Her career ___ what hard work can achieve.",
+          "ko": "그녀의 경력은 노력이 무엇을 이룰 수 있는지를 **잘 보여 준다**.",
+          "answer": "exemplifies",
           "note": "그 자체가 좋은 본보기가 된다는 뜻",
           "alts": [
-            { "w": "shows", "t": "ok", "m": "shows도 맞지만, 그 자체가 좋은 본보기가 된다는 단어가 있어요." },
-            { "w": "illustrates", "t": "ok", "m": "illustrates도 통하지만, 그 자체가 대표 사례라는 단어가 더 잘 맞아요." },
-            { "w": "proves", "t": "near", "m": "proves는 '증명한다'예요. 좋은 본보기가 된다는 단어는요?" }
+            {
+              "w": "shows",
+              "t": "ok",
+              "m": "shows도 맞지만, 그 자체가 좋은 본보기가 된다는 단어가 있어요."
+            },
+            {
+              "w": "illustrates",
+              "t": "ok",
+              "m": "illustrates도 통하지만, 그 자체가 대표 사례라는 단어가 더 잘 맞아요."
+            },
+            {
+              "w": "proves",
+              "t": "near",
+              "m": "proves는 '증명한다'예요. 좋은 본보기가 된다는 단어는요?"
+            }
           ]
         }
       ],
       "nuance": "주어 자체가 '좋은 예'가 된다는 뜻. illustrate는 예를 들어 설명하는 것, exemplify는 그 자체가 대표 사례인 것. 명사 example, exemplar.",
-      "etymology": "라틴어 exemplum(예) + facere(만들다)"
+      "etymology": "라틴어 exemplum(예) + facere(만들다)",
+      "ipa": "/ɪɡˈzɛmplɪfaɪ/",
+      "def": "to be a typical example of something; to give an example",
+      "forms": [
+        "exemplified (과거·과거분사)",
+        "exemplifying (현재분사)",
+        "exemplifies (3인칭 단수)",
+        "example (명사: 예)"
+      ]
     },
     {
-      "id": "exhaustive", "word": "exhaustive", "pos": "adj", "level": 19,
-      "meanings": ["빠짐없는, 철저한"],
+      "id": "exhaustive",
+      "word": "exhaustive",
+      "pos": "adj",
+      "level": 19,
+      "meanings": [
+        "빠짐없는, 철저한"
+      ],
       "sentences": [
         {
-          "en": "The police made an ___ search of the area.", "ko": "경찰은 그 지역을 **철저히** 수색했다.", "answer": "exhaustive",
+          "en": "The police made an ___ search of the area.",
+          "ko": "경찰은 그 지역을 **철저히** 수색했다.",
+          "answer": "exhaustive",
           "ctx": "실종 사건 뉴스를 보며",
           "alts": [
-            { "w": "extensive", "t": "ok", "m": "extensive도 맞지만, 빠짐없이 모든 곳을 다 뒤졌다는 단어가 있어요." },
-            { "w": "thorough", "t": "near", "m": "thorough는 앞에 a를 써요(a thorough search). 뜻이 비슷하면서 an과 어울리는 단어는요?" },
-            { "w": "exhausting", "t": "wrong", "m": "exhausting은 '지치게 하는'이에요. 철자가 비슷하니 주의하세요." }
+            {
+              "w": "extensive",
+              "t": "ok",
+              "m": "extensive도 맞지만, 빠짐없이 모든 곳을 다 뒤졌다는 단어가 있어요."
+            },
+            {
+              "w": "thorough",
+              "t": "near",
+              "m": "thorough는 앞에 a를 써요(a thorough search). 뜻이 비슷하면서 an과 어울리는 단어는요?"
+            },
+            {
+              "w": "exhausting",
+              "t": "wrong",
+              "m": "exhausting은 '지치게 하는'이에요. 철자가 비슷하니 주의하세요."
+            }
           ]
         },
         {
-          "en": "This list is not ___, but it covers the main points.", "ko": "이 목록이 **전부를 담은** 것은 아니지만 주요 사항은 다룬다.", "answer": "exhaustive",
+          "en": "This list is not ___, but it covers the main points.",
+          "ko": "이 목록이 **전부를 담은** 것은 아니지만 주요 사항은 다룬다.",
+          "answer": "exhaustive",
           "note": "빠짐없이 모든 것을 다 담았다는 뜻",
           "alts": [
-            { "w": "complete", "t": "ok", "m": "complete도 맞지만, '빠짐없이 다 다룬'을 뜻하는 단어가 있어요." },
-            { "w": "perfect", "t": "near", "m": "perfect는 '완벽한'이에요. 하나도 빠뜨리지 않았다는 단어는요?" },
-            { "w": "exhausted", "t": "wrong", "m": "exhausted는 '지친'이에요. 목록을 꾸미는 단어가 아니에요." }
+            {
+              "w": "complete",
+              "t": "ok",
+              "m": "complete도 맞지만, '빠짐없이 다 다룬'을 뜻하는 단어가 있어요."
+            },
+            {
+              "w": "perfect",
+              "t": "near",
+              "m": "perfect는 '완벽한'이에요. 하나도 빠뜨리지 않았다는 단어는요?"
+            },
+            {
+              "w": "exhausted",
+              "t": "wrong",
+              "m": "exhausted는 '지친'이에요. 목록을 꾸미는 단어가 아니에요."
+            }
           ]
         }
       ],
       "nuance": "가능한 모든 것을 '다 다룬'. exhausting(지치게 하는)과 철자 혼동 주의. thorough와 거의 같다. 부사 exhaustively.",
-      "etymology": "라틴어 exhaurire(모두 퍼내다) → '다 퍼낸'"
+      "etymology": "라틴어 exhaurire(모두 퍼내다) → '다 퍼낸'",
+      "ipa": "/ɪɡˈzɔːstɪv/",
+      "def": "including every possible detail; extremely thorough",
+      "forms": [
+        "exhaustively (부사)",
+        "exhaust (동사: 다 써 버리다)"
+      ]
     },
     {
-      "id": "explicit", "word": "explicit", "pos": "adj", "level": 19,
-      "meanings": ["명시적인, 분명한"],
+      "id": "explicit",
+      "word": "explicit",
+      "pos": "adj",
+      "level": 19,
+      "meanings": [
+        "명시적인, 분명한"
+      ],
       "sentences": [
         {
-          "en": "The teacher gave ___ instructions for the test.", "ko": "선생님은 시험에 대해 **명확한** 지시를 했다.", "answer": "explicit",
+          "en": "The teacher gave ___ instructions for the test.",
+          "ko": "선생님은 시험에 대해 **명확한** 지시를 했다.",
+          "answer": "explicit",
           "ctx": "시험 전 안내 시간에",
           "alts": [
-            { "w": "clear", "t": "ok", "m": "clear도 맞지만, 말로 분명히 밝혔다는 뜻의 격식 있는 단어가 있어요." },
-            { "w": "specific", "t": "near", "m": "specific은 '구체적인'이에요. 분명하게 명시했다는 단어는요?" },
-            { "w": "exact", "t": "near", "m": "exact는 '정확한'이에요. 말로 똑똑히 밝힌 지시는요?" }
+            {
+              "w": "clear",
+              "t": "ok",
+              "m": "clear도 맞지만, 말로 분명히 밝혔다는 뜻의 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "specific",
+              "t": "near",
+              "m": "specific은 '구체적인'이에요. 분명하게 명시했다는 단어는요?"
+            },
+            {
+              "w": "exact",
+              "t": "near",
+              "m": "exact는 '정확한'이에요. 말로 똑똑히 밝힌 지시는요?"
+            }
           ]
         },
         {
-          "en": "He was ___ about what he wanted.", "ko": "그는 자신이 원하는 것을 **분명하게** 말했다.", "answer": "explicit",
+          "en": "He was ___ about what he wanted.",
+          "ko": "그는 자신이 원하는 것을 **분명하게** 말했다.",
+          "answer": "explicit",
           "alts": [
-            { "w": "clear", "t": "ok", "m": "clear도 맞지만, 숨김없이 똑똑히 말했다는 격식 있는 단어가 있어요." },
-            { "w": "honest", "t": "near", "m": "honest는 '정직한'이에요. 원하는 걸 똑똑히 밝혔다는 단어는요?" },
-            { "w": "clearly", "t": "wrong", "m": "clearly는 부사라 be동사 was 뒤 보어 자리에 맞지 않아요." }
+            {
+              "w": "clear",
+              "t": "ok",
+              "m": "clear도 맞지만, 숨김없이 똑똑히 말했다는 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "honest",
+              "t": "near",
+              "m": "honest는 '정직한'이에요. 원하는 걸 똑똑히 밝혔다는 단어는요?"
+            },
+            {
+              "w": "clearly",
+              "t": "wrong",
+              "m": "clearly는 부사라 be동사 was 뒤 보어 자리에 맞지 않아요."
+            }
           ]
         }
       ],
       "nuance": "'말로 똑똑히 표현된'. 반대는 implicit(암묵적인). 'explicit content'는 노골적인(성적·폭력적) 내용이라는 뜻도. 부사 explicitly.",
-      "etymology": "라틴어 ex(밖으로) + plicare(접다) → '접힌 것을 펼친'"
+      "etymology": "라틴어 ex(밖으로) + plicare(접다) → '접힌 것을 펼친'",
+      "ipa": "/ɪkˈsplɪsɪt/",
+      "def": "stated clearly and directly, leaving no doubt",
+      "forms": [
+        "explicitly (부사)",
+        "implicit (반의어: 암시적인)"
+      ]
     },
     {
-      "id": "frugal", "word": "frugal", "pos": "adj", "level": 19,
-      "meanings": ["검소한, 절약하는"],
+      "id": "frugal",
+      "word": "frugal",
+      "pos": "adj",
+      "level": 19,
+      "meanings": [
+        "검소한, 절약하는"
+      ],
       "sentences": [
         {
-          "en": "My grandmother was ___ and never wasted food.", "ko": "할머니는 **검소하셔서** 음식을 절대 낭비하지 않으셨다.", "answer": "frugal",
+          "en": "My grandmother was ___ and never wasted food.",
+          "ko": "할머니는 **검소하셔서** 음식을 절대 낭비하지 않으셨다.",
+          "answer": "frugal",
           "ctx": "할머니를 추억하며",
           "alts": [
-            { "w": "thrifty", "t": "ok", "m": "thrifty도 맞지만, 생활이 소박하고 알뜰하다는 다른 단어가 있어요." },
-            { "w": "simple", "t": "near", "m": "simple은 '단순한'이에요. 돈과 음식을 아껴 쓰는 성품은요?" },
-            { "w": "stingy", "t": "wrong", "m": "stingy는 '인색한'이라 부정적이에요. 아껴 쓰는 좋은 습관은요?" }
+            {
+              "w": "thrifty",
+              "t": "ok",
+              "m": "thrifty도 맞지만, 생활이 소박하고 알뜰하다는 다른 단어가 있어요."
+            },
+            {
+              "w": "simple",
+              "t": "near",
+              "m": "simple은 '단순한'이에요. 돈과 음식을 아껴 쓰는 성품은요?"
+            },
+            {
+              "w": "stingy",
+              "t": "wrong",
+              "m": "stingy는 '인색한'이라 부정적이에요. 아껴 쓰는 좋은 습관은요?"
+            }
           ]
         },
         {
-          "en": "They lived a ___ life to save for a house.", "ko": "그들은 집을 사기 위해 저축하며 **절약하는** 삶을 살았다.", "answer": "frugal",
+          "en": "They lived a ___ life to save for a house.",
+          "ko": "그들은 집을 사기 위해 저축하며 **절약하는** 삶을 살았다.",
+          "answer": "frugal",
           "note": "돈을 아끼며 알뜰하게 산다는 뜻",
           "alts": [
-            { "w": "simple", "t": "near", "m": "simple life는 '소박한 삶'이에요. 돈을 아끼는 데 초점을 둔 단어는요?" },
-            { "w": "economical", "t": "near", "m": "economical은 물건이 '경제적인'에 주로 써요. 삶을 꾸밀 땐 다른 단어가 자연스러워요." },
-            { "w": "saving", "t": "wrong", "m": "saving은 형용사로 쓰지 않아요. 아껴 쓰는 삶을 꾸미는 형용사가 필요해요." }
+            {
+              "w": "simple",
+              "t": "near",
+              "m": "simple life는 '소박한 삶'이에요. 돈을 아끼는 데 초점을 둔 단어는요?"
+            },
+            {
+              "w": "economical",
+              "t": "near",
+              "m": "economical은 물건이 '경제적인'에 주로 써요. 삶을 꾸밀 땐 다른 단어가 자연스러워요."
+            },
+            {
+              "w": "saving",
+              "t": "wrong",
+              "m": "saving은 형용사로 쓰지 않아요. 아껴 쓰는 삶을 꾸미는 형용사가 필요해요."
+            }
           ]
         }
       ],
       "nuance": "돈·자원을 '아껴 쓰는'(긍정적). thrifty와 비슷. stingy(인색한)는 남에게 안 쓰는 부정적 의미. 명사 frugality.",
-      "etymology": "라틴어 frux(열매, 수확) → '열매를 알차게 쓰는'"
+      "etymology": "라틴어 frux(열매, 수확) → '열매를 알차게 쓰는'",
+      "ipa": "/ˈfruːɡəl/",
+      "def": "careful to spend little money or use few resources",
+      "forms": [
+        "frugally (부사)",
+        "frugality (명사)"
+      ]
     },
     {
-      "id": "futile", "word": "futile", "pos": "adj", "level": 19,
-      "meanings": ["소용없는, 헛된"],
+      "id": "futile",
+      "word": "futile",
+      "pos": "adj",
+      "level": 19,
+      "meanings": [
+        "소용없는, 헛된"
+      ],
       "sentences": [
         {
-          "en": "It is ___ to argue with him.", "ko": "그와 논쟁하는 것은 **소용없다**.", "answer": "futile",
+          "en": "It is ___ to argue with him.",
+          "ko": "그와 논쟁하는 것은 **소용없다**.",
+          "answer": "futile",
           "ctx": "고집 센 친구 이야기를 하며",
           "alts": [
-            { "w": "useless", "t": "ok", "m": "useless도 맞지만, 시도 자체가 헛되다는 격식 있는 단어가 있어요." },
-            { "w": "meaningless", "t": "near", "m": "meaningless는 '의미 없는'이에요. 해 봐야 결과가 없다는 단어는요?" },
-            { "w": "vain", "t": "wrong", "m": "vain은 in vain처럼 쓰거나 '허영심 많은'이라는 뜻이에요." }
+            {
+              "w": "useless",
+              "t": "ok",
+              "m": "useless도 맞지만, 시도 자체가 헛되다는 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "meaningless",
+              "t": "near",
+              "m": "meaningless는 '의미 없는'이에요. 해 봐야 결과가 없다는 단어는요?"
+            },
+            {
+              "w": "vain",
+              "t": "wrong",
+              "m": "vain은 in vain처럼 쓰거나 '허영심 많은'이라는 뜻이에요."
+            }
           ]
         },
         {
-          "en": "They made a ___ attempt to save the ship.", "ko": "그들은 배를 구하려는 **헛된** 시도를 했다.", "answer": "futile",
+          "en": "They made a ___ attempt to save the ship.",
+          "ko": "그들은 배를 구하려는 **헛된** 시도를 했다.",
+          "answer": "futile",
           "alts": [
-            { "w": "vain", "t": "ok", "m": "vain도 맞지만, 처음부터 결과가 나올 수 없는 시도라는 단어가 있어요." },
-            { "w": "useless", "t": "near", "m": "useless는 물건이 '쓸모없는' 느낌이에요. 헛수고로 끝난 시도는요?" },
-            { "w": "failed", "t": "near", "m": "failed는 결과적으로 '실패한'이에요. 애초에 헛된 시도라는 단어는요?" }
+            {
+              "w": "vain",
+              "t": "ok",
+              "m": "vain도 맞지만, 처음부터 결과가 나올 수 없는 시도라는 단어가 있어요."
+            },
+            {
+              "w": "useless",
+              "t": "near",
+              "m": "useless는 물건이 '쓸모없는' 느낌이에요. 헛수고로 끝난 시도는요?"
+            },
+            {
+              "w": "failed",
+              "t": "near",
+              "m": "failed는 결과적으로 '실패한'이에요. 애초에 헛된 시도라는 단어는요?"
+            }
           ]
         }
       ],
       "nuance": "노력해도 '결과가 나올 수 없는'. useless는 쓸모가 없는 것, futile은 시도 자체가 헛된 것. 명사 futility.",
-      "etymology": "라틴어 futilis(새는, 쏟아지는) → '담아도 새는'"
+      "etymology": "라틴어 futilis(새는, 쏟아지는) → '담아도 새는'",
+      "ipa": "/ˈfjuːtəl/",
+      "def": "having no effect or chance of success; pointless",
+      "forms": [
+        "futilely (부사)",
+        "futility (명사)"
+      ]
     },
     {
-      "id": "gregarious", "word": "gregarious", "pos": "adj", "level": 19,
-      "meanings": ["사교적인, 무리를 좋아하는"],
+      "id": "gregarious",
+      "word": "gregarious",
+      "pos": "adj",
+      "level": 19,
+      "meanings": [
+        "사교적인, 무리를 좋아하는"
+      ],
       "sentences": [
         {
-          "en": "He is ___ and loves meeting new people.", "ko": "그는 **사교적이어서** 새 사람을 만나는 것을 좋아한다.", "answer": "gregarious",
+          "en": "He is ___ and loves meeting new people.",
+          "ko": "그는 **사교적이어서** 새 사람을 만나는 것을 좋아한다.",
+          "answer": "gregarious",
           "ctx": "새 동료를 소개하며",
           "alts": [
-            { "w": "outgoing", "t": "ok", "m": "outgoing도 맞지만, 사람들과 어울리길 좋아한다는 격식 있는 단어가 있어요." },
-            { "w": "social", "t": "near", "m": "social은 '사회의'라는 뜻이 먼저예요. 사람을 좋아하는 성격은요?" },
-            { "w": "friendly", "t": "near", "m": "friendly는 '친절한'이에요. 무리 지어 어울리길 좋아하는 성격은요?" }
+            {
+              "w": "outgoing",
+              "t": "ok",
+              "m": "outgoing도 맞지만, 사람들과 어울리길 좋아한다는 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "social",
+              "t": "near",
+              "m": "social은 '사회의'라는 뜻이 먼저예요. 사람을 좋아하는 성격은요?"
+            },
+            {
+              "w": "friendly",
+              "t": "near",
+              "m": "friendly는 '친절한'이에요. 무리 지어 어울리길 좋아하는 성격은요?"
+            }
           ]
         },
         {
-          "en": "Sheep are ___ animals that stay in flocks.", "ko": "양은 떼를 지어 지내는 **군집성** 동물이다.", "answer": "gregarious",
+          "en": "Sheep are ___ animals that stay in flocks.",
+          "ko": "양은 떼를 지어 지내는 **군집성** 동물이다.",
+          "answer": "gregarious",
           "note": "무리 지어 사는 습성이 있다는 뜻",
           "alts": [
-            { "w": "social", "t": "ok", "m": "social도 맞지만, 무리를 짓는 습성을 콕 집는 단어가 있어요." },
-            { "w": "sociable", "t": "near", "m": "sociable은 사람이 '어울리길 좋아하는'이에요. 동물의 습성엔 어색해요." },
-            { "w": "group", "t": "wrong", "m": "group은 명사라 animals 앞 형용사 자리엔 어색해요." }
+            {
+              "w": "social",
+              "t": "ok",
+              "m": "social도 맞지만, 무리를 짓는 습성을 콕 집는 단어가 있어요."
+            },
+            {
+              "w": "sociable",
+              "t": "near",
+              "m": "sociable은 사람이 '어울리길 좋아하는'이에요. 동물의 습성엔 어색해요."
+            },
+            {
+              "w": "group",
+              "t": "wrong",
+              "m": "group은 명사라 animals 앞 형용사 자리엔 어색해요."
+            }
           ]
         }
       ],
       "nuance": "사람에게는 '사람들과 어울리기 좋아하는', 동물에게는 '무리를 짓는'. sociable, outgoing과 비슷하지만 더 격식체.",
-      "etymology": "라틴어 grex(무리, 떼) → '무리에 속하는'"
+      "etymology": "라틴어 grex(무리, 떼) → '무리에 속하는'",
+      "ipa": "/ɡrɪˈɡɛriəs/",
+      "def": "enjoying the company of others; sociable",
+      "forms": [
+        "gregariously (부사)",
+        "gregariousness (명사)"
+      ]
     },
     {
-      "id": "impede", "word": "impede", "pos": "v", "level": 19,
-      "meanings": ["지연시키다, 방해하다"],
+      "id": "impede",
+      "word": "impede",
+      "pos": "v",
+      "level": 19,
+      "meanings": [
+        "지연시키다, 방해하다"
+      ],
       "sentences": [
         {
-          "en": "Fog ___ the rescue operation.", "ko": "안개가 구조 작업을 **방해했다**.", "answer": "impeded",
+          "en": "Fog ___ the rescue operation.",
+          "ko": "안개가 구조 작업을 **방해했다**.",
+          "answer": "impeded",
           "alts": [
-            { "w": "hindered", "t": "ok", "m": "hindered도 맞지만, 진행을 더디게 만들었다는 비슷한 격식어가 하나 더 있어요." },
-            { "w": "stopped", "t": "near", "m": "stopped는 완전히 '멈췄다'예요. 더디고 어렵게 만든 건요?" },
-            { "w": "disturbed", "t": "wrong", "m": "disturbed는 사람을 '귀찮게 했다'예요." }
+            {
+              "w": "hindered",
+              "t": "ok",
+              "m": "hindered도 맞지만, 진행을 더디게 만들었다는 비슷한 격식어가 하나 더 있어요."
+            },
+            {
+              "w": "stopped",
+              "t": "near",
+              "m": "stopped는 완전히 '멈췄다'예요. 더디고 어렵게 만든 건요?"
+            },
+            {
+              "w": "disturbed",
+              "t": "wrong",
+              "m": "disturbed는 사람을 '귀찮게 했다'예요."
+            }
           ]
         },
         {
-          "en": "High costs ___ the growth of small businesses.", "ko": "높은 비용이 소규모 기업의 성장을 **가로막는다**.", "answer": "impede",
+          "en": "High costs ___ the growth of small businesses.",
+          "ko": "높은 비용이 소규모 기업의 성장을 **가로막는다**.",
+          "answer": "impede",
           "alts": [
-            { "w": "hinder", "t": "ok", "m": "hinder도 맞지만, 성장의 발목을 잡는다는 다른 격식어를 떠올려 보세요." },
-            { "w": "block", "t": "near", "m": "block은 길을 완전히 '막다'예요. 성장을 더디게 하는 건요?" },
-            { "w": "prevent", "t": "near", "m": "prevent는 아예 '못 하게 막다'예요." }
+            {
+              "w": "hinder",
+              "t": "ok",
+              "m": "hinder도 맞지만, 성장의 발목을 잡는다는 다른 격식어를 떠올려 보세요."
+            },
+            {
+              "w": "block",
+              "t": "near",
+              "m": "block은 길을 완전히 '막다'예요. 성장을 더디게 하는 건요?"
+            },
+            {
+              "w": "prevent",
+              "t": "near",
+              "m": "prevent는 아예 '못 하게 막다'예요."
+            }
           ]
         }
       ],
       "nuance": "진행을 '느리게 하거나 어렵게 하다'. hinder와 거의 같고 격식체. 명사 impediment(장애물, speech impediment 언어 장애).",
-      "etymology": "라틴어 im(안에) + pes(발) → '발에 족쇄를 채우다'"
+      "etymology": "라틴어 im(안에) + pes(발) → '발에 족쇄를 채우다'",
+      "ipa": "/ɪmˈpiːd/",
+      "def": "to delay or block the progress of something",
+      "forms": [
+        "impeded (과거·과거분사)",
+        "impeding (현재분사)",
+        "impediment (명사: 장애)"
+      ]
     }
   ]
 }

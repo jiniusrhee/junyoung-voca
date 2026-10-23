@@ -1,260 +1,655 @@
 {
   "words": [
     {
-      "id": "benevolent", "word": "benevolent", "pos": "adj", "level": 18,
-      "meanings": ["자애로운, 인자한"],
+      "id": "benevolent",
+      "word": "benevolent",
+      "pos": "adj",
+      "level": 18,
+      "meanings": [
+        "자애로운, 인자한"
+      ],
       "sentences": [
         {
-          "en": "The old king was known as a ___ ruler.", "ko": "그 노왕은 **자애로운** 통치자로 알려져 있었다.", "answer": "benevolent",
+          "en": "The old king was known as a ___ ruler.",
+          "ko": "그 노왕은 **자애로운** 통치자로 알려져 있었다.",
+          "answer": "benevolent",
           "ctx": "역사 드라마를 보며",
           "alts": [
-            { "w": "kind", "t": "ok", "m": "kind도 맞지만, 윗사람의 너그러움을 담은 격식 있는 단어가 있어요." },
-            { "w": "generous", "t": "near", "m": "generous는 '후한·인심 좋은'이에요. 백성을 아끼는 자애로운 마음은요?" },
-            { "w": "malevolent", "t": "wrong", "m": "malevolent는 반대로 '악의 있는'이에요." }
+            {
+              "w": "kind",
+              "t": "ok",
+              "m": "kind도 맞지만, 윗사람의 너그러움을 담은 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "generous",
+              "t": "near",
+              "m": "generous는 '후한·인심 좋은'이에요. 백성을 아끼는 자애로운 마음은요?"
+            },
+            {
+              "w": "malevolent",
+              "t": "wrong",
+              "m": "malevolent는 반대로 '악의 있는'이에요."
+            }
           ]
         },
         {
-          "en": "She gave the children a ___ smile.", "ko": "그녀는 아이들에게 **인자한** 미소를 지어 주었다.", "answer": "benevolent",
+          "en": "She gave the children a ___ smile.",
+          "ko": "그녀는 아이들에게 **인자한** 미소를 지어 주었다.",
+          "answer": "benevolent",
           "alts": [
-            { "w": "kind", "t": "ok", "m": "kind도 맞지만, 너그럽고 인자한 느낌을 살린 격식 있는 단어가 있어요." },
-            { "w": "warm", "t": "ok", "m": "warm도 맞지만, 윗사람의 너그러움을 담은 격식어를 떠올려 보세요." },
-            { "w": "gentle", "t": "near", "m": "gentle은 '부드러운'이에요. 베푸는 마음이 담긴 인자함은요?" }
+            {
+              "w": "kind",
+              "t": "ok",
+              "m": "kind도 맞지만, 너그럽고 인자한 느낌을 살린 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "warm",
+              "t": "ok",
+              "m": "warm도 맞지만, 윗사람의 너그러움을 담은 격식어를 떠올려 보세요."
+            },
+            {
+              "w": "gentle",
+              "t": "near",
+              "m": "gentle은 '부드러운'이에요. 베푸는 마음이 담긴 인자함은요?"
+            }
           ]
         }
       ],
       "nuance": "남에게 '좋은 일을 하려는 마음이 담긴'. kind보다 격식체이고 윗사람의 너그러움이라는 느낌. 반대는 malevolent(악의 있는).",
-      "etymology": "라틴어 bene(좋게) + volens(바라는) → '좋은 뜻을 가진'"
+      "etymology": "라틴어 bene(좋게) + volens(바라는) → '좋은 뜻을 가진'",
+      "ipa": "/bəˈnɛvələnt/",
+      "def": "kind, generous and wanting to help others",
+      "forms": [
+        "benevolence (명사)",
+        "benevolently (부사)"
+      ]
     },
     {
-      "id": "coerce", "word": "coerce", "pos": "v", "level": 18,
-      "meanings": ["강압하다, 강요하다"],
+      "id": "coerce",
+      "word": "coerce",
+      "pos": "v",
+      "level": 18,
+      "meanings": [
+        "강압하다, 강요하다"
+      ],
       "sentences": [
         {
-          "en": "He was ___ into signing the contract.", "ko": "그는 **강압에 못 이겨** 계약서에 서명했다.", "answer": "coerced",
+          "en": "He was ___ into signing the contract.",
+          "ko": "그는 **강압에 못 이겨** 계약서에 서명했다.",
+          "answer": "coerced",
           "alts": [
-            { "w": "forced", "t": "ok", "m": "forced도 맞지만, 위협과 압박으로 억지로 시켰다는 격식 있는 단어가 있어요." },
-            { "w": "persuaded", "t": "near", "m": "persuaded는 '설득당했다'예요. 위협·압박에 못 이긴 건요?" },
-            { "w": "obliged", "t": "wrong", "m": "obliged는 into와 쓰지 않고 to부정사와 써요(obliged to sign)." }
+            {
+              "w": "forced",
+              "t": "ok",
+              "m": "forced도 맞지만, 위협과 압박으로 억지로 시켰다는 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "persuaded",
+              "t": "near",
+              "m": "persuaded는 '설득당했다'예요. 위협·압박에 못 이긴 건요?"
+            },
+            {
+              "w": "obliged",
+              "t": "wrong",
+              "m": "obliged는 into와 쓰지 않고 to부정사와 써요(obliged to sign)."
+            }
           ]
         },
         {
-          "en": "You cannot ___ people into loving you.", "ko": "사람들이 너를 사랑하도록 **강요할** 수는 없다.", "answer": "coerce",
+          "en": "You cannot ___ people into loving you.",
+          "ko": "사람들이 너를 사랑하도록 **강요할** 수는 없다.",
+          "answer": "coerce",
           "alts": [
-            { "w": "force", "t": "ok", "m": "force도 맞지만, 압박으로 억지로 하게 한다는 격식 있는 단어가 있어요." },
-            { "w": "compel", "t": "near", "m": "compel은 보통 to부정사와 써요(compel people to)." },
-            { "w": "make", "t": "wrong", "m": "make는 into를 쓰지 않고 make people love처럼 써요." }
+            {
+              "w": "force",
+              "t": "ok",
+              "m": "force도 맞지만, 압박으로 억지로 하게 한다는 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "compel",
+              "t": "near",
+              "m": "compel은 보통 to부정사와 써요(compel people to)."
+            },
+            {
+              "w": "make",
+              "t": "wrong",
+              "m": "make는 into를 쓰지 않고 make people love처럼 써요."
+            }
           ]
         }
       ],
       "nuance": "'coerce 사람 into -ing'. force는 물리적 힘 포함, coerce는 위협·압박으로 '억지로 하게 하다'. 명사 coercion.",
-      "etymology": "라틴어 co(함께) + arcere(가두다) → '가두어 제한하다'"
+      "etymology": "라틴어 co(함께) + arcere(가두다) → '가두어 제한하다'",
+      "ipa": "/koʊˈɝːs/",
+      "def": "to force someone to do something by threats or pressure",
+      "forms": [
+        "coerced (과거·과거분사)",
+        "coercing (현재분사)",
+        "coercion (명사)",
+        "coercive (형용사)"
+      ]
     },
     {
-      "id": "complacent", "word": "complacent", "pos": "adj", "level": 18,
-      "meanings": ["현실에 안주하는, 자기만족에 빠진"],
+      "id": "complacent",
+      "word": "complacent",
+      "pos": "adj",
+      "level": 18,
+      "meanings": [
+        "현실에 안주하는, 자기만족에 빠진"
+      ],
       "sentences": [
         {
-          "en": "After years of success, the company became ___.", "ko": "수년간의 성공 뒤에 그 회사는 **현실에 안주하게** 되었다.", "answer": "complacent",
+          "en": "After years of success, the company became ___.",
+          "ko": "수년간의 성공 뒤에 그 회사는 **현실에 안주하게** 되었다.",
+          "answer": "complacent",
           "ctx": "기업 몰락 사례를 공부하며",
           "note": "만족해서 더 노력하지 않는다는 뜻",
           "alts": [
-            { "w": "satisfied", "t": "near", "m": "satisfied는 중립적인 '만족'이에요. 안주해서 노력을 멈춘 부정적 상태는요?" },
-            { "w": "lazy", "t": "near", "m": "lazy는 '게으른'이에요. 성공에 취해 안주한 상태를 말하는 단어는요?" },
-            { "w": "complaisant", "t": "wrong", "m": "complaisant는 '남에게 잘 맞춰 주는'이에요. 철자 혼동에 주의하세요." }
+            {
+              "w": "satisfied",
+              "t": "near",
+              "m": "satisfied는 중립적인 '만족'이에요. 안주해서 노력을 멈춘 부정적 상태는요?"
+            },
+            {
+              "w": "lazy",
+              "t": "near",
+              "m": "lazy는 '게으른'이에요. 성공에 취해 안주한 상태를 말하는 단어는요?"
+            },
+            {
+              "w": "complaisant",
+              "t": "wrong",
+              "m": "complaisant는 '남에게 잘 맞춰 주는'이에요. 철자 혼동에 주의하세요."
+            }
           ]
         },
         {
-          "en": "We must not grow ___ about safety.", "ko": "우리는 안전에 대해 **방심해서는** 안 된다.", "answer": "complacent",
+          "en": "We must not grow ___ about safety.",
+          "ko": "우리는 안전에 대해 **방심해서는** 안 된다.",
+          "answer": "complacent",
           "ctx": "안전 교육 시간에",
           "alts": [
-            { "w": "lax", "t": "ok", "m": "lax도 맞지만, 잘되고 있다는 생각에 안주한다는 뉘앙스의 단어가 있어요." },
-            { "w": "careless", "t": "near", "m": "careless는 '부주의한'이에요. 괜찮다고 믿고 방심하는 건요?" },
-            { "w": "relaxed", "t": "near", "m": "relaxed는 '느긋한'이라 부정적인 방심의 느낌이 약해요." }
+            {
+              "w": "lax",
+              "t": "ok",
+              "m": "lax도 맞지만, 잘되고 있다는 생각에 안주한다는 뉘앙스의 단어가 있어요."
+            },
+            {
+              "w": "careless",
+              "t": "near",
+              "m": "careless는 '부주의한'이에요. 괜찮다고 믿고 방심하는 건요?"
+            },
+            {
+              "w": "relaxed",
+              "t": "near",
+              "m": "relaxed는 '느긋한'이라 부정적인 방심의 느낌이 약해요."
+            }
           ]
         }
       ],
       "nuance": "잘 되고 있다고 느껴 '더 노력하지 않는'(부정적). satisfied는 중립적 만족. complaisant(남에게 잘 맞춰 주는)와 철자 혼동 주의. 명사 complacency.",
-      "etymology": "라틴어 complacere(크게 기쁘게 하다) → '스스로에 만족한'"
+      "etymology": "라틴어 complacere(크게 기쁘게 하다) → '스스로에 만족한'",
+      "ipa": "/kəmˈpleɪsənt/",
+      "def": "too satisfied with yourself to see the need to improve",
+      "forms": [
+        "complacency (명사)",
+        "complacently (부사)"
+      ]
     },
     {
-      "id": "concise", "word": "concise", "pos": "adj", "level": 18,
-      "meanings": ["간결한"],
+      "id": "concise",
+      "word": "concise",
+      "pos": "adj",
+      "level": 18,
+      "meanings": [
+        "간결한"
+      ],
       "sentences": [
         {
-          "en": "Please keep your answer ___.", "ko": "답변을 **간결하게** 해 주세요.", "answer": "concise",
+          "en": "Please keep your answer ___.",
+          "ko": "답변을 **간결하게** 해 주세요.",
+          "answer": "concise",
           "ctx": "면접 연습을 하며",
           "alts": [
-            { "w": "brief", "t": "ok", "m": "brief도 맞지만, 짧으면서 핵심을 담는다는 단어가 있어요." },
-            { "w": "simple", "t": "near", "m": "simple은 '단순한'이에요. 군더더기 없이 짧고 핵심적인 건요?" },
-            { "w": "concisely", "t": "wrong", "m": "-ly가 붙은 부사는 keep의 목적격 보어 자리에 맞지 않아요. 형용사가 필요해요." }
+            {
+              "w": "brief",
+              "t": "ok",
+              "m": "brief도 맞지만, 짧으면서 핵심을 담는다는 단어가 있어요."
+            },
+            {
+              "w": "simple",
+              "t": "near",
+              "m": "simple은 '단순한'이에요. 군더더기 없이 짧고 핵심적인 건요?"
+            },
+            {
+              "w": "concisely",
+              "t": "wrong",
+              "m": "-ly가 붙은 부사는 keep의 목적격 보어 자리에 맞지 않아요. 형용사가 필요해요."
+            }
           ]
         },
         {
-          "en": "The report is clear and ___.", "ko": "그 보고서는 명확하고 **간결하다**.", "answer": "concise",
+          "en": "The report is clear and ___.",
+          "ko": "그 보고서는 명확하고 **간결하다**.",
+          "answer": "concise",
           "alts": [
-            { "w": "brief", "t": "ok", "m": "brief도 맞지만, 짧으면서도 필요한 걸 다 담았다는 칭찬의 단어가 있어요." },
-            { "w": "simple", "t": "near", "m": "simple은 '단순한'이에요. 짧고 핵심적이라는 단어는요?" },
-            { "w": "neat", "t": "near", "m": "neat는 '깔끔한'이에요. 말이 군더더기 없다는 단어는요?" }
+            {
+              "w": "brief",
+              "t": "ok",
+              "m": "brief도 맞지만, 짧으면서도 필요한 걸 다 담았다는 칭찬의 단어가 있어요."
+            },
+            {
+              "w": "simple",
+              "t": "near",
+              "m": "simple은 '단순한'이에요. 짧고 핵심적이라는 단어는요?"
+            },
+            {
+              "w": "neat",
+              "t": "near",
+              "m": "neat는 '깔끔한'이에요. 말이 군더더기 없다는 단어는요?"
+            }
           ]
         }
       ],
       "nuance": "필요한 말만 담아 '짧지만 충분한'. brief는 단순히 짧은 것, concise는 짧으면서 핵심을 다 담은 것(칭찬). 부사 concisely.",
-      "etymology": "라틴어 con(완전히) + caedere(자르다) → '잘라 낸'"
+      "etymology": "라틴어 con(완전히) + caedere(자르다) → '잘라 낸'",
+      "ipa": "/kənˈsaɪs/",
+      "def": "giving a lot of information clearly in few words",
+      "forms": [
+        "concisely (부사)",
+        "conciseness (명사)"
+      ]
     },
     {
-      "id": "conspicuous", "word": "conspicuous", "pos": "adj", "level": 18,
-      "meanings": ["눈에 잘 띄는, 두드러진"],
+      "id": "conspicuous",
+      "word": "conspicuous",
+      "pos": "adj",
+      "level": 18,
+      "meanings": [
+        "눈에 잘 띄는, 두드러진"
+      ],
       "sentences": [
         {
-          "en": "His red jacket made him ___ in the crowd.", "ko": "빨간 재킷 때문에 그는 군중 속에서 **눈에 띄었다**.", "answer": "conspicuous",
+          "en": "His red jacket made him ___ in the crowd.",
+          "ko": "빨간 재킷 때문에 그는 군중 속에서 **눈에 띄었다**.",
+          "answer": "conspicuous",
           "ctx": "축제 사진을 보며",
           "alts": [
-            { "w": "noticeable", "t": "ok", "m": "noticeable도 맞지만, 확 튀어서 시선을 끈다는 단어가 있어요." },
-            { "w": "visible", "t": "near", "m": "visible은 그냥 '보이는'이에요. 확 튀어서 눈에 띄는 건요?" },
-            { "w": "outstanding", "t": "wrong", "m": "outstanding은 '뛰어난'이에요. '눈에 띄는'을 그대로 옮기면 뜻이 달라져요." }
+            {
+              "w": "noticeable",
+              "t": "ok",
+              "m": "noticeable도 맞지만, 확 튀어서 시선을 끈다는 단어가 있어요."
+            },
+            {
+              "w": "visible",
+              "t": "near",
+              "m": "visible은 그냥 '보이는'이에요. 확 튀어서 눈에 띄는 건요?"
+            },
+            {
+              "w": "outstanding",
+              "t": "wrong",
+              "m": "outstanding은 '뛰어난'이에요. '눈에 띄는'을 그대로 옮기면 뜻이 달라져요."
+            }
           ]
         },
         {
-          "en": "She was ___ by her absence at the meeting.", "ko": "그녀는 회의에 없어서 오히려 **더 눈에 띄었다**.", "answer": "conspicuous",
+          "en": "She was ___ by her absence at the meeting.",
+          "ko": "그녀는 회의에 없어서 오히려 **더 눈에 띄었다**.",
+          "answer": "conspicuous",
           "note": "없어서 오히려 주목받았다는 관용 표현",
           "alts": [
-            { "w": "noticeable", "t": "near", "m": "noticeable도 뜻은 통하지만, 이 관용 표현엔 정해진 단어가 있어요." },
-            { "w": "noticed", "t": "near", "m": "noticed는 by her absence와 쓰면 어색해요. 정해진 관용 표현의 단어는요?" },
-            { "w": "missing", "t": "wrong", "m": "missing은 '없어진'이라 by her absence와 뜻이 겹쳐요." }
+            {
+              "w": "noticeable",
+              "t": "near",
+              "m": "noticeable도 뜻은 통하지만, 이 관용 표현엔 정해진 단어가 있어요."
+            },
+            {
+              "w": "noticed",
+              "t": "near",
+              "m": "noticed는 by her absence와 쓰면 어색해요. 정해진 관용 표현의 단어는요?"
+            },
+            {
+              "w": "missing",
+              "t": "wrong",
+              "m": "missing은 '없어진'이라 by her absence와 뜻이 겹쳐요."
+            }
           ]
         }
       ],
       "nuance": "너무 잘 보여 '주목을 끄는'. noticeable은 중립적, conspicuous는 때로 '지나치게 튀는'. 반대는 inconspicuous(눈에 안 띄는).",
-      "etymology": "라틴어 con(완전히) + specere(보다) → '잘 보이는'"
+      "etymology": "라틴어 con(완전히) + specere(보다) → '잘 보이는'",
+      "ipa": "/kənˈspɪkjuəs/",
+      "def": "easy to see or notice; attracting attention",
+      "forms": [
+        "conspicuously (부사)",
+        "inconspicuous (반의어)"
+      ]
     },
     {
-      "id": "culminate", "word": "culminate", "pos": "v", "level": 18,
-      "meanings": ["절정에 이르다, ~로 끝나다"],
+      "id": "culminate",
+      "word": "culminate",
+      "pos": "v",
+      "level": 18,
+      "meanings": [
+        "절정에 이르다, ~로 끝나다"
+      ],
       "sentences": [
         {
-          "en": "Years of research ___ in a major discovery.", "ko": "수년간의 연구는 중대한 발견으로 **결실을 맺었다**.", "answer": "culminated",
+          "en": "Years of research ___ in a major discovery.",
+          "ko": "수년간의 연구는 중대한 발견으로 **결실을 맺었다**.",
+          "answer": "culminated",
           "ctx": "과학자 인터뷰를 보며",
           "note": "쌓아 온 과정이 최고점에서 마무리됐다는 뜻",
           "alts": [
-            { "w": "resulted", "t": "ok", "m": "resulted in도 맞지만, 오랜 과정이 정점을 찍었다는 단어가 있어요." },
-            { "w": "ended", "t": "near", "m": "ended in은 그냥 '끝났다'예요. 최고점에서 마무리된 건요?" },
-            { "w": "succeeded", "t": "wrong", "m": "succeeded in 뒤에는 -ing가 와요(succeeded in finding)." }
+            {
+              "w": "resulted",
+              "t": "ok",
+              "m": "resulted in도 맞지만, 오랜 과정이 정점을 찍었다는 단어가 있어요."
+            },
+            {
+              "w": "ended",
+              "t": "near",
+              "m": "ended in은 그냥 '끝났다'예요. 최고점에서 마무리된 건요?"
+            },
+            {
+              "w": "succeeded",
+              "t": "wrong",
+              "m": "succeeded in 뒤에는 -ing가 와요(succeeded in finding)."
+            }
           ]
         },
         {
-          "en": "The festival will ___ in a fireworks display.", "ko": "축제는 불꽃놀이로 **대미를 장식할** 것이다.", "answer": "culminate",
+          "en": "The festival will ___ in a fireworks display.",
+          "ko": "축제는 불꽃놀이로 **대미를 장식할** 것이다.",
+          "answer": "culminate",
           "alts": [
-            { "w": "climax", "t": "ok", "m": "climax도 통하지만, '꼭대기에 이르다'라는 어원의 격식 있는 단어가 있어요." },
-            { "w": "end", "t": "near", "m": "end는 보통 with와 써요. in과 함께 '절정으로 마무리되다'는 단어는요?" },
-            { "w": "finish", "t": "near", "m": "finish도 with와 어울려요. 정점에서 마무리된다는 단어는요?" }
+            {
+              "w": "climax",
+              "t": "ok",
+              "m": "climax도 통하지만, '꼭대기에 이르다'라는 어원의 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "end",
+              "t": "near",
+              "m": "end는 보통 with와 써요. in과 함께 '절정으로 마무리되다'는 단어는요?"
+            },
+            {
+              "w": "finish",
+              "t": "near",
+              "m": "finish도 with와 어울려요. 정점에서 마무리된다는 단어는요?"
+            }
           ]
         }
       ],
       "nuance": "'culminate in ~'(~로 정점을 찍다). end는 단순히 끝나는 것, culminate는 쌓여 온 과정이 '최고점에서 마무리'되는 것. 명사 culmination.",
-      "etymology": "라틴어 culmen(꼭대기) → '꼭대기에 이르다'"
+      "etymology": "라틴어 culmen(꼭대기) → '꼭대기에 이르다'",
+      "ipa": "/ˈkʌlmɪneɪt/",
+      "def": "to reach the highest point or final result (culminate in)",
+      "forms": [
+        "culminated (과거·과거분사)",
+        "culminating (현재분사)",
+        "culmination (명사)"
+      ]
     },
     {
-      "id": "cumbersome", "word": "cumbersome", "pos": "adj", "level": 18,
-      "meanings": ["크고 무거워 다루기 힘든", "번거로운"],
+      "id": "cumbersome",
+      "word": "cumbersome",
+      "pos": "adj",
+      "level": 18,
+      "meanings": [
+        "크고 무거워 다루기 힘든",
+        "번거로운"
+      ],
       "sentences": [
         {
-          "en": "The old camera was heavy and ___.", "ko": "그 오래된 카메라는 무겁고 **다루기 힘들었다**.", "answer": "cumbersome",
+          "en": "The old camera was heavy and ___.",
+          "ko": "그 오래된 카메라는 무겁고 **다루기 힘들었다**.",
+          "answer": "cumbersome",
           "note": "크고 무거워서 다루기 불편하다는 뜻",
           "alts": [
-            { "w": "unwieldy", "t": "ok", "m": "unwieldy도 맞지만, 일상에서 더 자주 쓰는 단어가 있어요." },
-            { "w": "bulky", "t": "near", "m": "bulky는 부피가 '큰' 것만 말해요. 그래서 다루기 불편하다는 단어는요?" },
-            { "w": "clumsy", "t": "wrong", "m": "clumsy는 사람이 '서투른·덜렁대는'이에요." }
+            {
+              "w": "unwieldy",
+              "t": "ok",
+              "m": "unwieldy도 맞지만, 일상에서 더 자주 쓰는 단어가 있어요."
+            },
+            {
+              "w": "bulky",
+              "t": "near",
+              "m": "bulky는 부피가 '큰' 것만 말해요. 그래서 다루기 불편하다는 단어는요?"
+            },
+            {
+              "w": "clumsy",
+              "t": "wrong",
+              "m": "clumsy는 사람이 '서투른·덜렁대는'이에요."
+            }
           ]
         },
         {
-          "en": "The application process is slow and ___.", "ko": "신청 절차가 느리고 **번거롭다**.", "answer": "cumbersome",
+          "en": "The application process is slow and ___.",
+          "ko": "신청 절차가 느리고 **번거롭다**.",
+          "answer": "cumbersome",
           "ctx": "비자 신청을 하며",
           "alts": [
-            { "w": "complicated", "t": "ok", "m": "complicated도 맞지만, 절차가 거추장스럽고 비효율적이라는 단어가 있어요." },
-            { "w": "annoying", "t": "near", "m": "annoying은 '짜증 나는'이에요. 절차가 거추장스럽다는 단어는요?" },
-            { "w": "troublesome", "t": "near", "m": "troublesome은 '골칫거리인'이에요. 절차가 복잡하고 굼뜬 건요?" }
+            {
+              "w": "complicated",
+              "t": "ok",
+              "m": "complicated도 맞지만, 절차가 거추장스럽고 비효율적이라는 단어가 있어요."
+            },
+            {
+              "w": "annoying",
+              "t": "near",
+              "m": "annoying은 '짜증 나는'이에요. 절차가 거추장스럽다는 단어는요?"
+            },
+            {
+              "w": "troublesome",
+              "t": "near",
+              "m": "troublesome은 '골칫거리인'이에요. 절차가 복잡하고 굼뜬 건요?"
+            }
           ]
         }
       ],
       "nuance": "물건이면 '부피가 커서 불편한', 절차면 '복잡하고 비효율적인'. bulky는 크기만 말하고, cumbersome은 그로 인한 '불편함'까지.",
-      "etymology": "중세 영어 cumber(방해하다) + -some → '방해가 되는'"
+      "etymology": "중세 영어 cumber(방해하다) + -some → '방해가 되는'",
+      "ipa": "/ˈkʌmbɚsəm/",
+      "def": "large and heavy, hard to carry or use; slow and complicated",
+      "forms": []
     },
     {
-      "id": "deplete", "word": "deplete", "pos": "v", "level": 18,
-      "meanings": ["고갈시키다, 크게 줄이다"],
+      "id": "deplete",
+      "word": "deplete",
+      "pos": "v",
+      "level": 18,
+      "meanings": [
+        "고갈시키다, 크게 줄이다"
+      ],
       "sentences": [
         {
-          "en": "Overfishing has ___ the ocean's fish stocks.", "ko": "남획이 바다의 어족 자원을 **고갈시켰다**.", "answer": "depleted",
+          "en": "Overfishing has ___ the ocean's fish stocks.",
+          "ko": "남획이 바다의 어족 자원을 **고갈시켰다**.",
+          "answer": "depleted",
           "alts": [
-            { "w": "exhausted", "t": "ok", "m": "exhausted도 맞지만, 자원을 고갈시킬 때 더 자주 쓰는 단어가 있어요." },
-            { "w": "reduced", "t": "near", "m": "reduced는 그냥 '줄였다'예요. 바닥이 보이도록 써 버린 건요?" },
-            { "w": "dried", "t": "wrong", "m": "dried는 '말렸다'라서 어족 자원엔 쓰지 않아요." }
+            {
+              "w": "exhausted",
+              "t": "ok",
+              "m": "exhausted도 맞지만, 자원을 고갈시킬 때 더 자주 쓰는 단어가 있어요."
+            },
+            {
+              "w": "reduced",
+              "t": "near",
+              "m": "reduced는 그냥 '줄였다'예요. 바닥이 보이도록 써 버린 건요?"
+            },
+            {
+              "w": "dried",
+              "t": "wrong",
+              "m": "dried는 '말렸다'라서 어족 자원엔 쓰지 않아요."
+            }
           ]
         },
         {
-          "en": "The long trip ___ our savings.", "ko": "긴 여행이 우리 저축을 **바닥나게 했다**.", "answer": "depleted",
+          "en": "The long trip ___ our savings.",
+          "ko": "긴 여행이 우리 저축을 **바닥나게 했다**.",
+          "answer": "depleted",
           "ctx": "여행에서 돌아와서",
           "alts": [
-            { "w": "used up", "t": "ok", "m": "used up도 맞지만, 한 단어로 표현해 보세요." },
-            { "w": "drained", "t": "ok", "m": "drained도 맞지만, 자원·돈을 바닥낸다는 격식 있는 단어가 있어요." },
-            { "w": "spent", "t": "near", "m": "spent는 사람이 돈을 '썼다'예요. 여행이 주어일 땐 어색해요." }
+            {
+              "w": "used up",
+              "t": "ok",
+              "m": "used up도 맞지만, 한 단어로 표현해 보세요."
+            },
+            {
+              "w": "drained",
+              "t": "ok",
+              "m": "drained도 맞지만, 자원·돈을 바닥낸다는 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "spent",
+              "t": "near",
+              "m": "spent는 사람이 돈을 '썼다'예요. 여행이 주어일 땐 어색해요."
+            }
           ]
         }
       ],
       "nuance": "자원·에너지·돈을 '써서 거의 없게 만들다'. reduce는 줄이는 것, deplete는 바닥이 보이도록 소모하는 것. 명사 depletion.",
-      "etymology": "라틴어 de(비우다) + plere(채우다) → '채운 것을 비우다'"
+      "etymology": "라틴어 de(비우다) + plere(채우다) → '채운 것을 비우다'",
+      "ipa": "/dɪˈpliːt/",
+      "def": "to reduce something greatly by using up its supply",
+      "forms": [
+        "depleted (과거·과거분사)",
+        "depleting (현재분사)",
+        "depletion (명사)"
+      ]
     },
     {
-      "id": "derive", "word": "derive", "pos": "v", "level": 18,
-      "meanings": ["얻다, 끌어내다", "~에서 유래하다"],
+      "id": "derive",
+      "word": "derive",
+      "pos": "v",
+      "level": 18,
+      "meanings": [
+        "얻다, 끌어내다",
+        "~에서 유래하다"
+      ],
       "sentences": [
         {
-          "en": "She ___ great pleasure from gardening.", "ko": "그녀는 정원 가꾸기에서 큰 즐거움을 **얻는다**.", "answer": "derives",
+          "en": "She ___ great pleasure from gardening.",
+          "ko": "그녀는 정원 가꾸기에서 큰 즐거움을 **얻는다**.",
+          "answer": "derives",
           "ctx": "취미 이야기를 하며",
           "alts": [
-            { "w": "gets", "t": "ok", "m": "gets도 맞지만, '~에서 끌어낸다'는 격식 있는 단어가 있어요." },
-            { "w": "takes", "t": "near", "m": "takes는 보통 pleasure in과 써요. from과 어울리는 단어는요?" },
-            { "w": "obtains", "t": "near", "m": "obtains는 물건·정보를 '획득한다'예요. 즐거움엔 어색해요." }
+            {
+              "w": "gets",
+              "t": "ok",
+              "m": "gets도 맞지만, '~에서 끌어낸다'는 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "takes",
+              "t": "near",
+              "m": "takes는 보통 pleasure in과 써요. from과 어울리는 단어는요?"
+            },
+            {
+              "w": "obtains",
+              "t": "near",
+              "m": "obtains는 물건·정보를 '획득한다'예요. 즐거움엔 어색해요."
+            }
           ]
         },
         {
-          "en": "The word 'salary' is ___ from the Latin word for salt.", "ko": "'salary'라는 단어는 소금을 뜻하는 라틴어에서 **유래했다**.", "answer": "derived",
+          "en": "The word 'salary' is ___ from the Latin word for salt.",
+          "ko": "'salary'라는 단어는 소금을 뜻하는 라틴어에서 **유래했다**.",
+          "answer": "derived",
           "note": "어떤 말에서 갈라져 나왔다는 뜻",
           "alts": [
-            { "w": "taken", "t": "ok", "m": "taken from도 통하지만, 어원을 설명할 때 쓰는 정확한 단어가 있어요." },
-            { "w": "originated", "t": "wrong", "m": "originated는 수동태로 쓰지 않아요. is 없이 originated from이라고 해요." },
-            { "w": "come", "t": "wrong", "m": "is come from은 틀린 문법이에요. comes from이라고 해야 해요." }
+            {
+              "w": "taken",
+              "t": "ok",
+              "m": "taken from도 통하지만, 어원을 설명할 때 쓰는 정확한 단어가 있어요."
+            },
+            {
+              "w": "originated",
+              "t": "wrong",
+              "m": "originated는 수동태로 쓰지 않아요. is 없이 originated from이라고 해요."
+            },
+            {
+              "w": "come",
+              "t": "wrong",
+              "m": "is come from은 틀린 문법이에요. comes from이라고 해야 해요."
+            }
           ]
         }
       ],
       "nuance": "'derive A from B'(B에서 A를 얻다), 'be derived from'(~에서 유래하다). 어원 설명에 늘 나오는 단어. 명사 derivative(파생물, 파생 상품).",
-      "etymology": "라틴어 de(~에서) + rivus(강) → '강에서 물을 끌어오다'"
+      "etymology": "라틴어 de(~에서) + rivus(강) → '강에서 물을 끌어오다'",
+      "ipa": "/dɪˈraɪv/",
+      "def": "to get something from a source; to come from (derive from)",
+      "forms": [
+        "derived (과거·과거분사)",
+        "deriving (현재분사)",
+        "derivation (명사)",
+        "derivative (명사·형용사: 파생물, 파생된)"
+      ]
     },
     {
-      "id": "disparity", "word": "disparity", "pos": "n", "level": 18,
-      "meanings": ["(불공평한) 격차, 차이"],
+      "id": "disparity",
+      "word": "disparity",
+      "pos": "n",
+      "level": 18,
+      "meanings": [
+        "(불공평한) 격차, 차이"
+      ],
       "sentences": [
         {
-          "en": "There is a growing ___ between rich and poor.", "ko": "부자와 빈자 사이의 **격차**가 커지고 있다.", "answer": "disparity",
+          "en": "There is a growing ___ between rich and poor.",
+          "ko": "부자와 빈자 사이의 **격차**가 커지고 있다.",
+          "answer": "disparity",
           "ctx": "사회 문제 토론에서",
           "note": "불공평하게 벌어진 큰 차이",
           "alts": [
-            { "w": "gap", "t": "ok", "m": "gap도 맞지만, 좀 더 격식 있는 단어를 떠올려 보세요." },
-            { "w": "difference", "t": "near", "m": "difference는 그냥 '차이'예요. 불공평하게 벌어진 격차는요?" },
-            { "w": "distance", "t": "wrong", "m": "distance는 물리적 '거리'예요. 빈부 격차엔 쓰지 않아요." }
+            {
+              "w": "gap",
+              "t": "ok",
+              "m": "gap도 맞지만, 좀 더 격식 있는 단어를 떠올려 보세요."
+            },
+            {
+              "w": "difference",
+              "t": "near",
+              "m": "difference는 그냥 '차이'예요. 불공평하게 벌어진 격차는요?"
+            },
+            {
+              "w": "distance",
+              "t": "wrong",
+              "m": "distance는 물리적 '거리'예요. 빈부 격차엔 쓰지 않아요."
+            }
           ]
         },
         {
-          "en": "The study found a ___ in pay between men and women.", "ko": "그 연구는 남녀 간 임금 **격차**를 발견했다.", "answer": "disparity",
+          "en": "The study found a ___ in pay between men and women.",
+          "ko": "그 연구는 남녀 간 임금 **격차**를 발견했다.",
+          "answer": "disparity",
           "alts": [
-            { "w": "gap", "t": "ok", "m": "gap도 맞지만, 연구 보고서에 어울리는 격식 있는 단어가 있어요." },
-            { "w": "discrepancy", "t": "near", "m": "discrepancy는 맞아야 할 수치가 '안 맞는' 거예요. 불공평한 격차는요?" },
-            { "w": "difference", "t": "near", "m": "difference는 중립적인 '차이'예요." }
+            {
+              "w": "gap",
+              "t": "ok",
+              "m": "gap도 맞지만, 연구 보고서에 어울리는 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "discrepancy",
+              "t": "near",
+              "m": "discrepancy는 맞아야 할 수치가 '안 맞는' 거예요. 불공평한 격차는요?"
+            },
+            {
+              "w": "difference",
+              "t": "near",
+              "m": "difference는 중립적인 '차이'예요."
+            }
           ]
         }
       ],
       "nuance": "difference 중에서도 '불공평하다고 여겨지는 큰 차이'. gap과 비슷하지만 격식체. 형용사 disparate(이질적인). 'disparity between A and B'.",
-      "etymology": "라틴어 dis(아닌) + par(같은) → '같지 않음'"
+      "etymology": "라틴어 dis(아닌) + par(같은) → '같지 않음'",
+      "ipa": "/dɪˈspærəti/",
+      "def": "a large and unfair difference between things or people",
+      "forms": [
+        "disparities (복수)",
+        "disparate (형용사: 이질적인)"
+      ]
     }
   ]
 }

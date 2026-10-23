@@ -1,249 +1,645 @@
 {
   "words": [
     {
-      "id": "want", "word": "want", "pos": "v", "level": 2,
-      "meanings": ["원하다"],
+      "id": "want",
+      "word": "want",
+      "pos": "v",
+      "level": 2,
+      "meanings": [
+        "원하다"
+      ],
       "sentences": [
         {
-          "en": "I ___ a cup of coffee.", "ko": "나는 커피 한 잔을 **원한다**.", "answer": "want",
+          "en": "I ___ a cup of coffee.",
+          "ko": "나는 커피 한 잔을 **원한다**.",
+          "answer": "want",
           "ctx": "카페에서 주문하며",
           "alts": [
-            { "w": "need", "t": "near", "m": "need는 '필요하다'예요. 마음속 바람을 나타내는 단어를 생각해 보세요." },
-            { "w": "like", "t": "wrong", "m": "like는 '좋아하다'예요. would like처럼 써야 '원하다'가 돼요." },
-            { "w": "hope", "t": "wrong", "m": "hope는 뒤에 명사를 바로 쓰지 않아요(hope for). 다른 단어를 생각해 보세요." }
+            {
+              "w": "need",
+              "t": "near",
+              "m": "need는 '필요하다'예요. 마음속 바람을 나타내는 단어를 생각해 보세요."
+            },
+            {
+              "w": "like",
+              "t": "wrong",
+              "m": "like는 '좋아하다'예요. would like처럼 써야 '원하다'가 돼요."
+            },
+            {
+              "w": "hope",
+              "t": "wrong",
+              "m": "hope는 뒤에 명사를 바로 쓰지 않아요(hope for). 다른 단어를 생각해 보세요."
+            }
           ]
         },
         {
-          "en": "She ___ to be a doctor.", "ko": "그녀는 의사가 **되고 싶어 한다**.", "answer": "wants",
+          "en": "She ___ to be a doctor.",
+          "ko": "그녀는 의사가 **되고 싶어 한다**.",
+          "answer": "wants",
           "ctx": "장래 희망을 이야기하며",
           "alts": [
-            { "w": "hopes", "t": "ok", "m": "hopes도 맞지만, '~하고 싶다'를 가장 기본적으로 말하는 단어를 생각해 보세요." },
-            { "w": "wishes", "t": "near", "m": "wishes to는 격식 있고 딱딱한 표현이에요. 더 일상적인 단어를 생각해 보세요." },
-            { "w": "dreams", "t": "wrong", "m": "dreams는 dream of처럼 of와 함께 써요. to be와는 어울리지 않아요." }
+            {
+              "w": "hopes",
+              "t": "ok",
+              "m": "hopes도 맞지만, '~하고 싶다'를 가장 기본적으로 말하는 단어를 생각해 보세요."
+            },
+            {
+              "w": "wishes",
+              "t": "near",
+              "m": "wishes to는 격식 있고 딱딱한 표현이에요. 더 일상적인 단어를 생각해 보세요."
+            },
+            {
+              "w": "dreams",
+              "t": "wrong",
+              "m": "dreams는 dream of처럼 of와 함께 써요. to be와는 어울리지 않아요."
+            }
           ]
         }
       ],
-      "nuance": "would like는 want의 공손한 버전. 'want to + 동사'(~하고 싶다), 'want 사람 to'(사람이 ~하길 바라다)."
+      "nuance": "would like는 want의 공손한 버전. 'want to + 동사'(~하고 싶다), 'want 사람 to'(사람이 ~하길 바라다).",
+      "ipa": "/wɑːnt/",
+      "def": "to have a desire or wish for something",
+      "forms": [
+        "wanted (과거·과거분사)",
+        "wanting (현재분사)",
+        "wants (3인칭 단수)"
+      ]
     },
     {
-      "id": "need", "word": "need", "pos": "v", "level": 2,
-      "meanings": ["필요하다"],
+      "id": "need",
+      "word": "need",
+      "pos": "v",
+      "level": 2,
+      "meanings": [
+        "필요하다"
+      ],
       "sentences": [
         {
-          "en": "You ___ a passport to travel abroad.", "ko": "해외여행을 하려면 여권이 **필요하다**.", "answer": "need",
+          "en": "You ___ a passport to travel abroad.",
+          "ko": "해외여행을 하려면 여권이 **필요하다**.",
+          "answer": "need",
           "ctx": "여행 준비를 하며",
           "note": "꼭 있어야 한다는 뜻",
           "alts": [
-            { "w": "want", "t": "near", "m": "want는 '원하다'예요. 꼭 있어야 한다는 필수의 의미를 생각해 보세요." },
-            { "w": "have", "t": "near", "m": "have는 '가지고 있다'예요. 여권이 꼭 있어야 한다는 말을 생각해 보세요." },
-            { "w": "must", "t": "wrong", "m": "must는 조동사라 뒤에 동사원형이 와야 해요. 명사 a passport 앞에는 안 돼요." }
+            {
+              "w": "want",
+              "t": "near",
+              "m": "want는 '원하다'예요. 꼭 있어야 한다는 필수의 의미를 생각해 보세요."
+            },
+            {
+              "w": "have",
+              "t": "near",
+              "m": "have는 '가지고 있다'예요. 여권이 꼭 있어야 한다는 말을 생각해 보세요."
+            },
+            {
+              "w": "must",
+              "t": "wrong",
+              "m": "must는 조동사라 뒤에 동사원형이 와야 해요. 명사 a passport 앞에는 안 돼요."
+            }
           ]
         },
         {
-          "en": "He ___ more time to finish the report.", "ko": "그는 보고서를 끝내려면 시간이 더 **필요하다**.", "answer": "needs",
+          "en": "He ___ more time to finish the report.",
+          "ko": "그는 보고서를 끝내려면 시간이 더 **필요하다**.",
+          "answer": "needs",
           "alts": [
-            { "w": "requires", "t": "ok", "m": "requires도 맞지만 격식체예요. 더 일상적인 단어를 생각해 보세요." },
-            { "w": "wants", "t": "near", "m": "wants는 '원하다'예요. 꼭 있어야 하는 필요를 생각해 보세요." },
-            { "w": "takes", "t": "wrong", "m": "사람이 주어일 때 takes more time은 '시간을 더 쓴다'는 뜻이 돼요." }
+            {
+              "w": "requires",
+              "t": "ok",
+              "m": "requires도 맞지만 격식체예요. 더 일상적인 단어를 생각해 보세요."
+            },
+            {
+              "w": "wants",
+              "t": "near",
+              "m": "wants는 '원하다'예요. 꼭 있어야 하는 필요를 생각해 보세요."
+            },
+            {
+              "w": "takes",
+              "t": "wrong",
+              "m": "사람이 주어일 때 takes more time은 '시간을 더 쓴다'는 뜻이 돼요."
+            }
           ]
         }
       ],
-      "nuance": "want는 '바람', need는 '필수'. 'don't need to'(~할 필요 없다)는 'must not'(~하면 안 된다)과 뜻이 다르다."
+      "nuance": "want는 '바람', need는 '필수'. 'don't need to'(~할 필요 없다)는 'must not'(~하면 안 된다)과 뜻이 다르다.",
+      "ipa": "/niːd/",
+      "def": "to require something because it is essential or very important",
+      "forms": [
+        "needed (과거·과거분사)",
+        "needing (현재분사)",
+        "need (명사: 필요)"
+      ]
     },
     {
-      "id": "help", "word": "help", "pos": "v", "level": 2,
-      "meanings": ["돕다"],
+      "id": "help",
+      "word": "help",
+      "pos": "v",
+      "level": 2,
+      "meanings": [
+        "돕다"
+      ],
       "sentences": [
         {
-          "en": "Can you ___ me carry these boxes?", "ko": "이 상자들 옮기는 걸 **도와**줄 수 있어?", "answer": "help",
+          "en": "Can you ___ me carry these boxes?",
+          "ko": "이 상자들 옮기는 걸 **도와**줄 수 있어?",
+          "answer": "help",
           "ctx": "이삿날",
           "alts": [
-            { "w": "assist", "t": "near", "m": "assist는 assist me with처럼 써요. 뒤에 동사원형이 바로 오는 단어를 생각해 보세요." },
-            { "w": "let", "t": "wrong", "m": "let me carry는 '내가 옮기게 해 줘'라는 뜻이에요. 의미가 달라져요." },
-            { "w": "give", "t": "wrong", "m": "give는 '주다'예요. 뒤에 me carry가 오면 문법에 맞지 않아요." }
+            {
+              "w": "assist",
+              "t": "near",
+              "m": "assist는 assist me with처럼 써요. 뒤에 동사원형이 바로 오는 단어를 생각해 보세요."
+            },
+            {
+              "w": "let",
+              "t": "wrong",
+              "m": "let me carry는 '내가 옮기게 해 줘'라는 뜻이에요. 의미가 달라져요."
+            },
+            {
+              "w": "give",
+              "t": "wrong",
+              "m": "give는 '주다'예요. 뒤에 me carry가 오면 문법에 맞지 않아요."
+            }
           ]
         },
         {
-          "en": "She ___ her mother cook dinner.", "ko": "그녀는 어머니가 저녁 요리하는 것을 **도왔다**.", "answer": "helped",
+          "en": "She ___ her mother cook dinner.",
+          "ko": "그녀는 어머니가 저녁 요리하는 것을 **도왔다**.",
+          "answer": "helped",
           "alts": [
-            { "w": "assisted", "t": "near", "m": "assisted는 assisted her with처럼 써요. 뒤에 동사원형이 바로 오는 단어를 생각해 보세요." },
-            { "w": "supported", "t": "near", "m": "supported는 '지지했다, 후원했다'예요. 요리를 거드는 상황과 어울리지 않아요." },
-            { "w": "made", "t": "wrong", "m": "made her mother cook은 '억지로 요리하게 했다'는 뜻이에요." }
+            {
+              "w": "assisted",
+              "t": "near",
+              "m": "assisted는 assisted her with처럼 써요. 뒤에 동사원형이 바로 오는 단어를 생각해 보세요."
+            },
+            {
+              "w": "supported",
+              "t": "near",
+              "m": "supported는 '지지했다, 후원했다'예요. 요리를 거드는 상황과 어울리지 않아요."
+            },
+            {
+              "w": "made",
+              "t": "wrong",
+              "m": "made her mother cook은 '억지로 요리하게 했다'는 뜻이에요."
+            }
           ]
         }
       ],
-      "nuance": "'help 사람 (to) 동사'에서 to는 생략해도 된다. 'can't help -ing'은 '~하지 않을 수 없다'."
+      "nuance": "'help 사람 (to) 동사'에서 to는 생략해도 된다. 'can't help -ing'은 '~하지 않을 수 없다'.",
+      "ipa": "/hɛlp/",
+      "def": "to make it easier or possible for someone to do something",
+      "forms": [
+        "helped (과거·과거분사)",
+        "helping (현재분사)",
+        "helpful (형용사)",
+        "helper (명사: 돕는 사람)"
+      ]
     },
     {
-      "id": "open", "word": "open", "pos": "v", "level": 2,
-      "meanings": ["열다"],
+      "id": "open",
+      "word": "open",
+      "pos": "v",
+      "level": 2,
+      "meanings": [
+        "열다"
+      ],
       "sentences": [
         {
-          "en": "Could you ___ the window, please?", "ko": "창문을 **열어** 주시겠어요?", "answer": "open",
+          "en": "Could you ___ the window, please?",
+          "ko": "창문을 **열어** 주시겠어요?",
+          "answer": "open",
           "ctx": "방이 답답할 때",
           "alts": [
-            { "w": "unlock", "t": "near", "m": "unlock은 '잠금을 풀다'예요. 창문을 '열어' 달라는 말이에요." },
-            { "w": "close", "t": "wrong", "m": "close는 '닫다'예요. 반대 동작이죠." },
-            { "w": "turn", "t": "wrong", "m": "turn은 turn on처럼 전기 기기에 써요. 창문에는 어울리지 않아요." }
+            {
+              "w": "unlock",
+              "t": "near",
+              "m": "unlock은 '잠금을 풀다'예요. 창문을 '열어' 달라는 말이에요."
+            },
+            {
+              "w": "close",
+              "t": "wrong",
+              "m": "close는 '닫다'예요. 반대 동작이죠."
+            },
+            {
+              "w": "turn",
+              "t": "wrong",
+              "m": "turn은 turn on처럼 전기 기기에 써요. 창문에는 어울리지 않아요."
+            }
           ]
         },
         {
-          "en": "The store ___ at nine in the morning.", "ko": "그 가게는 아침 9시에 **문을 연다**.", "answer": "opens",
+          "en": "The store ___ at nine in the morning.",
+          "ko": "그 가게는 아침 9시에 **문을 연다**.",
+          "answer": "opens",
           "note": "영업을 시작한다는 뜻",
           "alts": [
-            { "w": "starts", "t": "near", "m": "starts는 '시작하다'예요. 가게가 문을 여는 것은 다른 단어로 말해요." },
-            { "w": "closes", "t": "wrong", "m": "closes는 '문을 닫다'예요. 반대 뜻이죠." }
+            {
+              "w": "starts",
+              "t": "near",
+              "m": "starts는 '시작하다'예요. 가게가 문을 여는 것은 다른 단어로 말해요."
+            },
+            {
+              "w": "closes",
+              "t": "wrong",
+              "m": "closes는 '문을 닫다'예요. 반대 뜻이죠."
+            }
           ]
         }
       ],
-      "nuance": "형용사로도 쓴다(The door is open). '열려 있다'는 상태, '열다'는 동작. 반대는 close 또는 shut."
+      "nuance": "형용사로도 쓴다(The door is open). '열려 있다'는 상태, '열다'는 동작. 반대는 close 또는 shut.",
+      "ipa": "/ˈoʊpən/",
+      "def": "to move something so that it is no longer closed",
+      "forms": [
+        "opened (과거·과거분사)",
+        "opening (현재분사)",
+        "open (형용사: 열린)",
+        "opening (명사: 개장, 틈)"
+      ]
     },
     {
-      "id": "close", "word": "close", "pos": "v", "level": 2,
-      "meanings": ["닫다"],
+      "id": "close",
+      "word": "close",
+      "pos": "v",
+      "level": 2,
+      "meanings": [
+        "닫다"
+      ],
       "sentences": [
         {
-          "en": "Please ___ the door when you leave.", "ko": "나갈 때 문을 **닫아** 주세요.", "answer": "close",
+          "en": "Please ___ the door when you leave.",
+          "ko": "나갈 때 문을 **닫아** 주세요.",
+          "answer": "close",
           "ctx": "방을 나서는 사람에게",
           "alts": [
-            { "w": "shut", "t": "ok", "m": "shut도 맞지만 '탁' 닫는 느낌이에요. 더 일반적인 단어를 생각해 보세요." },
-            { "w": "lock", "t": "near", "m": "lock은 '잠그다'예요. 그냥 '닫는' 동작을 생각해 보세요." },
-            { "w": "open", "t": "wrong", "m": "open은 '열다'예요. 반대 동작이죠." }
+            {
+              "w": "shut",
+              "t": "ok",
+              "m": "shut도 맞지만 '탁' 닫는 느낌이에요. 더 일반적인 단어를 생각해 보세요."
+            },
+            {
+              "w": "lock",
+              "t": "near",
+              "m": "lock은 '잠그다'예요. 그냥 '닫는' 동작을 생각해 보세요."
+            },
+            {
+              "w": "open",
+              "t": "wrong",
+              "m": "open은 '열다'예요. 반대 동작이죠."
+            }
           ]
         },
         {
-          "en": "The bank ___ at four on Fridays.", "ko": "그 은행은 금요일에 4시에 **문을 닫는다**.", "answer": "closes",
+          "en": "The bank ___ at four on Fridays.",
+          "ko": "그 은행은 금요일에 4시에 **문을 닫는다**.",
+          "answer": "closes",
           "note": "영업을 마친다는 뜻",
           "alts": [
-            { "w": "shuts", "t": "ok", "m": "shuts도 쓸 수 있지만, 영업 종료에는 더 일반적인 단어가 있어요." },
-            { "w": "finishes", "t": "near", "m": "finishes는 일이나 행사가 '끝나다'예요. 은행이 문을 닫는 것을 생각해 보세요." },
-            { "w": "ends", "t": "near", "m": "ends는 '끝나다'예요. 은행 같은 장소의 영업 종료에는 잘 쓰지 않아요." }
+            {
+              "w": "shuts",
+              "t": "ok",
+              "m": "shuts도 쓸 수 있지만, 영업 종료에는 더 일반적인 단어가 있어요."
+            },
+            {
+              "w": "finishes",
+              "t": "near",
+              "m": "finishes는 일이나 행사가 '끝나다'예요. 은행이 문을 닫는 것을 생각해 보세요."
+            },
+            {
+              "w": "ends",
+              "t": "near",
+              "m": "ends는 '끝나다'예요. 은행 같은 장소의 영업 종료에는 잘 쓰지 않아요."
+            }
           ]
         }
       ],
-      "nuance": "shut은 좀 더 거칠고 '탁' 닫는 느낌. 형용사 close는 '가까운'(close friend)이고 발음도 다르다[클로스]."
+      "nuance": "shut은 좀 더 거칠고 '탁' 닫는 느낌. 형용사 close는 '가까운'(close friend)이고 발음도 다르다[클로스].",
+      "ipa": "/kloʊz/",
+      "def": "to move something so that it covers an opening; to shut",
+      "forms": [
+        "closed (과거·과거분사)",
+        "closing (현재분사)",
+        "close (형용사: 가까운)",
+        "closure (명사: 폐쇄)"
+      ]
     },
     {
-      "id": "early", "word": "early", "pos": "adv", "level": 2,
-      "meanings": ["일찍", "이른"],
+      "id": "early",
+      "word": "early",
+      "pos": "adv",
+      "level": 2,
+      "meanings": [
+        "일찍",
+        "이른"
+      ],
       "sentences": [
         {
-          "en": "I woke up ___ this morning.", "ko": "오늘 아침 **일찍** 일어났다.", "answer": "early",
+          "en": "I woke up ___ this morning.",
+          "ko": "오늘 아침 **일찍** 일어났다.",
+          "answer": "early",
           "note": "평소보다 이른 시간에라는 뜻",
           "alts": [
-            { "w": "quickly", "t": "near", "m": "quickly는 '재빨리'라는 동작 속도예요. 평소보다 이른 시간을 생각해 보세요." },
-            { "w": "fast", "t": "wrong", "m": "fast는 '빠르게'라는 속도예요. 시간이 이른 것을 생각해 보세요." },
-            { "w": "soon", "t": "wrong", "m": "soon은 '곧'이에요. 예정보다 이른 시점을 생각해 보세요." }
+            {
+              "w": "quickly",
+              "t": "near",
+              "m": "quickly는 '재빨리'라는 동작 속도예요. 평소보다 이른 시간을 생각해 보세요."
+            },
+            {
+              "w": "fast",
+              "t": "wrong",
+              "m": "fast는 '빠르게'라는 속도예요. 시간이 이른 것을 생각해 보세요."
+            },
+            {
+              "w": "soon",
+              "t": "wrong",
+              "m": "soon은 '곧'이에요. 예정보다 이른 시점을 생각해 보세요."
+            }
           ]
         },
         {
-          "en": "We arrived ___ for the meeting.", "ko": "우리는 회의에 **일찍** 도착했다.", "answer": "early",
+          "en": "We arrived ___ for the meeting.",
+          "ko": "우리는 회의에 **일찍** 도착했다.",
+          "answer": "early",
           "ctx": "회의실에 들어서며",
           "alts": [
-            { "w": "first", "t": "near", "m": "arrived first는 '가장 먼저 도착했다'는 뜻이에요. 예정보다 이른 것을 생각해 보세요." },
-            { "w": "fast", "t": "wrong", "m": "fast는 속도가 빠른 거예요. 시간이 이른 것과는 달라요." },
-            { "w": "soon", "t": "wrong", "m": "soon은 '곧, 머지않아'예요. 예정보다 앞선 시점을 생각해 보세요." }
+            {
+              "w": "first",
+              "t": "near",
+              "m": "arrived first는 '가장 먼저 도착했다'는 뜻이에요. 예정보다 이른 것을 생각해 보세요."
+            },
+            {
+              "w": "fast",
+              "t": "wrong",
+              "m": "fast는 속도가 빠른 거예요. 시간이 이른 것과는 달라요."
+            },
+            {
+              "w": "soon",
+              "t": "wrong",
+              "m": "soon은 '곧, 머지않아'예요. 예정보다 앞선 시점을 생각해 보세요."
+            }
           ]
         }
       ],
-      "nuance": "soon(곧)과 혼동하지 말 것. early는 예정보다 '이른' 시점. 'early in the morning'(아침 일찍)."
+      "nuance": "soon(곧)과 혼동하지 말 것. early는 예정보다 '이른' 시점. 'early in the morning'(아침 일찍).",
+      "ipa": "/ˈɝːli/",
+      "def": "near the beginning of a period of time; before the usual time",
+      "forms": [
+        "earlier (비교급)",
+        "earliest (최상급)"
+      ]
     },
     {
-      "id": "late", "word": "late", "pos": "adj", "level": 2,
-      "meanings": ["늦은, 늦게"],
+      "id": "late",
+      "word": "late",
+      "pos": "adj",
+      "level": 2,
+      "meanings": [
+        "늦은, 늦게"
+      ],
       "sentences": [
         {
-          "en": "Sorry, I am ___ again.", "ko": "미안, 또 **늦었어**.", "answer": "late",
+          "en": "Sorry, I am ___ again.",
+          "ko": "미안, 또 **늦었어**.",
+          "answer": "late",
           "ctx": "약속 장소에 도착해서",
           "alts": [
-            { "w": "slow", "t": "near", "m": "slow는 '느린'이에요. 약속 시간에 늦은 것을 생각해 보세요." },
-            { "w": "delayed", "t": "near", "m": "delayed는 비행기·열차가 '지연된'에 주로 써요. 사람이 늦을 땐 더 간단한 말을 써요." },
-            { "w": "lately", "t": "wrong", "m": "lately는 '최근에'라는 전혀 다른 뜻이에요." }
+            {
+              "w": "slow",
+              "t": "near",
+              "m": "slow는 '느린'이에요. 약속 시간에 늦은 것을 생각해 보세요."
+            },
+            {
+              "w": "delayed",
+              "t": "near",
+              "m": "delayed는 비행기·열차가 '지연된'에 주로 써요. 사람이 늦을 땐 더 간단한 말을 써요."
+            },
+            {
+              "w": "lately",
+              "t": "wrong",
+              "m": "lately는 '최근에'라는 전혀 다른 뜻이에요."
+            }
           ]
         },
         {
-          "en": "He came home ___ last night.", "ko": "그는 어젯밤 **늦게** 집에 왔다.", "answer": "late",
+          "en": "He came home ___ last night.",
+          "ko": "그는 어젯밤 **늦게** 집에 왔다.",
+          "answer": "late",
           "note": "늦은 시각에라는 뜻",
           "alts": [
-            { "w": "later", "t": "near", "m": "later는 '나중에'예요. 밤 늦은 시각에 왔다는 말을 생각해 보세요." },
-            { "w": "slowly", "t": "near", "m": "slowly는 '천천히'라는 속도예요. 시간이 늦은 것을 생각해 보세요." },
-            { "w": "lately", "t": "wrong", "m": "lately는 '최근에'예요. 밤늦게 왔다는 말과는 달라요." }
+            {
+              "w": "later",
+              "t": "near",
+              "m": "later는 '나중에'예요. 밤 늦은 시각에 왔다는 말을 생각해 보세요."
+            },
+            {
+              "w": "slowly",
+              "t": "near",
+              "m": "slowly는 '천천히'라는 속도예요. 시간이 늦은 것을 생각해 보세요."
+            },
+            {
+              "w": "lately",
+              "t": "wrong",
+              "m": "lately는 '최근에'예요. 밤늦게 왔다는 말과는 달라요."
+            }
           ]
         }
       ],
-      "nuance": "lately는 '최근에'라는 전혀 다른 뜻. 'be late for ~'(~에 늦다). 'the late Mr. Kim'은 고인이 된 김 선생님."
+      "nuance": "lately는 '최근에'라는 전혀 다른 뜻. 'be late for ~'(~에 늦다). 'the late Mr. Kim'은 고인이 된 김 선생님.",
+      "ipa": "/leɪt/",
+      "def": "after the expected or usual time; near the end of a period",
+      "forms": [
+        "later (비교급)",
+        "latest (최상급)",
+        "lately (부사: 최근에)"
+      ]
     },
     {
-      "id": "buy", "word": "buy", "pos": "v", "level": 2,
-      "meanings": ["사다"],
+      "id": "buy",
+      "word": "buy",
+      "pos": "v",
+      "level": 2,
+      "meanings": [
+        "사다"
+      ],
       "sentences": [
         {
-          "en": "I want to ___ a new phone.", "ko": "새 휴대폰을 **사고** 싶다.", "answer": "buy",
+          "en": "I want to ___ a new phone.",
+          "ko": "새 휴대폰을 **사고** 싶다.",
+          "answer": "buy",
           "alts": [
-            { "w": "purchase", "t": "ok", "m": "purchase도 맞지만 격식체예요. 더 일상적인 단어를 생각해 보세요." },
-            { "w": "shop", "t": "near", "m": "shop은 '쇼핑하다'라는 자동사예요. 물건을 바로 목적어로 받는 단어를 생각해 보세요." },
-            { "w": "sell", "t": "wrong", "m": "sell은 '팔다'예요. 반대 뜻이죠." }
+            {
+              "w": "purchase",
+              "t": "ok",
+              "m": "purchase도 맞지만 격식체예요. 더 일상적인 단어를 생각해 보세요."
+            },
+            {
+              "w": "shop",
+              "t": "near",
+              "m": "shop은 '쇼핑하다'라는 자동사예요. 물건을 바로 목적어로 받는 단어를 생각해 보세요."
+            },
+            {
+              "w": "sell",
+              "t": "wrong",
+              "m": "sell은 '팔다'예요. 반대 뜻이죠."
+            }
           ]
         },
         {
-          "en": "She ___ fresh bread every morning.", "ko": "그녀는 매일 아침 신선한 빵을 **산다**.", "answer": "buys",
+          "en": "She ___ fresh bread every morning.",
+          "ko": "그녀는 매일 아침 신선한 빵을 **산다**.",
+          "answer": "buys",
           "alts": [
-            { "w": "gets", "t": "ok", "m": "gets도 맞지만, '산다'를 정확히 뜻하는 단어를 떠올려 보세요." },
-            { "w": "shops", "t": "near", "m": "shops는 '쇼핑한다'는 자동사예요. 빵을 바로 목적어로 받을 수 없어요." },
-            { "w": "makes", "t": "wrong", "m": "makes는 빵을 '만든다'예요. 가게에서 사는 것을 생각해 보세요." }
+            {
+              "w": "gets",
+              "t": "ok",
+              "m": "gets도 맞지만, '산다'를 정확히 뜻하는 단어를 떠올려 보세요."
+            },
+            {
+              "w": "shops",
+              "t": "near",
+              "m": "shops는 '쇼핑한다'는 자동사예요. 빵을 바로 목적어로 받을 수 없어요."
+            },
+            {
+              "w": "makes",
+              "t": "wrong",
+              "m": "makes는 빵을 '만든다'예요. 가게에서 사는 것을 생각해 보세요."
+            }
           ]
         }
       ],
-      "nuance": "purchase는 격식체(구매하다). 'buy 사람 물건'은 'buy 물건 for 사람'과 같은 뜻. 과거형은 bought."
+      "nuance": "purchase는 격식체(구매하다). 'buy 사람 물건'은 'buy 물건 for 사람'과 같은 뜻. 과거형은 bought.",
+      "ipa": "/baɪ/",
+      "def": "to get something by paying money for it",
+      "forms": [
+        "bought (과거·과거분사)",
+        "buying (현재분사)",
+        "buyer (명사: 구매자)"
+      ]
     },
     {
-      "id": "cheap", "word": "cheap", "pos": "adj", "level": 2,
-      "meanings": ["값이 싼"],
+      "id": "cheap",
+      "word": "cheap",
+      "pos": "adj",
+      "level": 2,
+      "meanings": [
+        "값이 싼"
+      ],
       "sentences": [
         {
-          "en": "This shirt is really ___.", "ko": "이 셔츠는 정말 **싸다**.", "answer": "cheap",
+          "en": "This shirt is really ___.",
+          "ko": "이 셔츠는 정말 **싸다**.",
+          "answer": "cheap",
           "ctx": "옷 가게에서",
           "alts": [
-            { "w": "inexpensive", "t": "ok", "m": "inexpensive도 맞지만, 더 짧고 일상적인 단어를 생각해 보세요." },
-            { "w": "affordable", "t": "near", "m": "affordable은 '감당할 만한 가격'이에요. 그냥 '싸다'를 생각해 보세요." },
-            { "w": "low", "t": "wrong", "m": "low는 가격(price)이 낮을 때 써요. 셔츠 자체를 말할 땐 어울리지 않아요." }
+            {
+              "w": "inexpensive",
+              "t": "ok",
+              "m": "inexpensive도 맞지만, 더 짧고 일상적인 단어를 생각해 보세요."
+            },
+            {
+              "w": "affordable",
+              "t": "near",
+              "m": "affordable은 '감당할 만한 가격'이에요. 그냥 '싸다'를 생각해 보세요."
+            },
+            {
+              "w": "low",
+              "t": "wrong",
+              "m": "low는 가격(price)이 낮을 때 써요. 셔츠 자체를 말할 땐 어울리지 않아요."
+            }
           ]
         },
         {
-          "en": "We found a ___ hotel near the station.", "ko": "우리는 역 근처의 **값싼** 호텔을 찾았다.", "answer": "cheap",
+          "en": "We found a ___ hotel near the station.",
+          "ko": "우리는 역 근처의 **값싼** 호텔을 찾았다.",
+          "answer": "cheap",
           "ctx": "여행지 숙소를 구하며",
           "alts": [
-            { "w": "affordable", "t": "ok", "m": "affordable도 맞지만 '적당한 가격'이라는 긍정적 말이에요. '값싼'을 생각해 보세요." },
-            { "w": "low", "t": "wrong", "m": "low hotel은 '낮은 호텔'이 돼요. 가격이 싼 것을 생각해 보세요." },
-            { "w": "free", "t": "wrong", "m": "free는 '공짜의'예요. 돈을 적게 내는 것과는 달라요." }
+            {
+              "w": "affordable",
+              "t": "ok",
+              "m": "affordable도 맞지만 '적당한 가격'이라는 긍정적 말이에요. '값싼'을 생각해 보세요."
+            },
+            {
+              "w": "low",
+              "t": "wrong",
+              "m": "low hotel은 '낮은 호텔'이 돼요. 가격이 싼 것을 생각해 보세요."
+            },
+            {
+              "w": "free",
+              "t": "wrong",
+              "m": "free는 '공짜의'예요. 돈을 적게 내는 것과는 달라요."
+            }
           ]
         }
       ],
-      "nuance": "cheap에는 '싸구려'라는 부정적 느낌이 섞일 수 있다. 좋은 의미의 저렴함은 inexpensive, affordable."
+      "nuance": "cheap에는 '싸구려'라는 부정적 느낌이 섞일 수 있다. 좋은 의미의 저렴함은 inexpensive, affordable.",
+      "ipa": "/tʃiːp/",
+      "def": "costing little money; low in price",
+      "forms": [
+        "cheaper (비교급)",
+        "cheapest (최상급)",
+        "cheaply (부사)"
+      ]
     },
     {
-      "id": "easy", "word": "easy", "pos": "adj", "level": 2,
-      "meanings": ["쉬운"],
+      "id": "easy",
+      "word": "easy",
+      "pos": "adj",
+      "level": 2,
+      "meanings": [
+        "쉬운"
+      ],
       "sentences": [
         {
-          "en": "The test was very ___.", "ko": "시험은 아주 **쉬웠다**.", "answer": "easy",
+          "en": "The test was very ___.",
+          "ko": "시험은 아주 **쉬웠다**.",
+          "answer": "easy",
           "ctx": "시험을 마치고",
           "alts": [
-            { "w": "simple", "t": "near", "m": "simple은 '구조가 단순한'이에요. 힘들지 않았다는 뜻을 생각해 보세요." },
-            { "w": "easily", "t": "wrong", "m": "easily는 부사예요. was 뒤에는 형용사가 와야 해요." }
+            {
+              "w": "simple",
+              "t": "near",
+              "m": "simple은 '구조가 단순한'이에요. 힘들지 않았다는 뜻을 생각해 보세요."
+            },
+            {
+              "w": "easily",
+              "t": "wrong",
+              "m": "easily는 부사예요. was 뒤에는 형용사가 와야 해요."
+            }
           ]
         },
         {
-          "en": "It is ___ to make this dish.", "ko": "이 요리는 만들기 **쉽다**.", "answer": "easy",
+          "en": "It is ___ to make this dish.",
+          "ko": "이 요리는 만들기 **쉽다**.",
+          "answer": "easy",
           "ctx": "요리법을 알려 주며",
           "alts": [
-            { "w": "simple", "t": "ok", "m": "simple도 맞지만, '힘들지 않다'는 뜻의 더 기본적인 단어를 생각해 보세요." },
-            { "w": "comfortable", "t": "wrong", "m": "comfortable은 '편안한'이에요. 만들기 쉽다는 말과는 달라요." },
-            { "w": "easily", "t": "wrong", "m": "easily는 부사예요. is 뒤에는 형용사가 필요해요." }
+            {
+              "w": "simple",
+              "t": "ok",
+              "m": "simple도 맞지만, '힘들지 않다'는 뜻의 더 기본적인 단어를 생각해 보세요."
+            },
+            {
+              "w": "comfortable",
+              "t": "wrong",
+              "m": "comfortable은 '편안한'이에요. 만들기 쉽다는 말과는 달라요."
+            },
+            {
+              "w": "easily",
+              "t": "wrong",
+              "m": "easily는 부사예요. is 뒤에는 형용사가 필요해요."
+            }
           ]
         }
       ],
-      "nuance": "simple은 '단순한'(구조가 복잡하지 않음), easy는 '힘들지 않은'. 'take it easy'(진정해, 편히 쉬어)."
+      "nuance": "simple은 '단순한'(구조가 복잡하지 않음), easy는 '힘들지 않은'. 'take it easy'(진정해, 편히 쉬어).",
+      "ipa": "/ˈiːzi/",
+      "def": "not difficult; done or achieved without much effort",
+      "forms": [
+        "easier (비교급)",
+        "easiest (최상급)",
+        "easily (부사)",
+        "ease (명사: 쉬움, 편안함)"
+      ]
     }
   ]
 }

@@ -1,261 +1,672 @@
 {
   "words": [
     {
-      "id": "announce", "word": "announce", "pos": "v", "level": 7,
-      "meanings": ["발표하다, 알리다"],
+      "id": "announce",
+      "word": "announce",
+      "pos": "v",
+      "level": 7,
+      "meanings": [
+        "발표하다, 알리다"
+      ],
       "sentences": [
         {
-          "en": "The company will ___ its new product tomorrow.", "ko": "그 회사는 내일 신제품을 **발표할** 것이다.", "answer": "announce",
+          "en": "The company will ___ its new product tomorrow.",
+          "ko": "그 회사는 내일 신제품을 **발표할** 것이다.",
+          "answer": "announce",
           "ctx": "IT 뉴스 기사에서",
           "alts": [
-            { "w": "launch", "t": "ok", "m": "launch도 맞지만 '출시하다'예요. 공식적으로 알리는 것을 생각해 보세요." },
-            { "w": "declare", "t": "near", "m": "declare는 단호한 '선언'이에요. 신제품 소식을 알리는 말엔 어색해요." },
-            { "w": "inform", "t": "wrong", "m": "inform은 사람을 목적어로 받아요(inform us). 제품을 바로 목적어로 쓰지 않아요." }
+            {
+              "w": "launch",
+              "t": "ok",
+              "m": "launch도 맞지만 '출시하다'예요. 공식적으로 알리는 것을 생각해 보세요."
+            },
+            {
+              "w": "declare",
+              "t": "near",
+              "m": "declare는 단호한 '선언'이에요. 신제품 소식을 알리는 말엔 어색해요."
+            },
+            {
+              "w": "inform",
+              "t": "wrong",
+              "m": "inform은 사람을 목적어로 받아요(inform us). 제품을 바로 목적어로 쓰지 않아요."
+            }
           ]
         },
         {
-          "en": "They ___ their engagement at the party.", "ko": "그들은 파티에서 약혼을 **발표했다**.", "answer": "announced",
+          "en": "They ___ their engagement at the party.",
+          "ko": "그들은 파티에서 약혼을 **발표했다**.",
+          "answer": "announced",
           "note": "여러 사람에게 공식적으로 알렸다는 뜻",
           "alts": [
-            { "w": "revealed", "t": "ok", "m": "revealed도 맞지만 '숨겼던 걸 밝혔다'는 느낌이에요." },
-            { "w": "declared", "t": "near", "m": "declared는 단호한 '선언'이에요. 기쁜 소식을 알리는 말엔 어색해요." },
-            { "w": "informed", "t": "wrong", "m": "informed는 사람을 목적어로 받아요. 약혼 소식을 바로 쓸 수 없어요." }
+            {
+              "w": "revealed",
+              "t": "ok",
+              "m": "revealed도 맞지만 '숨겼던 걸 밝혔다'는 느낌이에요."
+            },
+            {
+              "w": "declared",
+              "t": "near",
+              "m": "declared는 단호한 '선언'이에요. 기쁜 소식을 알리는 말엔 어색해요."
+            },
+            {
+              "w": "informed",
+              "t": "wrong",
+              "m": "informed는 사람을 목적어로 받아요. 약혼 소식을 바로 쓸 수 없어요."
+            }
           ]
         }
       ],
       "nuance": "공식적으로 '알리다'. declare는 더 단호한 '선언', inform은 '특정인에게 알려주다'.",
-      "etymology": "라틴어 ad(~에게) + nuntiare(소식을 전하다)"
+      "etymology": "라틴어 ad(~에게) + nuntiare(소식을 전하다)",
+      "ipa": "/əˈnaʊns/",
+      "def": "to tell people something officially or publicly",
+      "forms": [
+        "announced (과거·과거분사)",
+        "announcing (현재분사)",
+        "announcement (명사)"
+      ]
     },
     {
-      "id": "appreciate", "word": "appreciate", "pos": "v", "level": 7,
-      "meanings": ["감사하다", "진가를 알아보다"],
+      "id": "appreciate",
+      "word": "appreciate",
+      "pos": "v",
+      "level": 7,
+      "meanings": [
+        "감사하다",
+        "진가를 알아보다"
+      ],
       "sentences": [
         {
-          "en": "I really ___ your help.", "ko": "도와주셔서 정말 **감사합니다**.", "answer": "appreciate",
+          "en": "I really ___ your help.",
+          "ko": "도와주셔서 정말 **감사합니다**.",
+          "answer": "appreciate",
           "ctx": "동료에게 고마움을 전하며",
           "alts": [
-            { "w": "value", "t": "ok", "m": "value도 맞지만 '소중히 여기다'예요. 고마운 마음을 생각해 보세요." },
-            { "w": "thank", "t": "wrong", "m": "thank는 사람을 목적어로 받아요(thank you for). help를 바로 받을 수 없어요." },
-            { "w": "grateful", "t": "wrong", "m": "grateful은 형용사예요. I'm grateful for처럼 써야 해요." }
+            {
+              "w": "value",
+              "t": "ok",
+              "m": "value도 맞지만 '소중히 여기다'예요. 고마운 마음을 생각해 보세요."
+            },
+            {
+              "w": "thank",
+              "t": "wrong",
+              "m": "thank는 사람을 목적어로 받아요(thank you for). help를 바로 받을 수 없어요."
+            },
+            {
+              "w": "grateful",
+              "t": "wrong",
+              "m": "grateful은 형용사예요. I'm grateful for처럼 써야 해요."
+            }
           ]
         },
         {
-          "en": "You need time to ___ this kind of music.", "ko": "이런 음악의 **진가를 알아보려면** 시간이 필요하다.", "answer": "appreciate",
+          "en": "You need time to ___ this kind of music.",
+          "ko": "이런 음악의 **진가를 알아보려면** 시간이 필요하다.",
+          "answer": "appreciate",
           "note": "가치를 제대로 알고 즐긴다는 뜻",
           "alts": [
-            { "w": "understand", "t": "ok", "m": "understand도 맞지만, 가치를 알아보고 즐기는 뜻을 생각해 보세요." },
-            { "w": "enjoy", "t": "near", "m": "enjoy는 '즐기다'예요. 진가를 알아보는 데 시간이 걸린다는 말이에요." },
-            { "w": "listen", "t": "wrong", "m": "listen은 listen to처럼 to가 필요해요." }
+            {
+              "w": "understand",
+              "t": "ok",
+              "m": "understand도 맞지만, 가치를 알아보고 즐기는 뜻을 생각해 보세요."
+            },
+            {
+              "w": "enjoy",
+              "t": "near",
+              "m": "enjoy는 '즐기다'예요. 진가를 알아보는 데 시간이 걸린다는 말이에요."
+            },
+            {
+              "w": "listen",
+              "t": "wrong",
+              "m": "listen은 listen to처럼 to가 필요해요."
+            }
           ]
         }
       ],
       "nuance": "thank는 사람에게, appreciate는 행위·물건에 쓴다(appreciate your help). '가치를 알다, 감상하다', '(가치가) 오르다'라는 뜻도.",
-      "etymology": "라틴어 ad + pretium(값) → '값을 매기다'"
+      "etymology": "라틴어 ad + pretium(값) → '값을 매기다'",
+      "ipa": "/əˈpriːʃieɪt/",
+      "def": "to be grateful for something; to recognize the value of",
+      "forms": [
+        "appreciated (과거·과거분사)",
+        "appreciating (현재분사)",
+        "appreciation (명사)",
+        "appreciative (형용사)"
+      ]
     },
     {
-      "id": "contain", "word": "contain", "pos": "v", "level": 7,
-      "meanings": ["담고 있다, 포함하다"],
+      "id": "contain",
+      "word": "contain",
+      "pos": "v",
+      "level": 7,
+      "meanings": [
+        "담고 있다, 포함하다"
+      ],
       "sentences": [
         {
-          "en": "This box ___ old photos.", "ko": "이 상자에는 오래된 사진들이 **들어 있다**.", "answer": "contains",
+          "en": "This box ___ old photos.",
+          "ko": "이 상자에는 오래된 사진들이 **들어 있다**.",
+          "answer": "contains",
           "ctx": "다락방을 정리하다가",
           "alts": [
-            { "w": "has", "t": "ok", "m": "has도 맞지만, 안에 '들어 있다'를 정확히 말해 보세요." },
-            { "w": "includes", "t": "near", "m": "includes는 전체 중 '일부로 포함'해요. 상자 안에 든 것을 말할 땐 다른 단어가 자연스러워요." },
-            { "w": "keeps", "t": "near", "m": "keeps는 사람이 무언가를 '보관하다'예요. 상자 안에 든 것을 말해 보세요." }
+            {
+              "w": "has",
+              "t": "ok",
+              "m": "has도 맞지만, 안에 '들어 있다'를 정확히 말해 보세요."
+            },
+            {
+              "w": "includes",
+              "t": "near",
+              "m": "includes는 전체 중 '일부로 포함'해요. 상자 안에 든 것을 말할 땐 다른 단어가 자연스러워요."
+            },
+            {
+              "w": "keeps",
+              "t": "near",
+              "m": "keeps는 사람이 무언가를 '보관하다'예요. 상자 안에 든 것을 말해 보세요."
+            }
           ]
         },
         {
-          "en": "The report ___ several errors.", "ko": "그 보고서에는 몇 가지 오류가 **포함되어** 있었다.", "answer": "contained",
+          "en": "The report ___ several errors.",
+          "ko": "그 보고서에는 몇 가지 오류가 **포함되어** 있었다.",
+          "answer": "contained",
           "alts": [
-            { "w": "had", "t": "ok", "m": "had도 맞지만, 안에 '들어 있었다'는 격식 있는 말을 생각해 보세요." },
-            { "w": "included", "t": "near", "m": "included는 일부러 '포함시켰다'는 느낌이에요. 오류가 들어 있던 것을 생각해 보세요." },
-            { "w": "consisted", "t": "wrong", "m": "consisted는 consisted of처럼 of가 필요하고 '구성되다'라는 뜻이에요." }
+            {
+              "w": "had",
+              "t": "ok",
+              "m": "had도 맞지만, 안에 '들어 있었다'는 격식 있는 말을 생각해 보세요."
+            },
+            {
+              "w": "included",
+              "t": "near",
+              "m": "included는 일부러 '포함시켰다'는 느낌이에요. 오류가 들어 있던 것을 생각해 보세요."
+            },
+            {
+              "w": "consisted",
+              "t": "wrong",
+              "m": "consisted는 consisted of처럼 of가 필요하고 '구성되다'라는 뜻이에요."
+            }
           ]
         }
       ],
       "nuance": "include는 전체 중 '일부로 포함', contain은 안에 '들어 있는 것 전체'. 명사 container(용기).",
-      "etymology": "라틴어 con(함께) + tenere(잡다) → '함께 붙잡아 두다'"
+      "etymology": "라틴어 con(함께) + tenere(잡다) → '함께 붙잡아 두다'",
+      "ipa": "/kənˈteɪn/",
+      "def": "to have something inside or as a part",
+      "forms": [
+        "contained (과거·과거분사)",
+        "containing (현재분사)",
+        "container (명사: 그릇, 용기)"
+      ]
     },
     {
-      "id": "deserve", "word": "deserve", "pos": "v", "level": 7,
-      "meanings": ["~을 받을 만하다"],
+      "id": "deserve",
+      "word": "deserve",
+      "pos": "v",
+      "level": 7,
+      "meanings": [
+        "~을 받을 만하다"
+      ],
       "sentences": [
         {
-          "en": "You ___ a break after all that work.", "ko": "그 많은 일을 했으니 너는 휴식을 **누릴 자격이 있어**.", "answer": "deserve",
+          "en": "You ___ a break after all that work.",
+          "ko": "그 많은 일을 했으니 너는 휴식을 **누릴 자격이 있어**.",
+          "answer": "deserve",
           "ctx": "야근한 동료에게",
           "alts": [
-            { "w": "earned", "t": "ok", "m": "earned도 맞지만 '노력해서 얻었다'예요. 받을 '자격이 있다'를 생각해 보세요." },
-            { "w": "need", "t": "near", "m": "need는 '필요하다'예요. 열심히 했으니 받을 자격이 있다는 말을 생각해 보세요." },
-            { "w": "worth", "t": "wrong", "m": "worth는 동사 자리에 올 수 없어요. be worth처럼 써요." }
+            {
+              "w": "earned",
+              "t": "ok",
+              "m": "earned도 맞지만 '노력해서 얻었다'예요. 받을 '자격이 있다'를 생각해 보세요."
+            },
+            {
+              "w": "need",
+              "t": "near",
+              "m": "need는 '필요하다'예요. 열심히 했으니 받을 자격이 있다는 말을 생각해 보세요."
+            },
+            {
+              "w": "worth",
+              "t": "wrong",
+              "m": "worth는 동사 자리에 올 수 없어요. be worth처럼 써요."
+            }
           ]
         },
         {
-          "en": "He ___ the award for his hard work.", "ko": "그는 열심히 일한 것에 대해 그 상을 **받을 만했다**.", "answer": "deserved",
+          "en": "He ___ the award for his hard work.",
+          "ko": "그는 열심히 일한 것에 대해 그 상을 **받을 만했다**.",
+          "answer": "deserved",
           "note": "받을 자격이 충분했다는 뜻",
           "alts": [
-            { "w": "earned", "t": "ok", "m": "earned도 맞지만 '받아 냈다'예요. 받을 만했다는 평가를 생각해 보세요." },
-            { "w": "won", "t": "near", "m": "won은 상을 '탔다'예요. 받을 만했다는 평가를 생각해 보세요." },
-            { "w": "worthed", "t": "wrong", "m": "worthed라는 말은 없어요. worth는 동사가 아니라서 -ed를 붙일 수 없어요." }
+            {
+              "w": "earned",
+              "t": "ok",
+              "m": "earned도 맞지만 '받아 냈다'예요. 받을 만했다는 평가를 생각해 보세요."
+            },
+            {
+              "w": "won",
+              "t": "near",
+              "m": "won은 상을 '탔다'예요. 받을 만했다는 평가를 생각해 보세요."
+            },
+            {
+              "w": "worthed",
+              "t": "wrong",
+              "m": "worthed라는 말은 없어요. worth는 동사가 아니라서 -ed를 붙일 수 없어요."
+            }
           ]
         }
       ],
       "nuance": "좋은 것도 나쁜 것도 '~할 만하다'(deserve punishment). 진행형으로 쓰지 않는다.",
-      "etymology": "라틴어 de(완전히) + servire(봉사하다) → '충분히 봉사하여 얻다'"
+      "etymology": "라틴어 de(완전히) + servire(봉사하다) → '충분히 봉사하여 얻다'",
+      "ipa": "/dɪˈzɝːv/",
+      "def": "to be worthy of something because of what you have done",
+      "forms": [
+        "deserved (과거·과거분사)",
+        "deserving (현재분사)",
+        "deserving (형용사: 받을 만한)"
+      ]
     },
     {
-      "id": "encourage", "word": "encourage", "pos": "v", "level": 7,
-      "meanings": ["격려하다", "장려하다"],
+      "id": "encourage",
+      "word": "encourage",
+      "pos": "v",
+      "level": 7,
+      "meanings": [
+        "격려하다",
+        "장려하다"
+      ],
       "sentences": [
         {
-          "en": "My teacher ___ me to apply for the scholarship.", "ko": "선생님은 내가 장학금을 신청하도록 **격려해** 주셨다.", "answer": "encouraged",
+          "en": "My teacher ___ me to apply for the scholarship.",
+          "ko": "선생님은 내가 장학금을 신청하도록 **격려해** 주셨다.",
+          "answer": "encouraged",
           "ctx": "진로 상담 후",
           "alts": [
-            { "w": "motivated", "t": "ok", "m": "motivated도 맞지만 '동기를 부여했다'예요. 용기를 북돋운 것을 생각해 보세요." },
-            { "w": "pushed", "t": "near", "m": "pushed는 '떠밀었다'는 강한 느낌이에요. 따뜻하게 북돋운 것을 생각해 보세요." },
-            { "w": "cheered", "t": "wrong", "m": "cheered는 '응원했다'로 cheer up처럼 써요. to부정사와는 어울리지 않아요." }
+            {
+              "w": "motivated",
+              "t": "ok",
+              "m": "motivated도 맞지만 '동기를 부여했다'예요. 용기를 북돋운 것을 생각해 보세요."
+            },
+            {
+              "w": "pushed",
+              "t": "near",
+              "m": "pushed는 '떠밀었다'는 강한 느낌이에요. 따뜻하게 북돋운 것을 생각해 보세요."
+            },
+            {
+              "w": "cheered",
+              "t": "wrong",
+              "m": "cheered는 '응원했다'로 cheer up처럼 써요. to부정사와는 어울리지 않아요."
+            }
           ]
         },
         {
-          "en": "The city ___ people to use public transport.", "ko": "그 도시는 시민들이 대중교통을 이용하도록 **장려한다**.", "answer": "encourages",
+          "en": "The city ___ people to use public transport.",
+          "ko": "그 도시는 시민들이 대중교통을 이용하도록 **장려한다**.",
+          "answer": "encourages",
           "alts": [
-            { "w": "recommends", "t": "near", "m": "recommends는 '추천하다'예요. 사람 to 동사 형태로는 잘 쓰지 않아요." },
-            { "w": "forces", "t": "near", "m": "forces는 '강제하다'예요. 권하고 북돋우는 것과는 달라요." },
-            { "w": "promotes", "t": "wrong", "m": "promotes는 사람을 목적어로 받지 않아요(promote the use of)." }
+            {
+              "w": "recommends",
+              "t": "near",
+              "m": "recommends는 '추천하다'예요. 사람 to 동사 형태로는 잘 쓰지 않아요."
+            },
+            {
+              "w": "forces",
+              "t": "near",
+              "m": "forces는 '강제하다'예요. 권하고 북돋우는 것과는 달라요."
+            },
+            {
+              "w": "promotes",
+              "t": "wrong",
+              "m": "promotes는 사람을 목적어로 받지 않아요(promote the use of)."
+            }
           ]
         }
       ],
       "nuance": "'encourage 사람 to 동사'. 반대는 discourage. 명사 courage(용기)에서 나온 말로 '용기를 북돋다'.",
-      "etymology": "고대 프랑스어 en(안에) + corage(용기) → '용기를 넣어주다'"
+      "etymology": "고대 프랑스어 en(안에) + corage(용기) → '용기를 넣어주다'",
+      "ipa": "/ɪnˈkɝːɪdʒ/",
+      "def": "to give someone confidence or support to do something",
+      "forms": [
+        "encouraged (과거·과거분사)",
+        "encouraging (현재분사)",
+        "encouragement (명사)",
+        "discourage (반의어)"
+      ]
     },
     {
-      "id": "estimate", "word": "estimate", "pos": "v", "level": 7,
-      "meanings": ["추정하다", "추정치, 견적"],
+      "id": "estimate",
+      "word": "estimate",
+      "pos": "v",
+      "level": 7,
+      "meanings": [
+        "추정하다",
+        "추정치, 견적"
+      ],
       "sentences": [
         {
-          "en": "Experts ___ that the bridge will take two years to build.", "ko": "전문가들은 그 다리를 짓는 데 2년이 걸릴 것으로 **추정한다**.", "answer": "estimate",
+          "en": "Experts ___ that the bridge will take two years to build.",
+          "ko": "전문가들은 그 다리를 짓는 데 2년이 걸릴 것으로 **추정한다**.",
+          "answer": "estimate",
           "note": "근거를 바탕으로 어림잡는다는 뜻",
           "alts": [
-            { "w": "predict", "t": "ok", "m": "predict도 맞지만 '예측하다'예요. 어림잡아 계산하는 것을 생각해 보세요." },
-            { "w": "guess", "t": "near", "m": "guess는 근거 없는 '추측'이에요. 전문가의 근거 있는 추정을 생각해 보세요." },
-            { "w": "calculate", "t": "near", "m": "calculate는 정확하게 '계산하다'예요. 대략적으로 어림하는 것을 생각해 보세요." }
+            {
+              "w": "predict",
+              "t": "ok",
+              "m": "predict도 맞지만 '예측하다'예요. 어림잡아 계산하는 것을 생각해 보세요."
+            },
+            {
+              "w": "guess",
+              "t": "near",
+              "m": "guess는 근거 없는 '추측'이에요. 전문가의 근거 있는 추정을 생각해 보세요."
+            },
+            {
+              "w": "calculate",
+              "t": "near",
+              "m": "calculate는 정확하게 '계산하다'예요. 대략적으로 어림하는 것을 생각해 보세요."
+            }
           ]
         },
         {
-          "en": "Can you give me a rough ___ of the cost?", "ko": "비용의 대략적인 **견적**을 주시겠어요?", "answer": "estimate",
+          "en": "Can you give me a rough ___ of the cost?",
+          "ko": "비용의 대략적인 **견적**을 주시겠어요?",
+          "answer": "estimate",
           "ctx": "인테리어 업체와 상담하며",
           "alts": [
-            { "w": "quote", "t": "ok", "m": "quote도 맞지만 확정된 '견적가'에 가까워요. 대략적인 추정치를 생각해 보세요." },
-            { "w": "guess", "t": "near", "m": "guess는 근거 없는 '짐작'이에요. 비용을 어림한 수치를 생각해 보세요." },
-            { "w": "calculation", "t": "near", "m": "calculation은 정확한 '계산'이에요. rough와 잘 어울리는 단어를 생각해 보세요." }
+            {
+              "w": "quote",
+              "t": "ok",
+              "m": "quote도 맞지만 확정된 '견적가'에 가까워요. 대략적인 추정치를 생각해 보세요."
+            },
+            {
+              "w": "guess",
+              "t": "near",
+              "m": "guess는 근거 없는 '짐작'이에요. 비용을 어림한 수치를 생각해 보세요."
+            },
+            {
+              "w": "calculation",
+              "t": "near",
+              "m": "calculation은 정확한 '계산'이에요. rough와 잘 어울리는 단어를 생각해 보세요."
+            }
           ]
         }
       ],
       "nuance": "정확한 계산이 아닌 '어림 계산'. guess는 근거 없는 추측, estimate는 근거가 있는 추정. 명사 발음은 [에스티밋].",
-      "etymology": "라틴어 aestimare '값을 매기다'"
+      "etymology": "라틴어 aestimare '값을 매기다'",
+      "ipa": "/ˈɛstɪmeɪt/",
+      "def": "to form a rough idea of the size, cost or value of something",
+      "forms": [
+        "estimated (과거·과거분사)",
+        "estimating (현재분사)",
+        "estimate (명사: 추정치)",
+        "estimation (명사)"
+      ]
     },
     {
-      "id": "maintain", "word": "maintain", "pos": "v", "level": 7,
-      "meanings": ["유지하다", "주장하다"],
+      "id": "maintain",
+      "word": "maintain",
+      "pos": "v",
+      "level": 7,
+      "meanings": [
+        "유지하다",
+        "주장하다"
+      ],
       "sentences": [
         {
-          "en": "It is important to ___ a healthy weight.", "ko": "건강한 체중을 **유지하는** 것이 중요하다.", "answer": "maintain",
+          "en": "It is important to ___ a healthy weight.",
+          "ko": "건강한 체중을 **유지하는** 것이 중요하다.",
+          "answer": "maintain",
           "alts": [
-            { "w": "keep", "t": "ok", "m": "keep도 맞지만, 조금 더 격식 있는 단어를 생각해 보세요." },
-            { "w": "manage", "t": "near", "m": "manage는 '관리하다, 해내다'예요. 상태를 계속 지키는 것을 생각해 보세요." },
-            { "w": "remain", "t": "wrong", "m": "remain은 목적어를 받지 않아요(remain healthy)." }
+            {
+              "w": "keep",
+              "t": "ok",
+              "m": "keep도 맞지만, 조금 더 격식 있는 단어를 생각해 보세요."
+            },
+            {
+              "w": "manage",
+              "t": "near",
+              "m": "manage는 '관리하다, 해내다'예요. 상태를 계속 지키는 것을 생각해 보세요."
+            },
+            {
+              "w": "remain",
+              "t": "wrong",
+              "m": "remain은 목적어를 받지 않아요(remain healthy)."
+            }
           ]
         },
         {
-          "en": "He ___ that he was innocent.", "ko": "그는 자신이 무죄라고 **주장했다**.", "answer": "maintained",
+          "en": "He ___ that he was innocent.",
+          "ko": "그는 자신이 무죄라고 **주장했다**.",
+          "answer": "maintained",
           "ctx": "법정에서",
           "note": "끝까지 주장을 굽히지 않았다는 뜻",
           "alts": [
-            { "w": "insisted", "t": "ok", "m": "insisted도 맞지만, 계속해서 '주장했다'는 격식 있는 말을 생각해 보세요." },
-            { "w": "claimed", "t": "near", "m": "claimed는 근거가 약한 주장처럼 들릴 수 있어요. 굽히지 않고 계속 주장한 것을 생각해 보세요." },
-            { "w": "kept", "t": "wrong", "m": "kept는 kept saying처럼 써야 해요. that절을 바로 받지 않아요." }
+            {
+              "w": "insisted",
+              "t": "ok",
+              "m": "insisted도 맞지만, 계속해서 '주장했다'는 격식 있는 말을 생각해 보세요."
+            },
+            {
+              "w": "claimed",
+              "t": "near",
+              "m": "claimed는 근거가 약한 주장처럼 들릴 수 있어요. 굽히지 않고 계속 주장한 것을 생각해 보세요."
+            },
+            {
+              "w": "kept",
+              "t": "wrong",
+              "m": "kept는 kept saying처럼 써야 해요. that절을 바로 받지 않아요."
+            }
           ]
         }
       ],
       "nuance": "keep보다 격식체로 '지속해서 관리하며 유지'. '(계속해서) 주장하다'라는 뜻도 있다. 명사 maintenance(유지 관리).",
-      "etymology": "라틴어 manu(손으로) + tenere(잡다) → '손으로 붙잡고 있다'"
+      "etymology": "라틴어 manu(손으로) + tenere(잡다) → '손으로 붙잡고 있다'",
+      "ipa": "/meɪnˈteɪn/",
+      "def": "to keep something at the same level or in good condition",
+      "forms": [
+        "maintained (과거·과거분사)",
+        "maintaining (현재분사)",
+        "maintenance (명사)"
+      ]
     },
     {
-      "id": "obtain", "word": "obtain", "pos": "v", "level": 7,
-      "meanings": ["얻다, 취득하다"],
+      "id": "obtain",
+      "word": "obtain",
+      "pos": "v",
+      "level": 7,
+      "meanings": [
+        "얻다, 취득하다"
+      ],
       "sentences": [
         {
-          "en": "You must ___ permission before entering.", "ko": "들어가기 전에 허가를 **받아야** 합니다.", "answer": "obtain",
+          "en": "You must ___ permission before entering.",
+          "ko": "들어가기 전에 허가를 **받아야** 합니다.",
+          "answer": "obtain",
           "ctx": "출입 제한 구역 앞에서",
           "alts": [
-            { "w": "get", "t": "ok", "m": "get도 맞지만 구어체예요. 격식 있는 단어를 생각해 보세요." },
-            { "w": "receive", "t": "near", "m": "receive는 주어진 것을 '받다'예요. 절차를 거쳐 얻어 내는 것을 생각해 보세요." },
-            { "w": "take", "t": "wrong", "m": "take permission은 어색해요. 허가는 절차를 거쳐 얻는 거예요." }
+            {
+              "w": "get",
+              "t": "ok",
+              "m": "get도 맞지만 구어체예요. 격식 있는 단어를 생각해 보세요."
+            },
+            {
+              "w": "receive",
+              "t": "near",
+              "m": "receive는 주어진 것을 '받다'예요. 절차를 거쳐 얻어 내는 것을 생각해 보세요."
+            },
+            {
+              "w": "take",
+              "t": "wrong",
+              "m": "take permission은 어색해요. 허가는 절차를 거쳐 얻는 거예요."
+            }
           ]
         },
         {
-          "en": "She ___ a degree in chemistry.", "ko": "그녀는 화학 학위를 **취득했다**.", "answer": "obtained",
+          "en": "She ___ a degree in chemistry.",
+          "ko": "그녀는 화학 학위를 **취득했다**.",
+          "answer": "obtained",
           "alts": [
-            { "w": "got", "t": "ok", "m": "got도 맞지만 구어체예요. 격식 있는 단어를 생각해 보세요." },
-            { "w": "acquired", "t": "near", "m": "acquired는 지식·습관을 오래 들여 얻을 때 써요. 학위엔 다른 단어가 자연스러워요." },
-            { "w": "won", "t": "wrong", "m": "won은 경쟁에서 '이겼다, 땄다'예요. 학위는 경쟁으로 따는 게 아니에요." }
+            {
+              "w": "got",
+              "t": "ok",
+              "m": "got도 맞지만 구어체예요. 격식 있는 단어를 생각해 보세요."
+            },
+            {
+              "w": "acquired",
+              "t": "near",
+              "m": "acquired는 지식·습관을 오래 들여 얻을 때 써요. 학위엔 다른 단어가 자연스러워요."
+            },
+            {
+              "w": "won",
+              "t": "wrong",
+              "m": "won은 경쟁에서 '이겼다, 땄다'예요. 학위는 경쟁으로 따는 게 아니에요."
+            }
           ]
         }
       ],
       "nuance": "get의 격식체. 특히 노력이나 절차를 거쳐 '획득'하는 느낌. acquire는 지식·습관처럼 시간이 걸려 얻는 것.",
-      "etymology": "라틴어 ob(향하여) + tenere(잡다)"
+      "etymology": "라틴어 ob(향하여) + tenere(잡다)",
+      "ipa": "/əbˈteɪn/",
+      "def": "to get something, especially by effort",
+      "forms": [
+        "obtained (과거·과거분사)",
+        "obtaining (현재분사)",
+        "obtainable (형용사)"
+      ]
     },
     {
-      "id": "remain", "word": "remain", "pos": "v", "level": 7,
-      "meanings": ["남아 있다", "여전히 ~이다"],
+      "id": "remain",
+      "word": "remain",
+      "pos": "v",
+      "level": 7,
+      "meanings": [
+        "남아 있다",
+        "여전히 ~이다"
+      ],
       "sentences": [
         {
-          "en": "Only a few tickets ___ for tonight's show.", "ko": "오늘 밤 공연 티켓이 몇 장만 **남아 있다**.", "answer": "remain",
+          "en": "Only a few tickets ___ for tonight's show.",
+          "ko": "오늘 밤 공연 티켓이 몇 장만 **남아 있다**.",
+          "answer": "remain",
           "note": "아직 팔리지 않고 남아 있다는 뜻",
           "alts": [
-            { "w": "stay", "t": "near", "m": "stay는 사람이 '머무르다'예요. 티켓이 남아 있는 것과는 달라요." },
-            { "w": "left", "t": "wrong", "m": "left는 are left처럼 be동사와 함께 써야 해요." },
-            { "w": "rest", "t": "wrong", "m": "rest는 '나머지'라는 명사예요. 남아 있다는 동사를 생각해 보세요." }
+            {
+              "w": "stay",
+              "t": "near",
+              "m": "stay는 사람이 '머무르다'예요. 티켓이 남아 있는 것과는 달라요."
+            },
+            {
+              "w": "left",
+              "t": "wrong",
+              "m": "left는 are left처럼 be동사와 함께 써야 해요."
+            },
+            {
+              "w": "rest",
+              "t": "wrong",
+              "m": "rest는 '나머지'라는 명사예요. 남아 있다는 동사를 생각해 보세요."
+            }
           ]
         },
         {
-          "en": "Please ___ seated until the plane stops.", "ko": "비행기가 멈출 때까지 자리에 **앉아 계십시오**.", "answer": "remain",
+          "en": "Please ___ seated until the plane stops.",
+          "ko": "비행기가 멈출 때까지 자리에 **앉아 계십시오**.",
+          "answer": "remain",
           "ctx": "기내 안내 방송",
           "alts": [
-            { "w": "stay", "t": "ok", "m": "stay도 맞지만, 기내 방송처럼 격식 있는 단어를 생각해 보세요." },
-            { "w": "keep", "t": "near", "m": "keep seated도 쓰지만 덜 자연스러워요. 격식 있는 안내 방송 표현을 생각해 보세요." },
-            { "w": "sit", "t": "wrong", "m": "sit seated는 같은 말이 반복돼요. seated 앞에 올 단어를 생각해 보세요." }
+            {
+              "w": "stay",
+              "t": "ok",
+              "m": "stay도 맞지만, 기내 방송처럼 격식 있는 단어를 생각해 보세요."
+            },
+            {
+              "w": "keep",
+              "t": "near",
+              "m": "keep seated도 쓰지만 덜 자연스러워요. 격식 있는 안내 방송 표현을 생각해 보세요."
+            },
+            {
+              "w": "sit",
+              "t": "wrong",
+              "m": "sit seated는 같은 말이 반복돼요. seated 앞에 올 단어를 생각해 보세요."
+            }
           ]
         }
       ],
       "nuance": "stay와 비슷하지만 더 격식체. 'remain + 형용사'(remain silent 계속 침묵하다). 명사 remains는 '유적, 유해'.",
-      "etymology": "라틴어 re(뒤에) + manere(머물다)"
+      "etymology": "라틴어 re(뒤에) + manere(머물다)",
+      "ipa": "/rɪˈmeɪn/",
+      "def": "to stay in the same place or state; to be left",
+      "forms": [
+        "remained (과거·과거분사)",
+        "remaining (현재분사)",
+        "remainder (명사: 나머지)",
+        "remains (명사: 유적, 잔해)"
+      ]
     },
     {
-      "id": "approach", "word": "approach", "pos": "v", "level": 7,
-      "meanings": ["다가가다", "접근법"],
+      "id": "approach",
+      "word": "approach",
+      "pos": "v",
+      "level": 7,
+      "meanings": [
+        "다가가다",
+        "접근법"
+      ],
       "sentences": [
         {
-          "en": "A stranger ___ me and asked for directions.", "ko": "낯선 사람이 내게 **다가와** 길을 물었다.", "answer": "approached",
+          "en": "A stranger ___ me and asked for directions.",
+          "ko": "낯선 사람이 내게 **다가와** 길을 물었다.",
+          "answer": "approached",
           "ctx": "길을 걷다가",
           "alts": [
-            { "w": "neared", "t": "near", "m": "neared는 장소·시간에 쓰는 딱딱한 말이에요. 사람에게 다가온 것을 생각해 보세요." },
-            { "w": "came", "t": "wrong", "m": "came은 came up to처럼 써야 해요. me를 바로 받을 수 없어요." },
-            { "w": "accessed", "t": "wrong", "m": "accessed는 시스템·자료에 '접근했다'예요. 사람에게 다가간 것과 달라요." }
+            {
+              "w": "neared",
+              "t": "near",
+              "m": "neared는 장소·시간에 쓰는 딱딱한 말이에요. 사람에게 다가온 것을 생각해 보세요."
+            },
+            {
+              "w": "came",
+              "t": "wrong",
+              "m": "came은 came up to처럼 써야 해요. me를 바로 받을 수 없어요."
+            },
+            {
+              "w": "accessed",
+              "t": "wrong",
+              "m": "accessed는 시스템·자료에 '접근했다'예요. 사람에게 다가간 것과 달라요."
+            }
           ]
         },
         {
-          "en": "We need a new ___ to this problem.", "ko": "이 문제에는 새로운 **접근법**이 필요하다.", "answer": "approach",
+          "en": "We need a new ___ to this problem.",
+          "ko": "이 문제에는 새로운 **접근법**이 필요하다.",
+          "answer": "approach",
           "note": "문제를 다루는 방식이라는 뜻",
           "alts": [
-            { "w": "method", "t": "near", "m": "method는 구체적인 '방법'이라 to this problem과 어색해요. 문제를 다루는 방식을 생각해 보세요." },
-            { "w": "solution", "t": "near", "m": "solution은 '해결책'이에요. 문제를 다루는 방식을 생각해 보세요." },
-            { "w": "access", "t": "wrong", "m": "access는 장소·자료에 대한 '접근'이에요. 문제를 다루는 방식은 다른 단어로 말해요." }
+            {
+              "w": "method",
+              "t": "near",
+              "m": "method는 구체적인 '방법'이라 to this problem과 어색해요. 문제를 다루는 방식을 생각해 보세요."
+            },
+            {
+              "w": "solution",
+              "t": "near",
+              "m": "solution은 '해결책'이에요. 문제를 다루는 방식을 생각해 보세요."
+            },
+            {
+              "w": "access",
+              "t": "wrong",
+              "m": "access는 장소·자료에 대한 '접근'이에요. 문제를 다루는 방식은 다른 단어로 말해요."
+            }
           ]
         }
       ],
       "nuance": "'approach to 장소'가 아니라 'approach 장소'(타동사). 명사로 '접근 방식'이 매우 자주 쓰인다. 시간이 '다가오다'에도 쓴다(Winter is approaching).",
-      "etymology": "라틴어 ad(~로) + propiare(가까이 가다)"
+      "etymology": "라틴어 ad(~로) + propiare(가까이 가다)",
+      "ipa": "/əˈproʊtʃ/",
+      "def": "to come nearer to someone or something; a way of dealing with",
+      "forms": [
+        "approached (과거·과거분사)",
+        "approaching (현재분사)",
+        "approach (명사: 접근법)",
+        "approachable (형용사)"
+      ]
     }
   ]
 }

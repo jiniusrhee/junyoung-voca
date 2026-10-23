@@ -1,262 +1,654 @@
 {
   "words": [
     {
-      "id": "ambivalent", "word": "ambivalent", "pos": "adj", "level": 25,
-      "meanings": ["양가적인, 상반된 감정이 공존하는"],
+      "id": "ambivalent",
+      "word": "ambivalent",
+      "pos": "adj",
+      "level": 25,
+      "meanings": [
+        "양가적인, 상반된 감정이 공존하는"
+      ],
       "sentences": [
         {
-          "en": "She feels ___ about moving to a new city.", "ko": "그녀는 새 도시로 이사하는 것에 **마음이 반반이다**.", "answer": "ambivalent",
+          "en": "She feels ___ about moving to a new city.",
+          "ko": "그녀는 새 도시로 이사하는 것에 **마음이 반반이다**.",
+          "answer": "ambivalent",
           "ctx": "이사를 앞두고",
           "note": "좋은 마음과 싫은 마음이 함께 있다는 뜻",
           "alts": [
-            { "w": "unsure", "t": "ok", "m": "unsure도 맞지만, 좋은 마음과 싫은 마음이 공존한다는 단어가 있어요." },
-            { "w": "confused", "t": "near", "m": "confused는 '혼란스러운'이에요. 좋기도 하고 싫기도 한 마음은요?" },
-            { "w": "half", "t": "wrong", "m": "half는 '반'이라는 양이에요. 감정이 반반이라는 형용사를 떠올려 보세요." }
+            {
+              "w": "unsure",
+              "t": "ok",
+              "m": "unsure도 맞지만, 좋은 마음과 싫은 마음이 공존한다는 단어가 있어요."
+            },
+            {
+              "w": "confused",
+              "t": "near",
+              "m": "confused는 '혼란스러운'이에요. 좋기도 하고 싫기도 한 마음은요?"
+            },
+            {
+              "w": "half",
+              "t": "wrong",
+              "m": "half는 '반'이라는 양이에요. 감정이 반반이라는 형용사를 떠올려 보세요."
+            }
           ]
         },
         {
-          "en": "Voters remain ___ toward the new candidate.", "ko": "유권자들은 새 후보에 대해 여전히 **양가적인** 태도다.", "answer": "ambivalent",
+          "en": "Voters remain ___ toward the new candidate.",
+          "ko": "유권자들은 새 후보에 대해 여전히 **양가적인** 태도다.",
+          "answer": "ambivalent",
           "alts": [
-            { "w": "undecided", "t": "ok", "m": "undecided도 맞지만, 상반된 감정이 함께 있다는 걸 강조하는 단어가 있어요." },
-            { "w": "indifferent", "t": "near", "m": "indifferent는 관심이 없는 거예요. 상반된 감정이 동시에 강한 상태는요?" },
-            { "w": "neutral", "t": "near", "m": "neutral은 어느 편도 아닌 '중립'이에요. 좋고 싫은 감정이 공존하는 상태는요?" }
+            {
+              "w": "undecided",
+              "t": "ok",
+              "m": "undecided도 맞지만, 상반된 감정이 함께 있다는 걸 강조하는 단어가 있어요."
+            },
+            {
+              "w": "indifferent",
+              "t": "near",
+              "m": "indifferent는 관심이 없는 거예요. 상반된 감정이 동시에 강한 상태는요?"
+            },
+            {
+              "w": "neutral",
+              "t": "near",
+              "m": "neutral은 어느 편도 아닌 '중립'이에요. 좋고 싫은 감정이 공존하는 상태는요?"
+            }
           ]
         }
       ],
       "nuance": "좋기도 하고 싫기도 해서 '마음을 정하지 못한'. indifferent는 관심이 없는 것, ambivalent는 두 감정이 동시에 강한 것. 'ambivalent about ~'. 명사 ambivalence.",
-      "etymology": "라틴어 ambi(양쪽) + valere(힘이 있다) → '양쪽으로 힘이 작용하는'"
+      "etymology": "라틴어 ambi(양쪽) + valere(힘이 있다) → '양쪽으로 힘이 작용하는'",
+      "ipa": "/æmˈbɪvələnt/",
+      "def": "having mixed or opposing feelings about something",
+      "forms": [
+        "ambivalence (명사)",
+        "ambivalently (부사)"
+      ]
     },
     {
-      "id": "anomaly", "word": "anomaly", "pos": "n", "level": 25,
-      "meanings": ["이례적인 것, 변칙"],
+      "id": "anomaly",
+      "word": "anomaly",
+      "pos": "n",
+      "level": 25,
+      "meanings": [
+        "이례적인 것, 변칙"
+      ],
       "sentences": [
         {
-          "en": "The warm winter was an ___ in this region.", "ko": "따뜻한 겨울은 이 지역에서 **이례적인 일**이었다.", "answer": "anomaly",
+          "en": "The warm winter was an ___ in this region.",
+          "ko": "따뜻한 겨울은 이 지역에서 **이례적인 일**이었다.",
+          "answer": "anomaly",
           "ctx": "이상 기후 뉴스를 보며",
           "alts": [
-            { "w": "oddity", "t": "ok", "m": "oddity도 맞지만, 정상에서 벗어난 현상을 말하는 격식 있는 단어가 있어요." },
-            { "w": "exception", "t": "near", "m": "exception은 규칙에서 빠진 예외예요. 설명이 필요한 이상한 현상은요?" },
-            { "w": "accident", "t": "wrong", "m": "accident는 '사고'예요. 평소와 다른 이례적인 현상을 뜻하는 단어는요?" }
+            {
+              "w": "oddity",
+              "t": "ok",
+              "m": "oddity도 맞지만, 정상에서 벗어난 현상을 말하는 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "exception",
+              "t": "near",
+              "m": "exception은 규칙에서 빠진 예외예요. 설명이 필요한 이상한 현상은요?"
+            },
+            {
+              "w": "accident",
+              "t": "wrong",
+              "m": "accident는 '사고'예요. 평소와 다른 이례적인 현상을 뜻하는 단어는요?"
+            }
           ]
         },
         {
-          "en": "Scientists noticed an ___ in the data.", "ko": "과학자들은 데이터에서 **이상치**를 발견했다.", "answer": "anomaly",
+          "en": "Scientists noticed an ___ in the data.",
+          "ko": "과학자들은 데이터에서 **이상치**를 발견했다.",
+          "answer": "anomaly",
           "note": "예상이나 정상에서 벗어난 값이라는 뜻",
           "alts": [
-            { "w": "outlier", "t": "ok", "m": "outlier도 맞지만, 정상에서 벗어난 이상한 것 전반을 뜻하는 단어가 있어요." },
-            { "w": "error", "t": "near", "m": "error는 '오류'예요. 틀렸다기보다 예상에서 벗어난 값을 말하는 단어는요?" },
-            { "w": "abnormal", "t": "wrong", "m": "abnormal은 형용사라 an 뒤에 명사 없이 혼자 올 수 없어요." }
+            {
+              "w": "outlier",
+              "t": "ok",
+              "m": "outlier도 맞지만, 정상에서 벗어난 이상한 것 전반을 뜻하는 단어가 있어요."
+            },
+            {
+              "w": "error",
+              "t": "near",
+              "m": "error는 '오류'예요. 틀렸다기보다 예상에서 벗어난 값을 말하는 단어는요?"
+            },
+            {
+              "w": "abnormal",
+              "t": "wrong",
+              "m": "abnormal은 형용사라 an 뒤에 명사 없이 혼자 올 수 없어요."
+            }
           ]
         }
       ],
       "nuance": "정상이나 예상에서 '벗어난 것'. exception은 규칙에서 빠진 것, anomaly는 설명이 필요한 '이상한' 것. 형용사 anomalous.",
-      "etymology": "그리스어 an(아닌) + homalos(고른, 같은) → '고르지 않은 것'"
+      "etymology": "그리스어 an(아닌) + homalos(고른, 같은) → '고르지 않은 것'",
+      "ipa": "/əˈnɑːməli/",
+      "def": "something that is different from what is normal or expected",
+      "forms": [
+        "anomalies (복수)",
+        "anomalous (형용사)"
+      ]
     },
     {
-      "id": "antagonize", "word": "antagonize", "pos": "v", "level": 25,
-      "meanings": ["적대감을 불러일으키다, 반감을 사다"],
+      "id": "antagonize",
+      "word": "antagonize",
+      "pos": "v",
+      "level": 25,
+      "meanings": [
+        "적대감을 불러일으키다, 반감을 사다"
+      ],
       "sentences": [
         {
-          "en": "Don't ___ your boss on your first day.", "ko": "첫날부터 상사의 **반감을 사지** 마.", "answer": "antagonize",
+          "en": "Don't ___ your boss on your first day.",
+          "ko": "첫날부터 상사의 **반감을 사지** 마.",
+          "answer": "antagonize",
           "ctx": "첫 출근 날 조언",
           "note": "상대가 나를 싫어하게 만든다는 뜻",
           "alts": [
-            { "w": "annoy", "t": "ok", "m": "annoy도 맞지만, 상대가 나를 적대하게 만든다는 단어가 있어요." },
-            { "w": "provoke", "t": "near", "m": "provoke는 반응을 일으키는 거예요. 상사가 나를 싫어하게 만든다는 단어는요?" },
-            { "w": "hate", "t": "wrong", "m": "hate는 내가 상대를 '싫어하다'예요. 상대가 나를 싫어하게 만든다는 단어는요?" }
+            {
+              "w": "annoy",
+              "t": "ok",
+              "m": "annoy도 맞지만, 상대가 나를 적대하게 만든다는 단어가 있어요."
+            },
+            {
+              "w": "provoke",
+              "t": "near",
+              "m": "provoke는 반응을 일으키는 거예요. 상사가 나를 싫어하게 만든다는 단어는요?"
+            },
+            {
+              "w": "hate",
+              "t": "wrong",
+              "m": "hate는 내가 상대를 '싫어하다'예요. 상대가 나를 싫어하게 만든다는 단어는요?"
+            }
           ]
         },
         {
-          "en": "His comments ___ many of his supporters.", "ko": "그의 발언은 많은 지지자들의 **적대감을 불러일으켰다**.", "answer": "antagonized",
+          "en": "His comments ___ many of his supporters.",
+          "ko": "그의 발언은 많은 지지자들의 **적대감을 불러일으켰다**.",
+          "answer": "antagonized",
           "alts": [
-            { "w": "angered", "t": "ok", "m": "angered도 맞지만, 지지자들이 등을 돌려 적이 되게 했다는 단어가 있어요." },
-            { "w": "offended", "t": "near", "m": "offended는 기분을 상하게 한 거예요. 적대감까지 불러일으켰다는 단어는요?" },
-            { "w": "attacked", "t": "wrong", "m": "attacked는 그가 직접 '공격했다'는 뜻이에요. 반감을 샀다는 뜻과는 달라요." }
+            {
+              "w": "angered",
+              "t": "ok",
+              "m": "angered도 맞지만, 지지자들이 등을 돌려 적이 되게 했다는 단어가 있어요."
+            },
+            {
+              "w": "offended",
+              "t": "near",
+              "m": "offended는 기분을 상하게 한 거예요. 적대감까지 불러일으켰다는 단어는요?"
+            },
+            {
+              "w": "attacked",
+              "t": "wrong",
+              "m": "attacked는 그가 직접 '공격했다'는 뜻이에요. 반감을 샀다는 뜻과는 달라요."
+            }
           ]
         }
       ],
       "nuance": "상대를 '적으로 만들다'. provoke는 반응을 일으키는 것, antagonize는 상대가 나를 싫어하게 만드는 것. 명사 antagonist(적대자, 작품 속 적수), antagonism.",
-      "etymology": "그리스어 anti(맞서) + agonizesthai(싸우다) → '맞서 싸우게 하다'"
+      "etymology": "그리스어 anti(맞서) + agonizesthai(싸우다) → '맞서 싸우게 하다'",
+      "ipa": "/ænˈtæɡənaɪz/",
+      "def": "to make someone angry or hostile toward you",
+      "forms": [
+        "antagonized (과거·과거분사)",
+        "antagonizing (현재분사)",
+        "antagonism (명사)",
+        "antagonist (명사: 적대자)"
+      ]
     },
     {
-      "id": "apathetic", "word": "apathetic", "pos": "adj", "level": 25,
-      "meanings": ["무관심한, 무기력한"],
+      "id": "apathetic",
+      "word": "apathetic",
+      "pos": "adj",
+      "level": 25,
+      "meanings": [
+        "무관심한, 무기력한"
+      ],
       "sentences": [
         {
-          "en": "Many young people are ___ about politics.", "ko": "많은 젊은이들이 정치에 **무관심하다**.", "answer": "apathetic",
+          "en": "Many young people are ___ about politics.",
+          "ko": "많은 젊은이들이 정치에 **무관심하다**.",
+          "answer": "apathetic",
           "ctx": "선거 투표율 기사를 읽고",
           "alts": [
-            { "w": "indifferent", "t": "near", "m": "indifferent는 보통 to와 써요. about과 어울리며 의욕조차 없다는 단어는요?" },
-            { "w": "careless", "t": "wrong", "m": "careless는 '부주의한'이에요. 관심이 없다는 뜻이 아니에요." },
-            { "w": "disinterested", "t": "wrong", "m": "disinterested는 원래 '사심 없는, 공정한'이라는 뜻이에요." }
+            {
+              "w": "indifferent",
+              "t": "near",
+              "m": "indifferent는 보통 to와 써요. about과 어울리며 의욕조차 없다는 단어는요?"
+            },
+            {
+              "w": "careless",
+              "t": "wrong",
+              "m": "careless는 '부주의한'이에요. 관심이 없다는 뜻이 아니에요."
+            },
+            {
+              "w": "disinterested",
+              "t": "wrong",
+              "m": "disinterested는 원래 '사심 없는, 공정한'이라는 뜻이에요."
+            }
           ]
         },
         {
-          "en": "After the loss, the team seemed ___ and lifeless.", "ko": "패배 후 그 팀은 **무기력하고** 생기가 없어 보였다.", "answer": "apathetic",
+          "en": "After the loss, the team seemed ___ and lifeless.",
+          "ko": "패배 후 그 팀은 **무기력하고** 생기가 없어 보였다.",
+          "answer": "apathetic",
           "note": "감정도 의욕도 없이 축 처졌다는 뜻",
           "alts": [
-            { "w": "tired", "t": "near", "m": "tired는 '피곤한'이에요. 의욕 자체가 사라진 무기력한 상태는요?" },
-            { "w": "depressed", "t": "near", "m": "depressed는 '우울한'이에요. 감정도 의욕도 없어 보이는 상태는요?" },
-            { "w": "lazy", "t": "wrong", "m": "lazy는 '게으른' 성격이에요. 패배 후 의욕을 잃은 상태와는 달라요." }
+            {
+              "w": "tired",
+              "t": "near",
+              "m": "tired는 '피곤한'이에요. 의욕 자체가 사라진 무기력한 상태는요?"
+            },
+            {
+              "w": "depressed",
+              "t": "near",
+              "m": "depressed는 '우울한'이에요. 감정도 의욕도 없어 보이는 상태는요?"
+            },
+            {
+              "w": "lazy",
+              "t": "wrong",
+              "m": "lazy는 '게으른' 성격이에요. 패배 후 의욕을 잃은 상태와는 달라요."
+            }
           ]
         }
       ],
       "nuance": "감정도 관심도 '없어서 아무것도 하지 않는'. indifferent는 신경 쓰지 않는 태도, apathetic은 의욕 자체가 없는 상태. 명사 apathy.",
-      "etymology": "그리스어 a(없는) + pathos(감정) → '감정이 없는'"
+      "etymology": "그리스어 a(없는) + pathos(감정) → '감정이 없는'",
+      "ipa": "/ˌæpəˈθɛtɪk/",
+      "def": "showing no interest, enthusiasm or concern",
+      "forms": [
+        "apathetically (부사)",
+        "apathy (명사)"
+      ]
     },
     {
-      "id": "arduous", "word": "arduous", "pos": "adj", "level": 25,
-      "meanings": ["몹시 힘든, 고된"],
+      "id": "arduous",
+      "word": "arduous",
+      "pos": "adj",
+      "level": 25,
+      "meanings": [
+        "몹시 힘든, 고된"
+      ],
       "sentences": [
         {
-          "en": "They made an ___ journey across the desert.", "ko": "그들은 사막을 가로지르는 **고된** 여정을 했다.", "answer": "arduous",
+          "en": "They made an ___ journey across the desert.",
+          "ko": "그들은 사막을 가로지르는 **고된** 여정을 했다.",
+          "answer": "arduous",
           "ctx": "탐험 다큐멘터리를 보며",
           "alts": [
-            { "w": "exhausting", "t": "ok", "m": "exhausting도 맞지만, 큰 노력과 인내가 필요하다는 격식 있는 단어가 있어요." },
-            { "w": "awful", "t": "near", "m": "awful은 '끔찍한'이에요. 체력과 끈기를 소모하는 고된 여정은요?" },
-            { "w": "hard", "t": "wrong", "m": "hard는 앞의 an과 맞지 않아요. 모음으로 시작하는 단어를 생각해 보세요." }
+            {
+              "w": "exhausting",
+              "t": "ok",
+              "m": "exhausting도 맞지만, 큰 노력과 인내가 필요하다는 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "awful",
+              "t": "near",
+              "m": "awful은 '끔찍한'이에요. 체력과 끈기를 소모하는 고된 여정은요?"
+            },
+            {
+              "w": "hard",
+              "t": "wrong",
+              "m": "hard는 앞의 an과 맞지 않아요. 모음으로 시작하는 단어를 생각해 보세요."
+            }
           ]
         },
         {
-          "en": "Writing a dictionary is an ___ task.", "ko": "사전을 쓰는 것은 **몹시 힘든** 일이다.", "answer": "arduous",
+          "en": "Writing a dictionary is an ___ task.",
+          "ko": "사전을 쓰는 것은 **몹시 힘든** 일이다.",
+          "answer": "arduous",
           "note": "오랜 노력과 인내가 필요한 고된 일이라는 뜻",
           "alts": [
-            { "w": "enormous", "t": "near", "m": "enormous는 '거대한' 규모예요. 오랜 노력과 인내가 드는 고됨을 말하는 단어는요?" },
-            { "w": "difficult", "t": "wrong", "m": "difficult는 앞의 an과 맞지 않아요. 고되다는 뜻의 모음으로 시작하는 단어는요?" },
-            { "w": "uneasy", "t": "wrong", "m": "uneasy는 마음이 '불안한'이에요. 일이 고되다는 뜻이 아니에요." }
+            {
+              "w": "enormous",
+              "t": "near",
+              "m": "enormous는 '거대한' 규모예요. 오랜 노력과 인내가 드는 고됨을 말하는 단어는요?"
+            },
+            {
+              "w": "difficult",
+              "t": "wrong",
+              "m": "difficult는 앞의 an과 맞지 않아요. 고되다는 뜻의 모음으로 시작하는 단어는요?"
+            },
+            {
+              "w": "uneasy",
+              "t": "wrong",
+              "m": "uneasy는 마음이 '불안한'이에요. 일이 고되다는 뜻이 아니에요."
+            }
           ]
         }
       ],
       "nuance": "오랜 시간 '큰 노력과 인내가 필요한'. difficult는 어려움 일반, arduous는 체력·끈기를 소모하는 고됨. hard work보다 격식체.",
-      "etymology": "라틴어 arduus(가파른, 높은) → '오르기 힘든'"
+      "etymology": "라틴어 arduus(가파른, 높은) → '오르기 힘든'",
+      "ipa": "/ˈɑːrdʒuəs/",
+      "def": "needing a lot of effort and energy; very difficult",
+      "forms": [
+        "arduously (부사)"
+      ]
     },
     {
-      "id": "austere", "word": "austere", "pos": "adj", "level": 25,
-      "meanings": ["소박하고 엄격한, 금욕적인", "꾸밈없는"],
+      "id": "austere",
+      "word": "austere",
+      "pos": "adj",
+      "level": 25,
+      "meanings": [
+        "소박하고 엄격한, 금욕적인",
+        "꾸밈없는"
+      ],
       "sentences": [
         {
-          "en": "The monks live an ___ life with few possessions.", "ko": "그 수도사들은 소유물이 거의 없는 **금욕적인** 삶을 산다.", "answer": "austere",
+          "en": "The monks live an ___ life with few possessions.",
+          "ko": "그 수도사들은 소유물이 거의 없는 **금욕적인** 삶을 산다.",
+          "answer": "austere",
           "ctx": "수도원을 방문하고",
           "alts": [
-            { "w": "ascetic", "t": "ok", "m": "ascetic도 맞지만, 엄격하고 간소한 생활을 묘사하는 더 흔한 단어가 있어요." },
-            { "w": "ordinary", "t": "near", "m": "ordinary는 '평범한'이에요. 쾌락을 멀리한 엄격하고 간소한 삶은요?" },
-            { "w": "simple", "t": "wrong", "m": "simple은 앞의 an과 맞지 않아요. 엄격하게 간소한 삶을 뜻하는 단어는요?" }
+            {
+              "w": "ascetic",
+              "t": "ok",
+              "m": "ascetic도 맞지만, 엄격하고 간소한 생활을 묘사하는 더 흔한 단어가 있어요."
+            },
+            {
+              "w": "ordinary",
+              "t": "near",
+              "m": "ordinary는 '평범한'이에요. 쾌락을 멀리한 엄격하고 간소한 삶은요?"
+            },
+            {
+              "w": "simple",
+              "t": "wrong",
+              "m": "simple은 앞의 an과 맞지 않아요. 엄격하게 간소한 삶을 뜻하는 단어는요?"
+            }
           ]
         },
         {
-          "en": "The room was ___, with only a bed and a chair.", "ko": "그 방은 침대와 의자 하나만 있는 **꾸밈없는** 공간이었다.", "answer": "austere",
+          "en": "The room was ___, with only a bed and a chair.",
+          "ko": "그 방은 침대와 의자 하나만 있는 **꾸밈없는** 공간이었다.",
+          "answer": "austere",
           "note": "장식 없이 엄격하게 간소하다는 뜻",
           "alts": [
-            { "w": "simple", "t": "ok", "m": "simple도 맞지만, 장식 없이 엄숙할 만큼 간소하다는 단어가 있어요." },
-            { "w": "empty", "t": "near", "m": "empty는 '텅 빈'이에요. 가구가 있긴 하지만 꾸밈없이 간소한 방은요?" },
-            { "w": "clean", "t": "near", "m": "clean은 '깨끗한'이에요. 장식 없이 차갑도록 간소하다는 단어는요?" }
+            {
+              "w": "simple",
+              "t": "ok",
+              "m": "simple도 맞지만, 장식 없이 엄숙할 만큼 간소하다는 단어가 있어요."
+            },
+            {
+              "w": "empty",
+              "t": "near",
+              "m": "empty는 '텅 빈'이에요. 가구가 있긴 하지만 꾸밈없이 간소한 방은요?"
+            },
+            {
+              "w": "clean",
+              "t": "near",
+              "m": "clean은 '깨끗한'이에요. 장식 없이 차갑도록 간소하다는 단어는요?"
+            }
           ]
         }
       ],
       "nuance": "장식·쾌락 없이 '엄격하게 간소한'. simple은 중립적, austere는 차갑고 엄숙한 느낌까지. 경제 용어 austerity(긴축)도 여기서.",
-      "etymology": "그리스어 austeros(떫은, 거친)"
+      "etymology": "그리스어 austeros(떫은, 거친)",
+      "ipa": "/ɔːˈstɪr/",
+      "def": "plain and simple without comfort; strict and serious",
+      "forms": [
+        "austerely (부사)",
+        "austerity (명사)"
+      ]
     },
     {
-      "id": "belligerent", "word": "belligerent", "pos": "adj", "level": 25,
-      "meanings": ["호전적인, 싸우려 드는"],
+      "id": "belligerent",
+      "word": "belligerent",
+      "pos": "adj",
+      "level": 25,
+      "meanings": [
+        "호전적인, 싸우려 드는"
+      ],
       "sentences": [
         {
-          "en": "He became ___ after a few drinks.", "ko": "그는 술을 몇 잔 마시자 **싸우려 들었다**.", "answer": "belligerent",
+          "en": "He became ___ after a few drinks.",
+          "ko": "그는 술을 몇 잔 마시자 **싸우려 들었다**.",
+          "answer": "belligerent",
           "ctx": "회식 자리에서",
           "alts": [
-            { "w": "aggressive", "t": "ok", "m": "aggressive도 맞지만, 당장 싸움을 걸 듯 적대적인 태도의 단어가 있어요." },
-            { "w": "violent", "t": "near", "m": "violent는 실제로 폭력을 쓰는 거예요. 싸움을 걸고 싶어 하는 태도는요?" },
-            { "w": "drunk", "t": "wrong", "m": "drunk는 '취한'이에요. 술을 마신 뒤 싸우려 드는 태도를 말하는 단어는요?" }
+            {
+              "w": "aggressive",
+              "t": "ok",
+              "m": "aggressive도 맞지만, 당장 싸움을 걸 듯 적대적인 태도의 단어가 있어요."
+            },
+            {
+              "w": "violent",
+              "t": "near",
+              "m": "violent는 실제로 폭력을 쓰는 거예요. 싸움을 걸고 싶어 하는 태도는요?"
+            },
+            {
+              "w": "drunk",
+              "t": "wrong",
+              "m": "drunk는 '취한'이에요. 술을 마신 뒤 싸우려 드는 태도를 말하는 단어는요?"
+            }
           ]
         },
         {
-          "en": "The country's ___ attitude worried its neighbors.", "ko": "그 나라의 **호전적인** 태도는 이웃 나라들을 불안하게 했다.", "answer": "belligerent",
+          "en": "The country's ___ attitude worried its neighbors.",
+          "ko": "그 나라의 **호전적인** 태도는 이웃 나라들을 불안하게 했다.",
+          "answer": "belligerent",
           "alts": [
-            { "w": "aggressive", "t": "ok", "m": "aggressive도 맞지만, 전쟁도 불사할 듯 호전적인 태도를 뜻하는 단어가 있어요." },
-            { "w": "hostile", "t": "near", "m": "hostile은 '적대적인'이에요. 싸우려 드는 호전성을 강조하는 단어는요?" },
-            { "w": "fighting", "t": "wrong", "m": "fighting은 '싸우는 중인'이에요. 응원할 때 쓰는 콩글리시 '파이팅'과도 달라요." }
+            {
+              "w": "aggressive",
+              "t": "ok",
+              "m": "aggressive도 맞지만, 전쟁도 불사할 듯 호전적인 태도를 뜻하는 단어가 있어요."
+            },
+            {
+              "w": "hostile",
+              "t": "near",
+              "m": "hostile은 '적대적인'이에요. 싸우려 드는 호전성을 강조하는 단어는요?"
+            },
+            {
+              "w": "fighting",
+              "t": "wrong",
+              "m": "fighting은 '싸우는 중인'이에요. 응원할 때 쓰는 콩글리시 '파이팅'과도 달라요."
+            }
           ]
         }
       ],
       "nuance": "싸움을 '걸고 싶어 하는' 공격적 태도. aggressive는 적극적·공격적 전반, belligerent는 적대감이 드러나 당장 싸울 듯한 것. 명사로 '교전국'.",
-      "etymology": "라틴어 bellum(전쟁) + gerere(수행하다) → '전쟁을 벌이는'"
+      "etymology": "라틴어 bellum(전쟁) + gerere(수행하다) → '전쟁을 벌이는'",
+      "ipa": "/bəˈlɪdʒərənt/",
+      "def": "unfriendly and aggressive, wanting to fight or argue",
+      "forms": [
+        "belligerently (부사)",
+        "belligerence (명사)"
+      ]
     },
     {
-      "id": "candid", "word": "candid", "pos": "adj", "level": 25,
-      "meanings": ["솔직한, 거리낌 없는"],
+      "id": "candid",
+      "word": "candid",
+      "pos": "adj",
+      "level": 25,
+      "meanings": [
+        "솔직한, 거리낌 없는"
+      ],
       "sentences": [
         {
-          "en": "To be ___, I didn't enjoy the movie.", "ko": "**솔직히** 말하면 그 영화는 재미없었어.", "answer": "candid",
+          "en": "To be ___, I didn't enjoy the movie.",
+          "ko": "**솔직히** 말하면 그 영화는 재미없었어.",
+          "answer": "candid",
           "ctx": "영화를 보고 나와서",
           "alts": [
-            { "w": "honest", "t": "ok", "m": "honest도 맞지만, 숨김없이 직설적으로 말한다는 느낌의 단어가 있어요." },
-            { "w": "sincere", "t": "near", "m": "sincere는 '진심 어린'이에요. 불편한 말도 숨기지 않는다는 단어는요?" },
-            { "w": "frankly", "t": "wrong", "m": "frankly는 부사라 To be 뒤에 올 수 없어요. 형용사가 필요해요." }
+            {
+              "w": "honest",
+              "t": "ok",
+              "m": "honest도 맞지만, 숨김없이 직설적으로 말한다는 느낌의 단어가 있어요."
+            },
+            {
+              "w": "sincere",
+              "t": "near",
+              "m": "sincere는 '진심 어린'이에요. 불편한 말도 숨기지 않는다는 단어는요?"
+            },
+            {
+              "w": "frankly",
+              "t": "wrong",
+              "m": "frankly는 부사라 To be 뒤에 올 수 없어요. 형용사가 필요해요."
+            }
           ]
         },
         {
-          "en": "She gave a ___ account of her struggles.", "ko": "그녀는 자신의 고충을 **거리낌 없이** 털어놓았다.", "answer": "candid",
+          "en": "She gave a ___ account of her struggles.",
+          "ko": "그녀는 자신의 고충을 **거리낌 없이** 털어놓았다.",
+          "answer": "candid",
           "alts": [
-            { "w": "frank", "t": "ok", "m": "frank도 맞지만, 감추는 것 없이 털어놓는다는 느낌의 단어가 있어요." },
-            { "w": "detailed", "t": "near", "m": "detailed는 '자세한'이에요. 숨김없이 솔직하게 털어놓았다는 단어는요?" },
-            { "w": "honest", "t": "wrong", "m": "honest는 h가 묵음이라 an과 써야 해요. 앞의 a와 어울리는 단어는요?" }
+            {
+              "w": "frank",
+              "t": "ok",
+              "m": "frank도 맞지만, 감추는 것 없이 털어놓는다는 느낌의 단어가 있어요."
+            },
+            {
+              "w": "detailed",
+              "t": "near",
+              "m": "detailed는 '자세한'이에요. 숨김없이 솔직하게 털어놓았다는 단어는요?"
+            },
+            {
+              "w": "honest",
+              "t": "wrong",
+              "m": "honest는 h가 묵음이라 an과 써야 해요. 앞의 a와 어울리는 단어는요?"
+            }
           ]
         }
       ],
       "nuance": "불편한 내용도 '숨기지 않고 말하는'. honest는 거짓이 없는 것, candid는 꾸밈없이 직설적인 것. 'candid photo'는 연출 없이 찍은 사진. 명사 candor.",
-      "etymology": "라틴어 candidus(흰, 순수한) → '감춘 것 없이 깨끗한'"
+      "etymology": "라틴어 candidus(흰, 순수한) → '감춘 것 없이 깨끗한'",
+      "ipa": "/ˈkændɪd/",
+      "def": "honest and direct, even when the truth is unpleasant",
+      "forms": [
+        "candidly (부사)",
+        "candor (명사)"
+      ]
     },
     {
-      "id": "capricious", "word": "capricious", "pos": "adj", "level": 25,
-      "meanings": ["변덕스러운, 예측할 수 없는"],
+      "id": "capricious",
+      "word": "capricious",
+      "pos": "adj",
+      "level": 25,
+      "meanings": [
+        "변덕스러운, 예측할 수 없는"
+      ],
       "sentences": [
         {
-          "en": "The weather here is ___ in spring.", "ko": "이곳 날씨는 봄에 **변덕스럽다**.", "answer": "capricious",
+          "en": "The weather here is ___ in spring.",
+          "ko": "이곳 날씨는 봄에 **변덕스럽다**.",
+          "answer": "capricious",
           "ctx": "봄나들이를 계획하며",
           "alts": [
-            { "w": "changeable", "t": "ok", "m": "changeable도 맞지만, 이유 없이 갑자기 바뀌는 변덕을 말하는 단어가 있어요." },
-            { "w": "moody", "t": "near", "m": "moody는 주로 사람의 기분에 써요. 날씨의 변덕을 말하는 단어는요?" },
-            { "w": "crazy", "t": "near", "m": "crazy는 구어적이에요. 예측할 수 없이 변덕스러운 날씨를 뜻하는 단어는요?" }
+            {
+              "w": "changeable",
+              "t": "ok",
+              "m": "changeable도 맞지만, 이유 없이 갑자기 바뀌는 변덕을 말하는 단어가 있어요."
+            },
+            {
+              "w": "moody",
+              "t": "near",
+              "m": "moody는 주로 사람의 기분에 써요. 날씨의 변덕을 말하는 단어는요?"
+            },
+            {
+              "w": "crazy",
+              "t": "near",
+              "m": "crazy는 구어적이에요. 예측할 수 없이 변덕스러운 날씨를 뜻하는 단어는요?"
+            }
           ]
         },
         {
-          "en": "Employees were frustrated by the ___ decisions of the boss.", "ko": "직원들은 사장의 **종잡을 수 없는** 결정에 좌절했다.", "answer": "capricious",
+          "en": "Employees were frustrated by the ___ decisions of the boss.",
+          "ko": "직원들은 사장의 **종잡을 수 없는** 결정에 좌절했다.",
+          "answer": "capricious",
           "note": "이유 없이 즉흥적으로 자주 바뀐다는 뜻",
           "alts": [
-            { "w": "unpredictable", "t": "ok", "m": "unpredictable도 맞지만, 기분 따라 즉흥적으로 바뀐다는 단어가 있어요." },
-            { "w": "random", "t": "near", "m": "random은 '무작위의'예요. 사장의 변덕으로 이랬다저랬다 하는 결정은요?" },
-            { "w": "strange", "t": "near", "m": "strange는 '이상한'이에요. 예측할 수 없게 수시로 바뀐다는 단어는요?" }
+            {
+              "w": "unpredictable",
+              "t": "ok",
+              "m": "unpredictable도 맞지만, 기분 따라 즉흥적으로 바뀐다는 단어가 있어요."
+            },
+            {
+              "w": "random",
+              "t": "near",
+              "m": "random은 '무작위의'예요. 사장의 변덕으로 이랬다저랬다 하는 결정은요?"
+            },
+            {
+              "w": "strange",
+              "t": "near",
+              "m": "strange는 '이상한'이에요. 예측할 수 없게 수시로 바뀐다는 단어는요?"
+            }
           ]
         }
       ],
       "nuance": "이유 없이 '갑자기 마음이나 상태가 바뀌는'. fickle은 애정·충성이 쉽게 변하는 것, capricious는 즉흥적 변덕 전반. 명사 caprice(변덕).",
-      "etymology": "이탈리아어 capriccio(갑작스러운 충동, 염소처럼 뛰는 것) ← capra(염소)"
+      "etymology": "이탈리아어 capriccio(갑작스러운 충동, 염소처럼 뛰는 것) ← capra(염소)",
+      "ipa": "/kəˈprɪʃəs/",
+      "def": "changing mood or behavior suddenly and unpredictably",
+      "forms": [
+        "capriciously (부사)",
+        "caprice (명사: 변덕)"
+      ]
     },
     {
-      "id": "caustic", "word": "caustic", "pos": "adj", "level": 25,
-      "meanings": ["(말이) 신랄한, 독설적인", "부식성의"],
+      "id": "caustic",
+      "word": "caustic",
+      "pos": "adj",
+      "level": 25,
+      "meanings": [
+        "(말이) 신랄한, 독설적인",
+        "부식성의"
+      ],
       "sentences": [
         {
-          "en": "Her ___ remarks hurt his feelings.", "ko": "그녀의 **신랄한** 말은 그의 마음을 아프게 했다.", "answer": "caustic",
+          "en": "Her ___ remarks hurt his feelings.",
+          "ko": "그녀의 **신랄한** 말은 그의 마음을 아프게 했다.",
+          "answer": "caustic",
           "alts": [
-            { "w": "harsh", "t": "ok", "m": "harsh도 맞지만, 살을 태우듯 독한 말을 뜻하는 단어가 있어요." },
-            { "w": "sarcastic", "t": "near", "m": "sarcastic은 비꼬는 거예요. 비꼼에 독기까지 더해 상처 주는 단어는요?" },
-            { "w": "spicy", "t": "wrong", "m": "spicy는 음식이 '매운'이에요. 말이 신랄하다는 뜻으로는 안 써요." }
+            {
+              "w": "harsh",
+              "t": "ok",
+              "m": "harsh도 맞지만, 살을 태우듯 독한 말을 뜻하는 단어가 있어요."
+            },
+            {
+              "w": "sarcastic",
+              "t": "near",
+              "m": "sarcastic은 비꼬는 거예요. 비꼼에 독기까지 더해 상처 주는 단어는요?"
+            },
+            {
+              "w": "spicy",
+              "t": "wrong",
+              "m": "spicy는 음식이 '매운'이에요. 말이 신랄하다는 뜻으로는 안 써요."
+            }
           ]
         },
         {
-          "en": "Wear gloves when handling ___ chemicals.", "ko": "**부식성** 화학 물질을 다룰 때는 장갑을 착용하세요.", "answer": "caustic",
+          "en": "Wear gloves when handling ___ chemicals.",
+          "ko": "**부식성** 화학 물질을 다룰 때는 장갑을 착용하세요.",
+          "answer": "caustic",
           "ctx": "실험실 안전 수칙",
           "note": "닿으면 태우고 녹이는 성질이라는 뜻",
           "alts": [
-            { "w": "corrosive", "t": "ok", "m": "corrosive도 맞지만, 피부를 태운다는 어원을 가진 다른 단어가 있어요." },
-            { "w": "dangerous", "t": "near", "m": "dangerous는 위험 일반이에요. 피부를 태우고 녹이는 성질을 말하는 단어는요?" },
-            { "w": "toxic", "t": "near", "m": "toxic은 '독성이 있는'이에요. 닿으면 태우고 부식시키는 성질은요?" }
+            {
+              "w": "corrosive",
+              "t": "ok",
+              "m": "corrosive도 맞지만, 피부를 태운다는 어원을 가진 다른 단어가 있어요."
+            },
+            {
+              "w": "dangerous",
+              "t": "near",
+              "m": "dangerous는 위험 일반이에요. 피부를 태우고 녹이는 성질을 말하는 단어는요?"
+            },
+            {
+              "w": "toxic",
+              "t": "near",
+              "m": "toxic은 '독성이 있는'이에요. 닿으면 태우고 부식시키는 성질은요?"
+            }
           ]
         }
       ],
       "nuance": "살을 태우는 화학 물질처럼 '상처 주는 날카로운' 말. sarcastic은 비꼬는 것, caustic은 비꼼에 독기까지 더한 것.",
-      "etymology": "그리스어 kaustikos(태우는) ← kaiein(태우다)"
+      "etymology": "그리스어 kaustikos(태우는) ← kaiein(태우다)",
+      "ipa": "/ˈkɔːstɪk/",
+      "def": "critical in a bitter, sarcastic way; able to burn or corrode",
+      "forms": [
+        "caustically (부사)"
+      ]
     }
   ]
 }

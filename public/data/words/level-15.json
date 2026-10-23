@@ -1,261 +1,656 @@
 {
   "words": [
     {
-      "id": "reluctant", "word": "reluctant", "pos": "adj", "level": 15,
-      "meanings": ["꺼리는, 마음이 내키지 않는"],
+      "id": "reluctant",
+      "word": "reluctant",
+      "pos": "adj",
+      "level": 15,
+      "meanings": [
+        "꺼리는, 마음이 내키지 않는"
+      ],
       "sentences": [
         {
-          "en": "He was ___ to admit his mistake.", "ko": "그는 자신의 실수를 인정하기를 **꺼렸다**.", "answer": "reluctant",
+          "en": "He was ___ to admit his mistake.",
+          "ko": "그는 자신의 실수를 인정하기를 **꺼렸다**.",
+          "answer": "reluctant",
           "ctx": "팀 프로젝트 회고에서",
           "alts": [
-            { "w": "unwilling", "t": "ok", "m": "unwilling도 맞지만, 마음이 내키지 않아 망설이는 느낌의 단어가 있어요." },
-            { "w": "hesitant", "t": "near", "m": "hesitant는 '망설이는'이에요. 하기 싫어서 꺼리는 마음은요?" },
-            { "w": "afraid", "t": "near", "m": "afraid는 '두려워하는'이에요. 하기 싫어 꺼렸다는 단어는요?" }
+            {
+              "w": "unwilling",
+              "t": "ok",
+              "m": "unwilling도 맞지만, 마음이 내키지 않아 망설이는 느낌의 단어가 있어요."
+            },
+            {
+              "w": "hesitant",
+              "t": "near",
+              "m": "hesitant는 '망설이는'이에요. 하기 싫어서 꺼리는 마음은요?"
+            },
+            {
+              "w": "afraid",
+              "t": "near",
+              "m": "afraid는 '두려워하는'이에요. 하기 싫어 꺼렸다는 단어는요?"
+            }
           ]
         },
         {
-          "en": "She gave a ___ smile.", "ko": "그녀는 **마지못해** 미소를 지었다.", "answer": "reluctant",
+          "en": "She gave a ___ smile.",
+          "ko": "그녀는 **마지못해** 미소를 지었다.",
+          "answer": "reluctant",
           "note": "내키지 않지만 억지로 지은 미소",
           "alts": [
-            { "w": "forced", "t": "ok", "m": "forced도 맞지만, 마음이 내키지 않는다는 느낌의 단어를 떠올려 보세요." },
-            { "w": "reluctantly", "t": "wrong", "m": "-ly가 붙은 부사는 명사 smile 앞에 올 수 없어요. 형용사가 필요해요." },
-            { "w": "shy", "t": "near", "m": "shy는 '수줍은'이에요. 내키지 않아 억지로 짓는 미소는요?" }
+            {
+              "w": "forced",
+              "t": "ok",
+              "m": "forced도 맞지만, 마음이 내키지 않는다는 느낌의 단어를 떠올려 보세요."
+            },
+            {
+              "w": "reluctantly",
+              "t": "wrong",
+              "m": "-ly가 붙은 부사는 명사 smile 앞에 올 수 없어요. 형용사가 필요해요."
+            },
+            {
+              "w": "shy",
+              "t": "near",
+              "m": "shy는 '수줍은'이에요. 내키지 않아 억지로 짓는 미소는요?"
+            }
           ]
         }
       ],
       "nuance": "'be reluctant to 동사'(~하기를 꺼리다). unwilling과 거의 같다. 부사 reluctantly(마지못해), 명사 reluctance.",
-      "etymology": "라틴어 re(반대로) + luctari(싸우다) → '저항하는'"
+      "etymology": "라틴어 re(반대로) + luctari(싸우다) → '저항하는'",
+      "ipa": "/rɪˈlʌktənt/",
+      "def": "unwilling to do something and slow to do it",
+      "forms": [
+        "reluctantly (부사)",
+        "reluctance (명사)"
+      ]
     },
     {
-      "id": "resilient", "word": "resilient", "pos": "adj", "level": 15,
-      "meanings": ["회복력 있는, 탄력 있는"],
+      "id": "resilient",
+      "word": "resilient",
+      "pos": "adj",
+      "level": 15,
+      "meanings": [
+        "회복력 있는, 탄력 있는"
+      ],
       "sentences": [
         {
-          "en": "Children are often more ___ than adults.", "ko": "아이들은 종종 어른보다 **회복력이 강하다**.", "answer": "resilient",
+          "en": "Children are often more ___ than adults.",
+          "ko": "아이들은 종종 어른보다 **회복력이 강하다**.",
+          "answer": "resilient",
           "ctx": "육아 상담을 들으며",
           "note": "힘든 일을 겪어도 금방 다시 일어선다는 뜻",
           "alts": [
-            { "w": "strong", "t": "near", "m": "strong은 버티는 힘이에요. 충격 후 다시 일어서는 힘은요?" },
-            { "w": "tough", "t": "near", "m": "tough는 '강인한'이에요. 회복력에 초점을 둔 단어를 떠올려 보세요." },
-            { "w": "flexible", "t": "wrong", "m": "flexible은 '유연한'이라 다시 회복하는 힘과는 달라요." }
+            {
+              "w": "strong",
+              "t": "near",
+              "m": "strong은 버티는 힘이에요. 충격 후 다시 일어서는 힘은요?"
+            },
+            {
+              "w": "tough",
+              "t": "near",
+              "m": "tough는 '강인한'이에요. 회복력에 초점을 둔 단어를 떠올려 보세요."
+            },
+            {
+              "w": "flexible",
+              "t": "wrong",
+              "m": "flexible은 '유연한'이라 다시 회복하는 힘과는 달라요."
+            }
           ]
         },
         {
-          "en": "The economy proved ___ despite the crisis.", "ko": "경제는 위기에도 **탄력적인** 모습을 보였다.", "answer": "resilient",
+          "en": "The economy proved ___ despite the crisis.",
+          "ko": "경제는 위기에도 **탄력적인** 모습을 보였다.",
+          "answer": "resilient",
           "alts": [
-            { "w": "robust", "t": "ok", "m": "robust도 맞지만, 위기 후 '회복하는 힘'을 강조하는 단어가 있어요." },
-            { "w": "strong", "t": "near", "m": "strong은 그냥 '튼튼한'이에요. 충격을 받고도 다시 튀어 오르는 건요?" },
-            { "w": "elastic", "t": "wrong", "m": "elastic은 고무줄처럼 '늘어나는'이라 경제의 회복력엔 쓰지 않아요." }
+            {
+              "w": "robust",
+              "t": "ok",
+              "m": "robust도 맞지만, 위기 후 '회복하는 힘'을 강조하는 단어가 있어요."
+            },
+            {
+              "w": "strong",
+              "t": "near",
+              "m": "strong은 그냥 '튼튼한'이에요. 충격을 받고도 다시 튀어 오르는 건요?"
+            },
+            {
+              "w": "elastic",
+              "t": "wrong",
+              "m": "elastic은 고무줄처럼 '늘어나는'이라 경제의 회복력엔 쓰지 않아요."
+            }
           ]
         }
       ],
       "nuance": "충격을 받아도 '다시 튀어 오르는'. strong은 버티는 힘, resilient는 '회복하는 힘'. 명사 resilience.",
-      "etymology": "라틴어 re(다시) + salire(뛰다) → '다시 튀어 오르다'"
+      "etymology": "라틴어 re(다시) + salire(뛰다) → '다시 튀어 오르다'",
+      "ipa": "/rɪˈzɪliənt/",
+      "def": "able to recover quickly from difficulties or return to shape",
+      "forms": [
+        "resilience (명사)",
+        "resiliently (부사)"
+      ]
     },
     {
-      "id": "retain", "word": "retain", "pos": "v", "level": 15,
-      "meanings": ["유지하다, 보유하다"],
+      "id": "retain",
+      "word": "retain",
+      "pos": "v",
+      "level": 15,
+      "meanings": [
+        "유지하다, 보유하다"
+      ],
       "sentences": [
         {
-          "en": "The company wants to ___ its best employees.", "ko": "그 회사는 최고의 직원들을 **붙잡아 두고** 싶어 한다.", "answer": "retain",
+          "en": "The company wants to ___ its best employees.",
+          "ko": "그 회사는 최고의 직원들을 **붙잡아 두고** 싶어 한다.",
+          "answer": "retain",
           "ctx": "인사팀 회의에서",
           "alts": [
-            { "w": "keep", "t": "ok", "m": "keep도 맞지만, 좀 더 격식 있는 단어를 떠올려 보세요." },
-            { "w": "hold", "t": "near", "m": "hold는 손에 '쥐다'라는 느낌이 강해요. 직원을 떠나지 않게 붙잡는 건요?" },
-            { "w": "catch", "t": "wrong", "m": "catch는 움직이는 걸 '잡다'예요. 떠나지 않게 붙잡아 두는 뜻이 아니에요." }
+            {
+              "w": "keep",
+              "t": "ok",
+              "m": "keep도 맞지만, 좀 더 격식 있는 단어를 떠올려 보세요."
+            },
+            {
+              "w": "hold",
+              "t": "near",
+              "m": "hold는 손에 '쥐다'라는 느낌이 강해요. 직원을 떠나지 않게 붙잡는 건요?"
+            },
+            {
+              "w": "catch",
+              "t": "wrong",
+              "m": "catch는 움직이는 걸 '잡다'예요. 떠나지 않게 붙잡아 두는 뜻이 아니에요."
+            }
           ]
         },
         {
-          "en": "Clay ___ water better than sand.", "ko": "점토는 모래보다 물을 더 잘 **머금는다**.", "answer": "retains",
+          "en": "Clay ___ water better than sand.",
+          "ko": "점토는 모래보다 물을 더 잘 **머금는다**.",
+          "answer": "retains",
           "note": "물을 빠져나가지 않게 붙잡아 둔다는 뜻",
           "alts": [
-            { "w": "holds", "t": "ok", "m": "holds도 맞지만, '잃지 않고 보유한다'는 격식 있는 단어가 있어요." },
-            { "w": "absorbs", "t": "near", "m": "absorbs는 '흡수한다'예요. 빠져나가지 않게 붙잡아 두는 건요?" },
-            { "w": "contains", "t": "near", "m": "contains는 안에 '들어 있다'는 상태를 말해요." }
+            {
+              "w": "holds",
+              "t": "ok",
+              "m": "holds도 맞지만, '잃지 않고 보유한다'는 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "absorbs",
+              "t": "near",
+              "m": "absorbs는 '흡수한다'예요. 빠져나가지 않게 붙잡아 두는 건요?"
+            },
+            {
+              "w": "contains",
+              "t": "near",
+              "m": "contains는 안에 '들어 있다'는 상태를 말해요."
+            }
           ]
         }
       ],
       "nuance": "keep의 격식체로 '계속 가지고 있다'. maintain은 상태를 '관리하며 유지', retain은 잃지 않고 '보유'. 명사 retention(고객 유지, 기억 보유).",
-      "etymology": "라틴어 re(뒤로) + tenere(잡다) → '붙잡아 두다'"
+      "etymology": "라틴어 re(뒤로) + tenere(잡다) → '붙잡아 두다'",
+      "ipa": "/rɪˈteɪn/",
+      "def": "to keep something or continue to have it",
+      "forms": [
+        "retained (과거·과거분사)",
+        "retaining (현재분사)",
+        "retention (명사)"
+      ]
     },
     {
-      "id": "rigorous", "word": "rigorous", "pos": "adj", "level": 15,
-      "meanings": ["엄격한, 철저한"],
+      "id": "rigorous",
+      "word": "rigorous",
+      "pos": "adj",
+      "level": 15,
+      "meanings": [
+        "엄격한, 철저한"
+      ],
       "sentences": [
         {
-          "en": "The product goes through ___ testing.", "ko": "그 제품은 **엄격한** 테스트를 거친다.", "answer": "rigorous",
+          "en": "The product goes through ___ testing.",
+          "ko": "그 제품은 **엄격한** 테스트를 거친다.",
+          "answer": "rigorous",
           "alts": [
-            { "w": "thorough", "t": "ok", "m": "thorough도 맞지만, '엄격하고 철저한'을 한 번에 담은 단어가 있어요." },
-            { "w": "strict", "t": "near", "m": "strict는 규칙을 엄히 적용하는 거예요. 빈틈없이 철저한 테스트는요?" },
-            { "w": "severe", "t": "wrong", "m": "severe는 '심각한·가혹한'이라 테스트엔 어울리지 않아요." }
+            {
+              "w": "thorough",
+              "t": "ok",
+              "m": "thorough도 맞지만, '엄격하고 철저한'을 한 번에 담은 단어가 있어요."
+            },
+            {
+              "w": "strict",
+              "t": "near",
+              "m": "strict는 규칙을 엄히 적용하는 거예요. 빈틈없이 철저한 테스트는요?"
+            },
+            {
+              "w": "severe",
+              "t": "wrong",
+              "m": "severe는 '심각한·가혹한'이라 테스트엔 어울리지 않아요."
+            }
           ]
         },
         {
-          "en": "She follows a ___ training schedule.", "ko": "그녀는 **혹독한** 훈련 일정을 따른다.", "answer": "rigorous",
+          "en": "She follows a ___ training schedule.",
+          "ko": "그녀는 **혹독한** 훈련 일정을 따른다.",
+          "answer": "rigorous",
           "ctx": "운동선수 인터뷰를 보며",
           "alts": [
-            { "w": "tough", "t": "ok", "m": "tough도 맞지만, 빈틈없이 철저하다는 느낌의 단어가 있어요." },
-            { "w": "strict", "t": "near", "m": "strict는 규칙이 '엄한' 거예요. 훈련 강도가 혹독한 건요?" },
-            { "w": "cruel", "t": "wrong", "m": "cruel은 '잔인한'이라 훈련 일정엔 쓰지 않아요." }
+            {
+              "w": "tough",
+              "t": "ok",
+              "m": "tough도 맞지만, 빈틈없이 철저하다는 느낌의 단어가 있어요."
+            },
+            {
+              "w": "strict",
+              "t": "near",
+              "m": "strict는 규칙이 '엄한' 거예요. 훈련 강도가 혹독한 건요?"
+            },
+            {
+              "w": "cruel",
+              "t": "wrong",
+              "m": "cruel은 '잔인한'이라 훈련 일정엔 쓰지 않아요."
+            }
           ]
         }
       ],
       "nuance": "strict는 규칙을 엄히 적용하는 것, rigorous는 '빈틈없이 꼼꼼하고 철저한'. 학문·검사·훈련에 자주 쓴다. 명사 rigor.",
-      "etymology": "라틴어 rigor(단단함, 뻣뻣함)"
+      "etymology": "라틴어 rigor(단단함, 뻣뻣함)",
+      "ipa": "/ˈrɪɡərəs/",
+      "def": "done carefully with great attention to detail; strict",
+      "forms": [
+        "rigorously (부사)",
+        "rigor (명사)"
+      ]
     },
     {
-      "id": "scrutinize", "word": "scrutinize", "pos": "v", "level": 15,
-      "meanings": ["세심히 살피다, 면밀히 조사하다"],
+      "id": "scrutinize",
+      "word": "scrutinize",
+      "pos": "v",
+      "level": 15,
+      "meanings": [
+        "세심히 살피다, 면밀히 조사하다"
+      ],
       "sentences": [
         {
-          "en": "Inspectors ___ every detail of the building.", "ko": "검사관들은 그 건물의 모든 세부 사항을 **면밀히 살폈다**.", "answer": "scrutinized",
+          "en": "Inspectors ___ every detail of the building.",
+          "ko": "검사관들은 그 건물의 모든 세부 사항을 **면밀히 살폈다**.",
+          "answer": "scrutinized",
           "ctx": "안전 점검 뉴스를 보며",
           "alts": [
-            { "w": "examined", "t": "ok", "m": "examined도 맞지만, 훨씬 꼼꼼하고 비판적으로 살폈다는 단어가 있어요." },
-            { "w": "observed", "t": "near", "m": "observed는 '관찰했다'예요. 결함을 찾으려 샅샅이 살핀 건요?" },
-            { "w": "searched", "t": "wrong", "m": "searched는 무언가를 '찾았다'는 뜻으로 보통 for와 써요." }
+            {
+              "w": "examined",
+              "t": "ok",
+              "m": "examined도 맞지만, 훨씬 꼼꼼하고 비판적으로 살폈다는 단어가 있어요."
+            },
+            {
+              "w": "observed",
+              "t": "near",
+              "m": "observed는 '관찰했다'예요. 결함을 찾으려 샅샅이 살핀 건요?"
+            },
+            {
+              "w": "searched",
+              "t": "wrong",
+              "m": "searched는 무언가를 '찾았다'는 뜻으로 보통 for와 써요."
+            }
           ]
         },
         {
-          "en": "The media will ___ his every move.", "ko": "언론은 그의 모든 행동을 **철저히 들여다볼** 것이다.", "answer": "scrutinize",
+          "en": "The media will ___ his every move.",
+          "ko": "언론은 그의 모든 행동을 **철저히 들여다볼** 것이다.",
+          "answer": "scrutinize",
           "alts": [
-            { "w": "examine", "t": "ok", "m": "examine도 맞지만, 훨씬 꼼꼼하고 비판적인 시선의 단어가 있어요." },
-            { "w": "watch", "t": "near", "m": "watch는 그냥 '지켜보다'예요. 비판적으로 샅샅이 뜯어보는 건요?" },
-            { "w": "investigate", "t": "near", "m": "investigate는 사건을 '수사하다'예요. 행동 하나하나를 뜯어보는 건요?" }
+            {
+              "w": "examine",
+              "t": "ok",
+              "m": "examine도 맞지만, 훨씬 꼼꼼하고 비판적인 시선의 단어가 있어요."
+            },
+            {
+              "w": "watch",
+              "t": "near",
+              "m": "watch는 그냥 '지켜보다'예요. 비판적으로 샅샅이 뜯어보는 건요?"
+            },
+            {
+              "w": "investigate",
+              "t": "near",
+              "m": "investigate는 사건을 '수사하다'예요. 행동 하나하나를 뜯어보는 건요?"
+            }
           ]
         }
       ],
       "nuance": "examine보다 훨씬 '꼼꼼하고 비판적으로' 들여다보는 느낌. 명사 scrutiny(under scrutiny 조사를 받는 중).",
-      "etymology": "라틴어 scrutari(뒤지다, 샅샅이 찾다) ← scruta(쓰레기)"
+      "etymology": "라틴어 scrutari(뒤지다, 샅샅이 찾다) ← scruta(쓰레기)",
+      "ipa": "/ˈskruːtənaɪz/",
+      "def": "to examine something very carefully and thoroughly",
+      "forms": [
+        "scrutinized (과거·과거분사)",
+        "scrutinizing (현재분사)",
+        "scrutiny (명사)"
+      ]
     },
     {
-      "id": "simultaneous", "word": "simultaneous", "pos": "adj", "level": 15,
-      "meanings": ["동시의"],
+      "id": "simultaneous",
+      "word": "simultaneous",
+      "pos": "adj",
+      "level": 15,
+      "meanings": [
+        "동시의"
+      ],
       "sentences": [
         {
-          "en": "The two events were almost ___.", "ko": "두 사건은 거의 **동시에** 일어났다.", "answer": "simultaneous",
+          "en": "The two events were almost ___.",
+          "ko": "두 사건은 거의 **동시에** 일어났다.",
+          "answer": "simultaneous",
           "note": "정확히 같은 순간에 일어났다는 뜻",
           "alts": [
-            { "w": "concurrent", "t": "near", "m": "concurrent는 같은 기간에 겹쳐 '진행되는' 거예요. 같은 순간에 일어난 건요?" },
-            { "w": "simultaneously", "t": "wrong", "m": "-ly가 붙은 부사는 be동사 뒤 보어 자리에 맞지 않아요. 형용사가 필요해요." },
-            { "w": "same", "t": "wrong", "m": "same은 the와 함께 써야 하고, '동시의'라는 뜻이 아니에요." }
+            {
+              "w": "concurrent",
+              "t": "near",
+              "m": "concurrent는 같은 기간에 겹쳐 '진행되는' 거예요. 같은 순간에 일어난 건요?"
+            },
+            {
+              "w": "simultaneously",
+              "t": "wrong",
+              "m": "-ly가 붙은 부사는 be동사 뒤 보어 자리에 맞지 않아요. 형용사가 필요해요."
+            },
+            {
+              "w": "same",
+              "t": "wrong",
+              "m": "same은 the와 함께 써야 하고, '동시의'라는 뜻이 아니에요."
+            }
           ]
         },
         {
-          "en": "The speech was given with ___ translation.", "ko": "그 연설은 **동시** 통역과 함께 진행되었다.", "answer": "simultaneous",
+          "en": "The speech was given with ___ translation.",
+          "ko": "그 연설은 **동시** 통역과 함께 진행되었다.",
+          "answer": "simultaneous",
           "ctx": "국제회의에서",
           "alts": [
-            { "w": "live", "t": "ok", "m": "live도 통하지만, '동시통역'을 말하는 정식 표현의 단어가 있어요." },
-            { "w": "instant", "t": "near", "m": "instant는 '즉석의'예요. 통역을 말할 땐 다른 단어를 써요." },
-            { "w": "same", "t": "wrong", "m": "same time을 줄여 same만 쓰면 뜻이 안 돼요." }
+            {
+              "w": "live",
+              "t": "ok",
+              "m": "live도 통하지만, '동시통역'을 말하는 정식 표현의 단어가 있어요."
+            },
+            {
+              "w": "instant",
+              "t": "near",
+              "m": "instant는 '즉석의'예요. 통역을 말할 땐 다른 단어를 써요."
+            },
+            {
+              "w": "same",
+              "t": "wrong",
+              "m": "same time을 줄여 same만 쓰면 뜻이 안 돼요."
+            }
           ]
         }
       ],
       "nuance": "정확히 '같은 시각에' 일어나는. concurrent는 같은 기간에 겹쳐 진행되는 것. 부사 simultaneously(동시에).",
-      "etymology": "라틴어 simul(동시에) → '같은 때의'"
+      "etymology": "라틴어 simul(동시에) → '같은 때의'",
+      "ipa": "/ˌsaɪməlˈteɪniəs/",
+      "def": "happening or done at exactly the same time",
+      "forms": [
+        "simultaneously (부사)"
+      ]
     },
     {
-      "id": "sophisticated", "word": "sophisticated", "pos": "adj", "level": 15,
-      "meanings": ["정교한, 복잡한", "세련된"],
+      "id": "sophisticated",
+      "word": "sophisticated",
+      "pos": "adj",
+      "level": 15,
+      "meanings": [
+        "정교한, 복잡한",
+        "세련된"
+      ],
       "sentences": [
         {
-          "en": "The system uses ___ software to detect fraud.", "ko": "그 시스템은 사기를 탐지하기 위해 **정교한** 소프트웨어를 사용한다.", "answer": "sophisticated",
+          "en": "The system uses ___ software to detect fraud.",
+          "ko": "그 시스템은 사기를 탐지하기 위해 **정교한** 소프트웨어를 사용한다.",
+          "answer": "sophisticated",
           "ctx": "보안 기술을 소개하며",
           "alts": [
-            { "w": "advanced", "t": "ok", "m": "advanced도 맞지만, 고도로 발달해 정교하다는 느낌의 단어가 있어요." },
-            { "w": "complex", "t": "near", "m": "complex는 그냥 '복잡한'이에요. 수준이 높아 정교한 건요?" },
-            { "w": "delicate", "t": "wrong", "m": "delicate는 '섬세한·연약한'이라 소프트웨어엔 쓰지 않아요." }
+            {
+              "w": "advanced",
+              "t": "ok",
+              "m": "advanced도 맞지만, 고도로 발달해 정교하다는 느낌의 단어가 있어요."
+            },
+            {
+              "w": "complex",
+              "t": "near",
+              "m": "complex는 그냥 '복잡한'이에요. 수준이 높아 정교한 건요?"
+            },
+            {
+              "w": "delicate",
+              "t": "wrong",
+              "m": "delicate는 '섬세한·연약한'이라 소프트웨어엔 쓰지 않아요."
+            }
           ]
         },
         {
-          "en": "She has very ___ taste in music.", "ko": "그녀는 음악 취향이 아주 **세련되었다**.", "answer": "sophisticated",
+          "en": "She has very ___ taste in music.",
+          "ko": "그녀는 음악 취향이 아주 **세련되었다**.",
+          "answer": "sophisticated",
           "note": "교양 있고 수준 높은 취향이라는 뜻",
           "alts": [
-            { "w": "refined", "t": "ok", "m": "refined도 맞지만, 세련된 취향엔 더 흔히 쓰는 단어가 있어요." },
-            { "w": "elegant", "t": "near", "m": "elegant는 외모·디자인이 '우아한'이에요. 취향엔 다른 단어가 더 자연스러워요." },
-            { "w": "stylish", "t": "near", "m": "stylish는 옷·외모가 '멋진'이에요. 음악 취향엔 다른 단어를 써요." }
+            {
+              "w": "refined",
+              "t": "ok",
+              "m": "refined도 맞지만, 세련된 취향엔 더 흔히 쓰는 단어가 있어요."
+            },
+            {
+              "w": "elegant",
+              "t": "near",
+              "m": "elegant는 외모·디자인이 '우아한'이에요. 취향엔 다른 단어가 더 자연스러워요."
+            },
+            {
+              "w": "stylish",
+              "t": "near",
+              "m": "stylish는 옷·외모가 '멋진'이에요. 음악 취향엔 다른 단어를 써요."
+            }
           ]
         }
       ],
       "nuance": "기술·장비에는 '고도로 발달한', 사람·취향에는 '교양 있고 세련된'. complex는 단순히 복잡함, sophisticated는 '수준이 높아서' 복잡함.",
-      "etymology": "그리스어 sophistes(현자, 소피스트) → '지혜로 다듬어진'"
+      "etymology": "그리스어 sophistes(현자, 소피스트) → '지혜로 다듬어진'",
+      "ipa": "/səˈfɪstɪkeɪtɪd/",
+      "def": "complex and advanced; having experience of culture and fashion",
+      "forms": [
+        "sophistication (명사)",
+        "unsophisticated (반의어)"
+      ]
     },
     {
-      "id": "speculate", "word": "speculate", "pos": "v", "level": 15,
-      "meanings": ["추측하다", "투기하다"],
+      "id": "speculate",
+      "word": "speculate",
+      "pos": "v",
+      "level": 15,
+      "meanings": [
+        "추측하다",
+        "투기하다"
+      ],
       "sentences": [
         {
-          "en": "It is too early to ___ about the cause.", "ko": "원인에 대해 **추측하기에는** 너무 이르다.", "answer": "speculate",
+          "en": "It is too early to ___ about the cause.",
+          "ko": "원인에 대해 **추측하기에는** 너무 이르다.",
+          "answer": "speculate",
           "ctx": "사고 브리핑에서",
           "alts": [
-            { "w": "guess", "t": "ok", "m": "guess도 맞지만, 근거 없이 이론을 세운다는 격식 있는 단어가 있어요." },
-            { "w": "predict", "t": "near", "m": "predict는 앞일을 '예측하다'예요. 원인을 추측하는 건요?" },
-            { "w": "assume", "t": "wrong", "m": "assume은 about 없이 바로 목적어나 that절을 받아요." }
+            {
+              "w": "guess",
+              "t": "ok",
+              "m": "guess도 맞지만, 근거 없이 이론을 세운다는 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "predict",
+              "t": "near",
+              "m": "predict는 앞일을 '예측하다'예요. 원인을 추측하는 건요?"
+            },
+            {
+              "w": "assume",
+              "t": "wrong",
+              "m": "assume은 about 없이 바로 목적어나 that절을 받아요."
+            }
           ]
         },
         {
-          "en": "He lost money ___ on real estate.", "ko": "그는 부동산에 **투기하다가** 돈을 잃었다.", "answer": "speculating",
+          "en": "He lost money ___ on real estate.",
+          "ko": "그는 부동산에 **투기하다가** 돈을 잃었다.",
+          "answer": "speculating",
           "note": "큰 이익을 노리고 돈을 거는 투기",
           "alts": [
-            { "w": "gambling", "t": "ok", "m": "gambling도 통하지만, 부동산·주식 '투기'를 말하는 단어가 따로 있어요." },
-            { "w": "investing", "t": "near", "m": "investing은 in과 쓰는 '투자'예요. on과 함께 '투기'를 뜻하는 단어는요?" },
-            { "w": "trading", "t": "near", "m": "trading은 사고파는 '거래'예요. 큰 이익을 노리는 투기는요?" }
+            {
+              "w": "gambling",
+              "t": "ok",
+              "m": "gambling도 통하지만, 부동산·주식 '투기'를 말하는 단어가 따로 있어요."
+            },
+            {
+              "w": "investing",
+              "t": "near",
+              "m": "investing은 in과 쓰는 '투자'예요. on과 함께 '투기'를 뜻하는 단어는요?"
+            },
+            {
+              "w": "trading",
+              "t": "near",
+              "m": "trading은 사고파는 '거래'예요. 큰 이익을 노리는 투기는요?"
+            }
           ]
         }
       ],
       "nuance": "'speculate about/on ~'. guess보다 격식체로 '근거가 부족한 상태에서 이론을 세우다'. 돈을 걸고 '투기하다'라는 뜻도. 명사 speculation.",
-      "etymology": "라틴어 speculari(살피다, 관찰하다) ← specere(보다)"
+      "etymology": "라틴어 speculari(살피다, 관찰하다) ← specere(보다)",
+      "ipa": "/ˈspɛkjəleɪt/",
+      "def": "to form opinions without knowing all the facts; to invest riskily",
+      "forms": [
+        "speculated (과거·과거분사)",
+        "speculating (현재분사)",
+        "speculation (명사)",
+        "speculative (형용사)"
+      ]
     },
     {
-      "id": "subsequent", "word": "subsequent", "pos": "adj", "level": 15,
-      "meanings": ["그 다음의, 이후의"],
+      "id": "subsequent",
+      "word": "subsequent",
+      "pos": "adj",
+      "level": 15,
+      "meanings": [
+        "그 다음의, 이후의"
+      ],
       "sentences": [
         {
-          "en": "The first test failed, but ___ tests were successful.", "ko": "첫 시험은 실패했지만 **이후의** 시험들은 성공했다.", "answer": "subsequent",
+          "en": "The first test failed, but ___ tests were successful.",
+          "ko": "첫 시험은 실패했지만 **이후의** 시험들은 성공했다.",
+          "answer": "subsequent",
           "alts": [
-            { "w": "later", "t": "ok", "m": "later도 맞지만, '뒤이어 일어난'을 뜻하는 격식 있는 단어가 있어요." },
-            { "w": "following", "t": "near", "m": "following은 보통 the와 함께 써요. 관사 없이 쓸 수 있는 격식어는요?" },
-            { "w": "next", "t": "wrong", "m": "next tests는 바로 다음 하나를 가리켜서 '이후의 여러 시험'엔 어색해요." }
+            {
+              "w": "later",
+              "t": "ok",
+              "m": "later도 맞지만, '뒤이어 일어난'을 뜻하는 격식 있는 단어가 있어요."
+            },
+            {
+              "w": "following",
+              "t": "near",
+              "m": "following은 보통 the와 함께 써요. 관사 없이 쓸 수 있는 격식어는요?"
+            },
+            {
+              "w": "next",
+              "t": "wrong",
+              "m": "next tests는 바로 다음 하나를 가리켜서 '이후의 여러 시험'엔 어색해요."
+            }
           ]
         },
         {
-          "en": "In the ___ years, the city grew rapidly.", "ko": "**그 뒤** 몇 년 동안 그 도시는 빠르게 성장했다.", "answer": "subsequent",
+          "en": "In the ___ years, the city grew rapidly.",
+          "ko": "**그 뒤** 몇 년 동안 그 도시는 빠르게 성장했다.",
+          "answer": "subsequent",
           "ctx": "도시의 역사를 소개하며",
           "alts": [
-            { "w": "following", "t": "ok", "m": "following도 맞지만, 좀 더 격식 있는 단어를 써 보세요." },
-            { "w": "next", "t": "near", "m": "In the next years는 앞으로 올 미래처럼 들려요." },
-            { "w": "after", "t": "wrong", "m": "after는 전치사라 명사 years 앞에서 꾸며 줄 수 없어요." }
+            {
+              "w": "following",
+              "t": "ok",
+              "m": "following도 맞지만, 좀 더 격식 있는 단어를 써 보세요."
+            },
+            {
+              "w": "next",
+              "t": "near",
+              "m": "In the next years는 앞으로 올 미래처럼 들려요."
+            },
+            {
+              "w": "after",
+              "t": "wrong",
+              "m": "after는 전치사라 명사 years 앞에서 꾸며 줄 수 없어요."
+            }
           ]
         }
       ],
       "nuance": "어떤 사건 '뒤에 오는'. following과 비슷하지만 격식체. 반대는 previous, prior. 부사 subsequently(그 후에).",
-      "etymology": "라틴어 sub(뒤에) + sequi(따르다) → '뒤따르는'"
+      "etymology": "라틴어 sub(뒤에) + sequi(따르다) → '뒤따르는'",
+      "ipa": "/ˈsʌbsɪkwənt/",
+      "def": "happening or coming after something else",
+      "forms": [
+        "subsequently (부사)"
+      ]
     },
     {
-      "id": "substantial", "word": "substantial", "pos": "adj", "level": 15,
-      "meanings": ["상당한, 많은", "실질적인"],
+      "id": "substantial",
+      "word": "substantial",
+      "pos": "adj",
+      "level": 15,
+      "meanings": [
+        "상당한, 많은",
+        "실질적인"
+      ],
       "sentences": [
         {
-          "en": "She received a ___ pay raise.", "ko": "그녀는 **상당한** 임금 인상을 받았다.", "answer": "substantial",
+          "en": "She received a ___ pay raise.",
+          "ko": "그녀는 **상당한** 임금 인상을 받았다.",
+          "answer": "substantial",
           "ctx": "연봉 협상 후에",
           "alts": [
-            { "w": "considerable", "t": "ok", "m": "considerable도 맞지만, '무시 못 할 만큼 큰'을 뜻하는 더 흔한 단어가 있어요." },
-            { "w": "big", "t": "ok", "m": "big도 맞지만, 좀 더 격식 있는 표현을 써 보세요." },
-            { "w": "substantive", "t": "wrong", "m": "substantive는 '실질적 내용에 관한'이라 임금 인상엔 쓰지 않아요." }
+            {
+              "w": "considerable",
+              "t": "ok",
+              "m": "considerable도 맞지만, '무시 못 할 만큼 큰'을 뜻하는 더 흔한 단어가 있어요."
+            },
+            {
+              "w": "big",
+              "t": "ok",
+              "m": "big도 맞지만, 좀 더 격식 있는 표현을 써 보세요."
+            },
+            {
+              "w": "substantive",
+              "t": "wrong",
+              "m": "substantive는 '실질적 내용에 관한'이라 임금 인상엔 쓰지 않아요."
+            }
           ]
         },
         {
-          "en": "There is ___ evidence to support the theory.", "ko": "그 이론을 뒷받침하는 **충분한** 증거가 있다.", "answer": "substantial",
+          "en": "There is ___ evidence to support the theory.",
+          "ko": "그 이론을 뒷받침하는 **충분한** 증거가 있다.",
+          "answer": "substantial",
           "note": "양이 넉넉해 무게가 있다는 뜻",
           "alts": [
-            { "w": "sufficient", "t": "ok", "m": "sufficient도 맞지만, 양이 많아 무게감이 있다는 단어를 떠올려 보세요." },
-            { "w": "enough", "t": "ok", "m": "enough도 맞지만, 좀 더 격식 있는 단어를 써 보세요." },
-            { "w": "plenty", "t": "wrong", "m": "plenty는 뒤에 of가 필요해요(plenty of evidence)." }
+            {
+              "w": "sufficient",
+              "t": "ok",
+              "m": "sufficient도 맞지만, 양이 많아 무게감이 있다는 단어를 떠올려 보세요."
+            },
+            {
+              "w": "enough",
+              "t": "ok",
+              "m": "enough도 맞지만, 좀 더 격식 있는 단어를 써 보세요."
+            },
+            {
+              "w": "plenty",
+              "t": "wrong",
+              "m": "plenty는 뒤에 of가 필요해요(plenty of evidence)."
+            }
           ]
         }
       ],
       "nuance": "양·크기·중요성이 '무시할 수 없을 만큼 큰'. considerable과 거의 같다. substantive(실질적 내용에 관한)와 혼동 주의. 부사 substantially(상당히).",
-      "etymology": "라틴어 substantia(실체, 본질) ← sub + stare(아래에 서다)"
+      "etymology": "라틴어 substantia(실체, 본질) ← sub + stare(아래에 서다)",
+      "ipa": "/səbˈstænʃəl/",
+      "def": "large in amount or importance; solid and strong",
+      "forms": [
+        "substantially (부사)",
+        "substance (명사: 물질, 실체)"
+      ]
     }
   ]
 }
