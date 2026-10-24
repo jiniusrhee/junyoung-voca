@@ -9018,3 +9018,26 @@ sup.beta.pill {
 .sw.pink {
   background: var(--st-pink);
 }
+/* 발음 구분 연습: 진행 점 8개가 한 줄에, 단어 아래 발음 기호, 나가기 팝업 */
+.pair-dots {
+  gap: 6px;
+}
+.pair-dots span {
+  width: 30px;
+  height: 30px;
+}
+.pair-target small {
+  display: block;
+  margin-top: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--sub);
+}
+.leave-modal .modal-title {
+  line-height: 1.5;
+}
+.leave-modal .modal-desc {
+  margin: 10px 0 4px;
+  text-align: center;
+  color: var(--text);
+}

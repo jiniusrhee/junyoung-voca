@@ -171,6 +171,7 @@ export function PairQuiz() {
   const st = useMemo(() => data?.levels.flatMap((l) => l.stages).find((s) => s.id === stage), [data, stage]);
   const [qs, setQs] = useState<PairQ[]>([]);
   const [i, setI] = useState(0);
+  const [leaving, setLeaving] = useState(false);
   const [picked, setPicked] = useState<number | null>(null);
   const [marks, setMarks] = useState<boolean[]>([]);
   const [playing, setPlaying] = useState<number | null>(null);
@@ -249,6 +250,8 @@ export function PairQuiz() {
   }
 
   const q = qs[i];
+  /** 단어 팩에 같은 단어가 있으면 발음 기호를 보여준다 (말해보카: wife [waɪf]) */
+  const ipa = useLiveQuery(async () => (q && mode !== 'hard' ? (await db.words.filter((w) => w.word.toLowerCase() === q.target.toLowerCase()).first())?.ipa : undefined), [q?.target, mode]);
   const choose = (k: number) => {
     if (picked !== null) return;
     setPicked(k);
@@ -259,7 +262,7 @@ export function PairQuiz() {
   return (
     <div className="quiz-screen pair-quiz">
       <header className="quiz-top">
-        <button className="icon-btn" onClick={() => confirm('지금 종료하면 현재까지의 학습 내용은 저장되지 않고 사라져요. 그래도 종료할까요?') && nav(-1)} aria-label="나가기">
+        <button className="icon-btn" onClick={() => setLeaving(true)} aria-label="나가기">
           <Icon name="back" size={24} />
         </button>
         <div className="pair-dots">
@@ -279,6 +282,7 @@ export function PairQuiz() {
           <>
             <div className="pair-target">
               <b>{q.target}</b>
+              {ipa && <small>[ {ipa} ]</small>}
             </div>
             <p className="pair-q">어느 쪽이 맞는 발음일까요?</p>
           </>
@@ -291,9 +295,7 @@ export function PairQuiz() {
               onClick={() => choose(k)}
             >
               {picked === null && mode !== 'hard' ? (
-                <span className="card-back">
-                  <span className="card-num">{k + 1}</span>
-                </span>
+                <span className="card-back" />
               ) : (
                 <span className="card-face">
                   <b>{c}</b>
@@ -338,6 +340,26 @@ export function PairQuiz() {
           <span>다음 문제</span>
         </button>
       </div>
+      {leaving && (
+        <div className="modal-dim" onClick={() => setLeaving(false)}>
+          <div className="modal leave-modal" onClick={(e) => e.stopPropagation()}>
+            <p className="modal-title">
+              지금 종료하면 현재까지의 학습 내용은
+              <br />
+              저장되지 않고 사라져요.
+            </p>
+            <p className="modal-desc">그래도 종료할까요?</p>
+            <div className="modal-actions">
+              <button className="btn gray" onClick={() => setLeaving(false)}>
+                아니요
+              </button>
+              <button className="btn primary" onClick={() => nav(-1)}>
+                네
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       {lecture && (
         <div className="modal-dim" onClick={() => setLecture(false)}>
           <div className="opt-sheet" onClick={(e) => e.stopPropagation()}>
