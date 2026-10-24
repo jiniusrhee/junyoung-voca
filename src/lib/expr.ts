@@ -35,6 +35,12 @@ export function wordMatches(input: string, answer: string): boolean[] {
 }
 
 /** 힌트: 각 단어의 첫 글자 */
+/** 힌트 보기: 첫 단어의 앞 ⅓ 글자 (말해보카: What → Wh) */
+export function exprPrefix(answer: string): string {
+  const w = answer.trim().split(/\s+/)[0] ?? '';
+  return w.slice(0, Math.max(1, Math.ceil(w.length / 3)));
+}
+
 export function exprHint(answer: string): string {
   return answer
     .split(/\s+/)

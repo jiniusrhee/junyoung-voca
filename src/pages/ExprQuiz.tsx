@@ -8,7 +8,7 @@ import { KoSentence } from '../components/QuizCard';
 import { Backdrop, StudyTop, ToolPanel } from '../components/StudyChrome';
 import WrongItem from '../components/WrongItem';
 import { db } from '../db';
-import { ExprPicker, evalExpr, exprHint, wordMatches, type ExprQuestion } from '../lib/expr';
+import { ExprPicker, evalExpr, exprPrefix, type ExprQuestion, wordMatches } from '../lib/expr';
 import { dueBadge, modeToday, recordModeAnswer } from '../lib/modeStudy';
 import { useSettings } from '../lib/settings';
 import { canRecognize, recognizeOnce, speak, voiceErrorMessage } from '../lib/speech';
@@ -29,6 +29,8 @@ export default function ExprQuiz() {
   const [q, setQ] = useState<ExprQuestion | null>(null);
   const [input, setInput] = useState('');
   const [step, setStep] = useState(0); // 0: 길이 보기 전, 1: 길이 보임, 2: 첫 글자 힌트, 3: 정답 보기
+  /** 힌트로 채워 준 첫 단어 앞부분(지워지지 않음, 말해보카) */
+  const [locked, setLocked] = useState('');
   const [wrong, setWrong] = useState(0);
   const [wrongs, setWrongs] = useState<WrongNote[]>([]);
   const [pill, setPill] = useState<{ tone: Tone; msg: string } | null>(null);
@@ -58,6 +60,7 @@ export default function ExprQuiz() {
     finishing.current = false;
     setQ(next);
     setInput('');
+    setLocked('');
     setStep(0);
     setWrong(0);
     setWrongs([]);
@@ -129,21 +132,27 @@ export default function ExprQuiz() {
 
   const edit = (fn: (s: string) => string) =>
     setInput((cur) => {
-      const n = fn(cur).slice(0, (q?.item.answer.length ?? 20) + 14);
+      let n = fn(cur).slice(0, (q?.item.answer.length ?? 20) + 14);
+      if (locked && !n.startsWith(locked)) n = locked;
       if (n !== cur) setPill(null);
       return n;
     });
 
+  /** 말해보카: 길이 보기 → 힌트 보기(첫 단어 앞 ⅓ 글자를 채워 줌) → 정답 보기(입력을 비우고 정답이 주황으로 비침) */
   const hintStep = () => {
     if (!q) return;
     if (step === 0) setStep(1);
     else if (step === 1) {
       setStep(2);
-      setPill({ tone: 'yellow', msg: `힌트: ${exprHint(q.item.answer)}` });
+      const prefix = exprPrefix(q.item.answer);
+      setLocked(prefix);
+      setInput(prefix);
+      setPill(null);
     } else if (step === 2) {
       setStep(3);
+      setLocked('');
       setInput('');
-      setPill({ tone: 'red', msg: '정답을 확인하고, 다시 입력해보세요.' });
+      setPill(null);
     }
   };
 
@@ -272,11 +281,14 @@ export default function ExprQuiz() {
                     ansWords.map((w, i) => {
                       const t = typed[i] ?? '';
                       const ghost = step >= 3 && w.toLowerCase().startsWith(t.toLowerCase()) ? w.slice(t.length) : '';
+                      // 힌트로 보여줬던 앞부분은 초록, 나머지는 주황
+                      const hintLen = i === 0 ? Math.max(0, exprPrefix(q.item.answer).length - t.length) : 0;
                       return (
                         <span key={i} className={`e-box ${ok[i] ? 'ok' : ''} ${i === active ? 'active' : ''}`} style={{ minWidth: `${Math.max(w.length, t.length) * 0.58 + 0.8}em` }}>
                           {t}
                           {i === active && !voice && <span className="caret" />}
-                          {ghost && <span className="ghost">{ghost}</span>}
+                          {ghost.slice(0, hintLen) && <span className="ghost hint">{ghost.slice(0, hintLen)}</span>}
+                          {ghost.slice(hintLen) && <span className="ghost">{ghost.slice(hintLen)}</span>}
                         </span>
                       );
                     })
@@ -386,7 +398,7 @@ export default function ExprQuiz() {
             onSpace={() => edit((s) => (s && !s.endsWith(' ') ? s + ' ' : s))}
             onEnter={submit}
             onShift={() => setShiftOn((v) => !v)}
-            shift={shiftOn || (input === '' && q.item.en.trimStart().startsWith('___'))}
+            shift={shiftOn || (input === '' && (q.item.en.trimStart().startsWith('___') || (step >= 3 && /^[A-Z]/.test(q.item.answer))))}
           />
         </div>
       )}
