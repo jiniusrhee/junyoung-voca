@@ -38,7 +38,9 @@ export default function GrammarQuiz() {
 
   const cards = useMemo(() => (q ? buildCards(q.s) : []), [q]);
   const tk = useMemo(() => (q ? tokenize(q.s.en) : null), [q]);
-  const goal = Math.max(settings?.grammarGoal ?? 10, Number(params.get('target')) || 0);
+  /** 히스토리 학습: 목록의 문장만 순서대로 */
+  const listIds = params.get('ids')?.split(',').filter(Boolean) ?? null;
+  const goal = listIds ? listIds.length : Math.max(settings?.grammarGoal ?? 10, Number(params.get('target')) || 0);
 
   const load = useCallback(async () => {
     const next = await pickerRef.current?.next();
@@ -65,8 +67,8 @@ export default function GrammarQuiz() {
     if (!settings || started.current) return;
     started.current = true;
     (async () => {
-      setCount((await modeToday('grammar')).total);
-      const p = new GrammarPicker(settings.grammarLevel ?? Math.min(30, settings.level ?? 10));
+      setCount(listIds ? 0 : (await modeToday('grammar')).total);
+      const p = new GrammarPicker(settings.grammarLevel ?? Math.min(30, settings.level ?? 10), listIds ? [...listIds] : null);
       await p.init();
       pickerRef.current = p;
       await load();
@@ -83,7 +85,7 @@ export default function GrammarQuiz() {
       goal,
     );
     pickerRef.current?.note(q.s.id);
-    setCount(res.total);
+    setCount(listIds ? (c) => c + 1 : res.total);
     setDue(res.row.due);
     setFailed(asFailed);
     setCheck(null);
@@ -172,9 +174,9 @@ export default function GrammarQuiz() {
     return (
       <div className="quiz-screen center col gap">
         <Mascot size={110} />
-        <p className="quiz-msg">지금 풀 문법 문제가 없어요</p>
-        <p className="muted-light small">복습할 문장은 아직 때가 안 됐고, 새 문장도 모두 학습했어요.</p>
-        <button className="btn primary" onClick={() => nav('/all?mode=grammar')}>
+        <p className="quiz-msg">{listIds ? '히스토리 학습을 마쳤어요' : '지금 풀 문법 문제가 없어요'}</p>
+        {!listIds && <p className="muted-light small">복습할 문장은 아직 때가 안 됐고, 새 문장도 모두 학습했어요.</p>}
+        <button className="btn primary" onClick={() => (listIds ? nav(-1) : nav('/all?mode=grammar'))}>
           돌아가기
         </button>
       </div>

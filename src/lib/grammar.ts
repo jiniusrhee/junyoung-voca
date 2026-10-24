@@ -144,7 +144,11 @@ export class GrammarPicker {
   private seen = new Set<string>();
   private recent: string[] = [];
   private streak = 0;
-  constructor(private level: number) {}
+  /** list 를 주면 그 문장들만 순서대로 출제 (히스토리 학습) */
+  constructor(
+    private level: number,
+    private list: string[] | null = null,
+  ) {}
 
   async init() {
     const ids = (await db.mcards.where('mode').equals('grammar').toArray()).map((c) => c.itemId);
@@ -164,6 +168,13 @@ export class GrammarPicker {
   }
 
   async next(now: Date = new Date()): Promise<GrammarQuestion | null> {
+    if (this.list) {
+      const id = this.list.shift();
+      if (!id) return null;
+      const s = await db.gsentences.get(id);
+      if (!s) return this.next(now);
+      return { s, isNew: false, card: (await grammarCard(id)) ?? null };
+    }
     const due = (await db.mcards.where('[mode+due]').between(['grammar', new Date(0)], ['grammar', now], true, true).toArray()).filter(
       (c) => !this.recent.includes(c.itemId),
     );
