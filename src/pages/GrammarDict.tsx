@@ -113,7 +113,10 @@ export function GrammarLesson() {
           <span className="lesson-num">{num}</span>
           {topic.title}
         </h2>
-        <p className="lesson-summary">{topic.lesson.summary}</p>
+        <div className="lesson-sum-box">
+          <span className="box-tag">한 줄 요약</span>
+          <p className="lesson-summary">{topic.lesson.summary}</p>
+        </div>
         {topic.lesson.blocks.map((b, i) => (
           <Block key={i} b={b} />
         ))}
@@ -128,21 +131,23 @@ export function GrammarLesson() {
             ))}
           </>
         )}
-        <div className="lesson-nav">
-          {prev ? (
-            <Link to={`/grammar-dict/${prev.id}`} replace>
-              ‹ {prev.title}
-            </Link>
-          ) : (
-            <span />
-          )}
-          {next && (
-            <Link to={`/grammar-dict/${next.id}`} replace>
-              {next.title} ›
-            </Link>
-          )}
-        </div>
       </article>
+      <div className="lesson-foot">
+        {next ? (
+          <Link to={`/grammar-dict/${next.id}`} replace className="lesson-next">
+            {next.level.split('-')[1]}. {next.title} <Icon name="chevron" size={14} />
+          </Link>
+        ) : prev ? (
+          <Link to={`/grammar-dict/${prev.id}`} replace className="lesson-next">
+            <Icon name="back" size={14} /> {prev.level.split('-')[1]}. {prev.title}
+          </Link>
+        ) : (
+          <span />
+        )}
+        <button className="lesson-list" onClick={() => nav('/grammar-dict')}>
+          <Icon name="list" size={16} /> 목록으로
+        </button>
+      </div>
     </div>
   );
 }
