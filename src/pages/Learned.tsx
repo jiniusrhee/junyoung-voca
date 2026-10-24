@@ -1,5 +1,5 @@
 import { useLiveQuery } from 'dexie-react-hooks';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Icon from '../components/Icon';
 import SubHeader from '../components/SubHeader';
@@ -91,24 +91,28 @@ export function LearnedWords() {
         }
       />
       <div className="nb-filters">
-        <button
-          className="chip-btn"
-          onClick={() => {
-            setPick(hide);
-            setSheet('hide');
-          }}
-        >
-          {HIDE_OPTS.find((o) => o.v === hide)?.label} ▾
-        </button>
-        <button
-          className="chip-btn"
-          onClick={() => {
-            setPick(filter);
-            setSheet('filter');
-          }}
-        >
-          {FILTER_OPTS.find((o) => o.v === filter)?.label} ▾
-        </button>
+        {k !== 'pron' && (
+          <>
+            <button
+              className="chip-btn"
+              onClick={() => {
+                setPick(hide);
+                setSheet('hide');
+              }}
+            >
+              {HIDE_OPTS.find((o) => o.v === hide)?.label} ▾
+            </button>
+            <button
+              className="chip-btn"
+              onClick={() => {
+                setPick(filter);
+                setSheet('filter');
+              }}
+            >
+              {FILTER_OPTS.find((o) => o.v === filter)?.label} ▾
+            </button>
+          </>
+        )}
         {k === 'daily' && (
           <span className="nb-date">
             <button onClick={() => setDate((d) => shiftDate(d, -1))} aria-label="이전 날">
@@ -129,8 +133,11 @@ export function LearnedWords() {
         </div>
       )}
       <div className="lw-list">
-        {list.map((r) => (
-          <WordCard key={r.word.id} row={r} hide={hide} open={revealed.has(r.word.id)} onToggle={() => reveal(r.word.id)} showLog={showLog} menu={menu === r.word.id} onMenu={() => setMenu((m) => (m === r.word.id ? null : r.word.id))} inBook={book?.includes(r.word.id) ?? false} />
+        {list.map((r, idx) => (
+          <Fragment key={r.word.id}>
+            {k === 'pron' && r.note !== list[idx - 1]?.note && <p className="lw-date">{r.note}</p>}
+            <WordCard row={k === 'pron' ? { ...r, note: undefined } : r} hide={k === 'pron' ? 'none' : hide} open={revealed.has(r.word.id)} onToggle={() => reveal(r.word.id)} showLog={showLog} menu={menu === r.word.id} onMenu={() => setMenu((m) => (m === r.word.id ? null : r.word.id))} inBook={book?.includes(r.word.id) ?? false} />
+          </Fragment>
         ))}
         {plain.map((w) => (
           <div key={w} className="lw-card plain">

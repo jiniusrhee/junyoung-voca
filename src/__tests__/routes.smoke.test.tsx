@@ -44,6 +44,7 @@ const ROUTES = [
   '#/learned/expr/daily',
   '#/words',
   '#/learned-words/daily',
+  '#/learned-words/pron',
   '#/favorites',
   '#/wrongs',
   '#/wordbook',

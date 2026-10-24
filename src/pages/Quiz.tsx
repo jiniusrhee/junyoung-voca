@@ -20,6 +20,7 @@ import { LevelTest, ListPicker, StudyPicker, type Question } from '../lib/sessio
 import { saveSettings, useSettings } from '../lib/settings';
 import { sfx } from '../lib/sfx';
 import { pushInbox } from '../lib/inbox';
+import { markPronunciation } from '../lib/learned';
 import { canRecognize, recognizeOnce, speak, voiceErrorMessage } from '../lib/speech';
 import { answerWords, containsAnswer, evaluate, feedbackFor, fullSentence, hintPrefix, normalize, speechMatchRate } from '../lib/text';
 import { formatAfter, formatAgo, formatDuration, studyDateOf } from '../lib/time';
@@ -425,6 +426,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       const [pPerfect, pGreat, pGood] = lv === 'strict' ? [0.98, 0.9, 0.75] : lv === 'normal' ? [0.95, 0.8, 0.6] : [0.9, 0.7, 0.5];
       const label = best >= pPerfect ? 'Perfect!' : best >= pGreat ? 'Great!' : best >= pGood ? 'Good!' : 'Nice try!';
       setSayResult({ tone: best >= 0.8 ? 'green' : best >= 0.6 ? 'yellow' : 'red', msg: `${label} ${pct}% 일치 · '${bestText}'` });
+      void markPronunciation(target.q.word.id, best >= pGood);
     } catch (e) {
       setSayResult({ tone: 'red', msg: voiceErrorMessage(e) });
     } finally {

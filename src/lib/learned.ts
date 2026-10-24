@@ -4,13 +4,14 @@ import { getImported } from './imported';
 import { masteryOf } from './scheduler';
 import { studyDateOf } from './time';
 
-export type LearnedKind = 'daily' | 'recent' | 'most' | 'long' | 'known';
+export type LearnedKind = 'daily' | 'recent' | 'most' | 'long' | 'known' | 'pron';
 export const LEARNED_KINDS: { kind: LearnedKind; label: string }[] = [
   { kind: 'daily', label: '일별 학습 어휘' },
   { kind: 'recent', label: '최근에 잊어버린 어휘' },
   { kind: 'most', label: '역대 가장 많이 잊어버린 어휘' },
   { kind: 'long', label: '길게 기억했다 잊어버린 어휘' },
   { kind: 'known', label: '복습이 필요 없는 어휘' },
+  { kind: 'pron', label: '정확하게 발음하지 못한 어휘' },
 ];
 
 export interface LearnedRow {
@@ -99,8 +100,27 @@ export async function noReviewNeeded(): Promise<LearnedRow[]> {
   );
 }
 
+/** 말해보기에서 기준에 못 미친 단어 (kv 'mispronounced': wordId → 날짜). 나중에 잘 발음하면 빠진다 */
+export async function markPronunciation(wordId: string, ok: boolean): Promise<void> {
+  const cur = ((await db.kv.get('mispronounced'))?.value as Record<string, string> | undefined) ?? {};
+  if (ok) {
+    if (!(wordId in cur)) return;
+    delete cur[wordId];
+  } else cur[wordId] = studyDateOf();
+  await db.kv.put({ key: 'mispronounced', value: cur });
+}
+
+/** 정확하게 발음하지 못한 어휘: 날짜순, note 에 날짜 */
+export async function mispronounced(): Promise<LearnedRow[]> {
+  const cur = ((await db.kv.get('mispronounced'))?.value as Record<string, string> | undefined) ?? {};
+  const ids = Object.keys(cur).sort((a, b) => cur[a].localeCompare(cur[b]));
+  return hydrate(ids, [], new Map(ids.map((id) => [id, cur[id]])));
+}
+
 export function learnedList(kind: LearnedKind, date = studyDateOf()): Promise<LearnedRow[]> {
   switch (kind) {
+    case 'pron':
+      return mispronounced();
     case 'daily':
       return dailyWords(date);
     case 'recent':
@@ -115,8 +135,8 @@ export function learnedList(kind: LearnedKind, date = studyDateOf()): Promise<Le
 }
 
 export async function learnedCounts(): Promise<Record<LearnedKind, number>> {
-  const [daily, recent, most, long, known] = await Promise.all([dailyWords(studyDateOf()), recentLapses(), mostLapses(), longThenForgot(), noReviewNeeded()]);
-  return { daily: daily.length, recent: recent.length, most: most.length, long: long.length, known: known.length };
+  const [daily, recent, most, long, known, pron] = await Promise.all([dailyWords(studyDateOf()), recentLapses(), mostLapses(), longThenForgot(), noReviewNeeded(), mispronounced()]);
+  return { daily: daily.length, recent: recent.length, most: most.length, long: long.length, known: known.length, pron: pron.length };
 }
 
 /** 풀이 기록 한 줄 */
