@@ -1,51 +1,192 @@
 import { useLiveQuery } from 'dexie-react-hooks';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Icon from '../components/Icon';
+import { FilledSentence, KoSentence } from '../components/QuizCard';
 import { db } from '../db';
 import { POS_KO } from '../types';
 
+type Tab = 'word' | 'sentence';
+const RECENT_KEY = 'recentSearches';
+
+async function getRecent(): Promise<string[]> {
+  return ((await db.kv.get(RECENT_KEY))?.value as string[] | undefined) ?? [];
+}
+async function pushRecent(term: string): Promise<void> {
+  const cur = await getRecent();
+  await db.kv.put({ key: RECENT_KEY, value: [term, ...cur.filter((t) => t !== term)].slice(0, 20) });
+}
+
+/** 단어 & 문장 검색 (말해보카: 탭, 최근 검색, 아래 입력줄 + 확인, 검색 후에만 결과) */
 export default function Dictionary() {
+  const nav = useNavigate();
+  const [tab, setTab] = useState<Tab>('word');
+  const [draft, setDraft] = useState('');
   const [query, setQuery] = useState('');
   const q = query.trim().toLowerCase();
-  const results = useLiveQuery(async () => {
+  const recent = useLiveQuery(() => getRecent(), []);
+
+  const words = useLiveQuery(async () => {
+    if (!q || tab !== 'word') return [];
     const all = await db.words.toArray();
-    const list = q
-      ? all.filter((w) => w.word.toLowerCase().includes(q) || w.meanings.some((m) => m.includes(q)))
-      : all;
-    return list
+    return all
+      .filter((w) => w.word.toLowerCase().includes(q) || w.meanings.some((m) => m.includes(q)))
       .sort((a, b) => {
-        if (q) {
-          const as = a.word.toLowerCase().startsWith(q) ? 0 : 1;
-          const bs = b.word.toLowerCase().startsWith(q) ? 0 : 1;
-          if (as !== bs) return as - bs;
-        }
-        return a.level - b.level || a.word.localeCompare(b.word);
+        const as = a.word.toLowerCase().startsWith(q) ? 0 : 1;
+        const bs = b.word.toLowerCase().startsWith(q) ? 0 : 1;
+        return as - bs || a.level - b.level || a.word.localeCompare(b.word);
       })
-      .slice(0, 200);
-  }, [q]);
+      .slice(0, 100);
+  }, [q, tab]);
+
+  const sentences = useLiveQuery(async () => {
+    if (!q || tab !== 'sentence') return [];
+    const all = await db.words.toArray();
+    const out: { id: string; idx: number; w: (typeof all)[number] }[] = [];
+    for (const w of all) {
+      w.sentences.forEach((s, idx) => {
+        const en = s.en.replace('___', s.answer).toLowerCase();
+        if (en.includes(q) || s.ko.replace(/\*\*/g, '').includes(q)) out.push({ id: w.id, idx, w });
+      });
+      if (out.length > 100) break;
+    }
+    return out;
+  }, [q, tab]);
+
+  const submit = (term = draft) => {
+    const t = term.trim();
+    if (!t) return;
+    setDraft(t);
+    setQuery(t);
+    void pushRecent(t);
+  };
 
   return (
-    <div className="screen dict">
-      <h1 className="page-title">사전 &amp; 단어 검색</h1>
-      <div className="search-box">
-        <Icon name="search" size={18} />
-        <input placeholder="영어 단어나 한글 뜻을 검색하세요" value={query} onChange={(e) => setQuery(e.target.value)} autoCapitalize="off" autoCorrect="off" spellCheck={false} />
-      </div>
-      <p className="hint-banner">단어를 누르면 예문과 뉘앙스를 볼 수 있어요.</p>
-      <ul className="dict-list">
-        {(results ?? []).map((w) => (
-          <li key={w.id}>
-            <Link to={`/words/${encodeURIComponent(w.id)}`} className="dict-row">
-              <span className="dict-word">{w.word}</span>
-              <span className="dict-mean">
-                <small>{POS_KO[w.pos]}</small> {w.meanings.join(', ')}
-              </span>
+    <div className="vs-page dict-page search-page">
+      <header className="vs-head">
+        <button className="vs-back" onClick={() => nav(-1)}>
+          <Icon name="back" size={22} /> 단어 &amp; 문장 검색
+        </button>
+      </header>
+      <nav className="dict-tabs2">
+        <button className={tab === 'word' ? 'active' : ''} onClick={() => setTab('word')}>
+          단어 검색
+        </button>
+        <button className={tab === 'sentence' ? 'active' : ''} onClick={() => setTab('sentence')}>
+          문장 검색
+        </button>
+      </nav>
+
+      {!q && (
+        <>
+          {recent && recent.length > 0 ? (
+            <section className="recent-sec">
+              <div className="recent-head">
+                <b>최근 검색</b>
+                <button onClick={() => void db.kv.put({ key: RECENT_KEY, value: [] })}>전체 삭제</button>
+              </div>
+              {recent.map((t) => (
+                <div key={t} className="recent-row">
+                  <button className="recent-term" onClick={() => submit(t)}>
+                    <Icon name="clock" size={16} /> {t}
+                  </button>
+                  <button className="recent-x" onClick={() => void db.kv.put({ key: RECENT_KEY, value: recent.filter((x) => x !== t) })} aria-label="삭제">
+                    ×
+                  </button>
+                </div>
+              ))}
+            </section>
+          ) : (
+            <div className="search-prompt">
+              <Icon name="search" size={30} />
+              <p>
+                {tab === 'word' ? (
+                  <>
+                    영어 또는 <b>한글</b>을 입력해서
+                    <br />
+                    원하는 단어를 검색하세요.
+                  </>
+                ) : (
+                  <>
+                    영어 또는 <b>한글</b>을 입력해서
+                    <br />
+                    원하는 문장을 검색하세요.
+                  </>
+                )}
+              </p>
+            </div>
+          )}
+        </>
+      )}
+
+      {q && tab === 'word' && (
+        <>
+          <p className="result-head">&quot;{query}&quot; 의 검색 결과</p>
+          {words && words.length === 0 && <p className="empty-note">검색 결과가 없습니다.</p>}
+          <ul className="dict-list">
+            {(words ?? []).map((w) => (
+              <li key={w.id}>
+                <Link to={`/words/${encodeURIComponent(w.id)}`} className="dict-row">
+                  <span className="dict-word">{w.word}</span>
+                  <span className="dict-mean">
+                    <small>{POS_KO[w.pos]}</small> {w.meanings.join(', ')}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+      {q && tab === 'sentence' && (
+        <>
+          <p className="result-head">&quot;{query}&quot; 의 검색 결과</p>
+          {sentences && sentences.length === 0 && <p className="empty-note">검색 결과가 없습니다.</p>}
+          {(sentences ?? []).map(({ id, idx, w }) => (
+            <Link key={`${id}#${idx}`} to={`/words/${encodeURIComponent(id)}`} className="sent-item">
+              <p className="sent-en">
+                <FilledSentence sentence={w.sentences[idx]} />
+              </p>
+              <p className="sent-ko">
+                <KoSentence ko={w.sentences[idx].ko} />
+              </p>
             </Link>
-          </li>
-        ))}
-      </ul>
-      {results && results.length === 0 && <p className="muted center-text">검색 결과가 없어요.</p>}
+          ))}
+        </>
+      )}
+
+      <form
+        className="dict-searchbar"
+        onSubmit={(e) => {
+          e.preventDefault();
+          submit();
+        }}
+      >
+        <input
+          placeholder={tab === 'word' ? '단어를 검색해 주세요.' : '문장을 검색해 주세요.'}
+          value={draft}
+          onChange={(e) => {
+            setDraft(e.target.value);
+            if (!e.target.value.trim()) setQuery('');
+          }}
+          autoCapitalize="off"
+          autoCorrect="off"
+          spellCheck={false}
+        />
+        {draft && (
+          <button
+            type="button"
+            className="clear-x"
+            onClick={() => {
+              setDraft('');
+              setQuery('');
+            }}
+            aria-label="지우기"
+          >
+            ×
+          </button>
+        )}
+        <button type="submit">확인</button>
+      </form>
     </div>
   );
 }
