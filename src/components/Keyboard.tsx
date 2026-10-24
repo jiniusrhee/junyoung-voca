@@ -1,5 +1,6 @@
 import { useRef, type PointerEvent } from 'react';
 import Icon from './Icon';
+import { keyFeedback } from '../lib/sfx';
 
 const ROWS = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
 
@@ -26,6 +27,7 @@ export function useHoldRepeat(fn: () => void) {
   };
   const start = (e: PointerEvent) => {
     e.preventDefault();
+    keyFeedback();
     fn();
     stop();
     timer.current = window.setTimeout(() => {
@@ -39,6 +41,7 @@ export function useHoldRepeat(fn: () => void) {
 export default function Keyboard({ onChar, onBackspace, onSpace, onEnter, onShift, shift = false }: Props) {
   const press = (fn: () => void) => (e: PointerEvent) => {
     e.preventDefault();
+    keyFeedback();
     fn();
   };
   const hold = useHoldRepeat(onBackspace);

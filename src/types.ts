@@ -292,6 +292,13 @@ export interface Settings {
   speechLevel: 'loose' | 'normal' | 'strict';
   /** 복습 단어 비율: 새 단어 대비 복습 출제 비중 */
   reviewRatio: 'less' | 'normal' | 'more';
+  /** 음성 속도 및 크기 (말해보카): 0~1 */
+  ttsVolume: number;
+  sfxVolume: number;
+  keySoundVolume: number;
+  keyVibrate: boolean;
+  streakVibrate: boolean;
+  muteStart: boolean;
   /** 다크 모드: 시스템 설정 따르기 / 켜기 / 끄기 */
   theme: 'system' | 'dark' | 'light';
   /** 홈 왼쪽 위에 보이는 이름 */

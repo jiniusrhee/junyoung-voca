@@ -1,5 +1,6 @@
 import { useState, type PointerEvent } from 'react';
 import Icon from './Icon';
+import { keyFeedback } from '../lib/sfx';
 import { useHoldRepeat } from './Keyboard';
 
 const LETTERS = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
@@ -19,6 +20,7 @@ export default function SentenceKeyboard({ value, onChange, onEnter }: Props) {
   const shift = manualShift ?? auto;
   const press = (fn: () => void) => (e: PointerEvent) => {
     e.preventDefault();
+    keyFeedback();
     fn();
   };
   const type = (c: string) => {

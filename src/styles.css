@@ -8525,3 +8525,25 @@ sup.beta.pill {
 .mode-list .mode-sum:last-child {
   border-bottom: none;
 }
+
+/* 모드별 설정: 섹션 제목, 슬라이더 */
+.ms-sec {
+  margin: 22px 16px 4px;
+  font-size: 1.05rem;
+}
+.slider-row {
+  flex-wrap: nowrap;
+}
+.slider-row input[type='range'] {
+  flex: 1;
+  accent-color: #8b6cf6;
+}
+.ms-row.toggle-row input {
+  display: none;
+}
+.ms-row.toggle-row input:checked + .toggle {
+  background: var(--purple);
+}
+.ms-row.toggle-row input:checked + .toggle::after {
+  transform: translateX(18px);
+}

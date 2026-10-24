@@ -4,6 +4,7 @@ import BottomNav from './components/BottomNav';
 import StreakPopup from './components/StreakPopup';
 import { syncContent } from './lib/content';
 import { useSettings } from './lib/settings';
+import { applySoundSettings } from './lib/sfx';
 import { useApplyTheme } from './lib/theme';
 import AllLearning from './pages/AllLearning';
 import ExprHome, { ExprCourses, ExprDict, ExprNotebook } from './pages/ExprHome';
@@ -42,6 +43,9 @@ function Shell() {
   const settings = useSettings();
   const loc = useLocation();
   useApplyTheme(settings?.theme);
+  useEffect(() => {
+    if (settings) applySoundSettings(settings);
+  }, [settings]);
   if (!settings) return <div className="screen center muted">불러오는 중…</div>;
   const needsOnboarding = settings.level == null;
   const showNav = TABS.includes(loc.pathname) && !(loc.pathname === '/' && needsOnboarding);

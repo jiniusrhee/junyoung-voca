@@ -1,3 +1,4 @@
+import { ttsVolume } from './sfx';
 interface RecognitionResultLike {
   length: number;
   [index: number]: { transcript: string };
@@ -86,7 +87,7 @@ export function speak(text: string, slow = false, factor = 1, onEnd?: () => void
   }
   try {
     window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
+    const u = makeUtterance(text);
     u.lang = 'en-US';
     u.rate = (slow ? 0.72 : 0.98) * factor;
     if (onEnd) u.onend = () => onEnd();
@@ -97,4 +98,10 @@ export function speak(text: string, slow = false, factor = 1, onEnd?: () => void
   } catch {
     /* 음성 재생 실패는 무시 */
   }
+}
+
+function makeUtterance(text: string): SpeechSynthesisUtterance {
+  const u = new SpeechSynthesisUtterance(text);
+  u.volume = ttsVolume();
+  return u;
 }

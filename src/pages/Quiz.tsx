@@ -18,6 +18,7 @@ import { LEVEL_TEST_QUESTIONS } from '../lib/levelLogic';
 import { applyReview, newCardRow, type Outcome } from '../lib/scheduler';
 import { LevelTest, ListPicker, StudyPicker, type Question } from '../lib/session';
 import { saveSettings, useSettings } from '../lib/settings';
+import { sfx } from '../lib/sfx';
 import { canRecognize, recognizeOnce, speak, voiceErrorMessage } from '../lib/speech';
 import { answerWords, containsAnswer, evaluate, feedbackFor, fullSentence, hintPrefix, normalize, speechMatchRate } from '../lib/text';
 import { formatAfter, formatAgo, formatDuration, studyDateOf } from '../lib/time';
@@ -251,6 +252,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       setAnswered(item);
       setHistory((h) => [...h.slice(-19), item]);
       setFlash({ kind: 'correct', key: Date.now() });
+      sfx('correct');
       setPhase('answered');
       if (s.autoSpeak) speakSentence(l.q);
       if (metNow && mode === 'study') window.setTimeout(() => setGoalReached(true), 1100);
@@ -329,6 +331,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       wrongs: [...l.wrongs, { w, tone, m: msg }],
     });
     setFlash({ kind: 'wrong', key: Date.now() });
+    sfx('wrong');
   };
 
   const submit = () => {

@@ -6,6 +6,9 @@ import { UPDATES } from '../updates';
 import type { Settings, StudyMode } from '../types';
 
 const GOALS = [5, 10, 15, 20, 30, 50];
+const THEME_LABEL: Record<Settings['theme'], string> = { system: '시스템 설정 따르기', dark: '켜기', light: '끄기' };
+const STUDY_THEME_LABEL: Record<Settings['studyTheme'], string> = { dino: '다이노를 찾아서', sky: '하늘' };
+const SPEECH_LABEL: Record<Settings['speechLevel'], string> = { loose: '느슨하게', normal: '보통', strict: '엄격하게' };
 const TITLES: Record<string, string> = {
   grammar: '문법 학습',
   expr: '표현 학습',
@@ -31,6 +34,32 @@ function Seg<T extends string>({ value, options, onChange }: { value: T; options
         </button>
       ))}
     </div>
+  );
+}
+
+function Slider({ label, value, onChange }: { label: string; value: number; onChange: (v: number) => void }) {
+  return (
+    <div className="ms-row slider-row">
+      <span className="ms-row-text">
+        <b>{label}</b>
+      </span>
+      <Icon name="speaker" size={20} className="ic-purple" />
+      <input type="range" min={0} max={1} step={0.05} value={value} onChange={(e) => onChange(Number(e.target.value))} />
+    </div>
+  );
+}
+
+function ToggleRow({ label, checked, onChange, help }: { label: string; checked: boolean; onChange: (v: boolean) => void; help?: string }) {
+  return (
+    <label className="ms-row toggle-row">
+      <span className="ms-row-text">
+        <b>
+          {label} {help && <i className="qmark" title={help}>?</i>}
+        </b>
+      </span>
+      <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} />
+      <span className="toggle" />
+    </label>
   );
 }
 
@@ -200,6 +229,34 @@ export default function ModeSettings() {
               </label>
             );
           })}
+        </>
+      )}
+      {(mode === 'grammar' || mode === 'expr' || mode === 'talk' || mode === 'listening') && (
+        <>
+          <h3 className="ms-sec">화면 설정</h3>
+          <Row title="다크모드" desc={THEME_LABEL[s.theme]} onClick={() => set({ theme: s.theme === 'system' ? 'dark' : s.theme === 'dark' ? 'light' : 'system' })} />
+          <Row title="학습테마" desc={STUDY_THEME_LABEL[s.studyTheme]} onClick={() => set({ studyTheme: s.studyTheme === 'dino' ? 'sky' : 'dino' })} />
+          <h3 className="ms-sec">발음 인식</h3>
+          <Row title="발음인식 기준" desc={SPEECH_LABEL[s.speechLevel]} onClick={() => set({ speechLevel: s.speechLevel === 'loose' ? 'normal' : s.speechLevel === 'normal' ? 'strict' : 'loose' })} />
+          <h3 className="ms-sec">음성 속도 및 크기</h3>
+          <Slider label="음성" value={s.ttsVolume} onChange={(v) => set({ ttsVolume: v })} />
+          <Slider label="효과음" value={s.sfxVolume} onChange={(v) => set({ sfxVolume: v })} />
+          <Slider label="키 입력 시 소리" value={s.keySoundVolume} onChange={(v) => set({ keySoundVolume: v })} />
+          <ToggleRow label="키 입력 시 진동" checked={s.keyVibrate} onChange={(v) => set({ keyVibrate: v })} />
+          <ToggleRow label="연속 학습 달성 시 진동" checked={s.streakVibrate} onChange={(v) => set({ streakVibrate: v })} />
+          <ToggleRow label="앱 무음 모드로 시작하기" checked={s.muteStart} onChange={(v) => set({ muteStart: v })} help="앱을 열 때 소리를 끈 상태로 시작해요." />
+          <h3 className="ms-sec">학습 관리</h3>
+          <Row title="학습 기록 관리" desc="백업·복원·초기화" onClick={() => nav('/settings/data')} />
+        </>
+      )}
+      {mode === 'voice' && (
+        <>
+          <Slider label="음성" value={s.ttsVolume} onChange={(v) => set({ ttsVolume: v })} />
+          <Slider label="효과음" value={s.sfxVolume} onChange={(v) => set({ sfxVolume: v })} />
+          <Slider label="키 입력 시 소리" value={s.keySoundVolume} onChange={(v) => set({ keySoundVolume: v })} />
+          <ToggleRow label="키 입력 시 진동" checked={s.keyVibrate} onChange={(v) => set({ keyVibrate: v })} />
+          <ToggleRow label="연속 학습 달성 시 진동" checked={s.streakVibrate} onChange={(v) => set({ streakVibrate: v })} />
+          <ToggleRow label="앱 무음 모드로 시작하기" checked={s.muteStart} onChange={(v) => set({ muteStart: v })} />
         </>
       )}
       {mode === 'updates' && (
