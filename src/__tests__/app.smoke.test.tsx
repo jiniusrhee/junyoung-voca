@@ -122,7 +122,7 @@ describe('app smoke', () => {
     await screen.findByRole('button', { name: /다음 문제/ }, { timeout: 5_000 });
     const card = await db.cards.get(word.id);
     expect(card?.known).toBeFalsy();
-    expect(card!.due.getTime()).toBeLessThanOrEqual(Date.now() + 2 * 60_000);
+    expect(card!.due.getTime()).toBeLessThanOrEqual(Date.now() + 6 * 60_000);
   });
 
   it('explains a wrong answer, then accepts the retry and keeps it in the wrong note', async () => {

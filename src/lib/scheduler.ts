@@ -10,7 +10,7 @@ export const FAST_ANSWER_MS = 4000;
 const scheduler = fsrs(
   generatorParameters({
     enable_fuzz: true,
-    learning_steps: ['1m', '10m'],
+    learning_steps: ['5m', '10m'], // 말해보카: 힌트/오답 뒤 '5분 뒤 복습'
     relearning_steps: ['10m'],
   }),
 );
