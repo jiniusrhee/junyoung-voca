@@ -19,6 +19,7 @@ export default function TalkHome() {
   const s = useSettings();
   const stories = useLiveQuery(() => db.tstories.orderBy('order').toArray(), []);
   const prog = useLiveQuery(() => getTalkProgress(), []);
+  const marks = useLiveQuery(() => getTalkReviewMarks(), []);
   if (!s) return null;
   const lv = CEFR_IDX.indexOf(s.talkLevel);
   const list = [...(stories ?? [])].sort((a, b) => {
@@ -27,7 +28,6 @@ export default function TalkHome() {
     if (ta !== tb) return tb - ta;
     return Math.abs(CEFR_IDX.indexOf(a.cefr) - lv) - Math.abs(CEFR_IDX.indexOf(b.cefr) - lv);
   });
-  const marks = useLiveQuery(() => getTalkReviewMarks(), []);
   const review = stories && prog ? pickReview(stories, prog, marks ?? []) : null;
   const cats = [...new Set((stories ?? []).map((x) => x.category))].sort((a, b) => CAT_ORDER.indexOf(a) - CAT_ORDER.indexOf(b));
 
