@@ -1,4 +1,5 @@
 import { useLiveQuery } from 'dexie-react-hooks';
+import { GRAMMAR_BOOKMARKS, getFolders } from '../lib/folders';
 import { useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import Icon, { type IconName } from '../components/Icon';
@@ -33,7 +34,7 @@ export default function AllLearning() {
       learned: await db.cards.count(),
       wordbook: await db.kv.get('wordbook').then((r) => ((r?.value as string[] | undefined) ?? []).length),
       gLearned: await db.mcards.where('mode').equals('grammar').count(),
-      gMarks: await db.bookmarks.where('mode').equals('grammar').count(),
+      gMarks: (await getFolders(GRAMMAR_BOOKMARKS)).length,
       lLearned: await db.mcards.where('mode').equals('listening').count(),
       lMarks: await db.bookmarks.where('mode').equals('listening').count(),
       vToday: (await db.daily.get(studyDateOf()))?.total ?? 0,

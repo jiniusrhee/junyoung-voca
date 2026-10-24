@@ -5,6 +5,7 @@ import Icon from '../components/Icon';
 import SubHeader from '../components/SubHeader';
 import { db } from '../db';
 import { listenPool } from '../lib/listening';
+import { GRAMMAR_BOOKMARKS, folderItems, toggleInFolder } from '../lib/folders';
 import { toggleBookmark } from '../lib/modeStudy';
 import { speak } from '../lib/speech';
 import { shiftDate, studyDateOf } from '../lib/time';
@@ -195,7 +196,7 @@ export default function ModeNotebook() {
   const [open, setOpen] = useState<Set<string>>(new Set());
   const [menu, setMenu] = useState<string | null>(null);
   const data = useLiveQuery(() => listOf(m, k, date), [m, k, date]);
-  const marks = useLiveQuery(async () => new Set((await db.bookmarks.where('mode').equals(m).toArray()).map((b) => b.itemId)), [m]);
+  const marks = useLiveQuery(async () => (m === 'grammar' ? folderItems(GRAMMAR_BOOKMARKS) : new Set((await db.bookmarks.where('mode').equals(m).toArray()).map((b) => b.itemId))), [m]);
   const label = date === today ? '오늘' : date === shiftDate(today, -1) ? '어제' : date.slice(5).replace('-', '.');
   const daily = k === 'daily' || k === 'tdaily';
   const topics = (data?.topics ?? []).filter((t) => filter === 'all' || t.wrong);
@@ -323,7 +324,7 @@ export default function ModeNotebook() {
                       )}
                       <button
                         onClick={() => {
-                          void toggleBookmark(m, r.s.id);
+                          void (m === 'grammar' ? toggleInFolder(GRAMMAR_BOOKMARKS, r.s.id) : toggleBookmark(m, r.s.id));
                           setMenu(null);
                         }}
                       >

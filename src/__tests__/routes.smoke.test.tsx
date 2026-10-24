@@ -41,6 +41,7 @@ const ROUTES = [
   '#/favorites',
   '#/wrongs',
   '#/wordbook',
+  '#/bookmarks/grammar',
   '#/dict',
   '#/grammar-dict',
   '#/settings',

@@ -18,6 +18,7 @@ import Guide from './pages/Guide';
 import LearnedList from './pages/LearnedList';
 import LearnedMenu, { LearnedWords } from './pages/Learned';
 import ModeNotebook, { ModeLearnedMenu } from './pages/ModeNotebook';
+import GBookmarks, { GBookmarkDetail } from './pages/GBookmarks';
 import ListeningQuiz from './pages/ListeningQuiz';
 import Pairs, { PairQuiz } from './pages/Pairs';
 import Wordbook, { WordbookDetail } from './pages/Wordbook';
@@ -84,6 +85,8 @@ function Shell() {
         <Route path="/learned/grammar" element={<ModeLearnedMenu />} />
         <Route path="/learned/:mode/:kind" element={<ModeNotebook />} />
         <Route path="/learned/:mode" element={<LearnedList kind="learned" />} />
+        <Route path="/bookmarks/grammar" element={<GBookmarks />} />
+        <Route path="/bookmarks/grammar/:id" element={<GBookmarkDetail />} />
         <Route path="/bookmarks/:mode" element={<LearnedList kind="bookmarks" />} />
         <Route path="/wordbook" element={<Wordbook />} />
         <Route path="/wordbook/:id" element={<WordbookDetail />} />
