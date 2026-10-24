@@ -51,6 +51,7 @@ export type IconName =
   | 'talk'
   | 'headphones'
   | 'drop'
+  | 'hand'
   | 'bookmark'
   | 'shift'
   | 'retry'
@@ -304,6 +305,14 @@ const PATHS: Record<IconName, ReactElement> = {
       <path d="M4 8h1.5v5.5A2.5 2.5 0 0 0 8 16h6l-2 2H7.5l-3 2.5V18H4a1.5 1.5 0 0 1-1.5-1.5v-7A1.5 1.5 0 0 1 4 8z" opacity="0.7" />
       <rect x="10" y="6.5" width="8" height="1.6" rx="0.8" fill="#2b3320" />
       <rect x="10" y="9.5" width="5.5" height="1.6" rx="0.8" fill="#2b3320" />
+    </g>
+  ),
+  hand: (
+    <g>
+      <path d="M7 11V5.5a1.5 1.5 0 0 1 3 0V11" />
+      <path d="M10 10V4a1.5 1.5 0 0 1 3 0v7" />
+      <path d="M13 10.5V5.5a1.5 1.5 0 0 1 3 0V12" />
+      <path d="M16 12V8.5a1.5 1.5 0 0 1 3 0V14c0 4-2.5 7-6.5 7S6 18 6 15v-3.5a1.5 1.5 0 0 1 3 0V13" />
     </g>
   ),
   drop: <path d="M12 2.5c-3.2 4.6-6.5 7.9-6.5 11.7a6.5 6.5 0 0 0 13 0C18.5 10.4 15.2 7.1 12 2.5z" fill="currentColor" stroke="none" />,

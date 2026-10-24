@@ -79,6 +79,9 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const [sayResult, setSayResult] = useState<{ tone: Tone; msg: string } | null>(null);
   const [listening, setListening] = useState(false);
   const [voiceError, setVoiceError] = useState<string | null>(null);
+  /** 말해보카: 몇 초 안에 못 들으면 마이크 원 안에 '듣지 못했어요' */
+  const [noSpeech, setNoSpeech] = useState(false);
+  const [handsTip, setHandsTip] = useState(false);
   const [heard, setHeard] = useState<string | null>(null);
   const [showSettings, setShowSettings] = useState(false);
   const [goalReached, setGoalReached] = useState(false);
@@ -364,6 +367,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const answerByVoice = async () => {
     if (!live || listening) return;
     setVoiceError(null);
+    setNoSpeech(false);
     setListening(true);
     try {
       const alts = await recognizeOnce();
@@ -382,7 +386,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         markWrong(live, heard || '(인식 안 됨)', 'red', `'${heard}'(이)라고 들렸어요. 다시 말해 보세요.`, true);
       }
     } catch (e) {
-      setVoiceError(voiceErrorMessage(e));
+      if (e instanceof Error && e.message === 'no-speech') setNoSpeech(true);
+      else setVoiceError(voiceErrorMessage(e));
     } finally {
       setListening(false);
     }
@@ -736,6 +741,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
             else if (dx < -70) goForward();
           }}
         >
+          <div className="card-rel">
           <QuizCard
             word={q.word}
             sentence={sentence}
@@ -753,6 +759,19 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
             levelHelp={levelHelp}
             overlay={cardOverlay}
           />
+          {inputMode === 'voice' && phase === 'question' && !hist && (
+            <>
+              <button className="hands-btn" onClick={() => setHandsTip((v) => !v)} aria-label="핸즈프리">
+                <Icon name="hand" size={18} />
+              </button>
+              {handsTip && (
+                <div className="hands-tip" onClick={() => setHandsTip(false)}>
+                  힌트를 보고 싶다면 <b>yes</b>라고 말해보세요.
+                </div>
+              )}
+            </>
+          )}
+          </div>
         </div>
       </main>
 
@@ -839,11 +858,16 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
           </div>
           <div className={`voice-halo ${listening ? 'listening' : ''}`}>
             <span className="kbd-hint enter">Enter</span>
-            <button className={`mic-big ${listening ? 'on' : ''}`} onClick={() => void answerByVoice()} aria-label={listening ? '듣는 중' : '말하기'}>
+            <button className={`mic-big ${listening ? 'on' : ''} ${noSpeech && !listening ? 'on nospeech' : ''}`} onClick={() => void answerByVoice()} aria-label={listening ? '듣는 중' : '말하기'}>
               {listening ? (
                 <>
                   <span className="stop-square" />
                   <small>듣고 있어요</small>
+                </>
+              ) : noSpeech ? (
+                <>
+                  <Icon name="mic" size={34} />
+                  <small>듣지 못했어요</small>
                 </>
               ) : (
                 <Icon name="mic" size={40} />

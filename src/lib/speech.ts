@@ -29,6 +29,8 @@ export function canRecognize(): boolean {
 }
 
 /** 한 번 듣고 인식 후보 문장들을 돌려준다. 실패 시 Error(message=에러 코드) */
+const LISTEN_TIMEOUT_MS = 7000;
+
 export function recognizeOnce(lang = 'en-US'): Promise<string[]> {
   return new Promise((resolve, reject) => {
     const C = ctor();
@@ -41,7 +43,18 @@ export function recognizeOnce(lang = 'en-US'): Promise<string[]> {
     r.interimResults = false;
     r.maxAlternatives = 5;
     let settled = false;
+    const timer = window.setTimeout(() => {
+      if (settled) return;
+      settled = true;
+      try {
+        r.abort();
+      } catch {
+        /* ignore */
+      }
+      reject(new Error('no-speech'));
+    }, LISTEN_TIMEOUT_MS);
     r.onresult = (e) => {
+      window.clearTimeout(timer);
       settled = true;
       const res = e.results[0];
       const alts: string[] = [];
@@ -49,11 +62,13 @@ export function recognizeOnce(lang = 'en-US'): Promise<string[]> {
       resolve(alts);
     };
     r.onerror = (e) => {
+      window.clearTimeout(timer);
       if (settled) return;
       settled = true;
       reject(new Error(e.error ?? 'error'));
     };
     r.onend = () => {
+      window.clearTimeout(timer);
       if (settled) return;
       settled = true;
       reject(new Error('no-speech'));

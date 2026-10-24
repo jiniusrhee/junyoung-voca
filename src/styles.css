@@ -9253,3 +9253,51 @@ sup.beta.pill {
 .sent-card-actions button.on {
   color: #ff5c8a;
 }
+
+/* 음성 모드: 듣는 동안 보라 원, 못 들으면 원 안에 '듣지 못했어요' (말해보카) */
+:root[data-theme='dark'] .mic-big.on,
+.mic-big.on {
+  background: linear-gradient(160deg, #7d6af5, #6352ee);
+  color: #fff;
+}
+:root[data-theme='dark'] .mic-big.nospeech,
+.mic-big.nospeech {
+  background: #1f2023;
+  color: #8c79f7;
+}
+.mic-big.nospeech small {
+  color: #8c79f7;
+}
+.card-rel {
+  position: relative;
+}
+.hands-btn {
+  position: absolute;
+  right: 14px;
+  bottom: -16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #2a2c31;
+  color: #cfd2da;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+.hands-tip {
+  position: absolute;
+  right: 14px;
+  bottom: 36px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #3a3d43;
+  color: #fff;
+  font-size: 0.86rem;
+  white-space: nowrap;
+  z-index: 4;
+}
+.hands-tip b {
+  color: #ffd166;
+}
