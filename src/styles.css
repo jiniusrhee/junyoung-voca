@@ -8361,3 +8361,12 @@ sup.beta.pill {
 .quiz-screen:has(.dino-bg) .icon-btn.light {
   color: #7f9a86;
 }
+/* 테마 배경(SVG)은 항상 맨 뒤: 자판·패널·헤더가 가려지지 않게 */
+.quiz-screen > .dino-bg,
+.quiz-screen > .quiz-bg-deco {
+  z-index: 0;
+}
+.quiz-screen > *:not(.dino-bg):not(.quiz-bg-deco):not(.modal-dim):not(.fav-tip) {
+  position: relative;
+  z-index: 1;
+}
