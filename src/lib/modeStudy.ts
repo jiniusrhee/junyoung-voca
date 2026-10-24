@@ -16,6 +16,8 @@ export function newMCard(mode: StudyMode, itemId: string, now: Date = new Date()
 }
 
 export interface ModeOutcome {
+  /** 리스닝: 다시 듣기 횟수(Perfect/Great/Good 구분용) */
+  hints?: number;
   /** 실수 없이 한 번에 */
   clean: boolean;
   /** 틀린 횟수 */
@@ -49,7 +51,7 @@ export async function recordModeAnswer(mode: StudyMode, itemId: string, o: ModeO
       studyDate: date,
       rating: grade,
       firstTry: o.clean,
-      hints: 0,
+      hints: o.hints ?? 0,
       showedAnswer: o.failed,
       wrongAttempts: o.wrong,
       mode: 'keyboard',

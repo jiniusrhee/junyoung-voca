@@ -8,7 +8,7 @@ import { getSettings, useSettings } from '../lib/settings';
 import { getImported } from '../lib/imported';
 import { comprehension, dayTime, dayTotal, displayVocab, goalMet, reviewAccuracy, vocabDateText, percentileOf } from '../lib/stats';
 import { WEEKDAYS_KO, dayOfWeek, formatClock, shiftDate, studyDateOf } from '../lib/time';
-import type { DailyRow, ImportedProgress, StudyMode } from '../types';
+import type { DailyRow, ImportedProgress, StudyMode, ReviewRow } from '../types';
 
 type Tab = 'period' | 'study' | 'vocab';
 
@@ -307,9 +307,11 @@ function StudyModes({ daily, today, goals, imp }: { daily: DailyRow[]; today: st
   );
 }
 
+type ResultKey = 'perfect' | 'second' | 'good' | 'nice';
+
 function StudyTab({ mode, byDate, daily, today, goal, extra }: { mode: SMode; byDate: Map<string, DailyRow>; daily: DailyRow[]; today: string; goal: number; extra?: { trophies?: number; questions?: number; timeMs?: number } }) {
   const label = SMODE_LABEL[mode];
-  const unit = mode === 'vocab' ? '단어' : '문장';
+  const unit = mode === 'vocab' ? '단어' : mode === 'expr' ? '표현' : '문장';
   const [offset, setOffset] = useState(0);
   const trophies = daily.filter((d) => goalMet(d, goal)).length + (extra?.trophies ?? 0);
   const totalQ = daily.reduce((s, d) => s + d.total, 0) + (extra?.questions ?? 0);
@@ -323,15 +325,26 @@ function StudyTab({ mode, byDate, daily, today, goal, extra }: { mode: SMode; by
   const reviewRows = rows.filter((r): r is DailyRow => !!r && r.total > 0);
   const accAll = reviewRows.length ? Math.round((reviewRows.reduce((s, r) => s + r.correct, 0) / reviewRows.reduce((s, r) => s + r.total, 0)) * 100) : null;
   const H = 150;
-  const talkStat = useLiveQuery(async () => {
-    if (mode !== 'talk') return null;
-    const rows = await db.reviews.where('studyDate').between(days[0], days[6], true, true).filter((r) => r.studyMode === 'talk').toArray();
-    return {
-      perfect: rows.filter((r) => r.firstTry).length,
-      excellent: rows.filter((r) => !r.firstTry && !r.showedAnswer && r.wrongAttempts === 0).length,
-      good: rows.filter((r) => !r.firstTry && (r.showedAnswer || r.wrongAttempts > 0)).length,
-    };
+  /** 실전 회화·리스닝: 결과(Perfect/Excellent·Great/Good/Nice Try)별 막대 (말해보카) */
+  const resultMode = mode === 'talk' || mode === 'listening';
+  const resStat = useLiveQuery(async () => {
+    if (!resultMode) return null;
+    const logs = await db.reviews.where('studyDate').between(days[0], days[6], true, true).filter((r) => r.studyMode === mode).toArray();
+    const cls = (r: ReviewRow): ResultKey => (r.showedAnswer ? 'nice' : r.firstTry ? 'perfect' : mode === 'listening' ? (r.hints === 1 ? 'second' : 'good') : r.wrongAttempts === 0 ? 'second' : 'good');
+    const byDay = new Map<string, Record<ResultKey, number>>();
+    for (const r of logs) {
+      const m = byDay.get(r.studyDate) ?? { perfect: 0, second: 0, good: 0, nice: 0 };
+      m[cls(r)] += 1;
+      byDay.set(r.studyDate, m);
+    }
+    return byDay;
   }, [mode, days[0]]);
+  const listenBest = useLiveQuery(async () => (mode === 'listening' ? ((await db.kv.get('listeningBest'))?.value as number | undefined) : undefined), [mode]);
+  const KEYS: ResultKey[] = ['perfect', 'second', 'good', 'nice'];
+  const resTot = (k: ResultKey) => days.reduce((n, d) => n + (resStat?.get(d)?.[k] ?? 0), 0);
+  const secondLabel = mode === 'listening' ? 'Great' : 'Excellent';
+  const totalWeek = resultMode ? KEYS.reduce((n, k) => n + resTot(k), 0) : tot('newWords') + tot('reviews');
+  const resMax = Math.max(5, ...days.map((d) => KEYS.reduce((n, k) => n + (resStat?.get(d)?.[k] ?? 0), 0)));
 
   return (
     <>
@@ -380,16 +393,33 @@ function StudyTab({ mode, byDate, daily, today, goal, extra }: { mode: SMode; by
         <svg viewBox={`0 0 300 ${H + 20}`} className="weekly-svg">
           {rows.map((r, i) => {
             const x = 8 + i * 42;
-            const sc = (n: number) => (n / max) * H;
-            const n = Math.max(0, (r?.newWords ?? 0) - (r?.knownNew ?? 0));
-            const k = r?.knownNew ?? 0;
-            const v = r?.reviews ?? 0;
+            let segs: { h: number; c: string }[];
+            if (resultMode) {
+              const sc = (n: number) => (n / resMax) * H;
+              const m = resStat?.get(days[i]);
+              segs = [
+                { h: sc(m?.nice ?? 0), c: 'var(--st-review)' },
+                { h: sc(m?.good ?? 0), c: 'var(--st-known)' },
+                { h: sc(m?.second ?? 0), c: 'var(--st-pink)' },
+                { h: sc(m?.perfect ?? 0), c: 'var(--st-new)' },
+              ];
+            } else {
+              const sc = (n: number) => (n / max) * H;
+              const known = r?.knownNew ?? 0;
+              const fresh = Math.max(0, (r?.newWords ?? 0) - known);
+              segs =
+                mode === 'vocab'
+                  ? [
+                      { h: sc(r?.reviews ?? 0), c: 'var(--st-review)' },
+                      { h: sc(known), c: 'var(--st-known)' },
+                      { h: sc(fresh), c: 'var(--st-new)' },
+                    ]
+                  : [
+                      { h: sc(r?.reviews ?? 0), c: 'var(--st-review)' },
+                      { h: sc(r?.newWords ?? 0), c: 'var(--st-new)' },
+                    ];
+            }
             let y = H;
-            const segs = [
-              { h: sc(v), c: 'var(--st-review)' },
-              { h: sc(k), c: 'var(--st-known)' },
-              { h: sc(n), c: 'var(--st-new)' },
-            ];
             return (
               <g key={i}>
                 {segs.map((s, j) => {
@@ -402,49 +432,63 @@ function StudyTab({ mode, byDate, daily, today, goal, extra }: { mode: SMode; by
               </g>
             );
           })}
-          <polyline
-            className="wk-line"
-            points={rows
-              .map((r, i) => (r && r.total ? `${24 + i * 42},${8 + (1 - r.correct / r.total) * 60}` : null))
-              .filter(Boolean)
-              .join(' ')}
-          />
-          {rows.map((r, i) => (r && r.total ? <circle key={i} cx={24 + i * 42} cy={8 + (1 - r.correct / r.total) * 60} r={4} className="wk-dot" /> : null))}
+          {!resultMode && (
+            <>
+              <polyline
+                className="wk-line"
+                points={rows
+                  .map((r, i) => (r && r.total ? `${24 + i * 42},${8 + (1 - r.correct / r.total) * 60}` : null))
+                  .filter(Boolean)
+                  .join(' ')}
+              />
+              {rows.map((r, i) => (r && r.total ? <circle key={i} cx={24 + i * 42} cy={8 + (1 - r.correct / r.total) * 60} r={4} className="wk-dot" /> : null))}
+            </>
+          )}
         </svg>
         <div className="weekly-sum">
           <div className="ws-total">
             <span>Total</span>
-            <b>{tot('newWords') + tot('reviews')}</b>
+            <b>{totalWeek}</b>
           </div>
           <ul>
-            {mode === 'talk' ? (
+            {resultMode ? (
               <>
                 <li>
-                  <i className="sw new" /> Perfect <b>{talkStat?.perfect ?? '-'}</b>
+                  <i className="sw new" /> Perfect <b>{resTot('perfect') || '-'}</b>
                 </li>
                 <li>
-                  <i className="sw known" /> Excellent <b>{talkStat?.excellent ?? '-'}</b>
+                  <i className="sw pink" /> {secondLabel} <b>{resTot('second') || '-'}</b>
                 </li>
                 <li>
-                  <i className="sw review" /> Good <b>{talkStat?.good ?? '-'}</b>
+                  <i className="sw known" /> Good <b>{resTot('good') || '-'}</b>
                 </li>
+                <li>
+                  <i className="sw review" /> Nice Try <b>{resTot('nice') || '-'}</b>
+                </li>
+                {mode === 'listening' && (
+                  <li>
+                    <i className="sw ring" /> 최고 레벨 <b>{listenBest ?? '-'}</b>
+                  </li>
+                )}
               </>
             ) : (
               <>
                 <li>
-                  <i className="sw new" /> 새로 배운 {unit} <b>{newLearned}</b>
+                  <i className="sw new" /> 새로 배운 {unit} <b>{mode === 'vocab' ? newLearned : tot('newWords')}</b>
                 </li>
-                <li>
-                  <i className="sw known" /> 이미 아는 단어 <b>{tot('knownNew')}</b>
-                </li>
+                {mode === 'vocab' && (
+                  <li>
+                    <i className="sw known" /> 이미 아는 단어 <b>{tot('knownNew')}</b>
+                  </li>
+                )}
                 <li>
                   <i className="sw review" /> 복습 {unit} <b>{tot('reviews')}</b>
                 </li>
+                <li>
+                  <i className="sw ring" /> 복습 정답률 <i className="qmark">?</i> <b>{accAll == null ? '-' : `${accAll}%`}</b>
+                </li>
               </>
             )}
-            <li>
-              <i className="sw ring" /> 복습 정답률 <i className="qmark">?</i> <b>{accAll == null ? '-' : `${accAll}%`}</b>
-            </li>
           </ul>
         </div>
       </div>

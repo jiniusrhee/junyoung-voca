@@ -2843,6 +2843,7 @@ em.hl {
   --power-btn-bg: #fdece7;
   --st-new: #f2c35a;
   --st-known: #7cc0f0;
+  --st-pink: #f28cb1;
   --st-review: #a088f0;
 }
 :root[data-theme='dark'] {
@@ -9013,4 +9014,7 @@ sup.beta.pill {
 .icon-grid button {
   white-space: nowrap;
   font-size: 0.82rem;
+}
+.sw.pink {
+  background: var(--st-pink);
 }

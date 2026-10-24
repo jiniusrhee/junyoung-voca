@@ -118,7 +118,7 @@ export default function ListeningQuiz() {
     const res = await recordModeAnswer(
       'listening',
       q.item.id,
-      { clean: r === 'perfect', wrong: r === 'perfect' ? 0 : 1, failed: r === 'nice', elapsedMs: Date.now() - startedAt.current },
+      { clean: r === 'perfect', wrong: r === 'perfect' ? 0 : 1, failed: r === 'nice', elapsedMs: Date.now() - startedAt.current, hints: Math.max(0, listensUsed - 1) },
       goal,
     );
     const nl = nextListenLevel(level, r);
