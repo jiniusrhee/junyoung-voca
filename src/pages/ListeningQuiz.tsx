@@ -37,7 +37,7 @@ export default function ListeningQuiz() {
   const [slots, setSlots] = useState<Slot[]>([]);
   const [nextWord, setNextWord] = useState(0);
   const [listens, setListens] = useState(0);
-  const [, setWrong] = useState(0);
+  const [wrong, setWrong] = useState(0);
   const [result, setResult] = useState<ListenResult | null>(null);
   const [count, setCount] = useState(0);
   const [level, setLevel] = useState(10);
