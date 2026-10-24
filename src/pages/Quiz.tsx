@@ -2,6 +2,7 @@ import { useLiveQuery } from 'dexie-react-hooks';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import AfterPanel from '../components/AfterPanel';
+import FavTip from '../components/FavTip';
 import Icon from '../components/Icon';
 import Keyboard from '../components/Keyboard';
 import Mascot from '../components/Mascot';
@@ -18,7 +19,7 @@ import { applyReview, newCardRow, type Outcome } from '../lib/scheduler';
 import { LevelTest, ListPicker, StudyPicker, type Question } from '../lib/session';
 import { saveSettings, useSettings } from '../lib/settings';
 import { canRecognize, recognizeOnce, speak, voiceErrorMessage } from '../lib/speech';
-import { SHOW_ANSWER_MSG, containsAnswer, evaluate, feedbackFor, fullSentence, hintPrefix, normalize, speechMatchRate } from '../lib/text';
+import { answerWords, containsAnswer, evaluate, feedbackFor, fullSentence, hintPrefix, normalize, speechMatchRate } from '../lib/text';
 import { formatAfter, formatAgo, formatDuration, studyDateOf } from '../lib/time';
 import { POS_KO, type Settings, type Tone, type WrongNote } from '../types';
 
@@ -28,11 +29,13 @@ type Overlay = 'examples' | 'wrongs' | 'info' | null;
 interface Live {
   q: Question;
   input: string;
+  /** 힌트로 채워진 앞글자 수 (지울 수 없음) */
+  locked: number;
   hints: number;
   showedAnswer: boolean;
   wrongAttempts: number;
   wrongs: WrongNote[];
-  feedback: { tone: Tone; msg: string } | null;
+  feedback: { tone: Tone; msg: string; mask?: { text: string; bad: boolean }[] } | null;
   startedAt: number;
 }
 
@@ -47,6 +50,7 @@ interface Answered {
 const freshLive = (q: Question): Live => ({
   q,
   input: '',
+  locked: 0,
   hints: 0,
   showedAnswer: false,
   wrongAttempts: 0,
@@ -80,6 +84,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const [toast, setToast] = useState<string | null>(null);
   const [levelHelp, setLevelHelp] = useState(false);
   const [cardKey, setCardKey] = useState(0);
+  const [favTip, setFavTip] = useState<0 | 1 | 2>(0);
   const favorites = useLiveQuery(() => db.favorites.toCollection().primaryKeys(), []) as string[] | undefined;
   const guard = useLeaveGuard(() => nav('/'));
 
@@ -243,20 +248,36 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const editInput = (fn: (cur: string) => string) => {
     setLive((l) => {
       if (!l) return l;
-      const max = sentenceOf(l.q).answer.length + 12;
-      const next = fn(l.input).slice(0, max);
+      const max = sentenceOf(l.q).answer.length + 16;
+      let next = fn(l.input).slice(0, max);
+      // 힌트로 채운 앞글자는 지워지지 않는다
+      if (l.locked && !next.startsWith(l.input.slice(0, l.locked))) next = l.input.slice(0, l.locked) + next.slice(l.locked);
+      // 정답이 여러 단어면, 한 단어가 맞는 순간 다음 칸으로 자동 이동 (말해보카)
+      const words = answerWords(sentenceOf(l.q).answer);
+      if (words.length > 1 && next.length > l.input.length && !next.endsWith(' ')) {
+        const parts = next.replace(/^\s+/, '').split(' ');
+        const idx = parts.length - 1;
+        if (idx < words.length - 1 && parts[idx].toLowerCase() === words[idx].toLowerCase()) next += ' ';
+      }
       return { ...l, input: next, feedback: next === l.input ? l.feedback : null };
     });
   };
 
   const typeChar = (c: string) => editInput((cur) => cur + c);
-  const space = () => editInput((cur) => (cur && !cur.endsWith(' ') ? cur + ' ' : cur));
+  /** 말해보카: 스페이스는 제출. 정답이 여러 단어면 다음 칸으로 */
+  const space = () => {
+    if (!live) return;
+    const need = sentenceOf(live.q).answer.trim().split(/\s+/).length;
+    const have = live.input.trim().split(/\s+/).filter(Boolean).length;
+    if (need > 1 && have < need && live.input && !live.input.endsWith(' ')) editInput((cur) => cur + ' ');
+    else submit();
+  };
   const backspace = () => editInput((cur) => cur.slice(0, -1));
 
-  const markWrong = (l: Live, w: string, tone: Tone, msg: string, penalize: boolean) => {
+  const markWrong = (l: Live, w: string, tone: Tone, msg: string, penalize: boolean, showPill = true, mask?: { text: string; bad: boolean }[]) => {
     setLive({
       ...l,
-      feedback: { tone, msg },
+      feedback: showPill ? { tone, msg, mask } : null,
       wrongAttempts: l.wrongAttempts + (penalize ? 1 : 0),
       wrongs: [...l.wrongs, { w, tone, m: msg }],
     });
@@ -272,16 +293,19 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       return;
     }
     const fb = feedbackFor(e);
-    markWrong(live, live.input.trim(), fb.tone, fb.msg, !fb.bonus);
+    // 말해보카: 등록된 오답(설명 있음)과 오타만 말풍선, 그 밖의 오답은 카드만 잠깐 붉게
+    markWrong(live, live.input.trim(), fb.tone, fb.msg, !fb.bonus, e.kind === 'alt' || e.kind === 'typo', fb.mask);
   };
 
   const hint = () => {
     if (!live || phase !== 'question' || live.showedAnswer) return;
     const answer = sentenceOf(live.q).answer;
     if (live.hints === 0) {
-      setLive({ ...live, hints: 1, input: hintPrefix(answer), feedback: null });
+      const pre = hintPrefix(answer);
+      setLive({ ...live, hints: 1, input: pre, locked: pre.length, feedback: null });
     } else {
-      setLive({ ...live, showedAnswer: true, input: '', feedback: { tone: 'red', msg: SHOW_ANSWER_MSG } });
+      // 말해보카: 정답이 칸에 주황색으로 비치고, 그대로 따라 쳐야 한다 (말풍선 없음)
+      setLive({ ...live, showedAnswer: true, input: '', locked: 0, feedback: null });
     }
   };
 
@@ -345,11 +369,20 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     await loadNext();
   }, [phase, mode, loadNext]);
 
-  const toggleFavorite = async () => {
+  const addFavorite = async () => {
     if (!answered) return;
     const key = `${answered.q.word.id}#${answered.q.sentenceIdx}`;
     if (favorites?.includes(key)) await db.favorites.delete(key);
     else await db.favorites.put({ key, wordId: answered.q.word.id, sentenceIdx: answered.q.sentenceIdx, ts: Date.now() });
+  };
+  const toggleFavorite = async () => {
+    if (!answered) return;
+    // 처음 누를 때는 말해보카처럼 활용 Tip 2장을 보여준다
+    if (!(await db.kv.get('favTipShown'))) {
+      setFavTip(1);
+      return;
+    }
+    await addFavorite();
   };
 
   // 실제 키보드(블루투스/PC)도 지원
@@ -669,6 +702,20 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         </div>
       )}
 
+      {favTip > 0 && (
+        <FavTip
+          page={favTip === 2 ? 2 : 1}
+          onNext={() => setFavTip(2)}
+          onNo={() => {
+            void db.kv.put({ key: 'favTipShown', value: 1 });
+            setFavTip(0);
+          }}
+          onYes={() => {
+            void db.kv.put({ key: 'favTipShown', value: 1 }).then(addFavorite);
+            setFavTip(0);
+          }}
+        />
+      )}
       {showSettings && (
         <div className="vs-overlay">
           <VocabSettings s={settings} onBack={() => setShowSettings(false)} />

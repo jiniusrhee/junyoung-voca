@@ -15,7 +15,7 @@ interface Props {
   showCaret: boolean;
   blankMatchesLength: boolean;
   flash: { kind: 'wrong' | 'correct'; key: number } | null;
-  feedback: { tone: Tone; msg: string } | null;
+  feedback: { tone: Tone; msg: string; mask?: { text: string; bad: boolean }[] } | null;
   badge: CardBadge;
   favorite: boolean;
   onToggleFavorite: () => void;
@@ -94,7 +94,7 @@ export default function QuizCard(p: Props) {
             <Icon name="check" size={56} />
           </span>
         )}
-        {flash?.kind === 'wrong' && <span className="mark-bang">!</span>}
+        {flash?.kind === 'wrong' && feedback && <span className="mark-bang">!</span>}
         <div className="qcard-top">
           {sentence.ctx && <p className="ctx">{sentence.ctx}</p>}
           <p className="ko">
@@ -104,8 +104,20 @@ export default function QuizCard(p: Props) {
         </div>
         {feedback && (
           <div className={`pill ${feedback.tone}`}>
-            <Icon name="bulb" size={18} className="pill-icon" />
-            <span>{feedback.msg}</span>
+            {feedback.tone !== 'info' && <Icon name="bulb" size={18} className="pill-icon" />}
+            <span>
+              {feedback.mask && (
+                <>
+                  {feedback.mask.map((m, k) => (
+                    <b key={k} className={m.bad ? 'mask-bad' : 'mask-ok'}>
+                      {m.text}
+                    </b>
+                  ))}
+                  {' - '}
+                </>
+              )}
+              {feedback.msg}
+            </span>
           </div>
         )}
         <div className="qcard-bottom">
@@ -123,10 +135,13 @@ export default function QuizCard(p: Props) {
               const t = typed[seg.idx];
               const ghost = showedAnswer && target.toLowerCase().startsWith(t.toLowerCase()) ? target.slice(t.length) : '';
               const minCh = p.blankMatchesLength ? target.length : 3;
-              const width = `${Math.max(minCh, t.length) * 0.62 + 0.9}em`;
+              // 칸은 정답 길이만큼이 기본이고, 더 길게 치면 글자에 맞춰 늘어난다 (말해보카)
+              const width = `${minCh * 0.62 + 0.9}em`;
+              // 앞 단어가 맞으면 초록으로 잠긴다
+              const ok = seg.idx < active && t.toLowerCase() === target.toLowerCase();
               return (
-                <span key={i} className={`blank ${seg.idx === active ? 'active' : ''}`} style={{ minWidth: width }}>
-                  <span className="typed">{t}</span>
+                <span key={i} className={`blank ${seg.idx === active ? 'active' : ''} ${ok ? 'ok' : ''}`} style={{ minWidth: width }}>
+                  <span className="typed">{ok ? target : t}</span>
                   {p.showCaret && seg.idx === active && <span className="caret" />}
                   {ghost && <span className="ghost">{ghost}</span>}
                 </span>

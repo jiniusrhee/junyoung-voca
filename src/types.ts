@@ -74,7 +74,7 @@ export interface CardRow {
   known?: boolean;
 }
 
-export type Tone = 'green' | 'yellow' | 'red';
+export type Tone = 'green' | 'yellow' | 'red' | 'info';
 
 export interface WrongNote {
   w: string;

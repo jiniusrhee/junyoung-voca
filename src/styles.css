@@ -1368,10 +1368,16 @@ em.hl {
   margin-top: 16px;
 }
 .qcard.is-wrong {
-  animation: wrongBg 1.5s ease forwards;
+  animation: wrongBg 0.45s ease forwards;
 }
 .qcard.is-wrong .qcard-top {
-  animation: wrongTop 1.5s ease forwards;
+  animation: wrongTop 0.45s ease forwards;
+}
+.qcard.is-wrong:has(.pill) {
+  animation-duration: 1.5s;
+}
+.qcard.is-wrong:has(.pill) .qcard-top {
+  animation-duration: 1.5s;
 }
 @keyframes wrongBg {
   0%,
@@ -8054,4 +8060,144 @@ sup.beta.pill {
   bottom: 0;
   transform: translateX(-50%);
   width: min(100%, 520px);
+}
+.pill.info {
+  background: #b9c3f0;
+  color: #1f2440;
+}
+.pill .mask-ok {
+  font-weight: 600;
+}
+.pill .mask-bad {
+  font-weight: 700;
+  color: #e0465a;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+/* ================= 좋아하는 문장 활용 Tip ================= */
+.fav-tip {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 90px 20px 24px;
+  background: #121214;
+  color: #fff;
+  animation: fadeIn 0.25s ease;
+}
+.ft-kicker {
+  position: relative;
+  color: #aaa;
+  font-size: 0.95rem;
+}
+.ft-kicker em {
+  font-style: normal;
+  font-weight: 800;
+  color: #f5c518;
+  background: #3a3a1e;
+  padding: 1px 4px;
+  border-radius: 4px;
+}
+.ft-num {
+  position: absolute;
+  top: -26px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #f5c518;
+  color: #1a1a1a;
+  font-size: 0.8rem;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+}
+.fav-tip h2 {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 1.7rem;
+  line-height: 1.4;
+}
+.ft-mascot {
+  position: relative;
+  margin: 24px 0 -60px;
+}
+.ft-letter,
+.ft-heart {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: 800;
+}
+.ft-letter.a {
+  left: -60px;
+  top: 90px;
+  color: #6fd6d0;
+}
+.ft-letter.b {
+  right: -20px;
+  top: 10px;
+  color: #6c8cff;
+}
+.ft-letter.c {
+  right: -70px;
+  top: 110px;
+  color: #d9d4b8;
+}
+.ft-heart {
+  font-size: 2.6rem;
+}
+.ft-heart.h1 {
+  left: -70px;
+  top: 100px;
+  color: #6fe3cf;
+}
+.ft-heart.h2 {
+  right: -20px;
+  top: 0;
+  color: #9ec6ff;
+}
+.ft-heart.h3 {
+  right: -70px;
+  top: 120px;
+  color: #d9d4b8;
+}
+.ft-box {
+  width: 100%;
+  margin-top: 60px;
+  padding: 90px 20px 40px;
+  border-radius: 40px;
+  background: #1c1c20;
+  text-align: center;
+}
+.ft-box b {
+  font-size: 1.3rem;
+  color: #b9a3ff;
+}
+.ft-box p {
+  margin-top: 14px;
+  color: #aaa;
+  line-height: 1.6;
+}
+.ft-btn {
+  width: 100%;
+  margin-top: auto;
+}
+.ft-actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-top: auto;
+}
+.ft-actions .btn {
+  flex: 1;
+  font-size: 0.95rem;
+}
+.blank.ok {
+  color: #37b26c;
+  background: rgba(55, 178, 108, 0.14);
+}
+.ghost {
+  color: #f0a050;
 }

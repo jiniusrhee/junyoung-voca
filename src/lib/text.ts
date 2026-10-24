@@ -49,7 +49,7 @@ export type Evaluation =
   | { kind: 'correct' }
   | { kind: 'alt'; alt: Alt }
   | { kind: 'form' }
-  | { kind: 'typo'; distance: number }
+  | { kind: 'typo'; distance: number; mask: { text: string; bad: boolean }[] }
   | { kind: 'wrong' };
 
 /** 입력을 정답·오답 설명(alts)과 비교 */
@@ -62,7 +62,7 @@ export function evaluate(input: string, sentence: WordSentence, word: string): E
   if (alt) return { kind: 'alt', alt };
   if (i === normalize(word)) return { kind: 'form' };
   const d = levenshtein(i, a);
-  if (d <= (a.length >= 8 ? 2 : 1)) return { kind: 'typo', distance: d };
+  if (d <= (a.length >= 8 ? 2 : 1)) return { kind: 'typo', distance: d, mask: typoMask(input.trim(), sentence.answer) };
   return { kind: 'wrong' };
 }
 
@@ -71,6 +71,45 @@ export interface FeedbackMsg {
   msg: string;
   /** 정답으로 인정되는 유의어라 감점하지 않음 */
   bonus: boolean;
+  /** 오타일 때: 입력 글자를 정답과 맞춰 본 결과 (다른 자리는 bad) */
+  mask?: { text: string; bad: boolean }[];
+}
+
+/** 오타 표시: 정답과 글자를 맞춰 보고, 다른 자리는 '_'(빠짐)나 빨간 글자로 (말해보카 'relocat_d - 정답과 1글자 달라요') */
+export function typoMask(input: string, answer: string): { text: string; bad: boolean }[] {
+  const a = input;
+  const b = answer;
+  const n = a.length;
+  const m = b.length;
+  const d: number[][] = Array.from({ length: n + 1 }, () => Array<number>(m + 1).fill(0));
+  for (let i = 0; i <= n; i++) d[i][0] = i;
+  for (let j = 0; j <= m; j++) d[0][j] = j;
+  for (let i = 1; i <= n; i++)
+    for (let j = 1; j <= m; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1].toLowerCase() === b[j - 1].toLowerCase() ? 0 : 1));
+  const out: { text: string; bad: boolean }[] = [];
+  let i = n;
+  let j = m;
+  while (i > 0 || j > 0) {
+    if (i > 0 && j > 0 && d[i][j] === d[i - 1][j - 1] + (a[i - 1].toLowerCase() === b[j - 1].toLowerCase() ? 0 : 1)) {
+      out.unshift({ text: a[i - 1], bad: a[i - 1].toLowerCase() !== b[j - 1].toLowerCase() });
+      i--;
+      j--;
+    } else if (j > 0 && d[i][j] === d[i][j - 1] + 1) {
+      out.unshift({ text: '_', bad: true }); // 빠진 글자
+      j--;
+    } else {
+      out.unshift({ text: a[i - 1], bad: true }); // 남는 글자
+      i--;
+    }
+  }
+  // 이어진 조각 합치기
+  const merged: { text: string; bad: boolean }[] = [];
+  for (const seg of out) {
+    const last = merged[merged.length - 1];
+    if (last && last.bad === seg.bad) last.text += seg.text;
+    else merged.push({ ...seg });
+  }
+  return merged;
 }
 
 const ALT_TONE: Record<Alt['t'], Tone> = { ok: 'green', near: 'yellow', wrong: 'red' };
@@ -82,7 +121,7 @@ export function feedbackFor(e: Exclude<Evaluation, { kind: 'correct' }>): Feedba
     case 'form':
       return { tone: 'yellow', msg: '뜻은 맞아요! 문장에 맞는 형태로 바꿔 보세요.', bonus: false };
     case 'typo':
-      return { tone: 'yellow', msg: `거의 맞았어요. 철자를 다시 확인해 보세요.`, bonus: false };
+      return { tone: 'info', msg: `정답과 ${e.distance}글자 달라요.`, bonus: false, mask: e.mask };
     default:
       return { tone: 'red', msg: '다시 생각해 보세요. 한글 뜻에 맞는 단어는 뭘까요?', bonus: false };
   }
