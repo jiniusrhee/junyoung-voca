@@ -853,7 +853,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
             ) : heard || live.input ? (
               <span className="bubble link">{heard ?? live.input}</span>
             ) : (
-              <span className="voice-hint">{listening ? '' : '마이크를 누르고 빈칸에 들어갈 말을 말해 보세요'}</span>
+              <span className="voice-hint" />
             )}
           </div>
           <div className={`voice-halo ${listening ? 'listening' : ''}`}>
