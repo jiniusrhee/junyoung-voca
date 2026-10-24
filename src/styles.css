@@ -9365,3 +9365,11 @@ sup.beta.pill {
 .card-face b {
   margin-top: 10px;
 }
+/* 발음 해보기 버튼이 카드 안에서 한 줄로 */
+.card-face .say-btn {
+  white-space: nowrap;
+  padding: 6px 8px;
+  font-size: 0.78rem;
+  color: #8c79f7;
+  background: transparent;
+}
