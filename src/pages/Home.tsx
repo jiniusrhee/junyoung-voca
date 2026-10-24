@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import ExtraStudySheet from '../components/ExtraStudySheet';
 import ModeStart from '../components/ModeStart';
 import GaugeRing from '../components/GaugeRing';
-import GoalModal from '../components/GoalModal';
+import GoalModal, { MODE_PRESETS, VOCAB_PRESETS } from '../components/GoalModal';
 import Icon, { type IconName } from '../components/Icon';
 import Mascot from '../components/Mascot';
 import { db } from '../db';
@@ -194,6 +194,7 @@ export default function Home() {
 
       {goalOpen && (
         <GoalModal
+          presets={homeMode === 'vocab' ? VOCAB_PRESETS : MODE_PRESETS}
           current={goal}
           onClose={() => setGoalOpen(false)}
           onSave={(n) => {

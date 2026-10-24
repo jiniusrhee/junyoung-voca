@@ -8547,3 +8547,54 @@ sup.beta.pill {
 .ms-row.toggle-row input:checked + .toggle::after {
   transform: translateX(18px);
 }
+
+/* 문법 시작 시트: 원형 진행 링 (말해보카) */
+.ring-body {
+  position: relative;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.start-ring {
+  width: 230px;
+  height: 230px;
+  transform: rotate(-90deg);
+}
+.ring-track {
+  fill: none;
+  stroke: var(--surface-2);
+  stroke-width: 7;
+}
+.ring-fill {
+  fill: none;
+  stroke: #f5c518;
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+.extra-counts.in-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--sub);
+}
+.extra-counts.in-ring p {
+  margin: 6px 0;
+}
+.extra-counts.in-ring b {
+  color: var(--text);
+  margin-left: 6px;
+}
+.ring-mascot {
+  position: absolute;
+  left: -6px;
+  bottom: -14px;
+}
+.ring-progress {
+  position: absolute;
+  right: 16px;
+  bottom: 0;
+}

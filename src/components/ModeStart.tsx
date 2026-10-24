@@ -45,10 +45,12 @@ export default function ModeStart({ mode, onClose }: { mode: StudyMode; onClose:
   const info = useLiveQuery(async () => {
     const today = await modeToday(mode);
     const now = new Date();
-    const due = await db.mcards.where('[mode+due]').between([mode, new Date(0)], [mode, now], true, true).count();
+    const dueRows = await db.mcards.where('[mode+due]').between([mode, new Date(0)], [mode, now], true, true).toArray();
+    const wrong = dueRows.filter((c) => c.lapses > 0 || c.state === 3).length;
+    const due = dueRows.length - wrong;
     const seen = await db.mcards.where('mode').equals(mode).count();
     const total = mode === 'grammar' ? await db.gsentences.count() : 0;
-    return { today, due, fresh: Math.max(0, total - seen) };
+    return { today, due, wrong, fresh: Math.max(0, total - seen) };
   }, [mode]);
   const vocabToday = useLiveQuery(async () => (await db.daily.get(studyDateOf()))?.total ?? 0, []);
   if (!s) return null;
@@ -70,19 +72,26 @@ export default function ModeStart({ mode, onClose }: { mode: StudyMode; onClose:
           </button>
         }
       >
-        <div className="extra-body">
-          <div className="extra-counts">
+        <div className="extra-body ring-body">
+          <svg className="start-ring" viewBox="0 0 120 120" aria-hidden="true">
+            <circle cx="60" cy="60" r="52" className="ring-track" />
+            <circle cx="60" cy="60" r="52" className="ring-fill" style={{ strokeDasharray: `${Math.min(1, n / goal) * 326.7} 326.7` }} />
+          </svg>
+          <div className="extra-counts in-ring">
             <p>
-              새로운 문장 <b>{info?.fresh ?? 0}</b> 개
+              새로운 문장 <b>{Math.min(info?.fresh ?? 0, Math.max(0, goal - (info?.due ?? 0) - (info?.wrong ?? 0)))}</b> 개
             </p>
             <p>
               복습할 문장 <b>{info?.due ?? 0}</b> 개
             </p>
+            <p>
+              틀린 문장 <b>{info?.wrong ?? 0}</b> 개
+            </p>
           </div>
-          <div className="extra-mascot">
+          <div className="extra-mascot ring-mascot">
             <Mascot size={110} mood="cheer" />
           </div>
-          <p className="extra-progress">
+          <p className="extra-progress ring-progress">
             <b>{n}</b>/{goal}
           </p>
         </div>

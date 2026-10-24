@@ -16,6 +16,7 @@ import GrammarQuiz from './pages/GrammarQuiz';
 import Guide from './pages/Guide';
 import LearnedList from './pages/LearnedList';
 import LearnedMenu, { LearnedWords } from './pages/Learned';
+import ModeNotebook, { ModeLearnedMenu } from './pages/ModeNotebook';
 import ListeningQuiz from './pages/ListeningQuiz';
 import Pairs, { PairQuiz } from './pages/Pairs';
 import Wordbook, { WordbookDetail } from './pages/Wordbook';
@@ -76,6 +77,8 @@ function Shell() {
         <Route path="/talk/:story/:ep" element={<TalkPlay />} />
         <Route path="/pairs" element={<Pairs />} />
         <Route path="/pairs/:stage/:mode" element={<PairQuiz />} />
+        <Route path="/learned/grammar" element={<ModeLearnedMenu />} />
+        <Route path="/learned/:mode/:kind" element={<ModeNotebook />} />
         <Route path="/learned/:mode" element={<LearnedList kind="learned" />} />
         <Route path="/bookmarks/:mode" element={<LearnedList kind="bookmarks" />} />
         <Route path="/wordbook" element={<Wordbook />} />
