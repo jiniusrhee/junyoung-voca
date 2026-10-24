@@ -140,3 +140,21 @@ export function vocabDateText(imp?: ImportedProgress | null, testDate?: string |
   if (imp?.vocabSize) return `${imp.vocabHistory?.[imp.vocabHistory.length - 1]?.date ?? imp.asOf} 측정`;
   return null;
 }
+
+/** 어휘 수로 본 대략적인 상위 비율 (성인 기준, 추정) */
+export function percentileOf(vocab: number): number {
+  const table: [number, number][] = [
+    [22000, 0.1],
+    [20000, 0.3],
+    [17000, 1],
+    [14000, 3],
+    [12000, 6],
+    [10000, 12],
+    [8000, 22],
+    [6000, 38],
+    [4000, 58],
+    [2000, 80],
+  ];
+  for (const [v, p] of table) if (vocab >= v) return p;
+  return 95;
+}

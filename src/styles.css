@@ -9008,3 +9008,9 @@ sup.beta.pill {
 .ex-voice input:checked + .toggle::after {
   left: 21px;
 }
+/* 홈 아래 바로가기: 라벨 한 줄 (말해보카) */
+.icon-grid a,
+.icon-grid button {
+  white-space: nowrap;
+  font-size: 0.82rem;
+}

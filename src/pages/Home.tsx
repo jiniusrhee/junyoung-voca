@@ -11,9 +11,9 @@ import { db } from '../db';
 import { saveSettings, useSettings } from '../lib/settings';
 import { getImported, importedRange, inRange, type DayRange } from '../lib/imported';
 import { STREAK_GOALS } from './Streak';
-import { comprehension, computeStreak, dayTime, dayTotal, displayVocab, getRepairedDays, goalMet, reviewAccuracy, studied, vocabDateText } from '../lib/stats';
+import { comprehension, computeStreak, dayTime, dayTotal, displayVocab, getRepairedDays, goalMet, reviewAccuracy, studied, vocabDateText, percentileOf } from '../lib/stats';
 import { WEEKDAYS_KO, dayOfWeek, formatClock, shiftDate, studyDateOf, weekOf } from '../lib/time';
-import type { DailyRow, StudyMode } from '../types';
+import type { ImportedProgress, DailyRow, StudyMode } from '../types';
 
 const MODE_TABS: { key: string; icon: IconName; label: string; mode?: StudyMode }[] = [
   { key: 'grammar', icon: 'gbook', label: '문법', mode: 'grammar' },
@@ -30,6 +30,12 @@ const BAR_MODES: [StudyMode, string][] = [
   ['talk', '#8fbf4d'],
   ['listening', '#f39a4b'],
 ];
+
+/** 홈 어휘력 카드: 들여온 백분위가 있으면 그대로, 아니면 어휘 수로 추정 (말해보카: '어휘력 상위 0.25%') */
+function homePct(level: number, comp: number | null, imp: ImportedProgress | null, testDate: string | undefined): string {
+  const v = displayVocab(level, comp, imp, testDate);
+  return imp?.percentile != null && v === imp.vocabSize ? String(imp.percentile) : String(percentileOf(v));
+}
 
 export default function Home() {
   const nav = useNavigate();
@@ -174,9 +180,9 @@ export default function Home() {
           </span>
           <div className="power-text">
             <p>
-              어휘력 약 <em>{displayVocab(settings.level ?? 10, comp ?? null, imp, testDate).toLocaleString()}</em>개
+              어휘력 상위 <em>{homePct(settings.level ?? 10, comp ?? null, imp ?? null, testDate)}%</em>
             </p>
-            <span>{vocabDateText(imp, testDate) ?? '아직 측정하지 않았어요'}</span>
+            <span>{vocabDateText(imp, testDate)?.replace(/측정$/, '측정 결과') ?? '아직 측정하지 않았어요'}</span>
           </div>
           <Icon name="chevron" size={18} className="muted-ic" />
         </Link>
@@ -187,9 +193,9 @@ export default function Home() {
 
       <section className="info-card icon-grid">
         <GridItem to="/dict" icon="dict" label="사전" />
+        <GridItem to="/wordbook" icon="heartFill" label="내 단어장" tint="pink" />
         <GridItem to="/wrongs" icon="note" label="오답노트" tint="red" />
         <GridItem to="/words" icon="hourglass" label="학습한 어휘" tint="teal" />
-        <GridItem to="/favorites" icon="heartFill" label="좋아하는 문장" tint="pink" />
       </section>
 
       {goalOpen && (
