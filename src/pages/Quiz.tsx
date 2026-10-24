@@ -688,7 +688,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   }
 
   return (
-    <div className="quiz-screen">
+    <div className="quiz-screen vocab-quiz">
       <Backdrop theme={settings.studyTheme} />
       <header className="quiz-top">
         {guard.modal}

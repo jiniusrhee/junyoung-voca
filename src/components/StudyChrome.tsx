@@ -90,7 +90,8 @@ export function useLeaveGuard(onLeave: () => void): { leave: () => void; modal: 
   return { leave, modal };
 }
 
-export function StudyTop({ count, total, onBack, onSettings }: { count: number; total: number; onBack: () => void; onSettings?: () => void }) {
+/** 학습 화면 상단: 진행 배지 아이콘은 모드별 (어휘 트로피, 리스닝 헤드폰 등 — 말해보카) */
+export function StudyTop({ count, total, onBack, onSettings, icon = 'drop' }: { count: number; total: number; onBack: () => void; onSettings?: () => void; icon?: IconName }) {
   const fill = Math.min(1, total ? count / total : 0);
   const guard = useLeaveGuard(onBack);
   return (
@@ -101,7 +102,7 @@ export function StudyTop({ count, total, onBack, onSettings }: { count: number; 
       </button>
       <div className="quiz-progress">
         <span className={`trophy-badge ${count >= total ? 'gold' : ''}`}>
-          <Icon name="trophy" size={18} />
+          <Icon name={icon} size={18} />
         </span>
         <div className="progress-track">
           <div className="progress-fill" style={{ width: `${Math.max(fill * 100, 14)}%` }}>

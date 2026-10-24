@@ -48,6 +48,8 @@ export default function ListeningQuiz() {
   const [voiceMsg, setVoiceMsg] = useState<string | null>(null);
   const [wrongFlash, setWrongFlash] = useState(false);
   const [cardKey, setCardKey] = useState(0);
+  /** 객관식: 첫 탭 전까지 U/I/J/K 키 배지 (말해보카) */
+  const [touched, setTouched] = useState(false);
   const pickerRef = useRef<ListenPicker | null>(null);
   const startedAt = useRef(Date.now());
   const started = useRef(false);
@@ -78,6 +80,7 @@ export default function ListeningQuiz() {
     const first = Math.min(4, ws.length);
     setSlots(shuffle(Array.from({ length: first }, (_, i) => i)).map((w) => ({ word: w, bad: false })));
     setNextWord(first);
+    setTouched(false);
     setListens(1);
     setWrong(0);
     setResult(null);
@@ -128,6 +131,17 @@ export default function ListeningQuiz() {
     setPhase('answered');
   };
 
+  useEffect(() => {
+    if (!mc || phase !== 'question') return;
+    const onKey = (e: KeyboardEvent) => {
+      const i = 'uijk'.indexOf(e.key.toLowerCase());
+      if (i >= 0) tapSlot(i);
+      else if (e.key === '1') replay();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  });
+
   const replay = () => {
     if (phase === 'answered') {
       play();
@@ -141,6 +155,7 @@ export default function ListeningQuiz() {
   const tapSlot = (i: number) => {
     const s = slots[i];
     if (phase !== 'question' || s.word === null) return;
+    setTouched(true);
     const target = words[done]?.key;
     if (words[s.word].key === target) {
       const nextSlots = [...slots];
@@ -320,11 +335,13 @@ export default function ListeningQuiz() {
           <div className="l-slots">
             {slots.map((s, i) => (
               <button key={i} className={`l-slot ${s.word === null ? 'empty' : ''} ${s.bad ? 'bad' : ''}`} onClick={() => tapSlot(i)} disabled={s.word === null}>
+                {!touched && s.word !== null && <span className="kbd-hint slot-key">{'UIJK'[i]}</span>}
                 {s.word !== null ? words[s.word].show.replace(/[.,!?;:"]/g, '') : ''}
               </button>
             ))}
           </div>
           <button className="l-replay" onClick={replay} disabled={listens >= MAX_LISTENS}>
+            <span className="kbd-hint replay-key">1</span>
             {careful ? (
               <span>Listen Carefully</span>
             ) : (
@@ -344,12 +361,22 @@ export default function ListeningQuiz() {
         <div className="voice-zone">
           <div className="voice-bubble-row">{listening && <span className="voice-hint">듣고 있어요…</span>}</div>
           <div className={`voice-halo ${listening ? 'listening' : ''}`}>
-            <button className="mic-big" onClick={() => void voiceAnswer()} disabled={!canRecognize()} aria-label="말하기">
-              {listening ? <span className="stop-square" /> : <Icon name="mic" size={40} />}
+            <span className="kbd-hint enter">Enter</span>
+            <button className={`mic-big ${listening ? 'on' : ''}`} onClick={() => void voiceAnswer()} disabled={!canRecognize()} aria-label="말하기">
+              {listening ? (
+                <>
+                  <span className="stop-square" />
+                  <small>듣고 있어요</small>
+                </>
+              ) : (
+                <Icon name="mic" size={40} />
+              )}
             </button>
+            {!listening && <span className="voice-under">누르고 말해 보세요</span>}
           </div>
           <div className="voice-bar">
             <button className="tool-btn" onClick={replay} disabled={listens >= MAX_LISTENS}>
+              <span className="kbd-hint">1</span>
               <Icon name="speaker" size={26} className="ic-purple" />
               <span>다시 듣기</span>
               <span className={`l-dots small ${dotTone}`}>
@@ -359,6 +386,7 @@ export default function ListeningQuiz() {
               </span>
             </button>
             <button className="tool-btn" onClick={() => setInputMode('keyboard')}>
+              <span className="kbd-hint">0</span>
               <Icon name="keyboard" size={26} className="ic-purple" />
               <span>키보드 모드</span>
             </button>

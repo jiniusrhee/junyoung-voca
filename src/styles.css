@@ -8330,7 +8330,7 @@ sup.beta.pill {
   background: rgba(255, 255, 255, 0.45);
   overflow: visible;
 }
-.quiz-screen:has(.dino-bg) .progress-fill {
+.vocab-quiz:has(.dino-bg) .progress-fill {
   position: relative;
   background: repeating-linear-gradient(135deg, #a8775b 0 9px, #8d6248 9px 18px);
   border-radius: 9px 4px 4px 9px;
@@ -8338,7 +8338,7 @@ sup.beta.pill {
   padding-left: 14px;
   overflow: visible;
 }
-.quiz-screen:has(.dino-bg) .progress-fill span {
+.vocab-quiz:has(.dino-bg) .progress-fill span {
   position: absolute;
   left: 18px;
   top: -16px;
@@ -8347,7 +8347,7 @@ sup.beta.pill {
   paint-order: stroke fill;
   font-size: 0.74rem;
 }
-.quiz-screen:has(.dino-bg) .progress-fill::after {
+.vocab-quiz:has(.dino-bg) .progress-fill::after {
   content: '';
   position: absolute;
   right: -10px;
@@ -8657,4 +8657,95 @@ sup.beta.pill {
 }
 .goal-modal .modal-actions {
   grid-template-columns: 1fr 2fr;
+}
+/* 학습 목록 필터 줄: 칩 2개 + 날짜 이동이 한 줄에 (말해보카) */
+.lw-page .nb-filters {
+  flex-wrap: nowrap;
+  gap: 6px;
+  padding: 4px 12px 12px;
+}
+.lw-page .nb-filters .chip-btn {
+  padding: 7px 10px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+.lw-page .nb-date {
+  gap: 6px;
+  margin-left: auto;
+  flex: none;
+}
+.lw-page .nb-date b {
+  font-size: 0.88rem;
+}
+.menu-icon.blue.soft {
+  background: #1f2838;
+  color: #5fb5e8;
+}
+
+/* 다이노 테마, 어휘 외 모드: 올리브 원(물방울) + 민무늬 막대, 주황 숫자 (말해보카) */
+.quiz-screen:has(.dino-bg) .progress-fill {
+  position: relative;
+  background: #a9c59a;
+  min-width: 0;
+  overflow: visible;
+}
+.quiz-screen:has(.dino-bg) .progress-fill span {
+  position: absolute;
+  left: 4px;
+  top: -17px;
+  color: #ff8a2a;
+  -webkit-text-stroke: 3px #fff;
+  paint-order: stroke fill;
+  font-size: 0.74rem;
+  white-space: nowrap;
+}
+/* 리스닝 카드: 늘어나지 않게, 빈칸은 이어진 밑줄처럼 */
+.l-card {
+  flex: none;
+  min-height: 300px;
+}
+.l-card .qcard-bottom {
+  min-height: 150px;
+}
+.w-blank {
+  margin-right: 0;
+}
+/* 객관식 보기 U/I/J/K 키 배지, 다시 듣기 1 */
+.l-slot {
+  position: relative;
+}
+.l-slot .kbd-hint.slot-key {
+  left: 12px;
+  top: -8px;
+  transform: none;
+  padding: 2px 7px;
+  background: #4a4d55;
+  color: #fff;
+  border-radius: 5px;
+}
+.l-replay {
+  position: relative;
+}
+.l-replay .kbd-hint.replay-key {
+  left: 10px;
+  top: -14px;
+  transform: none;
+  padding: 2px 7px;
+  background: #4a4d55;
+  color: #fff;
+  border-radius: 5px;
+}
+/* 음성 모드: 마이크 아래 '누르고 말해 보세요' */
+.voice-under {
+  position: absolute;
+  left: 50%;
+  bottom: -30px;
+  transform: translateX(-50%);
+  padding: 8px 16px;
+  border-radius: 12px;
+  background: #3a3d43;
+  color: #fff;
+  font-size: 0.86rem;
+  white-space: nowrap;
+  z-index: 3;
 }

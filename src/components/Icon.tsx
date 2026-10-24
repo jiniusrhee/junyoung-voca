@@ -50,6 +50,7 @@ export type IconName =
   | 'gbook'
   | 'talk'
   | 'headphones'
+  | 'drop'
   | 'bookmark'
   | 'shift'
   | 'retry'
@@ -305,6 +306,7 @@ const PATHS: Record<IconName, ReactElement> = {
       <rect x="10" y="9.5" width="5.5" height="1.6" rx="0.8" fill="#2b3320" />
     </g>
   ),
+  drop: <path d="M12 2.5c-3.2 4.6-6.5 7.9-6.5 11.7a6.5 6.5 0 0 0 13 0C18.5 10.4 15.2 7.1 12 2.5z" fill="currentColor" stroke="none" />,
   headphones: (
     <g>
       <path d="M4 15v-3a8 8 0 0 1 16 0v3" strokeWidth={2.4} />
