@@ -8201,3 +8201,38 @@ sup.beta.pill {
 .ghost {
   color: #f0a050;
 }
+/* 음성 모드 단축키 표시, 듣는 중 라벨 */
+.kbd-hint {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1px 7px;
+  border-radius: 6px;
+  background: #3a3d43;
+  color: #ddd;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.voice-bar .tool-btn {
+  position: relative;
+}
+.voice-halo {
+  position: relative;
+}
+.kbd-hint.enter {
+  top: -2px;
+  z-index: 3;
+}
+.mic-big.on {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.mic-big small {
+  font-size: 0.78rem;
+  color: #fff;
+}

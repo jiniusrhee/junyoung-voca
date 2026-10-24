@@ -316,6 +316,12 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     try {
       const alts = await recognizeOnce();
       const s = sentenceOf(live.q);
+      // 말해보카 핸즈프리: "yes"라고 말하면 힌트
+      if (alts.some((a) => /^(yes|예스)\.?$/i.test(a.trim()))) {
+        setListening(false);
+        hint();
+        return;
+      }
       setHeard(alts[0] ?? null);
       if (containsAnswer(alts, s.answer, live.q.word.word)) {
         await finalize(live, 'voice');
@@ -385,10 +391,24 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     await addFavorite();
   };
 
+  // 말해보카: 음성 모드에서는 문제가 나오면 바로 듣기 시작
+  useEffect(() => {
+    if (inputMode !== 'voice' || phase !== 'question' || !live || listening || live.showedAnswer || !canRecognize()) return;
+    const t = window.setTimeout(() => void answerByVoice(), 500);
+    return () => window.clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cardKey, inputMode, phase]);
+
   // 실제 키보드(블루투스/PC)도 지원
   useEffect(() => {
     const h = (e: KeyboardEvent) => {
       if (e.ctrlKey || e.metaKey || e.altKey || showSettings || goalReached) return;
+      if (phase === 'question' && inputMode === 'voice') {
+        if (e.key === '1') hint();
+        else if (e.key === '0') setInputMode('keyboard');
+        else if (e.key === 'Enter') void answerByVoice();
+        return;
+      }
       if (phase === 'answered') {
         if (e.key === 'Enter') {
           e.preventDefault();
@@ -681,20 +701,30 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
             ) : heard || live.input ? (
               <span className="bubble link">{heard ?? live.input}</span>
             ) : (
-              <span className="voice-hint">{listening ? '듣고 있어요…' : '마이크를 누르고 빈칸에 들어갈 말을 말해 보세요'}</span>
+              <span className="voice-hint">{listening ? '' : '마이크를 누르고 빈칸에 들어갈 말을 말해 보세요'}</span>
             )}
           </div>
           <div className={`voice-halo ${listening ? 'listening' : ''}`}>
-            <button className="mic-big" onClick={() => void answerByVoice()} aria-label={listening ? '듣는 중' : '말하기'}>
-              {listening ? <span className="stop-square" /> : <Icon name="mic" size={40} />}
+            <span className="kbd-hint enter">Enter</span>
+            <button className={`mic-big ${listening ? 'on' : ''}`} onClick={() => void answerByVoice()} aria-label={listening ? '듣는 중' : '말하기'}>
+              {listening ? (
+                <>
+                  <span className="stop-square" />
+                  <small>듣고 있어요</small>
+                </>
+              ) : (
+                <Icon name="mic" size={40} />
+              )}
             </button>
           </div>
           <div className="voice-bar">
             <button className="tool-btn" onClick={hint} disabled={live.showedAnswer}>
+              <span className="kbd-hint">1</span>
               {live.hints === 0 ? <Icon name="question" size={26} className="ic-purple" /> : <Icon name="check" size={26} className="ic-green" />}
               <span>{live.hints === 0 ? '힌트 보기' : '정답 보기'}</span>
             </button>
             <button className="tool-btn" onClick={() => setInputMode('keyboard')}>
+              <span className="kbd-hint">0</span>
               <Icon name="keyboard" size={26} className="ic-purple" />
               <span>키보드 모드</span>
             </button>
