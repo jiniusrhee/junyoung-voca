@@ -46,6 +46,7 @@ export default function ListeningQuiz() {
   const [inputMode, setInputMode] = useState<'voice' | 'keyboard'>('voice');
   const [listening, setListening] = useState(false);
   const [voiceMsg, setVoiceMsg] = useState<string | null>(null);
+  const [wrongFlash, setWrongFlash] = useState(false);
   const [cardKey, setCardKey] = useState(0);
   const pickerRef = useRef<ListenPicker | null>(null);
   const startedAt = useRef(Date.now());
@@ -178,12 +179,10 @@ export default function ListeningQuiz() {
     }
     setDone(k);
     setWrong((n) => n + 1);
-    if (listens >= MAX_LISTENS) {
-      void finish(true, listens);
-      return;
-    }
-    setListens((n) => n + 1);
-    play();
+    // 말해보카: '!' + 카드가 잠깐 붉어지고 입력은 그대로 (다시 듣기 횟수는 안 줄어듦)
+    setWrongFlash(true);
+    window.setTimeout(() => setWrongFlash(false), 500);
+    if (listens >= MAX_LISTENS && wrong + 1 >= 3) void finish(true, listens);
   };
 
   const voiceAnswer = async () => {
@@ -263,7 +262,8 @@ export default function ListeningQuiz() {
                 </p>
               )}
             </div>
-            <div className="qcard l-card">
+            <div className={`qcard l-card ${wrongFlash ? 'is-wrong' : ''}`}>
+              {wrongFlash && <span className="mark-bang">!</span>}
               <div className="qcard-top">
                 {answered ? (
                   <p className="ko">{q.item.ko}</p>
