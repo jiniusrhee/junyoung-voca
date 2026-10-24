@@ -4,7 +4,6 @@ import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-libra
 import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
 import App from '../App';
 import { db } from '../db';
-import { SHOW_ANSWER_MSG } from '../lib/text';
 import type { WordEntry, WordSentence } from '../types';
 
 // 배포되는 단어 팩을 그대로 읽어 가짜 fetch로 서빙한다
@@ -116,7 +115,8 @@ describe('app smoke', () => {
     await act(async () => {
       fireEvent.click(screen.getByRole('button', { name: /정답 보기/ }));
     });
-    expect(screen.getByText(SHOW_ANSWER_MSG)).toBeTruthy();
+    // 말해보카처럼 정답이 칸에 비친다 (말풍선 없음)
+    expect(document.querySelector('.ghost')?.textContent).toBe(sentence.answer);
 
     await type(sentence.answer);
     await screen.findByRole('button', { name: /다음 문제/ }, { timeout: 5_000 });
@@ -136,8 +136,14 @@ describe('app smoke', () => {
 
     await typeExactly(wrong);
     await press('Enter');
-    expect(document.querySelector('.qcard .pill')).toBeTruthy();
-    expect(document.querySelector('.mark-bang')).toBeTruthy();
+    if (wrong === 'zzzz') {
+      // 등록되지 않은 오답: 말풍선 없이 카드만 붉게
+      expect(document.querySelector('.qcard.is-wrong')).toBeTruthy();
+      expect(document.querySelector('.qcard .pill')).toBeNull();
+    } else {
+      expect(document.querySelector('.qcard .pill')).toBeTruthy();
+      expect(document.querySelector('.mark-bang')).toBeTruthy();
+    }
 
     await press('Backspace', wrong.length);
     await type(sentence.answer);
