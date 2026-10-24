@@ -9348,3 +9348,9 @@ sup.beta.pill {
   width: 80%;
   text-align: center;
 }
+.card-check.wrong {
+  background: #ff7a59;
+}
+.pair-target.blank {
+  visibility: hidden;
+}

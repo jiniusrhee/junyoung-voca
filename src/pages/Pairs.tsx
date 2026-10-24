@@ -154,9 +154,11 @@ function buildQuestions(st: Stage, mode: 'easy' | 'hard'): PairQ[] {
       const other = p[1 - t];
       out.push({ target, cards: answer === 0 ? [target, other] : [other, target], answer });
     } else {
-      // HARD: 두 문장을 펼쳐 놓고, 들려준 쪽을 고른다
-      const h = st.hard[i % st.hard.length];
-      out.push({ target: answer === 0 ? h.a : h.b, cards: [h.a, h.b], answer, ko: h.ko });
+      // HARD (말해보카): 단어 카드 2장이 펼쳐진 채 들려준 단어를 고른다 — 위에 목표 단어는 보이지 않음
+      const p = st.easy[i % st.easy.length];
+      const target = p[t];
+      const other = p[1 - t];
+      out.push({ target, cards: answer === 0 ? [target, other] : [other, target], answer });
     }
   }
   return out.sort(() => Math.random() - 0.5);
@@ -197,7 +199,7 @@ export function PairQuiz() {
   /** EASY: 두 카드 단어의 발음 기호·뜻 (단어 팩에 있을 때) */
   const cardWords = qs[i]?.cards ?? [];
   const cardInfo = useLiveQuery(async () => {
-    if (mode === 'hard' || !cardWords.length) return [];
+    if (!cardWords.length) return [];
     return Promise.all(
       cardWords.map(async (c) => {
         const w = await db.words.filter((x) => x.word.toLowerCase() === c.toLowerCase()).first();
@@ -295,10 +297,7 @@ export function PairQuiz() {
       </header>
       <main className="quiz-stage">
         {mode === 'hard' ? (
-          <p className="pair-q hard">
-            {q.ko}
-            <small>들려주는 문장은 어느 쪽일까요?</small>
-          </p>
+          <div className="pair-target blank" />
         ) : (
           <>
             <div className="pair-target">
@@ -320,7 +319,8 @@ export function PairQuiz() {
               ) : (
                 <span className="card-face">
                   {picked !== null && k === q.answer && <span className="card-check">○</span>}
-                  {mode !== 'hard' && (
+                  {picked === k && k !== q.answer && <span className="card-check wrong">✕</span>}
+                  {picked !== null && (
                     <span
                       className="card-spk"
                       role="button"
@@ -333,8 +333,8 @@ export function PairQuiz() {
                     </span>
                   )}
                   <b>{c}</b>
-                  {mode !== 'hard' && cardInfo?.[k]?.ipa && <small className="card-ipa">[ {cardInfo[k]?.ipa} ]</small>}
-                  {mode !== 'hard' && cardInfo?.[k]?.ko && <small className="card-ko">{cardInfo[k]?.ko}</small>}
+                  {cardInfo?.[k]?.ipa && <small className="card-ipa">[ {cardInfo[k]?.ipa} ]</small>}
+                  {cardInfo?.[k]?.ko && <small className="card-ko">{cardInfo[k]?.ko}</small>}
                   {picked !== null && (
                     <span
                       className="say-btn"
