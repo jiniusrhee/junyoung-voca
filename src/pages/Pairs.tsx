@@ -172,6 +172,9 @@ export function PairQuiz() {
   const [qs, setQs] = useState<PairQ[]>([]);
   const [i, setI] = useState(0);
   const [leaving, setLeaving] = useState(false);
+  const curTarget = qs[i]?.target;
+  /** 단어 팩에 같은 단어가 있으면 발음 기호를 보여준다 (말해보카: wife [waɪf]) — 훅이므로 조기 return 보다 위에 둔다 */
+  const ipa = useLiveQuery(async () => (curTarget && mode !== 'hard' ? (await db.words.filter((w) => w.word.toLowerCase() === curTarget.toLowerCase()).first())?.ipa : undefined), [curTarget, mode]);
   const [picked, setPicked] = useState<number | null>(null);
   const [marks, setMarks] = useState<boolean[]>([]);
   const [playing, setPlaying] = useState<number | null>(null);
@@ -250,8 +253,6 @@ export function PairQuiz() {
   }
 
   const q = qs[i];
-  /** 단어 팩에 같은 단어가 있으면 발음 기호를 보여준다 (말해보카: wife [waɪf]) */
-  const ipa = useLiveQuery(async () => (q && mode !== 'hard' ? (await db.words.filter((w) => w.word.toLowerCase() === q.target.toLowerCase()).first())?.ipa : undefined), [q?.target, mode]);
   const choose = (k: number) => {
     if (picked !== null) return;
     setPicked(k);
