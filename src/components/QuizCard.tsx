@@ -94,7 +94,7 @@ export default function QuizCard(p: Props) {
             <Icon name="check" size={56} />
           </span>
         )}
-        {flash?.kind === 'wrong' && feedback && <span className="mark-bang">!</span>}
+        {flash?.kind === 'wrong' && <span className="mark-bang">!</span>}
         <div className="qcard-top">
           {sentence.ctx && <p className="ctx">{sentence.ctx}</p>}
           <p className="ko">

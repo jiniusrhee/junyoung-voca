@@ -1430,6 +1430,9 @@ em.hl {
   font-weight: 900;
   color: #ff5a36;
   line-height: 1;
+  animation: pop 0.3s ease, fadeOut 0.3s ease 0.45s forwards;
+}
+.qcard:has(.pill) .mark-bang {
   animation: pop 0.35s ease, fadeOut 0.4s ease 1.2s forwards;
 }
 .mark-check {
