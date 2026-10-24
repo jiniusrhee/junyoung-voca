@@ -47,7 +47,9 @@ export default function ExprQuiz() {
   const startedAt = useRef(Date.now());
   const started = useRef(false);
   const finishing = useRef(false);
-  const goal = Math.max(settings?.exprGoal ?? 15, Number(params.get('target')) || 0);
+  /** 히스토리 학습: 목록의 문장만 순서대로 */
+  const listIds = params.get('ids')?.split(',').filter(Boolean) ?? null;
+  const goal = listIds ? listIds.length : Math.max(settings?.exprGoal ?? 15, Number(params.get('target')) || 0);
   const pattern = useLiveQuery(async () => (q ? db.epatterns.get(q.item.pkey) : undefined), [q?.item.pkey]);
   const siblings = useLiveQuery(async () => (q ? (await db.eitems.where('pkey').equals(q.item.pkey).toArray()).filter((x) => x.id !== q.item.id) : []), [q?.item.id]);
 
@@ -79,9 +81,9 @@ export default function ExprQuiz() {
     if (!settings || started.current) return;
     started.current = true;
     (async () => {
-      setCount((await modeToday('expr')).total);
+      setCount(listIds ? 0 : (await modeToday('expr')).total);
       const first = (await db.ecourses.orderBy('order').first())?.id ?? '';
-      const p = new ExprPicker(settings.exprCourse ?? first);
+      const p = new ExprPicker(settings.exprCourse ?? first, listIds ? [...listIds] : null);
       await p.init();
       pickerRef.current = p;
       await load();
@@ -98,7 +100,7 @@ export default function ExprQuiz() {
       goal,
     );
     pickerRef.current?.note(q.item.id);
-    setCount(res.total);
+    setCount(listIds ? (c) => c + 1 : res.total);
     setDue(res.row.due);
     setPill(null);
     setFlash({ kind: 'correct', key: Date.now() });
@@ -206,7 +208,7 @@ export default function ExprQuiz() {
     return (
       <div className="quiz-screen center col gap">
         <Mascot size={110} />
-        <p className="quiz-msg">지금 풀 표현 문제가 없어요</p>
+        <p className="quiz-msg">{listIds ? '히스토리 학습을 마쳤어요' : '지금 풀 표현 문제가 없어요'}</p>
         <button className="btn primary" onClick={() => nav('/expr')}>
           돌아가기
         </button>

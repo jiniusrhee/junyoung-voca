@@ -1,6 +1,6 @@
 import { useLiveQuery } from 'dexie-react-hooks';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import Icon from '../components/Icon';
 import Mascot from '../components/Mascot';
 import { Backdrop, StudyTop, ToolPanel } from '../components/StudyChrome';
@@ -30,6 +30,7 @@ const shuffle = <T,>(a: T[]): T[] => {
 export default function ListeningQuiz() {
   const settings = useSettings();
   const nav = useNavigate();
+  const [params] = useSearchParams();
   const [phase, setPhase] = useState<Phase>('loading');
   const [q, setQ] = useState<ListenQuestion | null>(null);
   const [done, setDone] = useState(0); // 맞힌 단어 수
@@ -60,7 +61,9 @@ export default function ListeningQuiz() {
   const bookmarked = useLiveQuery(async () => (q ? !!(await db.bookmarks.get(cardId('listening', q.item.id))) : false), [q?.item.id]);
   const slow = settings?.listeningSpeed === 'slow';
   const mc = settings?.listeningMode !== 'subjective';
-  const goal = settings?.listeningGoal ?? 10;
+  /** 히스토리 학습: 목록의 문장만 순서대로 */
+  const listIds = params.get('ids')?.split(',').filter(Boolean) ?? null;
+  const goal = listIds ? listIds.length : (settings?.listeningGoal ?? 10);
 
   const play = useCallback(
     (factor = 1) => {
@@ -102,10 +105,10 @@ export default function ListeningQuiz() {
     started.current = true;
     setInputMode(settings.listeningInput);
     (async () => {
-      setCount((await modeToday('listening')).total);
+      setCount(listIds ? 0 : (await modeToday('listening')).total);
       const lv = settings.listeningLevel ?? Math.min(50, Math.round((settings.level ?? 10) * 1.4));
       setLevel(lv);
-      const p = new ListenPicker(lv);
+      const p = new ListenPicker(lv, listIds ? [...listIds] : null);
       await p.init();
       pickerRef.current = p;
       await load();
@@ -130,7 +133,7 @@ export default function ListeningQuiz() {
       if (nl > best) return db.kv.put({ key: 'listeningBest', value: nl });
     });
     pickerRef.current?.note(q.item.id);
-    setCount(res.total);
+    setCount(listIds ? (c) => c + 1 : res.total);
     setResult(r);
     setDone(words.length);
     setPhase('answered');
@@ -260,7 +263,7 @@ export default function ListeningQuiz() {
     return (
       <div className="quiz-screen center col gap">
         <Mascot size={110} />
-        <p className="quiz-msg">지금 풀 리스닝 문제가 없어요</p>
+        <p className="quiz-msg">{listIds ? '히스토리 학습을 마쳤어요' : '지금 풀 리스닝 문제가 없어요'}</p>
         <button className="btn primary" onClick={() => nav('/all?mode=listening')}>
           돌아가기
         </button>

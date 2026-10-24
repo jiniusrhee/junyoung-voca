@@ -4,8 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Icon from '../components/Icon';
 import SubHeader from '../components/SubHeader';
 import { db } from '../db';
-import { listenPool } from '../lib/listening';
 import { GRAMMAR_BOOKMARKS, folderItems, toggleInFolder } from '../lib/folders';
+import { listenPool } from '../lib/listening';
 import { toggleBookmark } from '../lib/modeStudy';
 import { speak } from '../lib/speech';
 import { shiftDate, studyDateOf } from '../lib/time';
@@ -16,36 +16,58 @@ interface Sent {
   en: string;
   ko: string;
   topic?: GrammarTopic;
+  /** 표현: 사전으로 갈 패턴 key */
+  pkey?: string;
 }
+type Grade = 'perfect' | 'second' | 'good' | 'nice';
 interface Row {
   s: Sent;
   logs: ReviewRow[];
   /** 그룹 날짜 (최근에 틀린 목록) */
   date: string;
   lapses?: number;
+  /** 리스닝: 마지막 결과 등급 */
+  grade?: Grade;
 }
 interface TopicRow {
   topic: GrammarTopic;
   wrong: boolean;
   date: string;
 }
-type Kind = 'tdaily' | 'twrong' | 'daily' | 'wrong' | 'most';
-type Hide = 'ko' | 'en' | 'none';
-type Filter = 'all' | 'wrong';
+type Kind = 'tdaily' | 'twrong' | 'daily' | 'wrong' | 'most' | 'nice';
+type Hide = 'ko' | 'en' | 'none' | 'all';
+type Filter = 'all' | 'wrong' | Grade;
+interface KindDef {
+  kind: Kind;
+  label: string;
+  topic?: boolean;
+}
 
-/** 말해보카 '내가 학습한 문법' 메뉴 5개 */
-const KINDS: { kind: Kind; label: string; topic?: boolean }[] = [
-  { kind: 'tdaily', label: '일별 학습 문법', topic: true },
-  { kind: 'twrong', label: '최근에 틀린 문법', topic: true },
-  { kind: 'daily', label: '일별 학습 문장' },
-  { kind: 'wrong', label: '최근에 틀린 문장' },
-  { kind: 'most', label: '역대 가장 많이 틀린 문장' },
-];
-const TITLE: Partial<Record<StudyMode, string>> = { grammar: '내가 학습한 문법', listening: '내가 학습한 문장' };
+/** 말해보카 '내가 학습한 ○○' 메뉴 (모드별) */
+const KINDS_BY_MODE: Partial<Record<StudyMode, KindDef[]>> = {
+  grammar: [
+    { kind: 'tdaily', label: '일별 학습 문법', topic: true },
+    { kind: 'twrong', label: '최근에 틀린 문법', topic: true },
+    { kind: 'daily', label: '일별 학습 문장' },
+    { kind: 'wrong', label: '최근에 틀린 문장' },
+    { kind: 'most', label: '역대 가장 많이 틀린 문장' },
+  ],
+  listening: [
+    { kind: 'daily', label: '일별 학습 문장' },
+    { kind: 'nice', label: '지난 1주일간의 Nice Try' },
+  ],
+  expr: [{ kind: 'daily', label: '일별 학습 문장' }],
+};
+const TITLE: Partial<Record<StudyMode, string>> = { grammar: '내가 학습한 문법', listening: '내가 학습한 문장', expr: '내가 학습한 표현' };
 const HIDE_OPTS: { v: Hide; label: string; desc: string[] }[] = [
   { v: 'ko', label: '뜻 먼저 보기', desc: ['뜻을 보고 영어 문장을 생각해 보세요.', '탭하면 영어 문장을 볼 수 있어요.'] },
   { v: 'en', label: '영어 먼저 보기', desc: ['영어 문장을 보고 뜻을 생각해 보세요.', '탭하면 뜻을 볼 수 있어요.'] },
   { v: 'none', label: '가리지 않기', desc: ['영어 문장과 뜻 모두 가리지 않아요.'] },
+];
+/** 리스닝: 문장과 뜻을 모두 가리고 음성으로 맞혀 본다 */
+const HIDE_OPTS_LISTEN: { v: Hide; label: string; desc: string[] }[] = [
+  { v: 'all', label: '모두 가리기', desc: ['원어민 음성을 듣고 문장을 맞혀보세요.', '탭하면 문장과 뜻을 볼 수 있어요.'] },
+  { v: 'none', label: '가리지 않기', desc: ['문장과 뜻 모두 가리지 않아요.'] },
 ];
 const SENT_FILTER: { v: Filter; label: string }[] = [
   { v: 'all', label: '모든 문장 보기' },
@@ -55,15 +77,27 @@ const TOPIC_FILTER: { v: Filter; label: string }[] = [
   { v: 'all', label: '모든 문법 보기' },
   { v: 'wrong', label: '틀린 문법만 보기' },
 ];
+const GRADE_FILTER: { v: Filter; label: string }[] = [
+  { v: 'all', label: '모든 등급 보기' },
+  { v: 'perfect', label: 'Perfect만 보기' },
+  { v: 'second', label: 'Great만 보기' },
+  { v: 'good', label: 'Good만 보기' },
+  { v: 'nice', label: 'Nice try만 보기' },
+];
 const MAX_RECENT = 30;
 
 const isWrong = (l: ReviewRow) => !l.firstTry || l.showedAnswer;
+const gradeOf = (l: ReviewRow): Grade => (l.showedAnswer ? 'nice' : l.firstTry ? 'perfect' : l.hints === 1 ? 'second' : 'good');
 
 async function resolve(mode: StudyMode, ids: string[]): Promise<Map<string, Sent>> {
   const out = new Map<string, Sent>();
   if (mode === 'grammar') {
     const topics = new Map((await db.gtopics.toArray()).map((t) => [t.id, t]));
     for (const s of await db.gsentences.bulkGet(ids)) if (s) out.set(s.id, { id: s.id, en: s.en, ko: s.ko, topic: topics.get(s.topic) });
+    return out;
+  }
+  if (mode === 'expr') {
+    for (const it of await db.eitems.bulkGet(ids)) if (it) out.set(it.id, { id: it.id, en: /_{3,}/.test(it.en) ? it.en.replace(/_{3,}/, it.answer) : it.en, ko: it.ko, pkey: it.pkey });
     return out;
   }
   const pool = new Map((await listenPool()).map((p) => [p.id, p]));
@@ -81,7 +115,8 @@ async function dailyRows(mode: StudyMode, date: string): Promise<Row[]> {
   const sents = await resolve(mode, ids);
   return ids.flatMap((id) => {
     const s = sents.get(id);
-    return s ? [{ s, logs: logs.filter((l) => l.wordId === id), date }] : [];
+    const mine = logs.filter((l) => l.wordId === id);
+    return s ? [{ s, logs: mine, date, grade: gradeOf(mine[mine.length - 1]) }] : [];
   });
 }
 
@@ -98,7 +133,20 @@ async function wrongRows(mode: StudyMode): Promise<Row[]> {
   return ids.flatMap((id) => {
     const s = sents.get(id);
     const mine = logs.filter((l) => l.wordId === id);
-    return s ? [{ s, logs: mine, date: mine[0].studyDate }] : [];
+    return s ? [{ s, logs: mine, date: mine[0].studyDate, grade: gradeOf(mine[0]) }] : [];
+  });
+}
+
+/** 지난 1주일간 Nice Try (정답을 보고 넘어간 문장) */
+async function niceRows(mode: StudyMode, today: string): Promise<Row[]> {
+  const from = shiftDate(today, -6);
+  const logs = (await db.reviews.where('studyDate').between(from, today, true, true).filter((r) => r.studyMode === mode && r.showedAnswer).toArray()).sort((a, b) => b.ts - a.ts);
+  const ids = [...new Set(logs.map((l) => l.wordId))];
+  const sents = await resolve(mode, ids);
+  return ids.flatMap((id) => {
+    const s = sents.get(id);
+    const mine = logs.filter((l) => l.wordId === id);
+    return s ? [{ s, logs: mine, date: mine[0].studyDate, grade: 'nice' as Grade }] : [];
   });
 }
 
@@ -127,12 +175,13 @@ function topicsOf(rows: Row[]): TopicRow[] {
   return out;
 }
 
-async function listOf(mode: StudyMode, kind: Kind, date: string) {
+async function listOf(mode: StudyMode, kind: Kind, date: string, today: string) {
   const none = { topics: [] as TopicRow[], rows: [] as Row[] };
   if (kind === 'tdaily') return { ...none, topics: topicsOf(await dailyRows(mode, date)) };
   if (kind === 'twrong') return { ...none, topics: topicsOf(await wrongRows(mode)).slice(0, MAX_RECENT) };
   if (kind === 'wrong') return { ...none, rows: await wrongRows(mode) };
   if (kind === 'most') return { ...none, rows: await mostRows(mode) };
+  if (kind === 'nice') return { ...none, rows: await niceRows(mode, today) };
   return { ...none, rows: await dailyRows(mode, date) };
 }
 
@@ -142,16 +191,19 @@ export function logText(l: ReviewRow): string {
   return `오답 ${l.wrongAttempts}번`;
 }
 
-/** 내가 학습한 문법: 메뉴 (말해보카: 일별 학습 문법 / 최근에 틀린 문법 / 일별 학습 문장 / 최근에 틀린 문장 / 역대 가장 많이 틀린 문장) */
+const quizPath = (mode: StudyMode) => (mode === 'listening' ? '/listening' : mode === 'expr' ? '/expr/quiz' : '/grammar');
+
+/** 내가 학습한 문법/문장/표현: 메뉴 */
 export function ModeLearnedMenu() {
   const nav = useNavigate();
   const { mode = 'grammar' } = useParams();
   const m = mode as StudyMode;
+  const kinds = KINDS_BY_MODE[m] ?? KINDS_BY_MODE.listening!;
   const today = studyDateOf();
   const counts = useLiveQuery(async () => {
     const out: Partial<Record<Kind, number>> = {};
-    for (const k of KINDS) {
-      const r = await listOf(m, k.kind, today);
+    for (const k of kinds) {
+      const r = await listOf(m, k.kind, today, today);
       out[k.kind] = k.topic ? r.topics.length : r.rows.length;
     }
     return out;
@@ -160,11 +212,11 @@ export function ModeLearnedMenu() {
     <div className="screen sub">
       <SubHeader title={TITLE[m] ?? '내가 학습한 문장'} />
       <ul className="lw-menu">
-        {KINDS.filter((k) => m === 'grammar' || !k.topic).map((k) => (
+        {kinds.map((k) => (
           <li key={k.kind}>
             <button className="menu-row" onClick={() => nav(`/learned/${m}/${k.kind}`)}>
               <span className="menu-icon blue soft">
-                <Icon name="gbook" size={22} />
+                <Icon name={m === 'grammar' ? 'gbook' : m === 'expr' ? 'chat' : 'headphones'} size={22} />
               </span>
               <span className="menu-text">
                 <b>{k.label}</b>
@@ -179,30 +231,39 @@ export function ModeLearnedMenu() {
   );
 }
 
-/** 일별 학습 문법·문장 / 최근에 틀린 문법·문장 / 역대 가장 많이 틀린 문장 */
+/** 일별 학습 문법·문장 / 최근에 틀린 문법·문장 / 역대 가장 많이 틀린 문장 / 지난 1주일간의 Nice Try */
 export default function ModeNotebook() {
   const nav = useNavigate();
   const { mode = 'grammar', kind = 'daily' } = useParams();
   const m = mode as StudyMode;
-  const k = (KINDS.some((x) => x.kind === kind) ? kind : 'daily') as Kind;
-  const meta = KINDS.find((x) => x.kind === k)!;
+  const kinds = KINDS_BY_MODE[m] ?? KINDS_BY_MODE.listening!;
+  const meta = kinds.find((x) => x.kind === kind) ?? kinds[0];
+  const k = meta.kind;
+  const listen = m === 'listening';
   const today = studyDateOf();
   const [date, setDate] = useState(today);
-  const [hide, setHide] = useState<Hide>('ko');
+  const [hide, setHide] = useState<Hide>(listen ? 'all' : 'ko');
   const [filter, setFilter] = useState<Filter>('all');
   const [showLog, setShowLog] = useState(false);
   const [sheet, setSheet] = useState<'hide' | 'filter' | null>(null);
   const [pick, setPick] = useState('');
   const [open, setOpen] = useState<Set<string>>(new Set());
   const [menu, setMenu] = useState<string | null>(null);
-  const data = useLiveQuery(() => listOf(m, k, date), [m, k, date]);
+  const data = useLiveQuery(() => listOf(m, k, date, today), [m, k, date, today]);
   const marks = useLiveQuery(async () => (m === 'grammar' ? folderItems(GRAMMAR_BOOKMARKS) : new Set((await db.bookmarks.where('mode').equals(m).toArray()).map((b) => b.itemId))), [m]);
   const label = date === today ? '오늘' : date === shiftDate(today, -1) ? '어제' : date.slice(5).replace('-', '.');
   const daily = k === 'daily' || k === 'tdaily';
   const topics = (data?.topics ?? []).filter((t) => filter === 'all' || t.wrong);
-  const rows = (data?.rows ?? []).filter((r) => filter === 'all' || r.logs.some(isWrong) || (r.lapses ?? 0) > 0);
+  const rows = (data?.rows ?? []).filter((r) => {
+    if (filter === 'all') return true;
+    if (filter === 'wrong') return r.logs.some(isWrong) || (r.lapses ?? 0) > 0;
+    return r.grade === filter;
+  });
   const grouped = k === 'wrong' || k === 'twrong';
-  const FILTER_OPTS = meta.topic ? TOPIC_FILTER : SENT_FILTER;
+  const HIDES = listen ? HIDE_OPTS_LISTEN : HIDE_OPTS;
+  const FILTERS = meta.topic ? TOPIC_FILTER : listen ? GRADE_FILTER : SENT_FILTER;
+  const filterTitle = meta.topic ? '확인할 문법 선택' : listen ? '등급별로 모아 보기' : '확인할 문장 선택';
+  const showFilter = daily || (listen && k === 'nice');
   const toggle = (id: string) =>
     setOpen((o) => {
       const n = new Set(o);
@@ -216,9 +277,10 @@ export default function ModeNotebook() {
   return (
     <div className="screen sub lw-page">
       <SubHeader
-        title={meta.label}
+        title={k === 'nice' ? `${meta.label} ${rows.length}` : meta.label}
         right={
-          !meta.topic && (
+          !meta.topic &&
+          !listen && (
             <label className="vs-help">
               학습 기록
               <input type="checkbox" checked={showLog} onChange={(e) => setShowLog(e.target.checked)} />
@@ -236,10 +298,10 @@ export default function ModeNotebook() {
               setSheet('hide');
             }}
           >
-            {HIDE_OPTS.find((o) => o.v === hide)?.label} ▾
+            {HIDES.find((o) => o.v === hide)?.label} ▾
           </button>
         )}
-        {daily && (
+        {showFilter && (
           <button
             className="chip-btn"
             onClick={() => {
@@ -247,7 +309,7 @@ export default function ModeNotebook() {
               setSheet('filter');
             }}
           >
-            {FILTER_OPTS.find((o) => o.v === filter)?.label} ▾
+            {FILTERS.find((o) => o.v === filter)?.label} ▾
           </button>
         )}
         {daily && (
@@ -305,8 +367,14 @@ export default function ModeNotebook() {
                 {k === 'most' && <p className="lw-wrongs">틀린 횟수: {r.lapses}회</p>}
                 <div className="lw-card">
                   <button className="lw-body" onClick={() => hide !== 'none' && toggle(r.s.id)}>
-                    {hide === 'ko' && hidden ? <span className="lw-reveal">탭해서 영어 보기</span> : <b className="lw-en">{r.s.en}</b>}
-                    {hide === 'en' && hidden ? <span className="lw-reveal">탭해서 뜻 보기</span> : <span className="lw-ko">{r.s.ko}</span>}
+                    {hide === 'all' && hidden ? (
+                      <span className="lw-reveal">탭해서 문장 보기</span>
+                    ) : (
+                      <>
+                        {hide === 'ko' && hidden ? <span className="lw-reveal">탭해서 영어 보기</span> : <b className="lw-en">{r.s.en}</b>}
+                        {hide === 'en' && hidden ? <span className="lw-reveal">탭해서 뜻 보기</span> : <span className="lw-ko">{r.s.ko}</span>}
+                      </>
+                    )}
                     {showLog && r.logs.length > 0 && <span className="lw-log">{r.logs.map(logText).join(' · ')}</span>}
                   </button>
                   <button className="lw-more" onClick={() => setMenu((x) => (x === r.s.id ? null : r.s.id))} aria-label="더 보기">
@@ -320,6 +388,11 @@ export default function ModeNotebook() {
                       {r.s.topic && (
                         <button onClick={() => nav(`/grammar-dict/${r.s.topic?.id}`)}>
                           <Icon name="gbook" size={16} /> 문법 설명 보기
+                        </button>
+                      )}
+                      {r.s.pkey && (
+                        <button onClick={() => nav(`/expr-dict/${encodeURIComponent(r.s.pkey ?? '')}`)}>
+                          <Icon name="chat" size={16} /> 표현 사전
                         </button>
                       )}
                       <button
@@ -339,9 +412,9 @@ export default function ModeNotebook() {
         </div>
       )}
 
-      {!meta.topic && rows.length > 0 && m === 'grammar' && (
+      {!meta.topic && rows.length > 0 && (
         <div className="nb-foot">
-          <button className="btn primary big" onClick={() => nav(`/grammar?ids=${rows.map((r) => r.s.id).join(',')}`)}>
+          <button className="btn primary big" onClick={() => nav(`${quizPath(m)}?ids=${rows.map((r) => r.s.id).join(',')}`)}>
             히스토리 학습 ({rows.length}개) <Icon name="chevron" size={16} />
           </button>
         </div>
@@ -350,8 +423,8 @@ export default function ModeNotebook() {
       {sheet && (
         <div className="modal-dim" onClick={() => setSheet(null)}>
           <div className="opt-sheet" onClick={(e) => e.stopPropagation()}>
-            <h3>{sheet === 'hide' ? '가릴 부분 선택' : meta.topic ? '확인할 문법 선택' : '확인할 문장 선택'}</h3>
-            {(sheet === 'hide' ? HIDE_OPTS : FILTER_OPTS).map((o) => (
+            <h3>{sheet === 'hide' ? '가릴 부분 선택' : filterTitle}</h3>
+            {(sheet === 'hide' ? HIDES : FILTERS).map((o) => (
               <button key={o.v} className={`opt-row ${pick === o.v ? 'sel' : ''}`} onClick={() => setPick(o.v)}>
                 <span className="radio" />
                 <span>

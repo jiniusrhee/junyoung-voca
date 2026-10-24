@@ -53,7 +53,11 @@ export class ExprPicker {
   private seen = new Set<string>();
   private recent: string[] = [];
   private streak = 0;
-  constructor(private course: string) {}
+  /** list 를 주면 그 문장들만 순서대로 출제 (히스토리 학습) */
+  constructor(
+    private course: string,
+    private list: string[] | null = null,
+  ) {}
 
   async init() {
     this.seen = new Set((await db.mcards.where('mode').equals('expr').toArray()).map((c) => c.itemId));
@@ -66,6 +70,13 @@ export class ExprPicker {
   }
 
   async next(now: Date = new Date()): Promise<ExprQuestion | null> {
+    if (this.list) {
+      const id = this.list.shift();
+      if (!id) return null;
+      const item = await db.eitems.get(id);
+      if (!item) return this.next(now);
+      return { item, isNew: false, card: (await db.mcards.get(`expr:${id}`)) ?? null };
+    }
     const due = (await db.mcards.where('[mode+due]').between(['expr', new Date(0)], ['expr', now], true, true).toArray()).filter(
       (c) => !this.recent.includes(c.itemId),
     );

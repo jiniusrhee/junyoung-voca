@@ -75,7 +75,11 @@ export class ListenPicker {
   private seen = new Set<string>();
   private recent: string[] = [];
   private streak = 0;
-  constructor(public level: number) {}
+  /** list 를 주면 그 문장들만 순서대로 출제 (히스토리 학습) */
+  constructor(
+    public level: number,
+    private list: string[] | null = null,
+  ) {}
 
   async init() {
     this.pool = await listenPool();
@@ -95,6 +99,13 @@ export class ListenPicker {
   }
 
   async next(now: Date = new Date()): Promise<ListenQuestion | null> {
+    if (this.list) {
+      const id = this.list.shift();
+      if (!id) return null;
+      const item = this.byId.get(id);
+      if (!item) return this.next(now);
+      return { item, isNew: false, card: (await db.mcards.get(`listening:${id}`)) ?? null };
+    }
     const due = (await db.mcards.where('[mode+due]').between(['listening', new Date(0)], ['listening', now], true, true).toArray()).filter(
       (c) => !this.recent.includes(c.itemId) && this.byId.has(c.itemId),
     );

@@ -82,9 +82,8 @@ function Shell() {
         <Route path="/talk/:story/:ep" element={<TalkPlay />} />
         <Route path="/pairs" element={<Pairs />} />
         <Route path="/pairs/:stage/:mode" element={<PairQuiz />} />
-        <Route path="/learned/grammar" element={<ModeLearnedMenu />} />
         <Route path="/learned/:mode/:kind" element={<ModeNotebook />} />
-        <Route path="/learned/:mode" element={<LearnedList kind="learned" />} />
+        <Route path="/learned/:mode" element={<ModeLearnedMenu />} />
         <Route path="/bookmarks/grammar" element={<GBookmarks />} />
         <Route path="/bookmarks/grammar/:id" element={<GBookmarkDetail />} />
         <Route path="/bookmarks/:mode" element={<LearnedList kind="bookmarks" />} />
