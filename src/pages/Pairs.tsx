@@ -185,6 +185,26 @@ export function PairQuiz() {
   useEffect(() => {
     if (st && !qs.length) setQs(buildQuestions(st, mode === 'hard' ? 'hard' : 'easy'));
   }, [st, mode, qs.length]);
+  // 단계·모드가 바뀌면 처음부터 (결과 화면 상태가 다음 단계로 이어지지 않게)
+  useEffect(() => {
+    setQs([]);
+    setI(0);
+    setPicked(null);
+    setMarks([]);
+    setPlaying(null);
+    saved.current = false;
+  }, [stage, mode]);
+  /** EASY: 두 카드 단어의 발음 기호·뜻 (단어 팩에 있을 때) */
+  const cardWords = qs[i]?.cards ?? [];
+  const cardInfo = useLiveQuery(async () => {
+    if (mode === 'hard' || !cardWords.length) return [];
+    return Promise.all(
+      cardWords.map(async (c) => {
+        const w = await db.words.filter((x) => x.word.toLowerCase() === c.toLowerCase()).first();
+        return w ? { ipa: w.ipa, ko: w.meanings[0] } : null;
+      }),
+    );
+  }, [cardWords.join('|'), mode]);
 
   const playBoth = (q: PairQ) => {
     if (mode === 'hard') {
@@ -299,18 +319,33 @@ export function PairQuiz() {
                 <span className="card-back" />
               ) : (
                 <span className="card-face">
+                  {picked !== null && k === q.answer && <span className="card-check">○</span>}
+                  {mode !== 'hard' && (
+                    <span
+                      className="card-spk"
+                      role="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        speak(c, slow);
+                      }}
+                    >
+                      <Icon name="speaker" size={18} />
+                    </span>
+                  )}
                   <b>{c}</b>
+                  {mode !== 'hard' && cardInfo?.[k]?.ipa && <small className="card-ipa">[ {cardInfo[k]?.ipa} ]</small>}
+                  {mode !== 'hard' && cardInfo?.[k]?.ko && <small className="card-ko">{cardInfo[k]?.ko}</small>}
                   {picked !== null && (
-                  <span
-                    className="say-btn"
-                    role="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      speak(c, slow);
-                    }}
-                  >
-                    <Icon name="speaker" size={14} /> 발음해보기
-                  </span>
+                    <span
+                      className="say-btn"
+                      role="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        speak(c, slow);
+                      }}
+                    >
+                      <Icon name="mic" size={14} /> 발음 해보기
+                    </span>
                   )}
                 </span>
               )}
