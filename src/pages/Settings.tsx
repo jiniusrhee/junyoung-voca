@@ -59,14 +59,15 @@ export default function Settings() {
       </button>
       <div className="stats-sep" />
       <h3 className="menu-title">설정</h3>
-      <MenuRow icon="gear" tint="blue" title="화면" desc="다크 모드 설정, 학습 화면 테마" onClick={() => nav('/settings/vocab')} />
-      <MenuRow icon="speaker" tint="orange" title="음성 및 효과음" desc="학습 음성 속도, 정답 후 자동 발음" onClick={() => nav('/settings/mode/voice')} />
+      <MenuRow icon="gear" tint="blue" title="화면" desc="다크 모드 설정, 학습 화면 테마" onClick={() => nav('/settings/mode/screen')} />
+      <MenuRow icon="bell" tint="orange" title="알림" desc="학습 시간 알림, 방해 금지 시간" onClick={() => nav('/settings/mode/notice')} />
+      <MenuRow icon="speaker" tint="orange" title="음성 및 효과음" desc="학습 음성 및 효과음 설정" onClick={() => nav('/settings/mode/voice')} />
       <MenuRow icon="star" tint="pink" title="즐겨찾기" desc="홈에 표시할 학습 모드 설정" onClick={() => nav('/settings/mode/favorites')} />
-      <MenuRow icon="bookPerson" tint="purple" title="어휘 학습" desc="퀴즈 방식, 난이도 및 복습 단어 비율 조정" onClick={() => nav('/settings/vocab')} />
-      <MenuRow icon="gbook" tint="blue" title="문법 학습" desc="일일 학습 목표, 음성 속도" onClick={() => nav('/settings/mode/grammar')} />
-      <MenuRow icon="chat" tint="pink" title="표현 학습" desc="학습 목표, 학습 코스" onClick={() => nav('/settings/mode/expr')} />
-      <MenuRow icon="talk" tint="purple" title="실전 회화 학습" desc="학습 난이도, 입력 방식" onClick={() => nav('/settings/mode/talk')} />
-      <MenuRow icon="headphones" tint="orange" title="리스닝 학습" desc="학습 모드, 음성 속도, 발음 구분 연습" onClick={() => nav('/settings/mode/listening')} />
+      <MenuRow icon="bookPerson" tint="purple" title="어휘 학습" desc="퀴즈 방식, 단어장 변경, 난이도 및 복습 단어 비율 조정" onClick={() => nav('/settings/vocab')} />
+      <MenuRow icon="gbook" tint="blue" title="문법 학습" desc="일일 학습 목표, 음성 속도 및 볼륨 설정" onClick={() => nav('/settings/mode/grammar')} />
+      <MenuRow icon="chat" tint="pink" title="표현 학습" desc="학습 설정, 음성 속도 및 볼륨 설정" onClick={() => nav('/settings/mode/expr')} />
+      <MenuRow icon="talk" tint="purple" title="실전 회화 학습" desc="학습 설정, 음성 및 효과음 볼륨 설정" onClick={() => nav('/settings/mode/talk')} />
+      <MenuRow icon="headphones" tint="orange" title="리스닝 학습" desc="학습 모드, 발음 인식 기준, 발음 구분 연습 설정" onClick={() => nav('/settings/mode/listening')} />
       <MenuRow icon="chart" tint="orange" title="어휘력 측정" desc="레벨 테스트 다시 하기" onClick={() => nav('/test')} />
       <MenuRow icon="note" tint="pink" title="계정 관리" desc="학습 기록 백업과 복원, 단어 데이터 업데이트, 초기화" onClick={() => nav('/settings/data')} />
       <MenuRow icon="clock" tint="blue" title="업데이트 히스토리" desc={`앱 버전: ${__APP_VERSION__}`} onClick={() => nav('/settings/mode/updates')} />

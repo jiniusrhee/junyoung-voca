@@ -5,6 +5,7 @@ import StreakPopup from './components/StreakPopup';
 import { syncContent } from './lib/content';
 import { useSettings } from './lib/settings';
 import { applySoundSettings } from './lib/sfx';
+import StudyReminder from './components/StudyReminder';
 import { useApplyTheme } from './lib/theme';
 import AllLearning from './pages/AllLearning';
 import ExprHome, { ExprCourses, ExprDict, ExprNotebook } from './pages/ExprHome';
@@ -52,6 +53,7 @@ function Shell() {
   const showNav = TABS.includes(loc.pathname) && !(loc.pathname === '/' && needsOnboarding);
   return (
     <div className={`app ${showNav ? 'with-nav' : ''}`}>
+      <StudyReminder />
       <Routes>
         <Route path="/" element={needsOnboarding ? <Navigate to="/welcome" replace /> : <Home />} />
         <Route path="/welcome" element={<Welcome />} />

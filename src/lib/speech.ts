@@ -1,4 +1,4 @@
-import { ttsVolume } from './sfx';
+import { ttsVolume, voicePref } from './sfx';
 interface RecognitionResultLike {
   length: number;
   [index: number]: { transcript: string };
@@ -91,13 +91,35 @@ export function speak(text: string, slow = false, factor = 1, onEnd?: () => void
     u.lang = 'en-US';
     u.rate = (slow ? 0.72 : 0.98) * factor;
     if (onEnd) u.onend = () => onEnd();
-    const voices = window.speechSynthesis.getVoices();
-    const voice = voices.find((v) => v.lang.replace('_', '-').startsWith('en-US')) ?? voices.find((v) => v.lang.startsWith('en'));
-    if (voice) u.voice = voice;
+    const voice = pickVoice(window.speechSynthesis.getVoices());
+    if (voice) {
+      u.voice = voice;
+      u.lang = voice.lang;
+    }
     window.speechSynthesis.speak(u);
   } catch {
     /* 음성 재생 실패는 무시 */
   }
+}
+
+const FEMALE = /female|woman|girl|tpf|sfg|iog|iob|zira|aria|jenny|samantha|karen|moira|tessa|fiona|libby|sonia|ana|emma|olivia/i;
+const MALE = /male|man|tpd|iom|iol|tpc|david|mark|guy|ryan|daniel|oliver|fred|alex|george|thomas|arthur/i;
+
+/** 설정의 발음(미국식/영국식)·성별에 맞는 폰 내장 영어 음성 고르기 */
+export function pickVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | undefined {
+  const { accent, gender } = voicePref();
+  const want = accent === 'uk' ? 'en-GB' : 'en-US';
+  const norm = (v: SpeechSynthesisVoice) => v.lang.replace('_', '-');
+  let pool = voices.filter((v) => norm(v).startsWith(want));
+  if (!pool.length) pool = voices.filter((v) => norm(v).startsWith('en'));
+  if (!pool.length) return undefined;
+  if (gender !== 'random') {
+    const re = gender === 'female' ? FEMALE : MALE;
+    const other = gender === 'female' ? MALE : FEMALE;
+    const hit = pool.find((v) => re.test(v.name) && !other.test(v.name)) ?? pool.find((v) => re.test(v.name));
+    if (hit) return hit;
+  }
+  return pool[0];
 }
 
 function makeUtterance(text: string): SpeechSynthesisUtterance {

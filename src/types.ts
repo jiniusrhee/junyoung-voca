@@ -312,6 +312,15 @@ export interface Settings {
   listeningSpeed: 'real' | 'slow';
   /** 학습 화면 배경 테마 */
   studyTheme: 'sky' | 'dino';
+  /** 원어민 발음(미국식/영국식)·음성 성별: 폰에 설치된 영어 음성 중에서 고른다 */
+  voiceAccent: 'us' | 'uk';
+  voiceGender: 'random' | 'male' | 'female';
+  /** 알림: 학습 알림 시각, 방해 금지 시간 */
+  notifyStudy: boolean;
+  notifyTime: string;
+  dndOn: boolean;
+  dndFrom: string;
+  dndTo: string;
   /** 홈 메인 카드에 보이는 학습 모드 */
   homeMode: StudyMode;
   /** 연속 학습 목표(일). 없으면 다음 단계 자동 */

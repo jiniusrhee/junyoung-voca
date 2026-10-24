@@ -1,7 +1,9 @@
 import type { Settings } from '../types';
 
 let ctx: AudioContext | null = null;
-let cur: Pick<Settings, 'ttsVolume' | 'sfxVolume' | 'keySoundVolume' | 'keyVibrate' | 'streakVibrate' | 'muteStart'> = {
+let cur: Pick<Settings, 'ttsVolume' | 'sfxVolume' | 'keySoundVolume' | 'keyVibrate' | 'streakVibrate' | 'muteStart' | 'voiceAccent' | 'voiceGender'> = {
+  voiceAccent: 'us',
+  voiceGender: 'random',
   ttsVolume: 1,
   sfxVolume: 1,
   keySoundVolume: 1,
@@ -24,6 +26,10 @@ export function isMuted(): boolean {
 }
 export function setMuted(v: boolean): void {
   muted = v;
+}
+/** 원어민 발음·성별 설정 (speech.ts 가 음성을 고를 때 씀) */
+export function voicePref(): { accent: 'us' | 'uk'; gender: 'random' | 'male' | 'female' } {
+  return { accent: cur.voiceAccent ?? 'us', gender: cur.voiceGender ?? 'random' };
 }
 export function ttsVolume(): number {
   return muted ? 0 : cur.ttsVolume;
