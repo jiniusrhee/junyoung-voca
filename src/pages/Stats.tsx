@@ -33,9 +33,9 @@ export default function Stats() {
           <Icon name="list" size={26} />
           <span>{settings.nickname}</span>
         </button>
-        <span className="head-bell">
+        <button className="head-bell" onClick={() => nav('/inbox')} aria-label="알림함">
           <Icon name="bell" size={26} />
-        </span>
+        </button>
       </header>
       <nav className="stats-tabs">
         {(

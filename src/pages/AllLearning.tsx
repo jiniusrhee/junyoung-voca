@@ -58,9 +58,9 @@ export default function AllLearning() {
           <Icon name="list" size={26} />
           <span>{settings.nickname}</span>
         </button>
-        <span className="head-bell">
+        <button className="head-bell" onClick={() => nav('/inbox')} aria-label="알림함">
           <Icon name="bell" size={26} />
-        </span>
+        </button>
       </header>
 
       <h2 className="al-title">학습 모드</h2>

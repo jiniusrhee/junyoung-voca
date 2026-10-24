@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { db } from '../db';
+import { pushInbox } from '../lib/inbox';
 import { useSettings } from '../lib/settings';
 import { studyDateOf } from '../lib/time';
 
@@ -30,6 +31,7 @@ export default function StudyReminder() {
         const opts = { body: '오늘의 학습을 시작해 볼까요? 연속 학습을 이어가요.', icon: `${import.meta.env.BASE_URL}icons/icon-192.png` };
         if (reg) await reg.showNotification('준영보카', opts);
         else new Notification('준영보카', opts);
+        await pushInbox('📚 오늘 학습을 시작해 볼까요?', '정한 시각이 됐어요. 연속 학습을 이어가요.', '/');
       } catch {
         /* 알림 실패는 무시 */
       }

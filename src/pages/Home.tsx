@@ -72,23 +72,18 @@ export default function Home() {
   const met = total >= goal;
   const last7 = Array.from({ length: 7 }, (_, i) => shiftDate(today, i - 6));
 
-  const showToast = (m: string) => {
-    setToast(m);
-    window.setTimeout(() => setToast(null), 2000);
-  };
-
   return (
     <div className="screen home">
+      {toast && <div className="home-toast">{toast}</div>}
       <header className="home-head">
         <button className="head-menu" onClick={() => nav('/settings')} aria-label="설정 메뉴">
           <Icon name="list" size={26} />
           <span>{settings.nickname}</span>
         </button>
-        <button className="head-bell" onClick={() => showToast('새 알림이 없어요')} aria-label="알림">
+        <button className="head-bell" onClick={() => nav('/inbox')} aria-label="알림함">
           <Icon name="bell" size={26} />
         </button>
       </header>
-      {toast && <div className="home-toast">{toast}</div>}
 
       <StreakCard today={today} byDate={byDate} goal={settings.dailyGoal} streak={streak ?? 0} range={importedRange(imp)} target={settings.streakGoal} repaired={repaired} />
 

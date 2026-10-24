@@ -19,6 +19,7 @@ import { applyReview, newCardRow, type Outcome } from '../lib/scheduler';
 import { LevelTest, ListPicker, StudyPicker, type Question } from '../lib/session';
 import { saveSettings, useSettings } from '../lib/settings';
 import { sfx } from '../lib/sfx';
+import { pushInbox } from '../lib/inbox';
 import { canRecognize, recognizeOnce, speak, voiceErrorMessage } from '../lib/speech';
 import { answerWords, containsAnswer, evaluate, feedbackFor, fullSentence, hintPrefix, normalize, speechMatchRate } from '../lib/text';
 import { formatAfter, formatAgo, formatDuration, studyDateOf } from '../lib/time';
@@ -258,7 +259,10 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       sfx('correct');
       setPhase('answered');
       if (s.autoSpeak) speakSentence(l.q);
-      if (metNow && mode === 'study') window.setTimeout(() => setGoalReached(true), 1100);
+      if (metNow && mode === 'study') {
+        window.setTimeout(() => setGoalReached(true), 1100);
+        void pushInbox('🏆 오늘 목표 달성!', '하루 목표를 채웠어요. 추가 학습으로 더 나아가 보세요.', '/');
+      }
     },
     [mode],
   );

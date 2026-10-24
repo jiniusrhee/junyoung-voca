@@ -22,6 +22,7 @@ const ROUTES = [
   '#/stats',
   '#/streak',
   '#/measure',
+  '#/inbox',
   '#/quiz',
   '#/grammar',
   '#/listening',

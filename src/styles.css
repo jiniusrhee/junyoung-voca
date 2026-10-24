@@ -9373,3 +9373,63 @@ sup.beta.pill {
   color: #8c79f7;
   background: transparent;
 }
+
+/* 실전 회화 결과 카드: 햇살 배경 (말해보카) */
+.td-hero {
+  position: relative;
+  overflow: hidden;
+}
+.td-hero::before {
+  content: '';
+  position: absolute;
+  inset: -60%;
+  background: repeating-conic-gradient(from 0deg, rgba(255, 255, 255, 0.09) 0deg 9deg, transparent 9deg 18deg);
+  pointer-events: none;
+}
+.td-hero > * {
+  position: relative;
+}
+
+/* ================= 알림함 (말해보카) ================= */
+.inbox-list {
+  padding: 4px 16px;
+}
+.inbox-date {
+  margin: 14px 0 8px;
+  color: var(--sub);
+  font-size: 0.9rem;
+}
+.inbox-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 14px;
+  background: var(--surface);
+  text-align: left;
+  margin-bottom: 10px;
+}
+.inbox-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+}
+.inbox-title small {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.inbox-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--sub);
+  font-size: 0.9rem;
+}
+.inbox-note {
+  margin: 20px 16px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
