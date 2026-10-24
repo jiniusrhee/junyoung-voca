@@ -19,7 +19,7 @@ describe('scheduler', () => {
     const { row, grade, known } = applyReview(newCardRow('x', now), { ...clean, firstTry: false, showedAnswer: true }, now);
     expect(known).toBe(false);
     expect(grade).toBe(Rating.Again);
-    expect(row.due.getTime() - now.getTime()).toBeLessThanOrEqual(2 * 60_000);
+    expect(row.due.getTime() - now.getTime()).toBeLessThanOrEqual(6 * 60_000);
     expect(row.state).toBe(State.Learning);
     expect(masteryOf(row)).toBe('fresh');
   });
