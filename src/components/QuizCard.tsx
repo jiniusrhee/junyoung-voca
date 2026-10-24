@@ -134,16 +134,20 @@ export default function QuizCard(p: Props) {
               }
               const t = typed[seg.idx];
               const ghost = showedAnswer && target.toLowerCase().startsWith(t.toLowerCase()) ? target.slice(t.length) : '';
-              const minCh = p.blankMatchesLength ? target.length : 3;
-              // 칸은 정답 길이만큼이 기본이고, 더 길게 치면 글자에 맞춰 늘어난다 (말해보카)
-              const width = `${minCh * 0.62 + 0.9}em`;
+              // 칸 너비 = 정답 글자의 실제 너비(같은 글꼴로 숨겨서 잼). 더 길게 치면 글자에 맞춰 늘어난다 (말해보카)
+              const sizer = p.blankMatchesLength ? target : 'abc';
               // 앞 단어가 맞으면 초록으로 잠긴다
               const ok = seg.idx < active && t.toLowerCase() === target.toLowerCase();
               return (
-                <span key={i} className={`blank ${seg.idx === active ? 'active' : ''} ${ok ? 'ok' : ''}`} style={{ minWidth: width }}>
-                  <span className="typed">{ok ? target : t}</span>
-                  {p.showCaret && seg.idx === active && <span className="caret" />}
-                  {ghost && <span className="ghost">{ghost}</span>}
+                <span key={i} className={`blank ${seg.idx === active ? 'active' : ''} ${ok ? 'ok' : ''}`}>
+                  <span className="blank-size" aria-hidden="true">
+                    {sizer}
+                  </span>
+                  <span className="blank-text">
+                    <span className="typed">{ok ? target : t}</span>
+                    {p.showCaret && seg.idx === active && <span className="caret" />}
+                    {ghost && <span className="ghost">{ghost}</span>}
+                  </span>
                 </span>
               );
             })}

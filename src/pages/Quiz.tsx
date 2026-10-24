@@ -93,6 +93,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const pickerRef = useRef<StudyPicker | ListPicker | null>(null);
   const testRef = useRef<LevelTest | null>(null);
   const started = useRef(false);
+  const swipeX = useRef(0);
   const finalizing = useRef(false);
 
   const showToast = (msg: string) => {
@@ -263,6 +264,14 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     });
   };
 
+  /** 빈칸이 문장 첫머리면 첫 글자는 대문자 (말해보카: 자판도 대문자로 보임) */
+  const capNext = (() => {
+    if (!live) return false;
+    const s = sentenceOf(live.q);
+    const before = s.en.split('___')[0].trimEnd();
+    const atStart = before === '' || /[.?!]$/.test(before);
+    return atStart && live.input === '';
+  })();
   const typeChar = (c: string) => editInput((cur) => cur + c);
   /** 말해보카: 스페이스는 제출. 정답이 여러 단어면 다음 칸으로 */
   const space = () => {
@@ -428,7 +437,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         space();
       } else if (/^[a-zA-Z'-]$/.test(e.key)) {
         e.preventDefault();
-        typeChar(e.key);
+        typeChar(capNext ? e.key.toUpperCase() : e.key);
       }
     };
     window.addEventListener('keydown', h);
@@ -633,7 +642,17 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       <main className="quiz-stage">
         <div className="side-card left" />
         <div className="side-card right" />
-        <div className="card-slide" key={cardKey}>
+        <div
+          className="card-slide"
+          key={cardKey}
+          onTouchStart={(e) => {
+            swipeX.current = e.touches[0].clientX;
+          }}
+          onTouchEnd={(e) => {
+            const dx = e.changedTouches[0].clientX - swipeX.current;
+            if (phase === 'answered' && dx < -70) void loadNext();
+          }}
+        >
           <QuizCard
             word={q.word}
             sentence={sentence}
@@ -691,7 +710,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
               <span>음성 모드</span>
             </button>
           </div>
-          <Keyboard onChar={typeChar} onBackspace={backspace} onSpace={space} onEnter={submit} onSettings={() => setShowSettings(true)} />
+          <Keyboard onChar={typeChar} onBackspace={backspace} onSpace={space} onEnter={submit} onSettings={() => setShowSettings(true)} shift={capNext} />
         </div>
       ) : (
         <div className="voice-zone">

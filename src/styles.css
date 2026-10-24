@@ -8236,3 +8236,23 @@ sup.beta.pill {
   font-size: 0.78rem;
   color: #fff;
 }
+/* 빈칸: 정답 글자 너비로 재서 칸 크기를 잡고, 입력이 길면 늘어남 */
+.blank {
+  display: inline-grid;
+  grid-template-columns: 1fr;
+  padding: 0 8px;
+}
+.blank > .blank-size,
+.blank > .blank-text {
+  grid-area: 1 / 1;
+  white-space: pre;
+}
+.blank > .blank-size {
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+}
+.blank > .blank-text {
+  display: inline-block;
+  min-height: 1.5em;
+}

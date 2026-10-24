@@ -1,5 +1,6 @@
 import { useState, type PointerEvent } from 'react';
 import Icon from './Icon';
+import { useHoldRepeat } from './Keyboard';
 
 const LETTERS = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
 const NUMS = ['1234567890', '-/:;()$&@', ".,?!'"];
@@ -25,6 +26,7 @@ export default function SentenceKeyboard({ value, onChange, onEnter }: Props) {
     setManualShift(null);
   };
   const rows = nums ? NUMS : LETTERS;
+  const hold = useHoldRepeat(() => onChange(value.slice(0, -1)));
   return (
     <div className="kb sentence" role="group" aria-label="영문 자판">
       {rows.map((row, r) => (
@@ -40,7 +42,7 @@ export default function SentenceKeyboard({ value, onChange, onEnter }: Props) {
             </button>
           ))}
           {r === 2 && (
-            <button className="kb-key gray" onPointerDown={press(() => onChange(value.slice(0, -1)))} aria-label="지우기">
+            <button className="kb-key gray" {...hold} aria-label="지우기">
               <Icon name="backspace" size={22} />
             </button>
           )}
