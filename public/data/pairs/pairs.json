@@ -13,24 +13,78 @@
           "sceneA": "저기요~ 포크([f]ork) 하나만 주세요!",
           "sceneB": "네~ 돼지고기([p]ork) 한 접시 추가요! 맛있게 드세요~",
           "easy": [
-            ["fork", "pork"],
-            ["fan", "pan"],
-            ["fast", "past"],
-            ["fine", "pine"],
-            ["fool", "pool"],
-            ["fill", "pill"],
-            ["fair", "pair"],
-            ["feel", "peel"],
-            ["fat", "pat"],
-            ["face", "pace"]
+            [
+              "fork",
+              "pork"
+            ],
+            [
+              "fan",
+              "pan"
+            ],
+            [
+              "fast",
+              "past"
+            ],
+            [
+              "fine",
+              "pine"
+            ],
+            [
+              "fool",
+              "pool"
+            ],
+            [
+              "fill",
+              "pill"
+            ],
+            [
+              "fair",
+              "pair"
+            ],
+            [
+              "feel",
+              "peel"
+            ],
+            [
+              "fat",
+              "pat"
+            ],
+            [
+              "face",
+              "pace"
+            ]
           ],
           "hard": [
-            { "a": "I need a clean fork.", "b": "I need a clean pork.", "ko": "깨끗한 포크가 필요해요." },
-            { "a": "Please turn on the fan.", "b": "Please turn on the pan.", "ko": "선풍기 좀 켜 주세요." },
-            { "a": "I am fine, thank you.", "b": "I am pine, thank you.", "ko": "저 괜찮아요, 고마워요." },
-            { "a": "The fair starts at noon.", "b": "The pair starts at noon.", "ko": "축제는 정오에 시작해요." },
-            { "a": "Please feel this soft towel.", "b": "Please peel this soft towel.", "ko": "이 보들보들한 수건 좀 만져 봐." },
-            { "a": "Stop acting like a fool.", "b": "Stop acting like a pool.", "ko": "바보같이 굴지 좀 마." }
+            {
+              "a": "I need a clean fork.",
+              "b": "I need a clean pork.",
+              "ko": "깨끗한 포크가 필요해요."
+            },
+            {
+              "a": "Please turn on the fan.",
+              "b": "Please turn on the pan.",
+              "ko": "선풍기 좀 켜 주세요."
+            },
+            {
+              "a": "I am fine, thank you.",
+              "b": "I am pine, thank you.",
+              "ko": "저 괜찮아요, 고마워요."
+            },
+            {
+              "a": "The fair starts at noon.",
+              "b": "The pair starts at noon.",
+              "ko": "축제는 정오에 시작해요."
+            },
+            {
+              "a": "Please feel this soft towel.",
+              "b": "Please peel this soft towel.",
+              "ko": "이 보들보들한 수건 좀 만져 봐."
+            },
+            {
+              "a": "Stop acting like a fool.",
+              "b": "Stop acting like a pool.",
+              "ko": "바보같이 굴지 좀 마."
+            }
           ]
         },
         {
@@ -41,24 +95,78 @@
           "sceneA": "혹시 제 와이프(wi[f]e) 못 보셨어요?",
           "sceneB": "물티슈(wi[p]e)요? 테이블 위에 있어요~ 쓱쓱 닦으세요!",
           "easy": [
-            ["leaf", "leap"],
-            ["cuff", "cup"],
-            ["laugh", "lap"],
-            ["wife", "wipe"],
-            ["cliff", "clip"],
-            ["chief", "cheap"],
-            ["beef", "beep"],
-            ["puff", "pup"],
-            ["hoof", "hoop"],
-            ["sniff", "snip"]
+            [
+              "leaf",
+              "leap"
+            ],
+            [
+              "cuff",
+              "cup"
+            ],
+            [
+              "laugh",
+              "lap"
+            ],
+            [
+              "wife",
+              "wipe"
+            ],
+            [
+              "cliff",
+              "clip"
+            ],
+            [
+              "chief",
+              "cheap"
+            ],
+            [
+              "beef",
+              "beep"
+            ],
+            [
+              "puff",
+              "pup"
+            ],
+            [
+              "hoof",
+              "hoop"
+            ],
+            [
+              "sniff",
+              "snip"
+            ]
           ],
           "hard": [
-            { "a": "I ordered the beef burger.", "b": "I ordered the beep burger.", "ko": "소고기 버거 시켰어요." },
-            { "a": "My wife is at the hotel.", "b": "My wipe is at the hotel.", "ko": "제 아내는 호텔에 있어요." },
-            { "a": "A leaf fell on my head.", "b": "A leap fell on my head.", "ko": "나뭇잎이 내 머리에 툭 떨어졌어." },
-            { "a": "He is the chief cook here.", "b": "He is the cheap cook here.", "ko": "저분이 여기 주방장이에요." },
-            { "a": "Don't stand near the cliff.", "b": "Don't stand near the clip.", "ko": "절벽 가까이 서 있지 마." },
-            { "a": "The baby made me laugh.", "b": "The baby made me lap.", "ko": "아기 때문에 빵 터졌어." }
+            {
+              "a": "I ordered the beef burger.",
+              "b": "I ordered the beep burger.",
+              "ko": "소고기 버거 시켰어요."
+            },
+            {
+              "a": "My wife is at the hotel.",
+              "b": "My wipe is at the hotel.",
+              "ko": "제 아내는 호텔에 있어요."
+            },
+            {
+              "a": "A leaf fell on my head.",
+              "b": "A leap fell on my head.",
+              "ko": "나뭇잎이 내 머리에 툭 떨어졌어."
+            },
+            {
+              "a": "He is the chief cook here.",
+              "b": "He is the cheap cook here.",
+              "ko": "저분이 여기 주방장이에요."
+            },
+            {
+              "a": "Don't stand near the cliff.",
+              "b": "Don't stand near the clip.",
+              "ko": "절벽 가까이 서 있지 마."
+            },
+            {
+              "a": "The baby made me laugh.",
+              "b": "The baby made me lap.",
+              "ko": "아기 때문에 빵 터졌어."
+            }
           ]
         },
         {
@@ -69,24 +177,78 @@
           "sceneA": "이 집에서 제일 베스트([b]est) 메뉴가 뭐예요?",
           "sceneB": "조끼([v]est)요? 손님, 저희는 옷은 안 팔아요~",
           "easy": [
-            ["best", "vest"],
-            ["ban", "van"],
-            ["boat", "vote"],
-            ["berry", "very"],
-            ["bet", "vet"],
-            ["base", "vase"],
-            ["bent", "vent"],
-            ["bolt", "volt"],
-            ["curb", "curve"],
-            ["marble", "marvel"]
+            [
+              "best",
+              "vest"
+            ],
+            [
+              "ban",
+              "van"
+            ],
+            [
+              "boat",
+              "vote"
+            ],
+            [
+              "berry",
+              "very"
+            ],
+            [
+              "bet",
+              "vet"
+            ],
+            [
+              "base",
+              "vase"
+            ],
+            [
+              "bent",
+              "vent"
+            ],
+            [
+              "bolt",
+              "volt"
+            ],
+            [
+              "curb",
+              "curve"
+            ],
+            [
+              "marble",
+              "marvel"
+            ]
           ],
           "hard": [
-            { "a": "This is the best hotel in town.", "b": "This is the vest hotel in town.", "ko": "여기가 이 동네 최고의 호텔이야." },
-            { "a": "We took a boat to the island.", "b": "We took a vote to the island.", "ko": "우리는 배를 타고 섬에 갔어." },
-            { "a": "I love this berry cake.", "b": "I love this very cake.", "ko": "이 베리 케이크 완전 내 스타일이야." },
-            { "a": "The base of the lamp is broken.", "b": "The vase of the lamp is broken.", "ko": "스탠드 받침이 깨졌어요." },
-            { "a": "Let's bet on the red horse.", "b": "Let's vet on the red horse.", "ko": "빨간 말에 걸어 보자." },
-            { "a": "Stop the car at the curb.", "b": "Stop the car at the curve.", "ko": "길가 연석 앞에 차 세워 주세요." }
+            {
+              "a": "This is the best hotel in town.",
+              "b": "This is the vest hotel in town.",
+              "ko": "여기가 이 동네 최고의 호텔이야."
+            },
+            {
+              "a": "We took a boat to the island.",
+              "b": "We took a vote to the island.",
+              "ko": "우리는 배를 타고 섬에 갔어."
+            },
+            {
+              "a": "I love this berry cake.",
+              "b": "I love this very cake.",
+              "ko": "이 베리 케이크 완전 내 스타일이야."
+            },
+            {
+              "a": "The base of the lamp is broken.",
+              "b": "The vase of the lamp is broken.",
+              "ko": "스탠드 받침이 깨졌어요."
+            },
+            {
+              "a": "Let's bet on the red horse.",
+              "b": "Let's vet on the red horse.",
+              "ko": "빨간 말에 걸어 보자."
+            },
+            {
+              "a": "Stop the car at the curb.",
+              "b": "Stop the car at the curve.",
+              "ko": "길가 연석 앞에 차 세워 주세요."
+            }
           ]
         },
         {
@@ -97,24 +259,78 @@
           "sceneA": "오늘 저녁은 양고기([l]amb) 요리로 주세요!",
           "sceneB": "네~ 뿔 달린 숫양([r]am) 한 마리 통째로 나왔습니다!",
           "easy": [
-            ["light", "right"],
-            ["lice", "rice"],
-            ["lock", "rock"],
-            ["long", "wrong"],
-            ["lane", "rain"],
-            ["load", "road"],
-            ["lip", "rip"],
-            ["late", "rate"],
-            ["lamb", "ram"],
-            ["lake", "rake"]
+            [
+              "light",
+              "right"
+            ],
+            [
+              "lice",
+              "rice"
+            ],
+            [
+              "lock",
+              "rock"
+            ],
+            [
+              "long",
+              "wrong"
+            ],
+            [
+              "lane",
+              "rain"
+            ],
+            [
+              "load",
+              "road"
+            ],
+            [
+              "lip",
+              "rip"
+            ],
+            [
+              "late",
+              "rate"
+            ],
+            [
+              "lamb",
+              "ram"
+            ],
+            [
+              "lake",
+              "rake"
+            ]
           ],
           "hard": [
-            { "a": "Turn left at the next light.", "b": "Turn left at the next right.", "ko": "다음 신호등에서 왼쪽으로 도세요." },
-            { "a": "Don't forget to lock the door.", "b": "Don't forget to rock the door.", "ko": "문 잠그는 거 잊지 마." },
-            { "a": "We took the long way home.", "b": "We took the wrong way home.", "ko": "우리는 먼 길로 빙 돌아서 숙소에 왔어." },
-            { "a": "Sorry, I'm a little late.", "b": "Sorry, I'm a little rate.", "ko": "미안, 나 좀 늦었어." },
-            { "a": "Please stay in this lane.", "b": "Please stay in this rain.", "ko": "이 차선으로 계속 가 주세요." },
-            { "a": "I'd like the lamb steak.", "b": "I'd like the ram steak.", "ko": "양고기 스테이크로 할게요." }
+            {
+              "a": "Turn left at the next light.",
+              "b": "Turn left at the next right.",
+              "ko": "다음 신호등에서 왼쪽으로 도세요."
+            },
+            {
+              "a": "Don't forget to lock the door.",
+              "b": "Don't forget to rock the door.",
+              "ko": "문 잠그는 거 잊지 마."
+            },
+            {
+              "a": "We took the long way home.",
+              "b": "We took the wrong way home.",
+              "ko": "우리는 먼 길로 빙 돌아서 숙소에 왔어."
+            },
+            {
+              "a": "Sorry, I'm a little late.",
+              "b": "Sorry, I'm a little rate.",
+              "ko": "미안, 나 좀 늦었어."
+            },
+            {
+              "a": "Please stay in this lane.",
+              "b": "Please stay in this rain.",
+              "ko": "이 차선으로 계속 가 주세요."
+            },
+            {
+              "a": "I'd like the lamb steak.",
+              "b": "I'd like the ram steak.",
+              "ko": "양고기 스테이크로 할게요."
+            }
           ]
         },
         {
@@ -125,24 +341,78 @@
           "sceneA": "저 창가 자리([s]eat)로 바꿔 주실 수 있어요?",
           "sceneB": "침대 시트([sh]eet)요? 손님, 여긴 비행기인데요...?",
           "easy": [
-            ["sip", "ship"],
-            ["seat", "sheet"],
-            ["sell", "shell"],
-            ["sort", "short"],
-            ["save", "shave"],
-            ["sock", "shock"],
-            ["sue", "shoe"],
-            ["same", "shame"],
-            ["see", "she"],
-            ["sign", "shine"]
+            [
+              "sip",
+              "ship"
+            ],
+            [
+              "seat",
+              "sheet"
+            ],
+            [
+              "sell",
+              "shell"
+            ],
+            [
+              "sort",
+              "short"
+            ],
+            [
+              "save",
+              "shave"
+            ],
+            [
+              "sock",
+              "shock"
+            ],
+            [
+              "sue",
+              "shoe"
+            ],
+            [
+              "same",
+              "shame"
+            ],
+            [
+              "see",
+              "she"
+            ],
+            [
+              "sign",
+              "shine"
+            ]
           ],
           "hard": [
-            { "a": "Can I change my seat?", "b": "Can I change my sheet?", "ko": "제 자리 좀 바꿀 수 있을까요?" },
-            { "a": "I want to save some money.", "b": "I want to shave some money.", "ko": "여행 경비 좀 아끼고 싶어." },
-            { "a": "Let me take a small sip.", "b": "Let me take a small ship.", "ko": "딱 한 모금만 마셔 볼게." },
-            { "a": "They sell cute bags here.", "b": "They shell cute bags here.", "ko": "여기 귀여운 가방 팔아." },
-            { "a": "I lost one sock today.", "b": "I lost one shock today.", "ko": "오늘 양말 한 짝 잃어버렸어." },
-            { "a": "We have the same phone!", "b": "We have the shame phone!", "ko": "우리 폰 똑같네!" }
+            {
+              "a": "Can I change my seat?",
+              "b": "Can I change my sheet?",
+              "ko": "제 자리 좀 바꿀 수 있을까요?"
+            },
+            {
+              "a": "I want to save some money.",
+              "b": "I want to shave some money.",
+              "ko": "여행 경비 좀 아끼고 싶어."
+            },
+            {
+              "a": "Let me take a small sip.",
+              "b": "Let me take a small ship.",
+              "ko": "딱 한 모금만 마셔 볼게."
+            },
+            {
+              "a": "They sell cute bags here.",
+              "b": "They shell cute bags here.",
+              "ko": "여기 귀여운 가방 팔아."
+            },
+            {
+              "a": "I lost one sock today.",
+              "b": "I lost one shock today.",
+              "ko": "오늘 양말 한 짝 잃어버렸어."
+            },
+            {
+              "a": "We have the same phone!",
+              "b": "We have the shame phone!",
+              "ko": "우리 폰 똑같네!"
+            }
           ]
         },
         {
@@ -153,23 +423,74 @@
           "sceneA": "복숭아 솜털(fu[zz]) 때문에 입술이 간질간질해~",
           "sceneB": "퍼지(fu[dge]) 초콜릿? 오케이, 디저트 하나 더 시켜 줄게!",
           "easy": [
-            ["zest", "jest"],
-            ["zealous", "jealous"],
-            ["buzz", "budge"],
-            ["raise", "rage"],
-            ["pays", "page"],
-            ["ways", "wage"],
-            ["fuzz", "fudge"],
-            ["bars", "barge"],
-            ["seize", "siege"]
+            [
+              "zest",
+              "jest"
+            ],
+            [
+              "zealous",
+              "jealous"
+            ],
+            [
+              "buzz",
+              "budge"
+            ],
+            [
+              "raise",
+              "rage"
+            ],
+            [
+              "pays",
+              "page"
+            ],
+            [
+              "ways",
+              "wage"
+            ],
+            [
+              "fuzz",
+              "fudge"
+            ],
+            [
+              "bars",
+              "barge"
+            ],
+            [
+              "seize",
+              "siege"
+            ]
           ],
           "hard": [
-            { "a": "Add some lemon zest.", "b": "Add some lemon jest.", "ko": "레몬 껍질 좀 갈아 넣어 줘." },
-            { "a": "Don't be so zealous about it.", "b": "Don't be so jealous about it.", "ko": "그거에 너무 열 올리지 마." },
-            { "a": "Please raise your hand.", "b": "Please rage your hand.", "ko": "손 들어 주세요." },
-            { "a": "I heard a loud buzz.", "b": "I heard a loud budge.", "ko": "윙윙 소리가 크게 들렸어." },
-            { "a": "This peach has soft fuzz.", "b": "This peach has soft fudge.", "ko": "이 복숭아는 솜털이 보송보송해." },
-            { "a": "Mom pays for everything.", "b": "Mom page for everything.", "ko": "계산은 엄마가 다 해." }
+            {
+              "a": "Add some lemon zest.",
+              "b": "Add some lemon jest.",
+              "ko": "레몬 껍질 좀 갈아 넣어 줘."
+            },
+            {
+              "a": "Don't be so zealous about it.",
+              "b": "Don't be so jealous about it.",
+              "ko": "그거에 너무 열 올리지 마."
+            },
+            {
+              "a": "Please raise your hand.",
+              "b": "Please rage your hand.",
+              "ko": "손 들어 주세요."
+            },
+            {
+              "a": "I heard a loud buzz.",
+              "b": "I heard a loud budge.",
+              "ko": "윙윙 소리가 크게 들렸어."
+            },
+            {
+              "a": "This peach has soft fuzz.",
+              "b": "This peach has soft fudge.",
+              "ko": "이 복숭아는 솜털이 보송보송해."
+            },
+            {
+              "a": "Mom pays for everything.",
+              "b": "Mom page for everything.",
+              "ko": "계산은 엄마가 다 해."
+            }
           ]
         }
       ]
@@ -187,24 +508,78 @@
           "sceneA": "니니야, 유리잔(g[l]ass)에 물 좀 따라 줄래?",
           "sceneB": "잔디(g[r]ass)에요? 지금 정원에 물 주라는 거죠? 다녀올게요!",
           "easy": [
-            ["collect", "correct"],
-            ["glass", "grass"],
-            ["fly", "fry"],
-            ["play", "pray"],
-            ["cloud", "crowd"],
-            ["belly", "berry"],
-            ["alive", "arrive"],
-            ["flute", "fruit"],
-            ["glow", "grow"],
-            ["climb", "crime"]
+            [
+              "collect",
+              "correct"
+            ],
+            [
+              "glass",
+              "grass"
+            ],
+            [
+              "fly",
+              "fry"
+            ],
+            [
+              "play",
+              "pray"
+            ],
+            [
+              "cloud",
+              "crowd"
+            ],
+            [
+              "belly",
+              "berry"
+            ],
+            [
+              "alive",
+              "arrive"
+            ],
+            [
+              "flute",
+              "fruit"
+            ],
+            [
+              "glow",
+              "grow"
+            ],
+            [
+              "climb",
+              "crime"
+            ]
           ],
           "hard": [
-            { "a": "Can I have a glass of water?", "b": "Can I have a grass of water?", "ko": "물 한 잔 마셔도 돼요?" },
-            { "a": "I want to fly to Paris.", "b": "I want to fry to Paris.", "ko": "파리로 훨훨 날아가고 싶어." },
-            { "a": "The kids play after dinner.", "b": "The kids pray after dinner.", "ko": "애들은 저녁 먹고 나서 놀아." },
-            { "a": "There is a big cloud outside.", "b": "There is a big crowd outside.", "ko": "밖에 커다란 구름이 떠 있어." },
-            { "a": "My belly is so full.", "b": "My berry is so full.", "ko": "배가 너무 불러." },
-            { "a": "We will collect the tickets.", "b": "We will correct the tickets.", "ko": "표는 저희가 걷을게요." }
+            {
+              "a": "Can I have a glass of water?",
+              "b": "Can I have a grass of water?",
+              "ko": "물 한 잔 마셔도 돼요?"
+            },
+            {
+              "a": "I want to fly to Paris.",
+              "b": "I want to fry to Paris.",
+              "ko": "파리로 훨훨 날아가고 싶어."
+            },
+            {
+              "a": "The kids play after dinner.",
+              "b": "The kids pray after dinner.",
+              "ko": "애들은 저녁 먹고 나서 놀아."
+            },
+            {
+              "a": "There is a big cloud outside.",
+              "b": "There is a big crowd outside.",
+              "ko": "밖에 커다란 구름이 떠 있어."
+            },
+            {
+              "a": "My belly is so full.",
+              "b": "My berry is so full.",
+              "ko": "배가 너무 불러."
+            },
+            {
+              "a": "We will collect the tickets.",
+              "b": "We will correct the tickets.",
+              "ko": "표는 저희가 걷을게요."
+            }
           ]
         },
         {
@@ -215,24 +590,78 @@
           "sceneA": "아주머니, 저 지금 생각하는([th]ink) 중이에요.",
           "sceneB": "싱크대([s]ink)? 설거지하겠다고? 어머, 기특해라~",
           "easy": [
-            ["think", "sink"],
-            ["thick", "sick"],
-            ["thumb", "sum"],
-            ["thing", "sing"],
-            ["thank", "sank"],
-            ["mouth", "mouse"],
-            ["path", "pass"],
-            ["faith", "face"],
-            ["thin", "sin"],
-            ["theme", "seem"]
+            [
+              "think",
+              "sink"
+            ],
+            [
+              "thick",
+              "sick"
+            ],
+            [
+              "thumb",
+              "sum"
+            ],
+            [
+              "thing",
+              "sing"
+            ],
+            [
+              "thank",
+              "sank"
+            ],
+            [
+              "mouth",
+              "mouse"
+            ],
+            [
+              "path",
+              "pass"
+            ],
+            [
+              "faith",
+              "face"
+            ],
+            [
+              "thin",
+              "sin"
+            ],
+            [
+              "theme",
+              "seem"
+            ]
           ],
           "hard": [
-            { "a": "I think it's a good idea.", "b": "I sink it's a good idea.", "ko": "좋은 생각인 것 같아요." },
-            { "a": "This soup is too thick.", "b": "This soup is too sick.", "ko": "이 수프 너무 걸쭉해요." },
-            { "a": "Thank you for the dinner.", "b": "Sank you for the dinner.", "ko": "저녁 잘 먹었어요, 감사해요." },
-            { "a": "I hurt my thumb.", "b": "I hurt my sum.", "ko": "엄지손가락을 다쳤어." },
-            { "a": "Open your mouth, please.", "b": "Open your mouse, please.", "ko": "입 좀 크게 벌려 볼래?" },
-            { "a": "Follow this path to the park.", "b": "Follow this pass to the park.", "ko": "이 길 따라가면 공원이야." }
+            {
+              "a": "I think it's a good idea.",
+              "b": "I sink it's a good idea.",
+              "ko": "좋은 생각인 것 같아요."
+            },
+            {
+              "a": "This soup is too thick.",
+              "b": "This soup is too sick.",
+              "ko": "이 수프 너무 걸쭉해요."
+            },
+            {
+              "a": "Thank you for the dinner.",
+              "b": "Sank you for the dinner.",
+              "ko": "저녁 잘 먹었어요, 감사해요."
+            },
+            {
+              "a": "I hurt my thumb.",
+              "b": "I hurt my sum.",
+              "ko": "엄지손가락을 다쳤어."
+            },
+            {
+              "a": "Open your mouth, please.",
+              "b": "Open your mouse, please.",
+              "ko": "입 좀 크게 벌려 볼래?"
+            },
+            {
+              "a": "Follow this path to the park.",
+              "b": "Follow this pass to the park.",
+              "ko": "이 길 따라가면 공원이야."
+            }
           ]
         },
         {
@@ -243,24 +672,78 @@
           "sceneA": "우리 아빠(fa[th]er)는 요리를 진짜 잘해!",
           "sceneB": "가축 사료(fo[dd]er)가 요리를 한다고?! 영국 대박...",
           "easy": [
-            ["they", "day"],
-            ["then", "den"],
-            ["though", "dough"],
-            ["there", "dare"],
-            ["those", "doze"],
-            ["breathe", "breed"],
-            ["lather", "ladder"],
-            ["other", "udder"],
-            ["worthy", "wordy"],
-            ["father", "fodder"]
+            [
+              "they",
+              "day"
+            ],
+            [
+              "then",
+              "den"
+            ],
+            [
+              "though",
+              "dough"
+            ],
+            [
+              "there",
+              "dare"
+            ],
+            [
+              "those",
+              "doze"
+            ],
+            [
+              "breathe",
+              "breed"
+            ],
+            [
+              "lather",
+              "ladder"
+            ],
+            [
+              "other",
+              "udder"
+            ],
+            [
+              "worthy",
+              "wordy"
+            ],
+            [
+              "father",
+              "fodder"
+            ]
           ],
           "hard": [
-            { "a": "They are coming tonight.", "b": "Day are coming tonight.", "ko": "걔네 오늘 밤에 와." },
-            { "a": "See you then, okay?", "b": "See you den, okay?", "ko": "그때 보자, 알았지?" },
-            { "a": "My father loves fresh bread.", "b": "My fodder loves fresh bread.", "ko": "우리 아빠는 갓 구운 빵을 엄청 좋아해." },
-            { "a": "Breathe slowly and relax.", "b": "Breed slowly and relax.", "ko": "천천히 숨 쉬고 긴장 풀어." },
-            { "a": "Put the book over there.", "b": "Put the book over dare.", "ko": "책은 저쪽에 둬." },
-            { "a": "I like those cookies.", "b": "I like doze cookies.", "ko": "나 저 쿠키들 좋아해." }
+            {
+              "a": "They are coming tonight.",
+              "b": "Day are coming tonight.",
+              "ko": "걔네 오늘 밤에 와."
+            },
+            {
+              "a": "See you then, okay?",
+              "b": "See you den, okay?",
+              "ko": "그때 보자, 알았지?"
+            },
+            {
+              "a": "My father loves fresh bread.",
+              "b": "My fodder loves fresh bread.",
+              "ko": "우리 아빠는 갓 구운 빵을 엄청 좋아해."
+            },
+            {
+              "a": "Breathe slowly and relax.",
+              "b": "Breed slowly and relax.",
+              "ko": "천천히 숨 쉬고 긴장 풀어."
+            },
+            {
+              "a": "Put the book over there.",
+              "b": "Put the book over dare.",
+              "ko": "책은 저쪽에 둬."
+            },
+            {
+              "a": "I like those cookies.",
+              "b": "I like doze cookies.",
+              "ko": "나 저 쿠키들 좋아해."
+            }
           ]
         },
         {
@@ -271,24 +754,78 @@
           "sceneA": "저 한국에서 배(sh[i]p) 타고 왔어요!",
           "sceneB": "양(sh[ee]p)을 타고 바다를 건넜다고?! 니니 대단하다~",
           "easy": [
-            ["ship", "sheep"],
-            ["sit", "seat"],
-            ["bit", "beat"],
-            ["fill", "feel"],
-            ["hit", "heat"],
-            ["bin", "bean"],
-            ["chip", "cheap"],
-            ["rich", "reach"],
-            ["slip", "sleep"],
-            ["fit", "feet"]
+            [
+              "ship",
+              "sheep"
+            ],
+            [
+              "sit",
+              "seat"
+            ],
+            [
+              "bit",
+              "beat"
+            ],
+            [
+              "fill",
+              "feel"
+            ],
+            [
+              "hit",
+              "heat"
+            ],
+            [
+              "bin",
+              "bean"
+            ],
+            [
+              "chip",
+              "cheap"
+            ],
+            [
+              "rich",
+              "reach"
+            ],
+            [
+              "slip",
+              "sleep"
+            ],
+            [
+              "fit",
+              "feet"
+            ]
           ],
           "hard": [
-            { "a": "We came here by ship.", "b": "We came here by sheep.", "ko": "우리는 배 타고 여기 왔어." },
-            { "a": "Can I sit next to you?", "b": "Can I seat next to you?", "ko": "옆에 앉아도 돼?" },
-            { "a": "I live in London now.", "b": "I leave in London now.", "ko": "나 이제 런던에 살아." },
-            { "a": "Don't slip on the ice.", "b": "Don't sleep on the ice.", "ko": "빙판길에서 미끄러지지 마." },
-            { "a": "These shoes fit well.", "b": "These shoes feet well.", "ko": "이 신발 딱 맞아." },
-            { "a": "Put it in the bin.", "b": "Put it in the bean.", "ko": "그거 쓰레기통에 넣어 줘." }
+            {
+              "a": "We came here by ship.",
+              "b": "We came here by sheep.",
+              "ko": "우리는 배 타고 여기 왔어."
+            },
+            {
+              "a": "Can I sit next to you?",
+              "b": "Can I seat next to you?",
+              "ko": "옆에 앉아도 돼?"
+            },
+            {
+              "a": "I live in London now.",
+              "b": "I leave in London now.",
+              "ko": "나 이제 런던에 살아."
+            },
+            {
+              "a": "Don't slip on the ice.",
+              "b": "Don't sleep on the ice.",
+              "ko": "빙판길에서 미끄러지지 마."
+            },
+            {
+              "a": "These shoes fit well.",
+              "b": "These shoes feet well.",
+              "ko": "이 신발 딱 맞아."
+            },
+            {
+              "a": "Put it in the bin.",
+              "b": "Put it in the bean.",
+              "ko": "그거 쓰레기통에 넣어 줘."
+            }
           ]
         },
         {
@@ -299,24 +836,78 @@
           "sceneA": "니니야, 펜(p[e]n) 좀 빌려줄래?",
           "sceneB": "프라이팬(p[a]n)이요? 숙제를 요리로 하시게요?",
           "easy": [
-            ["bed", "bad"],
-            ["pen", "pan"],
-            ["men", "man"],
-            ["said", "sad"],
-            ["met", "mat"],
-            ["beg", "bag"],
-            ["head", "had"],
-            ["send", "sand"],
-            ["set", "sat"],
-            ["lend", "land"]
+            [
+              "bed",
+              "bad"
+            ],
+            [
+              "pen",
+              "pan"
+            ],
+            [
+              "men",
+              "man"
+            ],
+            [
+              "said",
+              "sad"
+            ],
+            [
+              "met",
+              "mat"
+            ],
+            [
+              "beg",
+              "bag"
+            ],
+            [
+              "head",
+              "had"
+            ],
+            [
+              "send",
+              "sand"
+            ],
+            [
+              "set",
+              "sat"
+            ],
+            [
+              "lend",
+              "land"
+            ]
           ],
           "hard": [
-            { "a": "I need a pen for school.", "b": "I need a pan for school.", "ko": "학교 갈 때 펜이 필요해." },
-            { "a": "I want to go to bed.", "b": "I want to go to bad.", "ko": "이제 자러 가고 싶어." },
-            { "a": "Can you lend me five pounds?", "b": "Can you land me five pounds?", "ko": "5파운드만 빌려줄 수 있어?" },
-            { "a": "Please send me a picture.", "b": "Please sand me a picture.", "ko": "사진 한 장 보내 줘." },
-            { "a": "My head hurts a lot.", "b": "My had hurts a lot.", "ko": "머리가 엄청 아파." },
-            { "a": "I met him yesterday.", "b": "I mat him yesterday.", "ko": "어제 그 사람 만났어." }
+            {
+              "a": "I need a pen for school.",
+              "b": "I need a pan for school.",
+              "ko": "학교 갈 때 펜이 필요해."
+            },
+            {
+              "a": "I want to go to bed.",
+              "b": "I want to go to bad.",
+              "ko": "이제 자러 가고 싶어."
+            },
+            {
+              "a": "Can you lend me five pounds?",
+              "b": "Can you land me five pounds?",
+              "ko": "5파운드만 빌려줄 수 있어?"
+            },
+            {
+              "a": "Please send me a picture.",
+              "b": "Please sand me a picture.",
+              "ko": "사진 한 장 보내 줘."
+            },
+            {
+              "a": "My head hurts a lot.",
+              "b": "My had hurts a lot.",
+              "ko": "머리가 엄청 아파."
+            },
+            {
+              "a": "I met him yesterday.",
+              "b": "I mat him yesterday.",
+              "ko": "어제 그 사람 만났어."
+            }
           ]
         },
         {
@@ -327,24 +918,78 @@
           "sceneA": "아주머니! 저 시장에서 이거 샀어요(g[o]t)!",
           "sceneB": "염소(g[oa]t)를 샀다고?! 우리 집 마당에서 키우게?",
           "easy": [
-            ["not", "note"],
-            ["cot", "coat"],
-            ["got", "goat"],
-            ["rod", "road"],
-            ["hop", "hope"],
-            ["cost", "coast"],
-            ["rob", "robe"],
-            ["sock", "soak"],
-            ["clock", "cloak"],
-            ["on", "own"]
+            [
+              "not",
+              "note"
+            ],
+            [
+              "cot",
+              "coat"
+            ],
+            [
+              "got",
+              "goat"
+            ],
+            [
+              "rod",
+              "road"
+            ],
+            [
+              "hop",
+              "hope"
+            ],
+            [
+              "cost",
+              "coast"
+            ],
+            [
+              "rob",
+              "robe"
+            ],
+            [
+              "sock",
+              "soak"
+            ],
+            [
+              "clock",
+              "cloak"
+            ],
+            [
+              "on",
+              "own"
+            ]
           ],
           "hard": [
-            { "a": "I got a new phone.", "b": "I goat a new phone.", "ko": "나 새 폰 생겼어." },
-            { "a": "That is not a problem.", "b": "That is note a problem.", "ko": "그건 문제 될 거 없어." },
-            { "a": "How much does it cost?", "b": "How much does it coast?", "ko": "이거 얼마예요?" },
-            { "a": "Don't hop on the bed.", "b": "Don't hope on the bed.", "ko": "침대 위에서 깡충깡충 뛰지 마." },
-            { "a": "The baby is in the cot.", "b": "The baby is in the coat.", "ko": "아기는 아기 침대에 있어." },
-            { "a": "I bought a fishing rod.", "b": "I bought a fishing road.", "ko": "나 낚싯대 샀어." }
+            {
+              "a": "I got a new phone.",
+              "b": "I goat a new phone.",
+              "ko": "나 새 폰 생겼어."
+            },
+            {
+              "a": "That is not a problem.",
+              "b": "That is note a problem.",
+              "ko": "그건 문제 될 거 없어."
+            },
+            {
+              "a": "How much does it cost?",
+              "b": "How much does it coast?",
+              "ko": "이거 얼마예요?"
+            },
+            {
+              "a": "Don't hop on the bed.",
+              "b": "Don't hope on the bed.",
+              "ko": "침대 위에서 깡충깡충 뛰지 마."
+            },
+            {
+              "a": "The baby is in the cot.",
+              "b": "The baby is in the coat.",
+              "ko": "아기는 아기 침대에 있어."
+            },
+            {
+              "a": "I bought a fishing rod.",
+              "b": "I bought a fishing road.",
+              "ko": "나 낚싯대 샀어."
+            }
           ]
         }
       ]
@@ -362,24 +1007,78 @@
           "sceneA": "할로윈 마녀([w]itch) 라떼 하나 주세요~",
           "sceneB": "가려움([i]tch) 라떼요...? 손님, 그런 메뉴는 없는데요?!",
           "easy": [
-            ["wear", "air"],
-            ["weight", "eight"],
-            ["win", "in"],
-            ["will", "ill"],
-            ["wall", "all"],
-            ["wage", "age"],
-            ["wheat", "eat"],
-            ["wise", "eyes"],
-            ["woke", "oak"],
-            ["witch", "itch"]
+            [
+              "wear",
+              "air"
+            ],
+            [
+              "weight",
+              "eight"
+            ],
+            [
+              "win",
+              "in"
+            ],
+            [
+              "will",
+              "ill"
+            ],
+            [
+              "wall",
+              "all"
+            ],
+            [
+              "wage",
+              "age"
+            ],
+            [
+              "wheat",
+              "eat"
+            ],
+            [
+              "wise",
+              "eyes"
+            ],
+            [
+              "woke",
+              "oak"
+            ],
+            [
+              "witch",
+              "itch"
+            ]
           ],
           "hard": [
-            { "a": "What should I wear today?", "b": "What should I air today?", "ko": "오늘 뭐 입지?" },
-            { "a": "I lost some weight!", "b": "I lost some eight!", "ko": "나 살 좀 빠졌어!" },
-            { "a": "I hope we win today.", "b": "I hope we in today.", "ko": "오늘 우리가 이겼으면 좋겠다." },
-            { "a": "He will be here soon.", "b": "He ill be here soon.", "ko": "그 사람 곧 올 거야." },
-            { "a": "I woke up at six.", "b": "I oak up at six.", "ko": "나 6시에 일어났어." },
-            { "a": "Hang the picture on the wall.", "b": "Hang the picture on the all.", "ko": "그림은 벽에 걸어 줘." }
+            {
+              "a": "What should I wear today?",
+              "b": "What should I air today?",
+              "ko": "오늘 뭐 입지?"
+            },
+            {
+              "a": "I lost some weight!",
+              "b": "I lost some eight!",
+              "ko": "나 살 좀 빠졌어!"
+            },
+            {
+              "a": "I hope we win today.",
+              "b": "I hope we in today.",
+              "ko": "오늘 우리가 이겼으면 좋겠다."
+            },
+            {
+              "a": "He will be here soon.",
+              "b": "He ill be here soon.",
+              "ko": "그 사람 곧 올 거야."
+            },
+            {
+              "a": "I woke up at six.",
+              "b": "I oak up at six.",
+              "ko": "나 6시에 일어났어."
+            },
+            {
+              "a": "Hang the picture on the wall.",
+              "b": "Hang the picture on the all.",
+              "ko": "그림은 벽에 걸어 줘."
+            }
           ]
         },
         {
@@ -390,23 +1089,74 @@
           "sceneA": "라떼 컵 가득(f[u]ll) 채워 주세요!",
           "sceneB": "바보(f[oo]l)...요? 손님, 저 바보 아닌데요?!",
           "easy": [
-            ["full", "fool"],
-            ["pull", "pool"],
-            ["soot", "suit"],
-            ["stood", "stewed"],
-            ["nook", "nuke"],
-            ["should", "shooed"],
-            ["could", "cooed"],
-            ["hood", "who'd"],
-            ["would", "wooed"]
+            [
+              "full",
+              "fool"
+            ],
+            [
+              "pull",
+              "pool"
+            ],
+            [
+              "soot",
+              "suit"
+            ],
+            [
+              "stood",
+              "stewed"
+            ],
+            [
+              "nook",
+              "nuke"
+            ],
+            [
+              "should",
+              "shooed"
+            ],
+            [
+              "could",
+              "cooed"
+            ],
+            [
+              "hood",
+              "who'd"
+            ],
+            [
+              "would",
+              "wooed"
+            ]
           ],
           "hard": [
-            { "a": "The cup is full.", "b": "The cup is fool.", "ko": "컵이 꽉 찼어." },
-            { "a": "Pull the door to open it.", "b": "Pool the door to open it.", "ko": "문은 당겨서 열어." },
-            { "a": "He stood by the window.", "b": "He stewed by the window.", "ko": "그 사람은 창가에 서 있었어." },
-            { "a": "There was soot on his face.", "b": "There was suit on his face.", "ko": "그 사람 얼굴에 검댕이 묻어 있었어." },
-            { "a": "Let's read in this cozy nook.", "b": "Let's read in this cozy nuke.", "ko": "이 아늑한 구석에서 책 읽자." },
-            { "a": "Put on your hood, it's raining.", "b": "Put on your who'd, it's raining.", "ko": "모자 써, 비 온다." }
+            {
+              "a": "The cup is full.",
+              "b": "The cup is fool.",
+              "ko": "컵이 꽉 찼어."
+            },
+            {
+              "a": "Pull the door to open it.",
+              "b": "Pool the door to open it.",
+              "ko": "문은 당겨서 열어."
+            },
+            {
+              "a": "He stood by the window.",
+              "b": "He stewed by the window.",
+              "ko": "그 사람은 창가에 서 있었어."
+            },
+            {
+              "a": "There was soot on his face.",
+              "b": "There was suit on his face.",
+              "ko": "그 사람 얼굴에 검댕이 묻어 있었어."
+            },
+            {
+              "a": "Let's read in this cozy nook.",
+              "b": "Let's read in this cozy nuke.",
+              "ko": "이 아늑한 구석에서 책 읽자."
+            },
+            {
+              "a": "Put on your hood, it's raining.",
+              "b": "Put on your who'd, it's raining.",
+              "ko": "모자 써, 비 온다."
+            }
           ]
         },
         {
@@ -417,23 +1167,74 @@
           "sceneA": "손님, 커피 저어(st[ir]) 드릴까요?",
           "sceneB": "별(st[ar])을 준다고요? 이 카페 서비스 미쳤다~",
           "easy": [
-            ["bird", "bard"],
-            ["heard", "hard"],
-            ["firm", "farm"],
-            ["hurt", "heart"],
-            ["burn", "barn"],
-            ["fur", "far"],
-            ["stir", "star"],
-            ["curb", "carb"],
-            ["dirt", "dart"]
+            [
+              "bird",
+              "bard"
+            ],
+            [
+              "heard",
+              "hard"
+            ],
+            [
+              "firm",
+              "farm"
+            ],
+            [
+              "hurt",
+              "heart"
+            ],
+            [
+              "burn",
+              "barn"
+            ],
+            [
+              "fur",
+              "far"
+            ],
+            [
+              "stir",
+              "star"
+            ],
+            [
+              "curb",
+              "carb"
+            ],
+            [
+              "dirt",
+              "dart"
+            ]
           ],
           "hard": [
-            { "a": "Please stir my coffee.", "b": "Please star my coffee.", "ko": "제 커피 좀 저어 주세요." },
-            { "a": "I heard a strange noise.", "b": "I hard a strange noise.", "ko": "이상한 소리 들었어." },
-            { "a": "Did you hurt your hand?", "b": "Did you heart your hand?", "ko": "손 다쳤어?" },
-            { "a": "Don't burn the toast!", "b": "Don't barn the toast!", "ko": "토스트 태우지 마!" },
-            { "a": "A little bird sang outside.", "b": "A little bard sang outside.", "ko": "작은 새가 밖에서 노래했어." },
-            { "a": "My shoes are full of dirt.", "b": "My shoes are full of dart.", "ko": "신발에 흙이 잔뜩 묻었어." }
+            {
+              "a": "Please stir my coffee.",
+              "b": "Please star my coffee.",
+              "ko": "제 커피 좀 저어 주세요."
+            },
+            {
+              "a": "I heard a strange noise.",
+              "b": "I hard a strange noise.",
+              "ko": "이상한 소리 들었어."
+            },
+            {
+              "a": "Did you hurt your hand?",
+              "b": "Did you heart your hand?",
+              "ko": "손 다쳤어?"
+            },
+            {
+              "a": "Don't burn the toast!",
+              "b": "Don't barn the toast!",
+              "ko": "토스트 태우지 마!"
+            },
+            {
+              "a": "A little bird sang outside.",
+              "b": "A little bard sang outside.",
+              "ko": "작은 새가 밖에서 노래했어."
+            },
+            {
+              "a": "My shoes are full of dirt.",
+              "b": "My shoes are full of dart.",
+              "ko": "신발에 흙이 잔뜩 묻었어."
+            }
           ]
         },
         {
@@ -444,24 +1245,78 @@
           "sceneA": "계산은 카드(car[d])로 할게요.",
           "sceneB": "카트(car[t])로요? 장바구니째 드리면 될까요...?",
           "easy": [
-            ["bed", "bet"],
-            ["bad", "bat"],
-            ["need", "neat"],
-            ["card", "cart"],
-            ["ride", "right"],
-            ["seed", "seat"],
-            ["code", "coat"],
-            ["hid", "hit"],
-            ["side", "sight"],
-            ["feed", "feet"]
+            [
+              "bed",
+              "bet"
+            ],
+            [
+              "bad",
+              "bat"
+            ],
+            [
+              "need",
+              "neat"
+            ],
+            [
+              "card",
+              "cart"
+            ],
+            [
+              "ride",
+              "right"
+            ],
+            [
+              "seed",
+              "seat"
+            ],
+            [
+              "code",
+              "coat"
+            ],
+            [
+              "hid",
+              "hit"
+            ],
+            [
+              "side",
+              "sight"
+            ],
+            [
+              "feed",
+              "feet"
+            ]
           ],
           "hard": [
-            { "a": "Can I pay by card?", "b": "Can I pay by cart?", "ko": "카드로 계산해도 돼요?" },
-            { "a": "I need some sugar, please.", "b": "I neat some sugar, please.", "ko": "설탕 좀 주세요." },
-            { "a": "Let's ride a bike today.", "b": "Let's right a bike today.", "ko": "오늘 자전거 타자." },
-            { "a": "The cat hid under the table.", "b": "The cat hit under the table.", "ko": "고양이가 탁자 밑에 숨었어." },
-            { "a": "Don't forget to feed the dog.", "b": "Don't forget to feet the dog.", "ko": "강아지 밥 주는 거 잊지 마." },
-            { "a": "Type in the secret code.", "b": "Type in the secret coat.", "ko": "비밀번호를 입력해." }
+            {
+              "a": "Can I pay by card?",
+              "b": "Can I pay by cart?",
+              "ko": "카드로 계산해도 돼요?"
+            },
+            {
+              "a": "I need some sugar, please.",
+              "b": "I neat some sugar, please.",
+              "ko": "설탕 좀 주세요."
+            },
+            {
+              "a": "Let's ride a bike today.",
+              "b": "Let's right a bike today.",
+              "ko": "오늘 자전거 타자."
+            },
+            {
+              "a": "The cat hid under the table.",
+              "b": "The cat hit under the table.",
+              "ko": "고양이가 탁자 밑에 숨었어."
+            },
+            {
+              "a": "Don't forget to feed the dog.",
+              "b": "Don't forget to feet the dog.",
+              "ko": "강아지 밥 주는 거 잊지 마."
+            },
+            {
+              "a": "Type in the secret code.",
+              "b": "Type in the secret coat.",
+              "ko": "비밀번호를 입력해."
+            }
           ]
         },
         {
@@ -472,24 +1327,78 @@
           "sceneA": "이 머그컵 가격(pri[c]e)이 얼마예요?",
           "sceneB": "경품(pri[z]e)이요? 축하드려요, 손님 당첨이에요!",
           "easy": [
-            ["bus", "buzz"],
-            ["peace", "peas"],
-            ["place", "plays"],
-            ["price", "prize"],
-            ["rice", "rise"],
-            ["loose", "lose"],
-            ["ice", "eyes"],
-            ["race", "raise"],
-            ["niece", "knees"],
-            ["advice", "advise"]
+            [
+              "bus",
+              "buzz"
+            ],
+            [
+              "peace",
+              "peas"
+            ],
+            [
+              "place",
+              "plays"
+            ],
+            [
+              "price",
+              "prize"
+            ],
+            [
+              "rice",
+              "rise"
+            ],
+            [
+              "loose",
+              "lose"
+            ],
+            [
+              "ice",
+              "eyes"
+            ],
+            [
+              "race",
+              "raise"
+            ],
+            [
+              "niece",
+              "knees"
+            ],
+            [
+              "advice",
+              "advise"
+            ]
           ],
           "hard": [
-            { "a": "What is the price?", "b": "What is the prize?", "ko": "가격이 얼마예요?" },
-            { "a": "I want some peace, please.", "b": "I want some peas, please.", "ko": "나 좀 조용히 쉬고 싶어." },
-            { "a": "Put some ice on it.", "b": "Put some eyes on it.", "ko": "거기에 얼음 좀 올려 놔." },
-            { "a": "My jeans are too loose.", "b": "My jeans are too lose.", "ko": "청바지가 너무 헐렁해." },
-            { "a": "We missed the bus again.", "b": "We missed the buzz again.", "ko": "우리 또 버스 놓쳤어." },
-            { "a": "Let's race to the door!", "b": "Let's raise to the door!", "ko": "문까지 달리기 시합하자!" }
+            {
+              "a": "What is the price?",
+              "b": "What is the prize?",
+              "ko": "가격이 얼마예요?"
+            },
+            {
+              "a": "I want some peace, please.",
+              "b": "I want some peas, please.",
+              "ko": "나 좀 조용히 쉬고 싶어."
+            },
+            {
+              "a": "Put some ice on it.",
+              "b": "Put some eyes on it.",
+              "ko": "거기에 얼음 좀 올려 놔."
+            },
+            {
+              "a": "My jeans are too loose.",
+              "b": "My jeans are too lose.",
+              "ko": "청바지가 너무 헐렁해."
+            },
+            {
+              "a": "We missed the bus again.",
+              "b": "We missed the buzz again.",
+              "ko": "우리 또 버스 놓쳤어."
+            },
+            {
+              "a": "Let's race to the door!",
+              "b": "Let's raise to the door!",
+              "ko": "문까지 달리기 시합하자!"
+            }
           ]
         },
         {
@@ -500,24 +1409,78 @@
           "sceneA": "베이글에 치즈([ch]eese) 듬뿍 올려 주세요!",
           "sceneB": "나무([tr]ees)요? 베이글에 나무를 심어 달라고요...?",
           "easy": [
-            ["chain", "train"],
-            ["chip", "trip"],
-            ["cheese", "trees"],
-            ["chew", "true"],
-            ["chick", "trick"],
-            ["cheat", "treat"],
-            ["chunk", "trunk"],
-            ["chap", "trap"],
-            ["chance", "trance"],
-            ["chuck", "truck"]
+            [
+              "chain",
+              "train"
+            ],
+            [
+              "chip",
+              "trip"
+            ],
+            [
+              "cheese",
+              "trees"
+            ],
+            [
+              "chew",
+              "true"
+            ],
+            [
+              "chick",
+              "trick"
+            ],
+            [
+              "cheat",
+              "treat"
+            ],
+            [
+              "chunk",
+              "trunk"
+            ],
+            [
+              "chap",
+              "trap"
+            ],
+            [
+              "chance",
+              "trance"
+            ],
+            [
+              "chuck",
+              "truck"
+            ]
           ],
           "hard": [
-            { "a": "I'd like extra cheese, please.", "b": "I'd like extra trees, please.", "ko": "치즈 추가해 주세요." },
-            { "a": "The dog pulled on its chain.", "b": "The dog pulled on its train.", "ko": "강아지가 목줄을 잡아당겼어." },
-            { "a": "I ate a potato chip.", "b": "I ate a potato trip.", "ko": "감자칩 하나 먹었어." },
-            { "a": "Don't cheat on the test.", "b": "Don't treat on the test.", "ko": "시험 볼 때 커닝하지 마." },
-            { "a": "Chew your food slowly.", "b": "True your food slowly.", "ko": "음식은 천천히 꼭꼭 씹어 먹어." },
-            { "a": "The chick is so cute!", "b": "The trick is so cute!", "ko": "병아리 진짜 귀엽다!" }
+            {
+              "a": "I'd like extra cheese, please.",
+              "b": "I'd like extra trees, please.",
+              "ko": "치즈 추가해 주세요."
+            },
+            {
+              "a": "The dog pulled on its chain.",
+              "b": "The dog pulled on its train.",
+              "ko": "강아지가 목줄을 잡아당겼어."
+            },
+            {
+              "a": "I ate a potato chip.",
+              "b": "I ate a potato trip.",
+              "ko": "감자칩 하나 먹었어."
+            },
+            {
+              "a": "Don't cheat on the test.",
+              "b": "Don't treat on the test.",
+              "ko": "시험 볼 때 커닝하지 마."
+            },
+            {
+              "a": "Chew your food slowly.",
+              "b": "True your food slowly.",
+              "ko": "음식은 천천히 꼭꼭 씹어 먹어."
+            },
+            {
+              "a": "The chick is so cute!",
+              "b": "The trick is so cute!",
+              "ko": "병아리 진짜 귀엽다!"
+            }
           ]
         }
       ]
@@ -535,23 +1498,74 @@
           "sceneA": "니니 씨, 다음 출장지는 사막([DE]sert)이에요.",
           "sceneB": "디저트(des[SERT]) 출장이요?! 저 진짜 열심히 할게요!",
           "easy": [
-            ["desert", "dessert"],
-            ["insight", "incite"],
-            ["personal", "personnel"],
-            ["moral", "morale"],
-            ["human", "humane"],
-            ["carton", "cartoon"],
-            ["decent", "descent"],
-            ["envelope", "envelop"],
-            ["decade", "decayed"]
+            [
+              "desert",
+              "dessert"
+            ],
+            [
+              "insight",
+              "incite"
+            ],
+            [
+              "personal",
+              "personnel"
+            ],
+            [
+              "moral",
+              "morale"
+            ],
+            [
+              "human",
+              "humane"
+            ],
+            [
+              "carton",
+              "cartoon"
+            ],
+            [
+              "decent",
+              "descent"
+            ],
+            [
+              "envelope",
+              "envelop"
+            ],
+            [
+              "decade",
+              "decayed"
+            ]
           ],
           "hard": [
-            { "a": "We drove across the desert.", "b": "We drove across the dessert.", "ko": "우리는 차로 사막을 가로질렀어요." },
-            { "a": "That's a personal question.", "b": "That's a personnel question.", "ko": "그건 사적인 질문이에요." },
-            { "a": "He is a decent manager.", "b": "He is a descent manager.", "ko": "그분은 꽤 괜찮은 매니저예요." },
-            { "a": "Put the letter in the envelope.", "b": "Put the letter in the envelop.", "ko": "편지를 봉투에 넣어 주세요." },
-            { "a": "I bought a carton of milk.", "b": "I bought a cartoon of milk.", "ko": "우유 한 팩 샀어요." },
-            { "a": "It's a moral problem.", "b": "It's a morale problem.", "ko": "그건 도덕적인 문제예요." }
+            {
+              "a": "We drove across the desert.",
+              "b": "We drove across the dessert.",
+              "ko": "우리는 차로 사막을 가로질렀어요."
+            },
+            {
+              "a": "That's a personal question.",
+              "b": "That's a personnel question.",
+              "ko": "그건 사적인 질문이에요."
+            },
+            {
+              "a": "He is a decent manager.",
+              "b": "He is a descent manager.",
+              "ko": "그분은 꽤 괜찮은 매니저예요."
+            },
+            {
+              "a": "Put the letter in the envelope.",
+              "b": "Put the letter in the envelop.",
+              "ko": "편지를 봉투에 넣어 주세요."
+            },
+            {
+              "a": "I bought a carton of milk.",
+              "b": "I bought a cartoon of milk.",
+              "ko": "우유 한 팩 샀어요."
+            },
+            {
+              "a": "It's a moral problem.",
+              "b": "It's a morale problem.",
+              "ko": "그건 도덕적인 문제예요."
+            }
           ]
         },
         {
@@ -562,24 +1576,78 @@
           "sceneA": "저 내일 워크숍 갈 수 있어요(I [can] go)!",
           "sceneB": "못 간다고(I [can't] go)? 아쉽다~ 그럼 니니 빼고 출발할게!",
           "easy": [
-            ["i can go", "i can't go"],
-            ["you can swim", "you can't swim"],
-            ["we can wait", "we can't wait"],
-            ["she can cook", "she can't cook"],
-            ["he can drive", "he can't drive"],
-            ["they can come", "they can't come"],
-            ["i can eat it", "i can't eat it"],
-            ["you can open it", "you can't open it"],
-            ["we can park here", "we can't park here"],
-            ["i can hear you", "i can't hear you"]
+            [
+              "i can go",
+              "i can't go"
+            ],
+            [
+              "you can swim",
+              "you can't swim"
+            ],
+            [
+              "we can wait",
+              "we can't wait"
+            ],
+            [
+              "she can cook",
+              "she can't cook"
+            ],
+            [
+              "he can drive",
+              "he can't drive"
+            ],
+            [
+              "they can come",
+              "they can't come"
+            ],
+            [
+              "i can eat it",
+              "i can't eat it"
+            ],
+            [
+              "you can open it",
+              "you can't open it"
+            ],
+            [
+              "we can park here",
+              "we can't park here"
+            ],
+            [
+              "i can hear you",
+              "i can't hear you"
+            ]
           ],
           "hard": [
-            { "a": "I can finish it by Friday.", "b": "I can't finish it by Friday.", "ko": "금요일까지 끝낼 수 있어요." },
-            { "a": "You can use my laptop.", "b": "You can't use my laptop.", "ko": "제 노트북 써도 돼요." },
-            { "a": "We can meet at three.", "b": "We can't meet at three.", "ko": "3시에 만날 수 있어요." },
-            { "a": "She can speak Spanish well.", "b": "She can't speak Spanish well.", "ko": "그분은 스페인어를 잘해요." },
-            { "a": "I can attend the meeting.", "b": "I can't attend the meeting.", "ko": "저 회의 참석할 수 있어요." },
-            { "a": "You can eat in this room.", "b": "You can't eat in this room.", "ko": "이 방에서 음식 먹어도 돼요." }
+            {
+              "a": "I can finish it by Friday.",
+              "b": "I can't finish it by Friday.",
+              "ko": "금요일까지 끝낼 수 있어요."
+            },
+            {
+              "a": "You can use my laptop.",
+              "b": "You can't use my laptop.",
+              "ko": "제 노트북 써도 돼요."
+            },
+            {
+              "a": "We can meet at three.",
+              "b": "We can't meet at three.",
+              "ko": "3시에 만날 수 있어요."
+            },
+            {
+              "a": "She can speak Spanish well.",
+              "b": "She can't speak Spanish well.",
+              "ko": "그분은 스페인어를 잘해요."
+            },
+            {
+              "a": "I can attend the meeting.",
+              "b": "I can't attend the meeting.",
+              "ko": "저 회의 참석할 수 있어요."
+            },
+            {
+              "a": "You can eat in this room.",
+              "b": "You can't eat in this room.",
+              "ko": "이 방에서 음식 먹어도 돼요."
+            }
           ]
         },
         {
@@ -590,24 +1658,78 @@
           "sceneA": "회의실은 15층(fif[TEEN])이에요~",
           "sceneB": "50층([FIF]ty)이요?! 엘리베이터 타다가 퇴근하겠네...",
           "easy": [
-            ["thirteen", "thirty"],
-            ["fourteen", "forty"],
-            ["fifteen", "fifty"],
-            ["sixteen", "sixty"],
-            ["seventeen", "seventy"],
-            ["eighteen", "eighty"],
-            ["nineteen", "ninety"],
-            ["thirteenth", "thirtieth"],
-            ["fifteenth", "fiftieth"],
-            ["eighteenth", "eightieth"]
+            [
+              "thirteen",
+              "thirty"
+            ],
+            [
+              "fourteen",
+              "forty"
+            ],
+            [
+              "fifteen",
+              "fifty"
+            ],
+            [
+              "sixteen",
+              "sixty"
+            ],
+            [
+              "seventeen",
+              "seventy"
+            ],
+            [
+              "eighteen",
+              "eighty"
+            ],
+            [
+              "nineteen",
+              "ninety"
+            ],
+            [
+              "thirteenth",
+              "thirtieth"
+            ],
+            [
+              "fifteenth",
+              "fiftieth"
+            ],
+            [
+              "eighteenth",
+              "eightieth"
+            ]
           ],
           "hard": [
-            { "a": "The meeting room is on floor fifteen.", "b": "The meeting room is on floor fifty.", "ko": "회의실은 15층이에요." },
-            { "a": "It costs thirteen dollars.", "b": "It costs thirty dollars.", "ko": "13달러예요." },
-            { "a": "I need fourteen copies, please.", "b": "I need forty copies, please.", "ko": "14부 복사해 주세요." },
-            { "a": "The bus leaves in sixteen minutes.", "b": "The bus leaves in sixty minutes.", "ko": "버스는 16분 뒤에 출발해요." },
-            { "a": "We have nineteen new interns.", "b": "We have ninety new interns.", "ko": "새 인턴이 19명이에요." },
-            { "a": "Please read page seventeen.", "b": "Please read page seventy.", "ko": "17페이지 읽어 주세요." }
+            {
+              "a": "The meeting room is on floor fifteen.",
+              "b": "The meeting room is on floor fifty.",
+              "ko": "회의실은 15층이에요."
+            },
+            {
+              "a": "It costs thirteen dollars.",
+              "b": "It costs thirty dollars.",
+              "ko": "13달러예요."
+            },
+            {
+              "a": "I need fourteen copies, please.",
+              "b": "I need forty copies, please.",
+              "ko": "14부 복사해 주세요."
+            },
+            {
+              "a": "The bus leaves in sixteen minutes.",
+              "b": "The bus leaves in sixty minutes.",
+              "ko": "버스는 16분 뒤에 출발해요."
+            },
+            {
+              "a": "We have nineteen new interns.",
+              "b": "We have ninety new interns.",
+              "ko": "새 인턴이 19명이에요."
+            },
+            {
+              "a": "Please read page seventeen.",
+              "b": "Please read page seventy.",
+              "ko": "17페이지 읽어 주세요."
+            }
           ]
         },
         {
@@ -618,24 +1740,78 @@
           "sceneA": "사무실 에어컨 너무 세요, 추워요(co[ld])!",
           "sceneB": "석탄(co[al])? 니니 씨, 요즘 누가 석탄을 때요~",
           "easy": [
-            ["cold", "coal"],
-            ["build", "bill"],
-            ["mind", "mine"],
-            ["hold", "hole"],
-            ["world", "whirl"],
-            ["guest", "guess"],
-            ["tent", "ten"],
-            ["paint", "pain"],
-            ["belt", "bell"],
-            ["milk", "mill"]
+            [
+              "cold",
+              "coal"
+            ],
+            [
+              "build",
+              "bill"
+            ],
+            [
+              "mind",
+              "mine"
+            ],
+            [
+              "hold",
+              "hole"
+            ],
+            [
+              "world",
+              "whirl"
+            ],
+            [
+              "guest",
+              "guess"
+            ],
+            [
+              "tent",
+              "ten"
+            ],
+            [
+              "paint",
+              "pain"
+            ],
+            [
+              "belt",
+              "bell"
+            ],
+            [
+              "milk",
+              "mill"
+            ]
           ],
           "hard": [
-            { "a": "Please hold the door.", "b": "Please hole the door.", "ko": "문 좀 잡아 주세요." },
-            { "a": "It's so cold today.", "b": "It's so coal today.", "ko": "오늘 너무 추워요." },
-            { "a": "We have a guest today.", "b": "We have a guess today.", "ko": "오늘 손님이 오세요." },
-            { "a": "Do you mind if I sit?", "b": "Do you mine if I sit?", "ko": "앉아도 될까요?" },
-            { "a": "Fasten your seat belt.", "b": "Fasten your seat bell.", "ko": "안전벨트 매세요." },
-            { "a": "They will build a new office.", "b": "They will bill a new office.", "ko": "새 사무실을 짓는대요." }
+            {
+              "a": "Please hold the door.",
+              "b": "Please hole the door.",
+              "ko": "문 좀 잡아 주세요."
+            },
+            {
+              "a": "It's so cold today.",
+              "b": "It's so coal today.",
+              "ko": "오늘 너무 추워요."
+            },
+            {
+              "a": "We have a guest today.",
+              "b": "We have a guess today.",
+              "ko": "오늘 손님이 오세요."
+            },
+            {
+              "a": "Do you mind if I sit?",
+              "b": "Do you mine if I sit?",
+              "ko": "앉아도 될까요?"
+            },
+            {
+              "a": "Fasten your seat belt.",
+              "b": "Fasten your seat bell.",
+              "ko": "안전벨트 매세요."
+            },
+            {
+              "a": "They will build a new office.",
+              "b": "They will bill a new office.",
+              "ko": "새 사무실을 짓는대요."
+            }
           ]
         },
         {
@@ -646,24 +1822,78 @@
           "sceneA": "니니 씨, 회의실 앞에서 잠깐 기다려(w[ai]t) 줘요!",
           "sceneB": "젖으라고(w[e]t)요?! 비 맞고 오라는 건가...",
           "easy": [
-            ["wait", "wet"],
-            ["late", "let"],
-            ["date", "debt"],
-            ["sale", "sell"],
-            ["pain", "pen"],
-            ["gate", "get"],
-            ["taste", "test"],
-            ["paper", "pepper"],
-            ["fail", "fell"],
-            ["tale", "tell"]
+            [
+              "wait",
+              "wet"
+            ],
+            [
+              "late",
+              "let"
+            ],
+            [
+              "date",
+              "debt"
+            ],
+            [
+              "sale",
+              "sell"
+            ],
+            [
+              "pain",
+              "pen"
+            ],
+            [
+              "gate",
+              "get"
+            ],
+            [
+              "taste",
+              "test"
+            ],
+            [
+              "paper",
+              "pepper"
+            ],
+            [
+              "fail",
+              "fell"
+            ],
+            [
+              "tale",
+              "tell"
+            ]
           ],
           "hard": [
-            { "a": "Please wait in the lobby.", "b": "Please wet in the lobby.", "ko": "로비에서 기다려 주세요." },
-            { "a": "Sorry, I'm late again.", "b": "Sorry, I'm let again.", "ko": "죄송해요, 또 늦었어요." },
-            { "a": "Can you taste this sauce?", "b": "Can you test this sauce?", "ko": "이 소스 맛 좀 봐 줄래요?" },
-            { "a": "I need more paper.", "b": "I need more pepper.", "ko": "종이가 더 필요해요." },
-            { "a": "These shoes are on sale.", "b": "These shoes are on sell.", "ko": "이 신발 세일 중이에요." },
-            { "a": "Meet me at the gate.", "b": "Meet me at the get.", "ko": "정문에서 만나요." }
+            {
+              "a": "Please wait in the lobby.",
+              "b": "Please wet in the lobby.",
+              "ko": "로비에서 기다려 주세요."
+            },
+            {
+              "a": "Sorry, I'm late again.",
+              "b": "Sorry, I'm let again.",
+              "ko": "죄송해요, 또 늦었어요."
+            },
+            {
+              "a": "Can you taste this sauce?",
+              "b": "Can you test this sauce?",
+              "ko": "이 소스 맛 좀 봐 줄래요?"
+            },
+            {
+              "a": "I need more paper.",
+              "b": "I need more pepper.",
+              "ko": "종이가 더 필요해요."
+            },
+            {
+              "a": "These shoes are on sale.",
+              "b": "These shoes are on sell.",
+              "ko": "이 신발 세일 중이에요."
+            },
+            {
+              "a": "Meet me at the gate.",
+              "b": "Meet me at the get.",
+              "ko": "정문에서 만나요."
+            }
           ]
         },
         {
@@ -674,27 +1904,1827 @@
           "sceneA": "팀장님, 제 말(w[or]d) 한 번만 믿어 주세요!",
           "sceneB": "병동(w[ar]d)을 믿으라고? 니니 씨 어디 아파요?",
           "easy": [
-            ["word", "ward"],
-            ["worm", "warm"],
-            ["were", "war"],
-            ["burn", "born"],
-            ["bird", "board"],
-            ["fur", "for"],
-            ["shirt", "short"],
-            ["turn", "torn"],
-            ["curse", "course"],
-            ["firm", "form"]
+            [
+              "word",
+              "ward"
+            ],
+            [
+              "worm",
+              "warm"
+            ],
+            [
+              "were",
+              "war"
+            ],
+            [
+              "burn",
+              "born"
+            ],
+            [
+              "bird",
+              "board"
+            ],
+            [
+              "fur",
+              "for"
+            ],
+            [
+              "shirt",
+              "short"
+            ],
+            [
+              "turn",
+              "torn"
+            ],
+            [
+              "curse",
+              "course"
+            ],
+            [
+              "firm",
+              "form"
+            ]
           ],
           "hard": [
-            { "a": "Can I have a word with you?", "b": "Can I have a ward with you?", "ko": "잠깐 얘기 좀 할 수 있을까요?" },
-            { "a": "This shirt is too long.", "b": "This short is too long.", "ko": "이 셔츠 너무 길어요." },
-            { "a": "Please turn the page.", "b": "Please torn the page.", "ko": "다음 페이지로 넘겨 주세요." },
-            { "a": "I saw a worm outside.", "b": "I saw a warm outside.", "ko": "밖에서 지렁이를 봤어요." },
-            { "a": "We were in the meeting.", "b": "We war in the meeting.", "ko": "저희 회의 중이었어요." },
-            { "a": "Don't curse at the printer.", "b": "Don't course at the printer.", "ko": "프린터한테 욕하지 마요." }
+            {
+              "a": "Can I have a word with you?",
+              "b": "Can I have a ward with you?",
+              "ko": "잠깐 얘기 좀 할 수 있을까요?"
+            },
+            {
+              "a": "This shirt is too long.",
+              "b": "This short is too long.",
+              "ko": "이 셔츠 너무 길어요."
+            },
+            {
+              "a": "Please turn the page.",
+              "b": "Please torn the page.",
+              "ko": "다음 페이지로 넘겨 주세요."
+            },
+            {
+              "a": "I saw a worm outside.",
+              "b": "I saw a warm outside.",
+              "ko": "밖에서 지렁이를 봤어요."
+            },
+            {
+              "a": "We were in the meeting.",
+              "b": "We war in the meeting.",
+              "ko": "저희 회의 중이었어요."
+            },
+            {
+              "a": "Don't curse at the printer.",
+              "b": "Don't course at the printer.",
+              "ko": "프린터한테 욕하지 마요."
+            }
           ]
         }
       ]
     }
-  ]
+  ],
+  "glossary": {
+    "advice": [
+      "ədˈvaɪs",
+      "조언"
+    ],
+    "advise": [
+      "ədˈvaɪz",
+      "조언하다"
+    ],
+    "age": [
+      "eɪdʒ",
+      "나이"
+    ],
+    "air": [
+      "er",
+      "공기"
+    ],
+    "alive": [
+      "əˈlaɪv",
+      "살아 있는"
+    ],
+    "all": [
+      "ɔːl",
+      "모두"
+    ],
+    "arrive": [
+      "əˈraɪv",
+      "도착하다"
+    ],
+    "bad": [
+      "bæd",
+      "나쁜"
+    ],
+    "bag": [
+      "bæɡ",
+      "가방"
+    ],
+    "ban": [
+      "bæn",
+      "금지하다"
+    ],
+    "bard": [
+      "bɑːrd",
+      "음유시인"
+    ],
+    "barge": [
+      "bɑːrdʒ",
+      "바지선"
+    ],
+    "barn": [
+      "bɑːrn",
+      "헛간"
+    ],
+    "bars": [
+      "bɑːrz",
+      "막대들"
+    ],
+    "base": [
+      "beɪs",
+      "기초"
+    ],
+    "bat": [
+      "bæt",
+      "방망이"
+    ],
+    "bean": [
+      "biːn",
+      "콩"
+    ],
+    "beat": [
+      "biːt",
+      "치다"
+    ],
+    "bed": [
+      "bed",
+      "침대"
+    ],
+    "beef": [
+      "biːf",
+      "소고기"
+    ],
+    "beep": [
+      "biːp",
+      "삐 소리"
+    ],
+    "beg": [
+      "beɡ",
+      "간청하다"
+    ],
+    "bell": [
+      "bel",
+      "종"
+    ],
+    "belly": [
+      "ˈbeli",
+      "배"
+    ],
+    "belt": [
+      "belt",
+      "허리띠"
+    ],
+    "bent": [
+      "bent",
+      "구부러진"
+    ],
+    "berry": [
+      "ˈberi",
+      "산딸기"
+    ],
+    "best": [
+      "best",
+      "최고의"
+    ],
+    "bet": [
+      "bet",
+      "내기하다"
+    ],
+    "bill": [
+      "bɪl",
+      "청구서"
+    ],
+    "bin": [
+      "bɪn",
+      "쓰레기통"
+    ],
+    "bird": [
+      "bɜːrd",
+      "새"
+    ],
+    "bit": [
+      "bɪt",
+      "조금"
+    ],
+    "board": [
+      "bɔːrd",
+      "판자"
+    ],
+    "boat": [
+      "boʊt",
+      "배"
+    ],
+    "bolt": [
+      "boʊlt",
+      "볼트"
+    ],
+    "born": [
+      "bɔːrn",
+      "태어난"
+    ],
+    "breathe": [
+      "briːð",
+      "숨 쉬다"
+    ],
+    "breed": [
+      "briːd",
+      "번식시키다"
+    ],
+    "budge": [
+      "bʌdʒ",
+      "조금 움직이다"
+    ],
+    "build": [
+      "bɪld",
+      "짓다"
+    ],
+    "burn": [
+      "bɜːrn",
+      "타다"
+    ],
+    "bus": [
+      "bʌs",
+      "버스"
+    ],
+    "buzz": [
+      "bʌz",
+      "윙윙거리다"
+    ],
+    "carb": [
+      "kɑːrb",
+      "탄수화물"
+    ],
+    "card": [
+      "kɑːrd",
+      "카드"
+    ],
+    "cart": [
+      "kɑːrt",
+      "수레"
+    ],
+    "carton": [
+      "ˈkɑːrtn",
+      "상자"
+    ],
+    "cartoon": [
+      "kɑːrˈtuːn",
+      "만화"
+    ],
+    "chain": [
+      "tʃeɪn",
+      "사슬"
+    ],
+    "chance": [
+      "tʃæns",
+      "기회"
+    ],
+    "chap": [
+      "tʃæp",
+      "녀석"
+    ],
+    "cheap": [
+      "tʃiːp",
+      "값이 싼"
+    ],
+    "cheat": [
+      "tʃiːt",
+      "속이다"
+    ],
+    "cheese": [
+      "tʃiːz",
+      "치즈"
+    ],
+    "chew": [
+      "tʃuː",
+      "씹다"
+    ],
+    "chick": [
+      "tʃɪk",
+      "병아리"
+    ],
+    "chief": [
+      "tʃiːf",
+      "우두머리"
+    ],
+    "chip": [
+      "tʃɪp",
+      "조각"
+    ],
+    "chuck": [
+      "tʃʌk",
+      "던지다"
+    ],
+    "chunk": [
+      "tʃʌŋk",
+      "덩어리"
+    ],
+    "cliff": [
+      "klɪf",
+      "절벽"
+    ],
+    "climb": [
+      "klaɪm",
+      "오르다"
+    ],
+    "clip": [
+      "klɪp",
+      "클립"
+    ],
+    "cloak": [
+      "kloʊk",
+      "망토"
+    ],
+    "clock": [
+      "klɑːk",
+      "시계"
+    ],
+    "cloud": [
+      "klaʊd",
+      "구름"
+    ],
+    "coal": [
+      "koʊl",
+      "석탄"
+    ],
+    "coast": [
+      "koʊst",
+      "해안"
+    ],
+    "coat": [
+      "koʊt",
+      "코트"
+    ],
+    "code": [
+      "koʊd",
+      "암호"
+    ],
+    "cold": [
+      "koʊld",
+      "추운"
+    ],
+    "collect": [
+      "kəˈlekt",
+      "모으다"
+    ],
+    "cooed": [
+      "kuːd",
+      "구구 울었다"
+    ],
+    "correct": [
+      "kəˈrekt",
+      "올바른"
+    ],
+    "cost": [
+      "kɔːst",
+      "비용"
+    ],
+    "cot": [
+      "kɑːt",
+      "간이침대"
+    ],
+    "could": [
+      "kʊd",
+      "~할 수 있었다"
+    ],
+    "course": [
+      "kɔːrs",
+      "과정"
+    ],
+    "crime": [
+      "kraɪm",
+      "범죄"
+    ],
+    "crowd": [
+      "kraʊd",
+      "군중"
+    ],
+    "cuff": [
+      "kʌf",
+      "소맷동"
+    ],
+    "cup": [
+      "kʌp",
+      "컵"
+    ],
+    "curb": [
+      "kɜːrb",
+      "연석"
+    ],
+    "curse": [
+      "kɜːrs",
+      "저주"
+    ],
+    "curve": [
+      "kɜːrv",
+      "곡선"
+    ],
+    "dare": [
+      "der",
+      "감히 ~하다"
+    ],
+    "dart": [
+      "dɑːrt",
+      "다트"
+    ],
+    "date": [
+      "deɪt",
+      "날짜"
+    ],
+    "day": [
+      "deɪ",
+      "날"
+    ],
+    "debt": [
+      "det",
+      "빚"
+    ],
+    "decade": [
+      "ˈdekeɪd",
+      "10년"
+    ],
+    "decayed": [
+      "dɪˈkeɪd",
+      "썩은"
+    ],
+    "decent": [
+      "ˈdiːsnt",
+      "괜찮은"
+    ],
+    "den": [
+      "den",
+      "굴"
+    ],
+    "descent": [
+      "dɪˈsent",
+      "하강"
+    ],
+    "desert": [
+      "ˈdezərt",
+      "사막"
+    ],
+    "dessert": [
+      "dɪˈzɜːrt",
+      "디저트"
+    ],
+    "dirt": [
+      "dɜːrt",
+      "흙"
+    ],
+    "dough": [
+      "doʊ",
+      "반죽"
+    ],
+    "doze": [
+      "doʊz",
+      "졸다"
+    ],
+    "eat": [
+      "iːt",
+      "먹다"
+    ],
+    "eight": [
+      "eɪt",
+      "8"
+    ],
+    "eighteen": [
+      "ˌeɪˈtiːn",
+      "18"
+    ],
+    "eighteenth": [
+      "ˌeɪˈtiːnθ",
+      "열여덟 번째"
+    ],
+    "eightieth": [
+      "ˈeɪtiəθ",
+      "여든 번째"
+    ],
+    "eighty": [
+      "ˈeɪti",
+      "80"
+    ],
+    "envelop": [
+      "ɪnˈveləp",
+      "감싸다"
+    ],
+    "envelope": [
+      "ˈenvəloʊp",
+      "봉투"
+    ],
+    "eyes": [
+      "aɪz",
+      "눈"
+    ],
+    "face": [
+      "feɪs",
+      "얼굴"
+    ],
+    "fail": [
+      "feɪl",
+      "실패하다"
+    ],
+    "fair": [
+      "fer",
+      "공정한"
+    ],
+    "faith": [
+      "feɪθ",
+      "믿음"
+    ],
+    "fan": [
+      "fæn",
+      "선풍기"
+    ],
+    "far": [
+      "fɑːr",
+      "먼"
+    ],
+    "farm": [
+      "fɑːrm",
+      "농장"
+    ],
+    "fast": [
+      "fæst",
+      "빠른"
+    ],
+    "fat": [
+      "fæt",
+      "뚱뚱한"
+    ],
+    "father": [
+      "ˈfɑːðər",
+      "아버지"
+    ],
+    "feed": [
+      "fiːd",
+      "먹이다"
+    ],
+    "feel": [
+      "fiːl",
+      "느끼다"
+    ],
+    "feet": [
+      "fiːt",
+      "발"
+    ],
+    "fell": [
+      "fel",
+      "떨어졌다"
+    ],
+    "fifteen": [
+      "ˌfɪfˈtiːn",
+      "15"
+    ],
+    "fifteenth": [
+      "ˌfɪfˈtiːnθ",
+      "열다섯 번째"
+    ],
+    "fiftieth": [
+      "ˈfɪftiəθ",
+      "쉰 번째"
+    ],
+    "fifty": [
+      "ˈfɪfti",
+      "50"
+    ],
+    "fill": [
+      "fɪl",
+      "채우다"
+    ],
+    "fine": [
+      "faɪn",
+      "좋은"
+    ],
+    "firm": [
+      "fɜːrm",
+      "회사"
+    ],
+    "fit": [
+      "fɪt",
+      "맞다"
+    ],
+    "flute": [
+      "fluːt",
+      "플루트"
+    ],
+    "fly": [
+      "flaɪ",
+      "날다"
+    ],
+    "fodder": [
+      "ˈfɑːdər",
+      "사료"
+    ],
+    "fool": [
+      "fuːl",
+      "바보"
+    ],
+    "for": [
+      "fɔːr",
+      "~을 위해"
+    ],
+    "fork": [
+      "fɔːrk",
+      "포크"
+    ],
+    "form": [
+      "fɔːrm",
+      "형태"
+    ],
+    "forty": [
+      "ˈfɔːrti",
+      "40"
+    ],
+    "fourteen": [
+      "ˌfɔːrˈtiːn",
+      "14"
+    ],
+    "fruit": [
+      "fruːt",
+      "과일"
+    ],
+    "fry": [
+      "fraɪ",
+      "튀기다"
+    ],
+    "fudge": [
+      "fʌdʒ",
+      "퍼지(사탕)"
+    ],
+    "full": [
+      "fʊl",
+      "가득 찬"
+    ],
+    "fur": [
+      "fɜːr",
+      "털"
+    ],
+    "fuzz": [
+      "fʌz",
+      "보풀"
+    ],
+    "gate": [
+      "ɡeɪt",
+      "문"
+    ],
+    "get": [
+      "ɡet",
+      "얻다"
+    ],
+    "glass": [
+      "ɡlæs",
+      "유리"
+    ],
+    "glow": [
+      "ɡloʊ",
+      "빛나다"
+    ],
+    "goat": [
+      "ɡoʊt",
+      "염소"
+    ],
+    "got": [
+      "ɡɑːt",
+      "얻었다"
+    ],
+    "grass": [
+      "ɡræs",
+      "풀"
+    ],
+    "grow": [
+      "ɡroʊ",
+      "자라다"
+    ],
+    "guess": [
+      "ɡes",
+      "추측하다"
+    ],
+    "guest": [
+      "ɡest",
+      "손님"
+    ],
+    "had": [
+      "hæd",
+      "가졌다"
+    ],
+    "hard": [
+      "hɑːrd",
+      "단단한"
+    ],
+    "he can drive": [
+      "",
+      "그는 운전할 수 있어요"
+    ],
+    "he can't drive": [
+      "",
+      "그는 운전할 수 없어요"
+    ],
+    "head": [
+      "hed",
+      "머리"
+    ],
+    "heard": [
+      "hɜːrd",
+      "들었다"
+    ],
+    "heart": [
+      "hɑːrt",
+      "심장"
+    ],
+    "heat": [
+      "hiːt",
+      "열"
+    ],
+    "hid": [
+      "hɪd",
+      "숨겼다"
+    ],
+    "hit": [
+      "hɪt",
+      "치다"
+    ],
+    "hold": [
+      "hoʊld",
+      "잡다"
+    ],
+    "hole": [
+      "hoʊl",
+      "구멍"
+    ],
+    "hood": [
+      "hʊd",
+      "두건"
+    ],
+    "hoof": [
+      "huːf",
+      "발굽"
+    ],
+    "hoop": [
+      "huːp",
+      "고리"
+    ],
+    "hop": [
+      "hɑːp",
+      "깡충 뛰다"
+    ],
+    "hope": [
+      "hoʊp",
+      "희망"
+    ],
+    "human": [
+      "ˈhjuːmən",
+      "인간"
+    ],
+    "humane": [
+      "hjuːˈmeɪn",
+      "인도적인"
+    ],
+    "hurt": [
+      "hɜːrt",
+      "다치게 하다"
+    ],
+    "i can eat it": [
+      "",
+      "나는 그것을 먹을 수 있어요"
+    ],
+    "i can go": [
+      "",
+      "나는 갈 수 있어요"
+    ],
+    "i can hear you": [
+      "",
+      "네 말이 들려요"
+    ],
+    "i can't eat it": [
+      "",
+      "나는 그것을 먹을 수 없어요"
+    ],
+    "i can't go": [
+      "",
+      "나는 갈 수 없어요"
+    ],
+    "i can't hear you": [
+      "",
+      "네 말이 안 들려요"
+    ],
+    "ice": [
+      "aɪs",
+      "얼음"
+    ],
+    "ill": [
+      "ɪl",
+      "아픈"
+    ],
+    "in": [
+      "ɪn",
+      "~ 안에"
+    ],
+    "incite": [
+      "ɪnˈsaɪt",
+      "선동하다"
+    ],
+    "insight": [
+      "ˈɪnsaɪt",
+      "통찰력"
+    ],
+    "itch": [
+      "ɪtʃ",
+      "가려움"
+    ],
+    "jealous": [
+      "ˈdʒeləs",
+      "질투하는"
+    ],
+    "jest": [
+      "dʒest",
+      "농담"
+    ],
+    "knees": [
+      "niːz",
+      "무릎"
+    ],
+    "ladder": [
+      "ˈlædər",
+      "사다리"
+    ],
+    "lake": [
+      "leɪk",
+      "호수"
+    ],
+    "lamb": [
+      "læm",
+      "어린 양"
+    ],
+    "land": [
+      "lænd",
+      "땅"
+    ],
+    "lane": [
+      "leɪn",
+      "좁은 길"
+    ],
+    "lap": [
+      "læp",
+      "무릎"
+    ],
+    "late": [
+      "leɪt",
+      "늦은"
+    ],
+    "lather": [
+      "ˈlæðər",
+      "비누 거품"
+    ],
+    "laugh": [
+      "læf",
+      "웃다"
+    ],
+    "leaf": [
+      "liːf",
+      "나뭇잎"
+    ],
+    "leap": [
+      "liːp",
+      "뛰다"
+    ],
+    "lend": [
+      "lend",
+      "빌려주다"
+    ],
+    "let": [
+      "let",
+      "~하게 하다"
+    ],
+    "lice": [
+      "laɪs",
+      "이(벌레)"
+    ],
+    "light": [
+      "laɪt",
+      "빛"
+    ],
+    "lip": [
+      "lɪp",
+      "입술"
+    ],
+    "load": [
+      "loʊd",
+      "짐"
+    ],
+    "lock": [
+      "lɑːk",
+      "자물쇠"
+    ],
+    "long": [
+      "lɔːŋ",
+      "긴"
+    ],
+    "loose": [
+      "luːs",
+      "헐거운"
+    ],
+    "lose": [
+      "luːz",
+      "잃다"
+    ],
+    "man": [
+      "mæn",
+      "남자"
+    ],
+    "marble": [
+      "ˈmɑːrbl",
+      "대리석"
+    ],
+    "marvel": [
+      "ˈmɑːrvl",
+      "경이"
+    ],
+    "mat": [
+      "mæt",
+      "매트"
+    ],
+    "men": [
+      "men",
+      "남자들"
+    ],
+    "met": [
+      "met",
+      "만났다"
+    ],
+    "milk": [
+      "mɪlk",
+      "우유"
+    ],
+    "mill": [
+      "mɪl",
+      "방앗간"
+    ],
+    "mind": [
+      "maɪnd",
+      "마음"
+    ],
+    "mine": [
+      "maɪn",
+      "나의 것"
+    ],
+    "moral": [
+      "ˈmɔːrəl",
+      "도덕적인"
+    ],
+    "morale": [
+      "məˈræl",
+      "사기"
+    ],
+    "mouse": [
+      "maʊs",
+      "쥐"
+    ],
+    "mouth": [
+      "maʊθ",
+      "입"
+    ],
+    "neat": [
+      "niːt",
+      "깔끔한"
+    ],
+    "need": [
+      "niːd",
+      "필요하다"
+    ],
+    "niece": [
+      "niːs",
+      "조카딸"
+    ],
+    "nineteen": [
+      "ˌnaɪnˈtiːn",
+      "19"
+    ],
+    "ninety": [
+      "ˈnaɪnti",
+      "90"
+    ],
+    "nook": [
+      "nʊk",
+      "구석"
+    ],
+    "not": [
+      "nɑːt",
+      "~이 아닌"
+    ],
+    "note": [
+      "noʊt",
+      "메모"
+    ],
+    "nuke": [
+      "nuːk",
+      "핵무기"
+    ],
+    "oak": [
+      "oʊk",
+      "참나무"
+    ],
+    "on": [
+      "ɑːn",
+      "~ 위에"
+    ],
+    "other": [
+      "ˈʌðər",
+      "다른"
+    ],
+    "own": [
+      "oʊn",
+      "자신의"
+    ],
+    "pace": [
+      "peɪs",
+      "속도"
+    ],
+    "page": [
+      "peɪdʒ",
+      "페이지"
+    ],
+    "pain": [
+      "peɪn",
+      "고통"
+    ],
+    "paint": [
+      "peɪnt",
+      "페인트"
+    ],
+    "pair": [
+      "per",
+      "한 쌍"
+    ],
+    "pan": [
+      "pæn",
+      "팬"
+    ],
+    "paper": [
+      "ˈpeɪpər",
+      "종이"
+    ],
+    "pass": [
+      "pæs",
+      "지나가다"
+    ],
+    "past": [
+      "pæst",
+      "과거"
+    ],
+    "pat": [
+      "pæt",
+      "토닥이다"
+    ],
+    "path": [
+      "pæθ",
+      "길"
+    ],
+    "pays": [
+      "peɪz",
+      "지불한다"
+    ],
+    "peace": [
+      "piːs",
+      "평화"
+    ],
+    "peas": [
+      "piːz",
+      "완두콩"
+    ],
+    "peel": [
+      "piːl",
+      "껍질을 벗기다"
+    ],
+    "pen": [
+      "pen",
+      "펜"
+    ],
+    "pepper": [
+      "ˈpepər",
+      "후추"
+    ],
+    "personal": [
+      "ˈpɜːrsənl",
+      "개인의"
+    ],
+    "personnel": [
+      "ˌpɜːrsəˈnel",
+      "직원"
+    ],
+    "pill": [
+      "pɪl",
+      "알약"
+    ],
+    "pine": [
+      "paɪn",
+      "소나무"
+    ],
+    "place": [
+      "pleɪs",
+      "장소"
+    ],
+    "play": [
+      "pleɪ",
+      "놀다"
+    ],
+    "plays": [
+      "pleɪz",
+      "논다"
+    ],
+    "pool": [
+      "puːl",
+      "수영장"
+    ],
+    "pork": [
+      "pɔːrk",
+      "돼지고기"
+    ],
+    "pray": [
+      "preɪ",
+      "기도하다"
+    ],
+    "price": [
+      "praɪs",
+      "가격"
+    ],
+    "prize": [
+      "praɪz",
+      "상"
+    ],
+    "puff": [
+      "pʌf",
+      "훅 불다"
+    ],
+    "pull": [
+      "pʊl",
+      "당기다"
+    ],
+    "pup": [
+      "pʌp",
+      "강아지"
+    ],
+    "race": [
+      "reɪs",
+      "경주"
+    ],
+    "rage": [
+      "reɪdʒ",
+      "분노"
+    ],
+    "rain": [
+      "reɪn",
+      "비"
+    ],
+    "raise": [
+      "reɪz",
+      "올리다"
+    ],
+    "rake": [
+      "reɪk",
+      "갈퀴"
+    ],
+    "ram": [
+      "ræm",
+      "숫양"
+    ],
+    "rate": [
+      "reɪt",
+      "비율"
+    ],
+    "reach": [
+      "riːtʃ",
+      "닿다"
+    ],
+    "rice": [
+      "raɪs",
+      "쌀"
+    ],
+    "rich": [
+      "rɪtʃ",
+      "부유한"
+    ],
+    "ride": [
+      "raɪd",
+      "타다"
+    ],
+    "right": [
+      "raɪt",
+      "옳은"
+    ],
+    "rip": [
+      "rɪp",
+      "찢다"
+    ],
+    "rise": [
+      "raɪz",
+      "오르다"
+    ],
+    "road": [
+      "roʊd",
+      "길"
+    ],
+    "rob": [
+      "rɑːb",
+      "강탈하다"
+    ],
+    "robe": [
+      "roʊb",
+      "가운"
+    ],
+    "rock": [
+      "rɑːk",
+      "바위"
+    ],
+    "rod": [
+      "rɑːd",
+      "막대"
+    ],
+    "sad": [
+      "sæd",
+      "슬픈"
+    ],
+    "said": [
+      "sed",
+      "말했다"
+    ],
+    "sale": [
+      "seɪl",
+      "판매"
+    ],
+    "same": [
+      "seɪm",
+      "같은"
+    ],
+    "sand": [
+      "sænd",
+      "모래"
+    ],
+    "sank": [
+      "sæŋk",
+      "가라앉았다"
+    ],
+    "sat": [
+      "sæt",
+      "앉았다"
+    ],
+    "save": [
+      "seɪv",
+      "구하다"
+    ],
+    "seat": [
+      "siːt",
+      "좌석"
+    ],
+    "see": [
+      "siː",
+      "보다"
+    ],
+    "seed": [
+      "siːd",
+      "씨앗"
+    ],
+    "seem": [
+      "siːm",
+      "~인 것 같다"
+    ],
+    "seize": [
+      "siːz",
+      "붙잡다"
+    ],
+    "sell": [
+      "sel",
+      "팔다"
+    ],
+    "send": [
+      "send",
+      "보내다"
+    ],
+    "set": [
+      "set",
+      "놓다"
+    ],
+    "seventeen": [
+      "ˌsevnˈtiːn",
+      "17"
+    ],
+    "seventy": [
+      "ˈsevnti",
+      "70"
+    ],
+    "shame": [
+      "ʃeɪm",
+      "수치"
+    ],
+    "shave": [
+      "ʃeɪv",
+      "면도하다"
+    ],
+    "she": [
+      "ʃiː",
+      "그녀"
+    ],
+    "she can cook": [
+      "",
+      "그녀는 요리할 수 있어요"
+    ],
+    "she can't cook": [
+      "",
+      "그녀는 요리할 수 없어요"
+    ],
+    "sheep": [
+      "ʃiːp",
+      "양"
+    ],
+    "sheet": [
+      "ʃiːt",
+      "시트"
+    ],
+    "shell": [
+      "ʃel",
+      "껍데기"
+    ],
+    "shine": [
+      "ʃaɪn",
+      "빛나다"
+    ],
+    "ship": [
+      "ʃɪp",
+      "배"
+    ],
+    "shirt": [
+      "ʃɜːrt",
+      "셔츠"
+    ],
+    "shock": [
+      "ʃɑːk",
+      "충격"
+    ],
+    "shoe": [
+      "ʃuː",
+      "신발"
+    ],
+    "shooed": [
+      "ʃuːd",
+      "쫓아냈다"
+    ],
+    "short": [
+      "ʃɔːrt",
+      "짧은"
+    ],
+    "should": [
+      "ʃʊd",
+      "~해야 한다"
+    ],
+    "sick": [
+      "sɪk",
+      "아픈"
+    ],
+    "side": [
+      "saɪd",
+      "옆"
+    ],
+    "siege": [
+      "siːdʒ",
+      "포위"
+    ],
+    "sight": [
+      "saɪt",
+      "시야"
+    ],
+    "sign": [
+      "saɪn",
+      "표지판"
+    ],
+    "sin": [
+      "sɪn",
+      "죄"
+    ],
+    "sing": [
+      "sɪŋ",
+      "노래하다"
+    ],
+    "sink": [
+      "sɪŋk",
+      "가라앉다"
+    ],
+    "sip": [
+      "sɪp",
+      "홀짝이다"
+    ],
+    "sit": [
+      "sɪt",
+      "앉다"
+    ],
+    "sixteen": [
+      "ˌsɪksˈtiːn",
+      "16"
+    ],
+    "sixty": [
+      "ˈsɪksti",
+      "60"
+    ],
+    "sleep": [
+      "sliːp",
+      "자다"
+    ],
+    "slip": [
+      "slɪp",
+      "미끄러지다"
+    ],
+    "sniff": [
+      "snɪf",
+      "킁킁거리다"
+    ],
+    "snip": [
+      "snɪp",
+      "싹둑 자르다"
+    ],
+    "soak": [
+      "soʊk",
+      "담그다"
+    ],
+    "sock": [
+      "sɑːk",
+      "양말"
+    ],
+    "soot": [
+      "sʊt",
+      "그을음"
+    ],
+    "sort": [
+      "sɔːrt",
+      "종류"
+    ],
+    "star": [
+      "stɑːr",
+      "별"
+    ],
+    "stewed": [
+      "stuːd",
+      "뭉근히 끓인"
+    ],
+    "stir": [
+      "stɜːr",
+      "젓다"
+    ],
+    "stood": [
+      "stʊd",
+      "서 있었다"
+    ],
+    "sue": [
+      "suː",
+      "고소하다"
+    ],
+    "suit": [
+      "suːt",
+      "정장"
+    ],
+    "sum": [
+      "sʌm",
+      "합계"
+    ],
+    "tale": [
+      "teɪl",
+      "이야기"
+    ],
+    "taste": [
+      "teɪst",
+      "맛"
+    ],
+    "tell": [
+      "tel",
+      "말하다"
+    ],
+    "ten": [
+      "ten",
+      "10"
+    ],
+    "tent": [
+      "tent",
+      "텐트"
+    ],
+    "test": [
+      "test",
+      "시험"
+    ],
+    "thank": [
+      "θæŋk",
+      "감사하다"
+    ],
+    "theme": [
+      "θiːm",
+      "주제"
+    ],
+    "then": [
+      "ðen",
+      "그때"
+    ],
+    "there": [
+      "ðer",
+      "거기에"
+    ],
+    "they": [
+      "ðeɪ",
+      "그들"
+    ],
+    "they can come": [
+      "",
+      "그들은 올 수 있어요"
+    ],
+    "they can't come": [
+      "",
+      "그들은 올 수 없어요"
+    ],
+    "thick": [
+      "θɪk",
+      "두꺼운"
+    ],
+    "thin": [
+      "θɪn",
+      "얇은"
+    ],
+    "thing": [
+      "θɪŋ",
+      "것"
+    ],
+    "think": [
+      "θɪŋk",
+      "생각하다"
+    ],
+    "thirteen": [
+      "ˌθɜːrˈtiːn",
+      "13"
+    ],
+    "thirteenth": [
+      "ˌθɜːrˈtiːnθ",
+      "열세 번째"
+    ],
+    "thirtieth": [
+      "ˈθɜːrtiəθ",
+      "서른 번째"
+    ],
+    "thirty": [
+      "ˈθɜːrti",
+      "30"
+    ],
+    "those": [
+      "ðoʊz",
+      "저것들"
+    ],
+    "though": [
+      "ðoʊ",
+      "비록 ~이지만"
+    ],
+    "thumb": [
+      "θʌm",
+      "엄지"
+    ],
+    "torn": [
+      "tɔːrn",
+      "찢어진"
+    ],
+    "train": [
+      "treɪn",
+      "기차"
+    ],
+    "trance": [
+      "træns",
+      "무아지경"
+    ],
+    "trap": [
+      "træp",
+      "덫"
+    ],
+    "treat": [
+      "triːt",
+      "대하다"
+    ],
+    "trees": [
+      "triːz",
+      "나무들"
+    ],
+    "trick": [
+      "trɪk",
+      "속임수"
+    ],
+    "trip": [
+      "trɪp",
+      "여행"
+    ],
+    "truck": [
+      "trʌk",
+      "트럭"
+    ],
+    "true": [
+      "truː",
+      "사실인"
+    ],
+    "trunk": [
+      "trʌŋk",
+      "나무 몸통"
+    ],
+    "turn": [
+      "tɜːrn",
+      "돌다"
+    ],
+    "udder": [
+      "ˈʌdər",
+      "젖통"
+    ],
+    "van": [
+      "væn",
+      "승합차"
+    ],
+    "vase": [
+      "veɪs",
+      "꽃병"
+    ],
+    "vent": [
+      "vent",
+      "통풍구"
+    ],
+    "very": [
+      "ˈveri",
+      "매우"
+    ],
+    "vest": [
+      "vest",
+      "조끼"
+    ],
+    "vet": [
+      "vet",
+      "수의사"
+    ],
+    "volt": [
+      "voʊlt",
+      "볼트"
+    ],
+    "vote": [
+      "voʊt",
+      "투표하다"
+    ],
+    "wage": [
+      "weɪdʒ",
+      "임금"
+    ],
+    "wait": [
+      "weɪt",
+      "기다리다"
+    ],
+    "wall": [
+      "wɔːl",
+      "벽"
+    ],
+    "war": [
+      "wɔːr",
+      "전쟁"
+    ],
+    "ward": [
+      "wɔːrd",
+      "병동"
+    ],
+    "warm": [
+      "wɔːrm",
+      "따뜻한"
+    ],
+    "ways": [
+      "weɪz",
+      "방법들"
+    ],
+    "we can park here": [
+      "",
+      "우리는 여기 주차할 수 있어요"
+    ],
+    "we can wait": [
+      "",
+      "우리는 기다릴 수 있어요"
+    ],
+    "we can't park here": [
+      "",
+      "우리는 여기 주차할 수 없어요"
+    ],
+    "we can't wait": [
+      "",
+      "우리는 기다릴 수 없어요"
+    ],
+    "wear": [
+      "wer",
+      "입다"
+    ],
+    "weight": [
+      "weɪt",
+      "무게"
+    ],
+    "were": [
+      "wɜːr",
+      "~였다"
+    ],
+    "wet": [
+      "wet",
+      "젖은"
+    ],
+    "wheat": [
+      "wiːt",
+      "밀"
+    ],
+    "whirl": [
+      "wɜːrl",
+      "빙빙 돌다"
+    ],
+    "who'd": [
+      "huːd",
+      "누가 ~했을까"
+    ],
+    "wife": [
+      "waɪf",
+      "아내"
+    ],
+    "will": [
+      "wɪl",
+      "~할 것이다"
+    ],
+    "win": [
+      "wɪn",
+      "이기다"
+    ],
+    "wipe": [
+      "waɪp",
+      "닦다"
+    ],
+    "wise": [
+      "waɪz",
+      "현명한"
+    ],
+    "witch": [
+      "wɪtʃ",
+      "마녀"
+    ],
+    "woke": [
+      "woʊk",
+      "깨어났다"
+    ],
+    "wooed": [
+      "wuːd",
+      "구애했다"
+    ],
+    "word": [
+      "wɜːrd",
+      "단어"
+    ],
+    "wordy": [
+      "ˈwɜːrdi",
+      "장황한"
+    ],
+    "world": [
+      "wɜːrld",
+      "세계"
+    ],
+    "worm": [
+      "wɜːrm",
+      "벌레"
+    ],
+    "worthy": [
+      "ˈwɜːrði",
+      "가치 있는"
+    ],
+    "would": [
+      "wʊd",
+      "~할 것이다"
+    ],
+    "wrong": [
+      "rɔːŋ",
+      "틀린"
+    ],
+    "you can open it": [
+      "",
+      "너는 그것을 열 수 있어요"
+    ],
+    "you can swim": [
+      "",
+      "너는 수영할 수 있어요"
+    ],
+    "you can't open it": [
+      "",
+      "너는 그것을 열 수 없어요"
+    ],
+    "you can't swim": [
+      "",
+      "너는 수영할 수 없어요"
+    ],
+    "zealous": [
+      "ˈzeləs",
+      "열성적인"
+    ],
+    "zest": [
+      "zest",
+      "열정"
+    ]
+  }
 }

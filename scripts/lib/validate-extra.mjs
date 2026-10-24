@@ -106,6 +106,18 @@ export function validateGrammar(packs) {
 
 export function validatePairs(packs) {
   const errors = [];
+  // 용어집: easy 쌍의 모든 단어에 [발음, 뜻] 이 있어야 한다 (말해보카처럼 카드에 발음·뜻을 보여주기 위해)
+  for (const { file, text } of packs) {
+    try {
+      const data = JSON.parse(text);
+      const gl = data.glossary ?? {};
+      for (const l of data.levels ?? []) for (const s of l.stages ?? []) for (const p of s.easy ?? []) for (const w of p) {
+        if (!gl[w] || !Array.isArray(gl[w]) || gl[w].length !== 2 || !gl[w][1]) errors.push(`${file}: glossary 없음: ${w}`);
+      }
+    } catch {
+      /* JSON 오류는 아래에서 보고 */
+    }
+  }
   const ids = new Set();
   let stages = 0;
   for (const { file, text } of packs) {

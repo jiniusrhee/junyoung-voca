@@ -30,7 +30,7 @@ const QUESTIONS = 8;
 const PASS = 80;
 
 function usePairs() {
-  return useLiveQuery(async () => ((await db.kv.get('pairsData'))?.value as { levels: Level[] } | undefined) ?? null, []);
+  return useLiveQuery(async () => ((await db.kv.get('pairsData'))?.value as { levels: Level[]; glossary?: Record<string, [string, string]> } | undefined) ?? null, []);
 }
 function useScores() {
   return useLiveQuery(async () => ((await db.kv.get('pairsScores'))?.value as Scores | undefined) ?? {}, []);
@@ -176,7 +176,13 @@ export function PairQuiz() {
   const [leaving, setLeaving] = useState(false);
   const curTarget = qs[i]?.target;
   /** 단어 팩에 같은 단어가 있으면 발음 기호를 보여준다 (말해보카: wife [waɪf]) — 훅이므로 조기 return 보다 위에 둔다 */
-  const ipa = useLiveQuery(async () => (curTarget && mode !== 'hard' ? (await db.words.filter((w) => w.word.toLowerCase() === curTarget.toLowerCase()).first())?.ipa : undefined), [curTarget, mode]);
+  const strip = (x?: string) => x?.replace(/^\/|\/$/g, '');
+  const ipa = useLiveQuery(async () => {
+    if (!curTarget || mode === 'hard') return undefined;
+    const g = data?.glossary?.[curTarget]?.[0];
+    if (g) return g;
+    return strip((await db.words.filter((w) => w.word.toLowerCase() === curTarget.toLowerCase()).first())?.ipa);
+  }, [curTarget, mode, data]);
   const [picked, setPicked] = useState<number | null>(null);
   const [marks, setMarks] = useState<boolean[]>([]);
   const [playing, setPlaying] = useState<number | null>(null);
@@ -202,11 +208,13 @@ export function PairQuiz() {
     if (!cardWords.length) return [];
     return Promise.all(
       cardWords.map(async (c) => {
+        const g = data?.glossary?.[c];
+        if (g) return { ipa: g[0] || undefined, ko: g[1] };
         const w = await db.words.filter((x) => x.word.toLowerCase() === c.toLowerCase()).first();
-        return w ? { ipa: w.ipa, ko: w.meanings[0] } : null;
+        return w ? { ipa: strip(w.ipa), ko: w.meanings[0] } : null;
       }),
     );
-  }, [cardWords.join('|'), mode]);
+  }, [cardWords.join('|'), mode, data]);
 
   const playBoth = (q: PairQ) => {
     if (mode === 'hard') {

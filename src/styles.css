@@ -7548,7 +7548,8 @@ sup.beta.pill {
   padding: 0 10px;
 }
 .pair-cardbtn {
-  height: 290px;
+  min-height: 250px;
+  height: auto;
   border-radius: 22px;
   padding: 10px;
   background: var(--surface);
@@ -9353,4 +9354,14 @@ sup.beta.pill {
 }
 .pair-target.blank {
   visibility: hidden;
+}
+.pair-cardbtn .card-back {
+  min-height: 230px;
+}
+.card-face {
+  min-height: 230px;
+  gap: 8px;
+}
+.card-face b {
+  margin-top: 10px;
 }
