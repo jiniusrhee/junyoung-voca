@@ -273,6 +273,17 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       let next = fn(l.input).slice(0, max);
       // 힌트로 채운 앞글자는 지워지지 않는다
       if (l.locked && !next.startsWith(l.input.slice(0, l.locked))) next = l.input.slice(0, l.locked) + next.slice(l.locked);
+      // 여러 단어 정답에서 이미 맞아 잠긴 앞 단어들도 지워지지 않는다 (말해보카)
+      const aw = answerWords(sentenceOf(l.q).answer);
+      if (aw.length > 1) {
+        const cur = l.input.replace(/^\s+/, '').split(' ');
+        let lockedWords = '';
+        for (let k = 0; k < aw.length - 1 && k < cur.length - 1; k++) {
+          if (cur[k].toLowerCase() === aw[k].toLowerCase()) lockedWords += cur[k] + ' ';
+          else break;
+        }
+        if (lockedWords && !next.startsWith(lockedWords)) next = lockedWords + next.slice(lockedWords.length);
+      }
       // 정답이 여러 단어면, 한 단어가 맞는 순간 다음 칸으로 자동 이동 (말해보카)
       const words = answerWords(sentenceOf(l.q).answer);
       if (words.length > 1 && next.length > l.input.length && !next.endsWith(' ')) {
