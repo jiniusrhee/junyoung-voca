@@ -2,7 +2,7 @@ import { useLiveQuery } from 'dexie-react-hooks';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Icon from '../components/Icon';
-import { FilledSentence, KoSentence } from '../components/QuizCard';
+import { speak } from '../lib/speech';
 import { db } from '../db';
 import { POS_KO } from '../types';
 
@@ -39,6 +39,7 @@ export default function Dictionary() {
       .slice(0, 100);
   }, [q, tab]);
 
+  const favs = useLiveQuery(async () => new Set((await db.favorites.toArray()).map((f) => f.key)), []);
   const sentences = useLiveQuery(async () => {
     if (!q || tab !== 'sentence') return [];
     const all = await db.words.toArray();
@@ -46,7 +47,10 @@ export default function Dictionary() {
     for (const w of all) {
       w.sentences.forEach((s, idx) => {
         const en = s.en.replace('___', s.answer).toLowerCase();
-        if (en.includes(q) || s.ko.replace(/\*\*/g, '').includes(q)) out.push({ id: w.id, idx, w });
+        // 말해보카: 영어는 단어 단위로 (big 이 ambiguous 에 걸리지 않게), 한글은 포함
+        const esc = (t: string) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const hit = /^[a-z' ]+$/.test(q) ? q.split(/\s+/).every((t) => new RegExp('(^|[^a-z])' + esc(t) + '([^a-z]|$)').test(en)) : s.ko.replace(/\*\*/g, '').includes(q);
+        if (hit) out.push({ id: w.id, idx, w });
       });
       if (out.length > 100) break;
     }
@@ -108,7 +112,7 @@ export default function Dictionary() {
                   </>
                 ) : (
                   <>
-                    영어 또는 <b>한글</b>을 입력해서
+                    <b>영어 단어들</b>을 입력해서
                     <br />
                     원하는 문장을 검색하세요.
                   </>
@@ -141,16 +145,33 @@ export default function Dictionary() {
         <>
           <p className="result-head">&quot;{query}&quot; 의 검색 결과</p>
           {sentences && sentences.length === 0 && <p className="empty-note">검색 결과가 없습니다.</p>}
-          {(sentences ?? []).map(({ id, idx, w }) => (
-            <Link key={`${id}#${idx}`} to={`/words/${encodeURIComponent(id)}`} className="sent-item">
-              <p className="sent-en">
-                <FilledSentence sentence={w.sentences[idx]} />
-              </p>
-              <p className="sent-ko">
-                <KoSentence ko={w.sentences[idx].ko} />
-              </p>
-            </Link>
-          ))}
+          {(sentences ?? []).map(({ id, idx, w }) => {
+            const key = `${id}#${idx}`;
+            const full = w.sentences[idx].en.replace('___', w.sentences[idx].answer);
+            return (
+              <div key={key} className="sent-item sent-card">
+                <Link to={`/words/${encodeURIComponent(id)}`} className="sent-card-body">
+                  <p className="sent-en plain">{full}</p>
+                  <p className="sent-ko">{w.sentences[idx].ko.replace(/\*\*/g, '')}</p>
+                </Link>
+                <div className="sent-card-actions">
+                  <button onClick={() => speak(full, true)} aria-label="천천히 듣기">
+                    <Icon name="turtle" size={22} />
+                  </button>
+                  <button onClick={() => speak(full)} aria-label="듣기">
+                    <Icon name="speaker" size={22} />
+                  </button>
+                  <button
+                    className={favs?.has(key) ? 'on' : ''}
+                    onClick={() => void (favs?.has(key) ? db.favorites.delete(key) : db.favorites.put({ key, wordId: id, sentenceIdx: idx, ts: Date.now() }))}
+                    aria-label="좋아하는 문장"
+                  >
+                    <Icon name={favs?.has(key) ? 'heartFill' : 'heart'} size={22} />
+                  </button>
+                </div>
+              </div>
+            );
+          })}
         </>
       )}
 
@@ -162,7 +183,7 @@ export default function Dictionary() {
         }}
       >
         <input
-          placeholder={tab === 'word' ? '단어를 검색해 주세요.' : '문장을 검색해 주세요.'}
+          placeholder={tab === 'word' ? '검색할 단어를 입력하세요' : '검색할 단어들을 입력하세요'}
           value={draft}
           onChange={(e) => {
             setDraft(e.target.value);

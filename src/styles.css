@@ -9223,3 +9223,33 @@ sup.beta.pill {
   font-size: 0.9rem;
   color: var(--sub);
 }
+
+/* 문장 검색 결과 카드: 영어 + 뜻, 아래 🐢 / 🔊 / ♥ 줄 (말해보카) */
+.sent-card {
+  padding: 0;
+  overflow: hidden;
+}
+.sent-card-body {
+  display: block;
+  padding: 14px 16px 12px;
+  color: var(--text);
+}
+.sent-card .sent-en.plain {
+  padding-right: 0;
+  font-size: 1.1rem;
+}
+.sent-card-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  background: var(--surface-2);
+}
+.sent-card-actions button {
+  padding: 10px 0;
+  color: var(--muted);
+  display: flex;
+  justify-content: center;
+}
+.sent-card-actions button.on {
+  color: #ff5c8a;
+}
