@@ -36,6 +36,7 @@ export default function ExprQuiz() {
   const [count, setCount] = useState(0);
   const [due, setDue] = useState<Date | null>(null);
   const [overlay, setOverlay] = useState<Overlay>(null);
+  const [shiftOn, setShiftOn] = useState(false);
   const [voice, setVoice] = useState(false);
   const [listening, setListening] = useState(false);
   const [flash, setFlash] = useState<{ kind: 'wrong' | 'correct'; key: number } | null>(null);
@@ -377,11 +378,15 @@ export default function ExprQuiz() {
             </button>
           </div>
           <Keyboard
-            onChar={(c) => edit((s) => s + c)}
+            onChar={(c) => {
+              edit((s) => s + c);
+              setShiftOn(false);
+            }}
             onBackspace={() => edit((s) => s.slice(0, -1))}
             onSpace={() => edit((s) => (s && !s.endsWith(' ') ? s + ' ' : s))}
             onEnter={submit}
-            onSettings={() => nav('/settings/vocab')}
+            onShift={() => setShiftOn((v) => !v)}
+            shift={shiftOn || (input === '' && q.item.en.trimStart().startsWith('___'))}
           />
         </div>
       )}

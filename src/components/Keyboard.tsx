@@ -8,7 +8,8 @@ interface Props {
   onBackspace: () => void;
   onSpace: () => void;
   onEnter: () => void;
-  onSettings: () => void;
+  /** 왼쪽 아래 빈 키 = 다음 한 글자 대문자 (말해보카) */
+  onShift: () => void;
   /** 다음 글자를 대문자로 (문장 첫 글자) — 자판 글자도 대문자로 보임 */
   shift?: boolean;
 }
@@ -35,7 +36,7 @@ export function useHoldRepeat(fn: () => void) {
 }
 
 /** 말해보카처럼 앱 안에 그린 영문 자판 (폰 기본 키보드를 띄우지 않음) */
-export default function Keyboard({ onChar, onBackspace, onSpace, onEnter, onSettings, shift = false }: Props) {
+export default function Keyboard({ onChar, onBackspace, onSpace, onEnter, onShift, shift = false }: Props) {
   const press = (fn: () => void) => (e: PointerEvent) => {
     e.preventDefault();
     fn();
@@ -63,7 +64,7 @@ export default function Keyboard({ onChar, onBackspace, onSpace, onEnter, onSett
         </div>
       ))}
       <div className="kb-row bottom">
-        <button className="kb-key gray wide" onPointerDown={press(onSettings)} aria-label="설정" />
+        <button className="kb-key gray wide" onPointerDown={press(onShift)} aria-label="대문자" />
         <button className="kb-key space" onPointerDown={press(onSpace)} aria-label="띄어쓰기">
           <span className="space-glyph" />
         </button>

@@ -9,7 +9,7 @@ import Mascot from '../components/Mascot';
 import VocabSettings from '../components/VocabSettings';
 import QuizCard, { FilledSentence, KoSentence, type CardBadge } from '../components/QuizCard';
 import WrongItem from '../components/WrongItem';
-import { useLeaveGuard } from '../components/StudyChrome';
+import { Backdrop, useLeaveGuard } from '../components/StudyChrome';
 import { db } from '../db';
 import { comprehension, computeStreak, estimateVocab, grantRepairPen } from '../lib/stats';
 import { syncContent } from '../lib/content';
@@ -85,6 +85,14 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const [levelHelp, setLevelHelp] = useState(false);
   const [cardKey, setCardKey] = useState(0);
   const [favTip, setFavTip] = useState<0 | 1 | 2>(0);
+  /** 정답 후 자판이 1초쯤 남았다가 패널로 바뀜 (말해보카) */
+  const [panelReady, setPanelReady] = useState(false);
+  /** 푼 카드 기록: 오른쪽으로 밀면 이전 카드 다시 보기 */
+  const [history, setHistory] = useState<Answered[]>([]);
+  const [histIdx, setHistIdx] = useState<number | null>(null);
+  const [slideBack, setSlideBack] = useState(false);
+  /** 자판 왼쪽 아래 빈 키: 한 번 누르면 다음 한 글자만 대문자 (말해보카) */
+  const [shiftOn, setShiftOn] = useState(false);
   const favorites = useLiveQuery(() => db.favorites.toCollection().primaryKeys(), []) as string[] | undefined;
   // 입력 말풍선: 사전(단어 팩)에 있는 단어면 밑줄 + 누르면 뜻 (말해보카)
   const dictWords = useLiveQuery(async () => new Map((await db.words.toArray()).map((w) => [w.word.toLowerCase(), w])), []);
@@ -117,6 +125,10 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     setFlash(null);
     setLevelHelp(false);
     setCardKey((k) => k + 1);
+    setHistIdx(null);
+    setSlideBack(false);
+    setPanelReady(false);
+    setShiftOn(false);
     setPhase('question');
   };
 
@@ -235,7 +247,9 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       }
       setTodayTotal(total);
       setLive({ ...l, feedback: null });
-      setAnswered({ q: l.q, outcome, known, due: row.due, wrongs: l.wrongs });
+      const item: Answered = { q: l.q, outcome, known, due: row.due, wrongs: l.wrongs };
+      setAnswered(item);
+      setHistory((h) => [...h.slice(-19), item]);
       setFlash({ kind: 'correct', key: Date.now() });
       setPhase('answered');
       if (s.autoSpeak) speakSentence(l.q);
@@ -252,6 +266,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   }, [live, phase, settings?.autoCheck, finalize]);
 
   const editInput = (fn: (cur: string) => string) => {
+    if (phase !== 'question') return;
     setLive((l) => {
       if (!l) return l;
       const max = sentenceOf(l.q).answer.length + 16;
@@ -269,15 +284,22 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     });
   };
 
-  /** 빈칸이 문장 첫머리면 첫 글자는 대문자 (말해보카: 자판도 대문자로 보임) */
+  /** 다음 글자가 대문자여야 하면 자판도 대문자 (문장 첫머리, 정답 보기 중 다음 글자가 대문자일 때) */
   const capNext = (() => {
     if (!live) return false;
     const s = sentenceOf(live.q);
+    if (live.showedAnswer) {
+      const nextCh = s.answer[live.input.length] ?? '';
+      return nextCh !== nextCh.toLowerCase();
+    }
     const before = s.en.split('___')[0].trimEnd();
     const atStart = before === '' || /[.?!]$/.test(before);
     return atStart && live.input === '';
   })();
-  const typeChar = (c: string) => editInput((cur) => cur + c);
+  const typeChar = (c: string) => {
+    editInput((cur) => cur + c);
+    if (shiftOn) setShiftOn(false);
+  };
   /** 말해보카: 스페이스는 제출. 정답이 여러 단어면 다음 칸으로 */
   const space = () => {
     if (!live) return;
@@ -350,19 +372,24 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     }
   };
 
+  const past = phase === 'answered' ? history.slice(0, -1) : history;
+  const hist = histIdx != null ? (past[histIdx] ?? null) : null;
+  const shown: Answered | null = hist ?? (phase === 'answered' ? answered : null);
+
   const sayIt = async () => {
-    if (!answered || listening) return;
+    const target = shown;
+    if (!target || listening) return;
     setOverlay(null);
     setSayResult(null);
     setListening(true);
     try {
       const alts = await recognizeOnce();
-      const s = sentenceOf(answered.q);
-      const target = fullSentence(s.en, s.answer);
+      const s = sentenceOf(target.q);
+      const full = fullSentence(s.en, s.answer);
       let best = 0;
       let bestText = alts[0] ?? '';
       for (const a of alts) {
-        const r = speechMatchRate(a, target);
+        const r = speechMatchRate(a, full);
         if (r > best) {
           best = r;
           bestText = a;
@@ -390,13 +417,13 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   }, [phase, mode, loadNext]);
 
   const addFavorite = async () => {
-    if (!answered) return;
-    const key = `${answered.q.word.id}#${answered.q.sentenceIdx}`;
+    if (!shown) return;
+    const key = `${shown.q.word.id}#${shown.q.sentenceIdx}`;
     if (favorites?.includes(key)) await db.favorites.delete(key);
-    else await db.favorites.put({ key, wordId: answered.q.word.id, sentenceIdx: answered.q.sentenceIdx, ts: Date.now() });
+    else await db.favorites.put({ key, wordId: shown.q.word.id, sentenceIdx: shown.q.sentenceIdx, ts: Date.now() });
   };
   const toggleFavorite = async () => {
-    if (!answered) return;
+    if (!shown) return;
     // 처음 누를 때는 말해보카처럼 활용 Tip 2장을 보여준다
     if (!(await db.kv.get('favTipShown'))) {
       setFavTip(1);
@@ -404,6 +431,15 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     }
     await addFavorite();
   };
+
+  useEffect(() => {
+    if (phase !== 'answered') {
+      setPanelReady(false);
+      return;
+    }
+    const t = window.setTimeout(() => setPanelReady(true), 1000);
+    return () => window.clearTimeout(t);
+  }, [phase, cardKey]);
 
   // 말해보카: 음성 모드에서는 문제가 나오면 바로 듣기 시작
   useEffect(() => {
@@ -519,24 +555,41 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   }
 
   if (!live) return null;
-  const q = live.q;
+  const q = hist ? hist.q : live.q;
   const sentence = sentenceOf(q);
   const goal = settings.dailyGoal;
   const total = mode === 'test' ? LEVEL_TEST_QUESTIONS : Math.max(goal, extraTarget);
   const count = mode === 'test' ? testAsked : todayTotal;
   const fill = Math.min(1, count / total);
-  const isAnswered = phase === 'answered' && answered;
+  const isAnswered = shown;
+  const goBack = () => {
+    if (histIdx == null) {
+      if (past.length) {
+        setSlideBack(true);
+        setHistIdx(past.length - 1);
+      }
+    } else if (histIdx > 0) {
+      setSlideBack(true);
+      setHistIdx(histIdx - 1);
+    }
+  };
+  const goForward = () => {
+    if (histIdx != null) {
+      setSlideBack(false);
+      setHistIdx(histIdx + 1 < past.length ? histIdx + 1 : null);
+    } else if (phase === 'answered' && panelReady) void next();
+  };
   const favKey = `${q.word.id}#${q.sentenceIdx}`;
 
   let badge: CardBadge = { kind: 'new' };
-  if (isAnswered) badge = { kind: 'due', text: `${formatAfter(answered.due)} 복습` };
+  if (isAnswered) badge = { kind: 'due', text: `${formatAfter(isAnswered.due)} 복습` };
   else if (!q.isNew && q.card?.last_review) badge = { kind: 'ago', text: formatAgo(q.card.last_review) };
 
   const feedback = isAnswered ? sayResult : live.feedback;
 
   let cardOverlay = null;
   if (isAnswered && overlay) {
-    const w = answered.q.word;
+    const w = isAnswered.q.word;
     cardOverlay = (
       <div className="card-overlay">
         <button className="overlay-close" onClick={() => setOverlay(null)} aria-label="닫기">
@@ -548,7 +601,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
               <Icon name="chat" size={16} /> 준영보카 예문
             </p>
             {w.sentences.map((s, i) => (
-              <div key={i} className={`ex-item ${i === answered.q.sentenceIdx ? 'current' : ''}`}>
+              <div key={i} className={`ex-item ${i === isAnswered.q.sentenceIdx ? 'current' : ''}`}>
                 {s.ctx && <p className="ctx">{s.ctx}</p>}
                 <p className="ex-en">
                   <FilledSentence sentence={s} />
@@ -568,15 +621,15 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
             <p className="overlay-title">
               <Icon name="note" size={16} /> 오답 노트
             </p>
-            {answered.wrongs.length === 0 && <p className="overlay-empty">이번 문제는 틀린 답 없이 맞혔어요!</p>}
-            {answered.wrongs.map((x, i) => (
+            {isAnswered.wrongs.length === 0 && <p className="overlay-empty">이번 문제는 틀린 답 없이 맞혔어요!</p>}
+            {isAnswered.wrongs.map((x, i) => (
               <WrongItem key={i} w={x.w} tone={x.tone} m={x.m} />
             ))}
-            {(sentence.alts ?? []).filter((a) => !answered.wrongs.some((x) => normalize(x.w) === normalize(a.w))).length > 0 && (
+            {(sentence.alts ?? []).filter((a) => !isAnswered.wrongs.some((x) => normalize(x.w) === normalize(a.w))).length > 0 && (
               <>
                 <p className="overlay-sub">이런 답도 헷갈리기 쉬워요</p>
                 {(sentence.alts ?? [])
-                  .filter((a) => !answered.wrongs.some((x) => normalize(x.w) === normalize(a.w)))
+                  .filter((a) => !isAnswered.wrongs.some((x) => normalize(x.w) === normalize(a.w)))
                   .map((a, i) => {
                     const tone: Tone = a.t === 'ok' ? 'green' : a.t === 'near' ? 'yellow' : 'red';
                     return <WrongItem key={i} w={a.w} tone={tone} m={a.m} soft />;
@@ -619,7 +672,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
 
   return (
     <div className="quiz-screen">
-      <div className="quiz-bg-deco" />
+      <Backdrop theme={settings.studyTheme} />
       <header className="quiz-top">
         {guard.modal}
         <button className="icon-btn light" onClick={mode === 'test' ? () => nav('/') : guard.leave} aria-label="나가기">
@@ -648,23 +701,24 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         <div className="side-card left" />
         <div className="side-card right" />
         <div
-          className="card-slide"
-          key={cardKey}
+          className={`card-slide ${slideBack ? 'back' : ''}`}
+          key={hist ? `h${histIdx}` : cardKey}
           onTouchStart={(e) => {
             swipeX.current = e.touches[0].clientX;
           }}
           onTouchEnd={(e) => {
             const dx = e.changedTouches[0].clientX - swipeX.current;
-            if (phase === 'answered' && dx < -70) void loadNext();
+            if (dx > 70) goBack();
+            else if (dx < -70) goForward();
           }}
         >
           <QuizCard
             word={q.word}
             sentence={sentence}
             state={isAnswered ? 'answered' : 'question'}
-            input={live.input}
-            showedAnswer={live.showedAnswer}
-            showCaret={inputMode === 'keyboard' && phase === 'question'}
+            input={hist ? sentence.answer : live.input}
+            showedAnswer={hist ? false : live.showedAnswer}
+            showCaret={inputMode === 'keyboard' && phase === 'question' && !hist}
             blankMatchesLength={settings.blankMatchesLength}
             flash={flash}
             feedback={feedback}
@@ -678,10 +732,10 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         </div>
       </main>
 
-      {isAnswered ? (
+      {isAnswered && (panelReady || hist) ? (
         <AfterPanel
           answer={sentence.answer}
-          wrongCount={answered.wrongs.length}
+          wrongCount={isAnswered.wrongs.length}
           slow={settings.speechRate === 'slow'}
           listening={listening}
           onExamples={() => setOverlay((o) => (o === 'examples' ? null : 'examples'))}
@@ -694,7 +748,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
             speakSentence(q, slow);
           }}
           onReplay={() => speakSentence(q)}
-          onNext={() => void next()}
+          onNext={() => (hist ? setHistIdx(null) : void next())}
         />
       ) : inputMode === 'keyboard' ? (
         <div className="quiz-input">
@@ -746,7 +800,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
               <span>음성 모드</span>
             </button>
           </div>
-          <Keyboard onChar={typeChar} onBackspace={backspace} onSpace={space} onEnter={submit} onSettings={() => setShowSettings(true)} shift={capNext} />
+          <Keyboard onChar={typeChar} onBackspace={backspace} onSpace={space} onEnter={submit} onShift={() => setShiftOn((v) => !v)} shift={capNext || shiftOn} />
         </div>
       ) : (
         <div className="voice-zone">

@@ -8303,3 +8303,61 @@ sup.beta.pill {
   font-size: 0.9rem;
   color: var(--sub);
 }
+/* 이전 카드로 돌아갈 때는 왼쪽에서 들어옴 */
+.card-slide.back {
+  animation: slideInBack 0.38s cubic-bezier(0.2, 0.8, 0.25, 1);
+}
+@keyframes slideInBack {
+  from {
+    transform: translateX(-46%);
+    opacity: 0.2;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+/* 다이노 테마 진행 막대 (올리브 원 + 갈색 줄무늬 + 공룡) */
+.quiz-screen:has(.dino-bg) .trophy-badge {
+  background: #86a476;
+  border-color: #b7cfae;
+  color: #fff;
+}
+.quiz-screen:has(.dino-bg) .trophy-badge.gold {
+  background: linear-gradient(140deg, #d8c45a, #b89a2a);
+}
+.quiz-screen:has(.dino-bg) .progress-track {
+  background: rgba(255, 255, 255, 0.45);
+  overflow: visible;
+}
+.quiz-screen:has(.dino-bg) .progress-fill {
+  position: relative;
+  background: repeating-linear-gradient(135deg, #a8775b 0 9px, #8d6248 9px 18px);
+  border-radius: 9px 4px 4px 9px;
+  min-width: 70px;
+  padding-left: 14px;
+  overflow: visible;
+}
+.quiz-screen:has(.dino-bg) .progress-fill span {
+  position: absolute;
+  left: 18px;
+  top: -16px;
+  color: #fff;
+  -webkit-text-stroke: 3px #7a5440;
+  paint-order: stroke fill;
+  font-size: 0.74rem;
+}
+.quiz-screen:has(.dino-bg) .progress-fill::after {
+  content: '';
+  position: absolute;
+  right: -10px;
+  top: -8px;
+  width: 26px;
+  height: 30px;
+  border-radius: 50% 50% 40% 40%;
+  background: radial-gradient(circle at 35% 35%, #d8e9b0, #9cc274 70%);
+  border: 2px solid #fff;
+}
+.quiz-screen:has(.dino-bg) .icon-btn.light {
+  color: #7f9a86;
+}
