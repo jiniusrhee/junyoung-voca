@@ -97,7 +97,7 @@ async function resolve(mode: StudyMode, ids: string[]): Promise<Map<string, Sent
     return out;
   }
   if (mode === 'expr') {
-    for (const it of await db.eitems.bulkGet(ids)) if (it) out.set(it.id, { id: it.id, en: /_{3,}/.test(it.en) ? it.en.replace(/_{3,}/, it.answer) : it.en, ko: it.ko, pkey: it.pkey });
+    for (const it of await db.eitems.bulkGet(ids)) if (it) out.set(it.id, { id: it.id, en: /_{3,}/.test(it.en) ? it.en.replace(/_{3,}/, it.answer) : it.en, ko: it.ko.replace(/\*\*/g, ''), pkey: it.pkey });
     return out;
   }
   const pool = new Map((await listenPool()).map((p) => [p.id, p]));
