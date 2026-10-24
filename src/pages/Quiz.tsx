@@ -7,7 +7,7 @@ import Icon from '../components/Icon';
 import Keyboard from '../components/Keyboard';
 import Mascot from '../components/Mascot';
 import VocabSettings from '../components/VocabSettings';
-import QuizCard, { FilledSentence, KoSentence, type CardBadge } from '../components/QuizCard';
+import QuizCard, { FilledSentence, type CardBadge } from '../components/QuizCard';
 import WrongItem from '../components/WrongItem';
 import { Backdrop, useLeaveGuard } from '../components/StudyChrome';
 import { db } from '../db';
@@ -609,22 +609,23 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         {overlay === 'examples' && (
           <>
             <p className="overlay-title">
-              <Icon name="chat" size={16} /> 준영보카 예문
+              <Icon name="book" size={16} /> 다른 예문
             </p>
-            {w.sentences.map((s, i) => (
-              <div key={i} className={`ex-item ${i === isAnswered.q.sentenceIdx ? 'current' : ''}`}>
-                {s.ctx && <p className="ctx">{s.ctx}</p>}
-                <p className="ex-en">
-                  <FilledSentence sentence={s} />
-                </p>
-                <p className="ex-ko">
-                  <KoSentence ko={s.ko} />
-                </p>
-                <button className="ex-play" onClick={() => speak(fullSentence(s.en, s.answer), settings.speechRate === 'slow')} aria-label="듣기">
-                  <Icon name="speaker" size={18} />
-                </button>
-              </div>
-            ))}
+            {w.sentences.filter((_, i) => i !== isAnswered.q.sentenceIdx).length === 0 && <p className="overlay-empty">예문을 준비중입니다.</p>}
+            {w.sentences
+              .map((s, i) => ({ s, i }))
+              .filter(({ i }) => i !== isAnswered.q.sentenceIdx)
+              .map(({ s, i }) => (
+                <div key={i} className="ex-item big">
+                  <p className="ex-en">
+                    <FilledSentence sentence={s} />
+                  </p>
+                  {s.ctx && <p className="ex-src">{s.ctx}</p>}
+                  <button className="ex-play" onClick={() => speak(fullSentence(s.en, s.answer), settings.speechRate === 'slow')} aria-label="듣기">
+                    <Icon name="speaker" size={20} />
+                  </button>
+                </div>
+              ))}
           </>
         )}
         {overlay === 'wrongs' && (
@@ -752,7 +753,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
           onExamples={() => setOverlay((o) => (o === 'examples' ? null : 'examples'))}
           onWrongs={() => setOverlay((o) => (o === 'wrongs' ? null : 'wrongs'))}
           onSay={() => void sayIt()}
-          onInfo={() => setOverlay((o) => (o === 'info' ? null : 'info'))}
+          onInfo={() => nav(`/words/${encodeURIComponent(q.word.id)}`)}
           onToggleSpeed={() => {
             const slow = settings.speechRate !== 'slow';
             void saveSettings({ speechRate: slow ? 'slow' : 'real' });

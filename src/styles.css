@@ -8370,3 +8370,23 @@ sup.beta.pill {
   position: relative;
   z-index: 1;
 }
+/* 다른 예문: 영어 문장만 크게 + 출처 캡션 (말해보카 빅데이터 예문) */
+.ex-item.big {
+  padding: 14px 4px 40px;
+}
+.ex-item.big .ex-en {
+  font-size: 1.12rem;
+  line-height: 1.6;
+}
+.ex-item.big .ex-src {
+  margin-top: 10px;
+  text-align: right;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+.ex-item.big .ex-play {
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  bottom: 4px;
+}
