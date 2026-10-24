@@ -105,7 +105,7 @@ export function StudyTop({ count, total, onBack, onSettings, icon = 'drop' }: { 
           <Icon name={icon} size={18} />
         </span>
         <div className="progress-track">
-          <div className="progress-fill" style={{ width: `${fill * 100}%` }}>
+          <div className={`progress-fill ${count === 0 ? 'zero' : ''}`} style={{ width: `${fill * 100}%` }}>
             <span>
               {count}/{total}
             </span>

@@ -8330,7 +8330,7 @@ sup.beta.pill {
   background: rgba(255, 255, 255, 0.45);
   overflow: visible;
 }
-.vocab-quiz:has(.dino-bg) .progress-fill {
+.quiz-screen:has(.dino-bg) .progress-fill {
   position: relative;
   background: repeating-linear-gradient(135deg, #a8775b 0 9px, #8d6248 9px 18px);
   border-radius: 9px 4px 4px 9px;
@@ -8338,7 +8338,7 @@ sup.beta.pill {
   padding-left: 14px;
   overflow: visible;
 }
-.vocab-quiz:has(.dino-bg) .progress-fill span {
+.quiz-screen:has(.dino-bg) .progress-fill span {
   position: absolute;
   left: 18px;
   top: -16px;
@@ -8347,7 +8347,7 @@ sup.beta.pill {
   paint-order: stroke fill;
   font-size: 0.74rem;
 }
-.vocab-quiz:has(.dino-bg) .progress-fill::after {
+.quiz-screen:has(.dino-bg) .progress-fill::after {
   content: '';
   position: absolute;
   right: -10px;
@@ -8682,22 +8682,19 @@ sup.beta.pill {
   color: #5fb5e8;
 }
 
-/* 다이노 테마, 어휘 외 모드: 올리브 원(물방울) + 민무늬 막대, 주황 숫자 (말해보카) */
-.quiz-screen:has(.dino-bg) .progress-fill {
-  position: relative;
-  background: #a9c59a;
+/* 다이노 테마: 0/N 일 때는 막대 채움·공룡 손잡이 없이 주황 숫자만 (말해보카) */
+.quiz-screen:has(.dino-bg) .progress-fill.zero {
   min-width: 0;
-  overflow: visible;
+  padding-left: 0;
+  background: none;
 }
-.quiz-screen:has(.dino-bg) .progress-fill span {
-  position: absolute;
+.quiz-screen:has(.dino-bg) .progress-fill.zero::after {
+  display: none;
+}
+.quiz-screen:has(.dino-bg) .progress-fill.zero span {
   left: 4px;
-  top: -17px;
   color: #ff8a2a;
   -webkit-text-stroke: 3px #fff;
-  paint-order: stroke fill;
-  font-size: 0.74rem;
-  white-space: nowrap;
 }
 /* 리스닝 카드: 늘어나지 않게, 빈칸은 이어진 밑줄처럼 */
 .l-card {

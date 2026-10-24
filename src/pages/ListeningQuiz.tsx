@@ -50,6 +50,9 @@ export default function ListeningQuiz() {
   const [cardKey, setCardKey] = useState(0);
   /** 객관식: 첫 탭 전까지 U/I/J/K 키 배지 (말해보카) */
   const [touched, setTouched] = useState(false);
+  /** 같은 단어를 두 번 틀리면 뜻이 보이고 '정답 보기'로 바뀜, 그 뒤 또 두 번 틀리면 정답 공개 (말해보카) */
+  const [hinted, setHinted] = useState(false);
+  const [wrongOnWord, setWrongOnWord] = useState(0);
   const pickerRef = useRef<ListenPicker | null>(null);
   const startedAt = useRef(Date.now());
   const started = useRef(false);
@@ -81,6 +84,8 @@ export default function ListeningQuiz() {
     setSlots(shuffle(Array.from({ length: first }, (_, i) => i)).map((w) => ({ word: w, bad: false })));
     setNextWord(first);
     setTouched(false);
+    setHinted(false);
+    setWrongOnWord(0);
     setListens(1);
     setWrong(0);
     setResult(null);
@@ -109,7 +114,7 @@ export default function ListeningQuiz() {
 
   const finish = async (failed: boolean, listensUsed: number) => {
     if (!q || !settings) return;
-    const r = resultFor(listensUsed, failed);
+    const r = resultFor(listensUsed, failed, wrong > 0);
     const res = await recordModeAnswer(
       'listening',
       q.item.id,
@@ -164,20 +169,25 @@ export default function ListeningQuiz() {
       // 같은 단어가 다른 칸에 있으면 그대로 둔다
       setSlots(nextSlots.map((x) => ({ ...x, bad: false })));
       if (fill !== null) setNextWord(nextWord + 1);
+      setWrongOnWord(0);
       const d = done + 1;
       setDone(d);
       if (d >= words.length) void finish(false, listens);
       return;
     }
-    // 오답: 다시 듣기
+    // 오답: 보기가 붉게, 자동으로 다시 들려줌 (듣기 횟수는 안 씀)
     setWrong((n) => n + 1);
     setWhite((w) => new Set(w).add(done));
     setSlots(slots.map((x, k) => (k === i ? { ...x, bad: true } : x)));
-    if (listens >= MAX_LISTENS) {
-      void finish(true, listens);
-      return;
+    const w = wrongOnWord + 1;
+    setWrongOnWord(w);
+    if (w >= 2) {
+      if (hinted) {
+        void finish(true, listens);
+        return;
+      }
+      setHinted(true);
     }
-    setListens((n) => n + 1);
     setCareful(true);
     play();
     window.setTimeout(() => setCareful(false), 1800);
@@ -280,7 +290,7 @@ export default function ListeningQuiz() {
             <div className={`qcard l-card ${wrongFlash ? 'is-wrong' : ''}`}>
               {wrongFlash && <span className="mark-bang">!</span>}
               <div className="qcard-top">
-                {answered ? (
+                {answered || hinted ? (
                   <p className="ko">{q.item.ko}</p>
                 ) : (
                   <div className="l-progress">
@@ -340,9 +350,14 @@ export default function ListeningQuiz() {
               </button>
             ))}
           </div>
-          <button className="l-replay" onClick={replay} disabled={listens >= MAX_LISTENS}>
-            <span className="kbd-hint replay-key">1</span>
-            {careful ? (
+          <button className="l-replay" onClick={hinted ? () => void finish(true, listens) : replay} disabled={!hinted && listens >= MAX_LISTENS}>
+            {!hinted && <span className="kbd-hint replay-key">1</span>}
+            {hinted ? (
+              <>
+                <Icon name="check" size={22} />
+                <span>정답 보기</span>
+              </>
+            ) : careful ? (
               <span>Listen Carefully</span>
             ) : (
               <>

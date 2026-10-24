@@ -18,11 +18,12 @@ export const RESULT_TEXT: Record<ListenResult, { title: string; sub: string }> =
   perfect: { title: 'Perfect!!', sub: '한번에 맞혔어요!' },
   great: { title: 'Great!!', sub: '두번 듣고 맞혔어요!' },
   good: { title: 'Good!', sub: '세번 듣고 맞혔어요!' },
-  nice: { title: 'Nice try!', sub: '다음엔 꼭 맞힐 수 있어요!' },
+  nice: { title: 'Nice Try', sub: '아쉽네요...' },
 };
 
-export function resultFor(listens: number, failed: boolean): ListenResult {
+export function resultFor(listens: number, failed: boolean, hadWrong = false): ListenResult {
   if (failed) return 'nice';
+  if (hadWrong) return 'good';
   if (listens <= 1) return 'perfect';
   if (listens === 2) return 'great';
   return 'good';
