@@ -30,6 +30,7 @@ import Settings from './pages/Settings';
 import Stats from './pages/Stats';
 import Streak from './pages/Streak';
 import Welcome from './pages/Welcome';
+import Measure from './pages/Measure';
 import WordDetail from './pages/WordDetail';
 import Words from './pages/Words';
 import WrongNotes from './pages/WrongNotes';
@@ -58,6 +59,7 @@ function Shell() {
         <Route path="/" element={needsOnboarding ? <Navigate to="/welcome" replace /> : <Home />} />
         <Route path="/welcome" element={<Welcome />} />
         <Route path="/test" element={<Quiz mode="test" />} />
+        <Route path="/measure" element={<Measure />} />
         <Route path="/quiz" element={needsOnboarding ? <Navigate to="/welcome" replace /> : <Quiz mode="study" />} />
         <Route path="/stats" element={<Stats />} />
         <Route path="/streak" element={<Streak />} />

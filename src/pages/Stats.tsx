@@ -6,7 +6,7 @@ import { db } from '../db';
 import { MASTERY_KO, MASTERY_ORDER, masteryOf, type Mastery } from '../lib/scheduler';
 import { getSettings, useSettings } from '../lib/settings';
 import { getImported } from '../lib/imported';
-import { comprehension, dayTime, dayTotal, displayVocab, goalMet, reviewAccuracy, vocabDateText, percentileOf } from '../lib/stats';
+import { comprehension, dayTime, dayTotal, displayVocab, goalMet, reviewAccuracy, vocabDateText, percentileOf, latestMeasure } from '../lib/stats';
 import { WEEKDAYS_KO, dayOfWeek, formatClock, shiftDate, studyDateOf } from '../lib/time';
 import type { DailyRow, ImportedProgress, StudyMode, ReviewRow } from '../types';
 
@@ -551,6 +551,7 @@ function VocabTab({ level, imp }: { level: number; imp: ImportedProgress | null 
   const nav = useNavigate();
   const comp = useLiveQuery(() => comprehension(), []);
   const testDate = useLiveQuery(async () => (await db.kv.get('levelTestDate'))?.value as string | undefined, []);
+  const measured = useLiveQuery(() => latestMeasure(imp), [imp?.asOf]);
   const data = useLiveQuery(async () => {
     const cards = await db.cards.toArray();
     const words = await db.words.bulkGet(cards.map((c) => c.wordId));
@@ -566,11 +567,11 @@ function VocabTab({ level, imp }: { level: number; imp: ImportedProgress | null 
   const maxL = Math.max(1, ...(data?.byLevel ?? [1]));
   const hist = useLiveQuery(async () => ((await db.kv.get('vocabHistory'))?.value as { date: string; vocab: number; level?: number }[] | undefined) ?? [], []);
   const history = [...(imp?.vocabHistory ?? []), ...(hist ?? [])].sort((a, b) => b.date.localeCompare(a.date));
-  const vocabNow = displayVocab(level, comp ?? null, imp, testDate);
+  const vocabNow = measured?.vocab ?? displayVocab(level, comp ?? null, imp, testDate);
   // 레벨 테스트 기록이 없으면 들여온 이해도
-  const compShown = testDate && (!imp || testDate > imp.asOf) ? (comp ?? null) : (imp?.comprehension ?? comp ?? null);
-  const pct = imp?.percentile != null && vocabNow === imp.vocabSize ? imp.percentile : percentileOf(vocabNow);
-  const dt = vocabDateText(imp, testDate);
+  const compShown = measured ? measured.comprehension : testDate && (!imp || testDate > imp.asOf) ? (comp ?? null) : (imp?.comprehension ?? comp ?? null);
+  const pct = measured ? measured.percentile : imp?.percentile != null && vocabNow === imp.vocabSize ? imp.percentile : percentileOf(vocabNow);
+  const dt = measured ? `${measured.date} 측정` : vocabDateText(imp, testDate);
   const dateText = dt ? dt.replace(/^(\d{4})-(\d{2})-(\d{2})/, (_, y, m, d) => `${y}년 ${Number(m)}월 ${Number(d)}일`) : '측정 전';
 
   return (
@@ -585,7 +586,7 @@ function VocabTab({ level, imp }: { level: number; imp: ImportedProgress | null 
         </div>
         <div className="gold-inner">
           <span>내가 알고 있는 어휘</span>
-          <b className="laurel">{displayVocab(level, comp ?? null, imp, testDate).toLocaleString()} 개</b>
+          <b className="laurel">{vocabNow.toLocaleString()} 개</b>
           <span>나의 어휘 이해도</span>
           <b className="laurel">{compShown == null ? '-' : `${(compShown * 100).toFixed(2)} %`}</b>
           <span>나의 어휘력은 대한민국</span>
@@ -593,7 +594,7 @@ function VocabTab({ level, imp }: { level: number; imp: ImportedProgress | null 
         </div>
       </section>
       {history.length > 0 && <VocabHistoryChart history={history} imp={imp} />}
-      <button className="measure-btn" onClick={() => nav('/test')}>
+      <button className="measure-btn" onClick={() => nav('/measure')}>
         어휘력 측정하기
       </button>
 

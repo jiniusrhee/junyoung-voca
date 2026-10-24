@@ -158,3 +158,24 @@ export function percentileOf(vocab: number): number {
   for (const [v, p] of table) if (vocab >= v) return p;
   return 95;
 }
+
+/** 어휘력 측정 결과 (문제 없이 학습 기록으로 계산, 말해보카 2026 방식) */
+export interface Measure {
+  date: string;
+  vocab: number;
+  comprehension: number;
+  percentile: number;
+  level?: number;
+}
+export async function saveMeasure(m: Measure): Promise<void> {
+  await db.kv.put({ key: 'measured', value: m });
+  const hist = ((await db.kv.get('vocabHistory'))?.value as { date: string; vocab: number; level?: number }[] | undefined) ?? [];
+  await db.kv.put({ key: 'vocabHistory', value: [...hist.filter((h) => h.date !== m.date), { date: m.date, vocab: m.vocab, level: m.level }] });
+}
+/** 가장 최근 측정 결과 (들여온 기록보다 새 것일 때만) */
+export async function latestMeasure(imp?: ImportedProgress | null): Promise<Measure | null> {
+  const m = (await db.kv.get('measured'))?.value as Measure | undefined;
+  if (!m) return null;
+  if (imp && m.date <= imp.asOf) return null;
+  return m;
+}

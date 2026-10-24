@@ -9041,3 +9041,123 @@ sup.beta.pill {
   text-align: center;
   color: var(--text);
 }
+
+/* ================= 어휘력 측정 (말해보카: 측정 중 → 결과 카드 3장) ================= */
+.measure-page {
+  min-height: 100dvh;
+  padding: 40px 20px 32px;
+  background: #1d1d33;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+.measure-bubble {
+  position: relative;
+  width: min(100%, 400px);
+  padding: 26px 28px;
+  border-radius: 28px;
+  background: #fff;
+  color: #333;
+  text-align: center;
+  line-height: 1.5;
+}
+.measure-bubble b {
+  display: block;
+  margin-top: 8px;
+  font-size: 1.3rem;
+  color: #5b4bd6;
+}
+.measure-bubble::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  transform: translateX(-50%) rotate(45deg);
+  border-radius: 4px;
+}
+.measure-mascot {
+  margin-top: 10px;
+}
+.measure-pct {
+  font-size: 3.4rem;
+  font-weight: 900;
+  color: #8ef0a4;
+  line-height: 1;
+}
+.measure-pct small {
+  font-size: 1.2rem;
+  margin-left: 2px;
+}
+.measure-bar {
+  width: min(70%, 260px);
+  height: 12px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+}
+.measure-bar span {
+  display: block;
+  height: 100%;
+  background: #8ef0a4;
+  transition: width 0.1s linear;
+}
+.measure-page.result {
+  justify-content: center;
+}
+.measure-card {
+  width: min(100%, 400px);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  text-align: center;
+}
+.measure-cap {
+  display: block;
+  padding: 8px 12px;
+  font-weight: 700;
+  color: #fff;
+}
+.measure-card b {
+  display: block;
+  padding: 14px 0 16px;
+  font-size: 2.8rem;
+  font-weight: 900;
+}
+.measure-card b small {
+  font-size: 1.3rem;
+  margin-left: 4px;
+}
+.measure-card.purple .measure-cap {
+  background: #a99cf2;
+}
+.measure-card.purple b {
+  color: #7b61ff;
+}
+.measure-card.violet .measure-cap {
+  background: #d7a3f0;
+}
+.measure-card.violet b {
+  color: #c56ee6;
+}
+.measure-card.pink .measure-cap {
+  background: #f2a1bd;
+}
+.measure-card.pink b {
+  color: #f06292;
+}
+.measure-note {
+  margin-top: 6px;
+  text-align: center;
+  line-height: 1.5;
+  color: #e9e9f5;
+}
+.measure-ok {
+  width: min(100%, 400px);
+  margin-top: 10px;
+}

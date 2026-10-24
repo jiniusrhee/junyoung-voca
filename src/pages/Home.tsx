@@ -11,7 +11,7 @@ import { db } from '../db';
 import { saveSettings, useSettings } from '../lib/settings';
 import { getImported, importedRange, inRange, type DayRange } from '../lib/imported';
 import { STREAK_GOALS } from './Streak';
-import { comprehension, computeStreak, dayTime, dayTotal, displayVocab, getRepairedDays, goalMet, reviewAccuracy, studied, vocabDateText, percentileOf } from '../lib/stats';
+import { comprehension, computeStreak, dayTime, dayTotal, displayVocab, getRepairedDays, goalMet, reviewAccuracy, studied, vocabDateText, percentileOf, latestMeasure } from '../lib/stats';
 import { WEEKDAYS_KO, dayOfWeek, formatClock, shiftDate, studyDateOf, weekOf } from '../lib/time';
 import type { ImportedProgress, DailyRow, StudyMode } from '../types';
 
@@ -50,6 +50,7 @@ export default function Home() {
   const [start, setStart] = useState<StudyMode | null>(null);
   const comp = useLiveQuery(() => comprehension(), []);
   const testDate = useLiveQuery(async () => (await db.kv.get('levelTestDate'))?.value as string | undefined, []);
+  const measured = useLiveQuery(() => latestMeasure(imp ?? null), [imp?.asOf]);
   const [goalOpen, setGoalOpen] = useState(false);
   const [extraOpen, setExtraOpen] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
@@ -180,13 +181,13 @@ export default function Home() {
           </span>
           <div className="power-text">
             <p>
-              어휘력 상위 <em>{homePct(settings.level ?? 10, comp ?? null, imp ?? null, testDate)}%</em>
+              어휘력 상위 <em>{measured ? measured.percentile : homePct(settings.level ?? 10, comp ?? null, imp ?? null, testDate)}%</em>
             </p>
-            <span>{vocabDateText(imp, testDate)?.replace(/측정$/, '측정 결과') ?? '아직 측정하지 않았어요'}</span>
+            <span>{measured ? `${measured.date} 측정 결과` : (vocabDateText(imp, testDate)?.replace(/측정$/, '측정 결과') ?? '아직 측정하지 않았어요')}</span>
           </div>
           <Icon name="chevron" size={18} className="muted-ic" />
         </Link>
-        <button className="power-btn" onClick={() => nav('/test')}>
+        <button className="power-btn" onClick={() => nav('/measure')}>
           지금 측정가능
         </button>
       </section>
