@@ -8256,3 +8256,50 @@ sup.beta.pill {
   display: inline-block;
   min-height: 1.5em;
 }
+/* 입력 말풍선: 사전 단어 밑줄, 뜻 팝업, 처음 안내 */
+.toolbar-center {
+  position: relative;
+}
+.typed-tip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #3a3d43;
+  color: #fff;
+  font-size: 0.86rem;
+  z-index: 5;
+}
+.typed-tip button {
+  color: #ccc;
+  font-size: 1.1rem;
+}
+.typed-pop {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 220px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--text);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  z-index: 6;
+  text-align: left;
+}
+.typed-pop b {
+  font-size: 1.05rem;
+  margin-right: 8px;
+}
+.typed-pop p {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: var(--sub);
+}

@@ -86,6 +86,11 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const [cardKey, setCardKey] = useState(0);
   const [favTip, setFavTip] = useState<0 | 1 | 2>(0);
   const favorites = useLiveQuery(() => db.favorites.toCollection().primaryKeys(), []) as string[] | undefined;
+  // 입력 말풍선: 사전(단어 팩)에 있는 단어면 밑줄 + 누르면 뜻 (말해보카)
+  const dictWords = useLiveQuery(async () => new Map((await db.words.toArray()).map((w) => [w.word.toLowerCase(), w])), []);
+  const [typedPop, setTypedPop] = useState(false);
+  const tipSeen = useLiveQuery(async () => !!(await db.kv.get('typedTipSeen')), []);
+  const [tipOpen, setTipOpen] = useState(true);
   const guard = useLeaveGuard(() => nav('/'));
 
   const settingsRef = useRef<Settings | null>(null);
@@ -703,7 +708,38 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
               <span>{live.hints === 0 ? '힌트 보기' : '정답 보기'}</span>
             </button>
             <div className="toolbar-center">
-              {live.input && <span className="bubble">{live.input}</span>}
+              {live.input &&
+                (() => {
+                  const hit = dictWords?.get(live.input.trim().toLowerCase());
+                  return (
+                    <>
+                      {hit && tipSeen === false && tipOpen && (
+                        <span className="typed-tip">
+                          눌러서 뜻을 확인해 보세요.
+                          <button
+                            onClick={() => {
+                              setTipOpen(false);
+                              void db.kv.put({ key: 'typedTipSeen', value: 1 });
+                            }}
+                            aria-label="닫기"
+                          >
+                            ×
+                          </button>
+                        </span>
+                      )}
+                      <button className={`bubble ${hit ? 'link' : ''}`} onClick={() => hit && setTypedPop((v) => !v)}>
+                        {live.input}
+                      </button>
+                      {typedPop && hit && (
+                        <div className="typed-pop" onClick={() => setTypedPop(false)}>
+                          <b>{hit.word}</b>
+                          <span className="chip">{POS_KO[hit.pos]}</span>
+                          <p>{hit.meanings.join(', ')}</p>
+                        </div>
+                      )}
+                    </>
+                  );
+                })()}
             </div>
             <button className="tool-btn" onClick={() => setInputMode('voice')} disabled={!canRecognize()}>
               <Icon name="mic" size={26} className="ic-purple" />
