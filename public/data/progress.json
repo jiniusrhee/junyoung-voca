@@ -12,6 +12,7 @@
  },
  "vocabSize": 20489,
  "percentile": 0.25,
+ "comprehension": 0.96,
  "vocabHistory": [
   {
    "date": "2026-08-06",

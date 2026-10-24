@@ -175,7 +175,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         await t.init();
         testRef.current = t;
       } else {
-        const p = listIds ? new ListPicker(listIds) : new StudyPicker(settings.level ?? 10, settings.newWordDifficulty);
+        const p = listIds ? new ListPicker(listIds) : new StudyPicker(settings.level ?? 10, settings.newWordDifficulty, settings.reviewRatio);
         await p.init();
         pickerRef.current = p;
       }
@@ -407,7 +407,9 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         }
       }
       const pct = Math.round(best * 100);
-      const label = best >= 0.95 ? 'Perfect!' : best >= 0.8 ? 'Great!' : best >= 0.6 ? 'Good!' : 'Nice try!';
+      const lv = settingsRef.current?.speechLevel ?? 'loose';
+      const [pPerfect, pGreat, pGood] = lv === 'strict' ? [0.98, 0.9, 0.75] : lv === 'normal' ? [0.95, 0.8, 0.6] : [0.9, 0.7, 0.5];
+      const label = best >= pPerfect ? 'Perfect!' : best >= pGreat ? 'Great!' : best >= pGood ? 'Good!' : 'Nice try!';
       setSayResult({ tone: best >= 0.8 ? 'green' : best >= 0.6 ? 'yellow' : 'red', msg: `${label} ${pct}% 일치 · '${bestText}'` });
     } catch (e) {
       setSayResult({ tone: 'red', msg: voiceErrorMessage(e) });

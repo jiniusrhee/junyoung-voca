@@ -288,6 +288,10 @@ export interface Settings {
   autoSpeak: boolean;
   speechRate: 'real' | 'slow';
   newWordDifficulty: 'easy' | 'normal' | 'hard';
+  /** 발음인식 기준 (말해보기 채점) */
+  speechLevel: 'loose' | 'normal' | 'strict';
+  /** 복습 단어 비율: 새 단어 대비 복습 출제 비중 */
+  reviewRatio: 'less' | 'normal' | 'more';
   /** 다크 모드: 시스템 설정 따르기 / 켜기 / 끄기 */
   theme: 'system' | 'dark' | 'light';
   /** 홈 왼쪽 위에 보이는 이름 */
@@ -324,6 +328,8 @@ export interface ImportedProgress {
   vocabSize?: number;
   /** 대한민국 상위 N% */
   percentile?: number;
+  /** 어휘 이해도 (0~1) */
+  comprehension?: number;
   vocabHistory?: { date: string; vocab: number; level?: number }[];
   learnedCount?: number;
   /** 보유한 복구펜 */

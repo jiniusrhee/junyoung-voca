@@ -21,6 +21,20 @@ const INPUT_OPTS: Option<Settings['inputMode']>[] = [
   ['keyboard', '키보드 모드'],
   ['voice', '음성 모드'],
 ];
+const STUDY_THEME_OPTS: Option<Settings['studyTheme']>[] = [
+  ['dino', '다이노를 찾아서'],
+  ['sky', '하늘'],
+];
+const SPEECH_OPTS: Option<Settings['speechLevel']>[] = [
+  ['loose', '느슨하게'],
+  ['normal', '보통'],
+  ['strict', '엄격하게'],
+];
+const RATIO_OPTS: Option<Settings['reviewRatio']>[] = [
+  ['normal', '일반 모드'],
+  ['more', '복습 우선'],
+  ['less', '새 단어 우선'],
+];
 const SPEED_OPTS: Option<Settings['speechRate']>[] = [
   ['real', '실전 속도'],
   ['slow', '듣기평가 속도'],
@@ -59,12 +73,15 @@ export default function VocabSettings({ s, onBack, onRetest, onReset }: Props) {
       <section className="vs-sec">
         <h3>화면 설정</h3>
         <Row label="다크모드" value={label(THEME_OPTS, s.theme)} onClick={() => open('다크모드', s.theme, THEME_OPTS, (v) => set({ theme: v }))} />
+        <Row label="학습테마" value={label(STUDY_THEME_OPTS, s.studyTheme)} onClick={() => open('학습테마', s.studyTheme, STUDY_THEME_OPTS, (v) => set({ studyTheme: v }))} />
       </section>
 
       <section className="vs-sec">
         <h3>학습 설정</h3>
         <Row label="퀴즈 방식" value={label(INPUT_OPTS, s.inputMode)} onClick={() => open('퀴즈 방식', s.inputMode, INPUT_OPTS, (v) => set({ inputMode: v }))} />
-        {help && <Help>퀴즈를 시작할 때 키보드로 입력할지, 말로 답할지 정할 수 있어요.</Help>}
+        {help && <Help>퀴즈를 시작할 때 키보드로 입력할지, 말로 답할지 정할 수 있어요. 학습 화면에서도 언제든 바꿀 수 있어요.</Help>}
+        <Row label="발음인식 기준" value={label(SPEECH_OPTS, s.speechLevel)} onClick={() => open('발음인식 기준', s.speechLevel, SPEECH_OPTS, (v) => set({ speechLevel: v }))} />
+        {help && <Help>말해보기에서 발음을 얼마나 엄격하게 채점할지 정해요.</Help>}
         <Row
           label="새 단어 난이도"
           value={label(DIFF_OPTS, s.newWordDifficulty)}
@@ -85,8 +102,8 @@ export default function VocabSettings({ s, onBack, onRetest, onReset }: Props) {
           </div>
         </div>
         {help && <Help>새 단어가 나오는 범위예요. 학습 결과에 따라 자동으로도 조정돼요.</Help>}
-        <Toggle label="정답을 다 입력하면 바로 채점" checked={s.autoCheck} onChange={(v) => set({ autoCheck: v })} />
-        <Toggle label="빈칸 길이를 정답 길이에 맞추기" checked={s.blankMatchesLength} onChange={(v) => set({ blankMatchesLength: v })} />
+        <Row label="복습 단어 비율" value={label(RATIO_OPTS, s.reviewRatio)} onClick={() => open('복습 단어 비율', s.reviewRatio, RATIO_OPTS, (v) => set({ reviewRatio: v }))} />
+        {help && <Help>새 단어와 복습 단어가 나오는 비율이에요. 복습 우선은 복습할 단어를 먼저 모두 내 줘요.</Help>}
       </section>
 
       <section className="vs-sec">

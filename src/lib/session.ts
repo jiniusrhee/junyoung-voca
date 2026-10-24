@@ -27,6 +27,7 @@ export class StudyPicker {
   constructor(
     private level: number,
     private difficulty: Settings['newWordDifficulty'],
+    private ratio: Settings['reviewRatio'] = 'normal',
   ) {}
 
   async init(): Promise<void> {
@@ -53,7 +54,8 @@ export class StudyPicker {
 
     const reviews = due.filter((c) => c.state === State.Review);
     const fresh = await this.pickNew();
-    if (reviews.length && (this.reviewStreak < 2 || !fresh)) {
+    const maxRun = this.ratio === 'more' ? 4 : this.ratio === 'less' ? 1 : 2;
+    if (reviews.length && (this.reviewStreak < maxRun || !fresh)) {
       this.reviewStreak++;
       return this.review(reviews[0]);
     }

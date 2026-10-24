@@ -72,7 +72,6 @@ function PeriodTab({ byDate, daily, today, acc }: { byDate: Map<string, DailyRow
   const listenBest = useLiveQuery(async () => ((await db.kv.get('listeningBest'))?.value as number | undefined) ?? (await getSettings()).listeningLevel ?? undefined, []);
   const reviews = t?.reviews ?? 0;
   const fresh = t?.newWords ?? 0;
-  const sum = Math.max(1, fresh + reviews);
   const dow = dayOfWeek(today);
   const sameDow = daily.filter((d) => dayOfWeek(d.date) === dow && dayTotal(d) > 0);
   const avgMin = sameDow.length ? Math.round(sameDow.reduce((s, d) => s + dayTime(d), 0) / sameDow.length / 60000) : 0;
@@ -102,69 +101,44 @@ function PeriodTab({ byDate, daily, today, acc }: { byDate: Map<string, DailyRow
           </div>
         </div>
       </div>
-      <div className="s-card mode-sum">
-        <span className="ms-icon">
-          <Icon name="bookPerson" size={24} />
-        </span>
-        <div className="ms-body">
-          <div className="ms-head">
-            <b>어휘</b>
-            <span className="ms-acc">
-              <Icon name="shield" size={13} /> 복습 정답률 {acc == null ? '-' : `${Math.round(acc * 100)}%`} <Icon name="chevron" size={12} />
-            </span>
-          </div>
-          <div className="ms-bar">
-            <span className="new" style={{ width: `${(fresh / sum) * 100}%` }} />
-            <span className="rev" style={{ width: `${(reviews / sum) * 100}%` }} />
-          </div>
-          <p className="ms-legend">
-            새 문제 <b className="y">{fresh}</b> 복습 문제 <b className="b">{reviews}</b>
-          </p>
-        </div>
-      </div>
-      {others.map((m) => {
-        const md = t!.byMode![m]!;
-        const sm = Math.max(1, md.newItems + md.reviews);
-        return (
-          <div key={m} className={`s-card mode-sum m-${m}`}>
-            <span className="ms-icon">
-              <Icon name={MODE_ICON[m]} size={22} />
-            </span>
-            <div className="ms-body">
-              <div className="ms-head">
-                <b>{SMODE_LABEL[m]}</b>
-                <span className="ms-acc">
-                  {m === 'listening' ? (
-                    <>
-                      <Icon name="trophy" size={13} /> 최고 레벨 {listenBest ?? '-'}
-                    </>
-                  ) : (
-                    <>
-                      <Icon name="shield" size={13} /> 복습 정답률 {modeAcc?.[m] == null ? '-' : `${Math.round((modeAcc[m] ?? 0) * 100)}%`}
-                    </>
-                  )}
-                  <Icon name="chevron" size={12} />
-                </span>
-              </div>
-              {m === 'listening' ? (
+      <div className="s-card mode-list">
+        {(['vocab', ...others] as const).map((m) => {
+          const md = m === 'vocab' ? { newItems: fresh, reviews, total: t?.total ?? 0 } : t!.byMode![m]!;
+          const sm = Math.max(1, md.newItems + md.reviews);
+          const accText = m === 'vocab' ? acc : m === 'listening' ? null : modeAcc?.[m];
+          return (
+            <div key={m} className={`mode-sum m-${m}`}>
+              <span className="ms-icon">
+                <Icon name={m === 'vocab' ? 'bookPerson' : MODE_ICON[m]} size={22} />
+              </span>
+              <div className="ms-body">
+                <div className="ms-head">
+                  <b>{SMODE_LABEL[m]}</b>
+                  <span className="ms-acc">
+                    {m === 'listening' ? (
+                      <>
+                        <Icon name="trophy" size={13} /> 최고 레벨 {listenBest ?? '-'}
+                      </>
+                    ) : (
+                      <>
+                        <Icon name="shield" size={13} /> 복습 정답률 {accText == null ? '-' : `${Math.round(accText * 100)}%`}
+                      </>
+                    )}
+                    <Icon name="chevron" size={12} />
+                  </span>
+                </div>
+                <div className="ms-bar">
+                  <span className="new" style={{ width: `${(md.newItems / sm) * 100}%` }} />
+                  <span className="rev" style={{ width: `${(md.reviews / sm) * 100}%` }} />
+                </div>
                 <p className="ms-legend">
-                  문제 <b className="b">{md.total}</b>
+                  {m === 'talk' ? '일반 문제' : '새 문제'} <b className="y">{md.newItems || '-'}</b> 복습 문제 <b className="b">{md.reviews || '-'}</b>
                 </p>
-              ) : (
-                <>
-                  <div className="ms-bar">
-                    <span className="new" style={{ width: `${(md.newItems / sm) * 100}%` }} />
-                    <span className="rev" style={{ width: `${(md.reviews / sm) * 100}%` }} />
-                  </div>
-                  <p className="ms-legend">
-                    새 문제 <b className="y">{md.newItems}</b> 복습 문제 <b className="b">{md.reviews}</b>
-                  </p>
-                </>
-              )}
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
       <div className="s-card habit">
         <span className="habit-icon">
           <Icon name="chart" size={22} />
@@ -500,6 +474,8 @@ function VocabTab({ level, imp }: { level: number; imp: ImportedProgress | null 
   const hist = useLiveQuery(async () => ((await db.kv.get('vocabHistory'))?.value as { date: string; vocab: number; level?: number }[] | undefined) ?? [], []);
   const history = [...(imp?.vocabHistory ?? []), ...(hist ?? [])].sort((a, b) => b.date.localeCompare(a.date));
   const vocabNow = displayVocab(level, comp ?? null, imp, testDate);
+  // 레벨 테스트 기록이 없으면 들여온 이해도
+  const compShown = testDate && (!imp || testDate > imp.asOf) ? (comp ?? null) : (imp?.comprehension ?? comp ?? null);
   const pct = imp?.percentile != null && vocabNow === imp.vocabSize ? imp.percentile : percentileOf(vocabNow);
   const dt = vocabDateText(imp, testDate);
   const dateText = dt ? dt.replace(/^(\d{4})-(\d{2})-(\d{2})/, (_, y, m, d) => `${y}년 ${Number(m)}월 ${Number(d)}일`) : '측정 전';
@@ -518,13 +494,10 @@ function VocabTab({ level, imp }: { level: number; imp: ImportedProgress | null 
           <span>내가 알고 있는 어휘</span>
           <b className="laurel">{displayVocab(level, comp ?? null, imp, testDate).toLocaleString()} 개</b>
           <span>나의 어휘 이해도</span>
-          <b className="laurel">{comp == null ? '-' : `${(comp * 100).toFixed(2)} %`}</b>
-          <span>현재 레벨</span>
-          <b className="laurel">레벨 {level}</b>
+          <b className="laurel">{compShown == null ? '-' : `${(compShown * 100).toFixed(2)} %`}</b>
+          <span>나의 어휘력은 대한민국</span>
+          <b className="laurel">{pct} %</b>
         </div>
-        <p className="gold-rank">
-          나의 어휘력은 대한민국 <em>상위 {pct}%</em>
-        </p>
       </section>
       <button className="measure-btn" onClick={() => nav('/test')}>
         어휘력 측정하기

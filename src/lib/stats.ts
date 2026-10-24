@@ -136,7 +136,7 @@ export function displayVocab(level: number, rate: number | null, imp?: ImportedP
 
 /** 어휘력 날짜 설명 */
 export function vocabDateText(imp?: ImportedProgress | null, testDate?: string | null): string | null {
-  if (testDate && (!imp || testDate > imp.asOf)) return `${testDate} 측정 결과`;
-  if (imp?.vocabSize) return `${imp.asOf} ${imp.source} 기록`;
+  if (testDate && (!imp || testDate > imp.asOf)) return `${testDate} 측정`;
+  if (imp?.vocabSize) return `${imp.vocabHistory?.[imp.vocabHistory.length - 1]?.date ?? imp.asOf} 측정`;
   return null;
 }

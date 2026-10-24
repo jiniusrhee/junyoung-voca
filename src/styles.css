@@ -8511,3 +8511,17 @@ sup.beta.pill {
 .dict-searchbar {
   position: fixed;
 }
+
+/* 기간별: 모드별 줄을 카드 하나에 */
+.mode-list {
+  padding: 4px 16px;
+}
+.mode-list .mode-sum {
+  display: flex;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.mode-list .mode-sum:last-child {
+  border-bottom: none;
+}
