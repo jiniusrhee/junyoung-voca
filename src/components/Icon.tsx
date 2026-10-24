@@ -17,6 +17,8 @@ export type IconName =
   | 'play'
   | 'chat'
   | 'plus'
+  | 'bag'
+  | 'info'
   | 'medal'
   | 'gift'
   | 'plane'
@@ -325,6 +327,19 @@ const PATHS: Record<IconName, ReactElement> = {
   ),
   bookmark: <path d="M6 3h12v18l-6-4.5L6 21z" fill="currentColor" stroke="none" />,
   plus: <path d="M12 5v14M5 12h14" strokeWidth={2.6} />,
+  bag: (
+    <g>
+      <path d="M5 9h14l-1.2 11a1.5 1.5 0 0 1-1.5 1.3H7.7a1.5 1.5 0 0 1-1.5-1.3z" fill="currentColor" stroke="none" />
+      <path d="M8.5 9V7a3.5 3.5 0 0 1 7 0v2" strokeWidth={1.8} />
+    </g>
+  ),
+  info: (
+    <g>
+      <circle cx="12" cy="12" r="9" strokeWidth={1.8} />
+      <path d="M12 7.5v5.5" strokeWidth={2} />
+      <circle cx="12" cy="16.5" r="1.1" fill="currentColor" stroke="none" />
+    </g>
+  ),
   medal: (
     <g>
       <path d="M8 2.5h8l-2 6H10z" fill="#8b6cf6" stroke="none" />

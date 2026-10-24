@@ -8390,3 +8390,43 @@ sup.beta.pill {
   transform: translateX(-50%);
   bottom: 4px;
 }
+
+/* 목록 화면 공통 (말해보카: N/500, 칩, 편집) */
+.bag-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.82rem;
+  color: var(--sub);
+}
+.bag-count svg {
+  color: #9d86ef;
+}
+.list-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+.edit-btn {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.84rem;
+  color: var(--sub);
+}
+.edit-btn.on {
+  color: var(--purple);
+}
+.list-page .lw-empty {
+  margin: 4px 0;
+}
+.note-del {
+  margin: 6px 0 2px;
+  padding: 5px 12px;
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--red);
+  font-size: 0.82rem;
+}

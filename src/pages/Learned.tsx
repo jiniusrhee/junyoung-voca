@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Icon from '../components/Icon';
 import SubHeader from '../components/SubHeader';
-import { getImported } from '../lib/imported';
 import { LEARNED_KINDS, importedDay, learnedCounts, learnedList, logText, type LearnedKind, type LearnedRow } from '../lib/learned';
 import { speak } from '../lib/speech';
 import { shiftDate, studyDateOf } from '../lib/time';
@@ -13,15 +12,9 @@ import { toggleWordbook, useWordbook } from '../lib/wordbook';
 export default function LearnedMenu() {
   const nav = useNavigate();
   const counts = useLiveQuery(() => learnedCounts(), []);
-  const imp = useLiveQuery(() => getImported(), []);
   return (
     <div className="screen sub">
       <SubHeader title="내가 학습한 어휘" />
-      {imp?.learnedCount != null && (
-        <p className="lw-imported">
-          {imp.source}에서 학습한 어휘 <b>{imp.learnedCount.toLocaleString()}</b>개 · 날짜별 기록 {imp.learnedWords?.length.toLocaleString() ?? 0}개 단어를 이어받았어요
-        </p>
-      )}
       <ul className="lw-menu">
         {LEARNED_KINDS.map((k) => (
           <li key={k.kind}>
