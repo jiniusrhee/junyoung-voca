@@ -307,7 +307,9 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     }
     const before = s.en.split('___')[0].trimEnd();
     const atStart = before === '' || /[.?!]$/.test(before);
-    return atStart && live.input === '';
+    // 말해보카: 문장 첫머리이거나 정답이 대문자로 시작(고유명사·제목)하면 첫 글자는 대문자 자판
+    const capAnswer = /^[A-Z]/.test(s.answer);
+    return (atStart || capAnswer) && live.input === '';
   })();
   const typeChar = (c: string) => {
     editInput((cur) => cur + c);
@@ -702,7 +704,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         </button>
         <div className="quiz-progress">
           <span className={`trophy-badge ${count >= total ? 'gold' : ''}`}>
-            <Icon name="trophy" size={18} />
+            <Icon name={settings.studyTheme === 'dino' ? 'drop' : 'trophy'} size={18} />
           </span>
           <div className="progress-track">
             <div className="progress-fill" style={{ width: `${Math.max(fill * 100, 14)}%` }}>
