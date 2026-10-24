@@ -8239,25 +8239,22 @@ sup.beta.pill {
   font-size: 0.78rem;
   color: #fff;
 }
-/* 빈칸: 정답 글자 너비로 재서 칸 크기를 잡고, 입력이 길면 늘어남 */
+/* 빈칸: 정답 글자 너비로 재서 칸 크기를 잡고, 입력이 길면 늘어남 (기준선은 입력 글자에 맞춤) */
 .blank {
   display: inline-grid;
   grid-template-columns: 1fr;
+  align-items: baseline;
+  vertical-align: baseline;
   padding: 0 8px;
 }
 .blank > .blank-size,
 .blank > .blank-text {
   grid-area: 1 / 1;
   white-space: pre;
+  line-height: 1.5em;
 }
 .blank > .blank-size {
   visibility: hidden;
-  height: 0;
-  overflow: hidden;
-}
-.blank > .blank-text {
-  display: inline-block;
-  min-height: 1.5em;
 }
 /* 입력 말풍선: 사전 단어 밑줄, 뜻 팝업, 처음 안내 */
 .toolbar-center {

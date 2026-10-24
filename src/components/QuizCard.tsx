@@ -140,13 +140,13 @@ export default function QuizCard(p: Props) {
               const ok = seg.idx < active && t.toLowerCase() === target.toLowerCase();
               return (
                 <span key={i} className={`blank ${seg.idx === active ? 'active' : ''} ${ok ? 'ok' : ''}`}>
-                  <span className="blank-size" aria-hidden="true">
-                    {sizer}
-                  </span>
                   <span className="blank-text">
                     <span className="typed">{ok ? target : t}</span>
                     {p.showCaret && seg.idx === active && <span className="caret" />}
                     {ghost && <span className="ghost">{ghost}</span>}
+                  </span>
+                  <span className="blank-size" aria-hidden="true">
+                    {sizer}
                   </span>
                 </span>
               );
