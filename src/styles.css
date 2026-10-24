@@ -8746,3 +8746,26 @@ sup.beta.pill {
   white-space: nowrap;
   z-index: 3;
 }
+
+/* 추가 학습 시트: 학습 코스 변경 / 링 안 변경 버튼 (말해보카) */
+.extra-course {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.change-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 22px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.extra-counts.in-ring .change-btn {
+  margin-top: 8px;
+  padding: 8px 14px;
+  font-size: 0.84rem;
+}
