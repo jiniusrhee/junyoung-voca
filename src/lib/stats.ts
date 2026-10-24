@@ -176,6 +176,7 @@ export async function saveMeasure(m: Measure): Promise<void> {
 export async function latestMeasure(imp?: ImportedProgress | null): Promise<Measure | null> {
   const m = (await db.kv.get('measured'))?.value as Measure | undefined;
   if (!m) return null;
-  if (imp && m.date <= imp.asOf) return null;
+  // 들여온 기록과 같은 날 측정했어도 측정이 더 새 것이다
+  if (imp && m.date < imp.asOf) return null;
   return m;
 }

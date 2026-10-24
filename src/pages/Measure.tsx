@@ -17,6 +17,8 @@ export default function Measure() {
   const s = useSettings();
   const imp = useLiveQuery(() => getImported(), []);
   const comp = useLiveQuery(() => comprehension(), []);
+  /** 이 앱에서 새로 본 단어 수: 표본이 작을수록 들여온 이해도를 더 믿는다 */
+  const sample = useLiveQuery(() => db.reviews.filter((r) => r.isNew).count(), []);
   const testDate = useLiveQuery(async () => (await db.kv.get('levelTestDate'))?.value as string | undefined, []);
   /** 들여온 기록 이후 이 앱에서 처음 보고 바로 맞힌 단어 수 (아는 어휘에 더함) */
   const grown = useLiveQuery(async () => {
@@ -41,11 +43,12 @@ export default function Measure() {
     return () => window.clearInterval(id);
   }, [s]);
 
-  if (!s || imp === undefined || comp === undefined || grown === undefined) return <div className="measure-page" />;
+  if (!s || imp === undefined || comp === undefined || grown === undefined || sample === undefined) return <div className="measure-page" />;
 
   const base = displayVocab(s.level ?? 10, comp, imp, testDate);
   const vocab = base + (grown ?? 0);
-  const compNow = imp?.comprehension != null ? (comp == null ? imp.comprehension : imp.comprehension * 0.7 + comp * 0.3) : (comp ?? 0.7);
+  const w = Math.min(0.3, (sample ?? 0) / 300);
+  const compNow = imp?.comprehension != null ? (comp == null ? imp.comprehension : imp.comprehension * (1 - w) + comp * w) : (comp ?? 0.7);
   const percentile = imp?.percentile != null && vocab >= (imp.vocabSize ?? 0) ? (vocab >= 22000 ? Math.min(imp.percentile, 0.1) : imp.percentile) : percentileOf(vocab);
   const today = studyDateOf();
 
