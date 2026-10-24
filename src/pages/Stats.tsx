@@ -454,6 +454,55 @@ function StudyTab({ mode, byDate, daily, today, goal, extra }: { mode: SMode; by
 
 /* ---------------- 어휘력 ---------------- */
 
+/** 어휘력 측정 결과: 측정일별 상위 % 꺾은선 (말해보카: ‹ 전체 › + 날짜 알약 + 선택 점에 세로 막대) */
+function VocabHistoryChart({ history, imp }: { history: { date: string; vocab: number; level?: number }[]; imp: ImportedProgress | null }) {
+  const pts = [...history].sort((a, b) => a.date.localeCompare(b.date)).map((h) => ({ ...h, pct: imp && h.vocab === imp.vocabSize && imp.percentile != null ? imp.percentile : percentileOf(h.vocab) }));
+  const [sel, setSel] = useState(pts.length - 1);
+  const cur = pts[Math.min(sel, pts.length - 1)];
+  const W = 300;
+  const H = 150;
+  const pad = 26;
+  const vals = pts.map((p) => p.pct);
+  const lo = Math.min(...vals);
+  const hi = Math.max(...vals, lo + 0.01);
+  const x = (i: number) => (pts.length === 1 ? W / 2 : pad + (i * (W - pad * 2)) / (pts.length - 1));
+  const y = (v: number) => pad + ((v - lo) / (hi - lo)) * (H - pad * 2);
+  return (
+    <div className="s-card vh-card">
+      <div className="card-head-row">
+        <b className="card-title">어휘력 측정 결과</b>
+        <span className="nb-date">
+          <button disabled>‹</button>
+          <b>전체</b>
+          <button disabled>›</button>
+        </span>
+      </div>
+      <div className="vh-pill">{cur.date.replace(/-/g, '.')}</div>
+      <svg className="vh-chart" viewBox={`0 0 ${W} ${H}`} aria-label="어휘력 측정 결과 차트">
+        <rect x={x(sel) - 7} y={pad - 10} width={14} height={H - pad - 4} rx={5} className="vh-bar" />
+        <polyline points={pts.map((p, i) => `${x(i)},${y(p.pct)}`).join(' ')} className="vh-line" />
+        {pts.map((p, i) => (
+          <g key={p.date} onClick={() => setSel(i)}>
+            <circle cx={x(i)} cy={y(p.pct)} r={5} className={`vh-dot ${i === sel ? 'sel' : ''}`} />
+            {(i === 0 || i === pts.length - 1 || i === sel) && (
+              <text x={x(i)} y={y(p.pct) - 11} textAnchor="middle" className="vh-label">
+                {p.pct}
+              </text>
+            )}
+          </g>
+        ))}
+      </svg>
+      <div className="vh-axis">
+        <span>{pts[0].date.replace(/-/g, '.')}</span>
+        <span>{pts[pts.length - 1].date.replace(/-/g, '.')}</span>
+      </div>
+      <p className="vh-note">
+        {cur.vocab.toLocaleString()} 개 · 상위 {cur.pct} %{cur.level != null ? ` · 레벨 ${cur.level}` : ''}
+      </p>
+    </div>
+  );
+}
+
 function VocabTab({ level, imp }: { level: number; imp: ImportedProgress | null }) {
   const nav = useNavigate();
   const comp = useLiveQuery(() => comprehension(), []);
@@ -499,23 +548,10 @@ function VocabTab({ level, imp }: { level: number; imp: ImportedProgress | null 
           <b className="laurel">{pct} %</b>
         </div>
       </section>
+      {history.length > 0 && <VocabHistoryChart history={history} imp={imp} />}
       <button className="measure-btn" onClick={() => nav('/test')}>
         어휘력 측정하기
       </button>
-      {history.length > 0 && (
-        <div className="s-card">
-          <b className="card-title">어휘력 측정 결과</b>
-          <ul className="vh-list">
-            {history.slice(0, 8).map((h) => (
-              <li key={h.date + h.vocab}>
-                <span>{h.date.replace(/-/g, '.')}</span>
-                <b>{h.vocab.toLocaleString()} 개</b>
-                {h.level != null && <small>레벨 {h.level}</small>}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
 
       <div className="s-card">
         <b className="card-title">레벨별 학습 단어</b>

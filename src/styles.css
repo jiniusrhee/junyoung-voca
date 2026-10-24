@@ -8925,3 +8925,86 @@ sup.beta.pill {
   color: var(--text);
   font-size: 1rem;
 }
+
+/* 설정 토글 줄이 오른쪽으로 넘치지 않게 */
+.ms-page .toggle-row {
+  flex-wrap: nowrap;
+}
+.ms-page .toggle-row .ms-row-text {
+  min-width: 0;
+}
+.ms-page .toggle-row .toggle {
+  flex: none;
+  margin-left: auto;
+}
+/* 어휘력 측정 결과 차트 (말해보카) */
+.card-head-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.vh-pill {
+  margin: 12px 0 6px;
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  text-align: center;
+  font-weight: 700;
+}
+.vh-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.vh-line {
+  fill: none;
+  stroke: #7b61ff;
+  stroke-width: 2;
+}
+.vh-dot {
+  fill: var(--card);
+  stroke: #7b61ff;
+  stroke-width: 2;
+}
+.vh-dot.sel {
+  fill: #7b61ff;
+}
+.vh-bar {
+  fill: var(--surface-2);
+}
+.vh-label {
+  font-size: 10px;
+  fill: var(--sub);
+}
+.vh-axis {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: -4px;
+}
+.vh-note {
+  margin-top: 8px;
+  font-size: 0.84rem;
+  color: var(--sub);
+  text-align: center;
+}
+/* 다른 예문: 여자 음성 토글 */
+.ex-voice {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--sub);
+}
+.ex-voice input {
+  display: none;
+}
+.ex-voice input:checked + .toggle {
+  background: var(--purple);
+}
+.ex-voice input:checked + .toggle::after {
+  left: 21px;
+}

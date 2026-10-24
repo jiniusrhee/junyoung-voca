@@ -615,6 +615,11 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
           <>
             <p className="overlay-title">
               <Icon name="book" size={16} /> 다른 예문
+              <label className="ex-voice">
+                여자 음성
+                <input type="checkbox" checked={settings.voiceGender === 'female'} onChange={(e) => void saveSettings({ voiceGender: e.target.checked ? 'female' : 'random' })} />
+                <span className="toggle" />
+              </label>
             </p>
             {w.sentences.filter((_, i) => i !== isAnswered.q.sentenceIdx).length === 0 && <p className="overlay-empty">예문을 준비중입니다.</p>}
             {w.sentences
