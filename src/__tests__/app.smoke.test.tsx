@@ -4,6 +4,7 @@ import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-libra
 import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
 import App from '../App';
 import { db } from '../db';
+import { hintPrefix } from '../lib/text';
 import type { WordEntry, WordSentence } from '../types';
 
 // 배포되는 단어 팩을 그대로 읽어 가짜 fetch로 서빙한다
@@ -115,10 +116,11 @@ describe('app smoke', () => {
     await act(async () => {
       fireEvent.click(screen.getByRole('button', { name: /정답 보기/ }));
     });
-    // 말해보카처럼 정답이 칸에 비친다 (말풍선 없음)
-    expect(document.querySelector('.ghost')?.textContent).toBe(sentence.answer);
+    // 말해보카처럼 힌트로 채운 앞글자는 남고 나머지 정답이 칸에 비친다 (말풍선 없음)
+    const pre = hintPrefix(sentence.answer);
+    expect(document.querySelector('.ghost')?.textContent).toBe(sentence.answer.slice(pre.length));
 
-    await type(sentence.answer);
+    await type(sentence.answer.slice(pre.length));
     await screen.findByRole('button', { name: /다음 문제/ }, { timeout: 5_000 });
     const card = await db.cards.get(word.id);
     expect(card?.known).toBeFalsy();
