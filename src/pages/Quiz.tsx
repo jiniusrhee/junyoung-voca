@@ -368,8 +368,9 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       const pre = hintPrefix(answer);
       setLive({ ...live, hints: 1, input: pre, locked: pre.length, feedback: null });
     } else {
-      // 말해보카: 정답이 칸에 주황색으로 비치고, 그대로 따라 쳐야 한다 (말풍선 없음)
-      setLive({ ...live, showedAnswer: true, input: '', locked: 0, feedback: null });
+      // 말해보카: 힌트로 채워진 앞글자(초록)는 남기고, 나머지 정답이 칸에 주황색으로 비친다. 그대로 따라 쳐야 한다 (말풍선 없음)
+      const keep = live.input.slice(0, live.locked);
+      setLive({ ...live, showedAnswer: true, input: keep, locked: keep.length, feedback: null });
     }
   };
 
