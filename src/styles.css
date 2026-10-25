@@ -9446,3 +9446,7 @@ sup.beta.pill {
 .pill .pill-heart.on {
   color: #ff5c8a;
 }
+/* 힌트로 채워진 앞글자: 초록 (말해보카) */
+.blank .typed.lock {
+  color: #37b26c;
+}

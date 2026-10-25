@@ -24,11 +24,15 @@ describe('scheduler', () => {
     expect(masteryOf(row)).toBe('fresh');
   });
 
-  it('caps hint-assisted or retried answers below Good', () => {
+  it('grades hints, reveals and retries like 말해보카', () => {
     const row = newCardRow('x', now);
     expect(gradeOf({ ...clean, hints: 1 }, row)).toBe(Rating.Hard);
-    expect(gradeOf({ ...clean, firstTry: false, wrongAttempts: 1 }, row)).toBe(Rating.Hard);
-    expect(gradeOf({ ...clean, firstTry: false, wrongAttempts: 2 }, row)).toBe(Rating.Again);
+    expect(gradeOf({ ...clean, showedAnswer: true }, row)).toBe(Rating.Again);
+    // 처음 보는 단어: 오답 뒤 정답은 5분 뒤 다시 (Again)
+    expect(gradeOf({ ...clean, firstTry: false, wrongAttempts: 1 }, row)).toBe(Rating.Again);
+    // 복습 단어: 오답 뒤 정답은 다음 단계로 (Good)
+    const reviewed = applyReview(row, { ...clean, showedAnswer: true }, now).row;
+    expect(gradeOf({ ...clean, firstTry: false, wrongAttempts: 1 }, reviewed)).toBe(Rating.Good);
   });
 
   it('marks a known word as shaky after a lapse', () => {

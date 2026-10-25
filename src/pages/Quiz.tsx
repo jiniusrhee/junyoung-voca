@@ -762,6 +762,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
             state={isAnswered ? 'answered' : 'question'}
             input={hist ? sentence.answer : live.input}
             showedAnswer={hist ? false : live.showedAnswer}
+            lockedLen={hist ? 0 : live.locked}
             showCaret={inputMode === 'keyboard' && phase === 'question' && !hist}
             blankMatchesLength={settings.blankMatchesLength}
             flash={flash}

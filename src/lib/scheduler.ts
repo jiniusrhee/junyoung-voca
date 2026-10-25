@@ -70,9 +70,11 @@ function toCard(row: CardRow): Card {
   };
 }
 
+/** 말해보카 관찰(2026-10-25): 정답 보기 → 5분 뒤, 힌트 → 다시 묻기, 오답 뒤 정답은 처음 보는 단어면 5분 뒤·복습 단어면 다음 단계(1일) */
 export function gradeOf(o: Outcome, row: CardRow): Grade {
-  if (o.showedAnswer || o.wrongAttempts >= 2) return Rating.Again;
-  if (o.hints > 0 || o.wrongAttempts === 1) return Rating.Hard;
+  if (o.showedAnswer) return Rating.Again;
+  if (o.hints > 0) return Rating.Hard;
+  if (o.wrongAttempts >= 1) return row.reps === 0 ? Rating.Again : Rating.Good;
   if (row.state === State.Review && o.elapsedMs < FAST_ANSWER_MS) return Rating.Easy;
   return Rating.Good;
 }

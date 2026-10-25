@@ -16,6 +16,8 @@ interface Props {
   blankMatchesLength: boolean;
   flash: { kind: 'wrong' | 'correct'; key: number } | null;
   feedback: { tone: Tone; msg: string; mask?: { text: string; bad: boolean }[] } | null;
+  /** 힌트로 채워져 지워지지 않는 앞글자 수 (초록으로 표시, 말해보카) */
+  lockedLen?: number;
   /** 오답 말풍선의 ♥: 이 설명을 좋아하는 오답노트에 담기 */
   onFavoriteNote?: () => void;
   noteFavorite?: boolean;
@@ -62,7 +64,7 @@ export function FilledSentence({ sentence }: { sentence: WordSentence }) {
 }
 
 export default function QuizCard(p: Props) {
-  const { word, sentence, state, input, showedAnswer, flash, feedback, badge, onFavoriteNote, noteFavorite } = p;
+  const { word, sentence, state, input, showedAnswer, flash, feedback, badge, onFavoriteNote, noteFavorite, lockedLen = 0 } = p;
   const words = answerWords(sentence.answer);
   const typed = splitInput(input, words.length);
   const spaces = (input.replace(/^\s+/, '').match(/ /g) || []).length;
@@ -148,7 +150,14 @@ export default function QuizCard(p: Props) {
               return (
                 <span key={i} className={`blank ${seg.idx === active ? 'active' : ''} ${ok ? 'ok' : ''}`}>
                   <span className="blank-text">
-                    <span className="typed">{ok ? target : t}</span>
+                    {seg.idx === 0 && lockedLen > 0 && !ok ? (
+                      <>
+                        <span className="typed lock">{t.slice(0, lockedLen)}</span>
+                        <span className="typed">{t.slice(lockedLen)}</span>
+                      </>
+                    ) : (
+                      <span className="typed">{ok ? target : t}</span>
+                    )}
                     {p.showCaret && seg.idx === active && <span className="caret" />}
                     {ghost && <span className="ghost">{ghost}</span>}
                   </span>
