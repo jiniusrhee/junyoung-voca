@@ -9450,3 +9450,10 @@ sup.beta.pill {
 .blank .typed.lock {
   color: #37b26c;
 }
+/* 연속 학습 N일 이 한 줄에 (말해보카) */
+.streak-text {
+  white-space: nowrap;
+}
+.streak-top {
+  flex-wrap: nowrap;
+}

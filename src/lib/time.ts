@@ -77,12 +77,12 @@ export function shortDate(date: string): string {
 
 export const WEEKDAYS_KO = ['일', '월', '화', '수', '목', '금', '토'];
 
-/** studyDate가 속한 주(일요일 시작)의 날짜 7개 */
+/** studyDate가 속한 주(월요일 시작, 말해보카 홈 연속 학습 줄과 같음)의 날짜 7개 */
 export function weekOf(date: string): string[] {
   const [y, m, d] = date.split('-').map(Number);
   const dow = new Date(y, m - 1, d, 12).getDay();
-  const sunday = shiftDate(date, -dow);
-  return Array.from({ length: 7 }, (_, i) => shiftDate(sunday, i));
+  const monday = shiftDate(date, -((dow + 6) % 7));
+  return Array.from({ length: 7 }, (_, i) => shiftDate(monday, i));
 }
 
 export function dayOfWeek(date: string): number {

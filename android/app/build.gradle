@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace = "com.junyoung.voca"
-    compileSdk = rootProject.ext.compileSdkVersion
+    namespace "com.junyoung.voca"
+    compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "com.junyoung.voca"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -13,12 +13,11 @@ android {
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
              // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
-            ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+            ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
     signingConfigs {
         release {
-            signingConfig signingConfigs.release
             // 로컬: ~/.junyoung-voca/release.keystore + keystore-password.txt, CI: 환경 변수
             def ksPath = System.getenv("ANDROID_KEYSTORE_PATH") ?: (System.getProperty("user.home") + "/.junyoung-voca/release.keystore")
             def pwFile = new File(System.getProperty("user.home") + "/.junyoung-voca/keystore-password.txt")
@@ -33,6 +32,7 @@ android {
     }
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
