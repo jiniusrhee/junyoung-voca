@@ -37,10 +37,19 @@ export async function nativeRecognizeOnce(lang = 'en-US', timeoutMs = 7000): Pro
       reject(new Error('no-speech'));
     }, timeoutMs),
   );
-  const run = p.start({ language: lang, maxResults: 5, partialResults: false, popup: false }).then((r) => {
-    const m = r.matches ?? [];
-    if (!m.length) throw new Error('no-speech');
-    return m;
-  });
+  const run = p
+    .start({ language: lang, maxResults: 5, partialResults: false, popup: false })
+    .then((r) => {
+      const m = r.matches ?? [];
+      if (!m.length) throw new Error('no-speech');
+      return m;
+    })
+    .catch((e: unknown) => {
+      // 안드로이드 인식기: 말이 없으면 'No match' / 'Speech timeout', 권한 없으면 'Insufficient permissions'
+      const msg = e instanceof Error ? e.message : String(e);
+      if (/no match|timeout|no speech/i.test(msg)) throw new Error('no-speech');
+      if (/permission/i.test(msg)) throw new Error('not-allowed');
+      throw e instanceof Error ? e : new Error(msg);
+    });
   return Promise.race([run, timer]);
 }

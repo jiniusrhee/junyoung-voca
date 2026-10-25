@@ -3,7 +3,11 @@ import { ImpactStyle } from '@capacitor/haptics';
 import type { Settings } from '../types';
 
 let haptics: typeof import('@capacitor/haptics').Haptics | null = null;
-if (Capacitor.isNativePlatform()) void import('@capacitor/haptics').then((m) => (haptics = m.Haptics));
+// 프록시를 then 체인의 반환값으로 흘리면 'Haptics.then()' 네이티브 호출이 되므로 블록으로 감싼다
+if (Capacitor.isNativePlatform())
+  void import('@capacitor/haptics').then((m) => {
+    haptics = m.Haptics;
+  });
 
 let ctx: AudioContext | null = null;
 let cur: Pick<Settings, 'ttsVolume' | 'sfxVolume' | 'keySoundVolume' | 'keyVibrate' | 'streakVibrate' | 'muteStart' | 'voiceAccent' | 'voiceGender'> = {
