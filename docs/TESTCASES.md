@@ -8,7 +8,7 @@
 
 | # | 항목 | 말해보카 | 상태 |
 |---|---|---|---|
-| A1 | 앱 형태 | 네이티브 앱 | 🔧 Capacitor 안드로이드 앱(APK)으로 포장: 자산 내장, 네이티브 음성 인식·햅틱, 세로 고정, 앱 아이콘·스플래시. `npm run apk` 또는 GitHub Release "latest" |
+| A1 | 앱 형태 | 네이티브 앱 | ✅ Capacitor 7 안드로이드 앱(APK): 자산 내장, 네이티브 음성 인식(플립에서 듣기→'듣지 못했어요' 확인)·햅틱, 세로 고정, 앱 아이콘·스플래시. 빌드 `npm run apk`(디버그) / `cd android && ./gradlew assembleRelease`(서명), 파일 junyoung-voca.apk |
 
 ## 어휘 퀴즈 — 키보드 모드
 
