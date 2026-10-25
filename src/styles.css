@@ -9457,3 +9457,21 @@ sup.beta.pill {
 .streak-top {
   flex-wrap: nowrap;
 }
+/* 연속 학습 카드: 오늘 아직 안 했으면 회색 물방울, 목표 글자 한 줄, 8칸 */
+.flame-big.off {
+  color: #4a4d55;
+}
+.streak-goal {
+  white-space: nowrap;
+}
+.week-row .day {
+  min-width: 0;
+}
+/* 정답 후 카드 ♥: 어두운 원 */
+:root[data-theme='dark'] .heart-btn {
+  background: #2a2c31;
+  color: #9a9ea8;
+}
+:root[data-theme='dark'] .heart-btn.on {
+  color: #ff6b8b;
+}

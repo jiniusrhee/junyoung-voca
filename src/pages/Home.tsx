@@ -12,7 +12,7 @@ import { saveSettings, useSettings } from '../lib/settings';
 import { getImported, importedRange, inRange, type DayRange } from '../lib/imported';
 import { STREAK_GOALS } from './Streak';
 import { comprehension, computeStreak, dayTime, dayTotal, displayVocab, getRepairedDays, goalMet, reviewAccuracy, studied, vocabDateText, percentileOf, latestMeasure, daySolved } from '../lib/stats';
-import { WEEKDAYS_KO, dayOfWeek, formatClock, shiftDate, studyDateOf, weekOf } from '../lib/time';
+import { WEEKDAYS_KO, dayOfWeek, formatClock, shiftDate, studyDateOf } from '../lib/time';
 import type { ImportedProgress, DailyRow, StudyMode } from '../types';
 
 const MODE_TABS: { key: string; icon: IconName; label: string; mode?: StudyMode }[] = [
@@ -212,15 +212,16 @@ export default function Home() {
 }
 
 function StreakCard({ today, byDate, goal, streak, range, target: manual, repaired }: { today: string; byDate: Map<string, DailyRow>; goal: number; streak: number; range: DayRange | null; target?: number; repaired?: Set<string> }) {
-  const week = weekOf(today);
+  // 말해보카: 지난 6일 + 오늘 + 내일 (오늘 아래 ▲, 목표 달성 🏆, 학습만 한 날 ★, 안 한 날·미래는 요일 글자)
+  const week = Array.from({ length: 8 }, (_, i) => shiftDate(today, i - 6));
   const did = (d: string) => studied(byDate.get(d)) || inRange(range, d) || !!repaired?.has(d);
   const alive = did(today) || did(shiftDate(today, -1));
   const inRun = (d: string) => d <= today && (did(d) || (d === today && alive));
   const target = manual ?? (STREAK_GOALS.find((g) => g > streak) ?? streak + 100);
   return (
     <Link to="/streak" className="streak-card">
-      <span className="flame-big">
-        <Icon name="flame" size={44} />
+      <span className={`flame-big ${did(today) ? '' : 'off'}`}>
+        <Icon name={did(today) ? 'flame' : 'drop'} size={44} />
       </span>
       <div className="streak-main">
         <div className="streak-top">
@@ -236,7 +237,7 @@ function StreakCard({ today, byDate, goal, streak, range, target: manual, repair
           {week.map((d, i) => {
             const on = inRun(d);
             const prev = i > 0 && inRun(week[i - 1]);
-            const nextOn = i < 6 && inRun(week[i + 1]);
+            const nextOn = i < week.length - 1 && inRun(week[i + 1]);
             const row = byDate.get(d);
             const cls = ['day', on ? 'on' : '', on && !prev ? 'start' : '', on && !nextOn ? 'end' : '', d === today ? 'today' : '', d > today ? 'future' : '']
               .filter(Boolean)
