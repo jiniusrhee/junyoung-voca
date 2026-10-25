@@ -5,16 +5,18 @@ export function isNativeApp(): boolean {
   return Capacitor.isNativePlatform();
 }
 
-let plugin: typeof import('@capacitor-community/speech-recognition').SpeechRecognition | null = null;
-async function load() {
+type Plugin = typeof import('@capacitor-community/speech-recognition').SpeechRecognition;
+let plugin: Plugin | null = null;
+/** 플러그인 프록시는 모든 속성을 메서드로 취급해서(then 포함) 직접 await 하면 'SpeechRecognition.then is not implemented' 가 난다 → 객체로 감싸서 돌려준다 */
+async function load(): Promise<{ p: Plugin }> {
   if (!plugin) plugin = (await import('@capacitor-community/speech-recognition')).SpeechRecognition;
-  return plugin;
+  return { p: plugin };
 }
 
 export async function nativeCanRecognize(): Promise<boolean> {
   if (!isNativeApp()) return false;
   try {
-    const p = await load();
+    const { p } = await load();
     return (await p.available()).available;
   } catch {
     return false;
@@ -23,7 +25,7 @@ export async function nativeCanRecognize(): Promise<boolean> {
 
 /** 한 번 듣고 후보 문장들을 돌려준다. 권한이 없으면 'not-allowed', 못 들으면 'no-speech' 오류 */
 export async function nativeRecognizeOnce(lang = 'en-US', timeoutMs = 7000): Promise<string[]> {
-  const p = await load();
+  const { p } = await load();
   const perm = await p.checkPermissions();
   if (perm.speechRecognition !== 'granted') {
     const r = await p.requestPermissions();
