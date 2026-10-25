@@ -107,13 +107,7 @@ export default function QuizCard(p: Props) {
         </div>
         {feedback && (
           <div className={`pill ${feedback.tone}`}>
-            {feedback.tone !== 'info' && <Icon name="bulb" size={18} className="pill-icon" />}
-            {feedback.tone !== 'info' && onFavoriteNote && (
-              <button className={`pill-heart ${noteFavorite ? 'on' : ''}`} onClick={onFavoriteNote} aria-label="오답노트에 담기">
-                <Icon name={noteFavorite ? 'heartFill' : 'heart'} size={18} />
-              </button>
-            )}
-            <span>
+                        <span>
               {feedback.mask && (
                 <>
                   {feedback.mask.map((m, k) => (
@@ -126,6 +120,11 @@ export default function QuizCard(p: Props) {
               )}
               {feedback.msg}
             </span>
+            {feedback.tone !== 'info' && onFavoriteNote && (
+              <button className={`pill-heart ${noteFavorite ? 'on' : ''}`} onClick={onFavoriteNote} aria-label="오답노트에 담기">
+                <Icon name={noteFavorite ? 'heartFill' : 'heart'} size={18} />
+              </button>
+            )}
           </div>
         )}
         <div className="qcard-bottom">

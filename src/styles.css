@@ -3830,7 +3830,7 @@ em.hl {
   color: #4fd1c5;
 }
 :root[data-theme='dark'] .ghost {
-  color: #5c5f66;
+  color: #f0a050;
 }
 :root[data-theme='dark'] .caret {
   background: #3b82f6;
