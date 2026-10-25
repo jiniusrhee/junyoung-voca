@@ -2,7 +2,9 @@ import { useLiveQuery } from 'dexie-react-hooks';
 import { useState } from 'react';
 import { State } from 'ts-fsrs';
 import { db } from '../db';
+import GoalModal, { VOCAB_PRESETS } from './GoalModal';
 import Icon from './Icon';
+import { saveSettings } from '../lib/settings';
 import Mascot from './Mascot';
 
 interface Props {
@@ -20,6 +22,7 @@ export default function ExtraStudySheet({ todayTotal, goal, met, onClose, onStar
   /** 추가 목표: 말해보카처럼 '변경'을 누를 때마다 20 → 50 → 100 → 10 개 순환 */
   const STEPS = [20, 50, 100, 10];
   const [extra, setExtra] = useState(STEPS[0]);
+  const [goalOpen, setGoalOpen] = useState(false);
   const counts = useLiveQuery(async () => {
     const now = new Date();
     const due = await db.cards.where('due').belowOrEqual(now).toArray();
@@ -33,6 +36,11 @@ export default function ExtraStudySheet({ todayTotal, goal, met, onClose, onStar
   }, []);
   const target = met ? todayTotal + extra : goal;
   const fill = Math.min(1, todayTotal / target);
+  // 말해보카: 새로운 + 복습할 + 재도전 + 틀린 = 남은 목표 (새로운 단어는 그 나머지, 실제 새 단어 수를 넘지 않음)
+  const review = counts?.review ?? 0;
+  const retry = counts?.retry ?? 0;
+  const wrong = counts?.wrong ?? 0;
+  const fresh = Math.min(counts?.fresh ?? 0, Math.max(0, target - todayTotal - review - retry - wrong));
 
   return (
     <div className="modal-dim" onClick={onClose}>
@@ -59,22 +67,22 @@ export default function ExtraStudySheet({ todayTotal, goal, met, onClose, onStar
           </svg>
           <div className="extra-counts in-ring">
             <p>
-              새로운 단어 <b>{counts?.fresh ?? 0}</b> 개
+              새로운 단어 <b>{fresh}</b> 개
             </p>
             <p>
-              복습할 단어 <b>{counts?.review ?? 0}</b> 개
+              복습할 단어 <b>{review}</b> 개
             </p>
             <p>
-              재도전 단어 <b>{counts?.retry ?? 0}</b> 개
+              재도전 단어 <b>{retry}</b> 개
             </p>
-            <p>
-              틀린 단어 <b>{counts?.wrong ?? 0}</b> 개
-            </p>
-            {met && (
-              <button className="change-btn dark" onClick={() => setExtra((n) => STEPS[(STEPS.indexOf(n) + 1) % STEPS.length] ?? STEPS[0])} aria-label="추가 목표 변경">
-                <Icon name="retry" size={16} /> 변경
-              </button>
+            {wrong > 0 && (
+              <p>
+                틀린 단어 <b>{wrong}</b> 개
+              </p>
             )}
+            <button className="change-btn dark" onClick={() => (met ? setExtra((n) => STEPS[(STEPS.indexOf(n) + 1) % STEPS.length] ?? STEPS[0]) : setGoalOpen(true))} aria-label="목표 변경">
+              <Icon name="retry" size={16} /> 변경
+            </button>
           </div>
           <div className="extra-mascot ring-mascot">
             <Mascot size={110} mood="cheer" />
@@ -89,6 +97,17 @@ export default function ExtraStudySheet({ todayTotal, goal, met, onClose, onStar
           </button>
         </div>
       </div>
+      {goalOpen && (
+        <GoalModal
+          presets={VOCAB_PRESETS}
+          current={goal}
+          onClose={() => setGoalOpen(false)}
+          onSave={(n) => {
+            void saveSettings({ dailyGoal: n });
+            setGoalOpen(false);
+          }}
+        />
+      )}
     </div>
   );
 }
