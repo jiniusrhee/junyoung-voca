@@ -9433,3 +9433,16 @@ sup.beta.pill {
   color: var(--muted);
   font-size: 0.88rem;
 }
+
+/* 오답 말풍선 오른쪽 ♥ (말해보카) */
+.pill {
+  position: relative;
+}
+.pill .pill-heart {
+  margin-left: auto;
+  flex: none;
+  color: rgba(255, 255, 255, 0.75);
+}
+.pill .pill-heart.on {
+  color: #ff5c8a;
+}

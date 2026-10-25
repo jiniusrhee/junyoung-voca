@@ -11,7 +11,7 @@ import QuizCard, { FilledSentence, type CardBadge } from '../components/QuizCard
 import WrongItem from '../components/WrongItem';
 import { Backdrop, useLeaveGuard } from '../components/StudyChrome';
 import { db } from '../db';
-import { comprehension, computeStreak, estimateVocab, grantRepairPen } from '../lib/stats';
+import { comprehension, computeStreak, estimateVocab, grantRepairPen, daySolved } from '../lib/stats';
 import { syncContent } from '../lib/content';
 import { maybeAdjustLevel } from '../lib/level';
 import { LEVEL_TEST_QUESTIONS } from '../lib/levelLogic';
@@ -19,6 +19,7 @@ import { applyReview, newCardRow, type Outcome } from '../lib/scheduler';
 import { LevelTest, ListPicker, StudyPicker, type Question } from '../lib/session';
 import { saveSettings, useSettings } from '../lib/settings';
 import { sfx } from '../lib/sfx';
+import { favNoteKey, toggleFavNote, useFavNotes } from '../lib/favnotes';
 import { pushInbox } from '../lib/inbox';
 import { markPronunciation } from '../lib/learned';
 import { canRecognize, recognizeOnce, speak, voiceErrorMessage } from '../lib/speech';
@@ -175,7 +176,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         setPhase('nowords');
         return;
       }
-      setTodayTotal((await db.daily.get(studyDateOf()))?.total ?? 0);
+      setTodayTotal(daySolved(await db.daily.get(studyDateOf())));
       if (mode === 'test') {
         const t = new LevelTest();
         await t.init();
@@ -233,8 +234,10 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
           wrongs: l.wrongs,
         });
         const d = (await db.daily.get(date)) ?? { date, total: 0, newWords: 0, reviews: 0, correct: 0, timeMs: 0 };
-        const before = d.total;
+        if (d.solved == null) d.solved = d.total;
+        const before = d.solved;
         d.total += 1;
+        if (!outcome.showedAnswer) d.solved += 1;
         if (l.q.isNew) d.newWords += 1;
         else d.reviews += 1;
         if (known) d.knownNew = (d.knownNew ?? 0) + 1;
@@ -242,7 +245,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         d.timeMs += Math.min(outcome.elapsedMs, 5 * 60_000);
         d.goal = s.dailyGoal;
         await db.daily.put(d);
-        return { total: d.total, metNow: before < s.dailyGoal && d.total >= s.dailyGoal };
+        return { total: d.solved, metNow: before < s.dailyGoal && d.solved >= s.dailyGoal };
       });
       void computeStreak().then(grantRepairPen).catch(() => undefined);
 
@@ -398,9 +401,12 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     }
   };
 
+  const favNotes = useFavNotes();
   const past = phase === 'answered' ? history.slice(0, -1) : history;
   const hist = histIdx != null ? (past[histIdx] ?? null) : null;
   const shown: Answered | null = hist ?? (phase === 'answered' ? answered : null);
+  /** 오답 말풍선 ♥ 용: 지금 카드의 마지막 등록 오답 */
+  const lastWrong = !hist && live && live.wrongs.length ? live.wrongs[live.wrongs.length - 1] : null;
 
   const sayIt = async () => {
     const target = shown;
@@ -758,6 +764,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
             blankMatchesLength={settings.blankMatchesLength}
             flash={flash}
             feedback={feedback}
+            noteFavorite={!!lastWrong && (favNotes?.some((n) => n.key === favNoteKey(q.word.id, q.sentenceIdx, lastWrong.w)) ?? false)}
+            onFavoriteNote={lastWrong ? () => void toggleFavNote({ wordId: q.word.id, sentenceIdx: q.sentenceIdx, w: lastWrong.w, tone: lastWrong.tone, m: lastWrong.m }) : undefined}
             badge={badge}
             favorite={favorites?.includes(favKey) ?? false}
             onToggleFavorite={() => void toggleFavorite()}

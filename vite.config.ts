@@ -4,7 +4,8 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 import pkg from './package.json';
 
-const BASE = '/junyoung-voca/';
+/** 네이티브(APK) 빌드는 루트에서 서빙되므로 base 가 '/' (CAP_BUILD=1 npm run build) */
+const BASE = process.env.CAP_BUILD ? '/' : '/junyoung-voca/';
 
 export default defineConfig({
   base: BASE,

@@ -16,6 +16,9 @@ interface Props {
   blankMatchesLength: boolean;
   flash: { kind: 'wrong' | 'correct'; key: number } | null;
   feedback: { tone: Tone; msg: string; mask?: { text: string; bad: boolean }[] } | null;
+  /** 오답 말풍선의 ♥: 이 설명을 좋아하는 오답노트에 담기 */
+  onFavoriteNote?: () => void;
+  noteFavorite?: boolean;
   badge: CardBadge;
   favorite: boolean;
   onToggleFavorite: () => void;
@@ -59,7 +62,7 @@ export function FilledSentence({ sentence }: { sentence: WordSentence }) {
 }
 
 export default function QuizCard(p: Props) {
-  const { word, sentence, state, input, showedAnswer, flash, feedback, badge } = p;
+  const { word, sentence, state, input, showedAnswer, flash, feedback, badge, onFavoriteNote, noteFavorite } = p;
   const words = answerWords(sentence.answer);
   const typed = splitInput(input, words.length);
   const spaces = (input.replace(/^\s+/, '').match(/ /g) || []).length;
@@ -105,6 +108,11 @@ export default function QuizCard(p: Props) {
         {feedback && (
           <div className={`pill ${feedback.tone}`}>
             {feedback.tone !== 'info' && <Icon name="bulb" size={18} className="pill-icon" />}
+            {feedback.tone !== 'info' && onFavoriteNote && (
+              <button className={`pill-heart ${noteFavorite ? 'on' : ''}`} onClick={onFavoriteNote} aria-label="오답노트에 담기">
+                <Icon name={noteFavorite ? 'heartFill' : 'heart'} size={18} />
+              </button>
+            )}
             <span>
               {feedback.mask && (
                 <>

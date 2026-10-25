@@ -12,7 +12,9 @@
     "content:validate": "node scripts/validate-content.mjs && node scripts/validate-extra.mjs",
     "content:manifest": "node scripts/build-manifest.mjs",
     "content:coverage": "node scripts/coverage.mjs",
-    "icons": "node scripts/make-icons.mjs"
+    "icons": "node scripts/make-icons.mjs",
+    "build:native": "node scripts/build-manifest.mjs && tsc --noEmit -p tsconfig.json && cross-env CAP_BUILD=1 vite build && cap sync android",
+    "apk": "npm run build:native && cd android && gradlew.bat assembleDebug"
   },
   "dependencies": {
     "dexie": "^4.4.6",
@@ -23,6 +25,9 @@
     "ts-fsrs": "^5.4.2"
   },
   "devDependencies": {
+    "@capacitor/android": "^8.5.3",
+    "@capacitor/cli": "^8.5.3",
+    "@capacitor/core": "^8.5.3",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/react": "^16.3.3",
     "@types/react": "^19.3.0",

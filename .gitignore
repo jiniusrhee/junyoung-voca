@@ -6,3 +6,10 @@ dev-dist/
 .DS_Store
 Thumbs.db
 ref/
+# Capacitor Android 빌드 산출물
+android/app/build/
+android/build/
+android/.gradle/
+android/local.properties
+android/app/release/
+*.keystore

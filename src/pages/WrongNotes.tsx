@@ -6,6 +6,7 @@ import { FilledSentence, KoSentence } from '../components/QuizCard';
 import SubHeader from '../components/SubHeader';
 import WrongItem from '../components/WrongItem';
 import { db } from '../db';
+import { FAV_NOTE_LIMIT, removeFavNote, useFavNotes } from '../lib/favnotes';
 
 
 type Hide = 'none' | 'ko' | 'en';
@@ -16,24 +17,20 @@ export default function WrongNotes() {
   const [hide, setHide] = useState<Hide>('none');
   const [newest, setNewest] = useState(true);
   const [editing, setEditing] = useState(false);
+  const favs = useFavNotes();
   const rows = useLiveQuery(async () => {
-    const reviews = await db.reviews
-      .orderBy('ts')
-      .reverse()
-      .filter((r) => (r.wrongs?.length ?? 0) > 0)
-      .limit(200)
-      .toArray();
-    const words = await db.words.bulkGet(reviews.map((r) => r.wordId));
-    return reviews
-      .map((r, i) => ({ r, w: words[i] }))
+    if (!favs) return undefined;
+    const words = await db.words.bulkGet(favs.map((n) => n.wordId));
+    return favs
+      .map((n, i) => ({ n, w: words[i] }))
       .filter((x) => x.w)
-      .map((x) => ({ r: x.r, w: x.w!, s: x.w!.sentences[x.r.sentenceIdx ?? 0] ?? x.w!.sentences[0] }));
-  }, []);
+      .map((x) => ({ n: x.n, w: x.w!, s: x.w!.sentences[x.n.sentenceIdx] ?? x.w!.sentences[0] }));
+  }, [favs]);
 
   const list = newest ? (rows ?? []) : [...(rows ?? [])].reverse();
   return (
     <div className="screen sub list-page">
-      <SubHeader title="내가 좋아하는 오답노트" right={<BagCount n={rows?.length ?? 0} />} />
+      <SubHeader title="내가 좋아하는 오답노트" right={<BagCount n={rows?.length ?? 0} max={FAV_NOTE_LIMIT} />} />
       <ListFilters editing={editing} onEdit={() => setEditing((v) => !v)}>
         <button className="chip-btn" onClick={() => setHide((h) => (h === 'none' ? 'ko' : h === 'ko' ? 'en' : 'none'))}>
           {HIDE_LABEL[hide]} ▾
@@ -43,8 +40,8 @@ export default function WrongNotes() {
         </button>
       </ListFilters>
       {rows && rows.length === 0 && <EmptyBox />}
-      {list.map(({ r, w, s }) => (
-        <div key={r.id} className="note-item">
+      {list.map(({ n, w, s }) => (
+        <div key={n.key} className="note-item">
           <Link to={`/words/${encodeURIComponent(w.id)}`} className="note-sent">
             {hide !== 'en' && (
               <p className="sent-en">
@@ -58,14 +55,12 @@ export default function WrongNotes() {
             )}
           </Link>
           {editing && (
-            <button className="note-del" onClick={() => void db.reviews.update(r.id!, { wrongs: [] })}>
+            <button className="note-del" onClick={() => void removeFavNote(n.key)}>
               삭제
             </button>
           )}
-          {(r.wrongs ?? []).map((x, i) => (
-            <WrongItem key={i} w={x.w} tone={x.tone} m={x.m} />
-          ))}
-          <p className="note-date">{new Date(r.ts).toLocaleDateString('ko-KR', { month: 'long', day: 'numeric' })}</p>
+          <WrongItem w={n.w} tone={n.tone} m={n.m} />
+          <p className="note-date">{new Date(n.ts).toLocaleDateString('ko-KR', { month: 'long', day: 'numeric' })}</p>
         </div>
       ))}
     </div>

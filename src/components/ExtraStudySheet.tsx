@@ -7,12 +7,16 @@ import Mascot from './Mascot';
 
 interface Props {
   todayTotal: number;
+  /** 오늘 목표 */
+  goal: number;
+  /** 목표를 채웠으면 추가 학습(목표 변경 가능), 아니면 오늘의 학습 */
+  met: boolean;
   onClose: () => void;
   onStart: (target: number) => void;
 }
 
 /** 목표를 채운 뒤 '추가 어휘'를 누르면 뜨는 추가 학습 창 */
-export default function ExtraStudySheet({ todayTotal, onClose, onStart }: Props) {
+export default function ExtraStudySheet({ todayTotal, goal, met, onClose, onStart }: Props) {
   /** 추가 목표: 말해보카처럼 '변경'을 누를 때마다 20 → 50 → 100 → 10 개 순환 */
   const STEPS = [20, 50, 100, 10];
   const [extra, setExtra] = useState(STEPS[0]);
@@ -27,7 +31,7 @@ export default function ExtraStudySheet({ todayTotal, onClose, onStart }: Props)
       wrong: due.filter((c) => c.state !== State.Review && c.lapses > 0).length,
     };
   }, []);
-  const target = todayTotal + extra;
+  const target = met ? todayTotal + extra : goal;
   const fill = Math.min(1, todayTotal / target);
 
   return (
@@ -66,9 +70,11 @@ export default function ExtraStudySheet({ todayTotal, onClose, onStart }: Props)
             <p>
               틀린 단어 <b>{counts?.wrong ?? 0}</b> 개
             </p>
-            <button className="change-btn dark" onClick={() => setExtra((n) => STEPS[(STEPS.indexOf(n) + 1) % STEPS.length] ?? STEPS[0])} aria-label="추가 목표 변경">
-              <Icon name="retry" size={16} /> 변경
-            </button>
+            {met && (
+              <button className="change-btn dark" onClick={() => setExtra((n) => STEPS[(STEPS.indexOf(n) + 1) % STEPS.length] ?? STEPS[0])} aria-label="추가 목표 변경">
+                <Icon name="retry" size={16} /> 변경
+              </button>
+            )}
           </div>
           <div className="extra-mascot ring-mascot">
             <Mascot size={110} mood="cheer" />
@@ -79,7 +85,7 @@ export default function ExtraStudySheet({ todayTotal, onClose, onStart }: Props)
         </div>
         <div className="extra-foot">
           <button className="extra-start" onClick={() => onStart(target)}>
-            <Icon name="star" size={22} /> 추가 학습
+            <Icon name={met ? 'star' : 'book'} size={22} /> {met ? '추가 학습' : '오늘의 학습'}
           </button>
         </div>
       </div>

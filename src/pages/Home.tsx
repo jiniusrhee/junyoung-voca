@@ -11,7 +11,7 @@ import { db } from '../db';
 import { saveSettings, useSettings } from '../lib/settings';
 import { getImported, importedRange, inRange, type DayRange } from '../lib/imported';
 import { STREAK_GOALS } from './Streak';
-import { comprehension, computeStreak, dayTime, dayTotal, displayVocab, getRepairedDays, goalMet, reviewAccuracy, studied, vocabDateText, percentileOf, latestMeasure } from '../lib/stats';
+import { comprehension, computeStreak, dayTime, dayTotal, displayVocab, getRepairedDays, goalMet, reviewAccuracy, studied, vocabDateText, percentileOf, latestMeasure, daySolved } from '../lib/stats';
 import { WEEKDAYS_KO, dayOfWeek, formatClock, shiftDate, studyDateOf, weekOf } from '../lib/time';
 import type { ImportedProgress, DailyRow, StudyMode } from '../types';
 
@@ -65,7 +65,7 @@ export default function Home() {
 
   const byDate = new Map((daily ?? []).map((d) => [d.date, d]));
   const t = byDate.get(today);
-  const vocabTotal = t?.total ?? 0;
+  const vocabTotal = daySolved(t);
   const total = homeMode === 'vocab' ? vocabTotal : (t?.byMode?.[homeMode]?.total ?? 0);
   const goal = homeMode === 'grammar' ? settings.grammarGoal : homeMode === 'listening' ? settings.listeningGoal : homeMode === 'expr' ? settings.exprGoal : homeMode === 'talk' ? settings.talkGoal : settings.dailyGoal;
   const pct = Math.round((total / goal) * 100);
@@ -113,9 +113,7 @@ export default function Home() {
             className={`today-btn m-${homeMode}`}
             onClick={() =>
               homeMode === 'vocab'
-                ? met
-                  ? setExtraOpen(true)
-                  : nav('/quiz')
+                ? setExtraOpen(true)
                 : homeMode === 'expr'
                   ? nav(met ? `/expr/quiz?target=${total + 15}` : '/expr/quiz')
                   : homeMode === 'talk'
@@ -208,7 +206,7 @@ export default function Home() {
         />
       )}
       {start && <ModeStart mode={start} onClose={() => setStart(null)} />}
-      {extraOpen && <ExtraStudySheet todayTotal={total} onClose={() => setExtraOpen(false)} onStart={(target) => nav(`/quiz?target=${target}`)} />}
+      {extraOpen && <ExtraStudySheet todayTotal={total} goal={goal} met={met} onClose={() => setExtraOpen(false)} onStart={(target) => nav(`/quiz?target=${target}`)} />}
     </div>
   );
 }

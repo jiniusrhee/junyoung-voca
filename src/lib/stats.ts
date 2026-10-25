@@ -22,8 +22,13 @@ export function studied(d: DailyRow | undefined): boolean {
   return dayTotal(d) >= STREAK_MIN_QUESTIONS;
 }
 
+/** 오늘 목표에 들어가는 문제 수 (정답 보기 제외). 예전 기록은 total 로 */
+export function daySolved(d: DailyRow | undefined): number {
+  return d?.solved ?? d?.total ?? 0;
+}
+
 export function goalMet(d: DailyRow | undefined, currentGoal: number): boolean {
-  return !!d && d.total >= (d.goal ?? currentGoal);
+  return !!d && daySolved(d) >= (d.goal ?? currentGoal);
 }
 
 /** 복구펜으로 채운 날 */

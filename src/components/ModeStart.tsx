@@ -4,6 +4,7 @@ import { db } from '../db';
 import { modeToday } from '../lib/modeStudy';
 import { saveSettings, useSettings } from '../lib/settings';
 import { speak } from '../lib/speech';
+import { daySolved } from '../lib/stats';
 import { studyDateOf } from '../lib/time';
 import type { StudyMode } from '../types';
 import ExtraStudySheet from './ExtraStudySheet';
@@ -52,11 +53,11 @@ export default function ModeStart({ mode, onClose }: { mode: StudyMode; onClose:
     const total = mode === 'grammar' ? await db.gsentences.count() : 0;
     return { today, due, wrong, fresh: Math.max(0, total - seen) };
   }, [mode]);
-  const vocabToday = useLiveQuery(async () => (await db.daily.get(studyDateOf()))?.total ?? 0, []);
+  const vocabToday = useLiveQuery(async () => daySolved(await db.daily.get(studyDateOf())), []);
   if (!s) return null;
 
   if (mode === 'vocab') {
-    return <ExtraStudySheet todayTotal={vocabToday ?? 0} onClose={onClose} onStart={(target) => nav(`/quiz?target=${target}`)} />;
+    return <ExtraStudySheet todayTotal={vocabToday ?? 0} goal={s.dailyGoal} met={(vocabToday ?? 0) >= s.dailyGoal} onClose={onClose} onStart={(target) => nav(`/quiz?target=${target}`)} />;
   }
 
   if (mode === 'grammar') {
