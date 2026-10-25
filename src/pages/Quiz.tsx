@@ -237,7 +237,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         if (d.solved == null) d.solved = d.total;
         const before = d.solved;
         d.total += 1;
-        if (!outcome.showedAnswer) d.solved += 1;
+        // 말해보카: 힌트 보기·정답 보기를 쓴 카드는 상단 카운트가 오르지 않는다 (오답 뒤 정답은 오른다)
+        if (!outcome.showedAnswer && outcome.hints === 0) d.solved += 1;
         if (l.q.isNew) d.newWords += 1;
         else d.reviews += 1;
         if (known) d.knownNew = (d.knownNew ?? 0) + 1;
