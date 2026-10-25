@@ -16,6 +16,21 @@ android {
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    signingConfigs {
+        release {
+            signingConfig signingConfigs.release
+            // 로컬: ~/.junyoung-voca/release.keystore + keystore-password.txt, CI: 환경 변수
+            def ksPath = System.getenv("ANDROID_KEYSTORE_PATH") ?: (System.getProperty("user.home") + "/.junyoung-voca/release.keystore")
+            def pwFile = new File(System.getProperty("user.home") + "/.junyoung-voca/keystore-password.txt")
+            def ksPass = System.getenv("ANDROID_KEYSTORE_PASSWORD") ?: (pwFile.exists() ? pwFile.text.trim() : "")
+            if (new File(ksPath).exists() && ksPass) {
+                storeFile file(ksPath)
+                storePassword ksPass
+                keyAlias System.getenv("ANDROID_KEY_ALIAS") ?: "junyoung"
+                keyPassword ksPass
+            }
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
