@@ -1,3 +1,4 @@
+import { isNativeApp, nativeRecognizeOnce } from './nativeSpeech';
 import { ttsVolume, voicePref } from './sfx';
 interface RecognitionResultLike {
   length: number;
@@ -25,13 +26,15 @@ function ctor(): RecognitionCtor | null {
 }
 
 export function canRecognize(): boolean {
-  return ctor() !== null;
+  if (isNativeApp()) return true;
+  return !!ctor();
 }
 
 /** 한 번 듣고 인식 후보 문장들을 돌려준다. 실패 시 Error(message=에러 코드) */
 const LISTEN_TIMEOUT_MS = 7000;
 
 export function recognizeOnce(lang = 'en-US'): Promise<string[]> {
+  if (isNativeApp()) return nativeRecognizeOnce(lang, LISTEN_TIMEOUT_MS);
   return new Promise((resolve, reject) => {
     const C = ctor();
     if (!C) {

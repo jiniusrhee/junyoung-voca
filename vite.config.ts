@@ -13,6 +13,8 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
+      // 앱(APK)은 자산을 내장하므로 서비스 워커가 필요 없다
+      disable: !!process.env.CAP_BUILD,
       registerType: 'autoUpdate',
       includeAssets: ['icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png'],
       manifest: {

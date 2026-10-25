@@ -1,4 +1,9 @@
+import { Capacitor } from '@capacitor/core';
+import { ImpactStyle } from '@capacitor/haptics';
 import type { Settings } from '../types';
+
+let haptics: typeof import('@capacitor/haptics').Haptics | null = null;
+if (Capacitor.isNativePlatform()) void import('@capacitor/haptics').then((m) => (haptics = m.Haptics));
 
 let ctx: AudioContext | null = null;
 let cur: Pick<Settings, 'ttsVolume' | 'sfxVolume' | 'keySoundVolume' | 'keyVibrate' | 'streakVibrate' | 'muteStart' | 'voiceAccent' | 'voiceGender'> = {
@@ -58,7 +63,10 @@ function beep(freq: number, ms: number, gain: number): void {
 /** 자판 키를 누를 때: 짧은 딸깍 소리 + 진동 (말해보카 '키 입력 시 소리/진동') */
 export function keyFeedback(): void {
   beep(1800, 35, cur.keySoundVolume);
-  if (cur.keyVibrate && navigator.vibrate) navigator.vibrate(8);
+  if (cur.keyVibrate) {
+    if (haptics) void haptics.impact({ style: ImpactStyle.Light });
+    else navigator.vibrate?.(8);
+  }
 }
 
 /** 정답/오답 효과음 */
@@ -69,6 +77,9 @@ export function sfx(kind: 'correct' | 'wrong' | 'goal'): void {
   } else if (kind === 'wrong') beep(220, 160, cur.sfxVolume);
   else {
     [660, 880, 1100, 1320].forEach((f, i) => window.setTimeout(() => beep(f, 120, cur.sfxVolume), i * 110));
-    if (cur.streakVibrate && navigator.vibrate) navigator.vibrate([60, 40, 60]);
+    if (cur.streakVibrate) {
+      if (haptics) void haptics.vibrate({ duration: 160 });
+      else navigator.vibrate?.([60, 40, 60]);
+    }
   }
 }
