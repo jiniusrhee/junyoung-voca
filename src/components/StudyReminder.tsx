@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { db } from '../db';
 import { pushInbox } from '../lib/inbox';
 import { useSettings } from '../lib/settings';
+import { isNativeApp, scheduleStudyReminder } from '../lib/nativeNotify';
 import { studyDateOf } from '../lib/time';
 
 /** 설정 > 알림 > 학습 알림: 앱이 켜져 있을 때 정한 시각에 오늘 학습이 없으면 알림을 띄운다 (말해보카의 학습 시간 알림) */
@@ -10,8 +11,14 @@ export default function StudyReminder() {
   const on = !!s?.notifyStudy;
   const at = s?.notifyTime ?? '20:00';
   const dnd = s?.dndOn ? `${s.dndFrom}-${s.dndTo}` : '';
+  // 앱(APK): OS 에 매일 예약 — 앱이 꺼져 있어도 울린다
   useEffect(() => {
-    if (!on || typeof Notification === 'undefined') return;
+    if (!s || !isNativeApp()) return;
+    const [from, to] = dnd ? dnd.split('-') : ['', ''];
+    void scheduleStudyReminder(on, at, dnd ? { from, to } : null).catch(() => undefined);
+  }, [s, on, at, dnd]);
+  useEffect(() => {
+    if (!on || isNativeApp() || typeof Notification === 'undefined') return;
     const tick = async () => {
       const now = new Date();
       const hm = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;

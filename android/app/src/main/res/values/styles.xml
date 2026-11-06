@@ -13,6 +13,8 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:background">@null</item>
+        <!-- 안드로이드 15+: 상태바·내비게이션바 밑으로 화면이 깔리지 않게 (제목줄이 시계와 겹치던 문제) -->
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
     </style>
 
 

@@ -1,4 +1,5 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
+import { isNativeApp, nativeNotifyPermission, nativeNotifyRequest } from '../lib/nativeNotify';
 import { useNavigate, useParams } from 'react-router-dom';
 import Icon from '../components/Icon';
 import { saveSettings, useSettings } from '../lib/settings';
@@ -101,10 +102,17 @@ export default function ModeSettings() {
   const { mode = '' } = useParams();
   const nav = useNavigate();
   const s = useSettings();
-  const [perm, setPerm] = useState<NotificationPermission | 'unsupported'>(typeof Notification === 'undefined' ? 'unsupported' : Notification.permission);
+  const [perm, setPerm] = useState<NotificationPermission | 'unsupported' | 'prompt'>(isNativeApp() ? 'prompt' : typeof Notification === 'undefined' ? 'unsupported' : Notification.permission);
+  useEffect(() => {
+    if (isNativeApp()) void nativeNotifyPermission().then((p) => setPerm(p === 'prompt' ? 'default' : p));
+  }, []);
   if (!s) return null;
   const set = (patch: Partial<Settings>) => void saveSettings(patch);
   const askPermission = () => {
+    if (isNativeApp()) {
+      void nativeNotifyRequest().then((p) => setPerm(p === 'prompt' ? 'default' : p));
+      return;
+    }
     if (typeof Notification === 'undefined') return;
     void Notification.requestPermission().then(setPerm);
   };
@@ -230,7 +238,7 @@ export default function ModeSettings() {
           <Row title="알림 시간">
             <input type="time" className="time-input" value={s.notifyTime} onChange={(e) => set({ notifyTime: e.target.value })} />
           </Row>
-          <p className="vs-help-box">정한 시각에 오늘 학습이 없으면 알림을 띄워요. 서버가 없는 앱이라 앱(설치한 바로가기)이 켜져 있을 때만 울려요.</p>
+          <p className="vs-help-box">{isNativeApp() ? '정한 시각에 매일 알림을 보내요. 앱이 꺼져 있어도 울려요.' : '정한 시각에 오늘 학습이 없으면 알림을 띄워요. 서버가 없는 앱이라 앱(설치한 바로가기)이 켜져 있을 때만 울려요.'}</p>
         </>
       )}
       {mode === 'dnd' && (
