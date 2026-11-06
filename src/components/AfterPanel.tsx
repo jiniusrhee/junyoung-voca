@@ -43,8 +43,9 @@ export default function AfterPanel(p: Props) {
       </div>
       <div className="after-big">
         <button className="big-btn" onClick={p.onToggleSpeed}>
-          <Icon name={p.slow ? 'turtle' : 'rabbit'} size={34} />
-          <span>{p.slow ? '듣기평가 속도' : '실전 속도'}</span>
+          {/* 말해보카: 바꿀 속도를 보여준다 (실전 속도 중이면 거북이 + 듣기평가 속도) */}
+          <Icon name={p.slow ? 'rabbit' : 'turtle'} size={34} />
+          <span>{p.slow ? '실전 속도' : '듣기평가 속도'}</span>
         </button>
         <button className="big-btn" onClick={p.onReplay}>
           <Icon name="speaker" size={34} />

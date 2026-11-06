@@ -2,7 +2,7 @@ import { db } from '../db';
 import type { ImportedProgress, Settings } from '../types';
 import { knownCardRow } from './scheduler';
 import { saveSettings } from './settings';
-import { shiftDate } from './time';
+import { shiftDate, studyDateOf } from './time';
 
 const KEY = 'imported';
 
@@ -42,7 +42,17 @@ export async function applyImportedKnown(p?: ImportedProgress | null): Promise<n
 }
 
 /** 새 progress.json 을 받았을 때 한 번 적용: 레벨, 아는 단어 */
-export async function applyImported(data: ImportedProgress): Promise<void> {
+export async function applyImported(data: ImportedProgress, now: Date = new Date()): Promise<void> {
+  // 처음 들여올 때 기록일(asOf)이 어제보다 이전이면, 그 사이에도 말해보카에서 매일 공부한 것으로 보고 연속 학습을 어제까지 이어 준다
+  // (앱을 처음 여는 날까지 기록이 끊기지 않게). 두 번째 이후 갱신에서는 손대지 않는다.
+  const first = (await db.kv.get(KEY)) == null;
+  if (first && data.streak && data.streak.days > 0) {
+    const yesterday = shiftDate(studyDateOf(now), -1);
+    if (data.streak.asOf < yesterday) {
+      const gap = Math.round((Date.parse(yesterday) - Date.parse(data.streak.asOf)) / 86_400_000);
+      data = { ...data, streak: { days: data.streak.days + gap, asOf: yesterday } };
+    }
+  }
   await db.kv.put({ key: KEY, value: data });
   const patch: Partial<Settings> = {};
   if (data.levels?.vocab) patch.level = data.levels.vocab;
