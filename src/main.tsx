@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import App from './App';
 import './styles.css';
+import { installNativeBack } from './lib/nativeBack';
 
 // 안드로이드 앱: 상태바를 WebView 위에 겹치지 않게, 어두운 배경
 import('@capacitor/core').then(({ Capacitor }) => {
@@ -10,5 +11,7 @@ import('@capacitor/core').then(({ Capacitor }) => {
     void StatusBar.setBackgroundColor({ color: '#17181c' });
   });
 });
+
+void installNativeBack();
 
 createRoot(document.getElementById('root')!).render(<App />);

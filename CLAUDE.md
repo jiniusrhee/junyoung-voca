@@ -11,6 +11,7 @@ Vite + React + TypeScript, Dexie(IndexedDB), ts-fsrs(복습 스케줄), vite-plu
 
 - `npm run dev` / `npm test` / `npm run build` (prebuild에서 콘텐츠 검증 + manifest 생성)
 - `npm run content:validate`, `npm run content:coverage [레벨]`
+- 안드로이드 APK: `npm run build:native`(base `/` 로 빌드 + cap sync) → `cd android && ./gradlew assembleRelease` (JDK 21, 서명 키는 `~/.junyoung-voca/`). 일반 `npm run build` 결과를 APK 에 넣으면 경로가 `/junyoung-voca/` 라 빈 화면이 뜬다. 폰 뒤로 가기는 `src/lib/nativeBack.ts`(App 플러그인) 가 처리한다.
 
 ## 화면 구조 (말해보카 기준)
 
