@@ -76,10 +76,10 @@ export default function AllLearning() {
         <>
           <ModeCard color="voca" title="어휘 학습" sub={<>하루 목표 {settings.dailyGoal} 개 <Icon name="pencil" size={13} /></>} done={(counts?.vToday ?? 0) >= settings.dailyGoal} onPlay={() => ((counts?.vToday ?? 0) >= settings.dailyGoal ? setStart('vocab') : nav('/quiz'))} />
           <ul className="al-list">
-            <Row to="/favorites" icon="heartFill" tint="pink" label="내가 좋아하는 문장" count={counts?.fav} />
-            <Row to="/wrongs" icon="xcircle" tint="plain" label="내 오답노트" count={counts?.wrongs} />
-            <Row to="/words" icon="hourglass" tint="teal" label="내가 학습한 어휘" count={counts?.learned} />
-            <Row to="/wordbook" icon="bookmark" tint="blue" label="내 단어장" count={counts?.wordbook} />
+            <Row to="/favorites" icon="heartFill" tint="pink" label="내가 좋아하는 문장" />
+            <Row to="/wrongs" icon="xcircle" tint="plain" label="내가 좋아하는 오답노트" />
+            <Row to="/words" icon="hourglass" tint="teal" label="내가 학습한 어휘" />
+            <Row to="/wordbook" icon="bookmark" tint="blue" label="내 단어장" />
           </ul>
         </>
       )}
@@ -87,8 +87,8 @@ export default function AllLearning() {
         <>
           <ModeCard color="grammar" title="문법 학습" sub={<>하루 목표 {settings.grammarGoal} 개 <Icon name="pencil" size={13} /></>} done={(counts?.gToday ?? 0) >= settings.grammarGoal} onPlay={() => setStart('grammar')} />
           <ul className="al-list">
-            <Row to="/learned/grammar" icon="hourglass" tint="teal" label="내가 학습한 문법" count={counts?.gLearned} />
-            <Row to="/bookmarks/grammar" icon="bookmark" tint="blue" label="북마크" count={counts?.gMarks} />
+            <Row to="/learned/grammar" icon="hourglass" tint="teal" label="내가 학습한 문법" />
+            <Row to="/bookmarks/grammar" icon="bookmark" tint="blue" label="북마크" />
           </ul>
         </>
       )}

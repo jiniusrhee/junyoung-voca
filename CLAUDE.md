@@ -5,7 +5,7 @@
 
 ## 스택
 
-Vite + React + TypeScript, Dexie(IndexedDB), ts-fsrs(복습 스케줄), vite-plugin-pwa, HashRouter, Pretendard 폰트(CDN). 배포는 GitHub Pages (`base: /junyoung-voca/`).
+Vite + React + TypeScript, Dexie(IndexedDB), ts-fsrs(복습 스케줄), vite-plugin-pwa, HashRouter. 글꼴은 폰 기본 글꼴(system-ui) — 갤럭시에서는 말해보카와 같은 글꼴로 보이므로 웹 폰트를 넣지 않는다. 배포는 GitHub Pages (`base: /junyoung-voca/`).
 
 ## 명령
 

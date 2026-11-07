@@ -5283,6 +5283,16 @@ em.hl {
   padding: 7px 14px;
   font-size: 1rem;
 }
+/* 폭 360px 폰(Z플립 등)에서는 칩 5개가 한 줄에 들어가도록 조금 줄인다 */
+@media (max-width: 370px) {
+  .al-chip {
+    padding: 7px 10px;
+    font-size: 0.92rem;
+  }
+}
+.al-chips::-webkit-scrollbar {
+  display: none;
+}
 :root[data-theme='dark'] .g-submit.on,
 .g-submit.on {
   background: #6e5bd6;
