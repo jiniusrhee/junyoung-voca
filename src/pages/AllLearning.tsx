@@ -55,11 +55,11 @@ export default function AllLearning() {
     <div className="screen all-learning">
       <header className="home-head">
         <button className="head-menu" onClick={() => nav('/settings')} aria-label="설정 메뉴">
-          <Icon name="list" size={26} />
+          <MenuGlyph />
           <span>{settings.nickname}</span>
         </button>
         <button className="head-bell" onClick={() => nav('/inbox')} aria-label="알림함">
-          <Icon name="bell" size={26} />
+          <BellGlyph />
         </button>
       </header>
 
@@ -74,7 +74,7 @@ export default function AllLearning() {
 
       {chip === 'vocab' && (
         <>
-          <ModeCard color="voca" title="어휘 학습" sub={<>하루 목표 {settings.dailyGoal} 개 <Icon name="pencil" size={13} /></>} done={(counts?.vToday ?? 0) >= settings.dailyGoal} onPlay={() => ((counts?.vToday ?? 0) >= settings.dailyGoal ? setStart('vocab') : nav('/quiz'))} />
+          <ModeCard color="voca" title="어휘 학습" sub={<>하루 목표 <strong className="mc-num">{settings.dailyGoal}</strong> 개 <Icon name="pencil" size={13} className="mc-pen" /></>} done={(counts?.vToday ?? 0) >= settings.dailyGoal} onPlay={() => ((counts?.vToday ?? 0) >= settings.dailyGoal ? setStart('vocab') : nav('/quiz'))} />
           <ul className="al-list">
             <Row to="/favorites" icon="heartFill" tint="pink" label="내가 좋아하는 문장" />
             <Row to="/wrongs" icon="xcircle" tint="plain" label="내가 좋아하는 오답노트" />
@@ -85,7 +85,7 @@ export default function AllLearning() {
       )}
       {chip === 'grammar' && (
         <>
-          <ModeCard color="grammar" title="문법 학습" sub={<>하루 목표 {settings.grammarGoal} 개 <Icon name="pencil" size={13} /></>} done={(counts?.gToday ?? 0) >= settings.grammarGoal} onPlay={() => setStart('grammar')} />
+          <ModeCard color="grammar" title="문법 학습" sub={<>하루 목표 <strong className="mc-num">{settings.grammarGoal}</strong> 개 <Icon name="pencil" size={13} className="mc-pen" /></>} done={(counts?.gToday ?? 0) >= settings.grammarGoal} onPlay={() => setStart('grammar')} />
           <ul className="al-list">
             <Row to="/learned/grammar" icon="hourglass" tint="teal" label="내가 학습한 문법" />
             <Row to="/bookmarks/grammar" icon="bookmark" tint="blue" label="북마크" />
@@ -100,7 +100,7 @@ export default function AllLearning() {
             beta
             sub={
               <>
-                학습 코스 <i className="sep">|</i> {counts?.course ?? '코스 선택'} <Icon name="pencil" size={13} />
+                학습 코스 <i className="sep">|</i> {counts?.course ?? '코스 선택'} <Icon name="pencil" size={13} className="mc-pen" />
               </>
             }
             done={(counts?.eToday ?? 0) >= settings.exprGoal}
@@ -138,7 +138,7 @@ export default function AllLearning() {
             title="리스닝 학습"
             sub={
               <>
-                하루 목표 {settings.listeningGoal} 개 <Icon name="pencil" size={13} /> <i className="sep">|</i> {settings.listeningSpeed === 'slow' ? '듣기 평가 속도' : '실전 속도'} <Icon name="pencil" size={13} />
+                하루 목표 <strong className="mc-num">{settings.listeningGoal}</strong> 개 <Icon name="pencil" size={13} className="mc-pen" /> <i className="sep">|</i> {settings.listeningSpeed === 'slow' ? '듣기 평가 속도' : '실전 속도'} <Icon name="pencil" size={13} className="mc-pen" />
               </>
             }
             done={(counts?.lToday ?? 0) >= settings.listeningGoal}
@@ -158,7 +158,6 @@ export default function AllLearning() {
         <Row to="/grammar-dict" icon="search" tint="salmon" label="문법 사전" />
       </ul>
 
-      <div className="al-sep" />
       <h2 className="al-title">기타</h2>
       <ul className="al-list">
         <Row to="/pairs" icon="mic" tint="purple" label="발음 구분 연습" />
@@ -183,11 +182,7 @@ async function lastStory(): Promise<string | undefined> {
 function ModeCard({ color, title, sub, beta, done, onPlay }: { color: string; title: string; sub: React.ReactNode; beta?: boolean; done?: boolean; onPlay: () => void }) {
   return (
     <button className={`mode-card ${color}`} onClick={onPlay}>
-      {done && (
-        <span className="mode-card-ribbon">
-          <Icon name="trophy" size={20} />
-        </span>
-      )}
+      {done && <Ribbon />}
       <span className="mode-card-text">
         <b>
           {title} {beta && <sup>beta</sup>}
@@ -195,7 +190,7 @@ function ModeCard({ color, title, sub, beta, done, onPlay }: { color: string; ti
         <span>{sub}</span>
       </span>
       <span className="mode-card-play">
-        <Icon name="play" size={34} />
+        <Icon name="play" size={33} />
       </span>
     </button>
   );
@@ -210,8 +205,50 @@ function Row({ to, icon, label, tint, count }: { to: string; icon: IconName; lab
         </span>
         <span className="al-label">{label}</span>
         {count != null && count > 0 && <span className="al-count">{count}</span>}
-        <Icon name="chevron" size={18} className="muted-ic" />
+        <Icon name="chevron" size={17} className="muted-ic" />
       </Link>
     </li>
+  );
+}
+
+/** 헤더 ☰ (말해보카 실측: 14.5×13.3, 선 굵기 2) */
+function MenuGlyph() {
+  return (
+    <svg width="14.5" height="13.4" viewBox="0 0 14.5 13.4" fill="currentColor" aria-hidden="true">
+      <rect width="14.5" height="2" rx="0.3" />
+      <rect y="5.7" width="14.5" height="2" rx="0.3" />
+      <rect y="11.4" width="14.5" height="2" rx="0.3" />
+    </svg>
+  );
+}
+
+/** 헤더 🔔 (18.3×19, 노란색) */
+function BellGlyph() {
+  return (
+    <svg width="18.3" height="19" viewBox="0 0 18.3 19" fill="currentColor" aria-hidden="true">
+      <circle cx="9.15" cy="1.3" r="1.3" />
+      <path d="M9.15 2C5.2 2 2.75 5 2.75 8.6v4L0 15.3v.9h18.3v-.9l-2.75-2.7v-4C15.55 5 13.1 2 9.15 2z" />
+      <path d="M6.4 17.1a2.75 1.9 0 0 0 5.5 0z" />
+    </svg>
+  );
+}
+
+/** 하루 목표 달성 트로피 리본 (직접 그린 것: 32×40, 아래 가운데 홈 4.3px, 흰 트로피 18×14.3) */
+function Ribbon() {
+  return (
+    <svg className="mode-card-ribbon" width="32" height="42" viewBox="0 0 32 42" aria-hidden="true">
+      <defs>
+        <filter id="al-ribbon-shadow" x="-20%" y="-10%" width="140%" height="130%">
+          <feDropShadow dx="0" dy="1" stdDeviation="1" floodColor="#000" floodOpacity="0.22" />
+        </filter>
+      </defs>
+      <path d="M0 0h32v40l-16-4.3L0 40z" fill="#deba4a" filter="url(#al-ribbon-shadow)" />
+      <g transform="translate(7 12.85)" fill="#fff">
+        <path d="M3.2 0h11.6v4.6a5.8 5.8 0 0 1-11.6 0z" />
+        <path d="M3.2 1.6H1.1A1.1 1.1 0 0 0 0 2.7v1.3a3.8 3.8 0 0 0 3.6 3.8M14.8 1.6h2.1A1.1 1.1 0 0 1 18 2.7v1.3a3.8 3.8 0 0 1-3.6 3.8" fill="none" stroke="#fff" strokeWidth="1.3" strokeLinecap="round" />
+        <path d="M7.9 10.2h2.2v1.8H7.9z" />
+        <path d="M5 12h8a.9.9 0 0 1 .9.9v.5a.9.9 0 0 1-.9.9H5a.9.9 0 0 1-.9-.9v-.5A.9.9 0 0 1 5 12z" />
+      </g>
+    </svg>
   );
 }

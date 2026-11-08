@@ -1,5 +1,6 @@
 import { useLiveQuery } from 'dexie-react-hooks';
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Link, useNavigate } from 'react-router-dom';
 import Icon from '../components/Icon';
 import { speak } from '../lib/speech';
@@ -20,9 +21,11 @@ async function pushRecent(term: string): Promise<void> {
 /** 단어 & 문장 검색 (말해보카: 탭, 최근 검색, 아래 입력줄 + 확인, 검색 후에만 결과) */
 export default function Dictionary() {
   const nav = useNavigate();
+  const [params] = useSearchParams();
+  const initial = params.get('q') ?? '';
   const [tab, setTab] = useState<Tab>('word');
-  const [draft, setDraft] = useState('');
-  const [query, setQuery] = useState('');
+  const [draft, setDraft] = useState(initial);
+  const [query, setQuery] = useState(initial);
   const q = query.trim().toLowerCase();
   const recent = useLiveQuery(() => getRecent(), []);
 

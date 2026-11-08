@@ -28,28 +28,38 @@ export default function Stats() {
 
   return (
     <div className="screen stats">
-      <header className="home-head">
-        <button className="head-menu" onClick={() => nav('/settings')} aria-label="설정 메뉴">
-          <Icon name="list" size={26} />
-          <span>{settings.nickname}</span>
-        </button>
-        <button className="head-bell" onClick={() => nav('/inbox')} aria-label="알림함">
-          <Icon name="bell" size={26} />
-        </button>
-      </header>
-      <nav className="stats-tabs">
-        {(
-          [
-            ['period', '기간별'],
-            ['study', '학습별'],
-            ['vocab', '어휘력'],
-          ] as [Tab, string][]
-        ).map(([k, label]) => (
-          <button key={k} className={tab === k ? 'active' : ''} onClick={() => setTab(k)}>
-            {label}
+      <div className="stats-top">
+        <header className="home-head">
+          <button className="head-menu" onClick={() => nav('/settings')} aria-label="설정 메뉴">
+            {/* 말해보카 실측: 가로 15, 줄 두께 2, 줄 간격 5.67 (CSS px) */}
+            <svg className="st-menu" width="15" height="13.33" viewBox="0 0 15 13.33" aria-hidden="true">
+              <rect x="0" y="0" width="15" height="2" rx="1" />
+              <rect x="0" y="5.67" width="15" height="2" rx="1" />
+              <rect x="0" y="11.33" width="15" height="2" rx="1" />
+            </svg>
+            <span>{settings.nickname}</span>
           </button>
-        ))}
-      </nav>
+          <button className="head-bell" onClick={() => nav('/inbox')} aria-label="알림함">
+            <svg className="st-bell" width="18.67" height="19.33" viewBox="0 0 28 29" aria-hidden="true">
+              <path d="M14 1.5a2.1 2.1 0 0 1 2.1 2.1v1.1A8.4 8.4 0 0 1 22.4 13v6.4l2.7 3.4c.6.8.1 2-.9 2H3.8c-1 0-1.5-1.2-.9-2l2.7-3.4V13a8.4 8.4 0 0 1 6.3-8.3V3.6A2.1 2.1 0 0 1 14 1.5z" />
+              <path d="M10.3 26.2h7.4a3.7 3.7 0 0 1-7.4 0z" />
+            </svg>
+          </button>
+        </header>
+        <nav className="stats-tabs">
+          {(
+            [
+              ['period', '기간별'],
+              ['study', '학습별'],
+              ['vocab', '어휘력'],
+            ] as [Tab, string][]
+          ).map(([k, label]) => (
+            <button key={k} className={tab === k ? 'active' : ''} onClick={() => setTab(k)}>
+              {label}
+            </button>
+          ))}
+        </nav>
+      </div>
       {tab === 'period' && <PeriodTab byDate={byDate} daily={daily} today={today} acc={acc ?? null} />}
       {tab === 'study' && (
         <StudyModes daily={daily} today={today} imp={imp ?? null} goals={{ vocab: settings.dailyGoal, grammar: settings.grammarGoal, expr: settings.exprGoal, talk: settings.talkGoal, listening: settings.listeningGoal }} />
@@ -84,7 +94,11 @@ function PeriodTab({ byDate, daily, today, acc }: { byDate: Map<string, DailyRow
       <div className="tile-row">
         <div className="s-tile">
           <span className="s-tile-icon clock">
-            <Icon name="clock" size={30} />
+            <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+              <circle cx="11" cy="11" r="11" fill="#bdd3e3" />
+              <circle cx="11" cy="11" r="7.4" fill="#fff" />
+              <path d="M11 6.6V11.2l3.2 1.9" fill="none" stroke="#3d4b5b" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </span>
           <div>
             <span>총 학습 시간</span>
@@ -93,7 +107,15 @@ function PeriodTab({ byDate, daily, today, acc }: { byDate: Map<string, DailyRow
         </div>
         <div className="s-tile">
           <span className="s-tile-icon pencil">
-            <Icon name="pencil" size={22} />
+            <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+              <g transform="rotate(45 11 11)">
+                <rect x="8.3" y="0.6" width="5.4" height="3.4" rx="1.2" fill="#f0a3a8" />
+                <rect x="8.3" y="3.2" width="5.4" height="1.6" fill="#cfd2d6" />
+                <rect x="8.3" y="4.6" width="5.4" height="10.6" fill="#e9bd63" />
+                <path d="M8.3 15.2h5.4L11 21.4z" fill="#ead3b0" />
+                <path d="M10.1 19.1L11 21.4l.9-2.3z" fill="#3a3a3a" />
+              </g>
+            </svg>
           </span>
           <div>
             <span>총 학습 문제</span>
@@ -109,7 +131,7 @@ function PeriodTab({ byDate, daily, today, acc }: { byDate: Map<string, DailyRow
           return (
             <div key={m} className={`mode-sum m-${m}`}>
               <span className="ms-icon">
-                <Icon name={m === 'vocab' ? 'bookPerson' : MODE_ICON[m]} size={22} />
+                <Icon name={m === 'vocab' ? 'bookPerson' : MODE_ICON[m]} size={18} />
               </span>
               <div className="ms-body">
                 <div className="ms-head">
@@ -117,14 +139,20 @@ function PeriodTab({ byDate, daily, today, acc }: { byDate: Map<string, DailyRow
                   <span className="ms-acc">
                     {m === 'listening' ? (
                       <>
-                        <Icon name="trophy" size={13} /> 최고 레벨 {listenBest ?? '-'}
+                        <Icon name="trophy" size={11} /> 최고 레벨 {listenBest ?? '-'}
                       </>
                     ) : (
                       <>
-                        <Icon name="shield" size={13} /> 복습 정답률 {accText == null ? '-' : `${Math.round(accText * 100)}%`}
+                        <svg className="st-badge" width="9.33" height="9.33" viewBox="0 0 10 10" aria-hidden="true">
+                          <circle cx="5" cy="5" r="5" fill="currentColor" />
+                          <path d="M2.9 5.2l1.5 1.5 2.9-3.3" fill="none" stroke="#242629" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        복습 정답률 {accText == null ? '-' : `${Math.round(accText * 100)}%`}
                       </>
                     )}
-                    <Icon name="chevron" size={12} />
+                    <svg className="st-chev" width="5.33" height="9.33" viewBox="0 0 5.33 9.33" aria-hidden="true">
+                      <path d="M.8.8l3.7 3.87L.8 8.53" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                   </span>
                 </div>
                 <div className="ms-bar">
@@ -141,7 +169,14 @@ function PeriodTab({ byDate, daily, today, acc }: { byDate: Map<string, DailyRow
       </div>
       <div className="s-card habit">
         <span className="habit-icon">
-          <Icon name="chart" size={22} />
+          {/* 달력 아이콘 (직접 그림): 27 x 24.33 CSS px */}
+          <svg width="27" height="24.33" viewBox="0 0 27 24.33" aria-hidden="true">
+            <rect x="0" y="3.5" width="27" height="20.83" rx="3.4" fill="#5f5d80" />
+            <path d="M0 6.9A3.4 3.4 0 0 1 3.4 3.5h20.2A3.4 3.4 0 0 1 27 6.9v3.4H0z" fill="#8a86b7" />
+            <rect x="5.4" y="0" width="2.7" height="6.6" rx="1.35" fill="#b6b1e8" />
+            <rect x="18.9" y="0" width="2.7" height="6.6" rx="1.35" fill="#b6b1e8" />
+            <path d="M8.4 16l3.4 3.2 6.8-6.7" fill="none" stroke="#cdc7f6" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </span>
         <div>
           <b>보통 {WEEKDAYS_KO[dow]}요일에는?</b>
@@ -161,13 +196,14 @@ function PeriodTab({ byDate, daily, today, acc }: { byDate: Map<string, DailyRow
       <h2 className="stats-h2">기간별 학습 정보</h2>
       <Heatmap byDate={byDate} today={today} />
       <TimeChart byDate={byDate} today={today} />
+      <AmountChart byDate={byDate} today={today} />
     </>
   );
 }
 
 function Heatmap({ byDate, today }: { byDate: Map<string, DailyRow>; today: string }) {
-  // 최근 52주를 26주씩 두 줄로 (일요일 시작)
-  const end = shiftDate(today, 6 - dayOfWeek(today));
+  // 최근 52주를 26주씩 두 블록으로. 말해보카처럼 각 열은 월요일에서 시작해 일요일로 끝난다
+  const end = shiftDate(today, (7 - dayOfWeek(today)) % 7);
   const start = shiftDate(end, -(52 * 7) + 1);
   const max = Math.max(1, ...[...byDate.values()].map((d) => dayTotal(d)));
   const level = (n: number) => (n <= 0 ? 0 : n < max * 0.25 ? 1 : n < max * 0.5 ? 2 : n < max * 0.75 ? 3 : 4);
@@ -175,17 +211,36 @@ function Heatmap({ byDate, today }: { byDate: Map<string, DailyRow>; today: stri
     Array.from({ length: 26 }, (_, w) => Array.from({ length: 7 }, (_, d) => shiftDate(start, (b * 26 + w) * 7 + d))),
   );
   const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+  const DAYS = ['월', '화', '수', '목', '금', '토', '일'];
   return (
     <div className="s-card heat">
       <div className="heat-head">
         <b>연간 학습</b>
-        <span className="muted small">최근</span>
+        <span className="heat-pager">
+          <svg className="st-tri" width="6" height="9.33" viewBox="0 0 6 9.33" aria-hidden="true">
+            <path d="M6 0v9.33L0 4.67z" fill="currentColor" />
+          </svg>
+          <b>최근</b>
+          <svg className="st-tri" width="6" height="9.33" viewBox="0 0 6 9.33" aria-hidden="true">
+            <path d="M0 0v9.33l6-4.66z" fill="currentColor" />
+          </svg>
+        </span>
       </div>
       <div className="heat-legend">
-        Less <i className="h1" /> <i className="h2" /> <i className="h3" /> <i className="h4" /> More
+        <span className="less">Less</span>
+        <i className="h1" />
+        <i className="h2" />
+        <i className="h3" />
+        <i className="h4" />
+        <span className="more">More</span>
       </div>
       {blocks.map((weeks, bi) => (
         <div key={bi} className="heat-block">
+          <div className="heat-days">
+            {DAYS.map((d) => (
+              <span key={d}>{d}</span>
+            ))}
+          </div>
           <div className="heat-months">
             {weeks.map((wk, i) => {
               const first = wk.find((d) => d.endsWith('-01') || (i === 0 && d === wk[0]));
@@ -207,64 +262,77 @@ function Heatmap({ byDate, today }: { byDate: Map<string, DailyRow>; today: stri
   );
 }
 
-function TimeChart({ byDate, today }: { byDate: Map<string, DailyRow>; today: string }) {
-  const [range, setRange] = useState<'week' | 'month' | 'year' | 'all'>('week');
-  let points: { label: string; ms: number }[] = [];
+type Range = 'week' | 'month' | 'year' | 'all';
+const RANGES: [Range, string][] = [
+  ['week', '주'],
+  ['month', '월'],
+  ['year', '년'],
+  ['all', '전체'],
+];
+
+/** 기간별 묶음: 주·월은 하루 단위, 년·전체는 달 단위 */
+function periodKeys(range: Range, today: string, byDate: Map<string, DailyRow>): { label: string; dates: string[] }[] {
   if (range === 'week' || range === 'month') {
     const n = range === 'week' ? 7 : 30;
-    points = Array.from({ length: n }, (_, i) => {
+    return Array.from({ length: n }, (_, i) => {
       const d = shiftDate(today, i - (n - 1));
-      return { label: d, ms: dayTime(byDate.get(d)) };
+      return { label: d, dates: [d] };
     });
-  } else {
-    const months = new Map<string, number>();
-    for (const [d, r] of byDate) months.set(d.slice(0, 7), (months.get(d.slice(0, 7)) ?? 0) + dayTime(r));
-    const keys = [...months.keys()].sort();
-    const want = range === 'year' ? 12 : Math.max(keys.length, 1);
-    const last = today.slice(0, 7);
-    const list: string[] = [];
-    let [y, m] = last.split('-').map(Number);
-    for (let i = 0; i < want; i++) {
-      list.unshift(`${y}-${String(m).padStart(2, '0')}`);
-      m -= 1;
-      if (m === 0) {
-        m = 12;
-        y -= 1;
-      }
-    }
-    points = list.map((k) => ({ label: k, ms: months.get(k) ?? 0 }));
   }
+  const months = new Map<string, string[]>();
+  for (const d of byDate.keys()) months.set(d.slice(0, 7), [...(months.get(d.slice(0, 7)) ?? []), d]);
+  const want = range === 'year' ? 12 : Math.max(months.size, 1);
+  const list: string[] = [];
+  let [y, m] = today.slice(0, 7).split('-').map(Number);
+  for (let i = 0; i < want; i++) {
+    list.unshift(`${y}-${String(m).padStart(2, '0')}`);
+    m -= 1;
+    if (m === 0) {
+      m = 12;
+      y -= 1;
+    }
+  }
+  return list.map((k) => ({ label: k, dates: months.get(k) ?? [] }));
+}
+
+const RANGE_UNIT: Record<Range, string> = { week: '최근 한 주, 하루', month: '최근 한 달, 하루', year: '한 달', all: '한 달' };
+
+function RangeSeg({ value, onChange }: { value: Range; onChange: (r: Range) => void }) {
+  return (
+    <div className="seg-full">
+      {RANGES.map(([k, l]) => (
+        <button key={k} className={value === k ? 'active' : ''} onClick={() => onChange(k)}>
+          {l}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function TimeChart({ byDate, today }: { byDate: Map<string, DailyRow>; today: string }) {
+  const [range, setRange] = useState<Range>('week');
+  const points = periodKeys(range, today, byDate).map((p) => ({ label: p.label, ms: p.dates.reduce((s, d) => s + dayTime(byDate.get(d)), 0) }));
   const avg = points.reduce((s, p) => s + p.ms, 0) / Math.max(1, points.length);
-  const W = 300;
-  const H = 120;
+  // 말해보카 실측: 그래프 상자 274 x 98.33 (CSS px), 세로 6칸·가로 4칸 격자, 첫·끝 점은 양쪽 테두리 위
+  const W = 274;
+  const H = 98.33;
   const max = Math.max(60_000, ...points.map((p) => p.ms));
-  const xy = points.map((p, i) => [8 + (i * (W - 16)) / Math.max(1, points.length - 1), H - 10 - (p.ms / max) * (H - 24)] as const);
+  const xy = points.map((p, i) => [0.5 + (i * (W - 1)) / Math.max(1, points.length - 1), H - 0.5 - (p.ms / max) * (H - 10.5)] as const);
   const avgText = `${Math.floor(avg / 60000)}분 ${Math.round((avg % 60000) / 1000)}초`;
-  const unit = range === 'week' ? '최근 한 주, 하루' : range === 'month' ? '최근 한 달, 하루' : '한 달';
 
   return (
     <div className="s-card timechart">
-      <div className="seg-full">
-        {(
-          [
-            ['week', '주'],
-            ['month', '월'],
-            ['year', '년'],
-            ['all', '전체'],
-          ] as const
-        ).map(([k, l]) => (
-          <button key={k} className={range === k ? 'active' : ''} onClick={() => setRange(k)}>
-            {l}
-          </button>
-        ))}
-      </div>
+      <RangeSeg value={range} onChange={setRange} />
       <b className="tc-title">학습 시간</b>
       <p className="tc-desc">
-        {unit} 평균 학습 시간은 <em>{avgText}</em>예요.
+        {RANGE_UNIT[range]} 평균 학습 시간은 <em>{avgText}</em>예요.
       </p>
       <svg viewBox={`0 0 ${W} ${H}`} className="tc-svg" preserveAspectRatio="none">
-        {[0.25, 0.5, 0.75].map((f) => (
-          <line key={f} x1={0} x2={W} y1={H * f} y2={H * f} className="tc-grid" />
+        {[0, 1, 2, 3, 4, 5, 6].map((i) => (
+          <line key={`v${i}`} x1={0.5 + (i * (W - 1)) / 6} x2={0.5 + (i * (W - 1)) / 6} y1={0} y2={H} className="tc-grid" />
+        ))}
+        {[0, 1, 2, 3, 4].map((j) => (
+          <line key={`h${j}`} x1={0} x2={W} y1={0.5 + (j * (H - 1)) / 4} y2={0.5 + (j * (H - 1)) / 4} className="tc-grid" />
         ))}
         {xy.length > 1 && <polyline points={xy.map((p) => p.join(',')).join(' ')} className="tc-line" />}
       </svg>
@@ -272,6 +340,68 @@ function TimeChart({ byDate, today }: { byDate: Map<string, DailyRow>; today: st
         <span>{points[0]?.label.replace(/-/g, '.')}</span>
         <span className="em">{points[points.length - 1]?.label.replace(/-/g, '.')}</span>
       </div>
+    </div>
+  );
+}
+
+const AMOUNT_MODES: { key: SMode; label: string; color: string }[] = [
+  { key: 'vocab', label: '어휘', color: '#9d81e8' },
+  { key: 'grammar', label: '문법', color: '#74acd1' },
+  { key: 'expr', label: '표현', color: '#df7f96' },
+  { key: 'talk', label: '실전 회화', color: '#9fb864' },
+  { key: 'listening', label: '리스닝', color: '#e59a5c' },
+];
+
+/** 학습량: 기간별 문제 수 막대 (모드별 색으로 쌓음) */
+function AmountChart({ byDate, today }: { byDate: Map<string, DailyRow>; today: string }) {
+  const [range, setRange] = useState<Range>('week');
+  const points = periodKeys(range, today, byDate).map((p) => {
+    const by = AMOUNT_MODES.map((m) => p.dates.reduce((s, d) => s + dayTotal(byDate.get(d), m.key), 0));
+    return { label: p.label, by, total: by.reduce((s, n) => s + n, 0) };
+  });
+  const avg = Math.round(points.reduce((s, p) => s + p.total, 0) / Math.max(1, points.length));
+  const max = Math.max(1, ...points.map((p) => p.total));
+  const many = points.length > 7;
+  const xLabel = (label: string) => (label === today ? '오늘' : range === 'week' ? WEEKDAYS_KO[dayOfWeek(label)] : '');
+
+  return (
+    <div className="s-card amount">
+      <RangeSeg value={range} onChange={setRange} />
+      <b className="tc-title">학습량</b>
+      <p className="tc-desc">
+        {RANGE_UNIT[range]} 평균 <em>{avg}개</em>의 문제를 풀었어요.
+      </p>
+      <ul className="am-legend">
+        {AMOUNT_MODES.map((m) => (
+          <li key={m.key}>
+            <i style={{ background: m.color }} />
+            {m.label}
+          </li>
+        ))}
+      </ul>
+      <div className={`am-bars ${many ? 'many' : ''}`}>
+        {points.map((p) => (
+          <div key={p.label} className="am-col">
+            <div className="am-bar" style={{ height: `${(p.total / max) * 100}%` }}>
+              {p.by.map((n, i) => (n > 0 ? <span key={AMOUNT_MODES[i].key} style={{ flex: n, background: AMOUNT_MODES[i].color }} /> : null))}
+            </div>
+          </div>
+        ))}
+      </div>
+      {many ? (
+        <div className="tc-range am-range">
+          <span>{points[0]?.label.replace(/-/g, '.')}</span>
+          <span className="em">{points[points.length - 1]?.label.replace(/-/g, '.')}</span>
+        </div>
+      ) : (
+        <div className="am-x">
+          {points.map((p) => (
+            <span key={p.label} className={p.label === today ? 'today' : ''}>
+              {xLabel(p.label)}
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

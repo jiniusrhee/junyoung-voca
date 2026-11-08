@@ -13,7 +13,7 @@ export default function BottomNav() {
     <nav className="bottom-nav">
       {items.map((it) => (
         <NavLink key={it.to} to={it.to} end={it.to === '/'} className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-          <Icon name={it.icon} size={28} />
+          <Icon name={it.icon} size={24} />
           <span>{it.label}</span>
         </NavLink>
       ))}

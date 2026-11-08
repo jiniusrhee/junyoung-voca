@@ -2,6 +2,9 @@ import type { CSSProperties, ReactElement } from 'react';
 
 export type IconName =
   | 'back'
+  | 'quote'
+  | 'notew'
+  | 'micFill'
   | 'close'
   | 'gear'
   | 'trophy'
@@ -85,6 +88,24 @@ export default function Icon({ name, size = 24, className, style }: Props) {
 }
 
 const PATHS: Record<IconName, ReactElement> = {
+  quote: (
+    <g fill="currentColor" stroke="none">
+      <path d="M4.5 3h15A2.5 2.5 0 0 1 22 5.5v11a2.5 2.5 0 0 1-2.5 2.5H10l-4.2 3.2c-.6.5-1.3 0-1.3-.6V19h0A2.5 2.5 0 0 1 2 16.5v-11A2.5 2.5 0 0 1 4.5 3z" />
+      <path d="M8.2 14.2c1.6-.6 2.3-1.6 2.3-3.2H8.3V7.6h3.9v3.1c0 2.6-1.1 4.1-3.4 4.8zM14.1 14.2c1.6-.6 2.3-1.6 2.3-3.2h-2.2V7.6h3.9v3.1c0 2.6-1.1 4.1-3.4 4.8z" fill="#262627" />
+    </g>
+  ),
+  notew: (
+    <g fill="currentColor" stroke="none">
+      <path d="M8 2.5h11A2.5 2.5 0 0 1 21.5 5v14a2.5 2.5 0 0 1-2.5 2.5h-14A2.5 2.5 0 0 1 2.5 19V8z" />
+      <path d="M6.2 8.8l1.9 6.4 2-4.6 2 4.6 1.9-6.4" fill="none" stroke="#262627" strokeWidth={2.1} strokeLinejoin="round" strokeLinecap="round" />
+    </g>
+  ),
+  micFill: (
+    <g fill="currentColor" stroke="none">
+      <rect x="8.2" y="2" width="7.6" height="12.5" rx="3.8" />
+      <path d="M5 11.2a1.1 1.1 0 0 1 2.2 0 4.8 4.8 0 0 0 9.6 0 1.1 1.1 0 0 1 2.2 0 7 7 0 0 1-5.9 6.9v2.2h2.1a1.1 1.1 0 0 1 0 2.2H8.8a1.1 1.1 0 0 1 0-2.2h2.1v-2.2A7 7 0 0 1 5 11.2z" />
+    </g>
+  ),
   back: <polyline points="15 4 7 12 15 20" strokeWidth={2.6} />,
   close: (
     <>

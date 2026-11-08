@@ -41,7 +41,7 @@ export default function Settings() {
   };
 
   return (
-    <div className="vs-page">
+    <div className="vs-page settings-menu">
       <header className="vs-head">
         <button className="vs-back" onClick={back}>
           <Icon name="back" size={22} /> 설정
@@ -53,24 +53,29 @@ export default function Settings() {
         </span>
         <span className="profile-text">
           <b>{s.nickname}</b>
-          <span>준영보카 {days}일째!</span>
+          <span>
+            <i className="p-badge" aria-hidden="true">
+              P
+            </i>
+            준영보카 {days}일째!
+          </span>
         </span>
-        <Icon name="chevron" size={20} className="muted-ic" />
+        <Icon name="chevron" size={14} className="muted-ic" />
       </button>
       <div className="stats-sep" />
       <h3 className="menu-title">설정</h3>
-      <MenuRow icon="gear" tint="blue" title="화면" desc="다크 모드 설정, 학습 화면 테마" onClick={() => nav('/settings/mode/screen')} />
-      <MenuRow icon="bell" tint="orange" title="알림" desc="학습 시간 알림, 방해 금지 시간" onClick={() => nav('/settings/mode/notice')} />
-      <MenuRow icon="speaker" tint="orange" title="음성 및 효과음" desc="학습 음성 및 효과음 설정" onClick={() => nav('/settings/mode/voice')} />
-      <MenuRow icon="star" tint="pink" title="즐겨찾기" desc="홈에 표시할 학습 모드 설정" onClick={() => nav('/settings/mode/favorites')} />
-      <MenuRow icon="bookPerson" tint="purple" title="어휘 학습" desc="퀴즈 방식, 단어장 변경, 난이도 및 복습 단어 비율 조정" onClick={() => nav('/settings/vocab')} />
-      <MenuRow icon="gbook" tint="blue" title="문법 학습" desc="일일 학습 목표, 음성 속도 및 볼륨 설정" onClick={() => nav('/settings/mode/grammar')} />
-      <MenuRow icon="chat" tint="pink" title="표현 학습" desc="학습 설정, 음성 속도 및 볼륨 설정" onClick={() => nav('/settings/mode/expr')} />
-      <MenuRow icon="talk" tint="purple" title="실전 회화 학습" desc="학습 설정, 음성 및 효과음 볼륨 설정" onClick={() => nav('/settings/mode/talk')} />
-      <MenuRow icon="headphones" tint="orange" title="리스닝 학습" desc="학습 모드, 발음 인식 기준, 발음 구분 연습 설정" onClick={() => nav('/settings/mode/listening')} />
-      <MenuRow icon="chart" tint="orange" title="어휘력 측정" desc="레벨 테스트 다시 하기" onClick={() => nav('/test')} />
-      <MenuRow icon="note" tint="pink" title="계정 관리" desc="학습 기록 백업과 복원, 단어 데이터 업데이트, 초기화" onClick={() => nav('/settings/data')} />
-      <MenuRow icon="clock" tint="blue" title="업데이트 히스토리" desc={`앱 버전: ${__APP_VERSION__}`} onClick={() => nav('/settings/mode/updates')} />
+      <MenuRow icon="gear" tint="#87c4d8" title="화면" desc="다크 모드 설정, 학습 화면 테마" onClick={() => nav('/settings/mode/screen')} />
+      <MenuRow icon="bell" tint="#e0ba4b" title="알림" desc="학습 시간 알림, 방해 금지 시간" onClick={() => nav('/settings/mode/notice')} />
+      <MenuRow icon="speaker" tint="#e1809f" title="음성 및 효과음" desc="학습 음성 및 효과음 설정" onClick={() => nav('/settings/mode/voice')} />
+      <MenuRow icon="star" tint="#e9c252" title="즐겨찾기" desc="홈에 표시할 학습 모드 설정" onClick={() => nav('/settings/mode/favorites')} />
+      <MenuRow icon="bookPerson" tint="#7664d4" title="어휘 학습" desc="퀴즈 방식, 단어장 변경, 난이도 및 복습 단어 비율 조정" onClick={() => nav('/settings/vocab')} />
+      <MenuRow icon="gbook" tint="#e18f7f" title="문법 학습" desc="일일 학습 목표, 음성 속도 및 볼륨 설정" onClick={() => nav('/settings/mode/grammar')} />
+      <MenuRow icon="chat" tint="#daa262" title="표현 학습" desc="학습 설정, 음성 속도 및 볼륨 설정" onClick={() => nav('/settings/mode/expr')} />
+      <MenuRow icon="talk" tint="#7664d4" title="실전 회화 학습" desc="학습 설정, 음성 및 효과음 볼륨 설정" onClick={() => nav('/settings/mode/talk')} />
+      <MenuRow icon="headphones" tint="#e0ba4b" title="리스닝 학습" desc="학습 모드, 발음 인식 기준, 발음 구분 연습 설정" onClick={() => nav('/settings/mode/listening')} />
+      <MenuRow icon="chart" tint="#87c4d8" title="어휘력 측정" desc="레벨 테스트 다시 하기" onClick={() => nav('/test')} />
+      <MenuRow icon="note" tint="#e1809f" title="계정 관리" desc="학습 기록 백업과 복원, 단어 데이터 업데이트, 초기화" onClick={() => nav('/settings/data')} />
+      <MenuRow icon="clock" tint="#adaaad" title="업데이트 히스토리" desc={`앱 버전: ${__APP_VERSION__}`} onClick={() => nav('/settings/mode/updates')} />
     </div>
   );
 }
@@ -78,14 +83,14 @@ export default function Settings() {
 function MenuRow({ icon, tint, title, desc, onClick }: { icon: IconName; tint: string; title: string; desc: string; onClick: () => void }) {
   return (
     <button className="menu-row" onClick={onClick}>
-      <span className={`menu-icon ${tint}`}>
+      <span className={`menu-icon ${tint.startsWith('#') ? '' : tint}`} style={tint.startsWith('#') ? { color: tint } : undefined}>
         <Icon name={icon} size={24} />
       </span>
       <span className="menu-text">
         <b>{title}</b>
         <span>{desc}</span>
       </span>
-      <Icon name="chevron" size={18} className="muted-ic" />
+      <Icon name="chevron" size={14} className="muted-ic" />
     </button>
   );
 }

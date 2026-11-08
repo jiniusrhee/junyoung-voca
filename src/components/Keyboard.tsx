@@ -13,6 +13,8 @@ interface Props {
   onShift: () => void;
   /** 다음 글자를 대문자로 (문장 첫 글자) — 자판 글자도 대문자로 보임 */
   shift?: boolean;
+  /** 정답에 아포스트로피가 있을 때만 ' 키를 보여 준다 (말해보카 어휘 자판은 평소 빈 키) */
+  apostrophe?: boolean;
 }
 
 /** 지우기 키를 꾹 누르면 반복해서 지워지는 핸들 */
@@ -38,7 +40,7 @@ export function useHoldRepeat(fn: () => void) {
 }
 
 /** 말해보카처럼 앱 안에 그린 영문 자판 (폰 기본 키보드를 띄우지 않음) */
-export default function Keyboard({ onChar, onBackspace, onSpace, onEnter, onShift, shift = false }: Props) {
+export default function Keyboard({ onChar, onBackspace, onSpace, onEnter, onShift, shift = false, apostrophe = false }: Props) {
   const press = (fn: () => void) => (e: PointerEvent) => {
     e.preventDefault();
     keyFeedback();
@@ -49,11 +51,14 @@ export default function Keyboard({ onChar, onBackspace, onSpace, onEnter, onShif
     <div className="kb" role="group" aria-label="영문 자판">
       {ROWS.map((row, r) => (
         <div key={row} className={`kb-row r${r}`}>
-          {r === 2 && (
-            <button className="kb-key gray" onPointerDown={press(() => onChar("'"))} aria-label="아포스트로피">
-              &apos;
-            </button>
-          )}
+          {r === 2 &&
+            (apostrophe ? (
+              <button className="kb-key gray" onPointerDown={press(() => onChar("'"))} aria-label="아포스트로피">
+                &apos;
+              </button>
+            ) : (
+              <button className="kb-key gray" onPointerDown={press(onShift)} aria-label="대문자" />
+            ))}
           {row.split('').map((c) => (
             <button key={c} className="kb-key" onPointerDown={press(() => onChar(shift ? c.toUpperCase() : c))} aria-label={c}>
               {shift ? c.toUpperCase() : c}

@@ -116,11 +116,12 @@ describe('app smoke', () => {
     await act(async () => {
       fireEvent.click(screen.getByRole('button', { name: /정답 보기/ }));
     });
-    // 말해보카처럼 힌트로 채운 앞글자는 남고 나머지 정답이 칸에 비친다 (말풍선 없음)
+    // 말해보카 실측: 입력이 비워지고 정답 전체가 칸에 비친다 (힌트 글자는 초록, 나머지는 주황). 처음부터 다시 쳐야 한다
     const pre = hintPrefix(sentence.answer);
-    expect(document.querySelector('.ghost')?.textContent).toBe(sentence.answer.slice(pre.length));
+    expect(document.querySelector('.ghost.pre')?.textContent).toBe(pre);
+    expect(document.querySelector('.ghost:not(.pre)')?.textContent).toBe(sentence.answer.slice(pre.length));
 
-    await type(sentence.answer.slice(pre.length));
+    await type(sentence.answer);
     await screen.findByRole('button', { name: /다음 문제/ }, { timeout: 5_000 });
     const card = await db.cards.get(word.id);
     expect(card?.known).toBeFalsy();
@@ -159,6 +160,7 @@ describe('app smoke', () => {
     await act(async () => {
       fireEvent.click(screen.getByRole('button', { name: /오답 노트/ }));
     });
-    expect(document.querySelector('.card-overlay .wrong-w')?.textContent).toBe(wrong);
+    // 오답 노트는 카드 자리를 대신하는 카드로 나온다 (말해보카)
+    expect(document.querySelector('.info-card .wrong-w')?.textContent).toBe(wrong);
   });
 });

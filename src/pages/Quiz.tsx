@@ -1,13 +1,19 @@
 import { useLiveQuery } from 'dexie-react-hooks';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import { State } from 'ts-fsrs';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import AfterPanel from '../components/AfterPanel';
+import DinoScene from '../components/DinoScene';
+import ExtraSheet, { type SheetAction } from '../components/ExtraSheet';
+import InfoCard from '../components/InfoCard';
+import LevelHelp from '../components/LevelHelp';
+import Pterodactyls from '../components/Pterodactyls';
 import FavTip from '../components/FavTip';
 import Icon from '../components/Icon';
 import Keyboard from '../components/Keyboard';
 import Mascot from '../components/Mascot';
 import VocabSettings from '../components/VocabSettings';
-import QuizCard, { FilledSentence, type CardBadge } from '../components/QuizCard';
+import QuizCard, { FilledSentence, KoSentence, type CardBadge, type CardFlash } from '../components/QuizCard';
 import WrongItem from '../components/WrongItem';
 import { Backdrop, useLeaveGuard } from '../components/StudyChrome';
 import { db } from '../db';
@@ -23,7 +29,9 @@ import { favNoteKey, toggleFavNote, useFavNotes } from '../lib/favnotes';
 import { pushInbox } from '../lib/inbox';
 import { markPronunciation } from '../lib/learned';
 import { canRecognize, recognizeOnce, speak, voiceErrorMessage } from '../lib/speech';
-import { answerWords, containsAnswer, evaluate, feedbackFor, fullSentence, hintPrefix, normalize, speechMatchRate } from '../lib/text';
+import { answerWords, containsAnswer, evaluate, feedbackFor, fullSentence, hintPrefix, levenshtein, normalize, speechMatchRate, typoMask } from '../lib/text';
+import { toggleWordbook, useWordbook } from '../lib/wordbook';
+import { useStatusBarColor } from '../lib/statusBar';
 import { formatAfter, formatAgo, formatDuration, studyDateOf } from '../lib/time';
 import { POS_KO, type Settings, type Tone, type WrongNote } from '../types';
 
@@ -40,6 +48,8 @@ interface Live {
   wrongAttempts: number;
   wrongs: WrongNote[];
   feedback: { tone: Tone; msg: string; mask?: { text: string; bad: boolean }[] } | null;
+  /** 오타 제출 뒤: 고치는 동안 말풍선의 글자 수 차이가 실시간으로 바뀐다 (말해보카) */
+  typoLive: boolean;
   startedAt: number;
 }
 
@@ -60,6 +70,7 @@ const freshLive = (q: Question): Live => ({
   wrongAttempts: 0,
   wrongs: [],
   feedback: null,
+  typoLive: false,
   startedAt: Date.now(),
 });
 
@@ -77,7 +88,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const [todayTotal, setTodayTotal] = useState(0);
   const [testAsked, setTestAsked] = useState(0);
   const [testLevel, setTestLevel] = useState<number | null>(null);
-  const [flash, setFlash] = useState<{ kind: 'wrong' | 'correct'; key: number } | null>(null);
+  const [flash, setFlash] = useState<CardFlash>(null);
   const [overlay, setOverlay] = useState<Overlay>(null);
   const [sayResult, setSayResult] = useState<{ tone: Tone; msg: string } | null>(null);
   const [listening, setListening] = useState(false);
@@ -100,6 +111,21 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const [slideBack, setSlideBack] = useState(false);
   /** 자판 왼쪽 아래 빈 키: 한 번 누르면 다음 한 글자만 대문자 (말해보카) */
   const [shiftOn, setShiftOn] = useState(false);
+  /** 정답 0.55초 뒤: 배지가 'N 뒤 복습'으로 바뀌고 ♥ 이 나타남 (말해보카 실측) */
+  const [revealDue, setRevealDue] = useState(false);
+  /** 자판↔정답 패널 교체 슬라이드(0.35초) 동안 둘 다 그린다 */
+  const [kbLeaving, setKbLeaving] = useState(false);
+  const [panelLeaving, setPanelLeaving] = useState(false);
+  /** 다음 문제: 이전 카드가 왼쪽으로 빠지는 0.3초 동안 같이 그린다 */
+  const [exiting, setExiting] = useState<{ key: number; item: Answered } | null>(null);
+  /** 정답마다 익룡이 한 번 날아간다 */
+  const [flights, setFlights] = useState(0);
+  /** 말풍선 옆 '^' 추가 동작 시트 */
+  const [moreOpen, setMoreOpen] = useState(false);
+  /** 시작할 때 진행 막대가 0에서 차오르도록 */
+  const [barReady, setBarReady] = useState(false);
+  const [sceneVariant] = useState(() => Math.floor(Math.random() * 3));
+  const wordbook = useWordbook();
   const favorites = useLiveQuery(() => db.favorites.toCollection().primaryKeys(), []) as string[] | undefined;
   // 입력 말풍선: 사전(단어 팩)에 있는 단어면 밑줄 + 누르면 뜻 (말해보카)
   const dictWords = useLiveQuery(async () => new Map((await db.words.toArray()).map((w) => [w.word.toLowerCase(), w])), []);
@@ -107,6 +133,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const tipSeen = useLiveQuery(async () => !!(await db.kv.get('typedTipSeen')), []);
   const [tipOpen, setTipOpen] = useState(true);
   const guard = useLeaveGuard(() => nav('/'));
+  // 말해보카: 학습 화면에서는 상태바까지 하늘색 (다이노 테마), 하늘 테마는 연한 파랑
+  useStatusBarColor(settings?.studyTheme === 'sky' ? '#96cbf5' : '#bbe4df', false);
 
   const settingsRef = useRef<Settings | null>(null);
   settingsRef.current = settings ?? null;
@@ -135,6 +163,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     setHistIdx(null);
     setSlideBack(false);
     setPanelReady(false);
+    setRevealDue(false);
+    setMoreOpen(false);
     setShiftOn(false);
     setPhase('question');
   };
@@ -256,14 +286,15 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         setTestAsked(testRef.current.asked);
       }
       setTodayTotal(total);
-      setLive({ ...l, feedback: null });
+      setLive({ ...l, feedback: null, typoLive: false });
       const item: Answered = { q: l.q, outcome, known, due: row.due, wrongs: l.wrongs };
       setAnswered(item);
       setHistory((h) => [...h.slice(-19), item]);
       setFlash({ kind: 'correct', key: Date.now() });
       sfx('correct');
       setPhase('answered');
-      if (s.autoSpeak) speakSentence(l.q);
+      // 익룡은 정답 0.6초 뒤 진행 막대 아래로 (말해보카)
+      window.setTimeout(() => setFlights((f) => f + 1), 600);
       if (metNow && mode === 'study') {
         window.setTimeout(() => setGoalReached(true), 1100);
         void pushInbox('🏆 오늘 목표 달성!', '하루 목표를 채웠어요. 추가 학습으로 더 나아가 보세요.', '/');
@@ -286,7 +317,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       const max = sentenceOf(l.q).answer.length + 16;
       let next = fn(l.input).slice(0, max);
       // 힌트로 채운 앞글자는 지워지지 않는다
-      if (l.locked && !next.startsWith(l.input.slice(0, l.locked))) next = l.input.slice(0, l.locked) + next.slice(l.locked);
+      if (l.locked && !l.showedAnswer && !next.startsWith(l.input.slice(0, l.locked))) next = l.input.slice(0, l.locked) + next.slice(l.locked);
       // 여러 단어 정답에서 이미 맞아 잠긴 앞 단어들도 지워지지 않는다 (말해보카)
       const aw = answerWords(sentenceOf(l.q).answer);
       if (aw.length > 1) {
@@ -305,7 +336,20 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         const idx = parts.length - 1;
         if (idx < words.length - 1 && parts[idx].toLowerCase() === words[idx].toLowerCase()) next += ' ';
       }
-      return { ...l, input: next, feedback: next === l.input ? l.feedback : null };
+      // 오타 말풍선은 고치는 동안 실시간으로 바뀐다 (말해보카: 글자 수 차이 갱신, 3글자를 넘으면 그대로, 다 지우면 사라짐)
+      let feedback = next === l.input ? l.feedback : null;
+      let typoLive = l.typoLive;
+      if (l.typoLive && next !== l.input) {
+        if (!next.trim()) {
+          typoLive = false;
+          feedback = null;
+        } else {
+          const ans = sentenceOf(l.q).answer;
+          const d = levenshtein(normalize(next), normalize(ans));
+          feedback = d <= 3 ? { tone: 'info', msg: `정답과 ${d}글자 달라요.`, mask: typoMask(next.trim(), ans) } : l.feedback;
+        }
+      }
+      return { ...l, input: next, feedback, typoLive };
     });
   };
 
@@ -330,21 +374,22 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   /** 말해보카: 스페이스는 제출. 정답이 여러 단어면 다음 칸으로 */
   const space = () => {
     if (!live) return;
-    const need = sentenceOf(live.q).answer.trim().split(/\s+/).length;
+    const need = answerWords(sentenceOf(live.q).answer).length;
     const have = live.input.trim().split(/\s+/).filter(Boolean).length;
     if (need > 1 && have < need && live.input && !live.input.endsWith(' ')) editInput((cur) => cur + ' ');
     else submit();
   };
   const backspace = () => editInput((cur) => cur.slice(0, -1));
 
-  const markWrong = (l: Live, w: string, tone: Tone, msg: string, penalize: boolean, showPill = true, mask?: { text: string; bad: boolean }[]) => {
+  const markWrong = (l: Live, w: string, tone: Tone, msg: string, penalize: boolean, showPill = true, mask?: { text: string; bad: boolean }[], flashKind: 'wrong' | 'typo' = 'wrong') => {
     setLive({
       ...l,
       feedback: showPill ? { tone, msg, mask } : null,
+      typoLive: flashKind === 'typo',
       wrongAttempts: l.wrongAttempts + (penalize ? 1 : 0),
       wrongs: [...l.wrongs, { w, tone, m: msg }],
     });
-    setFlash({ kind: 'wrong', key: Date.now() });
+    setFlash({ kind: flashKind, key: Date.now() });
     sfx('wrong');
   };
 
@@ -358,7 +403,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     }
     const fb = feedbackFor(e);
     // 말해보카: 등록된 오답(설명 있음)과 오타만 말풍선, 그 밖의 오답은 카드만 잠깐 붉게
-    markWrong(live, live.input.trim(), fb.tone, fb.msg, !fb.bonus, e.kind === 'alt' || e.kind === 'typo', fb.mask);
+    // 말해보카: 오타는 '!' 도장 + 말풍선만(카드색 그대로), 등록 오답은 붉은 카드 + 말풍선, 그 밖의 오답은 붉은 카드만
+    markWrong(live, live.input.trim(), fb.tone, fb.msg, !fb.bonus, e.kind === 'alt' || e.kind === 'typo', fb.mask, e.kind === 'typo' ? 'typo' : 'wrong');
   };
 
   const hint = () => {
@@ -369,8 +415,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       setLive({ ...live, hints: 1, input: pre, locked: pre.length, feedback: null });
     } else {
       // 말해보카: 힌트로 채워진 앞글자(초록)는 남기고, 나머지 정답이 칸에 주황색으로 비친다. 그대로 따라 쳐야 한다 (말풍선 없음)
-      const keep = live.input.slice(0, live.locked);
-      setLive({ ...live, showedAnswer: true, input: keep, locked: keep.length, feedback: null });
+      // 말해보카 실측: 입력이 비워지고 캐럿이 칸 맨 앞으로, 정답 전체가 비친다(힌트 글자 초록 + 나머지 주황). 처음부터 다시 쳐야 한다
+      setLive({ ...live, showedAnswer: true, input: '', feedback: null, typoLive: false });
     }
   };
 
@@ -436,7 +482,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       setSayResult({ tone: best >= 0.8 ? 'green' : best >= 0.6 ? 'yellow' : 'red', msg: `${label} ${pct}% 일치 · '${bestText}'` });
       void markPronunciation(target.q.word.id, best >= pGood);
     } catch (e) {
-      setSayResult({ tone: 'red', msg: voiceErrorMessage(e) });
+      // 정지 버튼(□)으로 멈춘 경우는 결과 없이 조용히 돌아간다
+      if (!(e instanceof Error && e.message === 'aborted')) setSayResult({ tone: 'red', msg: voiceErrorMessage(e) });
     } finally {
       setListening(false);
     }
@@ -445,13 +492,23 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const next = useCallback(async () => {
     if (phase !== 'answered') return;
     window.speechSynthesis?.cancel?.();
+    setMoreOpen(false);
+    setOverlay(null);
+    // 말해보카: 이전 카드는 왼쪽으로 빠지고 새 카드가 오른쪽에서 들어오며(0.25초), 패널은 내려가고 자판이 올라온다(0.35초)
+    if (answered) {
+      const snap = { key: cardKey, item: answered };
+      setExiting(snap);
+      window.setTimeout(() => setExiting((e) => (e?.key === snap.key ? null : e)), 300);
+    }
+    setPanelLeaving(true);
+    window.setTimeout(() => setPanelLeaving(false), 300);
     if (mode === 'study') {
       const { message, level } = await maybeAdjustLevel();
       if (message) showToast(message);
       pickerRef.current?.setLevel(level);
     }
     await loadNext();
-  }, [phase, mode, loadNext]);
+  }, [phase, mode, loadNext, answered, cardKey]);
 
   const addFavorite = async () => {
     if (!shown) return;
@@ -469,14 +526,32 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     await addFavorite();
   };
 
+  // 말해보카 실측: 정답 0.55초 뒤 배지가 바뀌고 ♥ 등장, 0.9초 뒤 자판이 내려가며 패널이 올라오고(0.35초) 그때 문장을 읽어 준다
   useEffect(() => {
     if (phase !== 'answered') {
       setPanelReady(false);
+      setRevealDue(false);
       return;
     }
-    const t = window.setTimeout(() => setPanelReady(true), 1000);
-    return () => window.clearTimeout(t);
+    const t1 = window.setTimeout(() => setRevealDue(true), 550);
+    const t2 = window.setTimeout(() => {
+      setPanelReady(true);
+      setKbLeaving(true);
+      if (settingsRef.current?.autoSpeak && answered) speakSentence(answered.q);
+    }, 900);
+    const t3 = window.setTimeout(() => setKbLeaving(false), 900 + 300);
+    return () => {
+      window.clearTimeout(t1);
+      window.clearTimeout(t2);
+      window.clearTimeout(t3);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase, cardKey]);
+
+  useEffect(() => {
+    const t = window.setTimeout(() => setBarReady(true), 60);
+    return () => window.clearTimeout(t);
+  }, []);
 
   // 말해보카: 음성 모드에서는 문제가 나오면 바로 듣기 시작
   useEffect(() => {
@@ -618,104 +693,99 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   };
   const favKey = `${q.word.id}#${q.sentenceIdx}`;
 
+  // 배지: New / N일 전 / 재도전(틀렸다가 다시 나온 단어) → 정답 0.55초 뒤 'N 뒤 복습' (말해보카)
   let badge: CardBadge = { kind: 'new' };
-  if (isAnswered) badge = { kind: 'due', text: `${formatAfter(isAnswered.due)} 복습` };
+  if (isAnswered && (hist || revealDue)) badge = { kind: 'due', text: `${formatAfter(isAnswered.due)} 복습` };
+  else if (!q.isNew && q.card?.state === State.Relearning) badge = { kind: 'retry' };
   else if (!q.isNew && q.card?.last_review) badge = { kind: 'ago', text: formatAgo(q.card.last_review) };
 
   const feedback = isAnswered ? sayResult : live.feedback;
 
-  let cardOverlay = null;
-  if (isAnswered && overlay) {
+  // 말해보카: '다른 예문'·'오답 노트'는 퀴즈 카드 자리에 다른 카드가 대신 나온다 (빅데이터 예문 카드)
+  let infoCard: ReactNode = null;
+  if (isAnswered && overlay === 'examples') {
     const w = isAnswered.q.word;
-    cardOverlay = (
-      <div className="card-overlay">
-        <button className="overlay-close" onClick={() => setOverlay(null)} aria-label="닫기">
-          <Icon name="close" size={18} />
-        </button>
-        {overlay === 'examples' && (
-          <>
-            <p className="overlay-title">
-              <Icon name="book" size={16} /> 다른 예문
-              <label className="ex-voice">
-                여자 음성
-                <input type="checkbox" checked={settings.voiceGender === 'female'} onChange={(e) => void saveSettings({ voiceGender: e.target.checked ? 'female' : 'random' })} />
-                <span className="toggle" />
-              </label>
+    const others = w.sentences.map((s, i) => ({ s, i })).filter(({ i }) => i !== isAnswered.q.sentenceIdx);
+    const female = settings.voiceGender === 'female';
+    infoCard = (
+      <InfoCard
+        icon="book"
+        title="다른 예문"
+        right={
+          <button className="info-card-ctl" onClick={() => void saveSettings({ voiceGender: female ? 'male' : 'female' })}>
+            <Icon name="retry" size={14} /> {female ? '여자 음성' : '남자 음성'}
+          </button>
+        }
+      >
+        {others.length === 0 && <p className="overlay-empty">예문을 준비중입니다.</p>}
+        {others.map(({ s, i }) => (
+          <div key={i} className="ex-item big">
+            <p className="ex-en">
+              <FilledSentence sentence={s} />
             </p>
-            {w.sentences.filter((_, i) => i !== isAnswered.q.sentenceIdx).length === 0 && <p className="overlay-empty">예문을 준비중입니다.</p>}
-            {w.sentences
-              .map((s, i) => ({ s, i }))
-              .filter(({ i }) => i !== isAnswered.q.sentenceIdx)
-              .map(({ s, i }) => (
-                <div key={i} className="ex-item big">
-                  <p className="ex-en">
-                    <FilledSentence sentence={s} />
-                  </p>
-                  {s.ctx && <p className="ex-src">{s.ctx}</p>}
-                  <button className="ex-play" onClick={() => speak(fullSentence(s.en, s.answer), settings.speechRate === 'slow')} aria-label="듣기">
-                    <Icon name="speaker" size={20} />
-                  </button>
-                </div>
-              ))}
-          </>
-        )}
-        {overlay === 'wrongs' && (
-          <>
-            <p className="overlay-title">
-              <Icon name="note" size={16} /> 오답 노트
+            <p className="ex-ko">
+              <KoSentence ko={s.ko} />
             </p>
-            {isAnswered.wrongs.length === 0 && <p className="overlay-empty">이번 문제는 틀린 답 없이 맞혔어요!</p>}
-            {isAnswered.wrongs.map((x, i) => (
-              <WrongItem key={i} w={x.w} tone={x.tone} m={x.m} />
-            ))}
-            {(sentence.alts ?? []).filter((a) => !isAnswered.wrongs.some((x) => normalize(x.w) === normalize(a.w))).length > 0 && (
-              <>
-                <p className="overlay-sub">이런 답도 헷갈리기 쉬워요</p>
-                {(sentence.alts ?? [])
-                  .filter((a) => !isAnswered.wrongs.some((x) => normalize(x.w) === normalize(a.w)))
-                  .map((a, i) => {
-                    const tone: Tone = a.t === 'ok' ? 'green' : a.t === 'near' ? 'yellow' : 'red';
-                    return <WrongItem key={i} w={a.w} tone={tone} m={a.m} soft />;
-                  })}
-              </>
-            )}
-          </>
-        )}
-        {overlay === 'info' && (
-          <>
-            <p className="overlay-hint">이 문장에서 쓰인 뜻입니다.</p>
-            <div className="info-head">
-              <span className="info-word">{w.word}</span>
-              <span className="chip">{POS_KO[w.pos]}</span>
-              <button className="icon-btn small" onClick={() => speak(w.word)} aria-label="발음 듣기">
-                <Icon name="speaker" size={18} />
-              </button>
-            </div>
-            <p className="info-mean">{w.meanings.join(', ')}</p>
-            {w.nuance && (
-              <div className="info-block">
-                <span className="info-label">뉘앙스</span>
-                <p>{w.nuance}</p>
-              </div>
-            )}
-            {w.etymology && (
-              <div className="info-block">
-                <span className="info-label">어원</span>
-                <p>{w.etymology}</p>
-              </div>
-            )}
-            <button className="link-btn" onClick={() => nav(`/words/${encodeURIComponent(w.id)}`)}>
-              단어 상세 보기 <Icon name="chevron" size={14} />
+            {s.ctx && <p className="ex-src">{s.ctx}</p>}
+            <button className="ex-play" onClick={() => speak(fullSentence(s.en, s.answer), settings.speechRate === 'slow')} aria-label="듣기">
+              <Icon name="speaker" size={22} />
             </button>
+          </div>
+        ))}
+      </InfoCard>
+    );
+  } else if (isAnswered && overlay === 'wrongs') {
+    const rest = (sentence.alts ?? []).filter((a) => !isAnswered.wrongs.some((x) => normalize(x.w) === normalize(a.w)));
+    infoCard = (
+      <InfoCard icon="note" title="오답 노트">
+        {isAnswered.wrongs.length === 0 && <p className="overlay-empty">이번 문제는 틀린 답 없이 맞혔어요!</p>}
+        {isAnswered.wrongs.map((x, i) => (
+          <WrongItem key={i} w={x.w} tone={x.tone} m={x.m} />
+        ))}
+        {rest.length > 0 && (
+          <>
+            <p className="overlay-sub">이런 답도 헷갈리기 쉬워요</p>
+            {rest.map((a, i) => {
+              const tone: Tone = a.t === 'ok' ? 'green' : a.t === 'near' ? 'yellow' : 'red';
+              return <WrongItem key={i} w={a.w} tone={tone} m={a.m} soft />;
+            })}
           </>
         )}
-      </div>
+      </InfoCard>
     );
   }
 
+  const showPanel = !!isAnswered && (panelReady || !!hist);
+  /** 추가 학습 목표를 채운 마지막 카드: '다음 문제' 대신 초록 '학습 완료' (말해보카) */
+  const finish = mode === 'study' && extraTarget > 0 && todayTotal >= total && !hist;
+  const bubbleHit = dictWords?.get(sentence.answer.toLowerCase());
+  const fullEn = fullSentence(sentence.en, sentence.answer);
+  const panelItem = showPanel ? isAnswered : panelLeaving ? exiting?.item ?? null : null;
+  const inWordbook = wordbook?.includes(q.word.id) ?? false;
+  const sheetActions: SheetAction[] = isAnswered
+    ? [
+        { key: 'due', icon: 'clock', label: '복습 주기', onClick: () => showToast(`다음 복습: ${formatAfter(isAnswered.due)}`) },
+        { key: 'dict', icon: 'search', label: '사전 검색', onClick: () => nav(`/dict?q=${encodeURIComponent(q.word.word)}`) },
+        { key: 'wb', icon: 'star', label: '내 단어장', active: inWordbook, onClick: () => void toggleWordbook(q.word.id).then((on) => showToast(on ? '내 단어장에 담았어요' : '내 단어장에서 뺐어요')) },
+        { key: 'word', icon: 'headphones', label: '단어 듣기', onClick: () => speak(q.word.word) },
+        { key: 'x05', icon: 'play', label: 'x0.5 듣기', onClick: () => speak(fullEn, false, 0.5) },
+        { key: 'x08', icon: 'play', label: 'x0.8 듣기', onClick: () => speak(fullEn, false, 0.8) },
+        { key: 'ex', icon: 'chat', label: '다른 예문', active: overlay === 'examples', onClick: () => { setMoreOpen(false); setOverlay((o) => (o === 'examples' ? null : 'examples')); } },
+        { key: 'wr', icon: 'note', label: '오답 노트', active: overlay === 'wrongs', onClick: () => { setMoreOpen(false); setOverlay((o) => (o === 'wrongs' ? null : 'wrongs')); } },
+        { key: 'say', icon: 'mic', label: '말해보기', onClick: () => { setMoreOpen(false); void sayIt(); } },
+        { key: 'info', icon: 'book', label: '단어 정보', onClick: () => nav(`/words/${encodeURIComponent(q.word.id)}`) },
+      ]
+    : [];
+
   return (
-    <div className="quiz-screen vocab-quiz">
-      <Backdrop theme={settings.studyTheme} />
+    <div className={`quiz-screen vocab-quiz theme-${settings.studyTheme}${isAnswered ? ' answered' : ''}`}>
+      {settings.studyTheme === 'sky' ? (
+        <Backdrop theme="sky" />
+      ) : (
+        <div className="scene-layer dino-bg" aria-hidden="true">
+          <DinoScene variant={sceneVariant} />
+        </div>
+      )}
       <header className="quiz-top">
         {guard.modal}
         <button className="icon-btn light" onClick={mode === 'test' ? () => nav('/') : guard.leave} aria-label="나가기">
@@ -726,11 +796,12 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
             <Icon name={settings.studyTheme === 'dino' ? 'drop' : 'trophy'} size={18} />
           </span>
           <div className="progress-track">
-            <div className="progress-fill" style={{ width: `${Math.max(fill * 100, 14)}%` }}>
-              <span>
-                {count}/{total}
-              </span>
+            <div className="progress-fill" style={{ width: barReady ? `${Math.max(fill * 100, 14)}%` : '14%' }}>
+              <span className="progress-head" aria-hidden="true" />
             </div>
+            <span className="progress-label">
+              {count}/{total}
+            </span>
           </div>
         </div>
         <button className="icon-btn light" onClick={() => setShowSettings(true)} aria-label="설정">
@@ -741,169 +812,229 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       {toast && <div className="toast">{toast}</div>}
 
       <main className="quiz-stage">
-        <div className="side-card left" />
-        <div className="side-card right" />
-        <div
-          className={`card-slide ${slideBack ? 'back' : ''}`}
-          key={hist ? `h${histIdx}` : cardKey}
-          onTouchStart={(e) => {
-            swipeX.current = e.touches[0].clientX;
-          }}
-          onTouchEnd={(e) => {
-            const dx = e.changedTouches[0].clientX - swipeX.current;
-            if (dx > 70) goBack();
-            else if (dx < -70) goForward();
-          }}
-        >
-          <div className="card-rel">
-          <QuizCard
-            word={q.word}
-            sentence={sentence}
-            state={isAnswered ? 'answered' : 'question'}
-            input={hist ? sentence.answer : live.input}
-            showedAnswer={hist ? false : live.showedAnswer}
-            lockedLen={hist ? 0 : live.locked}
-            showCaret={inputMode === 'keyboard' && phase === 'question' && !hist}
-            blankMatchesLength={settings.blankMatchesLength}
-            flash={flash}
-            feedback={feedback}
-            noteFavorite={!!lastWrong && (favNotes?.some((n) => n.key === favNoteKey(q.word.id, q.sentenceIdx, lastWrong.w)) ?? false)}
-            onFavoriteNote={lastWrong ? () => void toggleFavNote({ wordId: q.word.id, sentenceIdx: q.sentenceIdx, w: lastWrong.w, tone: lastWrong.tone, m: lastWrong.m }) : undefined}
-            badge={badge}
-            favorite={favorites?.includes(favKey) ?? false}
-            onToggleFavorite={() => void toggleFavorite()}
-            onLevelHelp={() => setLevelHelp((v) => !v)}
-            levelHelp={levelHelp}
-            overlay={cardOverlay}
-          />
-          {inputMode === 'voice' && phase === 'question' && !hist && (
-            <>
-              <button className="hands-btn" onClick={() => setHandsTip((v) => !v)} aria-label="핸즈프리">
-                <Icon name="hand" size={18} />
-              </button>
-              {handsTip && (
-                <div className="hands-tip" onClick={() => setHandsTip(false)}>
-                  힌트를 보고 싶다면 <b>yes</b>라고 말해보세요.
-                </div>
-              )}
-            </>
-          )}
+        <div className="sky-row">
+          <Pterodactyls flights={flights} />
+        </div>
+        <div className="card-row">
+          <div className="card-stage">
+            {exiting && (
+              <div className="card-slide exit" key={`x${exiting.key}`} aria-hidden="true">
+                <QuizCard
+                  word={exiting.item.q.word}
+                  sentence={sentenceOf(exiting.item.q)}
+                  state="answered"
+                  input={sentenceOf(exiting.item.q).answer}
+                  showedAnswer={false}
+                  showCaret={false}
+                  blankMatchesLength={settings.blankMatchesLength}
+                  flash={null}
+                  feedback={null}
+                  badge={{ kind: 'due', text: `${formatAfter(exiting.item.due)} 복습` }}
+                  heart
+                  favorite={favorites?.includes(`${exiting.item.q.word.id}#${exiting.item.q.sentenceIdx}`) ?? false}
+                  onToggleFavorite={() => undefined}
+                  onLevelHelp={() => undefined}
+                />
+              </div>
+            )}
+            <div
+              className={`card-slide ${slideBack ? 'back' : ''}`}
+              key={hist ? `h${histIdx}` : cardKey}
+              onTouchStart={(e) => {
+                swipeX.current = e.touches[0].clientX;
+              }}
+              onTouchEnd={(e) => {
+                const dx = e.changedTouches[0].clientX - swipeX.current;
+                if (dx > 70) goBack();
+                else if (dx < -70) goForward();
+              }}
+            >
+              <div className="card-rel">
+                {infoCard ?? (
+                  <QuizCard
+                    word={q.word}
+                    sentence={sentence}
+                    state={isAnswered ? 'answered' : 'question'}
+                    input={hist ? sentence.answer : live.input}
+                    showedAnswer={hist ? false : live.showedAnswer}
+                    lockedLen={hist || live.showedAnswer ? 0 : live.locked}
+                    ghostLockedLen={hist ? 0 : live.locked}
+                    showCaret={inputMode === 'keyboard' && phase === 'question' && !hist}
+                    blankMatchesLength={settings.blankMatchesLength}
+                    flash={flash}
+                    feedback={feedback}
+                    noteFavorite={!!lastWrong && (favNotes?.some((n) => n.key === favNoteKey(q.word.id, q.sentenceIdx, lastWrong.w)) ?? false)}
+                    onFavoriteNote={lastWrong ? () => void toggleFavNote({ wordId: q.word.id, sentenceIdx: q.sentenceIdx, w: lastWrong.w, tone: lastWrong.tone, m: lastWrong.m }) : undefined}
+                    badge={badge}
+                    heart={!!isAnswered && (!!hist || revealDue)}
+                    favorite={favorites?.includes(favKey) ?? false}
+                    onToggleFavorite={() => void toggleFavorite()}
+                    onLevelHelp={() => setLevelHelp((v) => !v)}
+                    onBadgeHelp={() => showToast('전에 틀렸던 단어예요. 이번엔 맞혀 봐요!')}
+                  />
+                )}
+                {inputMode === 'voice' && phase === 'question' && !hist && (
+                  <>
+                    <button className="hands-btn" onClick={() => setHandsTip((v) => !v)} aria-label="핸즈프리">
+                      <Icon name="hand" size={18} />
+                    </button>
+                    {handsTip && (
+                      <div className="hands-tip" onClick={() => setHandsTip(false)}>
+                        힌트를 보고 싶다면 <b>yes</b>라고 말해보세요.
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
+            </div>
           </div>
         </div>
+        <div className="scene-row" />
       </main>
 
-      {isAnswered && (panelReady || hist) ? (
-        <AfterPanel
-          answer={sentence.answer}
-          wrongCount={isAnswered.wrongs.length}
-          slow={settings.speechRate === 'slow'}
-          listening={listening}
-          onExamples={() => setOverlay((o) => (o === 'examples' ? null : 'examples'))}
-          onWrongs={() => setOverlay((o) => (o === 'wrongs' ? null : 'wrongs'))}
-          onSay={() => void sayIt()}
-          onInfo={() => nav(`/words/${encodeURIComponent(q.word.id)}`)}
-          onToggleSpeed={() => {
-            const slow = settings.speechRate !== 'slow';
-            void saveSettings({ speechRate: slow ? 'slow' : 'real' });
-            speakSentence(q, slow);
-          }}
-          onReplay={() => speakSentence(q)}
-          onNext={() => (hist ? setHistIdx(null) : void next())}
-        />
-      ) : inputMode === 'keyboard' ? (
-        <div className="quiz-input">
-          <div className="toolbar">
-            <button className="tool-btn" onClick={hint} disabled={live.showedAnswer}>
-              {live.hints === 0 ? (
-                <Icon name="question" size={26} className="ic-purple" />
-              ) : (
-                <Icon name="check" size={26} className="ic-green" />
-              )}
-              <span>{live.hints === 0 ? '힌트 보기' : '정답 보기'}</span>
-            </button>
-            <div className="toolbar-center">
-              {live.input &&
-                (() => {
-                  const hit = dictWords?.get(live.input.trim().toLowerCase());
-                  return (
-                    <>
-                      {hit && tipSeen === false && tipOpen && (
-                        <span className="typed-tip">
-                          눌러서 뜻을 확인해 보세요.
-                          <button
-                            onClick={() => {
-                              setTipOpen(false);
-                              void db.kv.put({ key: 'typedTipSeen', value: 1 });
-                            }}
-                            aria-label="닫기"
-                          >
-                            ×
-                          </button>
-                        </span>
-                      )}
-                      <button className={`bubble ${hit ? 'link' : ''}`} onClick={() => hit && setTypedPop((v) => !v)}>
-                        {live.input}
-                      </button>
-                      {typedPop && hit && (
-                        <div className="typed-pop" onClick={() => setTypedPop(false)}>
-                          <b>{hit.word}</b>
-                          <span className="chip">{POS_KO[hit.pos]}</span>
-                          <p>{hit.meanings.join(', ')}</p>
-                        </div>
-                      )}
-                    </>
-                  );
-                })()}
+      <div className="quiz-bottom">
+        {panelItem && (
+          <AfterPanel
+            className={!showPanel && panelLeaving ? 'leave' : kbLeaving ? 'enter' : ''}
+            answer={sentenceOf(panelItem.q).answer}
+            answerIsWord={!!bubbleHit}
+            onBubble={() => bubbleHit && setTypedPop((v) => !v)}
+            bubbleExtra={
+              typedPop && bubbleHit ? (
+                <div className="typed-pop" onClick={() => setTypedPop(false)}>
+                  <b>{bubbleHit.word}</b>
+                  <span className="chip">{POS_KO[bubbleHit.pos]}</span>
+                  <p>{bubbleHit.meanings.join(', ')}</p>
+                </div>
+              ) : undefined
+            }
+            wrongCount={panelItem.wrongs.length}
+            listening={listening && showPanel}
+            onStopListening={() => window.dispatchEvent(new Event('voca:stop-listening'))}
+            examplesOpen={overlay === 'examples'}
+            wrongsOpen={overlay === 'wrongs'}
+            onExamples={() => setOverlay((o) => (o === 'examples' ? null : 'examples'))}
+            onWrongs={() => setOverlay((o) => (o === 'wrongs' ? null : 'wrongs'))}
+            onSay={() => void sayIt()}
+            onInfo={() => nav(`/words/${encodeURIComponent(q.word.id)}`)}
+            onSlow={() => speakSentence(q, true)}
+            onReplay={() => speakSentence(q)}
+            onNext={() => (hist ? setHistIdx(null) : finish ? nav('/') : void next())}
+            finish={finish}
+            onMore={() => setMoreOpen(true)}
+          />
+        )}
+        {(!showPanel || kbLeaving) && inputMode === 'keyboard' && (
+          <div className={`quiz-input ${kbLeaving ? 'leave' : panelLeaving ? 'enter' : ''}`}>
+            <div className="toolbar">
+              <button className="tool-btn" onClick={hint} disabled={live.showedAnswer}>
+                {cardKey === 1 && <span className="kbd-hint tl">1</span>}
+                {live.hints === 0 ? <Icon name="question" size={26} className="ic-hint" /> : <Icon name="check" size={26} className="ic-answer" />}
+                <span>{live.hints === 0 ? '힌트 보기' : '정답 보기'}</span>
+              </button>
+              <div className="toolbar-center">
+                {(live.input || (live.showedAnswer && live.locked > 0)) &&
+                  (() => {
+                    // 말해보카: 정답 보기 뒤 칸은 비지만 말풍선에는 힌트 글자가 그대로 남아 있다
+                    const text = live.input || hintPrefix(sentence.answer);
+                    const hit = dictWords?.get(text.trim().toLowerCase());
+                    return (
+                      <>
+                        {hit && tipSeen === false && tipOpen && (
+                          <span className="typed-tip">
+                            눌러서 뜻을 확인해 보세요.
+                            <button
+                              onClick={() => {
+                                setTipOpen(false);
+                                void db.kv.put({ key: 'typedTipSeen', value: 1 });
+                              }}
+                              aria-label="닫기"
+                            >
+                              ×
+                            </button>
+                          </span>
+                        )}
+                        <button className={`bubble ${hit ? 'link' : ''}`} onClick={() => hit && setTypedPop((v) => !v)}>
+                          {text}
+                        </button>
+                        {typedPop && hit && (
+                          <div className="typed-pop" onClick={() => setTypedPop(false)}>
+                            <b>{hit.word}</b>
+                            <span className="chip">{POS_KO[hit.pos]}</span>
+                            <p>{hit.meanings.join(', ')}</p>
+                          </div>
+                        )}
+                      </>
+                    );
+                  })()}
+              </div>
+              <button className="tool-btn" onClick={() => setInputMode('voice')} disabled={!canRecognize()}>
+                {cardKey === 1 && <span className="kbd-hint tr">0</span>}
+                <Icon name="mic" size={26} className="ic-hint" />
+                <span>음성 모드</span>
+              </button>
             </div>
-            <button className="tool-btn" onClick={() => setInputMode('voice')} disabled={!canRecognize()}>
-              <Icon name="mic" size={26} className="ic-purple" />
-              <span>음성 모드</span>
-            </button>
+            <Keyboard onChar={typeChar} onBackspace={backspace} onSpace={space} onEnter={submit} onShift={() => setShiftOn((v) => !v)} shift={capNext || shiftOn} apostrophe={sentence.answer.includes("'")} />
           </div>
-          <Keyboard onChar={typeChar} onBackspace={backspace} onSpace={space} onEnter={submit} onShift={() => setShiftOn((v) => !v)} shift={capNext || shiftOn} />
-        </div>
-      ) : (
-        <div className="voice-zone">
-          <div className="voice-bubble-row">
-            {voiceError ? (
-              <span className="voice-error">{voiceError}</span>
-            ) : heard || live.input ? (
-              <span className="bubble link">{heard ?? live.input}</span>
-            ) : (
-              <span className="voice-hint" />
-            )}
-          </div>
-          <div className={`voice-halo ${listening ? 'listening' : ''}`}>
-            <span className="kbd-hint enter">Enter</span>
-            <button className={`mic-big ${listening ? 'on' : ''} ${noSpeech && !listening ? 'on nospeech' : ''}`} onClick={() => void answerByVoice()} aria-label={listening ? '듣는 중' : '말하기'}>
-              {listening ? (
-                <>
-                  <span className="stop-square" />
-                  <small>듣고 있어요</small>
-                </>
-              ) : noSpeech ? (
-                <>
-                  <Icon name="mic" size={34} />
-                  <small>듣지 못했어요</small>
-                </>
+        )}
+        {!showPanel && inputMode === 'voice' && (
+          <div className="voice-zone">
+            <div className="voice-bubble-row">
+              {voiceError ? (
+                <span className="voice-error">{voiceError}</span>
+              ) : heard || live.input ? (
+                <span className="bubble link">{heard ?? live.input}</span>
               ) : (
-                <Icon name="mic" size={40} />
+                <span className="voice-hint" />
               )}
-            </button>
+            </div>
+            <div className={`voice-halo ${listening ? 'listening' : ''}`}>
+              <span className="kbd-hint enter">Enter</span>
+              <button className={`mic-big ${listening ? 'on' : ''} ${noSpeech && !listening ? 'on nospeech' : ''}`} onClick={() => void answerByVoice()} aria-label={listening ? '듣는 중' : '말하기'}>
+                {listening ? (
+                  <>
+                    <span className="stop-square" />
+                    <small>듣고 있어요</small>
+                  </>
+                ) : noSpeech ? (
+                  <>
+                    <Icon name="mic" size={34} />
+                    <small>듣지 못했어요</small>
+                  </>
+                ) : (
+                  <Icon name="mic" size={40} />
+                )}
+              </button>
+            </div>
+            <div className="voice-bar">
+              <button className="tool-btn" onClick={hint} disabled={live.showedAnswer}>
+                <span className="kbd-hint">1</span>
+                {live.hints === 0 ? <Icon name="question" size={26} className="ic-hint" /> : <Icon name="check" size={26} className="ic-answer" />}
+                <span>{live.hints === 0 ? '힌트 보기' : '정답 보기'}</span>
+              </button>
+              <button className="tool-btn" onClick={() => setInputMode('keyboard')}>
+                <span className="kbd-hint">0</span>
+                <Icon name="keyboard" size={26} className="ic-hint" />
+                <span>키보드 모드</span>
+              </button>
+            </div>
           </div>
-          <div className="voice-bar">
-            <button className="tool-btn" onClick={hint} disabled={live.showedAnswer}>
-              <span className="kbd-hint">1</span>
-              {live.hints === 0 ? <Icon name="question" size={26} className="ic-purple" /> : <Icon name="check" size={26} className="ic-green" />}
-              <span>{live.hints === 0 ? '힌트 보기' : '정답 보기'}</span>
-            </button>
-            <button className="tool-btn" onClick={() => setInputMode('keyboard')}>
-              <span className="kbd-hint">0</span>
-              <Icon name="keyboard" size={26} className="ic-purple" />
-              <span>키보드 모드</span>
-            </button>
-          </div>
-        </div>
+        )}
+      </div>
+
+      {moreOpen && isAnswered && (
+        <ExtraSheet
+          actions={sheetActions}
+          onClose={() => setMoreOpen(false)}
+          onSlow={() => speakSentence(q, true)}
+          onReplay={() => speakSentence(q)}
+          onNext={() => {
+            setMoreOpen(false);
+            if (finish) nav('/');
+            else void next();
+          }}
+          finish={finish}
+        />
       )}
 
       {favTip > 0 && (
@@ -926,13 +1057,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         </div>
       )}
 
-      {goalReached && (
-        <GoalReached
-          total={todayTotal}
-          onMore={() => setGoalReached(false)}
-          onHome={() => nav('/')}
-        />
-      )}
+      {levelHelp && <LevelHelp level={q.word.level} onClose={() => setLevelHelp(false)} />}
+      {goalReached && <GoalReached total={todayTotal} onMore={() => setGoalReached(false)} onHome={() => nav('/')} />}
     </div>
   );
 }

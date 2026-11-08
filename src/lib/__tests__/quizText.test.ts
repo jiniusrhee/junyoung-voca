@@ -20,6 +20,21 @@ describe('quiz text helpers', () => {
     expect(segs[0]).toEqual({ kind: 'text', text: "Let's " });
   });
 
+  it('splits hyphenated answers into one box per segment with the hyphen between (말해보카)', () => {
+    const segs = layoutSentence('She is an ___ actress.', 'up-and-coming');
+    expect(segs).toEqual([
+      { kind: 'text', text: 'She is an ' },
+      { kind: 'blank', idx: 0 },
+      { kind: 'text', text: '-' },
+      { kind: 'blank', idx: 1 },
+      { kind: 'text', text: '-' },
+      { kind: 'blank', idx: 2 },
+      { kind: 'text', text: ' actress.' },
+    ]);
+    expect(fullSentence('She is an ___ actress.', 'up-and-coming')).toBe('She is an up-and-coming actress.');
+    expect(evaluate('up and coming', { en: 'She is an ___ actress.', ko: '', answer: 'up-and-coming' } as never, 'up-and-coming')).toEqual({ kind: 'correct' });
+  });
+
   it('maps multiple blanks to answer words in order', () => {
     const segs = layoutSentence("Let's ___ ___ ten-minute ___.", 'take a break');
     expect(segs.filter((x) => x.kind === 'blank').map((x) => (x.kind === 'blank' ? x.idx : -1))).toEqual([0, 1, 2]);
@@ -49,10 +64,12 @@ describe('quiz text helpers', () => {
     expect(evaluate('achieve', past, 'achieve').kind).toBe('form');
   });
 
-  it('reveals about a third of the answer as the first hint', () => {
+  it('reveals the first two letters as the first hint (말해보카)', () => {
     expect(hintPrefix('next to')).toBe('ne');
     expect(hintPrefix('us')).toBe('u');
-    expect(hintPrefix('comprehensive')).toBe('comp');
+    expect(hintPrefix('comprehensive')).toBe('co');
+    expect(hintPrefix('shrink')).toBe('sh');
+    expect(hintPrefix('architecture')).toBe('ar');
   });
 
   it('scores spoken sentences by matched words', () => {

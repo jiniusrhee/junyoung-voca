@@ -13,9 +13,17 @@ Vite + React + TypeScript, Dexie(IndexedDB), ts-fsrs(복습 스케줄), vite-plu
 - `npm run content:validate`, `npm run content:coverage [레벨]`
 - 안드로이드 APK: `npm run build:native`(base `/` 로 빌드 + cap sync) → `cd android && ./gradlew assembleRelease` (JDK 21, 서명 키는 `~/.junyoung-voca/`). 일반 `npm run build` 결과를 APK 에 넣으면 경로가 `/junyoung-voca/` 라 빈 화면이 뜬다. 폰 뒤로 가기는 `src/lib/nativeBack.ts`(App 플러그인) 가 처리한다.
 
+## 화면별 스타일 파일
+
+`src/styles.css` 가 공통이고, 말해보카 실측값으로 맞춘 화면은 `src/styles/<화면>.css`(quiz·home·all·stats·settings)가 뒤에 로드되어 덮어쓴다. 그 화면을 고칠 때는 해당 파일을 먼저 본다. 어휘 퀴즈의 치수·색·타이밍 실측치는 docs/SPEC.md 맨 끝 "어휘 퀴즈 실측" 절에 있다.
+
+## 비교·캡처 도구
+
+`scripts/devtools/`(README 참고): 플립·에뮬레이터 캡처(cap.py), OCR 탭(tw.py), 말해보카 자판 입력(kb.py), 녹화·키프레임(rec.sh·kf.py·clip.py), WebView 조작(remote.mjs·drive.mjs), APK 없이 개발 서버 + 헤드리스 Chrome 캡처(shot.mjs). 실제 앱 캡처·영상은 `ref/flip/`(git 제외).
+
 ## 화면 구조 (말해보카 기준)
 
-- 퀴즈(`src/pages/Quiz.tsx`): 하늘색 배경, 레벨 탭이 붙은 카드(`components/QuizCard.tsx`), New / N일 전 / N일 뒤 복습 배지, 앱 자체 자판(`components/Keyboard.tsx`, 폰 기본 키보드를 띄우지 않음), 보라색 입력 말풍선, 힌트 2단계(앞 1/3 → 정답 보기), 정답 입력 시 자동 채점, 오답 시 분홍 카드 + 설명 말풍선(초록/노랑/빨강), 정답 후 패널(`components/AfterPanel.tsx`: 다른 예문·오답 노트·말해보기·단어 정보, 실전 속도/다시 듣기/다음 문제), 하루 목표 달성 트로피 팝업.
+- 퀴즈(`src/pages/Quiz.tsx`): 하늘색 배경 + 풍경(`components/DinoScene.tsx`, 정답마다 익룡 `Pterodactyls.tsx`), 레벨 탭이 붙은 카드(`components/QuizCard.tsx`), New / N일 전 / 재도전 / N 뒤 복습 배지, 앱 자체 자판(`components/Keyboard.tsx`, 폰 기본 키보드를 띄우지 않음, 아포스트로피 키는 정답에 있을 때만), 보라색 입력 말풍선, 힌트 2단계(앞 2글자 → 정답 보기: 입력이 비워지고 정답이 비침), 정답 입력 시 자동 채점(하이픈 단어는 칸을 나눔), 오타는 '!' 도장 + 연보라 말풍선(실시간 갱신), 오답은 카드가 1초 붉게, 정답 후 0.55초 뒤 배지·♥, 0.9초 뒤 자판↔패널 슬라이드(`components/AfterPanel.tsx`: 다른 예문·오답 노트는 카드 자리의 `InfoCard.tsx`, 말해보기, 단어 정보, 듣기평가 속도/다시 듣기/다음 문제, '^' → `ExtraSheet.tsx`), 레벨 '?' 팝업 `LevelHelp.tsx`, 하루 목표 달성 트로피 팝업. 학습 화면 상태바 색은 `lib/statusBar.ts`.
 - 홈: 연속 학습 카드(주간 출석), 진행률 링 + 오늘의 어휘/추가 학습 버튼, 하루 목표 팝업, 학습 정보, 나의 어휘력, 좋아하는 문장/오답노트/학습한 어휘/사전 목록. 하단 탭: 어휘·기록·사전·설정.
 
 ## 학습 모드 (docs/SPEC.md 에 실제 앱 관찰 기록)

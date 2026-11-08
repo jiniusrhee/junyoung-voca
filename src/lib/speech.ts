@@ -46,6 +46,19 @@ export function recognizeOnce(lang = 'en-US'): Promise<string[]> {
     r.interimResults = false;
     r.maxAlternatives = 5;
     let settled = false;
+    // 정답 패널의 정지 버튼(말해보카 □)이 보내는 이벤트로 듣기를 멈춘다
+    const onStop = () => {
+      if (settled) return;
+      settled = true;
+      window.removeEventListener('voca:stop-listening', onStop);
+      try {
+        r.abort();
+      } catch {
+        /* ignore */
+      }
+      reject(new Error('aborted'));
+    };
+    window.addEventListener('voca:stop-listening', onStop);
     const timer = window.setTimeout(() => {
       if (settled) return;
       settled = true;

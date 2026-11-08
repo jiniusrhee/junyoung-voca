@@ -5,6 +5,8 @@ export function normalize(s: string): string {
     .toLowerCase()
     .replace(/[’`]/g, "'")
     .replace(/[^a-z'\- ]/g, '')
+    // 하이픈 단어는 칸마다 따로 치므로 "up and coming" 도 "up-and-coming" 으로 본다 (말해보카)
+    .replace(/-/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -129,9 +131,9 @@ export function feedbackFor(e: Exclude<Evaluation, { kind: 'correct' }>): Feedba
 
 export const SHOW_ANSWER_MSG = '정답을 확인하고, 다시 입력해보세요.';
 
-/** 1단계 힌트로 보여줄 앞부분 (말해보카처럼 길이의 1/3, 최소 1글자) */
+/** 1단계 힌트로 보여줄 앞부분: 말해보카는 길이와 상관없이 앞 2글자 (6·9·12글자 모두 2글자 — 2026-11-08 플립 실측). 짧은 단어는 1글자 */
 export function hintPrefix(answer: string): string {
-  return answer.slice(0, Math.max(1, Math.floor(answer.length / 3)));
+  return answer.slice(0, Math.min(2, Math.max(1, answer.length - 1)));
 }
 
 /** 음성 인식 결과(후보 여러 개) 중 정답 단어가 들어 있는지 */
@@ -180,8 +182,14 @@ export function splitBlank(en: string): [string, string] {
   return [en.slice(0, idx), en.slice(idx + 3)];
 }
 
+/** 정답을 칸 단위로 나눈다. 공백뿐 아니라 하이픈도 칸을 나눈다 ("up-and-coming" → up / and / coming, 말해보카) */
 export function answerWords(answer: string): string[] {
-  return answer.trim().split(/\s+/);
+  return answer.trim().split(/[\s-]+/).filter(Boolean);
+}
+
+/** 칸과 칸 사이에 보여줄 구분 글자: 하이픈 단어는 '-', 아니면 ' ' */
+export function answerSeparators(answer: string): string[] {
+  return (answer.trim().match(/[\s-]+/g) ?? []).map((sep) => (sep.includes('-') ? '-' : ' '));
 }
 
 export type SentenceSeg = { kind: 'text'; text: string } | { kind: 'blank'; idx: number };
@@ -189,6 +197,7 @@ export type SentenceSeg = { kind: 'text'; text: string } | { kind: 'blank'; idx:
 /** 영어 문장을 글자 구간과 빈칸(정답 단어 하나당 한 칸)으로 나눈다 */
 export function layoutSentence(en: string, answer: string): SentenceSeg[] {
   const words = answerWords(answer);
+  const seps = answerSeparators(answer);
   const parts = en.split('___');
   const blanks = parts.length - 1;
   const segs: SentenceSeg[] = [];
@@ -198,7 +207,7 @@ export function layoutSentence(en: string, answer: string): SentenceSeg[] {
     if (i >= blanks) return;
     if (blanks === 1) {
       words.forEach((_, k) => {
-        if (k > 0) segs.push({ kind: 'text', text: ' ' });
+        if (k > 0) segs.push({ kind: 'text', text: seps[k - 1] ?? ' ' });
         segs.push({ kind: 'blank', idx: w++ });
       });
     } else {

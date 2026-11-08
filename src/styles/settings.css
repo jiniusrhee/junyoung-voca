@@ -1,0 +1,156 @@
+/* settings.css: 설정 메뉴(#/settings) — 말해보카 설정 페이지 플립 실측(2026-11-08, 360 CSS px, 다크) 기준.
+   상태바(34px) 아래 머리글 40 + 1px 선 / 프로필 블록 / 어두운 띠 12 / "설정" 제목 / 73.3px 줄 × N (아이콘 24, 제목 15.5, 설명 12.5, 1px 구분선). */
+
+.vs-page.settings-menu {
+  padding-bottom: 40px;
+  background: #101010;
+  color: #d6d7d6;
+}
+.vs-page.settings-menu .vs-head {
+  height: 41px;
+  padding: 0 14px 0 8px;
+  border-bottom: 1px solid #292831;
+  background: #101010;
+}
+.vs-page.settings-menu .vs-back {
+  gap: 7px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #d6d7d6;
+  line-height: 1;
+}
+.vs-page.settings-menu .vs-back svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* 프로필: 원 90 (왼쪽 22, 위 46), 이름 20/600, 아래 줄 13 + P 배지, 오른쪽 꺾쇠 */
+.vs-page.settings-menu .profile {
+  position: relative;
+  gap: 0;
+  padding: 46px 20px 0 22px;
+  height: 212px;
+  box-sizing: border-box;
+  align-items: flex-start;
+}
+.vs-page.settings-menu .profile-avatar {
+  width: 90px;
+  height: 90px;
+  flex: none;
+  background: #191c19;
+}
+.vs-page.settings-menu .profile-avatar svg {
+  width: 72px;
+  height: 72px;
+}
+.vs-page.settings-menu .profile-text {
+  margin-left: 28px;
+  padding-top: 1px;
+  gap: 12px;
+}
+.vs-page.settings-menu .profile-text b {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #d6d7d6;
+}
+.vs-page.settings-menu .profile-text span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  line-height: 15px;
+  color: #adaaad;
+}
+.vs-page.settings-menu .p-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #735df7;
+  color: #fff;
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+}
+.vs-page.settings-menu .profile > .muted-ic {
+  position: absolute;
+  right: 22px;
+  top: 55px;
+  width: 14px;
+  height: 14px;
+  color: #525963;
+}
+
+/* 프로필 블록과 설정 목록 사이 어두운 띠 */
+.vs-page.settings-menu .stats-sep,
+:root[data-theme='dark'] .vs-page.settings-menu .stats-sep {
+  height: 12px;
+  margin: 0;
+  background: #191819;
+}
+
+/* "설정" 제목: 띠 아래 16, 글자 17/700 */
+.vs-page.settings-menu .menu-title {
+  margin: 14px 0 2px;
+  padding: 0 20px;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 22px;
+  color: #d6d7d6;
+}
+
+/* 줄: 높이 73.3, 구분선 1px #292831 (좌우 20 안쪽), 아이콘 24 (x 26), 글 x 68 */
+.vs-page.settings-menu .menu-row {
+  width: calc(100% - 40px);
+  height: 73.333px;
+  box-sizing: border-box;
+  margin: 0 20px;
+  padding: 0 0 0 6px;
+  gap: 0;
+  align-items: center;
+  border-bottom: 1px solid #292831;
+  background: none;
+}
+.vs-page.settings-menu .menu-row:last-child {
+  border-bottom-color: transparent;
+}
+.vs-page.settings-menu .menu-icon,
+.vs-page.settings-menu .menu-icon.blue,
+.vs-page.settings-menu .menu-icon.purple,
+.vs-page.settings-menu .menu-icon.orange,
+.vs-page.settings-menu .menu-icon.pink {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  border-radius: 0;
+  background: none;
+}
+.vs-page.settings-menu .menu-icon svg {
+  width: 24px;
+  height: 24px;
+}
+.vs-page.settings-menu .menu-text {
+  margin-left: 18px;
+  gap: 5px;
+}
+.vs-page.settings-menu .menu-text b {
+  font-size: 15.5px;
+  font-weight: 600;
+  line-height: 19px;
+  color: #d6d7d6;
+}
+.vs-page.settings-menu .menu-text span {
+  font-size: 12.5px;
+  line-height: 16px;
+  color: #adaaad;
+}
+.vs-page.settings-menu .menu-row > .muted-ic {
+  width: 14px;
+  height: 14px;
+  margin-right: -3px;
+  color: #525963;
+}

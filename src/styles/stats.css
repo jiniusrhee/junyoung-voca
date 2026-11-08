@@ -1,0 +1,675 @@
+/* stats.css: 말해보카 학습 통계(다크) 실측 기준 스타일. styles.css 뒤에 불러와 덮어쓴다.
+   실측: 갤럭시 Z 플립 1080px 스크린샷 px ÷ 3 = CSS px. 글꼴 크기는 폰 시스템 글꼴의 잉크 비율
+   (한글 0.87em · 숫자 0.74em · 라틴 대문자 0.73em · x-height 0.54em)로 환산했다. */
+
+.screen.stats {
+  padding: 0 20px 28px;
+  background: var(--bg);
+  color: var(--text);
+}
+:root[data-theme='dark'] .screen.stats {
+  background: #121212;
+  color: #d6d7d6;
+}
+
+/* ---------- 제목줄 + 탭: 전체 폭 띠 (높이 87) ---------- */
+.screen.stats .stats-top {
+  margin: 0 -20px;
+  padding: 0 20px;
+  background: var(--card);
+}
+:root[data-theme='dark'] .screen.stats .stats-top {
+  background: #202122;
+}
+.screen.stats .home-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 47.33px;
+  margin: 0;
+  padding: 0;
+}
+.screen.stats .head-menu {
+  display: inline-flex;
+  align-items: center;
+  gap: 9.87px;
+  margin-left: -11px;
+  padding: 0;
+  font-size: 16.6px;
+  line-height: 24px;
+  font-weight: 400;
+  color: var(--text);
+}
+.screen.stats .head-menu span {
+  position: relative;
+  top: 0.8px;
+}
+.screen.stats .st-menu {
+  display: block;
+  fill: currentColor;
+}
+.screen.stats .head-bell {
+  width: auto;
+  height: auto;
+  margin-right: -7.33px;
+  padding: 0;
+  display: inline-flex;
+  color: #e9c252;
+}
+.screen.stats .st-bell {
+  display: block;
+  fill: currentColor;
+}
+:root[data-theme='dark'] .screen.stats .head-menu {
+  color: #d6d6d6;
+}
+:root[data-theme='dark'] .screen.stats .st-menu {
+  fill: #d2d1d2;
+}
+
+.screen.stats .stats-tabs {
+  display: flex;
+  gap: 15.5px;
+  margin: 0;
+  padding: 0;
+  border-bottom: none;
+}
+.screen.stats .stats-tabs button {
+  margin: 0;
+  padding: 8.25px 0 9.42px;
+  font-size: 16.5px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--muted);
+  border-bottom: 2px solid transparent;
+}
+.screen.stats .stats-tabs button.active {
+  font-weight: 700;
+  color: var(--text);
+  border-bottom-color: currentColor;
+}
+:root[data-theme='dark'] .screen.stats .stats-tabs button {
+  color: #a1a2a4;
+}
+:root[data-theme='dark'] .screen.stats .stats-tabs button.active {
+  color: #d6d7d6;
+  border-bottom-color: #d6d7d6;
+}
+
+/* ---------- 섹션 제목 ---------- */
+.screen.stats .stats-h2 {
+  margin: 36.6px 0 22.23px 7px;
+  font-size: 17.8px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--text);
+}
+:root[data-theme='dark'] .screen.stats .stats-h2 {
+  color: #d6d7d6;
+}
+
+/* ---------- 카드 공통 ---------- */
+.screen.stats .s-card {
+  margin: 0 0 13.33px;
+  padding: 23px;
+  border-radius: 14.67px;
+  background: var(--card);
+  color: var(--text);
+}
+:root[data-theme='dark'] .screen.stats .s-card {
+  background: #242629;
+  color: #d6d7d6;
+}
+
+/* ---------- 오늘의 학습 정보: 타일 2개 ---------- */
+.screen.stats .tile-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13.33px;
+  margin-bottom: 13.33px;
+}
+.screen.stats .s-tile {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  height: 68.67px;
+  padding: 16.33px 0 0 16px;
+  border-radius: 14.67px;
+  background: var(--card);
+}
+:root[data-theme='dark'] .screen.stats .s-tile {
+  background: #242629;
+}
+.screen.stats .s-tile-icon {
+  display: block;
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin: 7px 13px 0 0;
+}
+.screen.stats .s-tile-icon svg {
+  display: block;
+}
+.screen.stats .s-tile div {
+  display: flex;
+  flex-direction: column;
+}
+.screen.stats .s-tile span {
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--sub);
+}
+.screen.stats .s-tile b {
+  margin-top: 1.7px;
+  font-size: 14.4px;
+  line-height: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+:root[data-theme='dark'] .screen.stats .s-tile span {
+  color: #949294;
+}
+:root[data-theme='dark'] .screen.stats .s-tile b {
+  color: #d6d7d6;
+}
+
+/* ---------- 어휘 카드 ---------- */
+.screen.stats .mode-list {
+  padding: 0 22.33px 0 23px;
+}
+.screen.stats .mode-list .mode-sum {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 23.2px 0 20.83px;
+  border-bottom: 1px solid var(--line);
+}
+.screen.stats .mode-list .mode-sum:last-child {
+  border-bottom: none;
+}
+.screen.stats .ms-icon {
+  flex: none;
+  width: 32.67px;
+  height: 32.67px;
+  margin-top: 1.13px;
+  border-radius: 8.33px;
+  background: var(--surface-2);
+  color: #42414a;
+}
+:root[data-theme='dark'] .screen.stats .ms-icon {
+  background: #1b1b1f;
+  color: #42414a;
+}
+.screen.stats .ms-body {
+  flex: 1;
+  min-width: 0;
+}
+.screen.stats .ms-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 18px;
+}
+.screen.stats .ms-head b {
+  font-size: 13.8px;
+  line-height: 18px;
+  font-weight: 700;
+}
+.screen.stats .ms-acc {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-right: 5.33px;
+  font-size: 11.1px;
+  line-height: 18px;
+  color: var(--sub);
+}
+.screen.stats .ms-acc .st-badge {
+  display: block;
+}
+.screen.stats .ms-acc .st-chev {
+  display: block;
+  margin-left: 9.67px;
+  color: var(--muted);
+}
+:root[data-theme='dark'] .screen.stats .ms-acc {
+  color: #8592a4;
+}
+:root[data-theme='dark'] .screen.stats .ms-acc .st-chev {
+  color: #4d545a;
+}
+.screen.stats .ms-bar {
+  display: flex;
+  height: 6.33px;
+  margin: 5.8px 0 0;
+  border-radius: 3.17px;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+:root[data-theme='dark'] .screen.stats .ms-bar {
+  background: #34373b;
+}
+.screen.stats .ms-bar .new {
+  background: #debf84;
+}
+.screen.stats .ms-bar .rev {
+  background: #85beef;
+}
+.screen.stats .ms-legend {
+  display: flex;
+  align-items: center;
+  margin-top: 4.17px;
+  font-size: 11.1px;
+  line-height: 18px;
+  color: var(--text);
+}
+.screen.stats .ms-legend b {
+  margin: 0 8px 0 5px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 700;
+}
+.screen.stats .ms-legend .y {
+  color: #d3a74c;
+}
+.screen.stats .ms-legend .b {
+  margin-right: 0;
+  color: #60a1d6;
+}
+:root[data-theme='dark'] .screen.stats .ms-legend {
+  color: #d6d5d6;
+}
+
+/* ---------- 보통 N요일에는? ---------- */
+.screen.stats .habit {
+  display: flex;
+  align-items: center;
+  gap: 20.67px;
+  height: 64px;
+  padding: 0 23px 0 24.67px;
+}
+.screen.stats .habit-icon {
+  display: flex;
+  flex: none;
+  width: 27px;
+  height: 24.33px;
+  border-radius: 0;
+  background: none;
+}
+.screen.stats .habit-icon svg {
+  display: block;
+}
+.screen.stats .habit > div {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.screen.stats .habit b {
+  font-size: 14.2px;
+  line-height: 18px;
+  font-weight: 700;
+}
+.screen.stats .habit p {
+  margin-top: 3.63px;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--sub);
+}
+.screen.stats .habit em {
+  font-style: normal;
+  color: #5fa1d5;
+}
+:root[data-theme='dark'] .screen.stats .habit p {
+  color: #acaaac;
+}
+
+/* 검은 띠 */
+.screen.stats .stats-sep {
+  height: 9px;
+  margin: 27px -20px 0; /* 위 카드의 margin-bottom 13.33 과 겹쳐(collapse) 27 이 된다 */
+  background: #000;
+}
+
+/* ---------- 연간 학습 ---------- */
+.screen.stats .heat {
+  padding: 19.56px 23px 19.33px;
+}
+.screen.stats .heat-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 20px;
+}
+.screen.stats .heat-head b {
+  font-size: 15.2px;
+  line-height: 20px;
+  font-weight: 700;
+}
+.screen.stats .heat-pager {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0.33px;
+  color: var(--muted);
+}
+.screen.stats .heat-pager b {
+  margin: 0 13.2px 0 12.4px;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 700;
+  color: var(--text);
+}
+.screen.stats .st-tri {
+  display: block;
+}
+:root[data-theme='dark'] .screen.stats .heat-pager {
+  color: #52585f;
+}
+:root[data-theme='dark'] .screen.stats .heat-pager b {
+  color: #d6d7d6;
+}
+.screen.stats .heat-legend {
+  display: flex;
+  align-items: center;
+  gap: 4.67px;
+  margin: 8.52px 0 0;
+  font-size: 12.3px;
+  line-height: 16px;
+  color: var(--sub);
+}
+.screen.stats .heat-legend .less {
+  margin-right: -1.67px; /* 폰 글꼴의 Less 가 실제 앱보다 4.5px 넓어 점 위치를 절반쯤 당긴다 */
+}
+.screen.stats .heat-legend .more {
+  margin-left: -0.3px;
+}
+.screen.stats .heat-legend i {
+  width: 6.67px;
+  height: 6.67px;
+  border-radius: 50%;
+}
+:root[data-theme='dark'] .screen.stats .heat-legend {
+  color: #939294;
+}
+.screen.stats .heat-block {
+  display: grid;
+  grid-template-columns: 24.73px 250.33px;
+  grid-template-rows: 12px 66.67px;
+  row-gap: 4.49px;
+  margin: 9.1px 0 0 -2.4px;
+}
+.screen.stats .heat-block + .heat-block {
+  margin-top: 4.85px;
+}
+.screen.stats .heat-days {
+  grid-column: 1;
+  grid-row: 2;
+  display: grid;
+  grid-template-rows: repeat(7, 8.67px);
+  row-gap: 1px;
+  font-size: 8.8px;
+  line-height: 8.67px;
+  color: var(--muted);
+}
+.screen.stats .heat-months {
+  grid-column: 2;
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: repeat(26, 8.67px);
+  column-gap: 1px;
+  font-size: 9.1px;
+  line-height: 12px;
+  color: var(--muted);
+}
+.screen.stats .heat-months span {
+  height: 12px;
+  font-size: 9.1px;
+  line-height: 12px;
+  color: inherit;
+  white-space: nowrap;
+  overflow: visible;
+}
+.screen.stats .heat-grid {
+  grid-column: 2;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: repeat(26, 8.67px);
+  column-gap: 1px;
+}
+.screen.stats .heat-col {
+  display: grid;
+  grid-template-rows: repeat(7, 8.67px);
+  row-gap: 1px;
+}
+.screen.stats .hc {
+  display: block;
+  width: 8.67px;
+  height: 8.67px;
+  aspect-ratio: auto;
+  border-radius: 3.5px;
+}
+.screen.stats .hc.lx {
+  background: transparent;
+}
+:root[data-theme='dark'] .screen.stats .heat-days {
+  color: #575859;
+}
+:root[data-theme='dark'] .screen.stats .heat-months {
+  color: #5a5a5b;
+}
+:root[data-theme='dark'] .screen.stats .hc.l0 {
+  background: #343737;
+}
+:root[data-theme='dark'] .screen.stats .hc.l1,
+:root[data-theme='dark'] .screen.stats .heat-legend .h1 {
+  background: #343737;
+}
+:root[data-theme='dark'] .screen.stats .hc.l2,
+:root[data-theme='dark'] .screen.stats .heat-legend .h2 {
+  background: #3b385e;
+}
+:root[data-theme='dark'] .screen.stats .hc.l3,
+:root[data-theme='dark'] .screen.stats .heat-legend .h3 {
+  background: #4b4684;
+}
+:root[data-theme='dark'] .screen.stats .hc.l4,
+:root[data-theme='dark'] .screen.stats .heat-legend .h4 {
+  background: #5848b2;
+}
+:root[data-theme='dark'] .screen.stats .hc.l1 {
+  background: #3b385e;
+}
+:root[data-theme='dark'] .screen.stats .hc.l2 {
+  background: #4b4684;
+}
+:root[data-theme='dark'] .screen.stats .hc.l3 {
+  background: #5848b2;
+}
+:root[data-theme='dark'] .screen.stats .hc.l4 {
+  background: #735cf4;
+}
+
+/* ---------- 학습 시간 · 학습량 ---------- */
+.screen.stats .timechart,
+.screen.stats .amount {
+  padding: 20.5px 23px 19.57px;
+}
+.screen.stats .amount {
+  padding-bottom: 18.67px;
+}
+.screen.stats .seg-full {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: 28.67px;
+  margin: 0;
+  padding: 3.33px;
+  border-radius: 5.33px;
+  background: var(--surface-2);
+}
+.screen.stats .seg-full button {
+  height: 22px;
+  padding: 0;
+  border-radius: 4.67px;
+  font-size: 12.3px;
+  line-height: 22px;
+  font-weight: 400;
+  color: var(--muted);
+}
+.screen.stats .seg-full button.active {
+  background: var(--card);
+  color: var(--text);
+}
+:root[data-theme='dark'] .screen.stats .seg-full {
+  background: #16181a;
+}
+:root[data-theme='dark'] .screen.stats .seg-full button {
+  color: #4a494e;
+}
+:root[data-theme='dark'] .screen.stats .seg-full button.active {
+  background: #242629;
+  color: #a1a2a4;
+}
+.screen.stats .tc-title {
+  display: block;
+  margin-top: 12.9px;
+  font-size: 15.2px;
+  line-height: 20px;
+  font-weight: 700;
+}
+.screen.stats .tc-desc {
+  margin: 4.77px 0 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--text);
+}
+.screen.stats .tc-desc em {
+  font-style: normal;
+  color: #8a7efb;
+}
+:root[data-theme='dark'] .screen.stats .tc-desc {
+  color: #d6d6d6;
+}
+.screen.stats .tc-svg {
+  display: block;
+  width: 100%;
+  height: 99px;
+  margin-top: 11.33px;
+  border: none;
+  border-radius: 0;
+}
+.screen.stats .tc-grid {
+  stroke: var(--line);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+:root[data-theme='dark'] .screen.stats .tc-grid {
+  stroke: #2e3033;
+}
+.screen.stats .tc-line {
+  fill: none;
+  stroke: #a08cf7;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+.screen.stats .tc-range {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 7.43px;
+  font-size: 10.4px;
+  line-height: 14px;
+  color: var(--muted);
+}
+.screen.stats .tc-range .em {
+  color: #8b7efc;
+}
+:root[data-theme='dark'] .screen.stats .tc-range {
+  color: #55585d;
+}
+
+.screen.stats .am-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 13.67px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 11.9px;
+  line-height: 16px;
+  color: var(--sub);
+}
+.screen.stats .am-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+.screen.stats .am-legend i {
+  width: 6.67px;
+  height: 6.67px;
+  border-radius: 50%;
+}
+:root[data-theme='dark'] .screen.stats .am-legend {
+  color: #939294;
+}
+.screen.stats .am-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 10.67px;
+  height: 104px;
+  margin-top: 9px;
+}
+.screen.stats .am-bars.many {
+  gap: 3px;
+}
+.screen.stats .am-col {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 0;
+  height: 100%;
+}
+.screen.stats .am-bar {
+  display: flex;
+  flex-direction: column-reverse;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.screen.stats .am-bar span {
+  display: block;
+  min-height: 0;
+}
+.screen.stats .am-x {
+  display: flex;
+  gap: 10.67px;
+  margin-top: 3.67px;
+  font-size: 10.7px;
+  line-height: 14px;
+  color: var(--muted);
+}
+.screen.stats .am-x span {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+}
+.screen.stats .am-x .today {
+  color: var(--text);
+}
+.screen.stats .am-range {
+  margin-top: 3.67px;
+}
+:root[data-theme='dark'] .screen.stats .am-x {
+  color: #56595e;
+}
+:root[data-theme='dark'] .screen.stats .am-x .today {
+  color: #d4d4d4;
+}
+
+/* ---------- 학습별 · 어휘력 탭: 위쪽 여백만 (실측 자료 없음) ---------- */
+.screen.stats .study-chips {
+  margin: 16px 0 14px;
+}
+.screen.stats .gold-card {
+  margin-top: 16px;
+}

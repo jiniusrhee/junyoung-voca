@@ -1,0 +1,267 @@
+/* all.css: 말해보카 실측 기준 바깥 메뉴 스타일. styles.css 뒤에 불러와 덮어쓴다.
+   기준: 갤럭시 Z 플립(1080px = 360 CSS px, 다크 모드) 전체 학습 화면 캡처를 픽셀 단위로 잰 값.
+   헤더 40px(+1px 선), 섹션 제목 17px, 칩 25px 알약, 모드 카드 78px(반지름 14), 목록 줄 46.67px(아이콘 타일 33px, 반지름 8),
+   검은 띠 9px, 하단 탭 52px(아이콘 24, 글자 10px). */
+
+:root {
+  /* 하단 탭 높이 (말해보카: 52px + 제스처 바 여백) — .app.with-nav 의 바닥 여백도 이 값을 쓴다 */
+  --nav-h: 52px;
+}
+
+/* ================= 전체 학습 페이지 ================= */
+.screen.all-learning {
+  padding: 0 18px 61px;
+}
+:root[data-theme='dark'] .screen.all-learning {
+  background: #121212;
+  color: #d6d7d6;
+}
+
+/* ---- 헤더: 40px, 바닥 1px 선, 스크롤해도 고정 ---- */
+.all-learning .home-head {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  box-sizing: border-box;
+  height: 41px;
+  margin: 0 -18px;
+  padding: 0 13px 0 9px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+:root[data-theme='dark'] .all-learning .home-head {
+  border-bottom-color: #25282b;
+  background: #121212;
+}
+.all-learning .head-menu {
+  gap: 10px;
+  height: 40px;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+}
+:root[data-theme='dark'] .all-learning .head-menu {
+  color: #d6d7d6;
+}
+.all-learning .head-bell {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  justify-content: flex-end;
+  color: #ecc352;
+}
+
+/* ---- 섹션 제목 17px ---- */
+.all-learning .al-title {
+  margin: 34px 0 0;
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 700;
+}
+:root[data-theme='dark'] .all-learning .al-title {
+  color: #d6d7d6;
+}
+/* 제목 글자 밑 → 다음 요소까지 22px: 제목 상자(22px) 밑으로 18.5px */
+.all-learning .al-title + .al-chips {
+  margin-top: 18px;
+}
+.all-learning .al-title + .al-list {
+  margin-top: 12px;
+}
+/* 검은 띠 뒤 제목은 글자 위까지 48px, 목록 뒤 제목은 36px */
+.all-learning .al-sep + .al-title {
+  margin-top: 44px;
+}
+.all-learning .al-list + .al-title {
+  margin-top: 32px;
+}
+
+/* ---- 학습 모드 칩: 25px 알약, 글자 13.5px ---- */
+.all-learning .al-chips {
+  gap: 3px;
+  margin-bottom: 0;
+}
+.all-learning .al-chip,
+.all-learning .al-chip.active {
+  box-sizing: border-box;
+  height: 25px;
+  padding: 0 14px;
+  border-radius: 13px;
+  font-size: 13.5px;
+  line-height: 25px;
+  font-weight: 600;
+}
+@media (max-width: 370px) {
+  .all-learning .al-chip {
+    padding: 0 14px;
+    font-size: 13.5px;
+  }
+}
+:root[data-theme='dark'] .all-learning .al-chip {
+  color: #a4a2a4;
+}
+:root[data-theme='dark'] .all-learning .al-chip.active {
+  background: #f7f7f7;
+  color: #111;
+}
+
+/* ---- 모드 카드: 78px, 반지름 14, 왼쪽 24px 글, 오른쪽 66px 재생 칸 ---- */
+.all-learning .mode-card {
+  box-sizing: border-box;
+  height: 78px;
+  margin: 19px 0 0;
+  padding: 6px 0 0 24px;
+  border-radius: 14px;
+  overflow: visible;
+}
+.all-learning .mode-card.voca {
+  background: linear-gradient(90deg, #7466f8 0%, #a475ff 40%, #a475ff 100%);
+}
+.all-learning .mode-card-text {
+  gap: 5px;
+  min-width: 0;
+}
+.all-learning .mode-card-text b {
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 700;
+}
+.all-learning .mode-card-text > span {
+  font-size: 11.5px;
+  line-height: 16px;
+  font-weight: 400;
+  color: #cfc5ff;
+  opacity: 1;
+  gap: 4px;
+  white-space: nowrap;
+}
+.all-learning .mode-card-text .mc-num {
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 700;
+  color: #fff;
+}
+.all-learning .mode-card-text .mc-pen {
+  margin-left: 4px;
+  color: #ceb6ff;
+}
+.all-learning .mode-card .sep {
+  margin: 0 4px;
+}
+/* 재생 칸: 왼쪽 경계에 점 5개(지름 3.33px, 간격 12.67px), 가운데 ▶ */
+.all-learning .mode-card-play {
+  position: relative;
+  align-self: stretch;
+  width: 66px;
+  margin: -6px 0 0 auto;
+  padding: 0;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.all-learning .mode-card-play::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7.67px;
+  width: 3.34px;
+  height: 63.3px;
+  background: radial-gradient(circle, #bd92ff 1.45px, transparent 1.75px) 0 0 / 3.34px 12.67px repeat-y;
+}
+/* 트로피 리본: 카드 위로 3px 올라가고 오른쪽에서 73px */
+.all-learning .mode-card-ribbon {
+  position: absolute;
+  top: -3px;
+  right: 73px;
+  width: 32px;
+  height: 42px;
+  padding: 0;
+  background: none;
+  clip-path: none;
+  display: block;
+}
+
+/* ---- 목록 줄: 46.67px, 아이콘 타일 33px(반지름 8), 글자 14.5px ---- */
+.all-learning .al-list {
+  margin-top: 16px;
+}
+.all-learning .al-row {
+  box-sizing: border-box;
+  height: 46.67px;
+  padding: 0 2px 0 0;
+  gap: 15px;
+}
+:root[data-theme='dark'] .all-learning .al-row {
+  color: #d6d7d6;
+}
+.all-learning .al-icon {
+  width: 33px;
+  height: 33px;
+  border-radius: 8px;
+  flex: none;
+}
+:root[data-theme='dark'] .all-learning .al-icon {
+  background: #212429;
+}
+.all-learning .al-label {
+  font-size: 14.5px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+.all-learning .al-count {
+  font-size: 12px;
+}
+.all-learning .al-row .muted-ic {
+  flex: none;
+  stroke-width: 1.5;
+}
+:root[data-theme='dark'] .all-learning .al-row .muted-ic {
+  color: #545a64;
+}
+
+/* ---- 섹션 사이 검은 띠 9px ---- */
+.all-learning .al-sep {
+  height: 9px;
+  margin: 20px -18px 0;
+}
+
+/* ================= 하단 탭 (모든 화면 공통) ================= */
+.bottom-nav {
+  box-sizing: border-box;
+  border-top: 1px solid var(--line);
+}
+:root[data-theme='dark'] .bottom-nav {
+  background: #212021;
+  border-top-color: #25282b;
+}
+.nav-item {
+  gap: 3px;
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 600;
+}
+.nav-item svg {
+  width: 24px;
+  height: 24px;
+  flex: none;
+}
+:root[data-theme='dark'] .nav-item {
+  color: #424142;
+}
+:root[data-theme='dark'] .nav-item.active,
+.nav-item.active {
+  color: #735df7;
+}
+
+/* ▶ 글리프는 24칸 중 7~19.5 에 그려져 있어 칸 가운데보다 오른쪽에 있다 → 왼쪽으로 3.5px 당겨 실제 위치(카드 오른쪽 끝에서 32px)에 맞춘다 */
+.all-learning .mode-card-play svg {
+  margin-left: -3.5px;
+}
+
+/* 보라색이 아닌 카드(문법·표현·회화·리스닝)의 부제목은 흰색 반투명으로 (연보라는 어휘 카드 실측 색) */
+.all-learning .mode-card:not(.voca) .mode-card-text > span,
+.all-learning .mode-card:not(.voca) .mode-card-text .mc-pen {
+  color: rgba(255, 255, 255, 0.82);
+}
