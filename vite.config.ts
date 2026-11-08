@@ -9,7 +9,8 @@ const BASE = process.env.CAP_BUILD ? '/' : '/junyoung-voca/';
 
 export default defineConfig({
   base: BASE,
-  define: { __APP_VERSION__: JSON.stringify(pkg.version) },
+  // 버전 코드 = major*10000 + minor*100 + patch (android/app/build.gradle, scripts/release-apk.sh 와 같은 공식). 앱 자동 업데이트가 릴리스의 versionCode 와 비교한다
+  define: { __APP_VERSION__: JSON.stringify(pkg.version), __APP_VERSION_CODE__: JSON.stringify(pkg.version.split('.').map(Number).reduce((acc: number, n: number, i: number) => acc + n * [10000, 100, 1][i], 0)) },
   plugins: [
     react(),
     VitePWA({

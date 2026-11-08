@@ -1,5 +1,11 @@
 apply plugin: 'com.android.application'
 
+// 버전은 package.json 에서 가져온다. versionCode = major*10000 + minor*100 + patch (vite.config.ts, scripts/release-apk.sh 와 같은 공식)
+def pkgJson = new groovy.json.JsonSlurper().parse(file('../../package.json'))
+def pkgVersion = pkgJson.version as String
+def pkgParts = pkgVersion.tokenize('.').collect { it.toInteger() }
+def pkgVersionCode = pkgParts[0] * 10000 + pkgParts[1] * 100 + pkgParts[2]
+
 android {
     namespace "com.junyoung.voca"
     compileSdk rootProject.ext.compileSdkVersion
@@ -7,8 +13,8 @@ android {
         applicationId "com.junyoung.voca"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode pkgVersionCode
+        versionName pkgVersion
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.

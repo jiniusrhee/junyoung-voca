@@ -381,6 +381,14 @@ export default function ModeSettings() {
         </>
       )}
       {mode === 'updates' && (
+        <div className="upd-check">
+          <span>현재 버전 {__APP_VERSION__}</span>
+          <button className="btn primary" onClick={() => window.dispatchEvent(new Event('voca:check-update'))}>
+            새 버전 확인
+          </button>
+        </div>
+      )}
+      {mode === 'updates' && (
         <ul className="upd-list">
           {UPDATES.map((u) => (
             <li key={u.date + u.text}>

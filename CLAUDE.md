@@ -12,6 +12,7 @@ Vite + React + TypeScript, Dexie(IndexedDB), ts-fsrs(복습 스케줄), vite-plu
 - `npm run dev` / `npm test` / `npm run build` (prebuild에서 콘텐츠 검증 + manifest 생성)
 - `npm run content:validate`, `npm run content:coverage [레벨]`
 - 안드로이드 APK: `npm run build:native`(base `/` 로 빌드 + cap sync) → `cd android && ./gradlew assembleRelease` (JDK 21, 서명 키는 `~/.junyoung-voca/`). 일반 `npm run build` 결과를 APK 에 넣으면 경로가 `/junyoung-voca/` 라 빈 화면이 뜬다. 폰 뒤로 가기는 `src/lib/nativeBack.ts`(App 플러그인) 가 처리한다.
+- APK 배포·자동 업데이트: **package.json 의 version 을 올린 뒤** `npm run release:apk -- "릴리스 메모"` (테스트 → 빌드 → 서명 → GitHub 릴리스 `latest` 에 업로드 → 설명에 `version=`/`versionCode=` 기록). versionCode = major×10000 + minor×100 + patch 로 gradle·vite·스크립트가 같은 공식을 쓴다. 설치된 앱은 켜질 때 그 릴리스를 읽어 새 버전이면 안내 시트를 띄우고 APK 를 내려받아 설치 화면을 연다(`src/lib/appUpdate.ts`, `components/UpdateSheet.tsx`, `android/.../AppUpdaterPlugin.java`). 같은 버전으로 다시 올리면 앱이 새 버전으로 보지 않으므로 반드시 버전을 올린다.
 
 ## 화면별 스타일 파일
 

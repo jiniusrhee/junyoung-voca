@@ -49,3 +49,8 @@ jobs:
         run: |
           gh release view latest >/dev/null 2>&1 || gh release create latest --title "준영보카 APK (최신)" --notes "main 브랜치의 최신 빌드"
           gh release upload latest junyoung-voca.apk --clobber
+          V=$(node -p "require('./package.json').version")
+          CODE=$(node -p "const [a=0,b=0,c=0]=require('./package.json').version.split('.').map(Number); a*10000+b*100+c")
+          gh release edit latest --title "준영보카 APK v$V" --notes "$(printf 'version=%s
+versionCode=%s
+%s 빌드 (CI)' "$V" "$CODE" "$(date +%F)")"

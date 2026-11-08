@@ -1,7 +1,7 @@
 {
   "name": "junyoung-voca",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,7 +14,8 @@
     "content:coverage": "node scripts/coverage.mjs",
     "icons": "node scripts/make-icons.mjs",
     "build:native": "node scripts/build-manifest.mjs && tsc --noEmit -p tsconfig.json && cross-env CAP_BUILD=1 vite build && cap sync android",
-    "apk": "npm run build:native && cd android && gradlew.bat assembleDebug"
+    "apk": "npm run build:native && cd android && gradlew.bat assembleDebug",
+    "release:apk": "bash scripts/release-apk.sh"
   },
   "dependencies": {
     "@capacitor-community/speech-recognition": "^7.0.1",

@@ -1,0 +1,106 @@
+/* update.css: 새 버전 안내 시트 + 설정 > 업데이트 히스토리의 '새 버전 확인' */
+.update-dim {
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+.update-sheet {
+  width: 100%;
+  max-width: 320px;
+  padding: 26px 20px 20px;
+  border-radius: 18px;
+  background: var(--card, #1f1f21);
+  color: var(--text, #e4e4e6);
+  text-align: center;
+  animation: popIn 0.18s ease-out both;
+}
+.update-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: #735df7;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.update-sheet h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+.update-ver {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: var(--sub, #9a9a9e);
+}
+.update-ver b {
+  color: #a98bff;
+}
+.update-notes {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(127, 127, 127, 0.12);
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+  white-space: pre-wrap;
+  color: var(--sub, #b0b0b4);
+  max-height: 140px;
+  overflow: auto;
+}
+.update-msg {
+  margin: 14px 0 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--sub, #b0b0b4);
+}
+.update-msg.error {
+  color: #e05a5a;
+}
+.update-progress {
+  margin: 16px 0 0;
+}
+.update-bar {
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(127, 127, 127, 0.2);
+  overflow: hidden;
+}
+.update-bar div {
+  height: 100%;
+  background: #735df7;
+  transition: width 0.2s;
+}
+.update-progress span {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--sub, #9a9a9e);
+}
+.update-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+.update-actions .btn {
+  flex: 1;
+}
+.upd-check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 18px 16px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--surface, rgba(127, 127, 127, 0.1));
+  font-size: 14px;
+}
+.upd-check .btn {
+  padding: 9px 16px;
+  font-size: 14px;
+}
