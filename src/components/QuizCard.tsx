@@ -20,8 +20,8 @@ interface Props {
   blankMatchesLength: boolean;
   flash: CardFlash;
   feedback: { tone: Tone; msg: string; mask?: { text: string; bad: boolean }[] } | null;
-  /** 힌트로 채워져 지워지지 않는 앞글자 수 (말해보카: 글자색은 입력 글자와 같음) */
-  lockedLen?: number;
+  /** 힌트로 보여 준 앞글자: 입력이 비어 있을 때 첫 칸에 주황 고스트로 남는다 (말해보카 실측) */
+  hintText?: string;
   /** 정답 보기 뒤 칸에 비치는 정답 중 앞 몇 글자를 초록으로 (힌트로 이미 보여 준 글자 수) */
   ghostLockedLen?: number;
   /** 오답 말풍선의 ♥: 이 설명을 좋아하는 오답노트에 담기 */
@@ -75,7 +75,7 @@ export function FilledSentence({ sentence }: { sentence: WordSentence }) {
 }
 
 export default function QuizCard(p: Props) {
-  const { word, sentence, state, input, showedAnswer, flash, feedback, badge, onFavoriteNote, noteFavorite, lockedLen = 0, ghostLockedLen = 0 } = p;
+  const { word, sentence, state, input, showedAnswer, flash, feedback, badge, onFavoriteNote, noteFavorite, hintText = '', ghostLockedLen = 0 } = p;
   const words = answerWords(sentence.answer);
   const typed = splitInput(input, words.length);
   const spaces = (input.replace(/^\s+/, '').match(/ /g) || []).length;
@@ -96,14 +96,26 @@ export default function QuizCard(p: Props) {
               <Icon name="heartFill" size={16} />
             </button>
           )}
-          {badge.kind === 'new' && <span className="badge-new">New</span>}
-          {badge.kind === 'ago' && <span className="badge-ago">{badge.text}</span>}
+          {badge.kind === 'new' && (
+            <button className="badge-new" onClick={p.onBadgeHelp}>
+              New
+            </button>
+          )}
+          {badge.kind === 'ago' && (
+            <button className="badge-ago" onClick={p.onBadgeHelp}>
+              {badge.text}
+            </button>
+          )}
           {badge.kind === 'retry' && (
             <button className="badge-retry" onClick={p.onBadgeHelp}>
               재도전 <span className="tab-q">?</span>
             </button>
           )}
-          {badge.kind === 'due' && <span className="badge-due">{badge.text}</span>}
+          {badge.kind === 'due' && (
+            <button className="badge-due" onClick={p.onBadgeHelp}>
+              {badge.text}
+            </button>
+          )}
         </div>
       </div>
       {p.levelHelp && <div className="level-help">레벨은 단어의 난이도예요. 1이 가장 일상적인 단어, 30이 가장 어려운 단어예요.</div>}
@@ -175,15 +187,9 @@ export default function QuizCard(p: Props) {
                       </>
                     ) : (
                       <>
-                        {seg.idx === 0 && lockedLen > 0 && !ok ? (
-                          <>
-                            <span className="typed lock">{t.slice(0, lockedLen)}</span>
-                            <span className="typed">{t.slice(lockedLen)}</span>
-                          </>
-                        ) : (
-                          <span className="typed">{ok ? target : t}</span>
-                        )}
+                        <span className="typed">{ok ? target : t}</span>
                         {p.showCaret && isActive && <span className="caret" />}
+                        {seg.idx === 0 && input === '' && hintText && <span className="ghost">{hintText}</span>}
                       </>
                     )}
                   </span>

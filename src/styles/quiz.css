@@ -1532,3 +1532,241 @@
   font-size: 10px;
   font-weight: 700;
 }
+
+/* ---------- 배지는 누를 수 있다 (학습 정보 팝업) — button 기본 모양 제거 ---------- */
+.vocab-quiz .qcard-badges button {
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ---------- 빈 키: 아무 동작 없음 ---------- */
+.vocab-quiz .kb-key.blank {
+  pointer-events: none;
+}
+
+/* ---------- 말풍선 → 사전 검색 결과 패널 (말해보카 실측: 카드 아래 풍경 위, 아래 가운데 꼬리) ---------- */
+.vocab-quiz .dict-pop,
+.vocab-quiz .after .dict-pop {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 16px);
+  transform: translateX(-50%);
+  width: 322px;
+  max-width: calc(100vw - 26px);
+  padding: 9px 9px 12px;
+  border-radius: 14px;
+  background: #1f2022;
+  color: #e8e8e8;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  z-index: 8;
+  text-align: left;
+}
+.vocab-quiz .dict-pop::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -11px;
+  transform: translateX(-50%);
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid #1f2022;
+}
+.vocab-quiz .dict-pop-head {
+  height: 34px;
+  border-radius: 10px;
+  background: #2c2d30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ececec;
+}
+.vocab-quiz .dict-pop-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 10px 0;
+}
+.vocab-quiz .dict-pop-row b {
+  flex: 1;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+.vocab-quiz .dict-pop-pos {
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: #3a3360;
+  color: #c9b8ff;
+  font-size: 12px;
+}
+.vocab-quiz .dict-pop-search {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c9c9c9;
+  background: none;
+}
+.vocab-quiz .dict-pop p {
+  margin: 6px 10px 0;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: #c0c0c0;
+}
+
+/* ---------- 학습 정보 팝업 (배지 탭) ---------- */
+.study-info-dim {
+  align-items: center;
+  justify-content: center;
+  padding: 0 13px;
+}
+.study-info {
+  width: 100%;
+  max-width: 334px;
+  min-height: 420px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  background: #1f1f21;
+  color: #e4e4e6;
+  overflow: hidden;
+  animation: popIn 0.18s ease-out both;
+}
+.study-info-head {
+  position: relative;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16.5px;
+  font-weight: 500;
+}
+.study-info-head .icon-btn {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  color: #9a9a9e;
+}
+.study-info-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 20px;
+  border-bottom: 1px solid #2d2d30;
+}
+.study-info-tabs button {
+  position: relative;
+  height: 40px;
+  font-size: 15px;
+  color: #9a9a9e;
+  background: none;
+}
+.study-info-tabs button.active {
+  color: #a98bff;
+  font-weight: 600;
+}
+.study-info-tabs button.active::after {
+  content: '';
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: -1px;
+  height: 2px;
+  background: #a98bff;
+}
+.study-info-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 20px 12px;
+}
+.study-info-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.study-info-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 49px;
+  border-bottom: 1px solid #2d2d30;
+  font-size: 14px;
+}
+.study-info-list.plain li {
+  color: #d6d7d6;
+}
+.study-info-mark {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #4cc26f;
+  font-size: 12px;
+  font-weight: 800;
+}
+.study-info-mark.miss {
+  color: #e05a5a;
+}
+.study-info-label {
+  flex: 1;
+  color: #d6d7d6;
+}
+.study-info-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+.study-info-right b {
+  font-size: 12px;
+  font-weight: 500;
+  color: #c4c4c8;
+}
+.study-info-right small {
+  font-size: 11px;
+  color: #7c7c82;
+}
+.study-info-interval p {
+  margin: 14px 0 0;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: #c4c4c8;
+}
+.study-info-interval b {
+  color: #a98bff;
+  font-weight: 600;
+}
+.study-info-empty {
+  padding: 56px 10px 30px;
+  text-align: center;
+  color: #9a9a9e;
+  font-size: 13.5px;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+.study-info-bang {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #3a3360;
+  color: #a98bff;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.study-info-add {
+  margin: 0 20px 20px;
+  height: 46px;
+  border-radius: 10px;
+  background: #735df7;
+  color: #fff;
+  font-size: 15px;
+}

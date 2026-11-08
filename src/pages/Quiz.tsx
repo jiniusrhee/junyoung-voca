@@ -7,6 +7,7 @@ import DinoScene from '../components/DinoScene';
 import ExtraSheet, { type SheetAction } from '../components/ExtraSheet';
 import InfoCard from '../components/InfoCard';
 import LevelHelp from '../components/LevelHelp';
+import StudyInfoSheet from '../components/StudyInfoSheet';
 import Pterodactyls from '../components/Pterodactyls';
 import FavTip from '../components/FavTip';
 import Icon from '../components/Icon';
@@ -33,7 +34,7 @@ import { answerWords, containsAnswer, evaluate, feedbackFor, fullSentence, hintP
 import { toggleWordbook, useWordbook } from '../lib/wordbook';
 import { useStatusBarColor } from '../lib/statusBar';
 import { formatAfter, formatAgo, formatDuration, studyDateOf } from '../lib/time';
-import { POS_KO, type Settings, type Tone, type WrongNote } from '../types';
+import { POS_KO, type Settings, type StoredWord, type Tone, type WrongNote } from '../types';
 
 type Phase = 'loading' | 'question' | 'answered' | 'empty' | 'nowords' | 'testResult';
 type Overlay = 'examples' | 'wrongs' | 'info' | null;
@@ -41,8 +42,10 @@ type Overlay = 'examples' | 'wrongs' | 'info' | null;
 interface Live {
   q: Question;
   input: string;
-  /** 힌트로 채워진 앞글자 수 (지울 수 없음) */
-  locked: number;
+  /** 힌트로 보여 준 앞글자 (말해보카 실측: 지울 수 있고, 다 지우면 칸에 주황 고스트로 남는다) */
+  hintText: string;
+  /** 힌트를 본 뒤 틀리면 '보너스 힌트'(한 글자 더)를 쓸 수 있다 */
+  bonusReady: boolean;
   hints: number;
   showedAnswer: boolean;
   wrongAttempts: number;
@@ -64,7 +67,8 @@ interface Answered {
 const freshLive = (q: Question): Live => ({
   q,
   input: '',
-  locked: 0,
+  hintText: '',
+  bonusReady: false,
   hints: 0,
   showedAnswer: false,
   wrongAttempts: 0,
@@ -93,7 +97,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const [sayResult, setSayResult] = useState<{ tone: Tone; msg: string } | null>(null);
   const [listening, setListening] = useState(false);
   const [voiceError, setVoiceError] = useState<string | null>(null);
-  /** 말해보카: 몇 초 안에 못 들으면 마이크 원 안에 '듣지 못했어요' */
+  /** 말해보카 실측: 몇 초 안에 못 들으면 마이크 원이 어두워지고 '다시 해 보세요' */
   const [noSpeech, setNoSpeech] = useState(false);
   const [handsTip, setHandsTip] = useState(false);
   const [heard, setHeard] = useState<string | null>(null);
@@ -109,8 +113,11 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const [history, setHistory] = useState<Answered[]>([]);
   const [histIdx, setHistIdx] = useState<number | null>(null);
   const [slideBack, setSlideBack] = useState(false);
-  /** 자판 왼쪽 아래 빈 키: 한 번 누르면 다음 한 글자만 대문자 (말해보카) */
-  const [shiftOn, setShiftOn] = useState(false);
+  /** 배지를 누르면 뜨는 '학습 정보' 팝업 */
+  const [infoOpen, setInfoOpen] = useState(false);
+  /** 오른쪽으로 밀어 뒤로 미룬 카드: 몇 장 뒤에 다시 낸다 */
+  const deferred = useRef<{ q: Question; after: number }[]>([]);
+  const cardsSeen = useRef(0);
   /** 정답 0.55초 뒤: 배지가 'N 뒤 복습'으로 바뀌고 ♥ 이 나타남 (말해보카 실측) */
   const [revealDue, setRevealDue] = useState(false);
   /** 자판↔정답 패널 교체 슬라이드(0.35초) 동안 둘 다 그린다 */
@@ -165,7 +172,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     setPanelReady(false);
     setRevealDue(false);
     setMoreOpen(false);
-    setShiftOn(false);
+    setInfoOpen(false);
     setPhase('question');
   };
 
@@ -189,7 +196,14 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       present(q);
       return;
     }
-    const q = await pickerRef.current?.next();
+    cardsSeen.current += 1;
+    const due = deferred.current.find((d) => d.after <= cardsSeen.current);
+    if (due) {
+      deferred.current = deferred.current.filter((d) => d !== due);
+      present(due.q);
+      return;
+    }
+    const q = (await pickerRef.current?.next()) ?? deferred.current.shift()?.q ?? null;
     if (!q) {
       setPhase('empty');
       return;
@@ -316,8 +330,6 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       if (!l) return l;
       const max = sentenceOf(l.q).answer.length + 16;
       let next = fn(l.input).slice(0, max);
-      // 힌트로 채운 앞글자는 지워지지 않는다
-      if (l.locked && !l.showedAnswer && !next.startsWith(l.input.slice(0, l.locked))) next = l.input.slice(0, l.locked) + next.slice(l.locked);
       // 여러 단어 정답에서 이미 맞아 잠긴 앞 단어들도 지워지지 않는다 (말해보카)
       const aw = answerWords(sentenceOf(l.q).answer);
       if (aw.length > 1) {
@@ -367,10 +379,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     const capAnswer = /^[A-Z]/.test(s.answer);
     return (atStart || capAnswer) && live.input === '';
   })();
-  const typeChar = (c: string) => {
-    editInput((cur) => cur + c);
-    if (shiftOn) setShiftOn(false);
-  };
+  const typeChar = (c: string) => editInput((cur) => cur + c);
   /** 말해보카: 스페이스는 제출. 정답이 여러 단어면 다음 칸으로 */
   const space = () => {
     if (!live) return;
@@ -386,6 +395,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       ...l,
       feedback: showPill ? { tone, msg, mask } : null,
       typoLive: flashKind === 'typo',
+      // 말해보카: 힌트를 본 뒤 틀리면 힌트 버튼이 '보너스 힌트'로 바뀐다
+      bonusReady: l.hints > 0 && !l.showedAnswer ? true : l.bonusReady,
       wrongAttempts: l.wrongAttempts + (penalize ? 1 : 0),
       wrongs: [...l.wrongs, { w, tone, m: msg }],
     });
@@ -402,9 +413,11 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       return;
     }
     const fb = feedbackFor(e);
-    // 말해보카: 등록된 오답(설명 있음)과 오타만 말풍선, 그 밖의 오답은 카드만 잠깐 붉게
-    // 말해보카: 오타는 '!' 도장 + 말풍선만(카드색 그대로), 등록 오답은 붉은 카드 + 말풍선, 그 밖의 오답은 붉은 카드만
-    markWrong(live, live.input.trim(), fb.tone, fb.msg, !fb.bonus, e.kind === 'alt' || e.kind === 'typo', fb.mask, e.kind === 'typo' ? 'typo' : 'wrong');
+    // 말해보카 실측(2026-11-08): 등록 오답·실제 단어 오답은 '!' 도장 + 카드가 붉어짐(등록 오답은 말풍선도), 오타는 '!' + 말풍선(카드색 그대로),
+    // 사전에 없는 글자 뭉치는 '!' 도장만. 우리 단어 데이터에 있는 단어를 '실제 단어'로 본다
+    const inDict = !!dictWords?.has(normalize(live.input));
+    const flashKind = e.kind === 'typo' ? 'typo' : e.kind === 'wrong' && !inDict ? 'typo' : 'wrong';
+    markWrong(live, live.input.trim(), fb.tone, fb.msg, !fb.bonus, e.kind === 'alt' || e.kind === 'typo', fb.mask, flashKind);
   };
 
   const hint = () => {
@@ -412,10 +425,14 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     const answer = sentenceOf(live.q).answer;
     if (live.hints === 0) {
       const pre = hintPrefix(answer);
-      setLive({ ...live, hints: 1, input: pre, locked: pre.length, feedback: null });
+      // 말해보카 실측(2026-11-08): 힌트는 앞 2글자. 치던 글자는 힌트 글자로 바뀌고, 힌트 글자도 지울 수 있다(다 지우면 칸에 주황 고스트로 남음)
+      setLive({ ...live, hints: 1, hintText: pre, input: pre, feedback: null, typoLive: false });
+    } else if (live.bonusReady) {
+      // 보너스 힌트: 힌트를 본 뒤 틀리면 한 글자를 더 보여 준다
+      const pre = answer.slice(0, Math.min(answer.length - 1, live.hintText.length + 1));
+      setLive({ ...live, hints: live.hints + 1, hintText: pre, bonusReady: false, input: pre, feedback: null, typoLive: false });
     } else {
-      // 말해보카: 힌트로 채워진 앞글자(초록)는 남기고, 나머지 정답이 칸에 주황색으로 비친다. 그대로 따라 쳐야 한다 (말풍선 없음)
-      // 말해보카 실측: 입력이 비워지고 캐럿이 칸 맨 앞으로, 정답 전체가 비친다(힌트 글자 초록 + 나머지 주황). 처음부터 다시 쳐야 한다
+      // 정답 보기: 입력이 비워지고 캐럿이 칸 맨 앞으로, 정답 전체가 비친다(힌트 글자 초록 + 나머지 주황). 처음부터 다시 쳐야 한다
       setLive({ ...live, showedAnswer: true, input: '', feedback: null, typoLive: false });
     }
   };
@@ -674,12 +691,23 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const count = mode === 'test' ? testAsked : todayTotal;
   const fill = Math.min(1, count / total);
   const isAnswered = shown;
+  // 말해보카 실측: 오른쪽으로 밀면 이전 카드. 이전 카드가 없을 때는 이 문제를 뒤로 미룬다(힌트·오답 뒤에는 '더 이상 미룰 수 없다' 토스트)
+  const postpone = () => {
+    if (!live || phase !== 'question') return;
+    if (live.hints > 0 || live.showedAnswer || live.wrongAttempts > 0 || mode === 'test') {
+      showToast('이 문제는 더 이상 미룰 수 없어요.');
+      return;
+    }
+    deferred.current.push({ q: live.q, after: cardsSeen.current + 3 });
+    showToast('이 문제를 뒤로 미뤘어요.');
+    void loadNext();
+  };
   const goBack = () => {
     if (histIdx == null) {
       if (past.length) {
         setSlideBack(true);
         setHistIdx(past.length - 1);
-      }
+      } else postpone();
     } else if (histIdx > 0) {
       setSlideBack(true);
       setHistIdx(histIdx - 1);
@@ -758,6 +786,9 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const showPanel = !!isAnswered && (panelReady || !!hist);
   /** 추가 학습 목표를 채운 마지막 카드: '다음 문제' 대신 초록 '학습 완료' (말해보카) */
   const finish = mode === 'study' && extraTarget > 0 && todayTotal >= total && !hist;
+  // 힌트 버튼: 힌트 보기(?) → 정답 보기(✓) → (힌트 뒤 오답이면) 보너스 힌트(상자) → 정답 보기
+  const hintLabel = live.hints === 0 ? '힌트 보기' : live.bonusReady ? '보너스 힌트' : '정답 보기';
+  const hintIcon = live.hints === 0 ? <Icon name="question" size={26} className="ic-hint" /> : live.bonusReady ? <Icon name="gift" size={26} className="ic-hint" /> : <Icon name="check" size={26} className="ic-answer" />;
   const bubbleHit = dictWords?.get(sentence.answer.toLowerCase());
   const fullEn = fullSentence(sentence.en, sentence.answer);
   const panelItem = showPanel ? isAnswered : panelLeaving ? exiting?.item ?? null : null;
@@ -857,8 +888,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
                     state={isAnswered ? 'answered' : 'question'}
                     input={hist ? sentence.answer : live.input}
                     showedAnswer={hist ? false : live.showedAnswer}
-                    lockedLen={hist || live.showedAnswer ? 0 : live.locked}
-                    ghostLockedLen={hist ? 0 : live.locked}
+                    hintText={hist ? '' : live.hintText}
+                    ghostLockedLen={hist ? 0 : live.hintText.length}
                     showCaret={inputMode === 'keyboard' && phase === 'question' && !hist}
                     blankMatchesLength={settings.blankMatchesLength}
                     flash={flash}
@@ -870,7 +901,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
                     favorite={favorites?.includes(favKey) ?? false}
                     onToggleFavorite={() => void toggleFavorite()}
                     onLevelHelp={() => setLevelHelp((v) => !v)}
-                    onBadgeHelp={() => showToast('전에 틀렸던 단어예요. 이번엔 맞혀 봐요!')}
+                    onBadgeHelp={() => setInfoOpen(true)}
                   />
                 )}
                 {inputMode === 'voice' && phase === 'question' && !hist && (
@@ -900,13 +931,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
             answerIsWord={!!bubbleHit}
             onBubble={() => bubbleHit && setTypedPop((v) => !v)}
             bubbleExtra={
-              typedPop && bubbleHit ? (
-                <div className="typed-pop" onClick={() => setTypedPop(false)}>
-                  <b>{bubbleHit.word}</b>
-                  <span className="chip">{POS_KO[bubbleHit.pos]}</span>
-                  <p>{bubbleHit.meanings.join(', ')}</p>
-                </div>
-              ) : undefined
+              typedPop && bubbleHit ? <DictPop word={bubbleHit} onClose={() => setTypedPop(false)} onSearch={() => nav(`/dict?q=${encodeURIComponent(bubbleHit.word)}`)} /> : undefined
             }
             wrongCount={panelItem.wrongs.length}
             listening={listening && showPanel}
@@ -929,14 +954,14 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
             <div className="toolbar">
               <button className="tool-btn" onClick={hint} disabled={live.showedAnswer}>
                 {cardKey === 1 && <span className="kbd-hint tl">1</span>}
-                {live.hints === 0 ? <Icon name="question" size={26} className="ic-hint" /> : <Icon name="check" size={26} className="ic-answer" />}
-                <span>{live.hints === 0 ? '힌트 보기' : '정답 보기'}</span>
+                {hintIcon}
+                <span>{hintLabel}</span>
               </button>
               <div className="toolbar-center">
-                {(live.input || (live.showedAnswer && live.locked > 0)) &&
+                {(live.input || (live.showedAnswer && live.hintText)) &&
                   (() => {
-                    // 말해보카: 정답 보기 뒤 칸은 비지만 말풍선에는 힌트 글자가 그대로 남아 있다
-                    const text = live.input || hintPrefix(sentence.answer);
+                    // 말해보카: 정답 보기 뒤 칸은 비지만 말풍선에는 힌트 글자가 그대로 남아 있다 (힌트 글자를 손으로 다 지웠을 때는 말풍선도 사라진다)
+                    const text = live.input || live.hintText;
                     const hit = dictWords?.get(text.trim().toLowerCase());
                     return (
                       <>
@@ -957,13 +982,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
                         <button className={`bubble ${hit ? 'link' : ''}`} onClick={() => hit && setTypedPop((v) => !v)}>
                           {text}
                         </button>
-                        {typedPop && hit && (
-                          <div className="typed-pop" onClick={() => setTypedPop(false)}>
-                            <b>{hit.word}</b>
-                            <span className="chip">{POS_KO[hit.pos]}</span>
-                            <p>{hit.meanings.join(', ')}</p>
-                          </div>
-                        )}
+                        {typedPop && hit && <DictPop word={hit} onClose={() => setTypedPop(false)} onSearch={() => nav(`/dict?q=${encodeURIComponent(hit.word)}`)} />}
                       </>
                     );
                   })()}
@@ -974,7 +993,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
                 <span>음성 모드</span>
               </button>
             </div>
-            <Keyboard onChar={typeChar} onBackspace={backspace} onSpace={space} onEnter={submit} onShift={() => setShiftOn((v) => !v)} shift={capNext || shiftOn} apostrophe={sentence.answer.includes("'")} />
+            <Keyboard onChar={typeChar} onBackspace={backspace} onSpace={space} onEnter={submit} shift={capNext} apostrophe={sentence.answer.includes("'")} />
           </div>
         )}
         {!showPanel && inputMode === 'voice' && (
@@ -999,7 +1018,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
                 ) : noSpeech ? (
                   <>
                     <Icon name="mic" size={34} />
-                    <small>듣지 못했어요</small>
+                    <small>다시 해 보세요</small>
                   </>
                 ) : (
                   <Icon name="mic" size={40} />
@@ -1009,8 +1028,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
             <div className="voice-bar">
               <button className="tool-btn" onClick={hint} disabled={live.showedAnswer}>
                 <span className="kbd-hint">1</span>
-                {live.hints === 0 ? <Icon name="question" size={26} className="ic-hint" /> : <Icon name="check" size={26} className="ic-answer" />}
-                <span>{live.hints === 0 ? '힌트 보기' : '정답 보기'}</span>
+                {hintIcon}
+                <span>{hintLabel}</span>
               </button>
               <button className="tool-btn" onClick={() => setInputMode('keyboard')}>
                 <span className="kbd-hint">0</span>
@@ -1058,7 +1077,32 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       )}
 
       {levelHelp && <LevelHelp level={q.word.level} onClose={() => setLevelHelp(false)} />}
+      {infoOpen && <StudyInfoSheet word={q.word} onClose={() => setInfoOpen(false)} />}
       {goalReached && <GoalReached total={todayTotal} onMore={() => setGoalReached(false)} onHome={() => nav('/')} />}
+    </div>
+  );
+}
+
+/** 보라 말풍선을 누르면 카드 아래에 뜨는 사전 검색 결과 패널 (말해보카 실측: 머리 알약 '사전 검색 결과' + 표제어·품사 칩·검색 아이콘 + 뜻, 아래 가운데 꼬리) */
+function DictPop({ word, onClose, onSearch }: { word: StoredWord; onClose: () => void; onSearch: () => void }) {
+  return (
+    <div className="dict-pop" onClick={onClose}>
+      <div className="dict-pop-head">사전 검색 결과예요</div>
+      <div className="dict-pop-row">
+        <b>{word.word}</b>
+        <span className="dict-pop-pos">{POS_KO[word.pos]}</span>
+        <button
+          className="dict-pop-search"
+          onClick={(e) => {
+            e.stopPropagation();
+            onSearch();
+          }}
+          aria-label="사전에서 찾기"
+        >
+          <Icon name="search" size={18} />
+        </button>
+      </div>
+      <p>{word.meanings.join(', ')}</p>
     </div>
   );
 }
