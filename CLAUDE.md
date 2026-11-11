@@ -18,6 +18,14 @@ Vite + React + TypeScript, Dexie(IndexedDB), ts-fsrs(복습 스케줄), vite-plu
 
 `src/styles.css` 가 공통이고, 말해보카 실측값으로 맞춘 화면은 `src/styles/<화면>.css`(quiz·home·all·stats·settings)가 뒤에 로드되어 덮어쓴다. 그 화면을 고칠 때는 해당 파일을 먼저 본다. 어휘 퀴즈의 치수·색·타이밍 실측치는 docs/SPEC.md 맨 끝 "어휘 퀴즈 실측" 절에 있다.
 
+화면 맞춤의 전제 (2026-11-11 플립 대조로 확인, 자세한 치수는 docs/SPEC.md 맨 끝 절):
+
+- 폰에서는 viewport 를 `width=360` 으로 고정한다(index.html 의 스크립트 + MainActivity 의 `setUseWideViewPort`). 말해보카가 화면 폭에 맞춰 통째로 커지는 앱이라서, 치수는 모두 "폭 360 기준 CSS px" 로 적는다.
+- 한글은 전역 자간 `--ls`(-0.0864em)로 좁힌다(styles.css 맨 위 `*` 규칙). 영어·숫자가 주인 요소는 `lang="en"` 을 주거나 `--ls: 0`, 한글 문장 속 영어·숫자는 `components/KoText.tsx` 로 감싼다.
+- `quiz.css` 의 선택자는 `#root .vocab-quiz …` 로 시작한다(styles.css 의 옛 규칙·다크 규칙보다 항상 우선). 새 규칙도 같은 꼴로 쓰고, 고친 뒤에는 기기에서 계산된 스타일을 확인한다(styles.css 의 padding·border·position 이 남아 있는 경우가 많다).
+- 어휘 퀴즈 전용 아이콘은 `components/QuizIcons.tsx`(실측 크기 그대로의 SVG). 실제 앱 색은 디더링돼 있으므로 면 평균으로 잰다.
+- 실제 기기에서 바로 고치기: `bash scripts/devtools/live-apk.sh` (디버그 앱 `com.junyoung.voca.debug` 가 개발 서버를 불러옴, Vite 는 `--host 127.0.0.1`).
+
 ## 비교·캡처 도구
 
 `scripts/devtools/`(README 참고): 플립·에뮬레이터 캡처(cap.py), OCR 탭(tw.py), 말해보카 자판 입력(kb.py), 녹화·키프레임(rec.sh·kf.py·clip.py), WebView 조작(remote.mjs·drive.mjs), APK 없이 개발 서버 + 헤드리스 Chrome 캡처(shot.mjs). 실제 앱 캡처·영상은 `ref/flip/`(git 제외).

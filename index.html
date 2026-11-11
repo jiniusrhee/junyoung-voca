@@ -3,6 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <script>
+      /* 말해보카는 화면 폭에 맞춰 통째로 커지는 앱이다 (S25 Ultra 캡처에서 자판 키 높이 = 화면 폭의 10.3%, 줄 간격 13.1%: 플립과 같은 비율).
+         그래서 폰에서는 레이아웃 폭을 360 CSS px 로 고정해, 플립에서 잰 치수가 어느 폰에서나 같은 비율로 보이게 한다.
+         세로로 남는 만큼은 화면마다 하늘·목록이 더 보이거나 덜 보인다. 태블릿·데스크톱(짧은 변 600 이상, 또는 터치 없음)은 그대로 둔다. */
+      (function () {
+        var shortSide = Math.min(screen.width, screen.height);
+        var touch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        if (touch && shortSide > 0 && shortSide < 600) {
+          document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=360, user-scalable=no, viewport-fit=cover');
+        }
+      })();
+    </script>
     <meta name="theme-color" content="#101010" />
     <meta name="color-scheme" content="light dark" />
     <meta name="mobile-web-app-capable" content="yes" />

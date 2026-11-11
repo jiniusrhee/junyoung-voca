@@ -28,7 +28,12 @@ public class MainActivity extends BridgeActivity {
      */
     private void fixTextZoom() {
         if (getBridge() != null && getBridge().getWebView() != null) {
-            getBridge().getWebView().getSettings().setTextZoom(100);
+            android.webkit.WebSettings s = getBridge().getWebView().getSettings();
+            s.setTextZoom(100);
+            // index.html 이 폰에서 viewport 를 width=360 으로 바꾼다(말해보카처럼 화면 폭에 맞춰 통째로 확대).
+            // 안드로이드 WebView 는 이 설정이 켜져 있어야 viewport 메타 태그의 폭을 따른다
+            s.setUseWideViewPort(true);
+            s.setLoadWithOverviewMode(true);
         }
     }
 }

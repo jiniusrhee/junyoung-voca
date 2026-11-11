@@ -35,7 +35,31 @@
   word-spacing: calc(var(--ls, -0.0864) * -1em);
 }
 :lang(en),
-.ls0 {
+.ls0,
+/* 영어가 들어가는 칸들(각 학습 모드의 영어 문장·낱말 조각·자판·사전 표제어·발음 기호)은 좁히지 않는다 */
+.en,
+.sent-en,
+.lesson-en,
+.note-en,
+.lw-en,
+.ex-en,
+.npc-en,
+.dict-word,
+.word-big,
+.word-ipa,
+.card-ipa,
+.t-word,
+.td-answer,
+.g-bank,
+.g-line,
+.g-input,
+.g-show,
+.l-slots,
+.tile-row,
+.blank,
+.w-blank,
+.bubble,
+.kb-key {
   --ls: 0;
 }
 html,
