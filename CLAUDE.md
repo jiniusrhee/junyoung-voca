@@ -25,6 +25,7 @@ Vite + React + TypeScript, Dexie(IndexedDB), ts-fsrs(복습 스케줄), vite-plu
 - `quiz.css` 의 선택자는 `#root .vocab-quiz …` 로 시작한다(styles.css 의 옛 규칙·다크 규칙보다 항상 우선). 새 규칙도 같은 꼴로 쓰고, 고친 뒤에는 기기에서 계산된 스타일을 확인한다(styles.css 의 padding·border·position 이 남아 있는 경우가 많다).
 - 어휘 퀴즈 전용 아이콘은 `components/QuizIcons.tsx`(실측 크기 그대로의 SVG). 실제 앱 색은 디더링돼 있으므로 면 평균으로 잰다.
 - 실제 기기에서 바로 고치기: `bash scripts/devtools/live-apk.sh` (디버그 앱 `com.junyoung.voca.debug` 가 개발 서버를 불러옴, Vite 는 `--host 127.0.0.1`).
+- 눌림·전환 타이밍은 60fps 화면 녹화를 프레임 단위로 재서 맞췄다(docs/SPEC.md 맨 끝 "눌림·입력 반응 실측" 절). 고칠 때는 실제 앱과 같은 `adb shell input …` 스크립트로 양쪽을 녹화해 비교한다. 어휘 퀴즈의 카드 넘김(끌기)·다음 문제 미리 고르기는 `pages/Quiz.tsx` 의 "카드 끌기" 블록, 자판 눌림·길게 누르기는 `components/Keyboard.tsx`, 키 햅틱은 `SystemUiPlugin.haptic`(= `lib/statusBar.ts` 의 `keyHaptic`).
 
 ## 비교·캡처 도구
 
@@ -54,6 +55,7 @@ Vite + React + TypeScript, Dexie(IndexedDB), ts-fsrs(복습 스케줄), vite-plu
 - `src/lib/content.ts` `data/manifest.json` 해시 비교로 바뀐 팩만 동기화.
 - `public/data/words/level-XX.json` 단어 팩. 작성 규칙은 CONTENT.md.
 - 하루 경계는 04:00 (`src/lib/time.ts`).
+- 문장 읽기(`src/lib/speech.ts`): 웹에서는 speechSynthesis, 안드로이드 앱에서는 네이티브 플러그인 `TtsPlugin.java`(폰 내장 TextToSpeech). 안드로이드 WebView 에는 speechSynthesis 가 아예 없어서(2026-11-11 확인) 플러그인이 없으면 APK 에서 소리가 나지 않는다. 읽기를 멈출 때는 `stopSpeaking()`.
 
 ## 작업 규칙
 

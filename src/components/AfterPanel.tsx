@@ -16,6 +16,8 @@ export interface AfterPanelProps {
   answerIsWord: boolean;
   /** 정답 보기를 쓰고 푼 카드: 말풍선 꼬리가 거의 없다 (말해보카) */
   flatBubble?: boolean;
+  /** 문장을 읽는 중: '다시 듣기' 스피커의 호가 차례로 켜졌다 꺼진다 */
+  speaking?: boolean;
   onBubble: () => void;
   /** 말풍선 위에 띄울 뜻 팝업 등 */
   bubbleExtra?: ReactNode;
@@ -78,7 +80,8 @@ export function BigSpeaker() {
   return (
     <svg viewBox="0 0 46 46" aria-hidden="true">
       <path d="M6.200 13.600h6.300l9.100-6.700c1.400-1 3.500 0 3.500 1.800v26.600c0 1.800-2.100 2.800-3.500 1.800l-9.100-6.600H6.200A2.200 2.200 0 0 1 4 28.300V15.800a2.200 2.200 0 0 1 2.200-2.200z" fill="currentColor" />
-      <path d="M29 14.600a10.900 10.900 0 0 1 0 15.700M34.600 9.200a18.500 18.500 0 0 1 0 26.500" fill="none" stroke="currentColor" strokeWidth="2.700" strokeLinecap="round" />
+      <path className="arc1" d="M29 14.600a10.900 10.900 0 0 1 0 15.700" fill="none" stroke="currentColor" strokeWidth="2.700" strokeLinecap="round" />
+      <path className="arc2" d="M34.600 9.200a18.500 18.500 0 0 1 0 26.500" fill="none" stroke="currentColor" strokeWidth="2.700" strokeLinecap="round" />
     </svg>
   );
 }
@@ -153,7 +156,7 @@ export default function AfterPanel(p: AfterPanelProps) {
           <BigTurtle />
           <span>듣기평가 속도</span>
         </button>
-        <button className="big-btn" onClick={p.onReplay}>
+        <button className={`big-btn${p.speaking ? ' speaking' : ''}`} onClick={p.onReplay}>
           <BigSpeaker />
           <span>다시 듣기</span>
         </button>

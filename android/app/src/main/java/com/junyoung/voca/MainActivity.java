@@ -11,6 +11,8 @@ public class MainActivity extends BridgeActivity {
         registerPlugin(AppUpdaterPlugin.class);
         // 내비게이션 바 색 맞추기
         registerPlugin(SystemUiPlugin.class);
+        // 폰 내장 음성으로 문장 읽기 (WebView 에는 speechSynthesis 가 없다)
+        registerPlugin(TtsPlugin.class);
         super.onCreate(savedInstanceState);
         fixTextZoom();
     }

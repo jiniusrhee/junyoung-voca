@@ -7,7 +7,7 @@ import SentenceKeyboard from '../components/SentenceKeyboard';
 import { db } from '../db';
 import { recordModeAnswer } from '../lib/modeStudy';
 import { saveSettings, useSettings } from '../lib/settings';
-import { canRecognize, recognizeOnce, speak, voiceErrorMessage } from '../lib/speech';
+import { canRecognize, recognizeOnce, speak, voiceErrorMessage, stopSpeaking } from '../lib/speech';
 import { currentEpisode, getTalkProgress, getTalkReviewMarks, gradeLetter, gradeTalk, saveEpisode, toggleTalkReview, unlocked, type TalkGrade, type TalkProgress } from '../lib/talk';
 import type { TalkLine, TalkStory } from '../types';
 
@@ -203,7 +203,7 @@ export default function TalkPlay() {
   };
 
   const nextLine = () => {
-    window.speechSynthesis?.cancel?.();
+    stopSpeaking();
     if (reviewLine != null) {
       nav('/talk', { replace: true });
       return;

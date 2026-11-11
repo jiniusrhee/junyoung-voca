@@ -29,7 +29,7 @@ import { sfx } from '../lib/sfx';
 import { favNoteKey, toggleFavNote, useFavNotes } from '../lib/favnotes';
 import { pushInbox } from '../lib/inbox';
 import { markPronunciation } from '../lib/learned';
-import { canRecognize, recognizeOnce, speak, voiceErrorMessage } from '../lib/speech';
+import { canRecognize, recognizeOnce, speak, stopSpeaking, voiceErrorMessage } from '../lib/speech';
 import { answerWords, containsAnswer, evaluate, feedbackFor, fullSentence, normalize, revealPrefix, speechMatchRate, typoOf } from '../lib/text';
 import { toggleWordbook, useWordbook } from '../lib/wordbook';
 import { useNavBarColor, useStatusBarColor } from '../lib/statusBar';
@@ -110,6 +110,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const [showSettings, setShowSettings] = useState(false);
   const [goalReached, setGoalReached] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
+  const [speaking, setSpeaking] = useState(false);
+  const speakTimer = useRef<number | undefined>(undefined);
   const toastTimer = useRef<number | undefined>(undefined);
   const [levelHelp, setLevelHelp] = useState(false);
   const [cardKey, setCardKey] = useState(0);
@@ -220,6 +222,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     setHistIdx(null);
     setSlideBack(false);
     setStill(keepStill);
+    setSpeaking(false);
     setPeek(null);
     setUpcoming(null);
     prefetching.current = null;
@@ -327,7 +330,14 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
 
   const speakSentence = (q: Question, slow?: boolean) => {
     const s = sentenceOf(q);
-    speak(fullSentence(s.en, s.answer), slow ?? settingsRef.current?.speechRate === 'slow');
+    // 읽는 동안 '다시 듣기' 스피커의 호가 차례로 켜진다 (말해보카). 끝났다는 신호가 안 오는 기기를 대비해 8초 뒤에는 멈춘다
+    setSpeaking(true);
+    window.clearTimeout(speakTimer.current);
+    speakTimer.current = window.setTimeout(() => setSpeaking(false), 8000);
+    speak(fullSentence(s.en, s.answer), slow ?? settingsRef.current?.speechRate === 'slow', 1, () => {
+      window.clearTimeout(speakTimer.current);
+      setSpeaking(false);
+    });
   };
 
   const finalize = useCallback(
@@ -633,7 +643,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const next = useCallback(
     async (fromDrag = false) => {
       if (phase !== 'answered') return;
-      window.speechSynthesis?.cancel?.();
+      stopSpeaking();
       setMoreOpen(false);
       setOverlay(null);
       if (prefetching.current) await prefetching.current;
@@ -1299,6 +1309,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
             answer={sentenceOf(panelItem.q).answer}
             answerIsWord
             flatBubble={panelItem.outcome.showedAnswer}
+            speaking={speaking && showPanel}
             onBubble={() => bubbleHit && setTypedPop((v) => !v)}
             bubbleExtra={
               typedPop && bubbleHit ? <DictPop word={bubbleHit} onClose={() => setTypedPop(false)} onSearch={() => nav(`/dict?q=${encodeURIComponent(bubbleHit.word)}`)} /> : undefined

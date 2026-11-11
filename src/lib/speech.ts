@@ -1,3 +1,4 @@
+import { Capacitor, registerPlugin } from '@capacitor/core';
 import { isNativeApp, nativeRecognizeOnce } from './nativeSpeech';
 import { ttsVolume, voicePref } from './sfx';
 interface RecognitionResultLike {
@@ -106,14 +107,72 @@ export function voiceErrorMessage(e: unknown): string {
   return '음성 인식에 실패했어요. 다시 시도해 주세요.';
 }
 
+/**
+ * 안드로이드 앱(WebView)에는 웹의 speechSynthesis 가 없다 → 폰 내장 음성 엔진을 부르는 네이티브 플러그인(TtsPlugin.java)을 쓴다.
+ * (2026-11-11: APK 에서 문장 듣기가 전혀 소리가 나지 않던 원인)
+ */
+interface NativeTts {
+  speak(o: { text: string; rate?: number; lang?: string; volume?: number; voice?: string }): Promise<{ done: boolean }>;
+  stop(): Promise<void>;
+  voices(): Promise<{ ready: boolean; voices: { name: string; lang: string }[] }>;
+}
+const Tts = registerPlugin<NativeTts>('Tts');
+const useNativeTts = () => typeof window !== 'undefined' && Capacitor.isNativePlatform() && !('speechSynthesis' in window);
+let nativeVoices: { name: string; lang: string }[] | null = null;
+
+async function nativeSpeak(text: string, rate: number): Promise<void> {
+  if (!nativeVoices) {
+    try {
+      const r = await Tts.voices();
+      // 삼성 음성 엔진은 언어 표시가 'eng-x-lvariant-f00' 같은 꼴이라, 이름 앞머리(en-US-SMTf00 → en-US)에서 언어를 읽는다
+      if (r.ready && r.voices.length)
+        nativeVoices = r.voices.map((v) => {
+          const m = /^([a-z]{2})[-_]([a-z]{2})\b/i.exec(v.name);
+          return { name: v.name, lang: m ? `${m[1].toLowerCase()}-${m[2].toUpperCase()}` : v.lang };
+        });
+    } catch {
+      /* 음성 목록 없이도 기본 음성으로 읽는다 */
+    }
+  }
+  const v = nativeVoices ? pickVoice(nativeVoices as unknown as SpeechSynthesisVoice[]) : undefined;
+  const lang = v && /^en-[A-Z]{2}$/.test(v.lang) ? v.lang : voicePref().accent === 'uk' ? 'en-GB' : 'en-US';
+  const opts = { text, rate, lang, volume: ttsVolume(), voice: v?.name };
+  try {
+    await Tts.speak(opts);
+  } catch (e) {
+    // 앱을 막 켠 직후에는 음성 엔진이 아직 준비 중일 수 있다 → 잠깐 뒤 한 번 더
+    if (!String((e as Error)?.message ?? e).includes('tts-not-ready')) throw e;
+    await new Promise((r) => setTimeout(r, 700));
+    await Tts.speak(opts);
+  }
+}
+
 export function canSpeak(): boolean {
-  return typeof window !== 'undefined' && 'speechSynthesis' in window;
+  return typeof window !== 'undefined' && ('speechSynthesis' in window || useNativeTts());
+}
+
+/** 읽던 것을 멈춘다 */
+export function stopSpeaking(): void {
+  if (typeof window === 'undefined') return;
+  if (useNativeTts()) void Tts.stop().catch(() => undefined);
+  else window.speechSynthesis?.cancel?.();
 }
 
 /** 폰 내장 음성으로 읽기. slow=듣기평가 속도, factor=추가 배속(0.5, 0.8) */
 export function speak(text: string, slow = false, factor = 1, onEnd?: () => void): void {
   if (!canSpeak()) {
     onEnd?.();
+    return;
+  }
+  if (useNativeTts()) {
+    if (ttsVolume() <= 0) {
+      onEnd?.();
+      return;
+    }
+    void nativeSpeak(text, (slow ? 0.72 : 0.98) * factor).then(
+      () => onEnd?.(),
+      () => onEnd?.(),
+    );
     return;
   }
   try {
@@ -133,8 +192,8 @@ export function speak(text: string, slow = false, factor = 1, onEnd?: () => void
   }
 }
 
-const FEMALE = /female|woman|girl|tpf|sfg|iog|iob|zira|aria|jenny|samantha|karen|moira|tessa|fiona|libby|sonia|ana|emma|olivia/i;
-const MALE = /male|man|tpd|iom|iol|tpc|david|mark|guy|ryan|daniel|oliver|fred|alex|george|thomas|arthur/i;
+const FEMALE = /female|woman|girl|tpf|sfg|iog|iob|smtf\d|zira|aria|jenny|samantha|karen|moira|tessa|fiona|libby|sonia|ana|emma|olivia/i;
+const MALE = /male|man|tpd|iom|iol|tpc|smt[md]\d|david|mark|guy|ryan|daniel|oliver|fred|alex|george|thomas|arthur/i;
 
 /** 설정의 발음(미국식/영국식)·성별에 맞는 폰 내장 영어 음성 고르기 */
 export function pickVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | undefined {

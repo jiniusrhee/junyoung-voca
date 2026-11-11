@@ -2678,3 +2678,52 @@
     transform: translateY(calc(-1 * var(--more-h)));
   }
 }
+
+/* 입력 말풍선이 처음 뜰 때: 말풍선이 먼저 나타나고 글자는 4프레임(67ms) 뒤에 보인다 (말해보카 60fps 녹화) */
+#root .vocab-quiz .toolbar .bubble > span:first-child {
+  animation: bubbleText 0.067s steps(1, end) both;
+}
+@keyframes bubbleText {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* '다시 듣기': 읽는 동안 스피커의 호가 안쪽 → 바깥쪽 순서로 켜졌다 함께 꺼진다 (말해보카 실측: 약 1.33초 주기) */
+#root .vocab-quiz .big-btn.speaking .arc1 {
+  animation: arcA 1.33s linear infinite;
+}
+#root .vocab-quiz .big-btn.speaking .arc2 {
+  animation: arcB 1.33s linear infinite;
+}
+@keyframes arcA {
+  0%,
+  10% {
+    opacity: 0.12;
+  }
+  22%,
+  72% {
+    opacity: 1;
+  }
+  88%,
+  100% {
+    opacity: 0.12;
+  }
+}
+@keyframes arcB {
+  0%,
+  32% {
+    opacity: 0.12;
+  }
+  46%,
+  72% {
+    opacity: 1;
+  }
+  88%,
+  100% {
+    opacity: 0.12;
+  }
+}

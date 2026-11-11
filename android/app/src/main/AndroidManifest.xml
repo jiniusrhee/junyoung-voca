@@ -48,5 +48,9 @@
         <intent>
             <action android:name="android.speech.RecognitionService" />
         </intent>
+        <!-- 폰 내장 음성 엔진(TextToSpeech)을 찾으려면 안드로이드 11 부터 필요 -->
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
     </queries>
 </manifest>
