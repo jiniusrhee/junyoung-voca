@@ -27,6 +27,14 @@ Vite + React + TypeScript, Dexie(IndexedDB), ts-fsrs(복습 스케줄), vite-plu
 - 실제 기기에서 바로 고치기: `bash scripts/devtools/live-apk.sh` (디버그 앱 `com.junyoung.voca.debug` 가 개발 서버를 불러옴, Vite 는 `--host 127.0.0.1`).
 - 눌림·전환 타이밍은 60fps 화면 녹화를 프레임 단위로 재서 맞췄다(docs/SPEC.md 맨 끝 "눌림·입력 반응 실측" 절). 고칠 때는 실제 앱과 같은 `adb shell input …` 스크립트로 양쪽을 녹화해 비교한다. 어휘 퀴즈의 카드 넘김(끌기)·다음 문제 미리 고르기는 `pages/Quiz.tsx` 의 "카드 끌기" 블록, 자판 눌림·길게 누르기는 `components/Keyboard.tsx`, 키 햅틱은 `SystemUiPlugin.haptic`(= `lib/statusBar.ts` 의 `keyHaptic`).
 
+## 화면 전환·움직임 (2026-11-11 60fps 녹화 실측, 수치는 docs/SPEC.md 맨 끝 "3차" 절)
+
+- 화면 전환은 `components/PageHost.tsx` 가 맡는다(Routes 를 감쌈). 규칙은 `lib/pageTransition.ts` 의 `transitionFor`: 탭·☰ 설정 메뉴 사이는 없음, 하위 화면은 오른쪽에서 밀려 들어옴/빠져나감, `/streak` 는 아래에서 올라옴. React 는 화면을 바로 바꾸고, 바뀌기 직전 화면은 DOM 복사본(`.pt-snap`)으로 깔거나 덮어 움직인다(`styles/transition.css`). 새 화면이 다 그려질 때까지(최대 0.2초) 이전 화면을 그대로 보여 준다. 새 하위 화면을 만들 때 머리줄은 화면 뿌리의 바로 아래 `<header>` 로 둘 것(머리줄만 먼저 바뀌게 하는 데 쓴다). 스크롤 위치 저장·복원도 여기서 한다.
+- 화면을 다시 열 때 빈 프레임이 없도록 `lib/liveCache.ts` 를 쓴다: `useKeptQuery`(설정·하루 기록처럼 작고 자주 쓰는 것, 계속 구독), `useCachedQuery`(지난번 결과를 먼저 돌려줌). 탭 화면에서 `useLiveQuery` 를 그대로 쓰면 돌아올 때 서너 프레임 깜박인다.
+- 홈(`pages/Home.tsx`, `styles/home.css`, 그림은 `components/HomeIcons.tsx`): 시작 버튼의 4초 주기 움직임(내려앉기·별 돌기·빛줄기), 리본 빛줄기, 켠 직후 순서(`.home.intro`), 학습에서 돌아왔을 때 다시 채우기(`.home.replay`, sessionStorage `homeReplay`), '오늘' 막대 자라기. 버튼의 턱은 움직이지 않는 받침(`.today-seat`)이라 면은 transform 만 움직인다 — box-shadow 를 같이 움직이면 다른 움직임과 박자가 어긋난다.
+- 팝업: 어휘 학습 시작 창 `components/ExtraStudySheet.tsx` + `styles/startpop.css`, 하루 목표 `components/GoalModal.tsx` + `styles/goalpop.css`. 둘 다 실측 치수를 창 왼쪽 위 기준 절대 자리로 적었다.
+- 켠 직후 시스템 막대 색: 스플래시가 걷힐 때 테마의 막대 색이 다시 입혀지므로 `android/.../values/styles.xml` 에 기본색을 두고, 웹에서 `reassertBars()`(lib/statusBar.ts)로 다시 칠한다.
+
 ## 비교·캡처 도구
 
 `scripts/devtools/`(README 참고): 플립·에뮬레이터 캡처(cap.py), OCR 탭(tw.py), 말해보카 자판 입력(kb.py), 녹화·키프레임(rec.sh·kf.py·clip.py), WebView 조작(remote.mjs·drive.mjs), APK 없이 개발 서버 + 헤드리스 Chrome 캡처(shot.mjs). 실제 앱 캡처·영상은 `ref/flip/`(git 제외).
