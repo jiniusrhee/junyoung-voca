@@ -2,6 +2,7 @@ import { useLiveQuery } from 'dexie-react-hooks';
 import { Fragment, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Icon from '../components/Icon';
+import { HChevron, HReader } from '../components/HomeIcons';
 import SubHeader from '../components/SubHeader';
 import { LEARNED_KINDS, importedDay, learnedCounts, learnedList, logText, type LearnedKind, type LearnedRow } from '../lib/learned';
 import { speak } from '../lib/speech';
@@ -20,13 +21,13 @@ export default function LearnedMenu() {
           <li key={k.kind}>
             <button className="menu-row" onClick={() => nav(`/learned-words/${k.kind}`)}>
               <span className="menu-icon purple soft">
-                <Icon name="bookPerson" size={22} />
+                <HReader />
               </span>
               <span className="menu-text">
                 <b>{k.label}</b>
               </span>
               <span className="lw-count">{counts?.[k.kind] ?? 0}</span>
-              <Icon name="chevron" size={18} className="muted-ic" />
+              <HChevron />
             </button>
           </li>
         ))}

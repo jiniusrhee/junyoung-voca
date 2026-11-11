@@ -6,68 +6,54 @@
   background: #121212;
   color: #d6d7d6;
 }
-.vs-page.settings-menu .vs-head {
-  height: 41px;
-  padding: 0 14px 0 8px;
-  border-bottom: 1px solid #292831;
-  background: #121212;
-}
-.vs-page.settings-menu .vs-back {
-  gap: 7px;
-  font-size: 17px;
-  font-weight: 600;
-  color: #d6d7d6;
-  line-height: 1;
-}
-.vs-page.settings-menu .vs-back svg {
-  width: 20px;
-  height: 20px;
-}
+/* 머리줄은 하위 화면 공통 값(styles/subhead.css)을 그대로 쓴다 */
 
-/* 프로필: 원 90 (왼쪽 22, 위 46), 이름 20/600, 아래 줄 13 + P 배지, 오른쪽 꺾쇠 */
+/* 프로필 (플립 실측 2026-11-12): 원 88(왼쪽 30.67, 머리줄 아래 24.33, #1c1c1d), 이름 20/600, 아래 줄 14px(#70777c) + P 배지 15.33, 오른쪽 꺾쇠.
+   실제 앱은 이 아래에 프리미엄 버튼·인증번호·친구 관리가 있다(만들지 않음) — 그래서 띠까지의 높이만 다르다. */
 .vs-page.settings-menu .profile {
   position: relative;
   gap: 0;
-  padding: 46px 20px 0 22px;
-  height: 212px;
+  padding: 24.333px 20px 0 30.667px;
+  height: 136.667px;
   box-sizing: border-box;
   align-items: flex-start;
 }
 .vs-page.settings-menu .profile-avatar {
-  width: 90px;
-  height: 90px;
+  width: 88px;
+  height: 88px;
   flex: none;
-  background: #191c19;
+  background: #1c1c1d;
 }
 .vs-page.settings-menu .profile-avatar svg {
-  width: 72px;
-  height: 72px;
+  width: 70px;
+  height: 70px;
 }
 .vs-page.settings-menu .profile-text {
-  margin-left: 28px;
-  padding-top: 1px;
-  gap: 12px;
+  margin-left: 18.667px;
+  padding-top: 19.5px;
+  gap: 11px;
 }
 .vs-page.settings-menu .profile-text b {
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
-  color: #d6d7d6;
+  color: #d6d6d6;
 }
 .vs-page.settings-menu .profile-text span {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  line-height: 15px;
-  color: #adaaad;
+  gap: 5.333px;
+  margin-left: 2px;
+  font-size: 14px;
+  line-height: 15.333px;
+  color: #70777c;
 }
 .vs-page.settings-menu .p-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 15px;
-  height: 15px;
+  width: 15.333px;
+  height: 15.333px;
   border-radius: 50%;
   background: #735df7;
   color: #fff;
@@ -75,44 +61,45 @@
   font-size: 10px;
   font-weight: 800;
   line-height: 1;
+  --ls: 0;
 }
 .vs-page.settings-menu .profile > .muted-ic {
   position: absolute;
-  right: 22px;
-  top: 55px;
-  width: 14px;
-  height: 14px;
-  color: #525963;
+  right: 17.667px;
+  top: 47.5px;
+  width: 17px;
+  height: 17px;
+  color: #50575d;
 }
 
-/* 프로필 블록과 설정 목록 사이 어두운 띠 */
+/* 프로필 블록과 설정 목록 사이 어두운 띠 (9.33, #191a1d) */
 .vs-page.settings-menu .stats-sep,
 :root[data-theme='dark'] .vs-page.settings-menu .stats-sep {
-  height: 12px;
+  height: 9.333px;
   margin: 0;
-  background: #191819;
+  background: #191a1d;
 }
 
-/* "설정" 제목: 띠 아래 16, 글자 17/700 */
+/* "설정" 제목: 띠 아래 글자 위까지 18.33, 글자 18.33/700 */
 .vs-page.settings-menu .menu-title {
-  margin: 14px 0 2px;
-  padding: 0 20px;
-  font-size: 17px;
+  margin: 15.333px 0 2px;
+  padding: 0 19.333px;
+  font-size: 18.333px;
   font-weight: 700;
   line-height: 22px;
-  color: #d6d7d6;
+  color: #d6d6d6;
 }
 
-/* 줄: 높이 73.3, 구분선 1px #292831 (좌우 20 안쪽), 아이콘 24 (x 26), 글 x 68 */
+/* 줄: 높이 73.33(아래 0.67 선 #25282b, 좌우 18.67 안쪽), 그림 24 칸(x 26), 글 x 68, 제목 15.5px, 설명 11px(#a9a9a9) */
 .vs-page.settings-menu .menu-row {
-  width: calc(100% - 40px);
+  width: calc(100% - 37.333px);
   height: 73.333px;
   box-sizing: border-box;
-  margin: 0 20px;
-  padding: 0 0 0 6px;
+  margin: 0 18.667px;
+  padding: 0 0 0 7.333px;
   gap: 0;
   align-items: center;
-  border-bottom: 1px solid #292831;
+  border-bottom: 0.667px solid #25282b;
   background: none;
 }
 .vs-page.settings-menu .menu-row:last-child {
@@ -129,28 +116,31 @@
   border-radius: 0;
   background: none;
 }
+/* 그림은 칸을 거의 채운다 (우리 글리프는 여백이 있어 조금 키운다) */
 .vs-page.settings-menu .menu-icon svg {
-  width: 24px;
-  height: 24px;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  margin: -2px;
 }
 .vs-page.settings-menu .menu-text {
-  margin-left: 18px;
-  gap: 5px;
+  margin: -1.167px 0 0 17.667px;
+  gap: 5.833px;
 }
 .vs-page.settings-menu .menu-text b {
   font-size: 15.5px;
   font-weight: 600;
   line-height: 19px;
-  color: #d6d7d6;
+  color: #d6d6d6;
 }
 .vs-page.settings-menu .menu-text span {
-  font-size: 12.5px;
-  line-height: 16px;
-  color: #adaaad;
+  font-size: 11px;
+  line-height: 14px;
+  color: #a9a9a9;
 }
 .vs-page.settings-menu .menu-row > .muted-ic {
   width: 14px;
   height: 14px;
-  margin-right: -3px;
-  color: #525963;
+  margin-right: -0.333px;
+  color: #50575d;
 }

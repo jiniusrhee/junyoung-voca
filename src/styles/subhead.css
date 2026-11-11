@@ -1,0 +1,98 @@
+/* subhead.css: 하위 화면('<' 머리줄) 공통 (플립 실측 2026-11-12, '내가 학습한 어휘'·알림함·좋아하는 문장에서 같은 값)
+   머리줄 높이 43.33(아래 0.67 선 포함), '<' 는 9 x 16 으로 왼쪽에서 14, 제목은 15px 보통 굵기로 '<' 오른쪽 8.33. 맨 뒤에 불러와 덮어쓴다. */
+.vs-head,
+.sub-head {
+  box-sizing: border-box;
+  height: 43.333px;
+  /* 글자 가운데가 머리줄 가운데보다 1.67 아래 */
+  padding: 4.667px 12px 0 14px;
+  border-bottom: 0.667px solid var(--line);
+}
+:root[data-theme='dark'] .vs-head,
+:root[data-theme='dark'] .sub-head {
+  border-bottom-color: #25282b;
+  background: #121212;
+}
+.sub-head {
+  gap: 0;
+  margin-bottom: 10px;
+}
+.vs-head .vs-back:not(.light),
+.sub-head h1 {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 400;
+}
+:root[data-theme='dark'] .vs-head .vs-back:not(.light),
+:root[data-theme='dark'] .sub-head h1 {
+  color: #d6d6d6;
+}
+.vs-head .vs-back {
+  gap: 0;
+}
+.sub-head .icon-btn {
+  width: auto;
+  height: auto;
+  padding: 0;
+}
+/* 뒤로 화살표: 24 칸 그림(획 7~15)에서 획만 9 폭으로 보이게 좌우를 당긴다 */
+.vs-head .vs-back > svg:first-child,
+.sub-head .icon-btn > svg {
+  flex: none;
+  width: 21px;
+  height: 21px;
+  margin: 0 -0.25px 0 -5.1px;
+  stroke-width: 1.54;
+}
+:root[data-theme='dark'] .vs-head .vs-back > svg:first-child,
+:root[data-theme='dark'] .sub-head .icon-btn > svg {
+  color: #d6d6d6;
+}
+
+/* '내가 학습한 어휘' 목록 (플립 실측): 줄 46.67, 그림 칸 33.33(#242629, 모서리 8) 왼쪽 18, 글자 16px, 수는 보라 15px, '>' 6.67 x 11.33 */
+.screen.sub > .lw-menu {
+  margin: 20.333px 2px 0;
+  padding: 0;
+}
+.screen.sub > .lw-menu .menu-row {
+  box-sizing: border-box;
+  width: 100%;
+  height: 46.667px;
+  margin: 0;
+  padding: 0 6.667px 0 0;
+  gap: 0;
+  border: 0;
+  background: none;
+}
+.screen.sub > .lw-menu .menu-icon {
+  flex: none;
+  width: 33.333px;
+  height: 33.333px;
+  margin-right: 13px;
+  border-radius: 8px;
+  background: #242629;
+  color: #9c81e7;
+}
+.screen.sub > .lw-menu .menu-icon svg {
+  display: block;
+}
+.screen.sub > .lw-menu .menu-text b {
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+:root[data-theme='dark'] .screen.sub > .lw-menu .menu-text b {
+  color: #d6d6d6;
+}
+.screen.sub > .lw-menu .lw-count {
+  margin-right: 10.667px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #a079de;
+  --ls: 0;
+}
+.screen.sub > .lw-menu .h-chev {
+  display: block;
+  flex: none;
+  color: #50575d;
+}
