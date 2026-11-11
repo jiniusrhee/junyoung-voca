@@ -1,5 +1,5 @@
 import { useRef, type PointerEvent } from 'react';
-import Icon from './Icon';
+import { QBackspace, QOk } from './QuizIcons';
 import { keyFeedback } from '../lib/sfx';
 
 const ROWS = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
@@ -59,7 +59,7 @@ export default function Keyboard({ onChar, onBackspace, onSpace, onEnter, onShif
                 &apos;
               </button>
             ) : (
-              <button className="kb-key gray blank" onPointerDown={blank} aria-hidden="true" tabIndex={-1} />
+              <button className="kb-key gray kb-blank" onPointerDown={blank} aria-hidden="true" tabIndex={-1} />
             ))}
           {row.split('').map((c) => (
             <button key={c} className="kb-key" onPointerDown={press(() => onChar(shift ? c.toUpperCase() : c))} aria-label={c}>
@@ -68,18 +68,19 @@ export default function Keyboard({ onChar, onBackspace, onSpace, onEnter, onShif
           ))}
           {r === 2 && (
             <button className="kb-key gray" {...hold} aria-label="지우기">
-              <Icon name="backspace" size={22} />
+              <QBackspace />
             </button>
           )}
         </div>
       ))}
       <div className="kb-row bottom">
-        <button className="kb-key gray wide blank" onPointerDown={blank} aria-hidden="true" tabIndex={-1} />
+        <button className="kb-key gray wide kb-blank" onPointerDown={blank} aria-hidden="true" tabIndex={-1} />
         <button className="kb-key space" onPointerDown={press(onSpace)} aria-label="띄어쓰기">
           <span className="space-glyph" />
         </button>
         <button className="kb-key gray wide" onPointerDown={press(onEnter)}>
-          <Icon name="check" size={16} /> 확인
+          <QOk />
+          <span>확인</span>
         </button>
       </div>
     </div>

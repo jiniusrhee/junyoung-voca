@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { Rating, State } from 'ts-fsrs';
-import { KNOWN_WORD_DAYS, applyReview, gradeOf, masteryOf, newCardRow, type Outcome } from '../scheduler';
+import { KNOWN_WORD_DAYS, applyReview, gradeOf, knownCardRow, masteryOf, newCardRow, scheduleFields, type Outcome } from '../scheduler';
 
 const now = new Date(2026, 9, 23, 10, 0, 0);
 const clean: Outcome = { firstTry: true, hints: 0, showedAnswer: false, wrongAttempts: 0, elapsedMs: 3000 };
@@ -41,5 +41,26 @@ describe('scheduler', () => {
     const { row } = applyReview(first, { ...clean, firstTry: false, showedAnswer: true }, later);
     expect(row.lapses).toBe(1);
     expect(masteryOf(row)).toBe('shaky');
+  });
+
+  it('can review an imported known word when it comes due (2026-11-11: FSRS rejected difficulty 0)', () => {
+    const known = knownCardRow('x', now);
+    expect(known.difficulty).toBeGreaterThanOrEqual(1);
+    expect(known.state).toBe(State.Review);
+    const later = new Date(now.getTime() + (KNOWN_WORD_DAYS + 1) * 86_400_000);
+    const { row } = applyReview(known, { ...clean, firstTry: false }, later);
+    expect(row.due.getTime()).toBeGreaterThan(later.getTime());
+    expect(row.reps).toBe(known.reps + 1);
+  });
+
+  it('repairs cards stored with an invalid difficulty instead of throwing', () => {
+    // 예전 버전이 저장한 모양: 복습 단계인데 난이도 0
+    const legacy = { ...knownCardRow('x', now), difficulty: 0 };
+    const later = new Date(now.getTime() + 10 * 86_400_000);
+    expect(() => applyReview(legacy, { ...clean, firstTry: false }, later)).not.toThrow();
+    const { row } = applyReview(legacy, { ...clean, firstTry: false, showedAnswer: true }, later);
+    expect(row.difficulty).toBeGreaterThanOrEqual(1);
+    expect(row.lapses).toBe(1);
+    expect(() => scheduleFields({ ...legacy }, Rating.Good, later)).not.toThrow();
   });
 });

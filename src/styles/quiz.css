@@ -4,22 +4,22 @@
    이 파일은 styles.css 뒤에 불러와 어휘 퀴즈(.vocab-quiz) 안의 공통 규칙을 덮어쓴다.
    ============================================================================ */
 
-.vocab-quiz {
+#root .vocab-quiz {
   --q-sky: #bbe4df;
-  --q-card-top: #292829;
-  --q-card-bottom: #212021;
-  --q-text: #dfdfdf;
+  --q-card-top: #252627;
+  --q-card-bottom: #202122;
+  --q-text: #e2e1e2;
   --q-muted: #949294;
   --q-source: #5a5d63;
   --q-green: #3cba74;
   --q-typed: #afbee0;
-  --q-blank: #42414a;
+  --q-blank: #3d4045;
   --q-caret: #0065ff;
   --q-ghost-pre: #3a7d5a;
   --q-ghost: #9c5d3a;
-  --q-tab: #8ca67b;
-  --q-tab-q: #b6cba8;
-  --q-badge-new: #e66d7b;
+  --q-tab: #89a57a;
+  --q-tab-q: #b4caa8;
+  --q-badge-new: #e66b7b;
   --q-badge-ago: #6a88d5;
   --q-badge-retry: #e8767e;
   --q-badge-due: #409eb0;
@@ -27,12 +27,12 @@
   --q-heart: #42494a;
   --q-heart-on: #e0515a;
   --q-toolbar: #202122;
-  --q-tool: #73797d;
+  --q-tool: #73797b;
   --q-sep: #313337;
-  --q-bubble: #6e66e0;
+  --q-bubble: #6c66de;
   --q-kb: #2b2c2b;
-  --q-key: #6b696b;
-  --q-key-special: #424542;
+  --q-key: #6a6a6a;
+  --q-key-special: #464646;
   --q-panel: #252627;
   --q-panel-tool: #6b757b;
   --q-big: #313131;
@@ -43,17 +43,17 @@
   --q-pill: #9eb0e3;
   --q-pill-text: #101010;
   --q-pill-bad: #c63035;
-  --q-track: #a4d7ce;
-  --q-fill-a: #a47963;
-  --q-fill-b: #b58a73;
+  --q-track: #a8d8d0;
+  --q-fill-a: #a97963;
+  --q-fill-b: #b98a73;
   --q-stamp-ok: #58c642;
   --q-stamp-bad: #e04040;
-  --q-wrong-top: #2b221e;
-  --q-wrong-bottom: #261c20;
-  --scene-h: 130px;
+  --q-wrong-top: #332424;
+  --q-wrong-bottom: #291e1e;
+  --scene-h: 128px;
   --toolbar-h: 50px;
-  --kb-h: 198px;
-  --panel-h: 211px;
+  --kb-h: 199px;
+  --panel-h: 212px;
   --bottom-h: calc(var(--toolbar-h) + var(--kb-h));
   position: relative;
   display: flex;
@@ -62,17 +62,17 @@
   overflow: hidden;
   background: var(--q-sky);
 }
-.vocab-quiz.theme-dino,
-:root[data-theme='dark'] .vocab-quiz,
-:root[data-theme='dark'] .vocab-quiz.theme-dino,
-.quiz-screen.vocab-quiz:has(.dino-bg) {
+#root .vocab-quiz.theme-dino,
+:root[data-theme='dark'] #root .vocab-quiz,
+:root[data-theme='dark'] #root .vocab-quiz.theme-dino,
+#root .quiz-screen.vocab-quiz:has(.dino-bg) {
   background: var(--q-sky);
 }
 
 /* ---------- 풍경 (카드 아래 ~ 자판 뒤까지 이어진다; 패널이 자판보다 짧아 드러나는 부분까지) ---------- */
-.vocab-quiz .scene-layer,
-.vocab-quiz > .scene-layer.dino-bg,
-:root[data-theme='dark'] .vocab-quiz .scene-layer {
+#root .vocab-quiz .scene-layer,
+#root .vocab-quiz > .scene-layer.dino-bg,
+:root[data-theme='dark'] #root .vocab-quiz .scene-layer {
   filter: none;
   width: auto;
   inset: auto;
@@ -85,7 +85,7 @@
   pointer-events: none;
   animation: fadeIn 0.4s both;
 }
-.vocab-quiz .scene-layer .dino-scene {
+#root .vocab-quiz .scene-layer .dino-scene {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -93,117 +93,129 @@
   display: block;
 }
 /* 바탕(풍경·하늘 장식)과 팝업류(modal-dim, 팁, 설정 오버레이, 토스트, 추가 시트)는 제외: 팝업은 fixed 로 화면 전체를 덮어야 한다 */
-.vocab-quiz > *:not(.scene-layer):not(.quiz-bg-deco):not(.modal-dim):not(.fav-tip):not(.vs-overlay):not(.toast):not(.extra-sheet-dim) {
+#root .vocab-quiz > *:not(.scene-layer):not(.quiz-bg-deco):not(.modal-dim):not(.fav-tip):not(.vs-overlay):not(.toast):not(.extra-sheet-dim) {
   position: relative;
   z-index: 1;
 }
-.vocab-quiz > .modal-dim,
-.vocab-quiz > .extra-sheet-dim,
-.vocab-quiz > .vs-overlay {
+#root .vocab-quiz > .modal-dim,
+#root .vocab-quiz > .extra-sheet-dim,
+#root .vocab-quiz > .vs-overlay {
   z-index: 60;
 }
 
-/* ---------- 상단 막대 ---------- */
-.vocab-quiz .quiz-top {
-  height: 44px;
-  min-height: 44px;
-  padding: 0 6px 0 8px;
-  display: flex;
-  align-items: center;
-  gap: 2px;
+/* ---------- 상단 막대 (플립 실측 2026-11-11, 웹뷰 맨 위 기준: 모든 요소의 가운데가 y 27.33) ----------
+   뒤로 x 18.3~28.3 · 동그라미 지름 33.33 (x 42~75.33) · 트랙 x 58.67~(오른쪽 46) 높이 17.33 · 채움 높이 12
+   채움 끝 x = 82 + 210 × 진행률(폭 360 기준), 그 오른쪽에 작은 공룡(17.33 × 24) · 숫자는 흰 글자 + 갈색 테두리 · 톱니 x 325.67~344.67 */
+#root .vocab-quiz .quiz-top {
+  position: relative;
+  height: 53.333px;
+  min-height: 53.333px;
+  padding: 0;
+  display: block;
   background: transparent;
 }
-.vocab-quiz .quiz-top .icon-btn.light {
-  width: 38px;
-  height: 38px;
-  color: #7b9a8c;
-  background: none;
+#root .vocab-quiz .qi {
+  display: block;
+  flex: none;
 }
-.vocab-quiz .quiz-progress {
-  flex: 1;
-  display: flex;
-  align-items: center;
+#root .vocab-quiz .qt-btn {
+  position: absolute;
+  top: 4.667px;
+  width: 44px;
   height: 44px;
-  margin: 0 2px 0 4px;
-  position: relative;
-}
-.vocab-quiz .trophy-badge {
-  width: 29.5px;
-  height: 29.5px;
-  border-radius: 50%;
-  background: var(--q-tab);
-  border: 2px solid #bce4e0;
-  box-sizing: border-box;
-  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
-  flex: none;
+  color: #7b9a8c;
+  background: none;
 }
-.vocab-quiz .trophy-badge svg {
-  width: 14px;
-  height: 14px;
+#root .vocab-quiz .qt-back {
+  left: 1.333px;
 }
-.vocab-quiz .trophy-badge.gold {
-  background: linear-gradient(#d8c45a, #b89a2a);
-  border-color: #efe3a0;
+#root .vocab-quiz .qt-gear {
+  right: 2.833px;
 }
-.vocab-quiz .progress-track {
-  flex: 1;
-  position: relative;
-  height: 17px;
-  margin-left: -15px;
-  border-radius: 9px;
+#root .vocab-quiz .quiz-progress {
+  position: absolute;
+  left: 42px;
+  right: 46px;
+  top: 10px;
+  height: 33.333px;
+  margin: 0;
+  display: block;
+}
+#root .vocab-quiz .progress-track {
+  position: absolute;
+  left: 16.667px;
+  right: 0;
+  top: 8px;
+  height: 17.333px;
+  margin: 0;
+  border-radius: 0 8.667px 8.667px 0;
   background: var(--q-track);
   overflow: visible;
 }
-.vocab-quiz .progress-fill {
+/* 줄무늬: 가로로 어두운 7.33 + 밝은 5.33, '/' 방향으로 세로에서 30도 */
+#root .vocab-quiz .progress-fill {
   position: absolute;
-  top: 2.5px;
-  left: 2.5px;
+  left: 0;
+  top: 2.667px;
+  width: calc(23.333px + (100% - 45.333px) * var(--f, 0));
   height: 12px;
-  min-width: 36px;
-  max-width: calc(100% - 5px);
-  border-radius: 0 3px 3px 0;
-  background: repeating-linear-gradient(45deg, var(--q-fill-a) 0 3px, var(--q-fill-b) 3px 6px);
+  min-width: 0;
+  max-width: none;
   padding: 0;
   display: block;
+  border-radius: 0;
+  background: repeating-linear-gradient(120deg, var(--q-fill-a) 0 6.35px, var(--q-fill-b) 6.35px 10.97px);
   transition: width 0.2s ease-out;
   overflow: visible;
 }
-.vocab-quiz .progress-fill::after {
+#root .vocab-quiz .progress-fill::after {
   display: none;
 }
-/* 채움 머리의 작은 공룡 (직접 그린 그림) */
-.vocab-quiz .progress-head {
+#root .vocab-quiz .progress-head {
   position: absolute;
-  right: -9px;
-  top: -5px;
-  width: 18px;
-  height: 23px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 23'%3E%3Cpath d='M9 1.5c4 0 7 2.6 7 6.2 0 2.2-1 3.6-2.4 4.6V19c0 1.7-1.6 2.7-3.6 2.7-1.1 0-2-.3-2.7-.8-.7.5-1.6.8-2.7.8-2 0-3.6-1-3.6-2.7v-6.5C.3 11.4 1 9.3 1 7.7 1 4.1 5 1.5 9 1.5z' fill='%238caf78' stroke='%23f2efe6' stroke-width='1.3'/%3E%3Ccircle cx='12.2' cy='6.3' r='1.2' fill='%231f2a22'/%3E%3Ccircle cx='6' cy='11' r='1.4' fill='%236d9460'/%3E%3Ccircle cx='10.5' cy='14.5' r='1.1' fill='%236d9460'/%3E%3C/svg%3E")
-    center / contain no-repeat;
+  left: calc(23.333px + (100% - 45.333px) * var(--f, 0));
+  top: -3.333px;
+  width: 17.333px;
+  height: 24px;
+  transition: left 0.2s ease-out;
 }
-.vocab-quiz .progress-label {
+#root .vocab-quiz .trophy-badge {
   position: absolute;
-  left: 34px;
-  top: -12px;
-  font-size: 18px;
-  font-weight: 800;
+  left: 0;
+  top: 0;
+  width: 33.333px;
+  height: 33.333px;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  color: #89a579;
+  display: block;
+  box-shadow: none;
+  filter: none;
+}
+#root .vocab-quiz .trophy-badge.gold {
+  color: #c9ae3f;
+}
+#root .vocab-quiz .progress-label {
+  position: absolute;
+  left: 40.9px;
+  top: 2.6px;
+  font-size: 10.667px;
+  font-weight: 700;
   line-height: 1;
-  color: var(--q-fill-a);
-  -webkit-text-stroke: 1.4px #fff;
+  color: #fff;
+  -webkit-text-stroke: 2.667px #ab7b65;
   paint-order: stroke fill;
-  letter-spacing: -0.3px;
+  white-space: nowrap;
   pointer-events: none;
-}
-.vocab-quiz .progress-fill > span {
-  display: none;
+  --ls: 0;
 }
 
 /* ---------- 무대: 하늘 / 카드 / 풍경 ---------- */
-.vocab-quiz .quiz-stage {
+#root .vocab-quiz .quiz-stage {
   flex: 1;
   min-height: 0;
   display: grid;
@@ -211,28 +223,28 @@
   padding: 0;
   overflow: hidden;
 }
-.vocab-quiz .sky-row {
+#root .vocab-quiz .sky-row {
   position: relative;
   min-height: 0;
 }
-.vocab-quiz .card-row {
+#root .vocab-quiz .card-row {
   position: relative;
   min-height: 0;
 }
-.vocab-quiz .card-stage {
+#root .vocab-quiz .card-stage {
   position: relative;
   width: 100%;
   max-width: 520px;
   margin: 0 auto;
 }
-.vocab-quiz .card-slide {
+#root .vocab-quiz .card-slide {
   animation: cardIn 0.25s cubic-bezier(0.2, 0.7, 0.3, 1) both;
-  padding: 0 13px;
+  padding: 0 13.333px;
 }
-.vocab-quiz .card-slide.back {
+#root .vocab-quiz .card-slide.back {
   animation: cardInBack 0.25s cubic-bezier(0.2, 0.7, 0.3, 1) both;
 }
-.vocab-quiz .card-slide.exit {
+#root .vocab-quiz .card-slide.exit {
   position: absolute;
   left: 0;
   right: 0;
@@ -264,89 +276,96 @@
     transform: translateX(-70%);
   }
 }
-.vocab-quiz .side-card {
+#root .vocab-quiz .side-card {
   display: none;
 }
 
 /* ---------- 카드 ---------- */
-.vocab-quiz .qcard-wrap {
+#root .vocab-quiz .qcard-wrap {
   max-height: none;
 }
-.vocab-quiz .qcard-head {
+#root .vocab-quiz .qcard-head {
   position: relative;
-  height: 20px;
-  min-height: 20px;
+  height: 19.333px;
+  min-height: 19.333px;
   padding: 0;
   display: block;
 }
-.vocab-quiz .qcard-tab {
+#root .vocab-quiz .qcard-tab {
   position: absolute;
   left: 0;
-  bottom: -2px;
-  height: 22px;
-  padding: 0 1px 2px 10px;
+  bottom: auto;
+  height: 33px;
+  padding: 0 10px 13.667px 10.167px;
   display: inline-flex;
   align-items: center;
-  gap: 3px;
+  gap: 3.7px;
   border-radius: 11px 11px 0 0;
   background: var(--q-tab);
-  color: #fff;
-  font-size: 11.5px;
-  font-weight: 600;
+  color: #deebde;
+  font-size: 11px;
+  font-weight: 500;
   line-height: 1;
+  top: 0;
+  z-index: 0;
 }
-.vocab-quiz .qcard-tab .tab-q {
-  width: 16.5px;
-  height: 16.5px;
+#root .vocab-quiz .qcard-tab .tab-q {
+  width: 13.667px;
+  height: 13.667px;
   border-radius: 50%;
   background: var(--q-tab-q);
-  color: #7a9a69;
-  font-size: 11.5px;
-  font-weight: 800;
+  color: #7d9b6e;
+  font-size: 10.5px;
+  font-weight: 900;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-left: 1px;
+  margin-left: 0;
+  --ls: 0;
 }
-.vocab-quiz .qcard-badges {
+#root .vocab-quiz .qcard-badges {
   position: absolute;
-  right: 7px;
-  top: 0;
-  height: 22px;
+  right: 7.333px;
+  top: -0.333px;
+  height: 21.667px;
   display: flex;
-  align-items: center;
-  gap: 9px;
+  align-items: flex-start;
+  gap: 8.667px;
   z-index: 3;
+  padding: 0;
 }
-.vocab-quiz .badge-new,
-.vocab-quiz .badge-ago,
-.vocab-quiz .badge-retry,
-.vocab-quiz .badge-due {
+#root .vocab-quiz .badge-new,
+#root .vocab-quiz .badge-ago,
+#root .vocab-quiz .badge-retry,
+#root .vocab-quiz .badge-due {
   position: relative;
-  height: 22px;
+  height: 21.667px;
   padding: 0 11px;
-  border-radius: 11px;
+  border-radius: 10.833px;
   display: inline-flex;
   align-items: center;
   gap: 3px;
-  font-size: 12px;
+  font-size: 11.667px;
   font-weight: 700;
   line-height: 1;
   color: #fff;
   box-shadow: none;
   white-space: nowrap;
 }
-.vocab-quiz .badge-new {
+#root .vocab-quiz .badge-new {
   background: var(--q-badge-new);
+  --ls: -0.03;
+  padding: 0 10px;
+  font-weight: 600;
 }
-.vocab-quiz .badge-ago {
+#root .vocab-quiz .badge-ago {
   background: var(--q-badge-ago);
 }
-.vocab-quiz .badge-retry {
+#root .vocab-quiz .badge-retry {
   background: var(--q-badge-retry);
   padding-right: 4px;
 }
-.vocab-quiz .badge-retry .tab-q {
+#root .vocab-quiz .badge-retry .tab-q {
   width: 15px;
   height: 15px;
   border-radius: 50%;
@@ -359,36 +378,43 @@
   justify-content: center;
   margin-left: 2px;
 }
-.vocab-quiz .badge-due {
+#root .vocab-quiz .badge-due {
   background: var(--q-badge-due);
   animation: popIn 0.18s cubic-bezier(0.2, 0.9, 0.3, 1.4) both;
+  height: 25.333px;
+  min-width: 80px;
+  border-radius: 12.667px;
+  justify-content: center;
+  padding: 0 8px;
+  margin-top: -1px;
 }
 /* New / N일 전 / 재도전 배지는 왼쪽 아래에 꼬리 (정답 뒤 복습 배지는 없음) */
-.vocab-quiz .badge-new::after,
-.vocab-quiz .badge-ago::after,
-.vocab-quiz .badge-retry::after {
+#root .vocab-quiz .badge-new::after,
+#root .vocab-quiz .badge-ago::after,
+#root .vocab-quiz .badge-retry::after {
   content: '';
   position: absolute;
-  left: 13px;
-  bottom: -5px;
-  width: 0;
-  height: 0;
-  border-left: 6px solid currentColor;
-  border-bottom: 5px solid transparent;
+  left: 13.333px;
+  top: calc(100% - 0.5px);
+  width: 6.2px;
+  height: 5.8px;
+  border: none;
+  background: currentColor;
+  clip-path: polygon(0 0, 100% 0, 22% 100%, 0 100%);
   color: inherit;
 }
-.vocab-quiz .badge-new::after {
+#root .vocab-quiz .badge-new::after {
   color: var(--q-badge-new);
 }
-.vocab-quiz .badge-ago::after {
+#root .vocab-quiz .badge-ago::after {
   color: var(--q-badge-ago);
 }
-.vocab-quiz .badge-retry::after {
+#root .vocab-quiz .badge-retry::after {
   color: var(--q-badge-retry);
 }
-.vocab-quiz .heart-btn {
-  width: 25px;
-  height: 25px;
+#root .vocab-quiz .heart-btn {
+  width: 25.333px;
+  height: 25.333px;
   border-radius: 50%;
   background: var(--q-heart-bg);
   color: var(--q-heart);
@@ -396,12 +422,13 @@
   align-items: center;
   justify-content: center;
   animation: popIn 0.2s cubic-bezier(0.2, 0.9, 0.3, 1.4) both;
+  margin-top: -1px;
 }
-.vocab-quiz .heart-btn svg {
-  width: 16px;
-  height: 16px;
+#root .vocab-quiz .heart-btn svg {
+  width: 18.5px;
+  height: 18.5px;
 }
-.vocab-quiz .heart-btn.on {
+#root .vocab-quiz .heart-btn.on {
   color: var(--q-heart-on);
 }
 @keyframes popIn {
@@ -415,163 +442,197 @@
   }
 }
 
-.vocab-quiz .qcard {
+#root .vocab-quiz .qcard {
   position: relative;
   min-height: 0;
-  border-radius: 16px 16px 16px 0;
+  border-radius: 10.5px 28px 28px 28px;
   background: var(--q-card-bottom);
   box-shadow: none;
   overflow: visible;
+  z-index: 1;
 }
-.vocab-quiz .qcard-top {
-  min-height: 117px;
-  padding: 10px 17px;
-  border-radius: 16px 16px 0 0;
+#root .vocab-quiz .qcard-top {
+  min-height: 115.667px;
+  padding: 0 16.667px;
+  border-radius: 10.5px 28px 0 0;
   background: var(--q-card-top);
+  display: grid;
+  flex: none;
+  grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr);
+}
+#root .vocab-quiz .qcard-top .ctx {
+  font-size: 11.667px;
+  line-height: 14px;
+  color: var(--q-muted);
+  margin: 0;
+  padding-top: 8.333px;
+  grid-row: 1;
+  align-self: start;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#root .vocab-quiz .qcard-top .ko {
+  font-size: 18.333px;
+  line-height: 23.333px;
+  color: var(--q-text);
+  margin: 0;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  grid-row: 2;
+  padding-top: 1.333px;
+}
+#root .vocab-quiz .qcard-top .ko em.hl {
+  color: var(--q-green);
+  font-style: normal;
+  font-weight: 400;
+}
+#root .vocab-quiz .qcard-top .note {
+  font-size: 11.667px;
+  line-height: 14px;
+  color: var(--q-muted);
+  text-align: right;
+  margin: 0;
+  padding-bottom: 3.267px;
+  grid-row: 3;
+  align-self: end;
+  padding-right: 1px;
+}
+#root .vocab-quiz .qcard-bottom {
+  position: relative;
+  min-height: 155.667px;
+  padding: 0 16.667px 0 17px;
+  border-radius: 0 0 28px 28px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   flex: none;
 }
-.vocab-quiz .qcard-top .ctx {
-  font-size: 12.5px;
-  line-height: 1.3;
-  color: var(--q-muted);
-  margin: 0 0 7px;
-}
-.vocab-quiz .qcard-top .ko {
-  font-size: 19.5px;
-  line-height: 23.5px;
+#root .vocab-quiz .qcard-bottom .en {
+  font-size: 21.333px;
+  line-height: 32.333px;
   color: var(--q-text);
   margin: 0;
-  word-break: keep-all;
-  overflow-wrap: anywhere;
+  word-break: normal;
+  overflow-wrap: break-word;
+  padding-bottom: 2.667px;
 }
-.vocab-quiz .qcard-top .ko em.hl {
-  color: var(--q-green);
-  font-style: normal;
-  font-weight: 400;
-}
-.vocab-quiz .qcard-top .note {
-  font-size: 12.5px;
-  line-height: 1.3;
-  color: var(--q-muted);
-  text-align: right;
-  margin: 8px 0 0;
-}
-.vocab-quiz .qcard-bottom {
-  position: relative;
-  min-height: 110px;
-  padding: 26px 17px 4px;
-  border-radius: 0 0 16px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex: none;
-}
-.vocab-quiz .qcard-bottom .en {
-  font-size: 22px;
-  line-height: 32.5px;
-  color: var(--q-text);
-  margin: 0 0 20px;
-  word-break: keep-all;
-  overflow-wrap: anywhere;
-}
-.vocab-quiz .qcard-bottom .source {
-  margin: auto 8px 0 0;
-  font-size: 11.5px;
-  line-height: 1.3;
+#root .vocab-quiz .qcard-bottom .source {
+  margin: 0;
+  font-size: 10.5px;
+  line-height: 13px;
   color: var(--q-source);
   text-align: right;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  position: absolute;
+  right: 24.5px;
+  bottom: 3.3px;
+  max-width: calc(100% - 40px);
+}
+
+/* 하이픈으로 이어진 칸 묶음(up-and-coming)은 줄 끝에서 갈라지지 않는다 */
+#root .vocab-quiz .blank-group {
+  white-space: nowrap;
 }
 
 /* 빈칸 */
-.vocab-quiz .blank,
-.vocab-quiz .blank.active,
-.vocab-quiz .blank.filled,
-.vocab-quiz .blank.ok {
+#root .vocab-quiz .blank,
+#root .vocab-quiz .blank.active,
+#root .vocab-quiz .blank.filled,
+#root .vocab-quiz .blank.ok {
   display: inline-grid;
   vertical-align: top;
-  min-height: 30px;
-  height: 30px;
-  margin: 1px 0;
-  padding: 0 5.5px;
+  min-height: 30.333px;
+  height: 30.333px;
+  margin: -0.333px 0 2.333px;
+  padding: 0 4.5px;
   border-radius: 5px;
   background: var(--q-blank);
   color: var(--q-typed);
-  font-size: 22px;
-  line-height: 30px;
-  min-width: 34px;
+  font-size: 21.333px;
+  line-height: 30.333px;
+  min-width: 0;
   box-sizing: border-box;
 }
-.vocab-quiz .blank.filled {
+#root .vocab-quiz .blank.filled {
   color: var(--q-green);
 }
-.vocab-quiz .blank.ok {
+#root .vocab-quiz .blank.ok {
   color: var(--q-green);
   background: var(--q-blank);
 }
-.vocab-quiz .blank .typed,
-.vocab-quiz .blank .typed.lock {
+#root .vocab-quiz .blank .typed,
+#root .vocab-quiz .blank .typed.lock {
   color: var(--q-typed);
 }
-.vocab-quiz .blank.ok .typed {
+#root .vocab-quiz .blank.ok .typed {
   color: var(--q-green);
 }
-.vocab-quiz .blank .ghost {
+#root .vocab-quiz .blank .ghost {
   color: var(--q-ghost);
 }
-.vocab-quiz .blank .ghost.pre {
+#root .vocab-quiz .blank .ghost.pre {
   color: var(--q-ghost-pre);
 }
-.vocab-quiz .blank .caret {
+#root .vocab-quiz .blank .caret {
   display: inline-block;
   width: 2px;
-  height: 22px;
-  margin: 0 0 0 0;
-  vertical-align: -5px;
+  height: 21.667px;
+  margin: 0 0 0 -0.667px;
+  vertical-align: -3px;
   background: var(--q-caret);
-  animation: none;
+  animation: caretBlink 1.6s steps(1, end) infinite;
   border-radius: 0;
+}
+@keyframes caretBlink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* 설명 말풍선(오타·오답) — 한국어/영어 경계에 걸친다 */
-.vocab-quiz .pill {
+#root .vocab-quiz .pill {
   position: relative;
   z-index: 3;
   margin: -23px 7px -23px;
   min-height: 46px;
-  padding: 12px 16px;
+  padding: 12.333px 16px 11.667px 15.333px;
   border-radius: 13px;
-  font-size: 15.5px;
+  font-size: 15.333px;
   line-height: 22px;
   display: flex;
   align-items: center;
   gap: 10px;
   animation: fadeIn 0.12s both;
+  font-weight: 400;
 }
-.vocab-quiz .pill.info {
+#root .vocab-quiz .pill.info {
   background: var(--q-pill);
   color: var(--q-pill-text);
 }
-.vocab-quiz .pill .mask-ok {
+#root .vocab-quiz .pill .mask-ok {
   font-weight: 400;
   color: inherit;
 }
-.vocab-quiz .pill .mask-bad {
+#root .vocab-quiz .pill .mask-bad {
   font-weight: 400;
   color: var(--q-pill-bad);
   text-decoration: none;
 }
-.vocab-quiz .pill.info .mask-bad {
+#root .vocab-quiz .pill.info .mask-bad {
   color: var(--q-pill-bad);
 }
 
 /* 도장: 정답 초록 체크(0.25초 뒤 등장 → 1.2초 뒤 사라짐), 오답 빨간 느낌표 */
-.vocab-quiz .mark-check {
+#root .vocab-quiz .mark-check,
+#root .quiz-screen.vocab-quiz .qcard .mark-check {
   position: absolute;
   left: 13px;
   top: -40px;
@@ -583,12 +644,14 @@
   animation: stampIn 0.1s 0.25s cubic-bezier(0.2, 0.8, 0.3, 1.3) both, stampOut 0.1s 1.2s forwards;
   pointer-events: none;
 }
-.vocab-quiz .mark-check svg {
+#root .vocab-quiz .mark-check svg {
   display: block;
   width: 105px;
   height: 68px;
 }
-.vocab-quiz .mark-bang {
+#root .vocab-quiz .mark-bang,
+#root .quiz-screen.vocab-quiz .qcard .mark-bang,
+#root .quiz-screen.vocab-quiz .qcard:has(.pill) .mark-bang {
   position: absolute;
   left: 57px;
   top: -54px;
@@ -622,23 +685,25 @@
 }
 
 /* 카드 반응: 오답은 1초 동안 붉게 물들었다 0.2초에 돌아온다. 오타(is-typo)는 색이 바뀌지 않는다 */
-.vocab-quiz .qcard.is-wrong {
-  animation: wrongCardB 1.2s forwards;
+#root .quiz-screen.vocab-quiz .qcard.is-wrong,
+:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .qcard.is-wrong,
+#root .quiz-screen.vocab-quiz .qcard.is-wrong:has(.pill) {
+  animation: wrongCardB 1.17s forwards;
 }
-.vocab-quiz .qcard.is-wrong .qcard-top {
-  animation: wrongCardT 1.2s forwards;
+#root .quiz-screen.vocab-quiz .qcard.is-wrong .qcard-top,
+:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .qcard.is-wrong .qcard-top,
+#root .quiz-screen.vocab-quiz .qcard.is-wrong:has(.pill) .qcard-top {
+  animation: wrongCardT 1.17s forwards;
 }
-.vocab-quiz .qcard.is-typo,
-.vocab-quiz .qcard.is-correct {
-  animation: none;
-}
-.vocab-quiz .qcard.is-typo .qcard-top,
-.vocab-quiz .qcard.is-correct .qcard-top {
+#root .quiz-screen.vocab-quiz .qcard.is-correct,
+#root .quiz-screen.vocab-quiz .qcard.is-correct .qcard-top,
+:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .qcard.is-correct,
+:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .qcard.is-correct .qcard-top {
   animation: none;
 }
 @keyframes wrongCardB {
   0%,
-  83% {
+  86% {
     background: var(--q-wrong-bottom);
   }
   100% {
@@ -647,7 +712,7 @@
 }
 @keyframes wrongCardT {
   0%,
-  83% {
+  86% {
     background: var(--q-wrong-top);
   }
   100% {
@@ -656,46 +721,46 @@
 }
 
 /* ---------- 아래 블록: 도구줄 + 자판 / 정답 패널 ---------- */
-.vocab-quiz .quiz-bottom {
+#root .vocab-quiz .quiz-bottom {
   position: relative;
   height: var(--bottom-h);
   min-height: var(--bottom-h);
   width: 100%;
   flex: none;
 }
-.vocab-quiz .quiz-bottom > .quiz-input,
-.vocab-quiz .quiz-bottom > .after,
-.vocab-quiz .quiz-bottom > .voice-zone {
+#root .vocab-quiz .quiz-bottom > .quiz-input,
+#root .vocab-quiz .quiz-bottom > .after,
+#root .vocab-quiz .quiz-bottom > .voice-zone {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
 }
 /* 자판 블록: 통째로 오르내린다. 정답 패널: 본문만 오르내리고 말풍선은 자판 자리(37px 위)에서 미끄러져 내려온다 (말해보카 실측 0.3초) */
-.vocab-quiz .quiz-bottom > .quiz-input.enter {
+#root .vocab-quiz .quiz-bottom > .quiz-input.enter {
   animation: slideUp 0.3s cubic-bezier(0.2, 0.7, 0.3, 1) both;
 }
-.vocab-quiz .quiz-bottom > .quiz-input.leave {
+#root .vocab-quiz .quiz-bottom > .quiz-input.leave {
   animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.7, 0.6) forwards;
   pointer-events: none;
   z-index: 2;
 }
-.vocab-quiz .quiz-bottom > .quiz-input.leave .toolbar-center {
+#root .vocab-quiz .quiz-bottom > .quiz-input.leave .toolbar-center {
   visibility: hidden;
 }
-.vocab-quiz .after.enter .after-body {
+#root .vocab-quiz .after.enter .after-body {
   animation: slideUp 0.3s cubic-bezier(0.2, 0.7, 0.3, 1) both;
 }
-.vocab-quiz .after.enter .bubble-row {
+#root .vocab-quiz .after.enter .bubble-row {
   animation: bubbleDrop 0.3s cubic-bezier(0.2, 0.7, 0.3, 1) both;
 }
-.vocab-quiz .after.leave {
+#root .vocab-quiz .after.leave {
   pointer-events: none;
 }
-.vocab-quiz .after.leave .after-body {
+#root .vocab-quiz .after.leave .after-body {
   animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.7, 0.6) forwards;
 }
-.vocab-quiz .after.leave .bubble-row {
+#root .vocab-quiz .after.leave .bubble-row {
   display: none;
 }
 @keyframes bubbleDrop {
@@ -723,54 +788,68 @@
   }
 }
 
-.vocab-quiz .quiz-input {
+#root .vocab-quiz .quiz-input {
   background: var(--q-kb);
 }
-.vocab-quiz .toolbar {
+#root .vocab-quiz .toolbar {
   position: relative;
   display: grid;
   grid-template-columns: 103.3px 1fr 103.3px;
   height: var(--toolbar-h);
   background: var(--q-toolbar);
+  align-items: stretch;
+  border: none;
 }
-.vocab-quiz .toolbar .tool-btn {
+#root .vocab-quiz .toolbar .tool-btn {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 4px;
-  padding: 0;
-  font-size: 12.5px;
+  justify-content: flex-start;
+  gap: 0;
+  padding: 7.667px 0 0;
+  font-size: 11.667px;
   line-height: 1;
   color: var(--q-tool);
   background: none;
+  font-weight: 600;
+  height: 50px;
 }
-.vocab-quiz .toolbar .tool-btn:disabled {
-  opacity: 0.45;
+#root .vocab-quiz .toolbar .tool-btn:disabled {
+  opacity: 1;
 }
-.vocab-quiz .toolbar .tool-btn svg {
-  width: 21.5px;
-  height: 21.5px;
+#root .vocab-quiz .toolbar .tool-btn svg {
 }
-.vocab-quiz .toolbar .ic-hint {
+/* 아이콘 칸: 높이 21.33 (힌트 '?' 지름 21.33 · 마이크 16×21.33 · 정답 체크 25.8×20.2), 색 #70777c */
+#root .vocab-quiz .toolbar .tool-btn .qi {
   color: #70777c;
+  height: 21.333px;
+  width: auto;
 }
-.vocab-quiz .toolbar .ic-hint path,
-.vocab-quiz .toolbar .ic-hint circle[fill='#fff'] {
-  stroke: var(--q-toolbar);
-  fill: var(--q-toolbar);
+#root .vocab-quiz .toolbar .tool-btn .qi-reveal {
+  height: 20.2px;
+  margin: 0.533px 0 0.6px;
 }
-.vocab-quiz .toolbar .ic-hint path {
-  fill: none;
+#root .vocab-quiz .toolbar .tool-btn > span:last-child {
+  margin-top: 2px;
+  line-height: 14px;
 }
-.vocab-quiz .toolbar .ic-answer {
-  color: #70777c;
+#root .vocab-quiz .toolbar .tool-btn:first-child > span:last-child {
+  position: relative;
+  left: -1.2px;
 }
-.vocab-quiz .toolbar .ic-answer polyline {
-  stroke-width: 3.4;
+/* 도구줄 맨 아래 1 물리 픽셀의 어두운 선 */
+#root .vocab-quiz .toolbar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0.334px;
+  background: #141214;
+  pointer-events: none;
 }
-.vocab-quiz .toolbar-center {
+#root .vocab-quiz .toolbar-center {
   position: relative;
   height: var(--toolbar-h);
   display: flex;
@@ -778,177 +857,196 @@
   justify-content: center;
   border: none;
 }
-.vocab-quiz .toolbar-center::before,
-.vocab-quiz .toolbar-center::after {
+#root .vocab-quiz .toolbar-center::before,
+#root .vocab-quiz .toolbar-center::after {
   content: '';
   position: absolute;
   top: 13px;
-  width: 1px;
-  height: 23.5px;
-  background: var(--q-sep);
+  width: 0.667px;
+  height: 23.333px;
+  background: #313336;
 }
-.vocab-quiz .toolbar-center::before {
-  left: 0;
+#root .vocab-quiz .toolbar-center::before {
+  left: -0.333px;
 }
-.vocab-quiz .toolbar-center::after {
-  right: 0;
+#root .vocab-quiz .toolbar-center::after {
+  right: -0.333px;
 }
 /* 첫 카드에만 보이는 단축키 배지 1 / 0 */
-.vocab-quiz .toolbar .kbd-hint.tl,
-.vocab-quiz .toolbar .kbd-hint.tr {
+#root .vocab-quiz .toolbar .kbd-hint.tl,
+#root .vocab-quiz .toolbar .kbd-hint.tr {
   position: absolute;
   transform: none;
-  top: -4px;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 4px;
-  border-radius: 4px;
-  background: #1a1b1a;
-  color: #fff;
+  top: -3.167px;
+  width: 17.333px;
+  min-width: 0;
+  height: 17px;
+  padding: 0;
+  border-radius: 3.5px;
+  background: #26282b;
+  color: #7b8184;
   font-size: 11px;
-  font-weight: 700;
-  line-height: 18px;
+  font-weight: 500;
+  line-height: 17px;
   text-align: center;
-  box-shadow: 0 1px 0 #3a3c3a inset;
+  box-shadow: 0 2.8px 0 #1a1b1d, 0 0 0 0.667px #121315, 0 2.8px 0 0.667px #121315;
+  --ls: 0;
 }
-.vocab-quiz .toolbar .kbd-hint.tl {
-  left: 10px;
+#root .vocab-quiz .toolbar .kbd-hint.tl {
+  left: 10.667px;
 }
-.vocab-quiz .toolbar .kbd-hint.tr {
+#root .vocab-quiz .toolbar .kbd-hint.tr {
   right: 10px;
   left: auto;
 }
-.vocab-quiz .toolbar .kbd-hint::after,
-.vocab-quiz .toolbar .kbd-hint::before {
+#root .vocab-quiz .toolbar .kbd-hint::after,
+#root .vocab-quiz .toolbar .kbd-hint::before {
   display: none;
 }
 
 /* 보라 입력 말풍선 */
-.vocab-quiz .bubble {
+#root .vocab-quiz .bubble {
   position: relative;
   height: 36px;
-  padding: 0 11px;
+  padding: 0 10.333px;
   border-radius: 8px;
   background: var(--q-bubble);
   color: #fff;
-  font-size: 22px;
+  font-size: 21.333px;
   font-weight: 400;
-  line-height: 36px;
-  text-decoration: underline;
+  line-height: 38.4px;
+  text-decoration: none;
   text-underline-offset: 3px;
   text-decoration-thickness: 1.5px;
-  min-width: 42px;
+  min-width: 53.333px;
   box-shadow: none;
   white-space: nowrap;
   animation: none;
+  align-self: flex-start;
+  margin-top: 5.333px;
+  --ls: 0;
+  overflow: visible;
+  isolation: isolate;
 }
-.vocab-quiz .bubble.link {
+#root .vocab-quiz .bubble.link,
+#root .vocab-quiz .bubble .u {
   text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
 }
-.vocab-quiz .bubble::after {
+#root .vocab-quiz .bubble span {
+  white-space: pre;
+}
+#root .vocab-quiz .bubble::after {
   content: '';
   position: absolute;
   left: 50%;
-  bottom: -5.5px;
-  width: 0;
-  height: 0;
-  transform: translateX(-50%);
-  border-left: 6.3px solid transparent;
-  border-right: 6.3px solid transparent;
-  border-top: 5.7px solid var(--q-bubble);
+  bottom: -4.64px;
+  width: 9px;
+  height: 9px;
+  transform: translateX(-50%) rotate(45deg);
+  border: none;
+  border-radius: 0 0 2px 0;
+  background: var(--q-bubble);
+  z-index: -1;
 }
 
 /* ---------- 자판 ---------- */
-.vocab-quiz .kb {
+#root .vocab-quiz .kb {
   height: var(--kb-h);
   box-sizing: border-box;
-  padding: 10px 4px 0;
+  padding: 9.667px 3.667px 0 4px;
   background: var(--q-kb);
 }
-.vocab-quiz .kb-row {
+#root .vocab-quiz .kb-row {
   display: flex;
-  gap: 5.7px;
+  gap: 5.667px;
   margin: 0 0 10px;
   height: 37px;
+  padding: 0;
 }
-.vocab-quiz .kb-row.r1 {
-  padding: 0 18px;
+#root .vocab-quiz .kb-row.r1 {
+  padding: 0 17.667px 0 18.333px;
 }
-.vocab-quiz .kb-key {
+#root .vocab-quiz .kb-key {
   flex: 1 1 0;
   height: 37px;
   min-width: 0;
-  padding: 0;
+  padding: 0 0 3px 1px;
   border-radius: 4px;
   background: var(--q-key);
   color: #fff;
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 400;
   line-height: 37px;
-  box-shadow: none;
+  box-shadow: 0 0.667px 0 #1d1c1d;
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  --ls: 0;
 }
-.vocab-quiz .kb-key:active {
+#root .vocab-quiz .kb-key:active {
   background: var(--q-key);
   filter: brightness(1.12);
 }
-.vocab-quiz .kb-key.gray {
-  flex: 0 0 39.3px;
+#root .vocab-quiz .kb-key.gray {
+  flex: 0 0 38.667px;
   background: var(--q-key-special);
-  border-radius: 4.5px;
+  border-radius: 4px;
 }
-.vocab-quiz .kb-key.gray:active {
+#root .vocab-quiz .kb-key.gray:active {
   background: var(--q-key-special);
 }
-.vocab-quiz .kb-row.r2 .kb-key.gray:first-child {
-  margin-right: 10px;
+#root .vocab-quiz .kb-row.r2 .kb-key.gray:first-child {
+  margin-right: 10.667px;
+  margin-left: -0.333px;
 }
-.vocab-quiz .kb-row.r2 .kb-key.gray:last-child {
-  margin-left: 9px;
+#root .vocab-quiz .kb-row.r2 .kb-key.gray:last-child {
+  margin-left: 9.333px;
+  flex-basis: 39.333px;
+  padding: 0 1.2px 0 0;
 }
-.vocab-quiz .kb-row.bottom {
-  gap: 5.3px;
+#root .vocab-quiz .kb-row.bottom {
+  gap: 6px;
   margin-bottom: 0;
+  height: 37.333px;
 }
-.vocab-quiz .kb-row.bottom .kb-key.gray.wide {
-  flex: 0 0 85.3px;
-  font-size: 15px;
-  font-weight: 500;
-  gap: 4px;
+#root .vocab-quiz .kb-row.bottom .kb-key.gray.wide {
+  flex: 0 0 84.667px;
+  font-size: 13.667px;
+  font-weight: 400;
+  gap: 4.8px;
+  margin-left: -0.333px;
+  height: 37.333px;
+  --ls: -0.0864;
+  padding: 2.4px 0 0 1px;
 }
-.vocab-quiz .kb-row.bottom .kb-key.gray.wide:last-child {
-  flex-basis: 84.3px;
+#root .vocab-quiz .kb-row.bottom .kb-key.gray.wide:last-child {
+  flex-basis: 83.667px;
+  margin-left: 0;
 }
-.vocab-quiz .kb-row.bottom .kb-key.gray.wide svg {
-  width: 15px;
-  height: 15px;
-}
-.vocab-quiz .kb-row.bottom .kb-key.gray.wide svg polyline {
-  stroke-width: 3.2;
-}
-.vocab-quiz .kb-key.space {
+#root .vocab-quiz .kb-key.space {
   flex: 1 1 173px;
   background: var(--q-key);
+  height: 37.333px;
+  padding: 0;
 }
-.vocab-quiz .kb-key.space .space-glyph {
-  width: 27px;
-  height: 7px;
+#root .vocab-quiz .kb-key.space .space-glyph {
+  width: 27.333px;
+  height: 7.333px;
   border: 2px solid #fff;
   border-top: none;
   border-radius: 0 0 2px 2px;
   box-sizing: border-box;
+  margin-top: 0.5px;
 }
-.vocab-quiz .kb-key svg.backspace,
-.vocab-quiz .kb-row.r2 .kb-key.gray:last-child svg {
-  width: 23px;
-  height: 23px;
+#root .vocab-quiz .kb-key.gray {
+  padding: 0;
 }
 
 /* ---------- 정답 패널 ---------- */
-.vocab-quiz .after {
+#root .vocab-quiz .after {
   height: var(--panel-h);
   box-sizing: border-box;
   padding: 0;
@@ -957,7 +1055,7 @@
   display: flex;
   flex-direction: column;
 }
-.vocab-quiz .after .bubble-row {
+#root .vocab-quiz .after .bubble-row {
   position: absolute;
   left: 0;
   right: 0;
@@ -969,13 +1067,13 @@
   align-items: flex-start;
   pointer-events: none;
 }
-.vocab-quiz .after .bubble-row > * {
+#root .vocab-quiz .after .bubble-row > * {
   pointer-events: auto;
 }
-.vocab-quiz .after .bubble-row .bubble {
+#root .vocab-quiz .after .bubble-row .bubble {
   margin-top: 0;
 }
-.vocab-quiz .after .more-btn {
+#root .vocab-quiz .after .more-btn {
   position: absolute;
   right: 3.3px;
   bottom: 0;
@@ -988,12 +1086,12 @@
   align-items: center;
   justify-content: center;
 }
-.vocab-quiz .after .more-btn svg {
+#root .vocab-quiz .after .more-btn svg {
   width: 18px;
   height: 18px;
   transform: rotate(180deg);
 }
-.vocab-quiz .after-tools {
+#root .vocab-quiz .after-tools {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   height: 70px;
@@ -1002,7 +1100,7 @@
   border-bottom: 1px solid #343638;
   align-items: start;
 }
-.vocab-quiz .after-tool {
+#root .vocab-quiz .after-tool {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -1014,7 +1112,7 @@
   color: var(--q-panel-tool);
   background: none;
 }
-.vocab-quiz .after-tool + .after-tool::before {
+#root .vocab-quiz .after-tool + .after-tool::before {
   content: '';
   position: absolute;
   left: 0;
@@ -1023,7 +1121,7 @@
   height: 44px;
   background: #343638;
 }
-.vocab-quiz .after-tool-icon {
+#root .vocab-quiz .after-tool-icon {
   width: 28px;
   height: 28px;
   display: flex;
@@ -1031,15 +1129,15 @@
   justify-content: center;
   color: var(--q-panel-tool);
 }
-.vocab-quiz .after-tool-icon svg {
+#root .vocab-quiz .after-tool-icon svg {
   width: 28px;
   height: 28px;
 }
-.vocab-quiz .after-tool.active,
-.vocab-quiz .after-tool.active .after-tool-icon {
+#root .vocab-quiz .after-tool.active,
+#root .vocab-quiz .after-tool.active .after-tool-icon {
   color: #a98bff;
 }
-.vocab-quiz .after-tool .tool-badge {
+#root .vocab-quiz .after-tool .tool-badge {
   position: absolute;
   top: 6px;
   right: calc(50% - 22px);
@@ -1054,7 +1152,7 @@
   text-align: center;
   padding: 0 4px;
 }
-.vocab-quiz .after-listen {
+#root .vocab-quiz .after-listen {
   height: 70px;
   margin: 0 25px;
   border-bottom: 1px solid #343638;
@@ -1062,7 +1160,7 @@
   align-items: center;
   justify-content: center;
 }
-.vocab-quiz .listen-stop {
+#root .vocab-quiz .listen-stop {
   width: 43px;
   height: 43px;
   border-radius: 50%;
@@ -1072,13 +1170,13 @@
   align-items: center;
   justify-content: center;
 }
-.vocab-quiz .listen-stop .stop-square {
+#root .vocab-quiz .listen-stop .stop-square {
   width: 15px;
   height: 15px;
   border-radius: 3px;
   background: var(--q-bubble);
 }
-.vocab-quiz .bubble .dots {
+#root .vocab-quiz .bubble .dots {
   display: inline-flex;
   gap: 6px;
   align-items: center;
@@ -1086,9 +1184,9 @@
   font-size: 0;
   height: 36px;
 }
-.vocab-quiz .bubble .dots::before,
-.vocab-quiz .bubble .dots::after,
-.vocab-quiz .bubble .dots i {
+#root .vocab-quiz .bubble .dots::before,
+#root .vocab-quiz .bubble .dots::after,
+#root .vocab-quiz .bubble .dots i {
   content: '';
   display: block;
   width: 7px;
@@ -1097,10 +1195,10 @@
   background: #fff;
   animation: dotPulse 1.2s infinite;
 }
-.vocab-quiz .bubble .dots i {
+#root .vocab-quiz .bubble .dots i {
   animation-delay: 0.2s;
 }
-.vocab-quiz .bubble .dots::after {
+#root .vocab-quiz .bubble .dots::after {
   animation-delay: 0.4s;
 }
 @keyframes dotPulse {
@@ -1112,13 +1210,13 @@
     opacity: 1;
   }
 }
-.vocab-quiz .after-big {
+#root .vocab-quiz .after-big {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   padding: 11px 10px 0;
 }
-.vocab-quiz .big-btn {
+#root .vocab-quiz .big-btn {
   height: 107px;
   border-radius: 16px;
   background: var(--q-big);
@@ -1137,31 +1235,31 @@
   box-shadow: none;
   border: none;
 }
-.vocab-quiz .big-btn svg {
+#root .vocab-quiz .big-btn svg {
   width: 36px;
   height: 36px;
 }
-.vocab-quiz .big-btn:nth-child(2) {
+#root .vocab-quiz .big-btn:nth-child(2) {
   color: var(--q-big-2);
 }
-.vocab-quiz .big-btn.next {
+#root .vocab-quiz .big-btn.next {
   background: var(--q-big);
   color: var(--q-big-3);
 }
-.vocab-quiz .big-btn.next.finish {
+#root .vocab-quiz .big-btn.next.finish {
   background: var(--q-finish);
   color: #fff;
 }
-.vocab-quiz .big-btn.next.finish svg polyline {
+#root .vocab-quiz .big-btn.next.finish svg polyline {
   stroke-width: 3.6;
 }
-.vocab-quiz .big-btn:active {
+#root .vocab-quiz .big-btn:active {
   transform: none;
   filter: brightness(1.15);
 }
 
 /* 말풍선 뜻 팝업은 말풍선 위로 */
-.vocab-quiz .after .typed-pop {
+#root .vocab-quiz .after .typed-pop {
   position: absolute;
   bottom: 48px;
   left: 50%;
@@ -1169,7 +1267,7 @@
 }
 
 /* ---------- '^' 추가 동작 시트 ---------- */
-.vocab-quiz .extra-sheet-dim {
+#root .vocab-quiz .extra-sheet-dim {
   position: fixed;
   inset: 0;
   z-index: 40;
@@ -1177,14 +1275,14 @@
   display: flex;
   align-items: flex-end;
 }
-.vocab-quiz .xsheet {
+#root .vocab-quiz .xsheet {
   width: 100%;
   background: var(--q-panel);
   border-radius: 14px 14px 0 0;
   padding: 0 0 10px;
   animation: slideUp 0.3s cubic-bezier(0.2, 0.7, 0.3, 1) both;
 }
-.vocab-quiz .xsheet-head {
+#root .vocab-quiz .xsheet-head {
   height: 44px;
   display: flex;
   align-items: center;
@@ -1195,17 +1293,17 @@
   border-bottom: 1px solid #343638;
   margin: 0 0 4px;
 }
-.vocab-quiz .xsheet-head .icon-btn {
+#root .vocab-quiz .xsheet-head .icon-btn {
   color: #8d9093;
 }
-.vocab-quiz .xsheet-grid {
+#root .vocab-quiz .xsheet-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   margin: 0 20px;
   border-bottom: 1px solid #343638;
   padding-bottom: 6px;
 }
-.vocab-quiz .xsheet-item {
+#root .vocab-quiz .xsheet-item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1217,130 +1315,169 @@
   background: none;
   word-break: keep-all;
 }
-.vocab-quiz .xsheet-item .xsheet-icon {
+#root .vocab-quiz .xsheet-item .xsheet-icon {
   width: 28px;
   height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.vocab-quiz .xsheet-item .xsheet-icon svg {
+#root .vocab-quiz .xsheet-item .xsheet-icon svg {
   width: 26px;
   height: 26px;
 }
-.vocab-quiz .xsheet-item.active {
+#root .vocab-quiz .xsheet-item.active {
   color: #a98bff;
 }
-.vocab-quiz .xsheet .after-big {
+#root .vocab-quiz .xsheet .after-big {
   padding-top: 12px;
 }
 
-/* ---------- 카드 자리를 대신하는 카드 (다른 예문 / 오답 노트) ---------- */
-.vocab-quiz .info-card {
-  min-height: 330px;
-  margin-top: 20px;
-  border-radius: 16px;
-  background: var(--q-card-bottom);
-  color: var(--q-text);
+/* ---------- 카드 자리를 대신하는 '다른 예문' 카드 (플립 실측 2026-11-11) ----------
+   y 187.67~523.33 (높이 335.67): 보통 카드(머리 포함 290.67)보다 위로 8.3, 아래로 36.7 더 크다. 반지름 12.
+   머리줄 46.67(#242629) + 어두운 띠 4.33(#212325) · 예문 칸(157: 첫 줄은 15 아래에서 시작, 영어 17.33/21.33,
+   작은 회색 줄 10.5px 오른쪽 정렬, 얇은 선, 가운데 스피커 20.3×15.7) · 예문 사이 어두운 띠 8(#1e1f20) */
+#root .vocab-quiz .info-card {
+  height: 335.667px;
+  min-height: 0;
+  margin: 0 -0.333px -36.667px;
+  border-radius: 12px;
+  background: #242629;
+  color: #d6d6d6;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  padding: 0;
+  border: none;
+  box-shadow: none;
 }
-.vocab-quiz .info-card-head {
-  height: 44px;
-  padding: 0 17px 0 19px;
+#root .vocab-quiz .info-card-head {
+  flex: none;
+  box-sizing: border-box;
+  height: 51px;
+  padding: 3.8px 17.667px 0 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 16px 16px 0 0;
-  background: var(--q-card-top);
-  font-size: 15px;
-  color: #c9c9c9;
+  border-radius: 0;
+  border-bottom: 4.333px solid #212325;
+  background: #242629;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  color: #8591a5;
+  margin: 0;
 }
-.vocab-quiz .info-card-title {
+#root .vocab-quiz .info-card-title {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
+  color: #8591a5;
 }
-.vocab-quiz .info-card-title svg {
-  width: 18px;
-  height: 18px;
-  color: #c9c9c9;
+#root .vocab-quiz .info-card-title svg {
+  width: 14px;
+  height: 11.333px;
+  color: #8591a5;
 }
-.vocab-quiz .info-card-ctl {
+#root .vocab-quiz .info-card-ctl {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  font-size: 13px;
-  color: #c9c9c9;
+  gap: 6.667px;
+  padding: 6px 0;
+  font-size: 13.333px;
+  font-weight: 700;
+  line-height: 1;
+  color: #8591a5;
   background: none;
-  padding: 4px 0;
 }
-.vocab-quiz .info-card-body {
-  padding: 20px 19px 16px;
+#root .vocab-quiz .info-card-body {
   flex: 1;
+  min-height: 0;
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
-.vocab-quiz .info-card .ex-item.big {
+#root .vocab-quiz .info-card-body::-webkit-scrollbar {
+  display: none;
+}
+#root .vocab-quiz .info-card .ex-item.big {
   position: relative;
-  padding: 0 0 18px;
-  border-bottom: 1px solid #353638;
-  margin-bottom: 16px;
-}
-.vocab-quiz .info-card .ex-en {
-  font-size: 22px;
-  line-height: 1.45;
-  color: var(--q-text);
-  margin: 0 0 8px;
-}
-.vocab-quiz .info-card .ex-en .blank.filled {
-  display: inline;
+  margin: 0;
+  padding: 16px 18.667px 0;
+  border: none;
+  border-bottom: 8px solid #1e1f20;
+  border-radius: 0;
   background: none;
+}
+#root .vocab-quiz .info-card .ex-item.big:last-child {
+  border-bottom: none;
+}
+#root .vocab-quiz .info-card .ex-en {
+  margin: 0;
+  font-size: 17.333px;
+  line-height: 21.333px;
+  color: #d6d6d6;
+}
+#root .vocab-quiz .info-card .ex-en .blank.filled {
+  display: inline;
+  margin: 0;
   padding: 0;
   min-height: 0;
   height: auto;
+  border-radius: 0;
+  background: none;
   font-size: inherit;
   line-height: inherit;
   color: var(--q-green);
 }
-.vocab-quiz .info-card .ex-ko {
-  font-size: 15px;
-  line-height: 1.45;
-  color: #a3a3a3;
-  margin: 0 0 6px;
-}
-.vocab-quiz .info-card .ex-ko em.hl {
-  font-style: normal;
-  color: #a3a3a3;
-}
-.vocab-quiz .info-card .ex-src {
-  font-size: 11.5px;
-  color: var(--q-source);
+#root .vocab-quiz .info-card .ex-src {
+  margin: 8.4px 4.333px 0 0;
+  padding-right: 0.9px;
+  font-size: 10.5px;
+  line-height: 13px;
+  color: #616365;
   text-align: right;
-  margin: 0 0 10px;
 }
-.vocab-quiz .info-card .ex-play {
+#root .vocab-quiz .info-card .ex-play {
   display: flex;
-  margin: 0 auto;
-  width: 36px;
-  height: 36px;
+  width: calc(100% + 6.667px);
+  height: 45px;
+  margin: 11.5px -3.333px 0;
+  padding: 0;
   align-items: center;
   justify-content: center;
-  color: #c9c9c9;
+  border-top: 1px solid #2c2e31;
+  color: #70777c;
   background: none;
+  position: static;
+  top: auto;
+  left: auto;
+  right: auto;
+  transform: none;
+  border-radius: 0;
 }
-.vocab-quiz .info-card .overlay-empty,
-.vocab-quiz .info-card .overlay-sub {
-  color: #a3a3a3;
+#root .vocab-quiz .info-card .overlay-empty,
+#root .vocab-quiz .info-card .overlay-sub {
+  margin: 0;
+  padding: 24px 18.667px;
+  color: #8a8c8f;
   font-size: 14px;
+}
+/* 다른 예문이 열려 있는 동안 정답 말풍선은 보이지 않는다 ('^' 버튼은 그대로) */
+#root .vocab-quiz.examples-open .after .bubble-row .bubble {
+  visibility: hidden;
 }
 
 /* ---------- 익룡 ---------- */
-.vocab-quiz .ptero-layer {
+#root .vocab-quiz .ptero-layer {
   position: absolute;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
 }
-.vocab-quiz .ptero {
+#root .vocab-quiz .ptero {
   position: absolute;
   left: 100%;
   width: 30px;
@@ -1358,7 +1495,7 @@
     transform: translateX(calc(-100vw - 40px)) translateY(2px);
   }
 }
-.vocab-quiz .ptero .wing {
+#root .vocab-quiz .ptero .wing {
   transform-origin: 50% 55%;
   animation: pteroFlap 0.5s ease-in-out infinite alternate;
 }
@@ -1373,14 +1510,14 @@
 
 /* ---------- 넓은 화면: 하늘·풍경은 화면 전체, 상단 막대·카드·자판·패널은 가운데 520px 안에 (.app 은 520px 로 잡혀 있으므로 화면 폭으로 넓힌다) ---------- */
 @media (min-width: 560px) {
-  .vocab-quiz {
+  #root .vocab-quiz {
     width: 100vw;
     margin-left: calc(50% - 50vw);
     align-items: center;
   }
-  .vocab-quiz .quiz-top,
-  .vocab-quiz .quiz-stage,
-  .vocab-quiz .quiz-bottom {
+  #root .vocab-quiz .quiz-top,
+  #root .vocab-quiz .quiz-stage,
+  #root .vocab-quiz .quiz-bottom {
     width: 100%;
     max-width: 520px;
   }
@@ -1388,48 +1525,48 @@
 
 /* ---------- 짧은 화면(16:9 등): 풍경·여백·자판을 줄여 넘치지 않게 ---------- */
 @media (max-height: 720px) {
-  .vocab-quiz {
+  #root .vocab-quiz {
     --scene-h: 84px;
     --kb-h: 176px;
     --panel-h: 196px;
   }
-  .vocab-quiz .kb {
+  #root .vocab-quiz .kb {
     padding-top: 8px;
   }
-  .vocab-quiz .kb-row {
+  #root .vocab-quiz .kb-row {
     height: 34px;
     margin-bottom: 8px;
   }
-  .vocab-quiz .kb-key {
+  #root .vocab-quiz .kb-key {
     height: 34px;
     line-height: 34px;
   }
-  .vocab-quiz .qcard-top {
+  #root .vocab-quiz .qcard-top {
     min-height: 96px;
   }
-  .vocab-quiz .qcard-top .ko {
+  #root .vocab-quiz .qcard-top .ko {
     font-size: 18px;
     line-height: 22px;
   }
-  .vocab-quiz .qcard-bottom {
+  #root .vocab-quiz .qcard-bottom {
     padding-top: 18px;
     min-height: 96px;
   }
-  .vocab-quiz .qcard-bottom .en {
+  #root .vocab-quiz .qcard-bottom .en {
     font-size: 20px;
     line-height: 29px;
     margin-bottom: 12px;
   }
-  .vocab-quiz .big-btn {
+  #root .vocab-quiz .big-btn {
     height: 96px;
     padding-bottom: 18px;
   }
 }
 @media (max-height: 620px) {
-  .vocab-quiz {
+  #root .vocab-quiz {
     --scene-h: 60px;
   }
-  .vocab-quiz .card-row {
+  #root .vocab-quiz .card-row {
     overflow-y: auto;
   }
 }
@@ -1534,20 +1671,20 @@
 }
 
 /* ---------- 배지는 누를 수 있다 (학습 정보 팝업) — button 기본 모양 제거 ---------- */
-.vocab-quiz .qcard-badges button {
+#root .vocab-quiz .qcard-badges button {
   border: none;
   font-family: inherit;
   cursor: pointer;
 }
 
 /* ---------- 빈 키: 아무 동작 없음 ---------- */
-.vocab-quiz .kb-key.blank {
+#root .vocab-quiz .kb-key.kb-blank {
   pointer-events: none;
 }
 
 /* ---------- 말풍선 → 사전 검색 결과 패널 (말해보카 실측: 카드 아래 풍경 위, 아래 가운데 꼬리) ---------- */
-.vocab-quiz .dict-pop,
-.vocab-quiz .after .dict-pop {
+#root .vocab-quiz .dict-pop,
+#root .vocab-quiz .after .dict-pop {
   position: absolute;
   left: 50%;
   bottom: calc(100% + 16px);
@@ -1562,7 +1699,7 @@
   z-index: 8;
   text-align: left;
 }
-.vocab-quiz .dict-pop::after {
+#root .vocab-quiz .dict-pop::after {
   content: '';
   position: absolute;
   left: 50%;
@@ -1572,7 +1709,7 @@
   border-right: 12px solid transparent;
   border-top: 12px solid #1f2022;
 }
-.vocab-quiz .dict-pop-head {
+#root .vocab-quiz .dict-pop-head {
   height: 34px;
   border-radius: 10px;
   background: #2c2d30;
@@ -1583,26 +1720,26 @@
   font-weight: 600;
   color: #ececec;
 }
-.vocab-quiz .dict-pop-row {
+#root .vocab-quiz .dict-pop-row {
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 12px 10px 0;
 }
-.vocab-quiz .dict-pop-row b {
+#root .vocab-quiz .dict-pop-row b {
   flex: 1;
   font-size: 18px;
   font-weight: 700;
   color: #fff;
 }
-.vocab-quiz .dict-pop-pos {
+#root .vocab-quiz .dict-pop-pos {
   padding: 3px 10px;
   border-radius: 6px;
   background: #3a3360;
   color: #c9b8ff;
   font-size: 12px;
 }
-.vocab-quiz .dict-pop-search {
+#root .vocab-quiz .dict-pop-search {
   width: 28px;
   height: 28px;
   display: flex;
@@ -1611,7 +1748,7 @@
   color: #c9c9c9;
   background: none;
 }
-.vocab-quiz .dict-pop p {
+#root .vocab-quiz .dict-pop p {
   margin: 6px 10px 0;
   font-size: 13.5px;
   line-height: 1.45;
@@ -1769,4 +1906,444 @@
   background: #735df7;
   color: #fff;
   font-size: 15px;
+}
+
+/* ============ 2026-11-10 재검증으로 추가 ============ */
+
+/* 등록된 답 말풍선: 정답(초록) / 비슷(노랑) / 오답(분홍) — 좌우 6.7 안쪽, 반지름 14, 검은 글 15.5px, 오른쪽 테두리 하트 */
+#root .vocab-quiz .pill.green {
+  background: #69b96d;
+  color: #121212;
+}
+#root .vocab-quiz .pill.yellow {
+  background: #e6bf5b;
+  color: #121212;
+}
+#root .vocab-quiz .pill.red {
+  background: #e58a94;
+  color: #121212;
+}
+#root .vocab-quiz .pill > span {
+  flex: 1;
+}
+#root .vocab-quiz .pill .pill-heart {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  color: rgba(255, 255, 255, 0.55);
+}
+#root .vocab-quiz .pill .pill-heart.on {
+  color: #e0515a;
+}
+
+/* 보너스 힌트 아이콘(상자) */
+#root .vocab-quiz .toolbar .ic-bonus {
+  color: #70777c;
+}
+
+/* 토스트: 화면 위쪽 가운데 (실측: y 111~159, 폭 내용에 맞춤, 배경 #464c52, 반지름 8, 흰 글 15.5px) */
+#root .quiz-screen.vocab-quiz > .toast {
+  position: absolute;
+  white-space: normal;
+  font-weight: 400;
+  top: 115.333px;
+  left: 50%;
+  bottom: auto;
+  transform: translateX(-50%);
+  z-index: 30;
+  width: max-content;
+  max-width: calc(100% - 40px);
+  min-height: 47.7px;
+  padding: 0 21px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #464c52;
+  color: #fff;
+  font-size: 15.5px;
+  line-height: 1.35;
+  text-align: center;
+  box-shadow: none;
+  animation: fadeIn 0.15s both;
+}
+
+/* 건너뛰기 확인 막대: 도구줄 위 13.7px, 좌우 18.7, 높이 64.7, 반지름 12, 배경 #373a3e */
+#root .vocab-quiz .skip-bar {
+  position: absolute;
+  left: 18.667px;
+  right: 18.667px;
+  bottom: calc(100% + 13.667px);
+  height: 64.667px;
+  padding: 0 12.333px 0 22.667px;
+  display: flex;
+  align-items: center;
+  gap: 11.667px;
+  border-radius: 12px;
+  background: #373a3e;
+  z-index: 6;
+  animation: fadeIn 0.15s both;
+}
+#root .vocab-quiz .skip-bar p {
+  flex: 1;
+  margin: 0;
+  font-size: 14px;
+  line-height: 18px;
+  color: #d6d6d6;
+}
+#root .vocab-quiz .skip-bar button {
+  flex: none;
+  width: 32.667px;
+  height: 30px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#root .vocab-quiz .skip-bar .skip-no {
+  background: none;
+  border: 1.5px solid #70777c;
+  color: #70777c;
+}
+#root .vocab-quiz .skip-bar .skip-yes {
+  background: #735cf4;
+  border: none;
+  color: #1c1d22;
+}
+#root .vocab-quiz .skip-bar .skip-yes svg polyline {
+  stroke-width: 3.2;
+}
+
+/* 오답 노트 패널: 카드 아래 6px 겹쳐서, 좌우 1px 안쪽(14.3~342.3), 배경 #2f3336, 반지름 10 */
+#root .vocab-quiz .card-rel {
+  position: relative;
+}
+#root .vocab-quiz .note-panel {
+  position: absolute;
+  left: 7px;
+  right: 7px;
+  top: calc(100% - 14px);
+  z-index: 4;
+  max-height: 175px;
+  overflow-y: auto;
+  padding: 0 16.333px 8px;
+  border-radius: 10px;
+  background: #2f3336;
+  animation: fadeIn 0.12s both;
+}
+#root .vocab-quiz .note-item {
+  padding: 10.167px 0 2.5px;
+  margin: 0;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  display: block;
+  position: relative;
+}
+/* 항목 사이 1px 선 (패널 안쪽으로 11.5px 들어가서) */
+#root .vocab-quiz .note-item + .note-item::before {
+  content: '';
+  position: absolute;
+  left: -4.8px;
+  right: -4.8px;
+  top: 0;
+  height: 1px;
+  background: #3a3e42;
+}
+#root .vocab-quiz .note-heart svg {
+  width: 21px;
+  height: 21px;
+}
+#root .vocab-quiz .note-head {
+  display: flex;
+  align-items: center;
+  gap: 6.9px;
+  height: 22px;
+  margin-left: -1.1px;
+}
+#root .vocab-quiz .note-chip {
+  flex: none;
+  height: 18px;
+  padding: 0 8.5px;
+  border-radius: 9px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+#root .vocab-quiz .note-chip.ok {
+  background: #32453e;
+  color: #44a56b;
+}
+#root .vocab-quiz .note-chip.near {
+  background: #4b4439;
+  color: #dfa04a;
+}
+#root .vocab-quiz .note-chip.wrong {
+  background: #4b3a3c;
+  color: #e0626c;
+}
+#root .vocab-quiz .note-head b {
+  flex: 1;
+  font-size: 16.667px;
+  font-weight: 700;
+  line-height: 22px;
+  color: #dcdcdc;
+  --ls: -0.004;
+}
+#root .vocab-quiz .note-heart {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  color: #45484b;
+}
+#root .vocab-quiz .note-heart.on {
+  color: #e0515a;
+}
+#root .vocab-quiz .note-item p {
+  margin: 3.333px 0 0;
+  font-size: 14px;
+  line-height: 19px;
+  color: #98999a;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+#root .vocab-quiz .note-empty {
+  margin: 0;
+  padding: 18px 0;
+  font-size: 14.5px;
+  color: #98999a;
+  text-align: center;
+}
+
+/* 오답 노트 패널은 카드 아래로 풍경·말풍선 줄 위까지 내려온다 (실측: 항목 2개일 때 아래 끝 y 631) */
+#root .vocab-quiz.notes-open .quiz-stage {
+  overflow: visible;
+  z-index: 2;
+}
+#root .vocab-quiz.notes-open .card-row {
+  overflow: visible;
+}
+
+/* 오답 노트가 열려 있으면 말풍선은 가려진다 ('^' 버튼은 그대로) */
+#root .vocab-quiz.notes-open .after .bubble-row .bubble {
+  visibility: hidden;
+}
+
+/* ============ 2026-11-11 플립에서 실제 앱과 같은 좌표로 대조해 고친 것 ============ */
+
+/* 첫 카드의 단축키 배지: 두 버튼 모두 자기 칸의 왼쪽 위 */
+#root .vocab-quiz .toolbar .kbd-hint.tr {
+  left: 12px;
+  right: auto;
+}
+
+/* 정답 패널: 배경 #252627 (styles.css 의 다크 규칙보다 강하게), 아이콘 5칸, 큰 버튼 모서리 28 */
+#root .quiz-screen.vocab-quiz .after,
+:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .after {
+  background: var(--q-panel);
+  border: none;
+}
+#root .quiz-screen.vocab-quiz .after-tools {
+  grid-template-columns: repeat(5, 1fr);
+  height: 70.333px;
+  margin: 0 7px;
+  padding: 0;
+  border-bottom: none;
+  position: relative;
+}
+#root .quiz-screen.vocab-quiz .after-tools::after {
+  content: '';
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 0;
+  height: 1px;
+  background: #343638;
+}
+#root .quiz-screen.vocab-quiz .after-tool {
+  gap: 0;
+  padding: 12.333px 0 0;
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--q-panel-tool);
+  white-space: nowrap;
+}
+#root .quiz-screen.vocab-quiz .after-tool > span:last-child {
+  margin-top: 6px;
+}
+#root .quiz-screen.vocab-quiz .after-tool + .after-tool::before {
+  top: 20px;
+  height: 22px;
+  background: #343638;
+}
+#root .quiz-screen.vocab-quiz .after-tool-icon {
+  width: 28px;
+  height: 27.667px;
+}
+#root .quiz-screen.vocab-quiz .after-tool-icon svg {
+  width: 33.6px;
+  height: 33.6px;
+  margin: -3px;
+  flex: none;
+}
+#root .quiz-screen.vocab-quiz .after-tool .tool-badge {
+  top: 5px;
+  right: calc(50% - 24px);
+}
+#root .quiz-screen.vocab-quiz .after-big {
+  gap: 10px;
+  padding: 11.333px 10.667px 0;
+}
+#root .quiz-screen.vocab-quiz .big-btn,
+:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .big-btn {
+  height: 107px;
+  border-radius: 28px;
+  background: #2d2f31;
+  justify-content: flex-start;
+  gap: 0;
+  padding: 0;
+  font-size: 15.667px;
+  font-weight: 700;
+  letter-spacing: calc(var(--ls, -0.0864) * 1em);
+}
+#root .quiz-screen.vocab-quiz .big-btn svg {
+  width: 46px;
+  height: 46px;
+  margin-top: 20px;
+  flex: none;
+}
+#root .quiz-screen.vocab-quiz .big-btn > span {
+  margin-top: 4.667px;
+  line-height: 15px;
+}
+#root .quiz-screen.vocab-quiz .big-btn.next,
+:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .big-btn.next {
+  background: #2d2f31;
+}
+#root .quiz-screen.vocab-quiz .big-btn.next.finish,
+:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .big-btn.next.finish {
+  background: var(--q-finish);
+}
+
+/* '^' 버튼: 36.7 정사각, 거의 검은 반투명, 얇은 꺾쇠 */
+#root .quiz-screen.vocab-quiz .after .more-btn {
+  width: 36.667px;
+  height: 36.667px;
+  right: 3.333px;
+  bottom: 0;
+  border-radius: 9px;
+  background: rgba(20, 24, 26, 0.86);
+  color: #8e9499;
+}
+#root .quiz-screen.vocab-quiz .after .more-btn svg {
+  width: 18px;
+  height: 18px;
+  transform: none;
+}
+
+/* 정답 말풍선 꼬리가 잘리지 않게 */
+#root .quiz-screen.vocab-quiz .after .bubble-row .bubble {
+  overflow: visible;
+}
+/* '^' 버튼 실측: 24.7 × 22.7, 반지름 4, #212421, 오른쪽 8.7, 패널 위 9.3 */
+#root .quiz-screen.vocab-quiz .after .more-btn {
+  width: 24.667px;
+  height: 22.667px;
+  right: 8.667px;
+  bottom: 4.333px;
+  border-radius: 4px;
+  background: #212421;
+  color: #8a9296;
+}
+#root .quiz-screen.vocab-quiz .after .more-btn svg {
+  width: 15px;
+  height: 15px;
+}
+#root .quiz-screen.vocab-quiz .after-tool {
+  font-size: 11.667px;
+  font-weight: 700;
+  letter-spacing: calc(var(--ls, -0.0864) * 1em);
+  padding-right: 1px;
+}
+
+/* 색 실측(플립, 같은 화면 픽셀 대조): 도구 아이콘·라벨 #6f777b / #6a737a, 구분선 #191a1c, 큰 버튼 글·아이콘 색 */
+#root .quiz-screen.vocab-quiz .after-tool,
+:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .after-tool {
+  color: #6a737a;
+}
+#root .quiz-screen.vocab-quiz .after-tool .after-tool-icon,
+:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .after-tool .after-tool-icon {
+  color: #6f777b;
+}
+#root .quiz-screen.vocab-quiz .after-tool.active,
+#root .quiz-screen.vocab-quiz .after-tool.active .after-tool-icon,
+:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .after-tool.active .after-tool-icon {
+  color: #a98bff;
+}
+#root .quiz-screen.vocab-quiz .after-tools::after {
+  background: #191a1c;
+}
+#root .quiz-screen.vocab-quiz .after-tool + .after-tool::before {
+  background: #191a1c;
+}
+#root .quiz-screen.vocab-quiz .big-btn,
+:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .big-btn {
+  background: #2d2f2e;
+  color: #a36be5;
+}
+#root .quiz-screen.vocab-quiz .big-btn:nth-child(2),
+:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .big-btn:nth-child(2) {
+  color: #9067e2;
+}
+#root .quiz-screen.vocab-quiz .big-btn.next,
+:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .big-btn.next {
+  background: #2d2f2e;
+  color: #6a66e5;
+}
+#root .quiz-screen.vocab-quiz .big-btn.next.finish,
+:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .big-btn.next.finish {
+  background: var(--q-finish);
+  color: #fff;
+}
+#root .quiz-screen.vocab-quiz .bubble.link,
+#root .quiz-screen.vocab-quiz .bubble .u {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2.5px;
+  text-decoration-color: rgba(255, 255, 255, 0.72);
+}
+
+/* 자판 줄 간격: 37 + 10 / 37 + 9.67 / 37 + 9.67 / 37.33 (실측 y 674.33 · 721.33 · 768 · 814.67) */
+#root .vocab-quiz .kb-row.r1,
+#root .vocab-quiz .kb-row.r2 {
+  margin-bottom: 9.667px;
+}
+/* 셋째 줄 글자 키는 폭 30 고정 (z 58.67 ~ m 302.33) */
+#root .vocab-quiz .kb-row.r2 .kb-key:not(.gray) {
+  flex: 0 0 30px;
+}
+
+/* 큰 버튼 글자: 네이티브는 글자마다 폭이 달라 '듣기평가 속도'가 균일 자간보다 3px 넓다 → 이 라벨만 덜 좁힌다 */
+#root .quiz-screen.vocab-quiz .big-btn > span {
+  padding-right: 1.3px;
+}
+#root .quiz-screen.vocab-quiz .big-btn:nth-child(1) > span {
+  --ls: -0.05;
+}
+#root .quiz-screen.vocab-quiz .big-btn:nth-child(2) > span {
+  --ls: -0.072;
+}
+#root .quiz-screen.vocab-quiz .big-btn:nth-child(3) > span {
+  --ls: -0.058;
 }

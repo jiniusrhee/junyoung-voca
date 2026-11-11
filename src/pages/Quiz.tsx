@@ -1,5 +1,5 @@
 import { useLiveQuery } from 'dexie-react-hooks';
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import { type CSSProperties, useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { State } from 'ts-fsrs';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import AfterPanel from '../components/AfterPanel';
@@ -14,8 +14,9 @@ import Icon from '../components/Icon';
 import Keyboard from '../components/Keyboard';
 import Mascot from '../components/Mascot';
 import VocabSettings from '../components/VocabSettings';
-import QuizCard, { FilledSentence, KoSentence, type CardBadge, type CardFlash } from '../components/QuizCard';
-import WrongItem from '../components/WrongItem';
+import { QBack, QBonus, QBookOutline, QGear, QHead, QHint, QMic, QReveal, QSpeak, QStreak, QSwap } from '../components/QuizIcons';
+import KoText from '../components/KoText';
+import QuizCard, { FilledSentence, type CardBadge, type CardFlash } from '../components/QuizCard';
 import { Backdrop, useLeaveGuard } from '../components/StudyChrome';
 import { db } from '../db';
 import { comprehension, computeStreak, estimateVocab, grantRepairPen, daySolved } from '../lib/stats';
@@ -30,9 +31,9 @@ import { favNoteKey, toggleFavNote, useFavNotes } from '../lib/favnotes';
 import { pushInbox } from '../lib/inbox';
 import { markPronunciation } from '../lib/learned';
 import { canRecognize, recognizeOnce, speak, voiceErrorMessage } from '../lib/speech';
-import { answerWords, containsAnswer, evaluate, feedbackFor, fullSentence, hintPrefix, levenshtein, normalize, speechMatchRate, typoMask } from '../lib/text';
+import { answerWords, containsAnswer, evaluate, feedbackFor, fullSentence, normalize, revealPrefix, speechMatchRate, typoOf } from '../lib/text';
 import { toggleWordbook, useWordbook } from '../lib/wordbook';
-import { useStatusBarColor } from '../lib/statusBar';
+import { useNavBarColor, useStatusBarColor } from '../lib/statusBar';
 import { formatAfter, formatAgo, formatDuration, studyDateOf } from '../lib/time';
 import { POS_KO, type Settings, type StoredWord, type Tone, type WrongNote } from '../types';
 
@@ -44,7 +45,11 @@ interface Live {
   input: string;
   /** 힌트로 보여 준 앞글자 (말해보카 실측: 지울 수 있고, 다 지우면 칸에 주황 고스트로 남는다) */
   hintText: string;
-  /** 힌트를 본 뒤 틀리면 '보너스 힌트'(한 글자 더)를 쓸 수 있다 */
+  /** 지금까지 보여 준 글자 수: 힌트 보기 +2, 보너스 힌트 +1 */
+  revealed: number;
+  /** '힌트 보기'를 이미 썼는지 (썼으면 버튼은 '정답 보기') */
+  hintUsed: boolean;
+  /** 맞는 다른 답(초록 말풍선)을 내면 '보너스 힌트'(한 글자 더)를 한 번 쓸 수 있다 */
   bonusReady: boolean;
   hints: number;
   showedAnswer: boolean;
@@ -68,6 +73,8 @@ const freshLive = (q: Question): Live => ({
   q,
   input: '',
   hintText: '',
+  revealed: 0,
+  hintUsed: false,
   bonusReady: false,
   hints: 0,
   showedAnswer: false,
@@ -115,6 +122,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const [slideBack, setSlideBack] = useState(false);
   /** 배지를 누르면 뜨는 '학습 정보' 팝업 */
   const [infoOpen, setInfoOpen] = useState(false);
+  /** 왼쪽으로 밀어 미루기: '건너뛰었다가 다시 도전할까요?' 확인 막대 */
+  const [skipAsk, setSkipAsk] = useState(false);
   /** 오른쪽으로 밀어 뒤로 미룬 카드: 몇 장 뒤에 다시 낸다 */
   const deferred = useRef<{ q: Question; after: number }[]>([]);
   const cardsSeen = useRef(0);
@@ -136,12 +145,26 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const favorites = useLiveQuery(() => db.favorites.toCollection().primaryKeys(), []) as string[] | undefined;
   // 입력 말풍선: 사전(단어 팩)에 있는 단어면 밑줄 + 누르면 뜻 (말해보카)
   const dictWords = useLiveQuery(async () => new Map((await db.words.toArray()).map((w) => [w.word.toLowerCase(), w])), []);
+  // 입력 말풍선 밑줄: 사전에 있는 낱말이면 밑줄. 말해보카는 큰 사전이라 웬만한 낱말·알파벳 한 글자도 밑줄이 붙는다 → 우리는 단어 팩의 표제어·예문·등록 답에 나온 낱말 + 알파벳
+  const knownTokens = useLiveQuery(async () => {
+    const set = new Set<string>('abcdefghijklmnopqrstuvwxyz'.split(''));
+    for (const w of await db.words.toArray()) {
+      set.add(w.word.toLowerCase());
+      for (const s of w.sentences) {
+        const text = `${s.en} ${s.answer} ${(s.alts ?? []).map((a) => a.w).join(' ')}`.toLowerCase();
+        for (const tok of text.match(/[a-z']+/g) ?? []) set.add(tok);
+      }
+    }
+    return set;
+  }, []);
   const [typedPop, setTypedPop] = useState(false);
   const tipSeen = useLiveQuery(async () => !!(await db.kv.get('typedTipSeen')), []);
   const [tipOpen, setTipOpen] = useState(true);
   const guard = useLeaveGuard(() => nav('/'));
   // 말해보카: 학습 화면에서는 상태바까지 하늘색 (다이노 테마), 하늘 테마는 연한 파랑
   useStatusBarColor(settings?.studyTheme === 'sky' ? '#96cbf5' : '#bbe4df', false);
+  // 내비게이션 바: 자판이 떠 있으면 자판 배경(#2b2c2b), 정답 패널이면 패널 배경(#252627) — 화면 맨 아래까지 같은 색으로 이어진다
+  useNavBarColor(phase === 'question' || phase === 'answered' ? (phase === 'answered' && panelReady ? '#252627' : '#2b2c2b') : null);
 
   const settingsRef = useRef<Settings | null>(null);
   settingsRef.current = settings ?? null;
@@ -173,6 +196,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     setRevealDue(false);
     setMoreOpen(false);
     setInfoOpen(false);
+    setSkipAsk(false);
     setPhase('question');
   };
 
@@ -246,72 +270,80 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       const s = settingsRef.current;
       if (!s || finalizing.current) return;
       finalizing.current = true;
-      const now = new Date();
-      const outcome: Outcome = {
-        firstTry: l.wrongAttempts === 0 && !l.showedAnswer,
-        hints: l.hints,
-        showedAnswer: l.showedAnswer,
-        wrongAttempts: l.wrongAttempts,
-        elapsedMs: Date.now() - l.startedAt,
-      };
-      const base = l.q.card ?? newCardRow(l.q.word.id, now);
-      const { row, grade, known } = applyReview(base, outcome, now);
-      const clean = outcome.firstTry && outcome.hints === 0;
-      const date = studyDateOf(now);
+      try {
+        const now = new Date();
+        const outcome: Outcome = {
+          firstTry: l.wrongAttempts === 0 && !l.showedAnswer,
+          hints: l.hints,
+          showedAnswer: l.showedAnswer,
+          wrongAttempts: l.wrongAttempts,
+          elapsedMs: Date.now() - l.startedAt,
+        };
+        const base = l.q.card ?? newCardRow(l.q.word.id, now);
+        const { row, grade, known } = applyReview(base, outcome, now);
+        const clean = outcome.firstTry && outcome.hints === 0;
+        const date = studyDateOf(now);
 
-      const { total, metNow } = await db.transaction('rw', db.cards, db.reviews, db.daily, async () => {
-        await db.cards.put(row);
-        await db.reviews.add({
-          wordId: l.q.word.id,
-          ts: now.getTime(),
-          studyDate: date,
-          rating: grade,
-          firstTry: outcome.firstTry,
-          hints: outcome.hints,
-          showedAnswer: outcome.showedAnswer,
-          wrongAttempts: outcome.wrongAttempts,
-          mode: m,
-          elapsedMs: outcome.elapsedMs,
-          isNew: l.q.isNew,
-          isTest: mode === 'test',
-          sentenceIdx: l.q.sentenceIdx,
-          wrongs: l.wrongs,
+        const { total, metNow } = await db.transaction('rw', db.cards, db.reviews, db.daily, async () => {
+          await db.cards.put(row);
+          await db.reviews.add({
+            wordId: l.q.word.id,
+            ts: now.getTime(),
+            studyDate: date,
+            rating: grade,
+            firstTry: outcome.firstTry,
+            hints: outcome.hints,
+            showedAnswer: outcome.showedAnswer,
+            wrongAttempts: outcome.wrongAttempts,
+            mode: m,
+            elapsedMs: outcome.elapsedMs,
+            isNew: l.q.isNew,
+            isTest: mode === 'test',
+            sentenceIdx: l.q.sentenceIdx,
+            wrongs: l.wrongs,
+          });
+          const d = (await db.daily.get(date)) ?? { date, total: 0, newWords: 0, reviews: 0, correct: 0, timeMs: 0 };
+          if (d.solved == null) d.solved = d.total;
+          const before = d.solved;
+          d.total += 1;
+          // 말해보카: 힌트 보기·정답 보기를 쓴 카드는 상단 카운트가 오르지 않는다 (오답 뒤 정답은 오른다)
+          if (!outcome.showedAnswer && outcome.hints === 0) d.solved += 1;
+          if (l.q.isNew) d.newWords += 1;
+          else d.reviews += 1;
+          if (known) d.knownNew = (d.knownNew ?? 0) + 1;
+          if (clean) d.correct += 1;
+          d.timeMs += Math.min(outcome.elapsedMs, 5 * 60_000);
+          d.goal = s.dailyGoal;
+          await db.daily.put(d);
+          return { total: d.solved, metNow: before < s.dailyGoal && d.solved >= s.dailyGoal };
         });
-        const d = (await db.daily.get(date)) ?? { date, total: 0, newWords: 0, reviews: 0, correct: 0, timeMs: 0 };
-        if (d.solved == null) d.solved = d.total;
-        const before = d.solved;
-        d.total += 1;
-        // 말해보카: 힌트 보기·정답 보기를 쓴 카드는 상단 카운트가 오르지 않는다 (오답 뒤 정답은 오른다)
-        if (!outcome.showedAnswer && outcome.hints === 0) d.solved += 1;
-        if (l.q.isNew) d.newWords += 1;
-        else d.reviews += 1;
-        if (known) d.knownNew = (d.knownNew ?? 0) + 1;
-        if (clean) d.correct += 1;
-        d.timeMs += Math.min(outcome.elapsedMs, 5 * 60_000);
-        d.goal = s.dailyGoal;
-        await db.daily.put(d);
-        return { total: d.solved, metNow: before < s.dailyGoal && d.solved >= s.dailyGoal };
-      });
-      void computeStreak().then(grantRepairPen).catch(() => undefined);
+        void computeStreak().then(grantRepairPen).catch(() => undefined);
 
-      pickerRef.current?.noteAnswered(l.q.word.id);
-      if (testRef.current) {
-        testRef.current.record(clean);
-        setTestAsked(testRef.current.asked);
-      }
-      setTodayTotal(total);
-      setLive({ ...l, feedback: null, typoLive: false });
-      const item: Answered = { q: l.q, outcome, known, due: row.due, wrongs: l.wrongs };
-      setAnswered(item);
-      setHistory((h) => [...h.slice(-19), item]);
-      setFlash({ kind: 'correct', key: Date.now() });
-      sfx('correct');
-      setPhase('answered');
-      // 익룡은 정답 0.6초 뒤 진행 막대 아래로 (말해보카)
-      window.setTimeout(() => setFlights((f) => f + 1), 600);
-      if (metNow && mode === 'study') {
-        window.setTimeout(() => setGoalReached(true), 1100);
-        void pushInbox('🏆 오늘 목표 달성!', '하루 목표를 채웠어요. 추가 학습으로 더 나아가 보세요.', '/');
+        pickerRef.current?.noteAnswered(l.q.word.id);
+        if (testRef.current) {
+          testRef.current.record(clean);
+          setTestAsked(testRef.current.asked);
+        }
+        setTodayTotal(total);
+        setLive({ ...l, feedback: null, typoLive: false });
+        const item: Answered = { q: l.q, outcome, known, due: row.due, wrongs: l.wrongs };
+        setAnswered(item);
+        setHistory((h) => [...h.slice(-19), item]);
+        setFlash({ kind: 'correct', key: Date.now() });
+        sfx('correct');
+        setPhase('answered');
+        // 익룡은 정답 0.6초 뒤 진행 막대 아래로 (말해보카)
+        window.setTimeout(() => setFlights((f) => f + 1), 600);
+        if (metNow && mode === 'study') {
+          window.setTimeout(() => setGoalReached(true), 1100);
+          void pushInbox('🏆 오늘 목표 달성!', '하루 목표를 채웠어요. 추가 학습으로 더 나아가 보세요.', '/');
+        }
+      } catch (err) {
+        // 채점·저장 중 예외가 나도 화면이 그대로 멈추지 않게: 잠금을 풀고 알린다 (2026-11-11: 들여온 단어 카드에서 FSRS 예외로 멈춘 적 있음)
+        finalizing.current = false;
+        console.error('finalize failed', err);
+        setToast('채점 중 문제가 생겼어요. 확인을 한 번 더 눌러 주세요.');
+        window.setTimeout(() => setToast(null), 2600);
       }
     },
     [mode],
@@ -352,13 +384,13 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       let feedback = next === l.input ? l.feedback : null;
       let typoLive = l.typoLive;
       if (l.typoLive && next !== l.input) {
-        if (!next.trim()) {
+        // 그 칸을 다 지우면 말풍선이 사라지고, 3글자 넘게 달라지면 마지막 내용이 남는다
+        const t = typoOf(next, sentenceOf(l.q).answer);
+        if (!next.trim() || !t) {
           typoLive = false;
           feedback = null;
         } else {
-          const ans = sentenceOf(l.q).answer;
-          const d = levenshtein(normalize(next), normalize(ans));
-          feedback = d <= 3 ? { tone: 'info', msg: `정답과 ${d}글자 달라요.`, mask: typoMask(next.trim(), ans) } : l.feedback;
+          feedback = t.distance <= 3 ? { tone: 'info', msg: `정답과 ${t.distance}글자 달라요.`, mask: t.mask } : l.feedback;
         }
       }
       return { ...l, input: next, feedback, typoLive };
@@ -390,17 +422,26 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   };
   const backspace = () => editInput((cur) => cur.slice(0, -1));
 
-  const markWrong = (l: Live, w: string, tone: Tone, msg: string, penalize: boolean, showPill = true, mask?: { text: string; bad: boolean }[], flashKind: 'wrong' | 'typo' = 'wrong') => {
+  const markWrong = (
+    l: Live,
+    w: string,
+    tone: Tone,
+    msg: string,
+    penalize: boolean,
+    showPill = true,
+    mask?: { text: string; bad: boolean }[],
+    opts: { typo?: boolean; bonus?: boolean } = {},
+  ) => {
     setLive({
       ...l,
       feedback: showPill ? { tone, msg, mask } : null,
-      typoLive: flashKind === 'typo',
-      // 말해보카: 힌트를 본 뒤 틀리면 힌트 버튼이 '보너스 힌트'로 바뀐다
-      bonusReady: l.hints > 0 && !l.showedAnswer ? true : l.bonusReady,
+      typoLive: !!opts.typo,
+      bonusReady: opts.bonus ? true : l.bonusReady,
       wrongAttempts: l.wrongAttempts + (penalize ? 1 : 0),
       wrongs: [...l.wrongs, { w, tone, m: msg }],
     });
-    setFlash({ kind: flashKind, key: Date.now() });
+    // 말해보카 실측(2026-11-10): 오타를 포함한 모든 오답에서 '!' 도장이 찍히고 카드가 1초 붉어진다
+    setFlash({ kind: 'wrong', key: Date.now() });
     sfx('wrong');
   };
 
@@ -413,24 +454,25 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       return;
     }
     const fb = feedbackFor(e);
-    // 말해보카 실측(2026-11-08): 등록 오답·실제 단어 오답은 '!' 도장 + 카드가 붉어짐(등록 오답은 말풍선도), 오타는 '!' + 말풍선(카드색 그대로),
-    // 사전에 없는 글자 뭉치는 '!' 도장만. 우리 단어 데이터에 있는 단어를 '실제 단어'로 본다
-    const inDict = !!dictWords?.has(normalize(live.input));
-    const flashKind = e.kind === 'typo' ? 'typo' : e.kind === 'wrong' && !inDict ? 'typo' : 'wrong';
-    markWrong(live, live.input.trim(), fb.tone, fb.msg, !fb.bonus, e.kind === 'alt' || e.kind === 'typo', fb.mask, flashKind);
+    // 말풍선은 등록된 답(정답·비슷·오답 설명)과 오타(칸 단위, 길이에 따라 1~3글자)에만 뜬다. 기본형(relocate↔relocating)이나 다른 단어는 말풍선 없음.
+    // 맞는 다른 답(초록 말풍선)을 내면 힌트 버튼이 '보너스 힌트'로 바뀐다
+    const showPill = e.kind === 'alt' || e.kind === 'typo';
+    markWrong(live, live.input.trim(), fb.tone, fb.msg, !fb.bonus, showPill, fb.mask, { typo: e.kind === 'typo', bonus: e.kind === 'alt' && e.alt.t === 'ok' });
   };
 
   const hint = () => {
     if (!live || phase !== 'question' || live.showedAnswer) return;
     const answer = sentenceOf(live.q).answer;
-    if (live.hints === 0) {
-      const pre = hintPrefix(answer);
-      // 말해보카 실측(2026-11-08): 힌트는 앞 2글자. 치던 글자는 힌트 글자로 바뀌고, 힌트 글자도 지울 수 있다(다 지우면 칸에 주황 고스트로 남음)
-      setLive({ ...live, hints: 1, hintText: pre, input: pre, feedback: null, typoLive: false });
-    } else if (live.bonusReady) {
-      // 보너스 힌트: 힌트를 본 뒤 틀리면 한 글자를 더 보여 준다
-      const pre = answer.slice(0, Math.min(answer.length - 1, live.hintText.length + 1));
-      setLive({ ...live, hints: live.hints + 1, hintText: pre, bonusReady: false, input: pre, feedback: null, typoLive: false });
+    if (live.bonusReady) {
+      // 보너스 힌트: 지금까지 보여 준 것보다 한 글자 더 (힌트 전이면 1글자, 힌트 2글자 뒤면 3글자). 쓰고 나면 버튼은 원래 단계로
+      const n = live.revealed + 1;
+      const pre = revealPrefix(answer, n);
+      setLive({ ...live, hints: live.hints + 1, revealed: n, hintText: pre, bonusReady: false, input: pre, feedback: null, typoLive: false });
+    } else if (!live.hintUsed) {
+      // 힌트 보기: 두 글자 더 (보너스 1글자 뒤면 3글자). 치던 글자는 힌트 글자로 바뀌고, 힌트 글자도 지울 수 있다(다 지우면 칸에 주황 고스트로 남음)
+      const n = live.revealed + 2;
+      const pre = revealPrefix(answer, n);
+      setLive({ ...live, hints: live.hints + 1, hintUsed: true, revealed: n, hintText: pre, input: pre, feedback: null, typoLive: false });
     } else {
       // 정답 보기: 입력이 비워지고 캐럿이 칸 맨 앞으로, 정답 전체가 비친다(힌트 글자 초록 + 나머지 주황). 처음부터 다시 쳐야 한다
       setLive({ ...live, showedAnswer: true, input: '', feedback: null, typoLive: false });
@@ -565,6 +607,13 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase, cardKey]);
 
+  // 건너뛰기 확인 막대는 3초 뒤 저절로 닫힌다 (말해보카 실측)
+  useEffect(() => {
+    if (!skipAsk) return;
+    const t = window.setTimeout(() => setSkipAsk(false), 3000);
+    return () => window.clearTimeout(t);
+  }, [skipAsk]);
+
   useEffect(() => {
     const t = window.setTimeout(() => setBarReady(true), 60);
     return () => window.clearTimeout(t);
@@ -691,15 +740,24 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const count = mode === 'test' ? testAsked : todayTotal;
   const fill = Math.min(1, count / total);
   const isAnswered = shown;
-  // 말해보카 실측: 오른쪽으로 밀면 이전 카드. 이전 카드가 없을 때는 이 문제를 뒤로 미룬다(힌트·오답 뒤에는 '더 이상 미룰 수 없다' 토스트)
-  const postpone = () => {
-    if (!live || phase !== 'question') return;
-    if (live.hints > 0 || live.showedAnswer || live.wrongAttempts > 0 || mode === 'test') {
-      showToast('이 문제는 더 이상 미룰 수 없어요.');
+  // 말해보카 실측(2026-11-10): 오른쪽으로 밀면 이전(푼) 카드, 왼쪽으로 밀면 이 문제 미루기.
+  // 새 단어는 미룰 수 없고(토스트), 힌트·오답 뒤에도 안 된다(토스트). 깨끗한 복습 카드는 풍경 위에 확인 막대가 3초 동안 뜬다
+  const askSkip = () => {
+    if (!live || phase !== 'question' || mode === 'test') return;
+    if (live.q.isNew) {
+      showToast('새로 배우는 단어는 미룰 수 없습니다.');
       return;
     }
+    if (live.hints > 0 || live.showedAnswer || live.wrongs.length > 0) {
+      showToast('이 문제는 더 이상 미룰 수 없습니다.');
+      return;
+    }
+    setSkipAsk(true);
+  };
+  const doSkip = () => {
+    if (!live) return;
+    setSkipAsk(false);
     deferred.current.push({ q: live.q, after: cardsSeen.current + 3 });
-    showToast('이 문제를 뒤로 미뤘어요.');
     void loadNext();
   };
   const goBack = () => {
@@ -707,7 +765,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       if (past.length) {
         setSlideBack(true);
         setHistIdx(past.length - 1);
-      } else postpone();
+      }
     } else if (histIdx > 0) {
       setSlideBack(true);
       setHistIdx(histIdx - 1);
@@ -718,6 +776,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       setSlideBack(false);
       setHistIdx(histIdx + 1 < past.length ? histIdx + 1 : null);
     } else if (phase === 'answered' && panelReady) void next();
+    else if (phase === 'question') askSkip();
   };
   const favKey = `${q.word.id}#${q.sentenceIdx}`;
 
@@ -737,58 +796,66 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     const female = settings.voiceGender === 'female';
     infoCard = (
       <InfoCard
-        icon="book"
+        icon={<QBookOutline />}
         title="다른 예문"
         right={
           <button className="info-card-ctl" onClick={() => void saveSettings({ voiceGender: female ? 'male' : 'female' })}>
-            <Icon name="retry" size={14} /> {female ? '여자 음성' : '남자 음성'}
+            <QSwap />
+            <span>{female ? '여자 음성' : '남자 음성'}</span>
           </button>
         }
       >
         {others.length === 0 && <p className="overlay-empty">예문을 준비중입니다.</p>}
         {others.map(({ s, i }) => (
           <div key={i} className="ex-item big">
-            <p className="ex-en">
+            <p className="ex-en" lang="en">
               <FilledSentence sentence={s} />
             </p>
-            <p className="ex-ko">
-              <KoSentence ko={s.ko} />
+            {/* 말해보카는 이 자리에 예문 출처를 적는다. 우리는 출처 대신 그 문장의 뜻을 같은 모양(작은 회색, 오른쪽 정렬)으로 보여 준다 */}
+            <p className="ex-src">
+              <KoText text={s.ko.split('**').join('')} />
             </p>
-            {s.ctx && <p className="ex-src">{s.ctx}</p>}
             <button className="ex-play" onClick={() => speak(fullSentence(s.en, s.answer), settings.speechRate === 'slow')} aria-label="듣기">
-              <Icon name="speaker" size={22} />
+              <QSpeak />
             </button>
           </div>
         ))}
       </InfoCard>
     );
-  } else if (isAnswered && overlay === 'wrongs') {
-    const rest = (sentence.alts ?? []).filter((a) => !isAnswered.wrongs.some((x) => normalize(x.w) === normalize(a.w)));
-    infoCard = (
-      <InfoCard icon="note" title="오답 노트">
-        {isAnswered.wrongs.length === 0 && <p className="overlay-empty">이번 문제는 틀린 답 없이 맞혔어요!</p>}
-        {isAnswered.wrongs.map((x, i) => (
-          <WrongItem key={i} w={x.w} tone={x.tone} m={x.m} />
-        ))}
-        {rest.length > 0 && (
-          <>
-            <p className="overlay-sub">이런 답도 헷갈리기 쉬워요</p>
-            {rest.map((a, i) => {
-              const tone: Tone = a.t === 'ok' ? 'green' : a.t === 'near' ? 'yellow' : 'red';
-              return <WrongItem key={i} w={a.w} tone={tone} m={a.m} soft />;
-            })}
-          </>
-        )}
-      </InfoCard>
-    );
   }
+  // 오답 노트 (말해보카 실측 2026-11-10): 카드를 대신하지 않고 카드 아래쪽에 겹쳐 뜬다. 그 문장에 등록된 답(정답/비슷/오답)과 설명 목록, 항목마다 ♥
+  const notes = sentence.alts ?? [];
+  const notePanel =
+    isAnswered && overlay === 'wrongs' ? (
+      <div className="note-panel">
+        {notes.length === 0 && <p className="note-empty">이 문장에는 오답 노트가 없어요.</p>}
+        {notes.map((a, i) => {
+          const tone: Tone = a.t === 'ok' ? 'green' : a.t === 'near' ? 'yellow' : 'red';
+          const fav = favNotes?.some((n) => n.key === favNoteKey(q.word.id, q.sentenceIdx, a.w)) ?? false;
+          return (
+            <div key={i} className="note-item">
+              <div className="note-head">
+                <span className={`note-chip ${a.t}`}>{a.t === 'ok' ? '정답' : a.t === 'near' ? '비슷' : '오답'}</span>
+                <b lang="en">{a.w}</b>
+                <button className={`note-heart ${fav ? 'on' : ''}`} onClick={() => void toggleFavNote({ wordId: q.word.id, sentenceIdx: q.sentenceIdx, w: a.w, tone, m: a.m })} aria-label="좋아하는 오답노트">
+                  <Icon name="heartFill" size={20} />
+                </button>
+              </div>
+              <p>
+                <KoText text={a.m} />
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    ) : null;
 
   const showPanel = !!isAnswered && (panelReady || !!hist);
   /** 추가 학습 목표를 채운 마지막 카드: '다음 문제' 대신 초록 '학습 완료' (말해보카) */
   const finish = mode === 'study' && extraTarget > 0 && todayTotal >= total && !hist;
-  // 힌트 버튼: 힌트 보기(?) → 정답 보기(✓) → (힌트 뒤 오답이면) 보너스 힌트(상자) → 정답 보기
-  const hintLabel = live.hints === 0 ? '힌트 보기' : live.bonusReady ? '보너스 힌트' : '정답 보기';
-  const hintIcon = live.hints === 0 ? <Icon name="question" size={26} className="ic-hint" /> : live.bonusReady ? <Icon name="gift" size={26} className="ic-hint" /> : <Icon name="check" size={26} className="ic-answer" />;
+  // 힌트 버튼 (말해보카 실측 2026-11-10): 힌트 보기(?) → 정답 보기(✓). 맞는 다른 답(초록 말풍선)을 내면 잠깐 '보너스 힌트'(상자)가 되고, 쓰면 원래 단계로 돌아간다
+  const hintLabel = live.bonusReady ? '보너스 힌트' : !live.hintUsed ? '힌트 보기' : '정답 보기';
+  const hintIcon = live.bonusReady ? <QBonus /> : !live.hintUsed ? <QHint /> : <QReveal />;
   const bubbleHit = dictWords?.get(sentence.answer.toLowerCase());
   const fullEn = fullSentence(sentence.en, sentence.answer);
   const panelItem = showPanel ? isAnswered : panelLeaving ? exiting?.item ?? null : null;
@@ -809,7 +876,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     : [];
 
   return (
-    <div className={`quiz-screen vocab-quiz theme-${settings.studyTheme}${isAnswered ? ' answered' : ''}`}>
+    <div className={`quiz-screen vocab-quiz theme-${settings.studyTheme}${isAnswered ? ' answered' : ''}${notePanel ? ' notes-open' : ''}${infoCard ? ' examples-open' : ''}`}>
       {settings.studyTheme === 'sky' ? (
         <Backdrop theme="sky" />
       ) : (
@@ -819,24 +886,26 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       )}
       <header className="quiz-top">
         {guard.modal}
-        <button className="icon-btn light" onClick={mode === 'test' ? () => nav('/') : guard.leave} aria-label="나가기">
-          <Icon name="back" size={24} />
+        <button className="qt-btn qt-back" onClick={mode === 'test' ? () => nav('/') : guard.leave} aria-label="나가기">
+          <QBack />
         </button>
-        <div className="quiz-progress">
-          <span className={`trophy-badge ${count >= total ? 'gold' : ''}`}>
-            <Icon name={settings.studyTheme === 'dino' ? 'drop' : 'trophy'} size={18} />
-          </span>
+        {/* 말해보카 실측: 채움 끝 x = 82 + 210 × (푼 수 / 목표) (화면 폭 360 기준), 그 오른쪽에 작은 공룡 */}
+        <div className="quiz-progress" style={{ '--f': barReady ? fill : 0 } as CSSProperties}>
           <div className="progress-track">
-            <div className="progress-fill" style={{ width: barReady ? `${Math.max(fill * 100, 14)}%` : '14%' }}>
-              <span className="progress-head" aria-hidden="true" />
-            </div>
-            <span className="progress-label">
-              {count}/{total}
+            <div className="progress-fill" />
+            <span className="progress-head" aria-hidden="true">
+              <QHead />
             </span>
           </div>
+          <span className={`trophy-badge ${count >= total ? 'gold' : ''}`}>
+            <QStreak />
+          </span>
+          <span className="progress-label">
+            {count}/{total}
+          </span>
         </div>
-        <button className="icon-btn light" onClick={() => setShowSettings(true)} aria-label="설정">
-          <Icon name="gear" size={24} />
+        <button className="qt-btn qt-gear" onClick={() => setShowSettings(true)} aria-label="설정">
+          <QGear />
         </button>
       </header>
       {mode === 'test' && <p className="test-caption">레벨 테스트 · 모르면 힌트나 정답 보기를 눌러도 괜찮아요</p>}
@@ -889,7 +958,6 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
                     input={hist ? sentence.answer : live.input}
                     showedAnswer={hist ? false : live.showedAnswer}
                     hintText={hist ? '' : live.hintText}
-                    ghostLockedLen={hist ? 0 : live.hintText.length}
                     showCaret={inputMode === 'keyboard' && phase === 'question' && !hist}
                     blankMatchesLength={settings.blankMatchesLength}
                     flash={flash}
@@ -904,6 +972,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
                     onBadgeHelp={() => setInfoOpen(true)}
                   />
                 )}
+                {notePanel}
                 {inputMode === 'voice' && phase === 'question' && !hist && (
                   <>
                     <button className="hands-btn" onClick={() => setHandsTip((v) => !v)} aria-label="핸즈프리">
@@ -924,16 +993,31 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       </main>
 
       <div className="quiz-bottom">
+        {skipAsk && (
+          <div className="skip-bar">
+            <p>
+              이 문제는 건너뛰었다가
+              <br />
+              잠시 후, 다시 도전할까요?
+            </p>
+            <button className="skip-no" onClick={() => setSkipAsk(false)} aria-label="아니요">
+              <Icon name="close" size={14} />
+            </button>
+            <button className="skip-yes" onClick={doSkip} aria-label="건너뛰기">
+              <Icon name="check" size={16} />
+            </button>
+          </div>
+        )}
         {panelItem && (
           <AfterPanel
             className={!showPanel && panelLeaving ? 'leave' : kbLeaving ? 'enter' : ''}
             answer={sentenceOf(panelItem.q).answer}
-            answerIsWord={!!bubbleHit}
+            answerIsWord
             onBubble={() => bubbleHit && setTypedPop((v) => !v)}
             bubbleExtra={
               typedPop && bubbleHit ? <DictPop word={bubbleHit} onClose={() => setTypedPop(false)} onSearch={() => nav(`/dict?q=${encodeURIComponent(bubbleHit.word)}`)} /> : undefined
             }
-            wrongCount={panelItem.wrongs.length}
+            wrongCount={(sentenceOf(panelItem.q).alts ?? []).length}
             listening={listening && showPanel}
             onStopListening={() => window.dispatchEvent(new Event('voca:stop-listening'))}
             examplesOpen={overlay === 'examples'}
@@ -942,6 +1026,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
             onWrongs={() => setOverlay((o) => (o === 'wrongs' ? null : 'wrongs'))}
             onSay={() => void sayIt()}
             onInfo={() => nav(`/words/${encodeURIComponent(q.word.id)}`)}
+            onWordbook={() => void toggleWordbook(q.word.id).then((on) => showToast(on ? '내 단어장에 담았어요.' : '내 단어장에서 뺐어요.'))}
+            inWordbook={inWordbook}
             onSlow={() => speakSentence(q, true)}
             onReplay={() => speakSentence(q)}
             onNext={() => (hist ? setHistIdx(null) : finish ? nav('/') : void next())}
@@ -979,8 +1065,13 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
                             </button>
                           </span>
                         )}
-                        <button className={`bubble ${hit ? 'link' : ''}`} onClick={() => hit && setTypedPop((v) => !v)}>
-                          {text}
+                        <button className="bubble" lang="en" onClick={() => hit && setTypedPop((v) => !v)}>
+                          {text.split(' ').map((tok, n) => (
+                            <span key={n} className={knownTokens?.has(tok.toLowerCase()) ? 'u' : ''}>
+                              {n > 0 ? ' ' : ''}
+                              {tok}
+                            </span>
+                          ))}
                         </button>
                         {typedPop && hit && <DictPop word={hit} onClose={() => setTypedPop(false)} onSearch={() => nav(`/dict?q=${encodeURIComponent(hit.word)}`)} />}
                       </>
@@ -989,7 +1080,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
               </div>
               <button className="tool-btn" onClick={() => setInputMode('voice')} disabled={!canRecognize()}>
                 {cardKey === 1 && <span className="kbd-hint tr">0</span>}
-                <Icon name="mic" size={26} className="ic-hint" />
+                <QMic />
                 <span>음성 모드</span>
               </button>
             </div>

@@ -23,9 +23,22 @@ export interface Outcome {
   elapsedMs: number;
 }
 
+/**
+ * FSRS 는 복습 단계 카드의 난이도가 1~10, 안정도가 0 보다 커야 계산한다(아니면 'Invalid memory state' 예외).
+ * 예전 knownCardRow 가 난이도 0 으로 저장한 '이미 아는 단어' 카드가 남아 있으므로, 계산 직전에 유효한 범위로 고쳐 쓴다.
+ * (2026-11-11: 들여온 단어를 다시 풀 때 채점이 멈추던 문제)
+ */
+function sane<T extends { state: number; difficulty: number; stability: number }>(card: T): T {
+  if (card.state === State.New) return card;
+  const d = Number.isFinite(card.difficulty) ? card.difficulty : 0;
+  const st = Number.isFinite(card.stability) ? card.stability : 0;
+  if (d >= 1 && d <= 10 && st > 0) return card;
+  return { ...card, difficulty: Math.min(10, Math.max(1, d)), stability: st > 0 ? st : 0.1 };
+}
+
 /** 어떤 모드든 FSRS 카드 필드에 등급을 적용 */
 export function scheduleFields<T extends Omit<Card, 'state'> & { state: number }>(row: T, grade: Grade, now: Date = new Date()): T {
-  const { card } = scheduler.next({ ...row, state: row.state as State } as Card, now, grade);
+  const { card } = scheduler.next(sane({ ...row, state: row.state as State } as Card), now, grade);
   return { ...row, ...card };
 }
 
@@ -40,10 +53,13 @@ export function newCardRow(wordId: string, now: Date = new Date()): CardRow {
 
 /** 다른 앱에서 이미 익힌 단어로 들여온 카드: KNOWN_WORD_DAYS 뒤에 한 번 확인 */
 export function knownCardRow(wordId: string, now: Date = new Date()): CardRow {
-  const c = createEmptyCard(now);
+  // 난이도는 '처음부터 쉬웠던 단어'의 초기값(Easy 한 번)을 쓴다. 0 으로 두면 나중에 복습할 때 FSRS 가 계산을 거부한다
+  const { card: c } = scheduler.next(createEmptyCard(now), now, Rating.Easy);
   return {
     wordId,
     ...c,
+    elapsed_days: 0,
+    lapses: 0,
     due: addDays(now, KNOWN_WORD_DAYS),
     stability: KNOWN_WORD_DAYS,
     scheduled_days: KNOWN_WORD_DAYS,
@@ -56,7 +72,7 @@ export function knownCardRow(wordId: string, now: Date = new Date()): CardRow {
 }
 
 function toCard(row: CardRow): Card {
-  return {
+  return sane({
     due: row.due,
     stability: row.stability,
     difficulty: row.difficulty,
@@ -67,7 +83,7 @@ function toCard(row: CardRow): Card {
     lapses: row.lapses,
     state: row.state as State,
     last_review: row.last_review,
-  };
+  });
 }
 
 /** 말해보카 관찰(2026-10-25): 정답 보기 → 5분 뒤, 힌트 → 다시 묻기, 오답 뒤 정답은 처음 보는 단어면 5분 뒤·복습 단어면 다음 단계(1일) */

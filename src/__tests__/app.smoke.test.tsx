@@ -160,7 +160,9 @@ describe('app smoke', () => {
     await act(async () => {
       fireEvent.click(screen.getByRole('button', { name: /오답 노트/ }));
     });
-    // 오답 노트는 카드 자리를 대신하는 카드로 나온다 (말해보카)
-    expect(document.querySelector('.info-card .wrong-w')?.textContent).toBe(wrong);
+    // 오답 노트는 카드 아래에 겹쳐 뜨는 패널이고, 그 문장에 등록된 답들을 보여 준다 (말해보카 실측 2026-11-10)
+    const listed = [...document.querySelectorAll('.note-panel .note-item b')].map((b) => b.textContent);
+    if (wrong === 'zzzz') expect(document.querySelector('.note-panel')).toBeTruthy();
+    else expect(listed).toContain(wrong);
   });
 });

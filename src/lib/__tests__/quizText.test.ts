@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { WordSentence } from '../../types';
-import { evaluate, feedbackFor, fullSentence, hintPrefix, layoutSentence, speechMatchRate, splitInput } from '../text';
+import { evaluate, feedbackFor, fullSentence, hintPrefix, layoutSentence, revealPrefix, speechMatchRate, splitInput, typoOf, typoTolerance } from '../text';
 
 const s: WordSentence = {
   en: "He'll ___ say yes.",
@@ -70,6 +70,30 @@ describe('quiz text helpers', () => {
     expect(hintPrefix('comprehensive')).toBe('co');
     expect(hintPrefix('shrink')).toBe('sh');
     expect(hintPrefix('architecture')).toBe('ar');
+  });
+
+  it('judges typos per box and scales the tolerance with length (말해보카 2026-11-10)', () => {
+    expect(typoTolerance('unit')).toBe(1);
+    expect(typoTolerance('avoidable')).toBe(3);
+    expect(typoTolerance('transferring')).toBe(3);
+    const multi = { en: 'Oh, ___!', ko: '', answer: 'what a relief' } as never;
+    const e = evaluate('what a relie', multi, 'relief');
+    expect(e.kind).toBe('typo');
+    if (e.kind === 'typo') {
+      expect(e.distance).toBe(1);
+      expect(e.mask.map((m) => m.text).join('')).toBe('relie_');
+    }
+    expect(evaluate('anix', { en: '___ 6.', ko: '', answer: 'unit' } as never, 'unit').kind).toBe('wrong');
+    expect(evaluate('tronsfarrang', { en: '___', ko: '', answer: 'transferring' } as never, 'transfer').kind).toBe('typo');
+    expect(typoOf('what', 'what a relief')).toBeNull();
+  });
+
+  it('reveals letters across boxes for hints (hint +2, bonus +1)', () => {
+    expect(revealPrefix('take shape', 2)).toBe('ta');
+    expect(revealPrefix('take shape', 5)).toBe('take s');
+    expect(revealPrefix('up-and-coming', 3)).toBe('up a');
+    expect(revealPrefix('us', 2)).toBe('u');
+    expect(revealPrefix('transferring', 3)).toBe('tra');
   });
 
   it('scores spoken sentences by matched words', () => {

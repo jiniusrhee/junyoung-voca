@@ -7,6 +7,7 @@ import { syncContent } from './lib/content';
 import { useSettings } from './lib/settings';
 import { applySoundSettings } from './lib/sfx';
 import StudyReminder from './components/StudyReminder';
+import { setNavBarColor } from './lib/statusBar';
 import { useApplyTheme } from './lib/theme';
 import AllLearning from './pages/AllLearning';
 import ExprHome, { ExprCourses, ExprDict, ExprNotebook } from './pages/ExprHome';
@@ -52,6 +53,13 @@ function Shell() {
   useEffect(() => {
     if (settings) applySoundSettings(settings);
   }, [settings]);
+  // 내비게이션 바(화면 맨 아래 제스처 막대 자리) 색: 하단 탭이 있는 화면은 탭 배경, 없으면 화면 배경. 어휘 퀴즈는 자판·패널 색으로 직접 맞춘다
+  useEffect(() => {
+    if (!settings || loc.pathname === '/quiz' || loc.pathname === '/test') return;
+    const dark = document.documentElement.dataset.theme === 'dark';
+    const tabs = TABS.includes(loc.pathname) && !(loc.pathname === '/' && settings.level == null);
+    setNavBarColor(tabs ? (dark ? '#212021' : '#ffffff') : dark ? '#101010' : '#f4f5f9');
+  }, [loc.pathname, settings]);
   if (!settings) return <div className="screen center muted">불러오는 중…</div>;
   const needsOnboarding = settings.level == null;
   const showNav = TABS.includes(loc.pathname) && !(loc.pathname === '/' && needsOnboarding);

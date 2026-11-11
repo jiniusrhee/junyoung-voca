@@ -1,3 +1,4 @@
+import { BigPlay, BigSpeaker, BigTurtle } from './AfterPanel';
 import Icon, { type IconName } from './Icon';
 
 export interface SheetAction {
@@ -45,15 +46,15 @@ export default function ExtraSheet({ actions, onClose, onSlow, onReplay, onNext,
         </div>
         <div className="after-big">
           <button className="big-btn" onClick={onSlow}>
-            <Icon name="turtle" size={34} />
+            <BigTurtle />
             <span>듣기평가 속도</span>
           </button>
           <button className="big-btn" onClick={onReplay}>
-            <Icon name="speaker" size={34} />
+            <BigSpeaker />
             <span>다시 듣기</span>
           </button>
           <button className={`big-btn next ${finish ? 'finish' : ''}`} onClick={onNext}>
-            <Icon name={finish ? 'check' : 'play'} size={34} />
+            {finish ? <Icon name="check" size={34} /> : <BigPlay />}
             <span>{finish ? '학습 완료' : '다음 문제'}</span>
           </button>
         </div>

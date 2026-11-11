@@ -37,6 +37,11 @@ android {
         }
     }
     buildTypes {
+        // 디버그 빌드는 패키지명이 달라(com.junyoung.voca.debug) 설치된 릴리스 앱과 나란히 깔린다 — 폰에서 실제 앱과 비교·자동 조작용
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+        }
         release {
             signingConfig signingConfigs.release
             minifyEnabled false

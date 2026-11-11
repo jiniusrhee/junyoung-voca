@@ -28,6 +28,15 @@
 
 * {
   box-sizing: border-box;
+  /* 말해보카(네이티브 글자 배치)는 같은 글꼴·같은 크기인데도 한글 한 글자의 폭이 웹뷰보다 약 0.086em 좁고 띄어쓰기 폭은 그대로다
+     (플립 실측 2026-11-11: 55px 글자에서 글자당 -4.75px, 문장·맥락·출처·도구줄 라벨·진행 숫자 모두 같은 비율).
+     자간은 em 으로 주면 상속될 때 px 로 굳으므로 모든 요소에 직접 건다. 영어 문장처럼 좁히지 않는 곳은 --ls: 0 (lang="en" 또는 .ls0). */
+  letter-spacing: calc(var(--ls, -0.0864) * 1em);
+  word-spacing: calc(var(--ls, -0.0864) * -1em);
+}
+:lang(en),
+.ls0 {
+  --ls: 0;
 }
 html,
 body {
@@ -8378,7 +8387,7 @@ sup.beta.pill {
 .quiz-screen > .quiz-bg-deco {
   z-index: 0;
 }
-.quiz-screen > *:not(.dino-bg):not(.quiz-bg-deco):not(.modal-dim):not(.fav-tip) {
+.quiz-screen > *:not(.dino-bg):not(.quiz-bg-deco):not(.modal-dim):not(.fav-tip):not(.toast) {
   position: relative;
   z-index: 1;
 }

@@ -1,13 +1,14 @@
-import type { ReactNode } from 'react';
-import { answerWords, layoutSentence, splitBold, splitInput } from '../lib/text';
+import { Fragment, type ReactNode } from 'react';
+import { answerWords, layoutSentence, splitBold, splitInput, type SentenceSeg } from '../lib/text';
 import type { StoredWord, Tone, WordSentence } from '../types';
 import Icon from './Icon';
+import KoText from './KoText';
 
 /** 카드 오른쪽 위 배지: New / N일 전 / 재도전(틀렸던 단어) / N 뒤 복습(정답 뒤) — 말해보카 */
 export type CardBadge = { kind: 'new' } | { kind: 'ago'; text: string } | { kind: 'retry' } | { kind: 'due'; text: string };
 
-/** 카드 반응: wrong = 카드가 붉게 물들고 '!' 도장, typo = '!' 도장만(카드색 그대로), correct = 초록 체크 도장 */
-export type CardFlash = { kind: 'wrong' | 'typo' | 'correct'; key: number } | null;
+/** 카드 반응: wrong = '!' 도장 + 카드가 1초 붉어짐(오타 포함 모든 오답 — 말해보카 실측 2026-11-10), correct = 초록 체크 도장 */
+export type CardFlash = { kind: 'wrong' | 'correct'; key: number } | null;
 
 interface Props {
   word: StoredWord;
@@ -22,8 +23,6 @@ interface Props {
   feedback: { tone: Tone; msg: string; mask?: { text: string; bad: boolean }[] } | null;
   /** 힌트로 보여 준 앞글자: 입력이 비어 있을 때 첫 칸에 주황 고스트로 남는다 (말해보카 실측) */
   hintText?: string;
-  /** 정답 보기 뒤 칸에 비치는 정답 중 앞 몇 글자를 초록으로 (힌트로 이미 보여 준 글자 수) */
-  ghostLockedLen?: number;
   /** 오답 말풍선의 ♥: 이 설명을 좋아하는 오답노트에 담기 */
   onFavoriteNote?: () => void;
   noteFavorite?: boolean;
@@ -40,16 +39,48 @@ interface Props {
   levelHelp?: boolean;
 }
 
+/**
+ * 하이픈으로 이어진 칸들(up-and-coming)은 한 단어처럼 줄 끝에서 갈라지지 않는다(말해보카 실측: 묶음째 다음 줄로 넘어감).
+ * 띄어쓰기로 나뉜 칸들은 보통 낱말처럼 사이에서 줄이 바뀔 수 있다.
+ */
+function groupSegs(segs: SentenceSeg[]): { joined: boolean; segs: SentenceSeg[] }[] {
+  const out: { joined: boolean; segs: SentenceSeg[] }[] = [];
+  let i = 0;
+  while (i < segs.length) {
+    const s = segs[i];
+    if (s.kind === 'blank') {
+      const run: SentenceSeg[] = [s];
+      let j = i + 1;
+      while (j + 1 < segs.length) {
+        const sep = segs[j];
+        const nxt = segs[j + 1];
+        if (sep.kind === 'text' && sep.text === '-' && nxt.kind === 'blank') {
+          run.push(sep, nxt);
+          j += 2;
+        } else break;
+      }
+      out.push({ joined: run.length > 1, segs: run });
+      i = j;
+    } else {
+      out.push({ joined: false, segs: [s] });
+      i += 1;
+    }
+  }
+  return out;
+}
+
 export function KoSentence({ ko }: { ko: string }) {
   return (
     <>
       {splitBold(ko).map((s, i) =>
         s.bold ? (
           <em key={i} className="hl">
-            {s.text}
+            <KoText text={s.text} />
           </em>
         ) : (
-          <span key={i}>{s.text}</span>
+          <span key={i}>
+            <KoText text={s.text} />
+          </span>
         ),
       )}
     </>
@@ -75,9 +106,11 @@ export function FilledSentence({ sentence }: { sentence: WordSentence }) {
 }
 
 export default function QuizCard(p: Props) {
-  const { word, sentence, state, input, showedAnswer, flash, feedback, badge, onFavoriteNote, noteFavorite, hintText = '', ghostLockedLen = 0 } = p;
+  const { word, sentence, state, input, showedAnswer, flash, feedback, badge, onFavoriteNote, noteFavorite, hintText = '' } = p;
   const words = answerWords(sentence.answer);
   const typed = splitInput(input, words.length);
+  // 힌트로 보여 준 글자를 칸별로 나눈 것 (입력을 다 지웠을 때의 주황 고스트, 정답 보기의 초록 부분에 쓴다)
+  const hintParts = splitInput(hintText, words.length);
   const spaces = (input.replace(/^\s+/, '').match(/ /g) || []).length;
   const active = Math.min(spaces, words.length - 1);
   const flashCls = flash ? `is-${flash.kind}` : '';
@@ -128,28 +161,38 @@ export default function QuizCard(p: Props) {
             </svg>
           </span>
         )}
-        {(flash?.kind === 'wrong' || flash?.kind === 'typo') && <span className="mark-bang">!</span>}
+        {flash?.kind === 'wrong' && <span className="mark-bang">!</span>}
         <div className="qcard-top">
-          {sentence.ctx && <p className="ctx">{sentence.ctx}</p>}
+          {sentence.ctx && (
+            <p className="ctx">
+              <KoText text={sentence.ctx} />
+            </p>
+          )}
           <p className="ko">
             <KoSentence ko={sentence.ko} />
           </p>
-          {sentence.note && <p className="note">※ {sentence.note}</p>}
+          {sentence.note && (
+            <p className="note">
+              ※ <KoText text={sentence.note} />
+            </p>
+          )}
         </div>
         {feedback && (
           <div className={`pill ${feedback.tone}`}>
             <span>
               {feedback.mask && (
                 <>
-                  {feedback.mask.map((m, k) => (
-                    <b key={k} className={m.bad ? 'mask-bad' : 'mask-ok'}>
-                      {m.text}
-                    </b>
-                  ))}
+                  <span lang="en">
+                    {feedback.mask.map((m, k) => (
+                      <b key={k} className={m.bad ? 'mask-bad' : 'mask-ok'}>
+                        {m.text}
+                      </b>
+                    ))}
+                  </span>
                   {' - '}
                 </>
               )}
-              {feedback.msg}
+              <KoText text={feedback.msg} />
             </span>
             {feedback.tone !== 'info' && onFavoriteNote && (
               <button className={`pill-heart ${noteFavorite ? 'on' : ''}`} onClick={onFavoriteNote} aria-label="오답노트에 담기">
@@ -159,8 +202,9 @@ export default function QuizCard(p: Props) {
           </div>
         )}
         <div className="qcard-bottom">
-          <p className="en">
-            {layoutSentence(sentence.en, sentence.answer).map((seg, i) => {
+          <p className="en" lang="en">
+            {groupSegs(layoutSentence(sentence.en, sentence.answer)).map((grp, gi) => {
+              const nodes = grp.segs.map((seg, i) => {
               if (seg.kind === 'text') return <span key={i}>{seg.text}</span>;
               const target = words[seg.idx];
               if (state === 'answered') {
@@ -182,14 +226,14 @@ export default function QuizCard(p: Props) {
                     {ghostFull ? (
                       <>
                         {p.showCaret && isActive && <span className="caret" />}
-                        {seg.idx === 0 && ghostLockedLen > 0 && <span className="ghost pre">{target.slice(0, ghostLockedLen)}</span>}
-                        <span className="ghost">{seg.idx === 0 ? target.slice(ghostLockedLen) : target}</span>
+                        {hintParts[seg.idx] && <span className="ghost pre">{target.slice(0, hintParts[seg.idx].length)}</span>}
+                        <span className="ghost">{target.slice(hintParts[seg.idx]?.length ?? 0)}</span>
                       </>
                     ) : (
                       <>
                         <span className="typed">{ok ? target : t}</span>
                         {p.showCaret && isActive && <span className="caret" />}
-                        {seg.idx === 0 && input === '' && hintText && <span className="ghost">{hintText}</span>}
+                        {input === '' && hintParts[seg.idx] && <span className="ghost">{hintParts[seg.idx]}</span>}
                       </>
                     )}
                   </span>
@@ -197,6 +241,14 @@ export default function QuizCard(p: Props) {
                     {sizer}
                   </span>
                 </span>
+              );
+              });
+              return grp.joined ? (
+                <span key={gi} className="blank-group">
+                  {nodes}
+                </span>
+              ) : (
+                <Fragment key={gi}>{nodes}</Fragment>
               );
             })}
           </p>

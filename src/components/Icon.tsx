@@ -151,8 +151,8 @@ const PATHS: Record<IconName, ReactElement> = {
   check: <polyline points="4 12.5 9.5 18 20 6" strokeWidth={3} />,
   book: (
     <g fill="currentColor" stroke="none">
-      <path d="M2 5.2C4.8 4.1 8.3 4.3 11 6v13.2c-2.7-1.6-6.2-1.8-9-.8z" />
-      <path d="M22 5.2c-2.8-1.1-6.3-.9-9 .8v13.2c2.7-1.6 6.2-1.8 9-.8z" />
+      <path d="M2 4.500C4.800 3.400 8.300 3.600 11 5.300v15.200c-2.700-1.600-6.200-1.800-9-.800z" />
+      <path d="M22 4.500c-2.800-1.100-6.300-.900-9 .800v15.200c2.700-1.600 6.200-1.800 9-.800z" />
     </g>
   ),
   speaker: (

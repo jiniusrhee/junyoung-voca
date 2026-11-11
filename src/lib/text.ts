@@ -63,9 +63,33 @@ export function evaluate(input: string, sentence: WordSentence, word: string): E
   const alt = sentence.alts?.find((x) => normalize(x.w) === i);
   if (alt) return { kind: 'alt', alt };
   if (i === normalize(word)) return { kind: 'form' };
-  const d = levenshtein(i, a);
-  if (d <= (a.length >= 8 ? 2 : 1)) return { kind: 'typo', distance: d, mask: typoMask(input.trim(), sentence.answer) };
+  const t = typoOf(input, sentence.answer);
+  if (t && t.distance <= typoTolerance(t.target)) return { kind: 'typo', distance: t.distance, mask: t.mask };
   return { kind: 'wrong' };
+}
+
+/**
+ * 오타로 봐 주는 글자 수 차이. 말해보카 실측(2026-11-10): 4글자 답은 1글자까지(2글자 차이는 말풍선 없음),
+ * 12글자 답은 3글자 차이까지 "정답과 N글자 달라요" 가 뜬다. 3글자를 넘으면 뜨지 않는다.
+ */
+export function typoTolerance(target: string): number {
+  return Math.max(1, Math.min(3, Math.floor(target.length / 3)));
+}
+
+/**
+ * 오타 비교는 칸(단어) 단위로 한다: 여러 칸 정답이면 처음으로 틀린 칸만 본다
+ * (말해보카 실측: 'what a relie' → "relie_ - 정답과 1글자 달라요."). 그 칸에 친 글자가 없으면 null.
+ */
+export function typoOf(input: string, answer: string): { distance: number; mask: { text: string; bad: boolean }[]; typed: string; target: string } | null {
+  const words = answerWords(answer);
+  const typed = splitInput(input.trim().replace(/-/g, ' '), words.length);
+  for (let k = 0; k < words.length; k++) {
+    const t = (typed[k] ?? '').trim();
+    if (t.toLowerCase() === words[k].toLowerCase()) continue;
+    if (!t) return null;
+    return { distance: levenshtein(t.toLowerCase(), words[k].toLowerCase()), mask: typoMask(t, words[k]), typed: t, target: words[k] };
+  }
+  return null;
 }
 
 export interface FeedbackMsg {
@@ -134,6 +158,27 @@ export const SHOW_ANSWER_MSG = '정답을 확인하고, 다시 입력해보세�
 /** 1단계 힌트로 보여줄 앞부분: 말해보카는 길이와 상관없이 앞 2글자 (6·9·12글자 모두 2글자 — 2026-11-08 플립 실측). 짧은 단어는 1글자 */
 export function hintPrefix(answer: string): string {
   return answer.slice(0, Math.min(2, Math.max(1, answer.length - 1)));
+}
+
+/**
+ * 앞에서부터 n 글자를 보여 줄 때 입력칸에 넣을 문자열 (칸 구분은 공백: 하이픈 단어도 칸마다 공백으로 나눈다).
+ * 말해보카 실측(2026-11-10): 힌트 보기 = +2글자, 보너스 힌트 = +1글자 (보너스 1글자 뒤 힌트 → 3글자).
+ */
+export function revealPrefix(answer: string, n: number): string {
+  const flat = answerWords(answer).join(' ');
+  let letters = 0;
+  let out = '';
+  for (const ch of flat) {
+    if (ch !== ' ') {
+      if (letters >= n) break;
+      letters++;
+    }
+    out += ch;
+  }
+  // 마지막 한 글자는 남겨 둔다 (힌트만으로 정답이 완성되지 않게)
+  const total = flat.replace(/ /g, '').length;
+  if (letters >= total) out = out.slice(0, -1);
+  return out.trimEnd();
 }
 
 /** 음성 인식 결과(후보 여러 개) 중 정답 단어가 들어 있는지 */
