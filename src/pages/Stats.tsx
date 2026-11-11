@@ -773,15 +773,27 @@ function VocabTab({ level, imp }: { level: number; imp: ImportedProgress | null 
           <span>{dateText}</span>
         </div>
         <div className="gold-trophy">
-          <Icon name="trophy" size={84} />
+          {/* 별이 박힌 트로피 (직접 그림, 89 x 77) */}
+          <svg width="89" height="77" viewBox="0 0 89 77" aria-hidden="true">
+            <path d="M20 4h49c1.200 0 2.100 1.000 2.000 2.200-1.200 19.500-9.500 33.000-21.000 37.300v8.500c0 4.000 3.600 6.900 8.500 9.800 2.000 1.200 1.300 5.200-1.100 5.200H31.600c-2.400 0-3.100-4.000-1.100-5.200 4.900-2.900 8.500-5.800 8.500-9.800v-8.500C27.500 39.200 19.200 25.700 18.000 6.200 17.900 5.000 18.800 4 20 4z" fill="#f2c94c" />
+            <path d="M20.500 9.500h-7.500c-2.800 0-4.400 2.000-4.200 4.800 1.000 11.500 7.700 19.300 18.000 22.500M68.500 9.500h7.500c2.800 0 4.400 2.000 4.200 4.800-1.000 11.500-7.700 19.300-18.000 22.500" fill="none" stroke="#f2c94c" strokeWidth="5.200" strokeLinecap="round" />
+            <rect x="27" y="69" width="35" height="6" rx="2.500" fill="#f0a93a" />
+            <path d="M44.500 13.000l4.100 8.300 9.100 1.300-6.600 6.400 1.600 9.100-8.200-4.300-8.200 4.300 1.600-9.100-6.600-6.400 9.100-1.300z" fill="#fff2a8" stroke="#fff2a8" strokeWidth="2" strokeLinejoin="round" />
+          </svg>
         </div>
         <div className="gold-inner">
           <span>내가 알고 있는 어휘</span>
-          <b className="laurel">{vocabNow.toLocaleString()} 개</b>
+          <b className="laurel">
+            <i lang="en">{vocabNow.toLocaleString()}</i> 개
+          </b>
           <span>나의 어휘 이해도</span>
-          <b className="laurel">{compShown == null ? '-' : `${(compShown * 100).toFixed(2)} %`}</b>
+          <b className="laurel" lang="en">
+            {compShown == null ? '-' : `${(compShown * 100).toFixed(2)} %`}
+          </b>
           <span>나의 어휘력은 대한민국</span>
-          <b className="laurel">{pct} %</b>
+          <b className="laurel" lang="en">
+            {pct} %
+          </b>
         </div>
       </section>
       {history.length > 0 && <VocabHistoryChart history={history} imp={imp} />}

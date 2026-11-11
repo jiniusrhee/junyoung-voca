@@ -885,3 +885,162 @@
   margin-left: 4.333px;
   font-size: 6.667px;
 }
+
+/* ================= 어휘력 탭: 금색 카드와 아래 고정 버튼 (플립 실측 2026-11-12) =================
+   카드 320 x 377.33(테두리 4, #242629), 금색 면은 위 #887343 → 아래 #3b352b, 트로피 뒤로 빛, 안쪽 어두운 판 288 x 253. */
+.screen.stats .gold-card {
+  position: relative;
+  height: 377.333px;
+  margin: 26.667px 0 13.333px;
+  padding: 0;
+  border: 4px solid #242629;
+  border-radius: 16px;
+  background:
+    radial-gradient(ellipse 55% 34% at 50% 20%, rgba(255, 236, 150, 0.85) 0%, rgba(214, 186, 120, 0.4) 45%, rgba(136, 115, 67, 0) 100%),
+    linear-gradient(#887343 0%, #847042 40%, #49402f 68%, #3b352b 100%);
+  box-shadow: none;
+}
+.screen.stats .gold-head {
+  height: 44px;
+  padding: 6px 24px 0 18.667px;
+  color: #f4f4f4;
+}
+.screen.stats .gold-head b {
+  font-size: 14.667px;
+  font-weight: 700;
+}
+.screen.stats .gold-head span {
+  font-size: 11px;
+  color: #e0cf9f;
+  opacity: 1;
+}
+.screen.stats .gold-trophy {
+  position: absolute;
+  left: 50%;
+  top: 43px;
+  margin: 0 0 0 -44.5px;
+  filter: none;
+}
+.screen.stats .gold-trophy svg {
+  display: block;
+}
+.screen.stats .gold-inner {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 104.333px;
+  height: 253px;
+  padding: 47px 0 0;
+  gap: 0;
+  border-radius: 12px;
+  background: #242629;
+}
+.screen.stats .gold-inner span {
+  margin: 0;
+  font-size: 13.667px;
+  line-height: 18px;
+  color: #a0a2a3;
+}
+.screen.stats .gold-inner .laurel {
+  margin: 4.667px 0 16px;
+  font-size: 22px;
+  line-height: 26px;
+  font-weight: 600;
+  color: #d6d6d6;
+}
+.screen.stats .gold-inner .laurel i {
+  font-style: normal;
+}
+.screen.stats .gold-inner .laurel::before,
+.screen.stats .gold-inner .laurel::after {
+  content: '';
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  vertical-align: -2px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 17'%3E%3Cg fill='%23b39758'%3E%3Cellipse cx='4.2' cy='4.2' rx='2.9' ry='1.7' transform='rotate(40 4.2 4.2)'/%3E%3Cellipse cx='9.6' cy='3.6' rx='2.9' ry='1.7' transform='rotate(-55 9.6 3.6)'/%3E%3Cellipse cx='3.4' cy='9.6' rx='2.9' ry='1.7' transform='rotate(15 3.4 9.6)'/%3E%3Cellipse cx='12.4' cy='8' rx='2.9' ry='1.7' transform='rotate(-70 12.4 8)'/%3E%3Cellipse cx='7' cy='13.6' rx='3.1' ry='1.8' transform='rotate(8 7 13.6)'/%3E%3Cellipse cx='13.2' cy='13.2' rx='2.9' ry='1.7' transform='rotate(-35 13.2 13.2)'/%3E%3C/g%3E%3C/svg%3E")
+    center / contain no-repeat;
+}
+.screen.stats .gold-inner .laurel::before {
+  margin-right: 10px;
+  transform: scaleX(-1);
+}
+.screen.stats .gold-inner .laurel::after {
+  margin-left: 10px;
+}
+/* '어휘력 측정하기'는 하단 탭 위에 떠 있다 (326 x 53.33, 탭 위 12.33) */
+.screen.stats .measure-btn {
+  position: fixed;
+  left: 17px;
+  right: 17px;
+  bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 12.333px);
+  z-index: 6;
+  width: auto;
+  height: 53.333px;
+  margin: 0;
+  border-radius: 8px;
+  background: #735cf4;
+  font-size: 15.667px;
+  font-weight: 400;
+  color: #f4f4f4;
+}
+.screen.stats:has(.measure-btn) {
+  padding-bottom: 80px;
+}
+
+/* 어휘력 측정 결과 카드 머리: 제목 15.33px, 날짜 알약 높이 27(#1c1e20) */
+.screen.stats .vh-card {
+  padding: 18px 22px 20px;
+  border-radius: 18px;
+}
+.screen.stats .vh-card .card-head-row {
+  height: 24px;
+}
+.screen.stats .vh-card .card-title {
+  font-size: 14.667px;
+  font-weight: 700;
+}
+.screen.stats .vh-card .nb-date {
+  font-size: 12.667px;
+  font-weight: 700;
+  color: #d6d6d6;
+}
+.screen.stats .vh-pill {
+  height: 28px;
+  margin: 11px 0 0;
+  padding: 0;
+  border-radius: 6px;
+  background: #1c1e20;
+  font-size: 12.667px;
+  line-height: 28px;
+  font-weight: 600;
+  color: #e6e6e6;
+  --ls: 0;
+}
+/* ‹ › 는 채워진 회색 세모로 */
+.screen.stats .vh-card .nb-date {
+  display: flex;
+  align-items: center;
+}
+.screen.stats .vh-card .nb-date > b {
+  width: 36px;
+  text-align: center;
+}
+.screen.stats .vh-card .nb-date button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 24px;
+  font-size: 0;
+}
+.screen.stats .vh-card .nb-date button::before {
+  content: '';
+  border: 4.333px solid transparent;
+  border-left: 0;
+  border-right: 5.333px solid #50575d;
+}
+.screen.stats .vh-card .nb-date button:last-child::before {
+  border-right: 0;
+  border-left: 5.333px solid #50575d;
+}

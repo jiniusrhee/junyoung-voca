@@ -26,7 +26,7 @@
   height: 43.333px;
   margin: 0 -18px 1px;
   padding: 3.667px 13px 0 9px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 0.667px solid var(--line);
   background: var(--bg);
 }
 :root[data-theme='dark'] .all-learning .home-head {
@@ -54,8 +54,8 @@
 
 /* ---- 섹션 제목 17px ---- */
 .all-learning .al-title {
-  margin: 34px 0 0;
-  font-size: 17px;
+  margin: 35.333px 0 0;
+  font-size: 17.333px;
   line-height: 22px;
   font-weight: 700;
 }
@@ -110,7 +110,7 @@
 .all-learning .mode-card {
   box-sizing: border-box;
   height: 78px;
-  margin: 19px 0 0;
+  margin: 18.667px 0 0;
   padding: 6px 0 0 24px;
   border-radius: 14px;
   overflow: visible;
@@ -185,13 +185,13 @@
 
 /* ---- 목록 줄: 46.67px, 아이콘 타일 33px(반지름 8), 글자 14.5px ---- */
 .all-learning .al-list {
-  margin-top: 16px;
+  margin-top: 17.333px;
 }
 .all-learning .al-row {
   box-sizing: border-box;
   height: 46.67px;
   padding: 0 2px 0 0;
-  gap: 15px;
+  gap: 13.667px;
 }
 :root[data-theme='dark'] .all-learning .al-row {
   color: #d6d7d6;
