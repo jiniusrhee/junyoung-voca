@@ -8,7 +8,7 @@ export function useApplyTheme(theme: Settings['theme'] | undefined): void {
     const apply = () => {
       const dark = theme === 'dark' || (theme !== 'light' && !!mq?.matches);
       document.documentElement.dataset.theme = dark ? 'dark' : 'light';
-      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#101010' : '#f4f5f9');
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#121212' : '#f4f5f9');
     };
     apply();
     mq?.addEventListener?.('change', apply);

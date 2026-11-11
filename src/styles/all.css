@@ -5,7 +5,7 @@
 
 :root {
   /* 하단 탭 높이 (말해보카: 52px + 제스처 바 여백) — .app.with-nav 의 바닥 여백도 이 값을 쓴다 */
-  --nav-h: 52px;
+  --nav-h: 53.667px;
 }
 
 /* ================= 전체 학습 페이지 ================= */
@@ -233,7 +233,7 @@
   border-top: 1px solid var(--line);
 }
 :root[data-theme='dark'] .bottom-nav {
-  background: #212021;
+  background: #202122;
   border-top-color: #25282b;
 }
 .nav-item {

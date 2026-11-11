@@ -21,7 +21,7 @@ export function useStatusBarColor(color: string | null, lightIcons = false): voi
       if (!C.isNativePlatform() || cancelled) return;
       const { StatusBar, Style } = await import('@capacitor/status-bar');
       if (cancelled) return;
-      void StatusBar.setBackgroundColor({ color: color ?? (isDark() ? '#101010' : '#f4f5f9') });
+      void StatusBar.setBackgroundColor({ color: color ?? (isDark() ? '#121212' : '#f4f5f9') });
       void StatusBar.setStyle({ style: color ? (lightIcons ? Style.Dark : Style.Light) : isDark() ? Style.Dark : Style.Light });
     });
     return () => {
@@ -29,7 +29,7 @@ export function useStatusBarColor(color: string | null, lightIcons = false): voi
       void import('@capacitor/core').then(async ({ Capacitor: C }) => {
         if (!C.isNativePlatform()) return;
         const { StatusBar, Style } = await import('@capacitor/status-bar');
-        void StatusBar.setBackgroundColor({ color: isDark() ? '#101010' : '#f4f5f9' });
+        void StatusBar.setBackgroundColor({ color: isDark() ? '#121212' : '#f4f5f9' });
         void StatusBar.setStyle({ style: isDark() ? Style.Dark : Style.Light });
       });
     };

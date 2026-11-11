@@ -9,9 +9,9 @@
 
 /* ---------- 머리글: ☰ 이름 … 🔔 (실측: 상태바 아래 높이 40, 글자 중심 y 20) ---------- */
 .home .home-head {
-  height: 40px;
+  height: 48px;
   margin: 0;
-  padding: 0;
+  padding: 0 0 1.333px;
   align-items: center;
 }
 .home .head-menu {
@@ -41,10 +41,10 @@
   align-items: flex-start;
   gap: 18px;
   height: 86.667px;
-  margin: 7px 0 22.667px;
+  margin: 2.333px 0 22.667px;
   padding: 15.333px 19px 0 21.5px;
   border-radius: 14px;
-  background: #25272b;
+  background: #242629;
 }
 .home .flame-big {
   align-self: center;
@@ -151,7 +151,7 @@
 }
 .home .main-body {
   border-radius: 19px 0 19px 19px;
-  padding: 0 15px 14px;
+  padding: 0 15px 18.667px;
   background: #2c3033;
 }
 .home .ribbon {
@@ -164,7 +164,7 @@
   clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 88.8%, 0 100%);
 }
 .home .main-mascot {
-  padding: 112.333px 0 0;
+  padding: 113px 0 0;
 }
 .home .main-mascot svg {
   display: block;
@@ -208,7 +208,7 @@
 }
 /* 진행률 링: 지름 63.3, 선 4.7, 라벨 20px */
 .home .gauge {
-  margin: -4px 10.667px 7.333px 0;
+  margin: -4px 10.667px 5.333px 0;
 }
 .home .gauge-track {
   stroke: #3b3f45;

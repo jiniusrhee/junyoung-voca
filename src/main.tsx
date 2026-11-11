@@ -16,7 +16,7 @@ import('@capacitor/core').then(({ Capacitor }) => {
   if (!Capacitor.isNativePlatform()) return;
   void import('@capacitor/status-bar').then(({ StatusBar }) => {
     void StatusBar.setOverlaysWebView({ overlay: false });
-    void StatusBar.setBackgroundColor({ color: '#101010' });
+    void StatusBar.setBackgroundColor({ color: '#121212' });
   });
 });
 

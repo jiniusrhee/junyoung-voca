@@ -2880,7 +2880,7 @@ em.hl {
   --st-review: #a088f0;
 }
 :root[data-theme='dark'] {
-  --bg: #101010;
+  --bg: #121212;
   --card: #26292d;
   --surface: #292d31;
   --surface-2: #34383d;

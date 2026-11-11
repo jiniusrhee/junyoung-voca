@@ -58,7 +58,7 @@ function Shell() {
     if (!settings || loc.pathname === '/quiz' || loc.pathname === '/test') return;
     const dark = document.documentElement.dataset.theme === 'dark';
     const tabs = TABS.includes(loc.pathname) && !(loc.pathname === '/' && settings.level == null);
-    setNavBarColor(tabs ? (dark ? '#212021' : '#ffffff') : dark ? '#101010' : '#f4f5f9');
+    setNavBarColor(tabs ? (dark ? '#202122' : '#ffffff') : dark ? '#121212' : '#f4f5f9');
   }, [loc.pathname, settings]);
   if (!settings) return <div className="screen center muted">불러오는 중…</div>;
   const needsOnboarding = settings.level == null;
