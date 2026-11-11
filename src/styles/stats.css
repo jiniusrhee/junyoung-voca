@@ -673,3 +673,215 @@
 .screen.stats .gold-card {
   margin-top: 16px;
 }
+
+/* ================= 학습별 탭 (플립 실측 2026-11-11) =================
+   머리띠(#202122)가 칩 줄까지 이어진다(화면 y 117.67~160.67). 제목 17.33px, 카드 319.33 폭(90.67 높이) 둘 + 그림 카드(298.67). */
+.screen.stats .sm-band {
+  display: flex;
+  gap: 4px;
+  height: 43px;
+  margin: 0 -20px;
+  padding: 8px 20px 0;
+  background: #202122;
+}
+.screen.stats .sm-band button {
+  height: 26.667px;
+  padding: 0 11.333px;
+  border-radius: 6px;
+  font-size: 13.333px;
+  line-height: 26.667px;
+  font-weight: 400;
+  color: #a0a2a3;
+  white-space: nowrap;
+}
+.screen.stats .sm-band button.active {
+  background: #36393b;
+  font-weight: 700;
+  color: #e6e6e6;
+}
+.screen.stats .sm-title {
+  margin: 36.667px 0 22.667px 8px;
+  font-size: 17.333px;
+  line-height: 24px;
+  font-weight: 700;
+  color: #d6d6d6;
+}
+.screen.stats .sm-card {
+  margin: 0 0.333px 13.333px;
+  border-radius: 14px;
+  background: #242629;
+  color: #d6d6d6;
+}
+/* 두 줄 카드: 줄 간격 35.33, 글자 위끝이 카드 위에서 21.33 */
+.screen.stats .sm-kv {
+  height: 90.667px;
+  padding: 17.667px 22.667px 0 23.333px;
+}
+.screen.stats .sm-row {
+  display: flex;
+  align-items: center;
+  height: 20px;
+  margin-bottom: 15.333px;
+}
+.screen.stats .sm-ic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 20px;
+  margin-right: 14.333px;
+}
+.screen.stats .sm-ic svg {
+  display: block;
+}
+.screen.stats .sm-label {
+  font-size: 14.667px;
+  color: #a0a2a3;
+}
+.screen.stats .sm-q {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 12px;
+  height: 12px;
+  margin-left: 5px;
+  border-radius: 50%;
+  background: #5b6267;
+  font-style: normal;
+  font-size: 8.5px;
+  font-weight: 700;
+  line-height: 1;
+  color: #242629;
+  --ls: 0;
+}
+.screen.stats .sm-row b {
+  margin-left: auto;
+  font-size: 15.333px;
+  font-weight: 600;
+  color: #d6d6d6;
+}
+/* 그림 카드 */
+.screen.stats .sm-week {
+  height: 298.667px;
+  border-radius: 18px;
+}
+.screen.stats .sm-week-head {
+  display: flex;
+  align-items: center;
+  height: 59px;
+  padding: 0 13.667px 0 22.333px;
+}
+.screen.stats .sm-week-head > b {
+  font-size: 15.333px;
+  font-weight: 700;
+}
+.screen.stats .sm-nav {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  font-size: 12.667px;
+  font-weight: 700;
+  color: #d6d6d6;
+}
+.screen.stats .sm-nav button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 30px;
+  color: #50575d;
+}
+.screen.stats .sm-nav button:disabled {
+  opacity: 0.55;
+}
+.screen.stats .sm-nav span {
+  width: 34px;
+  text-align: center;
+}
+.screen.stats .sm-chart {
+  display: block;
+  margin-top: -31px;
+  overflow: visible;
+}
+.screen.stats .sm-x {
+  font-size: 11.667px;
+  fill: #d6d6d6;
+}
+.screen.stats .sm-line {
+  fill: none;
+  stroke: #8468c4;
+  stroke-width: 1.667;
+  stroke-linejoin: round;
+}
+.screen.stats .sm-dot {
+  fill: #fff;
+  stroke: #a98bea;
+  stroke-width: 2;
+}
+.screen.stats .sm-sum {
+  display: flex;
+  margin-top: 29px;
+}
+.screen.stats .sm-total {
+  width: 144px;
+  padding-top: 19px;
+  text-align: center;
+}
+.screen.stats .sm-total span {
+  display: block;
+  font-size: 12.333px;
+  line-height: 16px;
+  color: #8b8d8f;
+}
+.screen.stats .sm-total b {
+  display: block;
+  margin-top: 3.667px;
+  font-size: 20.667px;
+  line-height: 24px;
+  font-weight: 600;
+}
+.screen.stats .sm-sum ul {
+  flex: 1;
+  margin: 0;
+  padding: 0 23px 0 0;
+  list-style: none;
+}
+.screen.stats .sm-sum li {
+  display: flex;
+  align-items: center;
+  height: 21.333px;
+  font-size: 11.667px;
+  color: #a0a2a3;
+  white-space: nowrap;
+}
+.screen.stats .sm-sum li .sw {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  margin-right: 5.333px;
+  border-radius: 50%;
+}
+.screen.stats .sm-sum li .sw.ring {
+  width: 8px;
+  height: 8px;
+  margin: 0 4.333px 0 -1px;
+  border: 2px solid #a98bea;
+  background: none;
+}
+.screen.stats .sm-sum li span {
+  display: flex;
+  align-items: center;
+}
+.screen.stats .sm-sum li b {
+  margin-left: auto;
+  font-size: 12.667px;
+  font-weight: 600;
+  color: #d6d6d6;
+}
+.screen.stats .sm-sum .sm-q {
+  width: 9.333px;
+  height: 9.333px;
+  margin-left: 4.333px;
+  font-size: 6.667px;
+}

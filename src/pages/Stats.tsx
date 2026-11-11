@@ -5,6 +5,7 @@ import Icon from '../components/Icon';
 import { db } from '../db';
 import { MASTERY_KO, MASTERY_ORDER, masteryOf, type Mastery } from '../lib/scheduler';
 import { getSettings, useSettings } from '../lib/settings';
+import { useCachedQuery, useKeptQuery } from '../lib/liveCache';
 import { useStatusBarColor } from '../lib/statusBar';
 import { getImported } from '../lib/imported';
 import { comprehension, dayTime, dayTotal, displayVocab, goalMet, reviewAccuracy, vocabDateText, percentileOf, latestMeasure } from '../lib/stats';
@@ -21,9 +22,10 @@ export default function Stats() {
   const [params, setParams] = useSearchParams();
   const tab = (params.get('tab') as Tab) || 'period';
   const setTab = (t: Tab) => setParams(t === 'period' ? {} : { tab: t }, { replace: true });
-  const daily = useLiveQuery(() => db.daily.toArray(), []);
-  const acc = useLiveQuery(() => reviewAccuracy(), []);
-  const imp = useLiveQuery(() => getImported(), []);
+  // 탭을 오갈 때 빈 프레임이 보이지 않게: 하루 기록은 계속 들고 있고 나머지는 지난번 값을 먼저 쓴다
+  const daily = useKeptQuery('daily', () => db.daily.toArray());
+  const acc = useCachedQuery('acc:all', () => reviewAccuracy(), []);
+  const imp = useCachedQuery('imported', () => getImported(), []);
   if (!settings || !daily) return <div className="screen" />;
 
   const byDate = new Map(daily.map((d) => [d.date, d]));
@@ -428,9 +430,10 @@ function StudyModes({ daily, today, goals, imp }: { daily: DailyRow[]; today: st
   const byDate = new Map(rows.map((d) => [d.date, d]));
   return (
     <>
-      <div className="study-chips">
+      {/* 머리띠에 이어지는 회색 띠 안의 글자 칩 (고른 칩만 어두운 둥근 네모) */}
+      <div className="sm-band">
         {(Object.keys(SMODE_LABEL) as SMode[]).map((m) => (
-          <button key={m} className={`chip-btn ${mode === m ? 'active' : ''}`} onClick={() => setMode(m)}>
+          <button key={m} className={mode === m ? 'active' : ''} onClick={() => setMode(m)}>
             {SMODE_LABEL[m]}
           </button>
         ))}
@@ -457,7 +460,6 @@ function StudyTab({ mode, byDate, daily, today, goal, extra }: { mode: SMode; by
   const newLearned = Math.max(0, tot('newWords') - tot('knownNew'));
   const reviewRows = rows.filter((r): r is DailyRow => !!r && r.total > 0);
   const accAll = reviewRows.length ? Math.round((reviewRows.reduce((s, r) => s + r.correct, 0) / reviewRows.reduce((s, r) => s + r.total, 0)) * 100) : null;
-  const H = 150;
   /** 실전 회화·리스닝: 결과(Perfect/Excellent·Great/Good/Nice Try)별 막대 (말해보카) */
   const resultMode = mode === 'talk' || mode === 'listening';
   const resStat = useLiveQuery(async () => {
@@ -479,146 +481,202 @@ function StudyTab({ mode, byDate, daily, today, goal, extra }: { mode: SMode; by
   const totalWeek = resultMode ? KEYS.reduce((n, k) => n + resTot(k), 0) : tot('newWords') + tot('reviews');
   const resMax = Math.max(5, ...days.map((d) => KEYS.reduce((n, k) => n + (resStat?.get(d)?.[k] ?? 0), 0)));
 
+  // ---- 막대 그림 (플립 실측 2026-11-11): 막대 폭 30.67, 간격 40.67, 가장 긴 막대 103.33, 조각 사이 틈 1.67, 조각 모서리 4.67 ----
+  const CW = 319.333;
+  const BAR_W = 30.667;
+  const PITCH = 40.667;
+  const X0 = 22.333;
+  const BASE = 119;
+  const MAXH = 103.333;
+  const GAP = 1.667;
+  const cols = rows.map((r, i) => {
+    let parts: { n: number; c: string }[];
+    if (resultMode) {
+      const m = resStat?.get(days[i]);
+      parts = [
+        { n: m?.nice ?? 0, c: 'var(--st-review)' },
+        { n: m?.good ?? 0, c: 'var(--st-known)' },
+        { n: m?.second ?? 0, c: 'var(--st-pink)' },
+        { n: m?.perfect ?? 0, c: 'var(--st-new)' },
+      ];
+    } else {
+      const known = r?.knownNew ?? 0;
+      const fresh = Math.max(0, (r?.newWords ?? 0) - known);
+      parts =
+        mode === 'vocab'
+          ? [
+              { n: r?.reviews ?? 0, c: 'var(--st-review)' },
+              { n: known, c: 'var(--st-known)' },
+              { n: fresh, c: 'var(--st-new)' },
+            ]
+          : [
+              { n: r?.reviews ?? 0, c: 'var(--st-review)' },
+              { n: r?.newWords ?? 0, c: 'var(--st-new)' },
+            ];
+    }
+    const live = parts.filter((p) => p.n > 0);
+    const sum = live.reduce((s, p) => s + p.n, 0);
+    const full = (sum / (resultMode ? resMax : max)) * MAXH;
+    const usable = Math.max(0, full - GAP * (live.length - 1));
+    let y = BASE;
+    const segs = live.map((p) => {
+      const h = Math.max(2, (p.n / sum) * usable);
+      y -= h;
+      const seg = { y, h, c: p.c };
+      y -= GAP;
+      return seg;
+    });
+    return { x: X0 + i * PITCH, segs };
+  });
+  // 복습 정답률 꺾은선: 100% 가 맨 위(-1.67), 1% 마다 1.9 아래
+  const accPts = rows.map((r, i) => (r && r.total ? { x: X0 + i * PITCH + BAR_W / 2, y: -1.667 + (1 - r.correct / r.total) * 190 } : null)).filter((p): p is { x: number; y: number } => !!p);
+
   return (
     <>
-      <h2 className="stats-h2">{label} 학습</h2>
-      <div className="s-card kv">
-        <div className="kv-row">
-          <span>
-            <Icon name="trophy" size={20} className="ic-gold" /> {label} 트로피 <i className="qmark">?</i>
+      <h2 className="sm-title">{label} 학습</h2>
+      <div className="sm-card sm-kv">
+        <div className="sm-row">
+          <span className="sm-ic">
+            <svg width="20" height="16" viewBox="0 0 19.333 16" aria-hidden="true">
+              <path d="M3.300 0.200h12.733c0.300 0 0.500 0.230 0.480 0.530-0.300 4.900-2.300 8.300-5.250 9.330v1.800c0 1.000 0.900 1.740 2.200 2.500 0.500 0.300 0.330 1.440-0.300 1.440H6.170c-0.630 0-0.800-1.140-0.300-1.440 1.300-0.760 2.200-1.500 2.200-2.500v-1.800C5.120 9.030 3.120 5.630 2.820 0.730 2.800 0.430 3.000 0.200 3.300 0.200z" fill="#e6b05f" />
+              <path d="M3.400 1.650H1.900c-0.700 0-1.100 0.500-1.050 1.200 0.250 2.900 1.950 4.850 4.550 5.650M15.933 1.650h1.500c0.700 0 1.100 0.500 1.050 1.200-0.250 2.900-1.950 4.850-4.550 5.650" fill="none" stroke="#e6b05f" strokeWidth="1.300" strokeLinecap="round" />
+            </svg>
           </span>
-          <b>{trophies.toLocaleString()}</b>
+          <span className="sm-label">{label} 트로피</span>
+          <i className="sm-q">?</i>
+          <b lang="en">{trophies.toLocaleString()}</b>
         </div>
-        <div className="kv-row">
-          <span>
-            <Icon name="star" size={20} className="ic-blue" /> 총 학습 문제
+        <div className="sm-row">
+          <span className="sm-ic">
+            <svg width="17.333" height="16.667" viewBox="0 0 17 16.333" aria-hidden="true">
+              <path d="M8.500 1.600l1.950 4.100 4.450 0.600-3.250 3.100 0.800 4.450-3.950-2.150-3.950 2.150 0.800-4.450-3.250-3.100 4.450-0.600z" fill="#7fb4e2" stroke="#7fb4e2" strokeWidth="2.300" strokeLinejoin="round" />
+            </svg>
           </span>
-          <b>{totalQ.toLocaleString()}</b>
-        </div>
-      </div>
-      <div className="s-card kv">
-        <div className="kv-row">
-          <span>
-            <i className="clock-dot pink" /> 오늘 학습 시간
-          </span>
-          <b>{formatClock(byDate.get(today)?.timeMs ?? 0)}</b>
-        </div>
-        <div className="kv-row">
-          <span>
-            <i className="clock-dot blue" /> 총 학습 시간
-          </span>
-          <b>{formatClock(totalTime)}</b>
+          <span className="sm-label">총 학습 문제</span>
+          <b lang="en">{totalQ.toLocaleString()}</b>
         </div>
       </div>
-      <div className="s-card weekly">
-        <div className="weekly-head">
+      <div className="sm-card sm-kv">
+        <div className="sm-row">
+          <span className="sm-ic">
+            <svg width="15.333" height="15.333" viewBox="0 0 15.333 15.333" aria-hidden="true">
+              <circle cx="7.667" cy="7.667" r="7.667" fill="#d987a7" />
+              <path d="M7.667 3.700v4.300H4.500" fill="none" stroke="#242629" strokeWidth="1.500" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+          <span className="sm-label">오늘 학습 시간</span>
+          <b lang="en">{formatClock(byDate.get(today)?.timeMs ?? 0)}</b>
+        </div>
+        <div className="sm-row">
+          <span className="sm-ic">
+            <svg width="19.667" height="15.333" viewBox="0 0 19.667 15.333" aria-hidden="true">
+              <circle cx="12.000" cy="7.667" r="7.667" fill="#4f7fb0" />
+              <circle cx="7.667" cy="7.667" r="7.667" fill="#7fb4e2" />
+              <path d="M7.667 3.700v4.300h3.200" fill="none" stroke="#242629" strokeWidth="1.500" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+          <span className="sm-label">총 학습 시간</span>
+          <b lang="en">{formatClock(totalTime)}</b>
+        </div>
+      </div>
+      <div className="sm-card sm-week">
+        <div className="sm-week-head">
           <b>학습 정보</b>
-          <span className="week-nav">
+          <span className="sm-nav">
             <button onClick={() => setOffset((o) => o + 1)} aria-label="이전 주">
-              <Icon name="back" size={14} />
+              <svg width="5.333" height="8.667" viewBox="0 0 5.333 8.667" aria-hidden="true">
+                <path d="M5.333 0v8.667L0 4.333z" fill="currentColor" />
+              </svg>
             </button>
-            7일
+            <span>7일</span>
             <button onClick={() => setOffset((o) => Math.max(0, o - 1))} disabled={offset === 0} aria-label="다음 주">
-              <Icon name="chevron" size={14} />
+              <svg width="5.333" height="8.667" viewBox="0 0 5.333 8.667" aria-hidden="true">
+                <path d="M0 0v8.667l5.333-4.334z" fill="currentColor" />
+              </svg>
             </button>
           </span>
         </div>
-        <svg viewBox={`0 0 300 ${H + 20}`} className="weekly-svg">
-          {rows.map((r, i) => {
-            const x = 8 + i * 42;
-            let segs: { h: number; c: string }[];
-            if (resultMode) {
-              const sc = (n: number) => (n / resMax) * H;
-              const m = resStat?.get(days[i]);
-              segs = [
-                { h: sc(m?.nice ?? 0), c: 'var(--st-review)' },
-                { h: sc(m?.good ?? 0), c: 'var(--st-known)' },
-                { h: sc(m?.second ?? 0), c: 'var(--st-pink)' },
-                { h: sc(m?.perfect ?? 0), c: 'var(--st-new)' },
-              ];
-            } else {
-              const sc = (n: number) => (n / max) * H;
-              const known = r?.knownNew ?? 0;
-              const fresh = Math.max(0, (r?.newWords ?? 0) - known);
-              segs =
-                mode === 'vocab'
-                  ? [
-                      { h: sc(r?.reviews ?? 0), c: 'var(--st-review)' },
-                      { h: sc(known), c: 'var(--st-known)' },
-                      { h: sc(fresh), c: 'var(--st-new)' },
-                    ]
-                  : [
-                      { h: sc(r?.reviews ?? 0), c: 'var(--st-review)' },
-                      { h: sc(r?.newWords ?? 0), c: 'var(--st-new)' },
-                    ];
-            }
-            let y = H;
-            return (
-              <g key={i}>
-                {segs.map((s, j) => {
-                  y -= s.h;
-                  return s.h > 0 ? <rect key={j} x={x} y={y} width={32} height={s.h} rx={3} fill={s.c} /> : null;
-                })}
-                <text x={x + 16} y={H + 15} className="wk-x" textAnchor="middle">
-                  {days[i] === today ? '오늘' : WEEKDAYS_KO[dayOfWeek(days[i])]}
-                </text>
-              </g>
-            );
-          })}
-          {!resultMode && (
+        <svg className="sm-chart" width={CW} height="142" viewBox={`0 -8 ${CW} 142`} aria-hidden="true">
+          {cols.map((c, i) => (
+            <g key={i}>
+              {c.segs.map((s, j) => (
+                <rect key={j} x={c.x} y={s.y} width={BAR_W} height={s.h} rx={Math.min(4.667, s.h / 2)} fill={s.c} />
+              ))}
+              <text x={c.x + BAR_W / 2} y={BASE + 15} className="sm-x" textAnchor="middle">
+                {days[i] === today ? '오늘' : WEEKDAYS_KO[dayOfWeek(days[i])]}
+              </text>
+            </g>
+          ))}
+          {!resultMode && accPts.length > 0 && (
             <>
-              <polyline
-                className="wk-line"
-                points={rows
-                  .map((r, i) => (r && r.total ? `${24 + i * 42},${8 + (1 - r.correct / r.total) * 60}` : null))
-                  .filter(Boolean)
-                  .join(' ')}
-              />
-              {rows.map((r, i) => (r && r.total ? <circle key={i} cx={24 + i * 42} cy={8 + (1 - r.correct / r.total) * 60} r={4} className="wk-dot" /> : null))}
+              <polyline className="sm-line" points={accPts.map((p) => `${p.x},${p.y}`).join(' ')} />
+              {accPts.map((p, i) => (
+                <circle key={i} cx={p.x} cy={p.y} r="2.800" className="sm-dot" />
+              ))}
             </>
           )}
         </svg>
-        <div className="weekly-sum">
-          <div className="ws-total">
-            <span>Total</span>
-            <b>{totalWeek}</b>
+        <div className="sm-sum">
+          <div className="sm-total">
+            <span lang="en">Total</span>
+            <b lang="en">{totalWeek}</b>
           </div>
           <ul>
             {resultMode ? (
               <>
                 <li>
-                  <i className="sw new" /> Perfect <b>{resTot('perfect') || '-'}</b>
+                  <i className="sw new" />
+                  <span lang="en">Perfect</span>
+                  <b lang="en">{resTot('perfect') || '-'}</b>
                 </li>
                 <li>
-                  <i className="sw pink" /> {secondLabel} <b>{resTot('second') || '-'}</b>
+                  <i className="sw pink" />
+                  <span lang="en">{secondLabel}</span>
+                  <b lang="en">{resTot('second') || '-'}</b>
                 </li>
                 <li>
-                  <i className="sw known" /> Good <b>{resTot('good') || '-'}</b>
+                  <i className="sw known" />
+                  <span lang="en">Good</span>
+                  <b lang="en">{resTot('good') || '-'}</b>
                 </li>
                 <li>
-                  <i className="sw review" /> Nice Try <b>{resTot('nice') || '-'}</b>
+                  <i className="sw review" />
+                  <span lang="en">Nice Try</span>
+                  <b lang="en">{resTot('nice') || '-'}</b>
                 </li>
                 {mode === 'listening' && (
                   <li>
-                    <i className="sw ring" /> 최고 레벨 <b>{listenBest ?? '-'}</b>
+                    <i className="sw ring" />
+                    <span>최고 레벨</span>
+                    <b lang="en">{listenBest ?? '-'}</b>
                   </li>
                 )}
               </>
             ) : (
               <>
                 <li>
-                  <i className="sw new" /> 새로 배운 {unit} <b>{mode === 'vocab' ? newLearned : tot('newWords')}</b>
+                  <i className="sw new" />
+                  <span>새로 배운 {unit}</span>
+                  <b lang="en">{mode === 'vocab' ? newLearned : tot('newWords')}</b>
                 </li>
                 {mode === 'vocab' && (
                   <li>
-                    <i className="sw known" /> 이미 아는 단어 <b>{tot('knownNew')}</b>
+                    <i className="sw known" />
+                    <span>이미 아는 단어</span>
+                    <b lang="en">{tot('knownNew')}</b>
                   </li>
                 )}
                 <li>
-                  <i className="sw review" /> 복습 {unit} <b>{tot('reviews')}</b>
+                  <i className="sw review" />
+                  <span>복습 {unit}</span>
+                  <b lang="en">{tot('reviews')}</b>
                 </li>
                 <li>
-                  <i className="sw ring" /> 복습 정답률 <i className="qmark">?</i> <b>{accAll == null ? '-' : `${accAll}%`}</b>
+                  <i className="sw ring" />
+                  <span>
+                    복습 정답률<i className="sm-q">?</i>
+                  </span>
+                  <b lang="en">{accAll == null ? '-' : `${accAll}%`}</b>
                 </li>
               </>
             )}

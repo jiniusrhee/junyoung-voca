@@ -11,6 +11,7 @@ import './styles/lists.css';
 import './styles/pages.css';
 import './styles/transition.css';
 import './styles/startpop.css';
+import './styles/goalpop.css';
 import { installNativeBack } from './lib/nativeBack';
 import { reassertBars, setStatusBar } from './lib/statusBar';
 
