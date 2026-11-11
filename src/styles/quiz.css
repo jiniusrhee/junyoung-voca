@@ -46,10 +46,10 @@
   --q-track: #a8d8d0;
   --q-fill-a: #a97963;
   --q-fill-b: #b98a73;
-  --q-stamp-ok: #58c642;
-  --q-stamp-bad: #e04040;
-  --q-wrong-top: #332424;
-  --q-wrong-bottom: #291e1e;
+  --q-stamp-ok: #5bc443;
+  --q-stamp-bad: #d54b30;
+  --q-wrong-top: #322123;
+  --q-wrong-bottom: #271b1c;
   --scene-h: 128px;
   --toolbar-h: 50px;
   --kb-h: 199px;
@@ -168,7 +168,7 @@
   display: block;
   border-radius: 0;
   background: repeating-linear-gradient(120deg, var(--q-fill-a) 0 6.35px, var(--q-fill-b) 6.35px 10.97px);
-  transition: width 0.2s ease-out;
+  transition: width 0.27s ease-out 0.12s;
   overflow: visible;
 }
 #root .vocab-quiz .progress-fill::after {
@@ -180,7 +180,7 @@
   top: -3.333px;
   width: 17.333px;
   height: 24px;
-  transition: left 0.2s ease-out;
+  transition: left 0.27s ease-out 0.12s;
 }
 #root .vocab-quiz .trophy-badge {
   position: absolute;
@@ -237,34 +237,77 @@
   max-width: 520px;
   margin: 0 auto;
 }
+/* 카드 넘김 (말해보카 60fps 녹화 실측 2026-11-11): 카드 간격 394px. 새 카드는 0.3초 동안 감속하며 들어와 4.7px 넘쳤다가 0.2초에 걸쳐 돌아온다 */
+#root .vocab-quiz .card-stage {
+  touch-action: pan-y;
+}
+#root .vocab-quiz .card-track {
+  position: relative;
+}
 #root .vocab-quiz .card-slide {
-  animation: cardIn 0.25s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+  animation: cardIn 0.5s both;
   padding: 0 13.333px;
 }
 #root .vocab-quiz .card-slide.back {
-  animation: cardInBack 0.25s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+  animation: cardInBack 0.5s both;
+}
+#root .vocab-quiz .card-slide.still {
+  animation: none;
 }
 #root .vocab-quiz .card-slide.exit {
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
-  animation: cardOut 0.25s cubic-bezier(0.4, 0, 0.8, 0.6) forwards;
+  animation: cardOut 0.3s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
   pointer-events: none;
 }
+/* 끄는 동안 옆에서 딸려 들어오는 카드 */
+#root .vocab-quiz .card-slide.peek {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  animation: none;
+  pointer-events: none;
+}
+#root .vocab-quiz .card-slide.peek.prev {
+  transform: translateX(-394px);
+}
+#root .vocab-quiz .card-slide.peek.next {
+  transform: translateX(394px);
+}
 @keyframes cardIn {
-  from {
-    transform: translateX(70%);
+  0% {
+    transform: translateX(394px);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
-  to {
+  60% {
+    transform: translateX(-4.667px);
+    animation-timing-function: linear;
+  }
+  76% {
+    transform: translateX(-4.667px);
+    animation-timing-function: ease-in-out;
+  }
+  100% {
     transform: translateX(0);
   }
 }
 @keyframes cardInBack {
-  from {
-    transform: translateX(-70%);
+  0% {
+    transform: translateX(-394px);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
-  to {
+  60% {
+    transform: translateX(4.667px);
+    animation-timing-function: linear;
+  }
+  76% {
+    transform: translateX(4.667px);
+    animation-timing-function: ease-in-out;
+  }
+  100% {
     transform: translateX(0);
   }
 }
@@ -273,7 +316,7 @@
     transform: translateX(0);
   }
   to {
-    transform: translateX(-70%);
+    transform: translateX(-398.667px);
   }
 }
 #root .vocab-quiz .side-card {
@@ -380,7 +423,7 @@
 }
 #root .vocab-quiz .badge-due {
   background: var(--q-badge-due);
-  animation: popIn 0.18s cubic-bezier(0.2, 0.9, 0.3, 1.4) both;
+  animation: none;
   height: 25.333px;
   min-width: 80px;
   border-radius: 12.667px;
@@ -421,7 +464,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  animation: popIn 0.2s cubic-bezier(0.2, 0.9, 0.3, 1.4) both;
+  animation: heartPop 0.18s ease-out backwards;
   margin-top: -1px;
 }
 #root .vocab-quiz .heart-btn svg {
@@ -430,6 +473,27 @@
 }
 #root .vocab-quiz .heart-btn.on {
   color: var(--q-heart-on);
+}
+@keyframes heartPop {
+  0% {
+    transform: scale(1.13);
+  }
+  15% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes badgeOut {
+  to {
+    opacity: 0;
+  }
+}
+#root .vocab-quiz.answered .badge-new,
+#root .vocab-quiz.answered .badge-ago,
+#root .vocab-quiz.answered .badge-retry {
+  animation: badgeOut 0.05s 0.3s linear forwards;
 }
 @keyframes popIn {
   from {
@@ -630,40 +694,77 @@
   color: var(--q-pill-bad);
 }
 
-/* 도장: 정답 초록 체크(0.25초 뒤 등장 → 1.2초 뒤 사라짐), 오답 빨간 느낌표 */
+/* 도장 (말해보카 60fps 녹화 실측 2026-11-11)
+   정답 체크: 정답 67ms 뒤 왼쪽→오른쪽으로 67ms 동안 그려지고, 이어서 67ms 동안 5.3px 떠오른다. 1.02초에 83ms 동안 사라진다.
+   오답 느낌표: 누른 뒤 67ms 에 크기 변화 없이 바로 나타나고 1.18초(카드 색이 돌아올 때) 바로 사라진다. */
 #root .vocab-quiz .mark-check,
 #root .quiz-screen.vocab-quiz .qcard .mark-check {
   position: absolute;
-  left: 13px;
-  top: -40px;
+  left: 18.4px;
+  top: -28.1px;
+  width: 65.5px;
+  height: 51.7px;
   z-index: 5;
   color: var(--q-stamp-ok);
-  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.15));
-  opacity: 0;
-  transform-origin: 40% 60%;
-  animation: stampIn 0.1s 0.25s cubic-bezier(0.2, 0.8, 0.3, 1.3) both, stampOut 0.1s 1.2s forwards;
+  filter: none;
+  opacity: 1;
+  transform: none;
+  animation: checkWipe 0.067s 0.05s linear both, checkRise 0.067s 0.117s ease-out both, stampOut 0.12s 1.017s linear forwards;
   pointer-events: none;
 }
 #root .vocab-quiz .mark-check svg {
   display: block;
-  width: 105px;
-  height: 68px;
+  width: 65.5px;
+  height: 51.7px;
+}
+@keyframes checkWipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes checkRise {
+  from {
+    transform: translateY(5.333px);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 #root .vocab-quiz .mark-bang,
 #root .quiz-screen.vocab-quiz .qcard .mark-bang,
 #root .quiz-screen.vocab-quiz .qcard:has(.pill) .mark-bang {
   position: absolute;
-  left: 57px;
-  top: -54px;
+  left: 43.333px;
+  top: -27.667px;
+  width: 17.667px;
+  height: 46.667px;
   z-index: 5;
   color: var(--q-stamp-bad);
-  font-size: 62px;
-  font-weight: 900;
-  line-height: 1;
+  font-size: 0;
+  line-height: 0;
   transform: none;
   opacity: 0;
-  animation: stampIn 0.1s cubic-bezier(0.2, 0.8, 0.3, 1.3) both, stampOut 0.1s 0.9s forwards;
+  animation: bangShow 1.18s steps(1, end) forwards;
   pointer-events: none;
+}
+#root .vocab-quiz .mark-bang svg {
+  display: block;
+  width: 17.667px;
+  height: 46.667px;
+}
+@keyframes bangShow {
+  0% {
+    opacity: 0;
+  }
+  5.7% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 @keyframes stampIn {
   from {
@@ -688,12 +789,12 @@
 #root .quiz-screen.vocab-quiz .qcard.is-wrong,
 :root[data-theme='dark'] #root .quiz-screen.vocab-quiz .qcard.is-wrong,
 #root .quiz-screen.vocab-quiz .qcard.is-wrong:has(.pill) {
-  animation: wrongCardB 1.17s forwards;
+  animation: wrongCardB 1.18s linear forwards;
 }
 #root .quiz-screen.vocab-quiz .qcard.is-wrong .qcard-top,
 :root[data-theme='dark'] #root .quiz-screen.vocab-quiz .qcard.is-wrong .qcard-top,
 #root .quiz-screen.vocab-quiz .qcard.is-wrong:has(.pill) .qcard-top {
-  animation: wrongCardT 1.17s forwards;
+  animation: wrongCardT 1.18s linear forwards;
 }
 #root .quiz-screen.vocab-quiz .qcard.is-correct,
 #root .quiz-screen.vocab-quiz .qcard.is-correct .qcard-top,
@@ -702,8 +803,11 @@
   animation: none;
 }
 @keyframes wrongCardB {
-  0%,
-  86% {
+  0% {
+    background: var(--q-card-bottom);
+  }
+  17%,
+  85% {
     background: var(--q-wrong-bottom);
   }
   100% {
@@ -711,8 +815,11 @@
   }
 }
 @keyframes wrongCardT {
-  0%,
-  86% {
+  0% {
+    background: var(--q-card-top);
+  }
+  17%,
+  85% {
     background: var(--q-wrong-top);
   }
   100% {
@@ -736,39 +843,69 @@
   right: 0;
   bottom: 0;
 }
-/* 자판 블록: 통째로 오르내린다. 정답 패널: 본문만 오르내리고 말풍선은 자판 자리(37px 위)에서 미끄러져 내려온다 (말해보카 실측 0.3초) */
+/* 자판 ↔ 정답 패널 (말해보카 60fps 녹화 실측 2026-11-11)
+   정답 0.8초 뒤: 패널이 아래에서 올라와 자판을 덮고(0.1초), 자판은 그동안 조금만 내려간다. 말풍선은 자판 자리에서 14.7px 위로 올라가며 2.7px 넘쳤다 돌아온다.
+   다음 문제: 카드가 움직이기 시작하고 0.17초 뒤, 자판이 아래에서 올라와 패널을 덮는다(0.12초). */
 #root .vocab-quiz .quiz-bottom > .quiz-input.enter {
-  animation: slideUp 0.3s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+  animation: slideUp 0.117s cubic-bezier(0.2, 0.7, 0.3, 1) 0.167s both;
+  z-index: 2;
 }
 #root .vocab-quiz .quiz-bottom > .quiz-input.leave {
-  animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.7, 0.6) forwards;
+  animation: kbSink 0.1s linear forwards;
   pointer-events: none;
-  z-index: 2;
+  z-index: 0;
 }
 #root .vocab-quiz .quiz-bottom > .quiz-input.leave .toolbar-center {
   visibility: hidden;
 }
+#root .vocab-quiz .quiz-bottom > .after {
+  z-index: 1;
+}
+/* 올라오는 동안에는 패널 바탕을 본문에만 칠해, 아직 덮이지 않은 자판이 그 위로 보이게 한다 */
+#root .vocab-quiz .after.enter {
+  background: none;
+}
 #root .vocab-quiz .after.enter .after-body {
-  animation: slideUp 0.3s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+  background: var(--q-panel);
+  animation: slideUp 0.1s linear both;
+}
+#root .vocab-quiz .after.leave {
+  background: none;
+}
+#root .vocab-quiz .after.leave .after-body {
+  background: var(--q-panel);
 }
 #root .vocab-quiz .after.enter .bubble-row {
-  animation: bubbleDrop 0.3s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+  animation: bubbleRise 0.35s 0.07s linear both;
 }
 #root .vocab-quiz .after.leave {
   pointer-events: none;
 }
 #root .vocab-quiz .after.leave .after-body {
-  animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.7, 0.6) forwards;
+  animation: kbSink 0.117s linear 0.167s forwards;
 }
 #root .vocab-quiz .after.leave .bubble-row {
   display: none;
 }
-@keyframes bubbleDrop {
+@keyframes bubbleRise {
+  0% {
+    transform: translateY(14.667px);
+    animation-timing-function: cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+  57% {
+    transform: translateY(-2.667px);
+    animation-timing-function: ease-in-out;
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes kbSink {
   from {
-    transform: translateY(-37px);
+    transform: translateY(0);
   }
   to {
-    transform: translateY(0);
+    transform: translateY(64px);
   }
 }
 @keyframes slideUp {
@@ -986,9 +1123,15 @@
   justify-content: center;
   --ls: 0;
 }
+/* 눌린 키 (말해보카 실측): 글자 키·띄어쓰기는 누르는 동안 #424242 로 어두워지고, 회색 키(지우기·확인)는 #4f4f53 으로 밝아진다. 전환 없이 바로 */
 #root .vocab-quiz .kb-key:active {
   background: var(--q-key);
-  filter: brightness(1.12);
+  filter: none;
+}
+#root .vocab-quiz .kb-key.pressed,
+#root .vocab-quiz .kb-key.space.pressed {
+  background: #424242;
+  filter: none;
 }
 #root .vocab-quiz .kb-key.gray {
   flex: 0 0 38.667px;
@@ -996,6 +1139,13 @@
   border-radius: 4px;
 }
 #root .vocab-quiz .kb-key.gray:active {
+  background: var(--q-key-special);
+}
+#root .vocab-quiz .kb-key.gray.pressed {
+  background: #4f4f53;
+  filter: none;
+}
+#root .vocab-quiz .kb-key.kb-blank.pressed {
   background: var(--q-key-special);
 }
 #root .vocab-quiz .kb-row.r2 .kb-key.gray:first-child {
@@ -2346,4 +2496,185 @@
 }
 #root .quiz-screen.vocab-quiz .big-btn:nth-child(3) > span {
   --ls: -0.058;
+}
+
+/* ============ 2026-11-11 눌림 반응 (말해보카 60fps 녹화 실측) ============ */
+#root .vocab-quiz .toolbar .tool-btn,
+#root .vocab-quiz .after-tool,
+#root .vocab-quiz .big-btn,
+#root .vocab-quiz .heart-btn,
+#root .vocab-quiz .after .more-btn {
+  transition: transform 0.03s linear;
+}
+#root .vocab-quiz .toolbar .tool-btn:active:not(:disabled),
+#root .vocab-quiz .after-tool:active,
+#root .vocab-quiz .big-btn:active,
+#root .vocab-quiz .after .more-btn:active {
+  transform: scale(1.04);
+  filter: none;
+  opacity: 1;
+}
+#root .vocab-quiz .big-btn:active {
+  filter: brightness(1.04);
+}
+#root .vocab-quiz .heart-btn:active {
+  transform: scale(1.16);
+}
+
+/* 팝업은 전환 없이 바로 뜨고 바로 닫힌다 (레벨 도움말·사전 말풍선·설정). 학습 정보 팝업만 13px 아래에서 0.1초 동안 올라온다 */
+#root .vocab-quiz .level-help-dim,
+#root .vocab-quiz .study-info-dim,
+#root .vocab-quiz > .modal-dim {
+  animation: none;
+}
+#root .vocab-quiz .level-help-card,
+.level-help-card {
+  animation: none;
+}
+#root .vocab-quiz .study-info,
+.study-info {
+  animation: infoRise 0.1s ease-out both;
+}
+@keyframes infoRise {
+  from {
+    transform: translateY(13px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+#root .vocab-quiz .dict-pop,
+#root .vocab-quiz .typed-pop {
+  animation: none;
+}
+
+/* 토스트: 14.5px 위에서 내려오며 0.18초 동안 나타나고, 2.45초 뒤 같은 길로 올라가며 사라진다 */
+#root .quiz-screen.vocab-quiz > .toast {
+  animation: toastIn 0.18s ease-out both, toastOut 0.18s ease-in 2.45s forwards;
+}
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -14.5px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+@keyframes toastOut {
+  from {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -14.5px);
+  }
+}
+
+/* 끌어서 넘겼을 때는 자판·패널 전환을 기다리지 않는다 */
+#root .vocab-quiz .quiz-bottom.nodelay > .quiz-input.enter {
+  animation-delay: 0s;
+}
+#root .vocab-quiz .quiz-bottom.nodelay > .after.leave .after-body {
+  animation-delay: 0s;
+}
+
+/* 패널이 오르내리는 동안: 바탕은 움직이는 본문에만 (styles.css·위쪽 규칙의 .after 바탕색보다 강하게) */
+#root .vocab-quiz .after-body {
+  flex: 1;
+  min-height: 0;
+}
+:root #root .quiz-screen.vocab-quiz .after.enter,
+:root #root .quiz-screen.vocab-quiz .after.leave,
+:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .after.enter,
+:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .after.leave {
+  background: none;
+}
+:root #root .quiz-screen.vocab-quiz .after.enter .after-body,
+:root #root .quiz-screen.vocab-quiz .after.leave .after-body {
+  background: var(--q-panel);
+}
+/* 정답 보기를 쓴 뒤에 친 말풍선은 꼬리가 거의 없다 (말해보카 실측: 1.3px 만 나옴, 정답 화면에서도 그대로) */
+#root .vocab-quiz .bubble.flat::after {
+  bottom: -0.3px;
+}
+
+/* ============ '편집' 시트 (말해보카 60fps 녹화 실측 2026-11-11) ============
+   패널(도구줄 + 큰 버튼)은 그대로 있고, 시트가 패널 뒤에서 위로 0.27초 동안 올라온다. 머리 42 + 줄마다 69.33.
+   '^' 버튼은 시트 위 끝을 따라 올라가 '×' 가 된다. 위쪽 화면은 어두워진다(0.25초). 닫을 때는 전환 없이 바로. */
+#root .vocab-quiz .after {
+  --more-h: calc(42px + var(--more-rows, 0) * 69.333px);
+}
+#root .vocab-quiz .after .after-body {
+  background: var(--q-panel);
+}
+#root .vocab-quiz .after .more-dim {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: rgba(0, 0, 0, 0.36);
+  animation: fadeIn 0.25s linear both;
+}
+#root .vocab-quiz .after .more-sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: var(--more-h);
+  z-index: -1;
+  padding: 0 7px;
+  border-radius: 10px 10px 0 0;
+  background: var(--q-panel);
+  animation: moreUp 0.27s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+@keyframes moreUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+#root .vocab-quiz .after .more-head {
+  position: relative;
+  height: 42px;
+  padding: 14px 16px 0;
+  font-size: 12.667px;
+  line-height: 14px;
+  color: #6a737a;
+}
+#root .vocab-quiz .after .more-head::after {
+  content: '';
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 2px;
+  height: 1px;
+  background: #191a1c;
+}
+#root .vocab-quiz .after .more-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  height: 69.333px;
+}
+#root .vocab-quiz .after .more-row .after-tool.empty::before {
+  display: none;
+}
+/* 시트가 열려 있으면 정답 말풍선은 가려지고, '^' 는 시트 위 끝으로 올라가 '×' 가 된다 */
+#root .vocab-quiz .after.more-open .bubble-row .bubble,
+#root .vocab-quiz .after.more-open .bubble-row .dict-pop {
+  visibility: hidden;
+}
+#root .vocab-quiz .after.more-open .more-btn {
+  animation: moreBtnUp 0.27s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+@keyframes moreBtnUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-1 * var(--more-h)));
+  }
 }

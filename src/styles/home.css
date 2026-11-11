@@ -260,9 +260,18 @@
 .home .today-btn.m-vocab::before {
   background: #ad94ff;
 }
+/* 눌림 (말해보카 60fps 녹화 실측 2026-11-11): 누르는 동안 버튼 면이 3.33px 내려가 아래 턱이 거의 사라지고, 비스듬한 빛줄기도 사라진다. 손을 떼면 바로 돌아온다 */
 .home .today-btn:active {
-  transform: translateY(2px);
-  box-shadow: 0 2px 0 #7141e6;
+  transform: translateY(3.333px);
+  box-shadow: 0 0.667px 0 #7141e6;
+  filter: none;
+}
+.home .today-btn:active::before {
+  display: none;
+}
+/* 모드 탭을 바꾸면 버튼은 바로 바뀌고, 제목·목표 줄은 0.07초 동안 나타난다 */
+.home .main-row {
+  animation: fadeIn 0.07s linear both;
 }
 .home .today-btn.m-expr,
 .home .today-btn.m-talk,
@@ -473,4 +482,35 @@
 }
 .home .home-toast {
   top: 44px;
+}
+
+/* ---------- 시작 팝업이 열릴 때 (말해보카 60fps 녹화 실측 2026-11-11) ----------
+   0.1초 동안 뒤 화면이 흐려지며 어두워지고, 이어서 팝업이 0.85배에서 0.07초 만에 커지며 나타난다. 고리는 0.35초 동안 0 에서 차오른다. */
+.modal-dim:has(.extra-sheet),
+.modal-dim:has(.mode-start) {
+  animation: fadeIn 0.1s linear both;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.modal-dim > .extra-sheet,
+.modal-dim > .mode-start {
+  animation: startPop 0.07s ease-out 0.12s both;
+}
+@keyframes startPop {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.extra-sheet .start-ring .ring-fill {
+  animation: ringGrow 0.35s ease-out 0.17s backwards;
+}
+@keyframes ringGrow {
+  from {
+    stroke-dasharray: 0 326.7;
+  }
 }

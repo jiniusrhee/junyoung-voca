@@ -1,11 +1,21 @@
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import Icon, { type IconName } from './Icon';
+
+export interface MoreAction {
+  key: string;
+  icon: IconName;
+  label: string;
+  onClick: () => void;
+  active?: boolean;
+}
 
 export interface AfterPanelProps {
   /** 보라 말풍선 글자(정답) */
   answer: string;
   /** 사전에 있는 단어면 밑줄 (누르면 뜻) */
   answerIsWord: boolean;
+  /** 정답 보기를 쓰고 푼 카드: 말풍선 꼬리가 거의 없다 (말해보카) */
+  flatBubble?: boolean;
   onBubble: () => void;
   /** 말풍선 위에 띄울 뜻 팝업 등 */
   bubbleExtra?: ReactNode;
@@ -28,8 +38,14 @@ export interface AfterPanelProps {
   onNext: () => void;
   /** 마지막 문제: 다음 문제 대신 초록 '학습 완료' */
   finish?: boolean;
-  /** 말풍선 오른쪽 '^' → 추가 동작 시트 */
+  /** 말풍선 오른쪽 '^' → '편집' 시트 여닫기 */
   onMore: () => void;
+  /**
+   * '편집' 시트 (말해보카 실측 2026-11-11): 패널은 그대로 있고 그 위로 시트가 패널 뒤에서 0.27초 동안 올라온다.
+   * '^' 버튼은 시트 위 끝을 따라 올라가 '×' 가 되고, 위쪽 화면은 어두워진다. 닫힐 때는 전환 없이 바로 사라진다.
+   */
+  moreOpen?: boolean;
+  moreRows?: MoreAction[][];
   /** enter / leave 슬라이드 애니메이션용 */
   className?: string;
 }
@@ -77,15 +93,42 @@ export function BigPlay() {
 /** 정답 후 하단 패널: 말풍선 + '^' / 도구 아이콘 줄 / 듣기평가 속도 · 다시 듣기 · 다음 문제 (말해보카). 말풍선은 패널 위(bubble-row)에 붙어 자판 자리에서 37px 내려오며, 본문(after-body)만 아래에서 올라온다 */
 export default function AfterPanel(p: AfterPanelProps) {
   return (
-    <div className={`after ${p.className ?? ''}`}>
+    <div className={`after ${p.className ?? ''}${p.moreOpen ? ' more-open' : ''}`} style={{ '--more-rows': p.moreRows?.length ?? 0 } as CSSProperties}>
+      {p.moreOpen && <div className="more-dim" onClick={p.onMore} />}
+      {p.moreOpen && p.moreRows && (
+        <div className="more-sheet">
+          <div className="more-head">편집</div>
+          {p.moreRows.map((row, r) => (
+            <div className="more-row" key={r}>
+              {[0, 1, 2, 3, 4].map((k) => {
+                const a = row[k];
+                return a ? (
+                  <button key={a.key} className={`after-tool ${a.active ? 'active' : ''}`} onClick={a.onClick}>
+                    <span className="after-tool-icon">
+                      <Icon name={a.icon} size={24} />
+                    </span>
+                    <span>{a.label}</span>
+                  </button>
+                ) : (
+                  <span key={k} className="after-tool empty" aria-hidden="true" />
+                );
+              })}
+            </div>
+          ))}
+        </div>
+      )}
       <div className="bubble-row">
         {p.bubbleExtra}
-        <button className={`bubble ${p.answerIsWord && !p.listening ? 'link' : ''}`} onClick={p.onBubble}>
+        <button className={`bubble ${p.answerIsWord && !p.listening ? 'link' : ''}${p.flatBubble ? ' flat' : ''}`} lang="en" onClick={p.onBubble}>
           {p.listening ? <span className="dots"><i /></span> : p.answer}
         </button>
-        <button className="more-btn" onClick={p.onMore} aria-label="더 보기">
+        <button className="more-btn" onClick={p.onMore} aria-label={p.moreOpen ? '닫기' : '더 보기'}>
           <svg viewBox="0 0 18 18" aria-hidden="true">
-            <polyline points="3.5,11.5 9,6 14.5,11.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            {p.moreOpen ? (
+              <path d="M4.500 4.500l9 9M13.500 4.500l-9 9" fill="none" stroke="currentColor" strokeWidth="1.600" strokeLinecap="round" />
+            ) : (
+              <polyline points="3.5,11.5 9,6 14.5,11.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            )}
           </svg>
         </button>
       </div>

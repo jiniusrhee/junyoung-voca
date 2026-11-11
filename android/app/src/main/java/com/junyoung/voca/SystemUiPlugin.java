@@ -16,6 +16,27 @@ import com.getcapacitor.annotation.CapacitorPlugin;
  */
 @CapacitorPlugin(name = "SystemUi")
 public class SystemUiPlugin extends Plugin {
+    /**
+     * 시스템 표준 터치 진동(자판 키 등). 말해보카는 키를 누를 때마다 시스템 햅틱(삼성 기기에서 SemHaptic 패턴)을 낸다 —
+     * 임의 길이의 진동(Vibrator.vibrate)과 느낌이 달라서, 같은 시스템 햅틱을 View.performHapticFeedback 으로 낸다.
+     * type: android.view.HapticFeedbackConstants 값 (기본 KEYBOARD_TAP = 3)
+     */
+    @PluginMethod
+    public void haptic(PluginCall call) {
+        final int type = call.getInt("type", android.view.HapticFeedbackConstants.KEYBOARD_TAP);
+        getActivity().runOnUiThread(() -> {
+            try {
+                View v = getBridge().getWebView();
+                boolean ok = v.performHapticFeedback(type);
+                com.getcapacitor.JSObject r = new com.getcapacitor.JSObject();
+                r.put("performed", ok);
+                call.resolve(r);
+            } catch (Exception e) {
+                call.reject(e.getMessage());
+            }
+        });
+    }
+
     @PluginMethod
     public void setNavigationBarColor(PluginCall call) {
         final String color = call.getString("color", "#000000");

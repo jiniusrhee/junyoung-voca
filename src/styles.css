@@ -1782,6 +1782,13 @@ em.hl {
   color: #fff;
   flex: 1.45;
 }
+/* 눌린 키: 누르는 동안만 (글자 키는 어둡게, 회색 키는 밝게 — 말해보카 자판과 같은 방향). 어휘 퀴즈는 quiz.css 에서 실측 색을 쓴다 */
+.kb-key.pressed {
+  filter: brightness(0.65);
+}
+.kb-key.gray.pressed {
+  filter: brightness(1.15);
+}
 .kb-row.bottom .kb-key {
   height: 42px;
   font-size: 0.86rem;

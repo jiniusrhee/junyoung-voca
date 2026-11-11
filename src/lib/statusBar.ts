@@ -9,8 +9,20 @@ import { useEffect } from 'react';
  */
 interface SystemUiPlugin {
   setNavigationBarColor(o: { color: string; lightBackground?: boolean }): Promise<void>;
+  haptic(o: { type?: number }): Promise<{ performed: boolean }>;
 }
 const SystemUi = registerPlugin<SystemUiPlugin>('SystemUi');
+
+/**
+ * 자판 키를 누를 때의 시스템 햅틱 (android HapticFeedbackConstants.KEYBOARD_TAP = 3).
+ * 말해보카가 키마다 내는 것과 같은 종류(플립에서 SemHaptic 50025)다. 임의 길이 진동(Haptics.impact)은 느낌이 다르다.
+ * 네이티브가 아니면 false 를 돌려준다.
+ */
+export function keyHaptic(): boolean {
+  if (!Capacitor.isNativePlatform()) return false;
+  void SystemUi.haptic({ type: 3 }).catch(() => undefined);
+  return true;
+}
 
 const isDark = () => document.documentElement.dataset.theme === 'dark';
 

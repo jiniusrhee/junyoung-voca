@@ -58,7 +58,9 @@ export type IconName =
   | 'bookmark'
   | 'shift'
   | 'retry'
-  | 'lock';
+  | 'lock'
+  | 'sliders'
+  | 'voices';
 
 interface Props {
   name: IconName;
@@ -348,6 +350,24 @@ const PATHS: Record<IconName, ReactElement> = {
     </g>
   ),
   shift: <path d="M12 3 3 12h5v8h8v-8h5z" fill="currentColor" stroke="none" />,
+  /* 복습 주기: 손잡이가 달린 가로줄 세 개 */
+  sliders: (
+    <g strokeWidth={2}>
+      <path d="M3 6h9M17 6h4M3 12h3M11 12h10M3 18h10M18 18h3" />
+      <circle cx="14.500" cy="6" r="2.300" fill="none" />
+      <circle cx="8.500" cy="12" r="2.300" fill="none" />
+      <circle cx="15.500" cy="18" r="2.300" fill="none" />
+    </g>
+  ),
+  /* 다른 성별 음성: 사람 둘 */
+  voices: (
+    <g fill="currentColor" stroke="none">
+      <circle cx="7.500" cy="6.500" r="3.200" />
+      <circle cx="16.500" cy="6.500" r="3.200" />
+      <path d="M7.500 10.800L2.300 20h10.400z" />
+      <path d="M11.800 11.500h9.400l-2 8.500h-5.400z" />
+    </g>
+  ),
   retry: (
     <g strokeWidth={2.6}>
       <path d="M20 12a8 8 0 1 1-2.6-5.9" />

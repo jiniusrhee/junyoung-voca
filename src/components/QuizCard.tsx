@@ -155,13 +155,22 @@ export default function QuizCard(p: Props) {
       <div className={`qcard ${flashCls}`} key={flash?.key ?? 0}>
         {flash?.kind === 'correct' && (
           <span className="mark-check" aria-hidden="true">
-            {/* 말해보카 실측: 폭 105 × 높이 68 CSS px, 획 16px, 카드 위 40px 에서 시작해 28px 겹침 */}
-            <svg viewBox="0 0 110 72">
-              <polyline points="10,38 42,62 100,10" fill="none" stroke="currentColor" strokeWidth="16" strokeLinecap="round" strokeLinejoin="round" />
+            {/* 말해보카 실측(2026-11-11, 60fps): 각진 체크(정답 보기 아이콘과 같은 모양) 65.5 × 51.7, 카드 왼쪽 18.4 · 위로 28.1.
+                정답 67ms 뒤 왼쪽에서 오른쪽으로 67ms 동안 그려지고, 5.3px 떠오른 뒤 1.02초에 사라진다 */}
+            <svg viewBox="0 0 65.500 51.700">
+              <polygon points="0,25.200 20.500,12.800 30.500,31.100 50,0 65.500,11.400 31.900,51.700" fill="currentColor" />
             </svg>
           </span>
         )}
-        {flash?.kind === 'wrong' && <span className="mark-bang">!</span>}
+        {flash?.kind === 'wrong' && (
+          <span className="mark-bang" aria-hidden="true">
+            {/* 느낌표 도장: 위가 넓은 사다리꼴(살짝 기울어짐) + 둥근 점, 17.7 × 46.7. 누른 뒤 67ms 에 바로 나타나 1.18초에 사라진다 */}
+            <svg viewBox="0 0 17.667 46.667">
+              <polygon points="1.800,0 17.300,2.600 11.800,32.300 1.300,30.100" fill="currentColor" />
+              <circle cx="6.030" cy="40.500" r="6.100" fill="currentColor" />
+            </svg>
+          </span>
+        )}
         <div className="qcard-top">
           {sentence.ctx && (
             <p className="ctx">

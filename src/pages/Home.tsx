@@ -129,7 +129,7 @@ export default function Home() {
           <div className="main-mascot">
             <Mascot size={72} mood={met ? 'cheer' : 'happy'} />
           </div>
-          <div className="main-row">
+          <div className="main-row" key={homeMode}>
             <div className="main-text">
               <Link to="/stats" className="acc-line">
                 <Icon name="shield" size={12} /> 복습 정답률 {acc == null ? '-' : `${Math.round(acc * 100)}%`} <Icon name="chevron" size={11} />

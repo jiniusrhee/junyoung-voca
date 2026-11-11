@@ -1,6 +1,6 @@
 import { Capacitor } from '@capacitor/core';
-import { ImpactStyle } from '@capacitor/haptics';
 import type { Settings } from '../types';
+import { keyHaptic } from './statusBar';
 
 let haptics: typeof import('@capacitor/haptics').Haptics | null = null;
 // 프록시를 then 체인의 반환값으로 흘리면 'Haptics.then()' 네이티브 호출이 되므로 블록으로 감싼다
@@ -68,8 +68,8 @@ function beep(freq: number, ms: number, gain: number): void {
 export function keyFeedback(): void {
   beep(1800, 35, cur.keySoundVolume);
   if (cur.keyVibrate) {
-    if (haptics) void haptics.impact({ style: ImpactStyle.Light });
-    else navigator.vibrate?.(8);
+    // 말해보카는 자판 키(글자·지우기·띄어쓰기·확인)에서만, 시스템 키보드 햅틱으로 진동한다 (2026-11-11 진동 기록으로 확인)
+    if (!keyHaptic()) navigator.vibrate?.(8);
   }
 }
 
