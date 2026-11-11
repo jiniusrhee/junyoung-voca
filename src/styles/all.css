@@ -23,9 +23,9 @@
   top: 0;
   z-index: 5;
   box-sizing: border-box;
-  height: 41px;
-  margin: 0 -18px;
-  padding: 0 13px 0 9px;
+  height: 43.333px;
+  margin: 0 -18px 1px;
+  padding: 3.667px 13px 0 9px;
   border-bottom: 1px solid var(--line);
   background: var(--bg);
 }
@@ -95,7 +95,7 @@
 @media (max-width: 370px) {
   .all-learning .al-chip {
     padding: 0 14px;
-    font-size: 13.5px;
+    font-size: 14.667px;
   }
 }
 :root[data-theme='dark'] .all-learning .al-chip {
@@ -206,7 +206,7 @@
   background: #212429;
 }
 .all-learning .al-label {
-  font-size: 14.5px;
+  font-size: 15.333px;
   line-height: 1.3;
   font-weight: 600;
 }

@@ -5,6 +5,7 @@ import Icon from '../components/Icon';
 import { db } from '../db';
 import { MASTERY_KO, MASTERY_ORDER, masteryOf, type Mastery } from '../lib/scheduler';
 import { getSettings, useSettings } from '../lib/settings';
+import { useStatusBarColor } from '../lib/statusBar';
 import { getImported } from '../lib/imported';
 import { comprehension, dayTime, dayTotal, displayVocab, goalMet, reviewAccuracy, vocabDateText, percentileOf, latestMeasure } from '../lib/stats';
 import { WEEKDAYS_KO, dayOfWeek, formatClock, shiftDate, studyDateOf } from '../lib/time';
@@ -14,6 +15,8 @@ type Tab = 'period' | 'study' | 'vocab';
 
 export default function Stats() {
   const settings = useSettings();
+  // 말해보카: 학습 통계는 머리띠(#202122)가 상태 표시줄까지 이어진다 (다크 모드 실측)
+  useStatusBarColor(document.documentElement.dataset.theme === 'dark' ? '#202122' : null, true);
   const nav = useNavigate();
   const [params, setParams] = useSearchParams();
   const tab = (params.get('tab') as Tab) || 'period';
