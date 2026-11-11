@@ -87,11 +87,11 @@ export default function Home() {
    * 학습 화면에서 홈으로 돌아왔을 때 (말해보카 60fps 녹화): 홈이 한 프레임에 뜬 다음 곧바로 고리 숫자가 0 에서 다시 차오르고,
    * 리본이 다시 내려오고, '오늘' 막대가 0 에서 자란다. 환영 토스트는 없다.
    */
-  const [replay] = useState(() => {
-    const v = !!sessionStorage.getItem('homeReplay');
+  const [replay] = useState(() => !!sessionStorage.getItem('homeReplay'));
+  // 표시는 화면이 실제로 뜬 뒤에 지운다 (그리는 도중 지우면, React 가 그리기를 한 번 더 할 때 값이 사라져 있다)
+  useEffect(() => {
     sessionStorage.removeItem('homeReplay');
-    return v;
-  });
+  }, []);
   // 앱(APK)에서는 시스템 스플래시 아이콘이 0.25초쯤 걷히는 동안 홈이 가려져 있으므로 그만큼 늦게 시작한다
   const lag = intro && isNativeApp() ? 250 : 0;
   const [toast, setToast] = useState<'in' | 'out' | null>(null);

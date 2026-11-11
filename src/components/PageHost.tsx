@@ -92,7 +92,8 @@ export default function PageHost({ children }: { children: ReactNode }) {
   const scrolls = useRef(new Map<string, number>());
 
   // 그리는 중에(DOM 이 아직 이전 화면일 때) 이전 화면을 떠 둔다
-  if (last.current.key !== loc.key) {
+  // 주소창에서 해시만 바꾼 이동은 키가 모두 'default' 라서 경로도 함께 본다
+  if (last.current.key !== loc.key || last.current.path !== loc.pathname) {
     const kind = transitionFor(last.current.path, loc.pathname, navType);
     scrolls.current.set(last.current.key, window.scrollY);
     // 학습을 하다가 홈으로 돌아오면 홈이 고리·리본·오늘 막대를 다시 채워 보인다 (pages/Home.tsx)
@@ -164,7 +165,7 @@ export default function PageHost({ children }: { children: ReactNode }) {
       finish();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loc.key]);
+  }, [loc.key, loc.pathname]);
 
   return (
     <div className="page-host" ref={host}>
