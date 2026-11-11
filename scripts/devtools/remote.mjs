@@ -26,3 +26,5 @@ if (!res) { console.log('TIMEOUT'); process.exit(3); }
 const v = res.result?.result;
 if (res.result?.exceptionDetails) console.log('EXC ' + (res.result.exceptionDetails.exception?.description || '').slice(0, 300));
 else console.log(typeof v?.value === 'string' ? v.value : JSON.stringify(v?.value ?? v?.description ?? null));
+// 대기용 타이머(15초)가 남아 있어도 바로 끝낸다
+process.exit(0);

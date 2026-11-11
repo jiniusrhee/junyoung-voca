@@ -8418,7 +8418,8 @@ sup.beta.pill {
 .quiz-screen > .quiz-bg-deco {
   z-index: 0;
 }
-.quiz-screen > *:not(.dino-bg):not(.quiz-bg-deco):not(.modal-dim):not(.fav-tip):not(.toast) {
+/* 화면을 덮는 것들(팝업·설정 오버레이·토스트)은 제외 — 빼먹으면 fixed 가 relative 로 바뀌어 화면 배치가 무너진다 */
+.quiz-screen > *:not(.dino-bg):not(.quiz-bg-deco):not(.modal-dim):not(.fav-tip):not(.toast):not(.vs-overlay) {
   position: relative;
   z-index: 1;
 }

@@ -176,7 +176,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const [tipOpen, setTipOpen] = useState(true);
   const guard = useLeaveGuard(() => nav('/'));
   // 말해보카: 학습 화면에서는 상태바까지 하늘색 (다이노 테마), 하늘 테마는 연한 파랑
-  useStatusBarColor(settings?.studyTheme === 'sky' ? '#96cbf5' : '#bbe4df', false);
+  // 학습 화면의 상태바는 하늘색. 설정 오버레이가 덮고 있는 동안은 앱 기본색으로
+  useStatusBarColor(showSettings ? null : settings?.studyTheme === 'sky' ? '#96cbf5' : '#bbe4df', false);
   // 내비게이션 바: 자판이 떠 있으면 자판 배경(#2b2c2b), 정답 패널이면 패널 배경(#252627) — 화면 맨 아래까지 같은 색으로 이어진다
   useNavBarColor(phase === 'question' || phase === 'answered' ? (phase === 'answered' && panelReady ? '#252627' : '#2b2c2b') : null);
 

@@ -96,3 +96,86 @@
   flex: none;
   color: #50575d;
 }
+
+/* ================= 설정 화면(어휘 학습 설정 등 .vs-page) 본문 (플립 실측: 학습 화면의 톱니 → 어휘 학습 설정) =================
+   구역 제목 17.67px(머리줄 아래 글자 위까지 36), 줄 간격 46·글자 15px·값 13px, 구역 사이 검은 띠 9.33,
+   도움말 상자(x 15~344.33, #1d1e21, 글자 12.33px #73797b, 줄 간격 16.67), 머리줄의 '도움말 보기' 13px + 토글 32.67 x 18.67. */
+.vs-head {
+  padding-right: 15.667px;
+}
+.vs-head .vs-help {
+  gap: 7px;
+  font-size: 13px;
+  color: #a3a2a4;
+}
+.vs-page .toggle {
+  width: 32.667px;
+  height: 18.667px;
+  border-radius: 9.333px;
+}
+.vs-page .toggle::after {
+  top: 3px;
+  left: 3.333px;
+  width: 12.667px;
+  height: 12.667px;
+  background: #d6d7d6;
+  box-shadow: none;
+}
+.vs-page .vs-help input:checked + .toggle,
+.vs-page .toggle-row input:checked + .toggle {
+  background: #7375d6;
+}
+.vs-page .vs-help input:checked + .toggle::after,
+.vs-page .toggle-row input:checked + .toggle::after {
+  left: 16.667px;
+  /* 옛 규칙 가운데 transform 으로 손잡이를 옮기는 것이 있어 함께 지운다 */
+  transform: none;
+}
+.vs-page .vs-sec {
+  padding: 32.667px 16.25px 26.833px 18px;
+  border-bottom-width: 9.333px;
+}
+/* 띠 뒤의 구역은 글자 위까지 42 */
+.vs-page .vs-sec + .vs-sec {
+  padding-top: 39.333px;
+}
+.vs-page .vs-sec h3 {
+  margin: 0 0 11.833px;
+  font-size: 17.667px;
+  line-height: 22px;
+  font-weight: 700;
+}
+:root[data-theme='dark'] .vs-page .vs-sec h3 {
+  color: #d6d7d6;
+}
+.vs-page .vs-row {
+  min-height: 46px;
+  font-size: 15px;
+}
+:root[data-theme='dark'] .vs-page .vs-row {
+  color: #d6d7d6;
+}
+.vs-page .vs-value {
+  gap: 4px;
+  font-size: 13px;
+}
+:root[data-theme='dark'] .vs-page .vs-value {
+  color: #d6d7d6;
+}
+.vs-page .vs-value svg {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  color: #525861;
+}
+.vs-page .vs-sec .vs-help-box {
+  margin: -6.5px -0.583px 3.833px -3px;
+  padding: 7.667px 13px 7.333px;
+  border-radius: 6px;
+  font-size: 12.333px;
+  line-height: 16.667px;
+}
+:root[data-theme='dark'] .vs-page .vs-sec .vs-help-box {
+  background: #1d1e21;
+  color: #73797b;
+}
