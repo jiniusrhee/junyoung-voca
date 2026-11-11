@@ -1,5 +1,5 @@
-import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from '../db';
+import { useKeptQuery } from './liveCache';
 import type { Settings } from '../types';
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -49,8 +49,9 @@ async function read(): Promise<Settings> {
   return { ...DEFAULT_SETTINGS, ...((row?.value as Partial<Settings> | undefined) ?? {}) };
 }
 
+/** 설정은 앱이 켜져 있는 동안 계속 들고 있는다 — 화면을 옮길 때마다 '불러오는 중'으로 비어 보이지 않게 */
 export function useSettings(): Settings | undefined {
-  return useLiveQuery(read, []);
+  return useKeptQuery('settings', read);
 }
 
 export const getSettings = read;

@@ -15,6 +15,12 @@
         <item name="android:background">@null</item>
         <!-- 안드로이드 15+: 상태바·내비게이션바 밑으로 화면이 깔리지 않게 (제목줄이 시계와 겹치던 문제) -->
         <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+        <!-- 스플래시가 걷히는 순간 테마의 막대 색이 창에 다시 입혀진다(androidx core-splashscreen).
+             값이 없으면 검정이 되어, 앱을 켠 직후 상태바·내비게이션 바가 검게 보였다(2026-11-11 플립에서 확인).
+             기본(다크) 화면의 색으로 둔다: 상태바 = 화면 배경, 내비게이션 바 = 하단 탭 배경. 밝은 테마는 웹 쪽이 곧바로 다시 칠한다 -->
+        <item name="android:statusBarColor">#121212</item>
+        <item name="android:navigationBarColor">#202122</item>
+        <item name="android:enforceNavigationBarContrast">false</item>
     </style>
 
 

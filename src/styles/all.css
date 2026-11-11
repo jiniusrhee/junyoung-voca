@@ -5,7 +5,7 @@
 
 :root {
   /* 하단 탭 높이 (말해보카: 52px + 제스처 바 여백) — .app.with-nav 의 바닥 여백도 이 값을 쓴다 */
-  --nav-h: 53.667px;
+  --nav-h: 53.333px;
 }
 
 /* ================= 전체 학습 페이지 ================= */
@@ -230,7 +230,8 @@
 /* ================= 하단 탭 (모든 화면 공통) ================= */
 .bottom-nav {
   box-sizing: border-box;
-  border-top: 1px solid var(--line);
+  /* 플립 실측: 탭 막대 위 끝 y 810.33, 선 두께 0.67(기기 2px) */
+  border-top: 0.667px solid var(--line);
 }
 :root[data-theme='dark'] .bottom-nav {
   background: #202122;

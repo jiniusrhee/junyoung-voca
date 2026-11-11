@@ -39,60 +39,67 @@
 /* ---------- 연속 학습 카드 (333.3 x 86.7, r14) ---------- */
 .home .streak-card {
   align-items: flex-start;
-  gap: 18px;
+  gap: 17.333px;
   height: 86.667px;
   margin: 2.333px 0 22.667px;
-  padding: 15.333px 19px 0 21.5px;
+  padding: 15.333px 19px 0 22.667px;
   border-radius: 14px;
   background: #242629;
 }
+/* 불꽃 40.67 x 48.67, 카드 세로 가운데 (카드 위에서 19) */
 .home .flame-big {
-  align-self: center;
-  width: 42px;
-  height: 51px;
-  margin: 0;
+  align-self: flex-start;
+  width: 40.667px;
+  height: 48.667px;
+  margin: 3.667px 0 0;
   filter: none;
-  color: #e99047;
-}
-.home .flame-big.off {
-  color: #4a4d55;
 }
 .home .flame-big svg {
   display: block;
 }
 .home .streak-top {
-  gap: 8px;
+  gap: 0;
   height: 20px;
   margin-bottom: 7.667px;
 }
 .home .streak-text {
-  font-size: 14px;
+  margin-left: -0.667px;
+  font-size: 14.667px;
   line-height: 20px;
   font-weight: 700;
-  color: #d6d7d6;
+  color: #d6d6d6;
 }
 .home .streak-text b {
-  font-size: 15.5px;
-  color: #fe8020;
-  margin: 0 1px;
+  font-size: 16px;
+  color: #fa821f;
+  margin: 0 1.667px 0 2.667px;
 }
 .home .streak-goal {
-  gap: 3.5px;
-  font-size: 12px;
+  position: relative;
+  top: -0.5px;
+  gap: 0;
+  font-size: 11.667px;
   line-height: 20px;
-  color: #847d84;
+  color: #7b7c7e;
+}
+.home .streak-goal svg {
+  flex: none;
+  margin-right: 3px;
 }
 .home .streak-goal b {
-  color: #b5b6b5;
+  margin-left: 4.667px;
+  font-size: 12.333px;
+  font-weight: 600;
+  color: #b2b3b3;
 }
-.home .streak-top .muted-ic {
-  flex: none;
-  margin-right: -1px;
-  color: #525963;
+.home .streak-top .h-chev {
+  position: relative;
+  top: -0.667px;
+  margin: 0 5.667px 0 15.333px;
 }
 /* 요일 칸: 지름 24.3 원, 간격 35, 캡슐 높이 30 (원보다 2.7씩 큼) */
 .home .week-row {
-  margin-left: -5.333px;
+  margin-left: -5.5px;
 }
 .home .week-row .day {
   flex: none;
@@ -135,14 +142,20 @@
   background: transparent;
 }
 .home .week-row .stamp.gold {
-  background: #feca00 !important;
-  color: #fff !important;
+  background: none !important;
 }
+.home .week-row .stamp.gold svg {
+  display: block;
+}
+/* 오늘 칸 아래 세모는 그림(HTodayMark)으로 그린다 */
 .home .week-row .day.today::after {
-  bottom: -5.333px;
-  border: 2.333px solid transparent;
-  border-top: 0;
-  border-bottom: 4px solid #8a86e0;
+  display: none;
+}
+.home .week-row .today-mark {
+  position: absolute;
+  left: 50%;
+  bottom: -5.667px;
+  margin-left: -2.333px;
 }
 
 /* ---------- 큰 카드 (본체 13.3~303, 모드 탭 기둥 303~346.7) ---------- */
@@ -151,7 +164,7 @@
 }
 .home .main-body {
   border-radius: 19px 0 19px 19px;
-  padding: 0 15px 18.667px;
+  padding: 0 15px 14.333px;
   background: #2c3033;
 }
 .home .ribbon {
@@ -174,41 +187,55 @@
   gap: 4px;
 }
 .home .main-text {
-  padding: 0 0 15.333px 10.667px;
+  padding: 0 0 14px 10.667px;
   min-width: 0;
 }
 .home .acc-line {
-  gap: 2px;
-  font-size: 10px;
+  position: relative;
+  top: -1.5px;
+  gap: 2.667px;
+  font-size: 10.167px;
   line-height: 14px;
   font-weight: 600;
-  color: #a475ff;
+  color: #a575ff;
+}
+.home .acc-line .h-badge {
+  flex: none;
+  --cut: #2c3033;
+}
+.home .acc-line .acc-chev {
+  flex: none;
+  margin-left: 2px;
 }
 .home .main-text h2 {
-  margin: 1.8px 0 0;
-  font-size: 20px;
+  margin: 1.8px 0 0 -0.667px;
+  font-size: 21.333px;
   line-height: 24px;
   font-weight: 700;
-  color: #d6d7d6;
+  color: #d6d6d6;
 }
 .home .goal-line-btn {
-  gap: 4.5px;
-  font-size: 12.5px;
+  gap: 0;
+  margin-left: -1px;
+  font-size: 13.333px;
   line-height: 20px;
-  color: #7b7984;
+  color: #77787a;
 }
 .home .goal-line-btn b {
-  margin-left: 3.5px;
-  font-size: 16.5px;
-  font-weight: 700;
-  color: #d6d7d6;
+  margin: 0 2.333px 0 8.333px;
+  font-size: 16.667px;
+  font-weight: 600;
+  letter-spacing: 1.333px;
+  color: #d6d6d6;
 }
-.home .goal-line-btn svg {
-  color: #737584;
+.home .goal-line-btn .h-pencil {
+  flex: none;
+  margin-left: 6.333px;
+  color: #6c737b;
 }
 /* 진행률 링: 지름 63.3, 선 4.7, 라벨 20px */
 .home .gauge {
-  margin: -4px 10.667px 5.333px 0;
+  margin: -4px 10.333px 4px 0;
 }
 .home .gauge-track {
   stroke: #3b3f45;
@@ -222,28 +249,52 @@
   line-height: 1;
 }
 .home .gauge-label b {
-  font-size: 20px;
+  font-size: 21.333px;
   font-weight: 600;
-  letter-spacing: -0.01em;
 }
 .home .gauge-label small {
-  margin: 6px 0 0 1px;
-  font-size: 11px;
+  position: relative;
+  top: 1.667px;
+  margin: 0 -3px 0 1.667px;
+  font-size: 10px;
   font-weight: 600;
 }
-/* 큰 보라 버튼: 260 x 56, r14, 아래 4px 그림자, 비스듬한 밝은 띠 */
+/* 큰 보라 버튼: 260 x 56, r14, 아래 4px 그림자. 빛줄기는 가만히 있을 때 보이지 않고 4초마다 한 번 지나간다(아래 '가만히 있을 때의 움직임') */
 .home .today-btn {
   isolation: isolate;
   overflow: hidden;
-  height: 56px;
+  height: 55.333px;
   margin-top: 0;
+  padding-top: 1.333px;
   border-radius: 14px;
-  gap: 6.5px;
-  font-size: 18px;
+  gap: 8px;
+  font-size: 19.667px;
   line-height: 24px;
   font-weight: 700;
   background: #8e7bfc;
-  box-shadow: 0 4px 0 #7141e6;
+  box-shadow: none;
+}
+/* 받침: 면보다 4 아래까지 내려온 같은 모양. 면이 3.33 내려가면 턱이 0.67 만 남는다 */
+.home .today-seat {
+  position: relative;
+  height: 59.333px;
+  --lip: #7141e6;
+}
+.home .today-seat::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 3.333px;
+  bottom: 0;
+  border-radius: 14px;
+  background: var(--lip);
+}
+.home .today-seat.m-expr,
+.home .today-seat.m-talk,
+.home .today-seat.m-grammar,
+.home .today-seat.m-listening {
+  --lip: rgba(0, 0, 0, 0.28);
 }
 .home .today-btn::before {
   content: '';
@@ -251,34 +302,27 @@
   z-index: -1;
   top: 0;
   bottom: 0;
-  left: 72px;
+  left: 0;
   width: 60px;
   background: rgba(255, 255, 255, 0.2);
-  transform: skewX(-40deg);
+  transform: translateX(-60px) skewX(-40.4deg);
   transform-origin: 0 0;
+  animation: btnShine 4.017s linear infinite;
 }
 .home .today-btn.m-vocab::before {
-  background: #ad94ff;
+  background: #ab92ff;
 }
 /* 눌림 (말해보카 60fps 녹화 실측 2026-11-11): 누르는 동안 버튼 면이 3.33px 내려가 아래 턱이 거의 사라지고, 비스듬한 빛줄기도 사라진다. 손을 떼면 바로 돌아온다 */
 .home .today-btn:active {
+  animation: none;
   transform: translateY(3.333px);
-  box-shadow: 0 0.667px 0 #7141e6;
+  box-shadow: none;
   filter: none;
 }
 .home .today-btn:active::before {
   display: none;
 }
-/* 모드 탭을 바꾸면 버튼은 바로 바뀌고, 제목·목표 줄은 0.07초 동안 나타난다 */
-.home .main-row {
-  animation: fadeIn 0.07s linear both;
-}
-.home .today-btn.m-expr,
-.home .today-btn.m-talk,
-.home .today-btn.m-grammar,
-.home .today-btn.m-listening {
-  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.28);
-}
+/* 모드 탭을 바꾸거나 하단 탭으로 홈에 돌아오면 전환 효과 없이 한 프레임에 다 바뀐다 (60fps 녹화 확인) */
 /* 모드 탭 기둥: 43.7 너비, 탭 높이 77(보이는 부분 60), 아래 탭이 위 탭을 덮는다 */
 .home .mode-tabs {
   width: 43.667px;
@@ -297,33 +341,57 @@
 }
 .home .mode-tabs .mode-tab svg {
   display: block;
+  position: relative;
+}
+/* 그림마다 실측 자리 (칸 가운데에서 조금씩 벗어나 있다) */
+.home .mode-tabs .mode-tab.vocab svg {
+  left: 1.667px;
+  top: 2px;
+}
+.home .mode-tabs .mode-tab.grammar svg {
+  top: 1px;
+}
+.home .mode-tabs .mode-tab.expr svg {
+  top: 2px;
+}
+.home .mode-tabs .mode-tab.talk svg {
+  top: 1.5px;
+}
+.home .mode-tabs .mode-tab.listen svg {
+  top: 1px;
 }
 .home .mode-tabs .mode-tab.vocab {
   z-index: 1;
+  --cut: #34383d;
   background: #34383d;
-  color: #a481ef;
+  color: #9c81e7;
 }
 .home .mode-tabs .mode-tab.grammar {
   z-index: 2;
+  --cut: #303d44;
   background: #303d44;
-  color: #7baed6;
+  color: #74acd1;
 }
 .home .mode-tabs .mode-tab.expr {
   z-index: 3;
+  --cut: #543b41;
   background: #543b41;
-  color: #e6819c;
+  color: #e07f96;
 }
 .home .mode-tabs .mode-tab.talk {
   z-index: 4;
+  --cut: #3a412c;
   background: #3a412c;
-  color: #a4ba6b;
+  color: #9fb864;
 }
 .home .mode-tabs .mode-tab.listen {
   z-index: 5;
+  --cut: #4c3d31;
   background: #4c3d31;
-  color: #f7a263;
+  color: #f2a25f;
 }
 .home .mode-tabs .mode-tab.active {
+  --cut: #2c3033;
   height: 77px;
   padding: 0 0 13px;
   background: #2c3033;
@@ -334,18 +402,21 @@
   margin-top: -17px;
 }
 .home .mode-gear {
-  height: 21px;
-  margin-top: 9px;
-  color: #3f4247;
+  height: 22px;
+  margin-top: 4.667px;
+  color: #363a3e;
 }
 .home .mode-gear svg {
   display: block;
 }
 
-/* ---------- 학습 정보 카드 ---------- */
+/* ---------- 학습 정보 카드 (플립 실측 2026-11-11: 333.3 x 271.3, 카드 사이 10.67) ---------- */
+.screen.home {
+  padding-bottom: 3px;
+}
 .home .info-card {
-  margin-bottom: 22.667px;
-  padding: 16px 19px 19px;
+  margin-bottom: 10.667px;
+  padding: 16px 19px 17.667px;
   border-radius: 13.5px;
   background: #242629;
   box-shadow: none;
@@ -358,50 +429,53 @@
   margin-bottom: 9.333px;
 }
 .home .info-card h3 {
-  font-size: 14px;
+  margin-left: -1px;
+  font-size: 14.667px;
   line-height: 20px;
   font-weight: 700;
-  color: #d6d7d6;
+  color: #d6d6d6;
 }
-.home .info-card-head .muted-ic {
-  margin-right: -1px;
-  color: #525963;
+.home .h-chev {
+  display: block;
+  flex: none;
+  margin-right: 5.667px;
+  color: #50575d;
 }
 .home .mode-legend {
-  margin: 0 0 20px;
-  gap: 2px 14.333px;
-  font-size: 11px;
+  margin: 0.333px 0 19.667px -0.333px;
+  gap: 2px 14.667px;
+  font-size: 11.667px;
   line-height: 16px;
-  color: #959396;
+  color: #919292;
 }
 .home .mode-legend li::before {
   width: 6px;
   height: 6px;
-  margin-right: 5.667px;
+  margin-right: 4.667px;
   vertical-align: 1px;
 }
 .home .mode-legend .m-voca::before {
-  background: #9d81e8;
+  background: #9d82e9;
 }
 .home .mode-legend .m-grammar::before {
   background: #74acd1;
 }
 .home .mode-legend .m-expr::before {
-  background: #df7f96;
+  background: #e07f96;
 }
 .home .mode-legend .m-talk::before {
   background: #9fb864;
 }
 .home .mode-legend .m-listen::before {
-  background: #f3a25f;
+  background: #f2a25f;
 }
-/* 막대: 너비 33.3, 간격 10.3, 가장 긴 막대 103.3, 요일 글자 10px, 점선 1px */
+/* 막대: 너비 33.3, 간격 10.3, 가장 긴 막대 103.3, 요일 글자 10.3px, 점선은 막대 아래 34 */
 .home .week-bars {
   position: relative;
   height: 121.667px;
   gap: 10.333px;
   padding-bottom: 0;
-  margin-bottom: 15.667px;
+  margin-bottom: 0;
   border-bottom: none;
 }
 .home .week-bars::after {
@@ -409,76 +483,136 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -15.667px;
+  bottom: -16.667px;
   height: 1px;
-  background: repeating-linear-gradient(90deg, #31353a 0 1.667px, transparent 1.667px 4px);
+  background: repeating-linear-gradient(90deg, #313236 0 1.667px, transparent 1.667px 4px);
 }
 .home .wb-stack {
   border-radius: 4.333px;
 }
 .home .wb-x {
   margin-top: 4.333px;
-  font-size: 10px;
+  font-size: 10.333px;
   line-height: 14px;
-  color: #5a5963;
+  color: #53585d;
 }
 .home .wb-x.today {
-  color: #d6d7d6;
+  color: #d6d6d6;
 }
 .home .time-row {
-  margin-top: 17px;
-  font-size: 12px;
+  margin-top: 32.667px;
+  font-size: 13px;
   line-height: 18px;
-  color: #757a85;
+  color: #70777c;
+}
+.home .time-row > span {
+  margin-left: -0.667px;
 }
 .home .time-row b {
-  color: #d6d7d6;
+  font-size: 12.667px;
+  color: #d6d6d6;
   font-weight: 600;
 }
 .home .time-row i {
-  height: 12px;
-  margin: 0 21px;
-  background: #3a3d42;
+  width: 1.333px;
+  height: 11.333px;
+  margin: 0 20px 0 19.667px;
+  background: #313236;
 }
 
-/* ---------- 아래 카드들 (실제 화면 밖, 같은 비율로) ---------- */
+/* ---------- 어휘력 카드 (333.3 x 117.3): 그림 칸 32.67, 제목 16.67px, 날짜 12px, 버튼 296 x 33.3 ---------- */
 .home .power-card {
-  padding: 16px 19px 16px;
+  padding: 19px 18.667px 16.667px;
 }
 .home .power-head {
-  gap: 10px;
+  align-items: flex-start;
+  gap: 0;
+  height: 32.667px;
 }
 .home .power-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
+  flex: none;
+  width: 32.667px;
+  height: 32.667px;
+  margin: 0 13.333px 0 0.333px;
+  border-radius: 9px;
+  background: #323436;
+}
+.home .power-icon svg {
+  display: block;
+}
+.home .power-text {
+  min-width: 0;
 }
 .home .power-text p {
-  font-size: 14px;
-  line-height: 20px;
-  color: #d6d7d6;
+  padding-top: 0.333px;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 700;
+  color: #d6d6d6;
+  white-space: nowrap;
 }
 .home .power-text em {
-  color: #8e7bfc;
+  margin-left: 2.333px;
+  font-size: 16.667px;
+  font-weight: 600;
+  color: #735cf4;
 }
-.home .power-text span {
-  font-size: 11px;
-  color: #959396;
+.home .power-text em i {
+  margin-left: 1.667px;
+  font-size: 18px;
+  font-style: normal;
+}
+.home .power-text small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11.667px;
+  line-height: 14px;
+  color: #727a80;
+  white-space: nowrap;
+}
+.home .power-text small span {
+  font-size: inherit;
+  color: inherit;
+}
+.home .power-head .h-chev {
+  align-self: center;
+  margin-right: 6px;
 }
 .home .power-btn {
-  height: 40px;
-  margin-top: 12px;
-  border-radius: 10px;
+  display: block;
+  height: 33.333px;
+  margin-top: 15.667px;
+  border-radius: 8px;
+  background: #4a322e;
   font-size: 13px;
+  line-height: 34.667px;
+  font-weight: 700;
+  color: #d96548;
 }
+
+/* ---------- 바로가기 카드 (333.3 x 91.3): 네 칸 80.3 씩, 그림 아래끝 +47, 글자 13.5px ---------- */
 .home .icon-grid {
-  padding: 16px 6px;
+  padding: 17.333px 6px 17.833px;
 }
 .home .icon-grid a,
 .home .icon-grid button {
-  gap: 6px;
-  font-size: 11px;
-  color: #d6d7d6;
+  gap: 8.167px;
+  font-size: 13px;
+  line-height: 18px;
+  color: #d6d6d6;
+}
+.home .icon-grid .grid-item > span:last-child {
+  position: relative;
+  left: -1.333px;
+}
+.home .grid-ic {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 30px;
+}
+.home .grid-ic svg {
+  display: block;
 }
 .home .home-toast {
   top: 44px;
@@ -512,5 +646,303 @@
 @keyframes ringGrow {
   from {
     stroke-dasharray: 0 326.7;
+  }
+}
+/* 그림마다 실측 자리 (사전은 오른쪽으로 0.67, 하트는 2 위로) */
+.home .grid-ic .h-dict {
+  margin-left: 1.333px;
+}
+.home .grid-ic .h-heart {
+  margin: 0 1.333px 2px 0;
+}
+
+/* ================= 가만히 있을 때의 움직임 (말해보카 60fps 녹화 실측 2026-11-11) =================
+   시작 버튼은 홈에 들어온 순간부터 4.017초(241프레임)마다 되풀이한다:
+     0.13~0.25~0.40초 한 번, 0.63~0.75~0.93초 또 한 번 눌린 모양(면이 3.33 내려가고 턱이 0.67 로)이 됐다 돌아오고,
+     그림은 0~0.38초에 1.25배로 커져 0.63초까지 있다가 1.0초에 원래 크기로 (별은 그동안 0.9초에 걸쳐 216도 돈다 — 꼭짓점 셋만큼이라 끝나면 똑같이 보인다),
+     2.01~2.52초에 폭 60 짜리 빛줄기(40.4도 기울어짐)가 왼쪽에서 오른쪽으로 일정한 속도(초당 720)로 지나간다. */
+.home .today-btn {
+  animation: btnDip 4.017s linear infinite;
+}
+@keyframes btnDip {
+  0%,
+  3.32% {
+    transform: translateY(0);
+    animation-timing-function: ease-in;
+  }
+  6.22% {
+    transform: translateY(3.333px);
+    animation-timing-function: ease-out;
+  }
+  9.96%,
+  15.77% {
+    transform: translateY(0);
+    animation-timing-function: ease-in;
+  }
+  18.67% {
+    transform: translateY(3.333px);
+    animation-timing-function: ease-out;
+  }
+  23.2%,
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes btnShine {
+  0%,
+  50.04% {
+    transform: translateX(-60px) skewX(-40.4deg);
+  }
+  62.73%,
+  100% {
+    transform: translateX(308px) skewX(-40.4deg);
+  }
+}
+.home .today-btn .btn-ic {
+  display: flex;
+  margin-top: -3px;
+  animation: btnIcScale 4.017s linear infinite;
+}
+.home .today-btn .btn-ic svg {
+  display: block;
+}
+.home .today-btn .btn-ic.spin svg {
+  animation: btnIcSpin 4.017s linear infinite;
+}
+@keyframes btnIcScale {
+  0% {
+    transform: scale(1);
+    animation-timing-function: ease-out;
+  }
+  9.5% {
+    transform: scale(1.25);
+  }
+  15.7% {
+    transform: scale(1.25);
+    animation-timing-function: ease-in;
+  }
+  24.9%,
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes btnIcSpin {
+  0% {
+    transform: rotate(0deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  22.4%,
+  100% {
+    transform: rotate(216deg);
+  }
+}
+/* 리본: 2.3초마다 0.645초 동안 폭 17 짜리 빛줄기(오른쪽이 25도 올라간)가 위에서 아래로 지나간다 */
+.home .ribbon {
+  overflow: hidden;
+  transform-origin: 50% 0;
+}
+.home .ribbon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 17px;
+  background: #e5c86e;
+  transform: translateY(-17px) skewY(-25deg);
+  transform-origin: 0 0;
+  animation: ribbonShine 2.3s linear infinite;
+}
+.home .ribbon svg {
+  position: relative;
+  z-index: 1;
+}
+@keyframes ribbonShine {
+  0% {
+    transform: translateY(-17px) skewY(-25deg);
+  }
+  28%,
+  100% {
+    transform: translateY(78.4px) skewY(-25deg);
+  }
+}
+/* '오늘' 막대: 학습 정보 카드가 화면에 다 들어오면 0 → 110%(0.58초) → 잠깐 머물다(0.75초) → 100%(0.93초) */
+.home .wb-stack.wait {
+  transform: scaleY(0);
+}
+.home .wb-stack.grow {
+  transform-origin: 50% 100%;
+  animation: barGrow 0.933s linear both;
+}
+@keyframes barGrow {
+  0% {
+    transform: scaleY(0);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  62.5% {
+    transform: scaleY(1.1);
+  }
+  80.4% {
+    transform: scaleY(1.1);
+    animation-timing-function: ease-in-out;
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+.home .wb-track {
+  overflow: visible;
+}
+
+/* ================= 앱을 켠 뒤 처음 홈이 뜰 때 (.home.intro) ================= */
+.home.intro .main-mascot svg {
+  animation:
+    fadeIn 0.017s linear calc(0.133s + var(--lag, 0s)) both,
+    mascotBob 2.4s ease-in-out infinite;
+}
+/* 리본은 위 끝을 붙인 채 세로로 늘어나며 나온다: 0 → 1.05(0.18초) → 1.105(0.22초) → 머묾 → 1(0.37초) */
+.home.intro .ribbon {
+  animation: ribbonDrop 0.367s linear calc(0.333s + var(--lag, 0s)) both;
+}
+@keyframes ribbonDrop {
+  0% {
+    transform: scaleY(0);
+    animation-timing-function: ease-in;
+  }
+  50% {
+    transform: scaleY(1.05);
+    animation-timing-function: ease-out;
+  }
+  59%,
+  73% {
+    transform: scaleY(1.105);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+/* 고리 숫자가 차오르는 동안에는 고리가 숫자를 그대로 따른다 */
+.home .gauge.counting .gauge-fill {
+  transition: none;
+}
+
+/* ================= 환영 토스트 (174 x 47.67, 화면 y 183.33, 글자 15.33px, 이름은 분홍) ================= */
+.home .home-toast {
+  top: 152.667px;
+  height: 47.667px;
+  padding: 0 26px;
+  border-radius: 6.5px;
+  background: #444a50;
+  font-size: 15.333px;
+  line-height: 48.667px;
+  color: #f1f2f2;
+  white-space: nowrap;
+  animation: homeToastIn 0.2s linear both;
+}
+.home .home-toast em {
+  font-style: normal;
+  color: #f154f2;
+}
+.home .home-toast.out {
+  animation: homeToastOut 0.117s linear both;
+}
+@keyframes homeToastIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes homeToastOut {
+  from {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -16px);
+  }
+}
+
+/* ================= 학습 알림 알약 (54.33 x 27.67, 카드 위에서 19, 오른쪽에서 14.33) ================= */
+.home .notify-pill {
+  position: absolute;
+  top: 19px;
+  right: 14.333px;
+  display: flex;
+  align-items: center;
+  width: 54.333px;
+  height: 27.667px;
+  padding: 0 8px 0 5px;
+  border-radius: 14px;
+  background: #1b1d1f;
+}
+.home .np-knob {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 19.667px;
+  height: 19.667px;
+  border-radius: 50%;
+  background: #3b3e42;
+  color: #a9a9a9;
+}
+.home .np-knob svg {
+  display: block;
+}
+.home .np-text {
+  flex: 1;
+  text-align: right;
+  font-size: 9.667px;
+  line-height: 12px;
+  font-weight: 600;
+  color: #4e4f50;
+}
+/* 켜짐: 손잡이가 오른쪽으로 가고 보라색이 된다 (실제 앱의 켜진 모습은 확인하지 못해 같은 틀로 그림) */
+.home .notify-pill.on {
+  flex-direction: row-reverse;
+  padding: 0 5px 0 8px;
+}
+.home .notify-pill.on .np-knob {
+  background: #8e7bfc;
+  color: #fff;
+}
+.home .notify-pill.on .np-text {
+  text-align: left;
+  color: #a99cff;
+}
+
+/* ================= 마스코트 (우리 그림): 가만히 있을 때 살짝 들썩이고 가끔 눈을 깜박인다 =================
+   실제 앱의 캐릭터는 쉬지 않고 몸을 흔든다(뼈대 애니메이션). 캐릭터는 따라 그리지 않으므로 우리 그림에 맞는 작은 움직임만 준다. */
+.home .main-mascot svg {
+  animation: mascotBob 2.4s ease-in-out infinite;
+}
+@keyframes mascotBob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-1.667px) rotate(-1.5deg);
+  }
+  75% {
+    transform: translateY(-1.667px) rotate(1.5deg);
+  }
+}
+.home .main-mascot .m-eyes {
+  transform-box: fill-box;
+  transform-origin: 50% 55%;
+  animation: mascotBlink 3.7s linear infinite;
+}
+@keyframes mascotBlink {
+  0%,
+  93%,
+  100% {
+    transform: scaleY(1);
+  }
+  96% {
+    transform: scaleY(0.12);
   }
 }

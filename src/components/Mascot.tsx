@@ -11,13 +11,15 @@ export default function Mascot({ size = 120, mood = 'happy' }: { size?: number; 
       {/* 몸 */}
       <rect x="18" y="20" width="84" height="86" rx="40" fill="#8f78f6" />
       <ellipse cx="60" cy="80" rx="26" ry="20" fill="#b3a5fa" />
-      {/* 눈 */}
-      <circle cx="44" cy="54" r="13" fill="#fff" />
-      <circle cx="76" cy="54" r="13" fill="#fff" />
-      <circle cx="46" cy="56" r="7.5" fill="#26215c" />
-      <circle cx="74" cy="56" r="7.5" fill="#26215c" />
-      <circle cx="49" cy="52.5" r="2.6" fill="#fff" />
-      <circle cx="77" cy="52.5" r="2.6" fill="#fff" />
+      {/* 눈 (홈에서는 가끔 깜박인다 — .m-eyes) */}
+      <g className="m-eyes">
+        <circle cx="44" cy="54" r="13" fill="#fff" />
+        <circle cx="76" cy="54" r="13" fill="#fff" />
+        <circle cx="46" cy="56" r="7.5" fill="#26215c" />
+        <circle cx="74" cy="56" r="7.5" fill="#26215c" />
+        <circle cx="49" cy="52.5" r="2.6" fill="#fff" />
+        <circle cx="77" cy="52.5" r="2.6" fill="#fff" />
+      </g>
       {/* 볼 */}
       <ellipse cx="33" cy="70" rx="5.5" ry="3.5" fill="#ff9cc2" opacity="0.8" />
       <ellipse cx="87" cy="70" rx="5.5" ry="3.5" fill="#ff9cc2" opacity="0.8" />

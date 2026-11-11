@@ -26,36 +26,51 @@ export function keyHaptic(): boolean {
 
 const isDark = () => document.documentElement.dataset.theme === 'dark';
 
+/** 마지막으로 칠한 상태바 (색, 밝은 글자 여부). 스플래시가 걷힐 때·앱으로 돌아올 때 다시 칠하려고 기억한다 */
+let lastStatus: { color: string; lightText: boolean } | null = null;
+
+/** 상태바를 칠한다. lightText: 막대 위 시계·아이콘을 밝게(어두운 배경용) */
+export function setStatusBar(color: string, lightText: boolean): void {
+  lastStatus = { color, lightText };
+  if (!Capacitor.isNativePlatform()) return;
+  void import('@capacitor/status-bar').then(({ StatusBar, Style }) => {
+    void StatusBar.setBackgroundColor({ color }).catch(() => undefined);
+    void StatusBar.setStyle({ style: lightText ? Style.Dark : Style.Light }).catch(() => undefined);
+  });
+}
+
+const defaultStatus = () => setStatusBar(isDark() ? '#121212' : '#f4f5f9', isDark());
+
 export function useStatusBarColor(color: string | null, lightIcons = false): void {
   useEffect(() => {
-    let cancelled = false;
-    void import('@capacitor/core').then(async ({ Capacitor: C }) => {
-      if (!C.isNativePlatform() || cancelled) return;
-      const { StatusBar, Style } = await import('@capacitor/status-bar');
-      if (cancelled) return;
-      void StatusBar.setBackgroundColor({ color: color ?? (isDark() ? '#121212' : '#f4f5f9') });
-      void StatusBar.setStyle({ style: color ? (lightIcons ? Style.Dark : Style.Light) : isDark() ? Style.Dark : Style.Light });
-    });
-    return () => {
-      cancelled = true;
-      void import('@capacitor/core').then(async ({ Capacitor: C }) => {
-        if (!C.isNativePlatform()) return;
-        const { StatusBar, Style } = await import('@capacitor/status-bar');
-        void StatusBar.setBackgroundColor({ color: isDark() ? '#121212' : '#f4f5f9' });
-        void StatusBar.setStyle({ style: isDark() ? Style.Dark : Style.Light });
-      });
-    };
+    if (color) setStatusBar(color, lightIcons);
+    else defaultStatus();
+    return defaultStatus;
   }, [color, lightIcons]);
 }
 
 /** 내비게이션 바 색을 한 번 바꾼다 (같은 색이면 건너뜀) */
 let lastNav = '';
-export function setNavBarColor(color: string): void {
-  if (!Capacitor.isNativePlatform() || color === lastNav) return;
-  lastNav = color;
+function sendNav(color: string): void {
   const c = color.replace('#', '');
   const lum = (parseInt(c.slice(0, 2), 16) * 299 + parseInt(c.slice(2, 4), 16) * 587 + parseInt(c.slice(4, 6), 16) * 114) / 1000;
   void SystemUi.setNavigationBarColor({ color, lightBackground: lum > 150 }).catch(() => undefined);
+}
+export function setNavBarColor(color: string): void {
+  if (!Capacitor.isNativePlatform() || color === lastNav) return;
+  lastNav = color;
+  sendNav(color);
+}
+
+/**
+ * 기억해 둔 막대 색을 다시 칠한다.
+ * 안드로이드는 스플래시가 걷히는 순간 테마의 막대 색을 창에 다시 입혀서, 앱을 켠 직후 웹에서 칠한 색이 지워진다
+ * (2026-11-11 플립: 켠 직후 상태바·내비게이션 바가 검정). 켠 뒤 몇 번, 그리고 앱으로 돌아올 때마다 부른다.
+ */
+export function reassertBars(): void {
+  if (!Capacitor.isNativePlatform()) return;
+  if (lastStatus) setStatusBar(lastStatus.color, lastStatus.lightText);
+  if (lastNav) sendNav(lastNav);
 }
 
 /** 이 화면이 떠 있는 동안 내비게이션 바를 이 색으로 (null 이면 건드리지 않음) */
