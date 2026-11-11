@@ -135,6 +135,16 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const [kbLeaving, setKbLeaving] = useState(false);
   /** 패널이 올라오는 중(말풍선이 올라갔다 자리 잡는 0.45초 동안 'enter') */
   const [panelEnter, setPanelEnter] = useState(false);
+  // 학습 화면에 처음 들어왔을 때: 자판이 아래에서 올라온다 (첫 문제가 준비된 순간부터 0.5초 동안만 클래스를 건다)
+  const [firstIn, setFirstIn] = useState(false);
+  const firstDone = useRef(false);
+  useEffect(() => {
+    if (phase === 'loading' || firstDone.current) return;
+    firstDone.current = true;
+    setFirstIn(true);
+    const id = window.setTimeout(() => setFirstIn(false), 520);
+    return () => window.clearTimeout(id);
+  }, [phase]);
   const [panelLeaving, setPanelLeaving] = useState(false);
   /** 다음 문제: 이전 카드가 왼쪽으로 빠지는 0.3초 동안 같이 그린다 */
   const [exiting, setExiting] = useState<{ key: number; item: Answered } | null>(null);
@@ -793,11 +803,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   });
 
   if (!settings || phase === 'loading') {
-    return (
-      <div className="quiz-screen center">
-        <p className="muted-light">준비 중…</p>
-      </div>
-    );
+    // 준비하는 동안은 글자 없이 학습 화면의 하늘색만 (실제 앱은 준비가 끝난 뒤 한 번에 학습 화면으로 바뀐다)
+    return <div className={`quiz-screen vocab-quiz quiz-loading theme-${settings?.studyTheme ?? 'dino'}`} aria-busy="true" />;
   }
 
   if (phase === 'nowords') {
@@ -1287,7 +1294,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         <div className="scene-row" />
       </main>
 
-      <div className={`quiz-bottom${noDelay ? ' nodelay' : ''}`}>
+      <div className={`quiz-bottom${noDelay ? ' nodelay' : ''}${firstIn ? ' first' : ''}`}>
         {skipAsk && (
           <div className="skip-bar">
             <p>

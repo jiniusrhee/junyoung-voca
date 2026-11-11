@@ -821,6 +821,10 @@
     transform: scaleY(1);
   }
 }
+/* 학습에서 돌아왔을 때는 기다림 없이 바로 */
+.home.replay .ribbon {
+  animation: ribbonDrop 0.367s linear both;
+}
 /* 고리 숫자가 차오르는 동안에는 고리가 숫자를 그대로 따른다 */
 .home .gauge.counting .gauge-fill {
   transition: none;

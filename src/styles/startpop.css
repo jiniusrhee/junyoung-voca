@@ -1,0 +1,221 @@
+/* startpop.css: 어휘 학습 시작 창 (components/ExtraStudySheet.tsx)
+   말해보카 플립 캡처 실측 2026-11-11 — 창 330 x 473 (화면 가운데), 안의 것은 모두 창 왼쪽 위 기준 자리. */
+
+.modal-dim:has(.start-pop) {
+  padding: 0;
+  background: rgba(0, 0, 0, 0.55);
+  animation: fadeIn 0.1s linear both;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.start-pop {
+  position: relative;
+  flex: none;
+  width: 330px;
+  height: 473px;
+  border-radius: 14px;
+  background: #242629;
+  color: #d6d6d6;
+  animation: startPop 0.07s ease-out 0.12s both;
+}
+.start-pop button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 머리줄: 높이 51, 제목 16px 가운데, × 11.67 (오른쪽·위에서 20), 아래 0.67 선 */
+.start-pop .sp-head {
+  height: 51px;
+  border-bottom: 0.667px solid #313236;
+  text-align: center;
+  font-size: 16px;
+  line-height: 50.667px;
+}
+.start-pop .sp-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35.667px;
+  height: 35.667px;
+  color: #70777c;
+}
+
+/* 학습 코스 칩(50.33 x 17) + 코스 이름 19px + '변경' 알약 66.33 x 29 */
+.start-pop .sp-chip {
+  position: absolute;
+  left: 31.333px;
+  top: 69px;
+  height: 17px;
+  padding: 0 6.333px;
+  border-radius: 4px;
+  background: #1a1a1b;
+  font-size: 10.667px;
+  line-height: 17.667px;
+  color: #a5a5ac;
+}
+.start-pop .sp-course {
+  position: absolute;
+  left: 30.667px;
+  top: 90.667px;
+  font-size: 19px;
+  line-height: 22px;
+  font-weight: 700;
+}
+.start-pop .sp-pill {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 4.333px;
+  width: 66.333px;
+  height: 29px;
+  padding: 0 0 0 12.667px;
+  border-radius: 14.5px;
+  background: #1a1a1b;
+  font-size: 13px;
+  line-height: 29px;
+  font-weight: 700;
+  color: #d6d6d6;
+}
+.start-pop .sp-pill svg {
+  flex: none;
+  color: #70777c;
+}
+.start-pop .sp-pill:active {
+  transform: scale(1.04);
+}
+.start-pop .sp-pill-course {
+  left: 247.333px;
+  top: 76.333px;
+}
+.start-pop .sp-pill-goal {
+  left: 131.667px;
+  top: 309.667px;
+}
+/* 점선: 선 2, 틈 1.33, 두께 0.67 */
+.start-pop .sp-dash {
+  position: absolute;
+  left: 15.667px;
+  right: 16px;
+  top: 131.333px;
+  height: 0.667px;
+  background: repeating-linear-gradient(90deg, #313236 0 2px, transparent 2px 3.333px);
+}
+
+/* 고리: 지름 210.33, 선 7.33, 바탕 #1e1f21, 채움 #dfa04a */
+.start-pop .sp-ring {
+  position: absolute;
+  left: 60px;
+  top: 152.667px;
+  display: block;
+}
+.start-pop .sp-ring path {
+  fill: none;
+  stroke-width: 7.333;
+  stroke-linecap: round;
+}
+.start-pop .sp-ring-track {
+  stroke: #1e1f21;
+}
+.start-pop .sp-ring-fill {
+  stroke: #dfa04a;
+  animation: spRingGrow 0.35s ease-out 0.17s backwards;
+}
+@keyframes spRingGrow {
+  from {
+    stroke-dasharray: 0 567;
+  }
+}
+
+/* 네 줄: 이름 13.67px(#a9a9a9), 숫자 15px 오른쪽 맞춤, '개' 11.67px. 줄 간격 23.33 */
+.start-pop .sp-rows {
+  position: absolute;
+  left: 107.667px;
+  top: 206.833px;
+  width: 114px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.start-pop .sp-rows li {
+  display: flex;
+  align-items: center;
+  height: 23.333px;
+  font-size: 13.333px;
+  color: #a9a9a9;
+  white-space: nowrap;
+}
+.start-pop .sp-rows span {
+  flex: 1;
+}
+.start-pop .sp-rows b {
+  font-size: 15px;
+  font-weight: 600;
+  color: #d6d6d6;
+}
+.start-pop .sp-rows i {
+  width: 8.333px;
+  margin-left: 5.667px;
+  font-style: normal;
+  font-size: 11.667px;
+  color: #a0a2a3;
+}
+
+/* 마스코트(우리 그림)는 고리 왼쪽 아래, 진행 숫자는 고리 오른쪽 아래 */
+.start-pop .sp-mascot {
+  position: absolute;
+  left: 34px;
+  top: 318px;
+}
+.start-pop .sp-mascot svg {
+  display: block;
+}
+.start-pop .sp-count {
+  position: absolute;
+  left: 181px;
+  top: 341.667px;
+  display: flex;
+  align-items: baseline;
+  margin: 0;
+  line-height: 36px;
+  white-space: nowrap;
+}
+.start-pop .sp-count b {
+  font-size: 31px;
+  font-weight: 700;
+  color: #dfa04a;
+}
+.start-pop .sp-count span {
+  margin-left: -2.333px;
+  font-size: 16.5px;
+  font-weight: 500;
+  color: #a0a2a3;
+}
+
+/* 시작 버튼: 298.67 x 53.33, 왼쪽에서 오른쪽으로 보라 → 붉은 보라 */
+.start-pop .sp-start {
+  position: absolute;
+  left: 15.333px;
+  top: 401px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding-left: 7px;
+  width: 298.667px;
+  height: 53.333px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #7a5bed, #9059da);
+  font-size: 18.667px;
+  font-weight: 700;
+  color: #fff;
+}
+.start-pop .sp-start svg {
+  flex: none;
+  width: 20.667px;
+  height: 19.667px;
+}
+.start-pop .sp-start:active {
+  transform: scale(1.04);
+}

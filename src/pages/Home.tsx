@@ -83,6 +83,15 @@ export default function Home() {
    * 탭을 오가며 홈으로 돌아올 때는 이 순서 없이 한 번에 다 보인다.
    */
   const [intro] = useState(() => !sessionStorage.getItem('welcomed'));
+  /**
+   * 학습 화면에서 홈으로 돌아왔을 때 (말해보카 60fps 녹화): 홈이 한 프레임에 뜬 다음 곧바로 고리 숫자가 0 에서 다시 차오르고,
+   * 리본이 다시 내려오고, '오늘' 막대가 0 에서 자란다. 환영 토스트는 없다.
+   */
+  const [replay] = useState(() => {
+    const v = !!sessionStorage.getItem('homeReplay');
+    sessionStorage.removeItem('homeReplay');
+    return v;
+  });
   // 앱(APK)에서는 시스템 스플래시 아이콘이 0.25초쯤 걷히는 동안 홈이 가려져 있으므로 그만큼 늦게 시작한다
   const lag = intro && isNativeApp() ? 250 : 0;
   const [toast, setToast] = useState<'in' | 'out' | null>(null);
@@ -95,7 +104,7 @@ export default function Home() {
   }, [ready, intro, lag]);
   // '오늘' 막대: 학습 정보 카드가 화면에 다 들어왔을 때(하단 탭 위) 한 번 자라난다. 홈에 들어올 때마다 다시.
   const studyRef = useRef<HTMLAnchorElement>(null);
-  const [todayBar, setTodayBar] = useState(false);
+  const [todayBar, setTodayBar] = useState(replay);
   useEffect(() => {
     const el = studyRef.current;
     if (!el || todayBar) return;
@@ -119,7 +128,12 @@ export default function Home() {
   const last7 = Array.from({ length: 7 }, (_, i) => shiftDate(today, i - 6));
 
   return (
-    <div className={`screen home ${intro ? 'intro' : ''}`} style={lag ? ({ '--lag': `${lag}ms` } as CSSProperties) : undefined}>
+    <div
+      className={`screen home ${intro ? 'intro' : replay ? 'replay' : ''}`}
+      style={lag ? ({ '--lag': `${lag}ms` } as CSSProperties) : undefined}
+      // 실제 앱은 홈을 처음 건드리는 순간에도 '오늘' 막대가 자라난다 (카드가 다 보이지 않아도)
+      onTouchStart={todayBar ? undefined : () => setTodayBar(true)}
+    >
       {toast && (
         <div className={`home-toast ${toast}`}>
           <em>
@@ -183,7 +197,7 @@ export default function Home() {
                 하루 목표 <b lang="en">{goal}</b> 개 <HPencil />
               </button>
             </div>
-            <GaugeRing percent={pct} size={63.333} stroke={5} intro={intro} introLag={lag} />
+            <GaugeRing percent={pct} size={63.333} stroke={5} intro={intro || replay} introLag={replay && !intro ? -250 : lag} />
           </div>
           {/* 턱(아래 그림자)은 움직이지 않는 받침으로 그리고 버튼 면만 내려앉는다 — 면·그림·빛줄기의 움직임이 모두 같은 박자로 돌게 transform 만 쓴다 */}
           <div className={`today-seat m-${homeMode}`}>

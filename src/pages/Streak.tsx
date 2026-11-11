@@ -1,4 +1,3 @@
-import { useLiveQuery } from 'dexie-react-hooks';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Icon from '../components/Icon';
@@ -6,6 +5,7 @@ import Mascot from '../components/Mascot';
 import { db } from '../db';
 import { getImported, importedRange, inRange } from '../lib/imported';
 import { saveSettings, useSettings } from '../lib/settings';
+import { useCachedQuery, useKeptQuery } from '../lib/liveCache';
 import { computeStreak, getRepairedDays, goalMet, repairDay, studied } from '../lib/stats';
 import { WEEKDAYS_KO, dayOfWeek, shiftDate, studyDateOf } from '../lib/time';
 
@@ -25,11 +25,12 @@ export default function Streak() {
   const [month, setMonth] = useState(today.slice(0, 7));
   const [goalOpen, setGoalOpen] = useState(false);
   const [help, setHelp] = useState<string | null>(null);
-  const daily = useLiveQuery(() => db.daily.toArray(), []);
-  const streak = useLiveQuery(() => computeStreak(), []);
-  const imp = useLiveQuery(() => getImported(), []);
-  const repaired = useLiveQuery(() => getRepairedDays(), []);
-  const pens = useLiveQuery(async () => ((await db.kv.get('repairPens'))?.value as number | undefined) ?? 0, []);
+  // 홈과 같은 조회는 같은 이름으로 들고 있어서, 화면이 올라올 때 이미 다 그려져 있다
+  const daily = useKeptQuery('daily', () => db.daily.toArray());
+  const streak = useCachedQuery('streak', () => computeStreak(), []);
+  const imp = useCachedQuery('imported', () => getImported(), []);
+  const repaired = useCachedQuery('repaired', () => getRepairedDays(), []);
+  const pens = useCachedQuery('repairPens', async () => ((await db.kv.get('repairPens'))?.value as number | undefined) ?? 0, []);
   if (!s || !daily || streak == null) return <div className="screen" />;
 
   const byDate = new Map(daily.map((d) => [d.date, d]));

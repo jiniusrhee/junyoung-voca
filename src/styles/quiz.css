@@ -83,7 +83,8 @@
   height: calc(var(--scene-h) + 37px);
   z-index: 0;
   pointer-events: none;
-  animation: fadeIn 0.4s both;
+  /* 풍경은 전환 없이 바로 보인다 (말해보카 60fps 녹화) */
+  animation: none;
 }
 #root .vocab-quiz .scene-layer .dino-scene {
   position: absolute;
@@ -2725,5 +2726,50 @@
   88%,
   100% {
     opacity: 0.12;
+  }
+}
+
+/* ================= 학습 화면에 들어올 때 (말해보카 60fps 녹화 실측 2026-11-11) =================
+   풍경과 머리줄은 한 번에 뜨고, 자판이 아래에서 0.13초 만에 올라와 3.3px 넘쳤다가 천천히 내려앉는다. 첫 카드는 오른쪽에서 밀려 들어온다(다음 문제 때와 같은 움직임).
+   자판이 올라오는 동안 그 뒤로는 풍경의 물속이 보인다. */
+#root .vocab-quiz.quiz-loading {
+  min-height: 100dvh;
+  background: var(--q-sky);
+}
+#root .vocab-quiz::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--bottom-h);
+  z-index: 0;
+  background: linear-gradient(#6cb6b2 0 36%, #5caaa5 36% 64%, #328593 64% 88%, #266778 88%);
+  pointer-events: none;
+}
+#root .vocab-quiz.quiz-loading::before {
+  display: none;
+}
+#root .vocab-quiz .quiz-bottom.first > .quiz-input {
+  animation: kbFirst 0.467s linear both;
+}
+@keyframes kbFirst {
+  0% {
+    transform: translateY(100%);
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  28.5% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  39% {
+    transform: translateY(-3.333px);
+  }
+  57% {
+    transform: translateY(-3.333px);
+    animation-timing-function: ease-in-out;
+  }
+  100% {
+    transform: translateY(0);
   }
 }
