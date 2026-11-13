@@ -63,5 +63,7 @@ export default defineConfig({
   test: {
     environment: 'node',
     include: ['src/**/*.test.{ts,tsx}'],
+    // 화면을 통째로 띄우는 테스트는 GitHub 의 느린 러너에서 기본 5초를 넘겨 가끔 실패했다 (2026-11-13 배포 실패 메일)
+    testTimeout: 30_000,
   },
 });

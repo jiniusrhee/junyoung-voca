@@ -94,7 +94,7 @@
   display: block;
 }
 /* 바탕(풍경·하늘 장식)과 팝업류(modal-dim, 팁, 설정 오버레이, 토스트, 추가 시트)는 제외: 팝업은 fixed 로 화면 전체를 덮어야 한다 */
-#root .vocab-quiz > *:not(.scene-layer):not(.quiz-bg-deco):not(.modal-dim):not(.fav-tip):not(.vs-overlay):not(.toast):not(.extra-sheet-dim) {
+#root .vocab-quiz > *:not(.scene-layer):not(.sea-layer):not(.quiz-bg-deco):not(.modal-dim):not(.fav-tip):not(.vs-overlay):not(.toast):not(.extra-sheet-dim) {
   position: relative;
   z-index: 1;
 }
@@ -2741,19 +2741,21 @@
   min-height: 100dvh;
   background: var(--q-sky);
 }
-#root .vocab-quiz::before {
-  content: '';
+/* 물속 풍경(components/SeaScene.tsx): 물가(도구줄 윗변 + 6)부터 화면 아래 끝까지, 자판·패널 뒤 */
+#root .vocab-quiz > .sea-layer {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: var(--bottom-h);
+  height: calc(var(--bottom-h) - 6px);
   z-index: 0;
-  background: linear-gradient(#6cb6b2 0 36%, #5caaa5 36% 64%, #328593 64% 88%, #266778 88%);
+  overflow: hidden;
   pointer-events: none;
 }
-#root .vocab-quiz.quiz-loading::before {
-  display: none;
+#root .vocab-quiz > .sea-layer .sea-scene {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 #root .vocab-quiz .quiz-bottom.first > .quiz-input {
   animation: kbFirst 0.467s linear both;
@@ -2777,4 +2779,262 @@
   100% {
     transform: translateY(0);
   }
+}
+
+/* ================= 음성 모드 (말해보카 플립 캡처·녹화 실측 2026-11-13) =================
+   자판 자리에 물속 풍경이 보이고, 아래에 가운데가 둥글게 파인 막대(#252627, 높이 88.33, 파인 깊이 50.33)가 있다.
+   마이크 원: 지름 110.67(#252627), 가운데가 화면 아래에서 123.33 위. 둘레에 가는 고리(반지름 66.67).
+   듣는 동안: 원이 보라(#6e65e0)가 되고 흰 네모(24) + '듣고 있어요', 둘레에 옅은 회색 원 둘(반지름 80.33 / 108)이 숨 쉬듯 움직인다.
+   못 들었으면: 어두운 원 + 마이크 + 보라 글자 '다시 해 보세요'.  양옆 버튼: 힌트 보기(가운데 x 56) / 키보드 모드(가운데 x 304). */
+#root .vocab-quiz .quiz-bottom > .voice-zone {
+  display: block;
+  height: var(--bottom-h);
+  background: none;
+}
+#root .vocab-quiz .vz-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 88.333px;
+  display: block;
+}
+#root .vocab-quiz .vz-bar path {
+  fill: #252627;
+}
+#root .vocab-quiz .vz-mic {
+  position: absolute;
+  left: 50%;
+  bottom: 68px;
+  width: 110.667px;
+  height: 110.667px;
+  margin-left: -55.333px;
+}
+#root .vocab-quiz .vz-ring,
+#root .vocab-quiz .vz-halo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  pointer-events: none;
+}
+#root .vocab-quiz .vz-ring {
+  width: 133.333px;
+  height: 133.333px;
+  margin: -66.667px 0 0 -66.667px;
+  border: 0.667px solid rgba(37, 38, 39, 0.75);
+}
+#root .vocab-quiz .vz-halo {
+  display: none;
+  background: rgba(37, 38, 39, 0.16);
+}
+#root .vocab-quiz .vz-halo.h1 {
+  width: 160.667px;
+  height: 160.667px;
+  margin: -80.333px 0 0 -80.333px;
+}
+#root .vocab-quiz .vz-halo.h2 {
+  width: 216px;
+  height: 216px;
+  margin: -108px 0 0 -108px;
+}
+#root .vocab-quiz .vz-mic.listening .vz-halo {
+  display: block;
+  animation: vzHalo 1.2s ease-in-out infinite;
+}
+#root .vocab-quiz .vz-mic.listening .vz-halo.h2 {
+  animation-delay: 0.15s;
+}
+@keyframes vzHalo {
+  0%,
+  100% {
+    transform: scale(0.88);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+#root .vocab-quiz .vz-mic .mic-big {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 110.667px;
+  height: 110.667px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #252627;
+  box-shadow: none;
+  color: #6e66e0;
+  animation: none;
+}
+#root .vocab-quiz .vz-mic .vz-mic-ic {
+  display: block;
+}
+#root .vocab-quiz .vz-mic.listening .mic-big {
+  background: #6e65e0;
+  color: #fff;
+}
+#root .vocab-quiz .vz-mic .stop-square {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 4.5px;
+  background: #fff;
+}
+#root .vocab-quiz .vz-mic .mic-big small {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 80.667px;
+  margin: 0;
+  font-size: 11.333px;
+  line-height: 14px;
+  font-weight: 400;
+  text-align: center;
+  color: #fff;
+  opacity: 1;
+}
+#root .vocab-quiz .vz-mic.nospeech .mic-big small {
+  color: #6e66e0;
+  animation: fadeIn 0.2s linear both;
+}
+/* 못 들었을 때는 글자 자리를 내주려고 마이크가 조금 올라간다 */
+#root .vocab-quiz .vz-mic.nospeech .vz-mic-ic {
+  margin-top: -14px;
+}
+/* 키캡: 어두운 네모에 아래 턱 (1 · 0 은 17.33 x 17, Enter 는 40 x 19, H 는 23.33 x 21) */
+#root .vocab-quiz .vz-key {
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  width: 17.333px;
+  height: 17px;
+  padding: 0;
+  border-radius: 3.5px;
+  background: #27292b;
+  box-shadow: 0 2.8px 0 #1c1d1f, 0 0 0 0.667px #121315, 0 2.8px 0 0.667px #121315;
+  font-size: 11px;
+  line-height: 17px;
+  font-weight: 500;
+  text-align: center;
+  color: #7e8489;
+  --ls: 0;
+}
+#root .vocab-quiz .vz-key.enter {
+  left: 50%;
+  top: -5px;
+  width: 40px;
+  height: 19px;
+  margin-left: -20px;
+  line-height: 19px;
+}
+#root .vocab-quiz .vz-btn {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 84px;
+  height: 88.333px;
+  padding: 21.333px 0 0;
+  border: 0;
+  background: none;
+  font-size: 11.667px;
+  line-height: 14px;
+  font-weight: 700;
+  color: #70777c;
+}
+#root .vocab-quiz .vz-btn.left {
+  left: 14px;
+}
+#root .vocab-quiz .vz-btn.right {
+  right: 14px;
+}
+#root .vocab-quiz .vz-btn svg {
+  display: block;
+  width: auto;
+  height: 22px;
+  color: #70777c;
+}
+#root .vocab-quiz .vz-btn .vz-kbd {
+  width: 23.667px;
+  height: 18.333px;
+  margin: 1.667px 0 2px;
+}
+#root .vocab-quiz .vz-btn > span:last-child {
+  margin-top: 6px;
+  white-space: nowrap;
+}
+#root .vocab-quiz .vz-btn .vz-key {
+  left: 50%;
+  top: -6px;
+  margin-left: -8.667px;
+}
+#root .vocab-quiz .vz-btn:active svg {
+  transform: scale(1.04);
+}
+#root .vocab-quiz .vz-btn:disabled {
+  opacity: 0.45;
+}
+/* 들은 말·오류 말풍선은 마이크 고리 위 */
+#root .vocab-quiz .voice-zone .voice-bubble-row {
+  top: auto;
+  bottom: 198px;
+}
+/* 핸즈프리 버튼: 카드 아래 오른쪽 (카드 아랫변에서 11 아래, 오른쪽에서 12.67) */
+#root .vocab-quiz .hands-btn {
+  position: absolute;
+  top: calc(100% + 11px);
+  right: 12.667px;
+  bottom: auto;
+  z-index: 3;
+  display: block;
+  width: 34.667px;
+  height: 34.667px;
+  padding: 0;
+  border-radius: 50%;
+  background: none;
+  box-shadow: none;
+}
+#root .vocab-quiz .hands-btn svg {
+  display: block;
+}
+#root .vocab-quiz .hands-btn .vz-key {
+  left: 50%;
+  top: -15.333px;
+  width: 23.333px;
+  height: 21px;
+  margin-left: -11.667px;
+  font-size: 13px;
+  line-height: 21px;
+}
+#root .vocab-quiz .hands-tip {
+  top: calc(100% + 52px);
+  bottom: auto;
+  right: 12.667px;
+}
+
+/* 입력 방식을 바꿀 때 (60fps 녹화): 자판이 내려가고 음성 막대와 마이크 원이 아래에서 약 0.2초 만에 올라온다. 반대로 바꾸면 자판이 올라온다 */
+#root .vocab-quiz .quiz-bottom.switched > .voice-zone {
+  animation: vzRise 0.2s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+@keyframes vzRise {
+  from {
+    transform: translateY(62%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+#root .vocab-quiz .quiz-bottom.switched > .quiz-input {
+  animation: slideUp 0.17s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+#root .vocab-quiz .vz-key.enter {
+  font-size: 10px;
 }

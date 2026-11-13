@@ -4,6 +4,7 @@ import { State } from 'ts-fsrs';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import AfterPanel, { type MoreAction } from '../components/AfterPanel';
 import DinoScene from '../components/DinoScene';
+import SeaScene from '../components/SeaScene';
 import InfoCard from '../components/InfoCard';
 import LevelHelp from '../components/LevelHelp';
 import StudyInfoSheet from '../components/StudyInfoSheet';
@@ -94,7 +95,14 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const [phase, setPhase] = useState<Phase>('loading');
   const [live, setLive] = useState<Live | null>(null);
   const [answered, setAnswered] = useState<Answered | null>(null);
-  const [inputMode, setInputMode] = useState<'keyboard' | 'voice'>('keyboard');
+  const [inputMode, setInputModeRaw] = useState<'keyboard' | 'voice'>('keyboard');
+  // 입력 방식을 바꾼 직후 0.3초: 새로 뜨는 쪽(자판 또는 음성 막대)이 아래에서 올라온다
+  const [modeSwitched, setModeSwitched] = useState(false);
+  const setInputMode = (m: 'keyboard' | 'voice') => {
+    setInputModeRaw(m);
+    setModeSwitched(true);
+    window.setTimeout(() => setModeSwitched(false), 320);
+  };
   const [todayTotal, setTodayTotal] = useState(0);
   const [testAsked, setTestAsked] = useState(0);
   const [testLevel, setTestLevel] = useState<number | null>(null);
@@ -179,7 +187,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   // 학습 화면의 상태바는 하늘색. 설정 오버레이가 덮고 있는 동안은 앱 기본색으로
   useStatusBarColor(showSettings ? null : settings?.studyTheme === 'sky' ? '#96cbf5' : '#bbe4df', false);
   // 내비게이션 바: 자판이 떠 있으면 자판 배경(#2b2c2b), 정답 패널이면 패널 배경(#252627) — 화면 맨 아래까지 같은 색으로 이어진다
-  useNavBarColor(phase === 'question' || phase === 'answered' ? (phase === 'answered' && panelReady ? '#252627' : '#2b2c2b') : null);
+  useNavBarColor(phase === 'question' || phase === 'answered' ? ((phase === 'answered' && panelReady) || (phase === 'question' && inputMode === 'voice') ? '#252627' : '#2b2c2b') : null);
 
   const settingsRef = useRef<Settings | null>(null);
   settingsRef.current = settings ?? null;
@@ -317,7 +325,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   useEffect(() => {
     if (!settings || started.current) return;
     started.current = true;
-    setInputMode(settings.inputMode);
+    setInputModeRaw(settings.inputMode);
     (async () => {
       if ((await db.words.count()) === 0) {
         setPhase('nowords');
@@ -509,8 +517,13 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     if (!live) return;
     const need = answerWords(sentenceOf(live.q).answer).length;
     const have = live.input.trim().split(/\s+/).filter(Boolean).length;
-    if (need > 1 && have < need && live.input && !live.input.endsWith(' ')) editInput((cur) => cur + ' ');
-    else submit();
+    if (need > 1 && have < need && live.input) {
+      // 여러 낱말 답: 낱말 사이의 띄어쓰기. 맞게 친 낱말은 저절로 다음 칸으로 넘어가 있으므로(입력 끝이 이미 빈칸)
+      // 그때 누른 띄어쓰기는 실제 앱처럼 아무 일도 하지 않는다 (2026-11-13 같은 입력으로 녹화 대조: 실제 앱은 무시, 예전 구현은 오답 반응)
+      if (!live.input.endsWith(' ')) editInput((cur) => cur + ' ');
+      return;
+    }
+    submit();
   };
   const backspace = () => editInput((cur) => cur.slice(0, -1));
 
@@ -762,7 +775,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   // 말해보카: 음성 모드에서는 문제가 나오면 바로 듣기 시작
   useEffect(() => {
     if (inputMode !== 'voice' || phase !== 'question' || !live || listening || live.showedAnswer || !canRecognize()) return;
-    const t = window.setTimeout(() => void answerByVoice(), 500);
+    // 실제 앱은 음성 모드 화면이 올라오는 동안 이미 '듣고 있어요' 상태다 (60fps 녹화) → 올라오는 0.2초만 기다린다
+    const t = window.setTimeout(() => void answerByVoice(), 200);
     return () => window.clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cardKey, inputMode, phase]);
@@ -1187,9 +1201,15 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       {settings.studyTheme === 'sky' ? (
         <Backdrop theme="sky" />
       ) : (
-        <div className="scene-layer dino-bg" aria-hidden="true">
-          <DinoScene variant={sceneVariant} />
-        </div>
+        <>
+          <div className="scene-layer dino-bg" aria-hidden="true">
+            <DinoScene variant={sceneVariant} />
+          </div>
+          {/* 물속: 자판·패널 뒤에 깔려 있다 (음성 모드와 자판이 올라오는 순간에 보인다) */}
+          <div className="sea-layer" aria-hidden="true">
+            <SeaScene />
+          </div>
+        </>
       )}
       <header className="quiz-top">
         {guard.modal}
@@ -1277,8 +1297,17 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
                 {notePanel}
                 {inputMode === 'voice' && phase === 'question' && !hist && (
                   <>
+                    {/* 핸즈프리 버튼 (말해보카: 카드 오른쪽 아래 밖, 지름 34.67 어두운 동그라미에 손 그림 + 꺼짐 빗금, 위에 'H' 키캡) */}
                     <button className="hands-btn" onClick={() => setHandsTip((v) => !v)} aria-label="핸즈프리">
-                      <Icon name="hand" size={18} />
+                      <span className="vz-key" lang="en">
+                        H
+                      </span>
+                      <svg width="34.667" height="34.667" viewBox="0 0 34.667 34.667" aria-hidden="true">
+                        <circle cx="17.333" cy="17.333" r="17.333" fill="#252627" />
+                        <circle cx="17.333" cy="17.333" r="13.400" fill="none" stroke="#3a3b3f" strokeWidth="2.200" />
+                        <path d="M7.900 7.900l18.867 18.867" fill="none" stroke="#3a3b3f" strokeWidth="2.200" />
+                        <path d="M14.900 8.800a1.700 1.700 0 0 1 3.400 0v6.000l4.300 0.900c1.400 0.300 2.300 1.500 2.100 2.900l-0.600 4.300c-0.250 1.700-1.700 2.900-3.400 2.900h-3.300c-1.200 0-2.300-0.600-2.900-1.600l-3.700-5.500c-0.500-0.800-0.200-1.800 0.600-2.200 0.700-0.350 1.500-0.200 2.000 0.400l1.500 1.600z" fill="#70777c" />
+                      </svg>
                     </button>
                     {handsTip && (
                       <div className="hands-tip" onClick={() => setHandsTip(false)}>
@@ -1295,7 +1324,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         <div className="scene-row" />
       </main>
 
-      <div className={`quiz-bottom${noDelay ? ' nodelay' : ''}${firstIn ? ' first' : ''}`}>
+      <div className={`quiz-bottom${noDelay ? ' nodelay' : ''}${firstIn ? ' first' : ''}${modeSwitched ? ' switched' : ''}`}>
         {skipAsk && (
           <div className="skip-bar">
             <p>
@@ -1408,6 +1437,10 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         )}
         {!showPanel && inputMode === 'voice' && (
           <div className="voice-zone">
+            {/* 아래 막대: 가운데가 둥글게 파여 있고 그 안에 마이크 원이 들어앉는다 (플립 실측: 막대 높이 88.33, 파인 깊이 50.33) */}
+            <svg className="vz-bar" viewBox="0 0 360 88.333" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M0 0H72C110 0 125 50.333 180 50.333S250 0 288 0H360V88.333H0z" />
+            </svg>
             <div className="voice-bubble-row">
               {voiceError ? (
                 <span className="voice-error">{voiceError}</span>
@@ -1417,36 +1450,60 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
                 <span className="voice-hint" />
               )}
             </div>
-            <div className={`voice-halo ${listening ? 'listening' : ''}`}>
-              <span className="kbd-hint enter">Enter</span>
-              <button className={`mic-big ${listening ? 'on' : ''} ${noSpeech && !listening ? 'on nospeech' : ''}`} onClick={() => void answerByVoice()} aria-label={listening ? '듣는 중' : '말하기'}>
+            <div className={`vz-mic ${listening ? 'listening' : ''} ${noSpeech && !listening ? 'nospeech' : ''}`}>
+              <i className="vz-halo h2" />
+              <i className="vz-halo h1" />
+              <i className="vz-ring" />
+              <button className="mic-big" onClick={() => void answerByVoice()} aria-label={listening ? '듣는 중' : '말하기'}>
                 {listening ? (
                   <>
                     <span className="stop-square" />
                     <small>듣고 있어요</small>
                   </>
-                ) : noSpeech ? (
-                  <>
-                    <Icon name="mic" size={34} />
-                    <small>다시 해 보세요</small>
-                  </>
                 ) : (
-                  <Icon name="mic" size={40} />
+                  <>
+                    <svg className="vz-mic-ic" width="24.667" height="37.333" viewBox="0 0 24.667 37.333" aria-hidden="true">
+                      <rect x="5.667" y="0" width="13.333" height="23.333" rx="6.667" fill="currentColor" />
+                      <path d="M1.300 15.000v2.300a11.033 11.033 0 0 0 22.067 0v-2.300" fill="none" stroke="currentColor" strokeWidth="2.600" strokeLinecap="round" />
+                      <path d="M12.333 28.300v7.700" fill="none" stroke="currentColor" strokeWidth="2.600" strokeLinecap="round" />
+                    </svg>
+                    {noSpeech && <small>다시 해 보세요</small>}
+                  </>
                 )}
               </button>
+              <span className="vz-key enter" lang="en">
+                Enter
+              </span>
             </div>
-            <div className="voice-bar">
-              <button className="tool-btn" onClick={hint} disabled={live.showedAnswer}>
-                <span className="kbd-hint">1</span>
-                {hintIcon}
-                <span>{hintLabel}</span>
-              </button>
-              <button className="tool-btn" onClick={() => setInputMode('keyboard')}>
-                <span className="kbd-hint">0</span>
-                <Icon name="keyboard" size={26} className="ic-hint" />
-                <span>키보드 모드</span>
-              </button>
-            </div>
+            <button className="vz-btn left" onClick={hint} disabled={live.showedAnswer}>
+              <span className="vz-key" lang="en">
+                1
+              </span>
+              {hintIcon}
+              <span>{hintLabel}</span>
+            </button>
+            <button className="vz-btn right" onClick={() => setInputMode('keyboard')}>
+              <span className="vz-key" lang="en">
+                0
+              </span>
+              <svg className="vz-kbd" width="23.667" height="18.333" viewBox="0 0 23.667 18.333" aria-hidden="true">
+                <rect x="0" y="0" width="23.667" height="18.333" rx="3.600" fill="currentColor" />
+                <g fill="#252627">
+                  <rect x="3.400" y="3.600" width="2.600" height="2.400" rx="0.500" />
+                  <rect x="7.467" y="3.600" width="2.600" height="2.400" rx="0.500" />
+                  <rect x="11.533" y="3.600" width="2.600" height="2.400" rx="0.500" />
+                  <rect x="15.600" y="3.600" width="2.600" height="2.400" rx="0.500" />
+                  <rect x="19.000" y="3.600" width="1.300" height="2.400" rx="0.500" />
+                  <rect x="3.400" y="7.900" width="2.600" height="2.400" rx="0.500" />
+                  <rect x="7.467" y="7.900" width="2.600" height="2.400" rx="0.500" />
+                  <rect x="11.533" y="7.900" width="2.600" height="2.400" rx="0.500" />
+                  <rect x="15.600" y="7.900" width="2.600" height="2.400" rx="0.500" />
+                  <rect x="19.000" y="7.900" width="1.300" height="2.400" rx="0.500" />
+                  <rect x="6.300" y="12.400" width="11.067" height="2.400" rx="0.700" />
+                </g>
+              </svg>
+              <span>키보드 모드</span>
+            </button>
           </div>
         )}
       </div>
