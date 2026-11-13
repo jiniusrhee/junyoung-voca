@@ -34,7 +34,7 @@ import { canRecognize, recognizeOnce, speak, stopSpeaking, voiceErrorMessage } f
 import { answerWords, containsAnswer, evaluate, feedbackFor, fullSentence, normalize, revealPrefix, speechMatchRate, typoOf } from '../lib/text';
 import { toggleWordbook, useWordbook } from '../lib/wordbook';
 import { useNavBarColor, useStatusBarColor } from '../lib/statusBar';
-import { formatAfter, formatAgo, formatDuration, studyDateOf } from '../lib/time';
+import { formatAfter, formatAgo, studyDateOf } from '../lib/time';
 import { POS_KO, type Settings, type StoredWord, type Tone, type WrongNote } from '../types';
 
 type Phase = 'loading' | 'question' | 'answered' | 'empty' | 'nowords' | 'testResult';
@@ -109,6 +109,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const [flash, setFlash] = useState<CardFlash>(null);
   const [overlay, setOverlay] = useState<Overlay>(null);
   const [sayResult, setSayResult] = useState<{ tone: Tone; msg: string } | null>(null);
+  // 말해보기에서 아무 말도 못 들었으면 정답 말풍선을 감춘다 (다음 카드에서 되돌림)
+  const [saidNothing, setSaidNothing] = useState(false);
   const [listening, setListening] = useState(false);
   const [voiceError, setVoiceError] = useState<string | null>(null);
   /** 말해보카 실측: 몇 초 안에 못 들으면 마이크 원이 어두워지고 '다시 해 보세요' */
@@ -116,7 +118,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const [handsTip, setHandsTip] = useState(false);
   const [heard, setHeard] = useState<string | null>(null);
   const [showSettings, setShowSettings] = useState(false);
-  const [goalReached, setGoalReached] = useState(false);
+  /** 이 학습을 시작할 때 이미 풀어 둔 수. 하루 목표를 이번 학습 중에 채웠을 때만 '학습 완료' 단추가 뜬다 */
+  const [startTotal, setStartTotal] = useState<number | null>(null);
   const [toast, setToast] = useState<string | null>(null);
   const [speaking, setSpeaking] = useState(false);
   const speakTimer = useRef<number | undefined>(undefined);
@@ -233,6 +236,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     setAnswered(null);
     setOverlay(null);
     setSayResult(null);
+    setSaidNothing(false);
     setVoiceError(null);
     setHeard(null);
     setFlash(null);
@@ -331,7 +335,9 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         setPhase('nowords');
         return;
       }
-      setTodayTotal(daySolved(await db.daily.get(studyDateOf())));
+      const solved0 = daySolved(await db.daily.get(studyDateOf()));
+      setTodayTotal(solved0);
+      setStartTotal(solved0);
       if (mode === 'test') {
         const t = new LevelTest();
         await t.init();
@@ -395,7 +401,6 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         setPhase('answered');
         // 익룡은 정답 0.6초 뒤 진행 막대 아래로 (말해보카)
         window.setTimeout(() => setFlights((f) => f + 1), 600);
-        const t0 = Date.now();
 
         const { total, metNow } = await db.transaction('rw', db.cards, db.reviews, db.daily, async () => {
           await db.cards.put(row);
@@ -434,8 +439,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         setTodayTotal(total);
         // 다음 문제를 미리 골라 둔다 (정답 화면에서 카드를 왼쪽으로 끌면 다음 카드가 바로 따라 들어온다 — 말해보카)
         if (finalizing.current && !prefetching.current) void prefetchNext();
+        // 말해보카 실측(2026-11-13): 목표를 채워도 창은 뜨지 않는다. '다음 문제' 단추가 초록 '학습 완료' 로 바뀔 뿐이다
         if (metNow && mode === 'study') {
-          window.setTimeout(() => setGoalReached(true), Math.max(0, 1100 - (Date.now() - t0)));
           void pushInbox('🏆 오늘 목표 달성!', '하루 목표를 채웠어요. 추가 학습으로 더 나아가 보세요.', '/');
         }
       } catch (err) {
@@ -631,6 +636,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     if (!target || listening) return;
     setOverlay(null);
     setSayResult(null);
+    setSaidNothing(false);
     setListening(true);
     try {
       const alts = await recognizeOnce();
@@ -652,8 +658,10 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
       setSayResult({ tone: best >= 0.8 ? 'green' : best >= 0.6 ? 'yellow' : 'red', msg: `${label} ${pct}% 일치 · '${bestText}'` });
       void markPronunciation(target.q.word.id, best >= pGood);
     } catch (e) {
-      // 정지 버튼(□)으로 멈춘 경우는 결과 없이 조용히 돌아간다
-      if (!(e instanceof Error && e.message === 'aborted')) setSayResult({ tone: 'red', msg: voiceErrorMessage(e) });
+      // 정지 버튼(□)으로 멈춘 경우는 결과 없이 조용히 돌아간다.
+      // 아무 말도 못 들은 경우(약 9.6초 뒤)도 실제 앱은 알림 없이 도구줄로 돌아가고, 정답 말풍선만 사라진다 (2026-11-13 녹화)
+      if (e instanceof Error && e.message === 'no-speech') setSaidNothing(true);
+      else if (!(e instanceof Error && e.message === 'aborted')) setSayResult({ tone: 'red', msg: voiceErrorMessage(e) });
     } finally {
       setListening(false);
     }
@@ -784,7 +792,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   // 실제 키보드(블루투스/PC)도 지원
   useEffect(() => {
     const h = (e: KeyboardEvent) => {
-      if (e.ctrlKey || e.metaKey || e.altKey || showSettings || goalReached) return;
+      if (e.ctrlKey || e.metaKey || e.altKey || showSettings) return;
       if (phase === 'question' && inputMode === 'voice') {
         if (e.key === '1') hint();
         else if (e.key === '0') setInputMode('keyboard');
@@ -889,6 +897,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const goal = settings.dailyGoal;
   const total = mode === 'test' ? LEVEL_TEST_QUESTIONS : Math.max(goal, extraTarget);
   const count = mode === 'test' ? testAsked : todayTotal;
+  /** 이번 학습의 목표(하루 목표 또는 시작 창에서 고른 추가 목표)를 채웠는가. 낱말 목록 학습(ids)이나 목표를 이미 넘긴 채 들어온 학습에는 끝이 없다 */
+  const reachedTarget = mode === 'study' && !listIds && todayTotal >= total && (extraTarget > 0 || (startTotal != null && startTotal < total));
   const fill = Math.min(1, count / total);
   const isAnswered = shown;
   // 말해보카 실측(2026-11-10): 오른쪽으로 밀면 이전(푼) 카드, 왼쪽으로 밀면 이 문제 미루기.
@@ -923,7 +933,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const canPrev = histIdx == null && !!prevItem && (phase === 'question' || phase === 'answered');
   const canNext = histIdx != null || (phase === 'answered' && panelReady && !finish0() && !!upcoming?.q);
   function finish0() {
-    return mode === 'study' && extraTarget > 0 && todayTotal >= total && histIdx == null;
+    return reachedTarget && histIdx == null;
   }
   const offsetFor = (dx: number) => {
     const t = Math.min(Math.abs(dx), REACH) / REACH;
@@ -1168,8 +1178,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
     ) : null;
 
   const showPanel = !!isAnswered && (panelReady || !!hist);
-  /** 추가 학습 목표를 채운 마지막 카드: '다음 문제' 대신 초록 '학습 완료' (말해보카) */
-  const finish = mode === 'study' && extraTarget > 0 && todayTotal >= total && !hist;
+  /** 목표를 채운 마지막 카드: '다음 문제' 대신 초록 '학습 완료' (말해보카) */
+  const finish = reachedTarget && !hist;
   // 힌트 버튼 (말해보카 실측 2026-11-10): 힌트 보기(?) → 정답 보기(✓). 맞는 다른 답(초록 말풍선)을 내면 잠깐 '보너스 힌트'(상자)가 되고, 쓰면 원래 단계로 돌아간다
   const hintLabel = live.bonusReady ? '보너스 힌트' : !live.hintUsed ? '힌트 보기' : '정답 보기';
   const hintIcon = live.bonusReady ? <QBonus /> : !live.hintUsed ? <QHint /> : <QReveal />;
@@ -1353,6 +1363,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
             }
             wrongCount={(sentenceOf(panelItem.q).alts ?? []).length}
             listening={listening && showPanel}
+            hideBubble={saidNothing}
             onStopListening={() => window.dispatchEvent(new Event('voca:stop-listening'))}
             examplesOpen={overlay === 'examples'}
             wrongsOpen={overlay === 'wrongs'}
@@ -1531,7 +1542,6 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
 
       {levelHelp && <LevelHelp level={q.word.level} onClose={() => setLevelHelp(false)} />}
       {infoOpen && <StudyInfoSheet word={q.word} onClose={() => setInfoOpen(false)} />}
-      {goalReached && <GoalReached total={todayTotal} onMore={() => setGoalReached(false)} onHome={() => nav('/')} />}
     </div>
   );
 }
@@ -1556,44 +1566,6 @@ function DictPop({ word, onClose, onSearch }: { word: StoredWord; onClose: () =>
         </button>
       </div>
       <p>{word.meanings.join(', ')}</p>
-    </div>
-  );
-}
-
-function GoalReached({ total, onMore, onHome }: { total: number; onMore: () => void; onHome: () => void }) {
-  const today = useLiveQuery(() => db.daily.get(studyDateOf()), []);
-  const acc = today && today.total ? Math.round((today.correct / today.total) * 100) : 0;
-  return (
-    <div className="modal-dim">
-      <div className="modal goal-reached">
-        <div className="trophy-big">
-          <Icon name="trophy" size={64} />
-        </div>
-        <p className="modal-title big">오늘의 목표 달성!</p>
-        <p className="modal-desc">어휘 트로피를 받았어요. 내일도 잊기 전에 만나요.</p>
-        <div className="gr-stats">
-          <div>
-            <b>{total}</b>
-            <span>오늘 푼 문제</span>
-          </div>
-          <div>
-            <b>{acc}%</b>
-            <span>한 번에 정답</span>
-          </div>
-          <div>
-            <b>{formatDuration(today?.timeMs ?? 0)}</b>
-            <span>학습 시간</span>
-          </div>
-        </div>
-        <div className="modal-actions">
-          <button className="btn gray" onClick={onHome}>
-            홈으로
-          </button>
-          <button className="btn primary" onClick={onMore}>
-            추가 학습
-          </button>
-        </div>
-      </div>
     </div>
   );
 }

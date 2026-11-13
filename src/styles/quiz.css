@@ -39,7 +39,7 @@
   --q-big-1: #9765d3;
   --q-big-2: #8a63d3;
   --q-big-3: #6b66e3;
-  --q-finish: #35b24a;
+  --q-finish: #189336;
   --q-pill: #9eb0e3;
   --q-pill-text: #101010;
   --q-pill-bad: #c63035;
@@ -1402,12 +1402,9 @@
   background: var(--q-big);
   color: var(--q-big-3);
 }
-#root .vocab-quiz .big-btn.next.finish {
+#root .vocab-quiz .big-btn.next.fin {
   background: var(--q-finish);
   color: #fff;
-}
-#root .vocab-quiz .big-btn.next.finish svg polyline {
-  stroke-width: 3.6;
 }
 #root .vocab-quiz .big-btn:active {
   transform: none;
@@ -2388,8 +2385,8 @@
 :root[data-theme='dark'] #root .quiz-screen.vocab-quiz .big-btn.next {
   background: #2d2f31;
 }
-#root .quiz-screen.vocab-quiz .big-btn.next.finish,
-:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .big-btn.next.finish {
+#root .quiz-screen.vocab-quiz .big-btn.next.fin,
+:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .big-btn.next.fin {
   background: var(--q-finish);
 }
 
@@ -2468,8 +2465,8 @@
   background: #2d2f2e;
   color: #6a66e5;
 }
-#root .quiz-screen.vocab-quiz .big-btn.next.finish,
-:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .big-btn.next.finish {
+#root .quiz-screen.vocab-quiz .big-btn.next.fin,
+:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .big-btn.next.fin {
   background: var(--q-finish);
   color: #fff;
 }
@@ -3037,4 +3034,81 @@
 }
 #root .vocab-quiz .vz-key.enter {
   font-size: 10px;
+}
+
+/* ================= 말해보기 듣는 중 (말해보카 플립 캡처·녹화 실측 2026-11-13) =================
+   말풍선: 폭 61.33 · 몸통 33.33(보통 말풍선보다 2.67 낮음), 21px 아래에서 0.2초 만에 올라와 1.33 넘쳤다 돌아온다. '^' 는 사라진다.
+   점 셋: 지름 4.67, 간격 8.67. 1.93초 주기로 하나씩 밝아졌다(0.57초) 어두워진다(0.73초), 다음 점은 0.4초·0.73초 늦게.
+   정지 버튼: 지름 43.33 고리(선 1) 안에 13.33 네모. 그 줄 아래 선은 0.67(#18191a). */
+#root .vocab-quiz .after .bubble.hearing {
+  box-sizing: border-box;
+  min-width: 61.333px;
+  height: 33.333px;
+  margin-top: 2.667px;
+  padding: 0;
+  animation: hearBubble 0.233s linear both;
+}
+@keyframes hearBubble {
+  0% {
+    transform: translateY(21.333px);
+    animation-timing-function: cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+  72% {
+    transform: translateY(-1.333px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+#root .vocab-quiz .after .bubble.hearing .dots {
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  height: 33.333px;
+}
+#root .vocab-quiz .after .bubble.hearing .dots::before,
+#root .vocab-quiz .after .bubble.hearing .dots::after,
+#root .vocab-quiz .after .bubble.hearing .dots i {
+  width: 4.667px;
+  height: 4.667px;
+  background: #fff;
+  opacity: 0.21;
+  animation: hearDot 1.933s linear infinite;
+}
+#root .vocab-quiz .after .bubble.hearing .dots i {
+  animation-delay: 0.4s;
+}
+#root .vocab-quiz .after .bubble.hearing .dots::after {
+  animation-delay: 0.733s;
+}
+@keyframes hearDot {
+  0% {
+    opacity: 0.21;
+  }
+  29.500% {
+    opacity: 0.49;
+  }
+  67.200%,
+  100% {
+    opacity: 0.21;
+  }
+}
+#root .vocab-quiz .after.hearing .more-btn {
+  visibility: hidden;
+}
+#root .vocab-quiz .after-listen {
+  box-sizing: border-box;
+  height: 70px;
+  padding-bottom: 2.667px;
+  border-bottom: 0.667px solid #18191a;
+}
+#root .vocab-quiz .listen-stop {
+  width: 43.333px;
+  height: 43.333px;
+  border-width: 1px;
+}
+#root .vocab-quiz .listen-stop .stop-square {
+  width: 13.333px;
+  height: 13.333px;
+  border-radius: 2.5px;
 }

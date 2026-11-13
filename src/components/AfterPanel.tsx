@@ -24,6 +24,8 @@ export interface AfterPanelProps {
   wrongCount: number;
   /** 말해보기 중: 아이콘 줄이 듣기 UI(보라 테두리 원의 정지 버튼)로 바뀌고 말풍선에 점 3개 */
   listening: boolean;
+  /** 말해보기에서 아무 말도 못 들은 뒤: 정답 말풍선을 감춘다 ('^' 버튼은 남는다) */
+  hideBubble?: boolean;
   onStopListening: () => void;
   examplesOpen: boolean;
   wrongsOpen: boolean;
@@ -93,10 +95,19 @@ export function BigPlay() {
   );
 }
 
+/** '학습 완료' 표시: 붓으로 그은 듯 끝이 뾰족한 흰 체크 (플립 실측 2026-11-13: 단추 왼쪽 위에서 x 31.33~73.67, y 27.33~60) */
+export function BigDone() {
+  return (
+    <svg viewBox="0 0 46 46" aria-hidden="true">
+      <path d="M32.900 7.600 43.400 15 36.670 20.800 30.670 27.800 24.670 35.800 21.700 40.300 14.370 32.800 8.370 27.800 3.670 24.800 0.900 23.400 3.670 21.700 8.670 18.700 13.970 15.500 16.970 20.800 20.670 27.500 24.370 20.800 27.670 14.800z" fill="currentColor" />
+    </svg>
+  );
+}
+
 /** 정답 후 하단 패널: 말풍선 + '^' / 도구 아이콘 줄 / 듣기평가 속도 · 다시 듣기 · 다음 문제 (말해보카). 말풍선은 패널 위(bubble-row)에 붙어 자판 자리에서 37px 내려오며, 본문(after-body)만 아래에서 올라온다 */
 export default function AfterPanel(p: AfterPanelProps) {
   return (
-    <div className={`after ${p.className ?? ''}${p.moreOpen ? ' more-open' : ''}`} style={{ '--more-rows': p.moreRows?.length ?? 0 } as CSSProperties}>
+    <div className={`after ${p.className ?? ''}${p.moreOpen ? ' more-open' : ''}${p.listening ? ' hearing' : ''}`} style={{ '--more-rows': p.moreRows?.length ?? 0 } as CSSProperties}>
       {p.moreOpen && <div className="more-dim" onClick={p.onMore} />}
       {p.moreOpen && p.moreRows && (
         <div className="more-sheet">
@@ -122,9 +133,17 @@ export default function AfterPanel(p: AfterPanelProps) {
       )}
       <div className="bubble-row">
         {p.bubbleExtra}
-        <button className={`bubble ${p.answerIsWord && !p.listening ? 'link' : ''}${p.flatBubble ? ' flat' : ''}`} lang="en" onClick={p.onBubble}>
-          {p.listening ? <span className="dots"><i /></span> : p.answer}
-        </button>
+        {(p.listening || !p.hideBubble) && (
+          <button className={`bubble ${p.answerIsWord && !p.listening ? 'link' : ''}${p.flatBubble ? ' flat' : ''}${p.listening ? ' hearing' : ''}`} lang="en" onClick={p.onBubble}>
+            {p.listening ? (
+              <span className="dots">
+                <i />
+              </span>
+            ) : (
+              p.answer
+            )}
+          </button>
+        )}
         <button className="more-btn" onClick={p.onMore} aria-label={p.moreOpen ? '닫기' : '더 보기'}>
           <svg viewBox="0 0 18 18" aria-hidden="true">
             {p.moreOpen ? (
@@ -160,8 +179,8 @@ export default function AfterPanel(p: AfterPanelProps) {
           <BigSpeaker />
           <span>다시 듣기</span>
         </button>
-        <button className={`big-btn next ${p.finish ? 'finish' : ''}`} onClick={p.onNext}>
-          {p.finish ? <Icon name="check" size={34} /> : <BigPlay />}
+        <button className={`big-btn next ${p.finish ? 'fin' : ''}`} onClick={p.onNext}>
+          {p.finish ? <BigDone /> : <BigPlay />}
           <span>{p.finish ? '학습 완료' : '다음 문제'}</span>
         </button>
       </div>
