@@ -1,0 +1,433 @@
+/* worddetail.css: 낱말 상세 (pages/WordDetail.tsx) — 말해보카 플립 캡처 실측 2026-11-13
+   위쪽(머리줄·낱말·발음·탭)은 #202122 바탕이 y 200 까지, 그 아래는 #0e0e0f. 뜻 카드(340 폭, 보라 테두리 1.33)가 위쪽 바탕에 24.67 걸쳐 있다.
+   선택자는 #root .word-page 로 시작한다 (styles.css 의 옛 규칙보다 우선). */
+
+#root .word-page {
+  min-height: 100dvh;
+  padding: 0 0 80px;
+  background: linear-gradient(#202122 0 200.667px, #0e0e0f 200.667px) #0e0e0f;
+  color: #d6d6d6;
+}
+
+/* ---- 머리줄: '<' 회색(9 x 16, x 14), 오른쪽 '영영 풀이' 11.67px + ON 알약 21.33 x 13.33 ---- */
+#root .word-page .wd-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 43.333px;
+  margin: 0;
+  padding: 4.667px 11.667px 0 14px;
+  border: 0;
+  background: none;
+}
+#root .word-page .wd-head .icon-btn {
+  width: auto;
+  height: auto;
+  padding: 0;
+  color: #70777c;
+}
+#root .word-page .wd-head .icon-btn svg {
+  display: block;
+  width: 21px;
+  height: 21px;
+  margin-left: -5.1px;
+  stroke-width: 1.54;
+}
+#root .word-page .def-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  font-size: 11.667px;
+  color: #70777c;
+}
+#root .word-page .def-toggle span {
+  display: block;
+  box-sizing: border-box;
+  width: 21.333px;
+  height: 13.333px;
+  padding: 0;
+  border-radius: 6.667px;
+  background: #3a3d42;
+  font-size: 7.333px;
+  line-height: 13.667px;
+  font-weight: 700;
+  text-align: center;
+  color: #202122;
+  --ls: 0;
+}
+#root .word-page .def-toggle.on span {
+  background: #9992d5;
+}
+
+/* ---- 낱말 23.33px, 발음 기호 13.33px(#70777c), '발음 듣기' 알약 135.33 x 30 ---- */
+#root .word-page .dict-hero {
+  display: block;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background: none;
+}
+#root .word-page .word-big {
+  margin: -5.333px 0 0;
+  font-size: 23.333px;
+  line-height: 28px;
+  font-weight: 600;
+  color: #d6d6d6;
+}
+#root .word-page .word-ipa {
+  margin: 0.667px 0 0;
+  font-size: 14.667px;
+  line-height: 18px;
+  color: #70777c;
+  --ls: -0.035;
+}
+#root .word-page .listen-row {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 135.333px;
+  height: 30px;
+  margin: 5.333px auto 0;
+  padding: 0;
+  border: 0.667px solid #55546f;
+  border-radius: 15px;
+  background: none;
+}
+#root .word-page .listen-row .listen-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 4.667px;
+  height: 100%;
+  margin: 0;
+  padding: 0 0 0 4px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  font-size: 13px;
+  font-weight: 700;
+  color: #9e92e2;
+}
+#root .word-page .listen-row .listen-pill svg {
+  width: 15px;
+  height: 15px;
+}
+#root .word-page .listen-more {
+  flex: none;
+  width: 31.333px;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-left: 0.667px solid #3a3b47;
+  border-radius: 0;
+  background: none;
+  font-size: 12px;
+  color: #70777c;
+}
+
+/* ---- 탭 넷: 글자 14.67px, 사이에 가는 세로줄(16 높이) ---- */
+#root .word-page .dict-tabs {
+  display: flex;
+  height: 16px;
+  margin: 14.667px 0 0;
+  padding: 0 2.333px;
+  border: 0;
+  background: none;
+}
+#root .word-page .dict-tabs button {
+  flex: 1;
+  height: 16px;
+  padding: 0;
+  border: 0;
+  border-right: 0.667px solid #34383c;
+  border-radius: 0;
+  background: none;
+  font-size: 14.667px;
+  line-height: 16px;
+  font-weight: 400;
+  color: #d6d6d6;
+}
+#root .word-page .dict-tabs button:last-child {
+  border-right: 0;
+}
+#root .word-page .dict-tabs button:disabled {
+  color: #444445;
+}
+
+/* ---- 뜻 카드: x 10~350, 테두리 1.33(#8379c0), 모서리 9 ---- */
+#root .word-page .mean-card {
+  position: relative;
+  margin: 24.667px 10px 0;
+  padding: 17px 0 0 19px;
+  border: 1.333px solid #8379c0;
+  border-radius: 9px;
+  background: #202122;
+  box-shadow: none;
+}
+/* 품사·레벨 칩과 '+' : 카드 오른쪽 위 (높이 14, 글자 10.67px) */
+#root .word-page .mean-tags {
+  position: absolute;
+  top: 5.333px;
+  right: 6px;
+  display: flex;
+  gap: 4px;
+  margin: 0;
+}
+#root .word-page .mean-tags .chip {
+  height: 14px;
+  padding: 0 4px;
+  border: 0;
+  border-radius: 3px;
+  background: #2a2b3d;
+  font-size: 10.667px;
+  line-height: 14.667px;
+  font-weight: 700;
+  color: #a79ce6;
+}
+#root .word-page .mean-tags .chip.level {
+  background: #33302e;
+  color: #d9a680;
+}
+#root .word-page .mean-plus {
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: #2b2d30;
+  font-size: 13px;
+  line-height: 13px;
+  font-weight: 400;
+  color: #70777c;
+}
+#root .word-page .mean-plus.on {
+  color: #9e92e2;
+}
+/* 뜻 16px 굵게, 그 아래 풀이(우리 앱의 뉘앙스 설명) 12.33px 회색, 영영 풀이 13.67px 기울임 */
+#root .word-page .mean-text {
+  margin: 0;
+  padding-right: 40px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  color: #d6d6d6;
+}
+#root .word-page .mean-nuance {
+  margin: 5.333px 40px 0 1px;
+  font-size: 12.333px;
+  line-height: 17.333px;
+  color: #a4a4ac;
+}
+#root .word-page .mean-def {
+  margin: 6px 40px 0 1.333px;
+  font-size: 13.667px;
+  line-height: 17.333px;
+  font-style: italic;
+  color: #d6d6d6;
+  --ls: 0;
+}
+/* 접기 동그라미 (지름 22) */
+#root .word-page .mean-fold {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  width: 22px;
+  height: 22px;
+  margin: -9.667px 7px 0 auto;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #25292b;
+  color: #5a6062;
+}
+#root .word-page .mean-fold svg {
+  width: 12px;
+  height: 12px;
+  transform: rotate(90deg);
+}
+#root .word-page .mean-fold svg.up {
+  transform: rotate(-90deg);
+}
+/* 예문 칸: 위아래 가는 선 사이. '예문' 꼬리표 24 x 16, 문장 15px, 상황 11.67px, 번역 13.33px */
+#root .word-page .ex-box {
+  position: relative;
+  margin: 6px 0 0;
+  padding: 13.667px 20px 12.333px 8.667px;
+  border: 0;
+  border-top: 0.667px solid #34383c;
+  border-bottom: 0.667px solid #34383c;
+  border-radius: 0;
+  background: none;
+}
+#root .word-page .ex-box .box-tag {
+  display: inline-block;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 3px;
+  background: #323441;
+  font-size: 10.667px;
+  line-height: 16.667px;
+  font-weight: 400;
+  color: #b4b4b4;
+}
+#root .word-page .ex-next {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  color: #5a6062;
+}
+#root .word-page .ex-next svg {
+  width: 13px;
+  height: 13px;
+}
+#root .word-page .ex-box .ex-en {
+  margin: 3.667px 0 0;
+  font-size: 15px;
+  line-height: 16.333px;
+  font-weight: 400;
+  color: #d6d6d6;
+}
+#root .word-page .ex-box .ex-en .blank,
+#root .word-page .ex-box .ex-en b,
+#root .word-page .ex-box .ex-en em {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  font-style: normal;
+  font-weight: 400;
+  color: #3fc97a;
+}
+#root .word-page .ex-box .ctx {
+  margin: 8.667px 0 0;
+  font-size: 11.667px;
+  line-height: 14px;
+  color: #a9a9a9;
+}
+#root .word-page .ex-box .ex-ko {
+  margin: 1.333px 0 0;
+  font-size: 13.333px;
+  line-height: 17.333px;
+  color: #a4a4ac;
+}
+#root .word-page .ex-box .note {
+  margin: 6px 0 0;
+  font-size: 11.667px;
+  line-height: 15px;
+  color: #70777c;
+}
+#root .word-page .ex-listen {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  color: #9e92e2;
+}
+#root .word-page .ex-listen svg {
+  width: 16px;
+  height: 16px;
+}
+/* 카드 바닥: 학습 기록(우리 앱) 왼쪽, '+ 학습에 추가' 13px 오른쪽 */
+#root .word-page .mean-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 54.667px;
+  margin: 0;
+  padding: 0 20.667px 0 0;
+  border: 0;
+}
+#root .word-page .mean-record {
+  font-size: 11.667px;
+  line-height: 15px;
+  color: #5a6062;
+}
+#root .word-page .mean-foot .wb-add {
+  flex: none;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 13px;
+  font-weight: 400;
+  color: #5a6062;
+}
+#root .word-page .mean-foot .wb-add.on {
+  color: #9e92e2;
+}
+
+/* ---- 아래 구역들 (변화형·어원·헷갈리기 쉬운 답·학습 기록): 같은 폭의 어두운 카드 ---- */
+#root .word-page .sec-title {
+  margin: 22px 20px 8px;
+  font-size: 14.667px;
+  line-height: 20px;
+  font-weight: 700;
+  color: #d6d6d6;
+}
+#root .word-page .text-card {
+  margin: 0 10px;
+  padding: 12px 19px;
+  border-radius: 9px;
+  background: #202122;
+  font-size: 13.333px;
+  line-height: 19px;
+  color: #a4a4ac;
+}
+#root .word-page .form-row {
+  min-height: 38px;
+  padding: 0;
+  font-size: 13.333px;
+}
+#root .word-page .form-row b {
+  font-size: 15px;
+  font-weight: 400;
+  color: #d6d6d6;
+}
+#root .word-page .log-list {
+  margin: 0 10px;
+  padding: 10px 19px;
+  border-radius: 9px;
+  background: #202122;
+  font-size: 12.333px;
+  line-height: 20px;
+  color: #a4a4ac;
+}
+
+/* ---- 닫기: 오른쪽 아래에 떠 있는 동그라미 (지름 34, #55595a) ---- */
+#root .word-page .wd-close {
+  position: fixed;
+  right: 12.333px;
+  bottom: 21px;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #55595a;
+  box-shadow: none;
+  color: #fff;
+}
+#root .word-page .wd-close svg {
+  width: 15px;
+  height: 15px;
+  stroke-width: 2.6;
+}

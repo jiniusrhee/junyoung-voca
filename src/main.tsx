@@ -14,6 +14,8 @@ import './styles/startpop.css';
 import './styles/goalpop.css';
 import './styles/subhead.css';
 import './styles/modeset.css';
+import './styles/dict.css';
+import './styles/worddetail.css';
 import { installNativeBack } from './lib/nativeBack';
 import { reassertBars, setStatusBar } from './lib/statusBar';
 

@@ -1,0 +1,252 @@
+/* dict.css: 단어 & 문장 검색 (pages/Dictionary.tsx) — 말해보카 플립 캡처 실측 2026-11-13
+   탭 높이 38.67(글자 14.67px, 고른 탭 #9e92e2 + 아래 1 줄), 결과 카드(왼쪽 낱말 칸 121.33 + 오른쪽 뜻 줄들), 아래 검색 줄. */
+
+.dict2 {
+  padding-bottom: 80px;
+  background: #121212;
+}
+
+/* ---- 탭: 화면의 1/3 폭(120)씩 ---- */
+.dict2 .d2-tabs {
+  position: sticky;
+  top: 43.333px;
+  z-index: 4;
+  display: flex;
+  height: 38.667px;
+  border-bottom: 0.667px solid #25282b;
+  background: #121212;
+}
+.dict2 .d2-tabs button {
+  box-sizing: border-box;
+  width: 120px;
+  height: 38.667px;
+  padding: 2px 0 0;
+  border-bottom: 1px solid transparent;
+  font-size: 14.667px;
+  font-weight: 400;
+  color: #676d77;
+}
+.dict2 .d2-tabs button.active {
+  border-bottom-color: #9e92e2;
+  color: #9e92e2;
+}
+
+/* ---- 최근 검색: 제목 14px, 전체 삭제 12.33px(보라), 줄 49.33(아래 가는 선), × 7.33 ---- */
+.dict2 .d2-recent {
+  padding: 0 14px 0 14px;
+}
+.dict2 .d2-recent-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 49.667px;
+  padding: 0 7.667px 5.667px 6px;
+}
+.dict2 .d2-recent-head b {
+  font-size: 14px;
+  font-weight: 400;
+  color: #d6d6d6;
+}
+.dict2 .d2-recent-head button {
+  font-size: 12.333px;
+  font-weight: 700;
+  color: #9e92e2;
+}
+.dict2 .d2-recent-row {
+  display: flex;
+  align-items: center;
+  height: 49.333px;
+  border-bottom: 0.333px solid #34383c;
+}
+.dict2 .d2-term {
+  flex: 1;
+  height: 100%;
+  padding: 3.667px 0 0 8.333px;
+  text-align: left;
+  font-size: 14.333px;
+  color: #d6d6d6;
+  --ls: 0;
+}
+.dict2 .d2-x {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 100%;
+  margin-right: 0.333px;
+  padding-top: 2px;
+  color: #6e757a;
+}
+
+/* ---- 결과 카드: x 4.67~355.33, 카드 사이 4.67. 낱말 칸 121.33(#202224), 틈 1.33, 뜻 줄(첫 줄 59.33 #1c1c1d, 나머지 43.33 #202122) ---- */
+.dict2 .d2-results {
+  padding: 8px 4.667px 0;
+}
+.dict2 .d2-card {
+  display: flex;
+  gap: 1.333px;
+  margin-bottom: 4.667px;
+  overflow: hidden;
+  border-radius: 4px;
+  color: #d6d6d6;
+}
+.dict2 .d2-word {
+  flex: none;
+  box-sizing: border-box;
+  width: 121.333px;
+  padding: 13px 6px 0 9px;
+  background: #202224;
+  font-size: 16.333px;
+  line-height: 20px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+.dict2 .d2-means {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1.333px;
+  min-width: 0;
+}
+.dict2 .d2-mean {
+  display: flex;
+  align-items: center;
+  flex: 1 0 auto;
+  min-height: 43.333px;
+  padding: 0 7px 0 12px;
+  background: #202122;
+}
+.dict2 .d2-mean:first-child {
+  min-height: 59.333px;
+  background: #1c1c1d;
+}
+.dict2 .d2-mean-text {
+  flex: 1;
+  min-width: 0;
+}
+.dict2 .d2-mean-text small {
+  display: block;
+  margin: 1.333px 0 0.667px;
+  font-size: 11.333px;
+  line-height: 14px;
+  color: #a9a9a9;
+}
+.dict2 .d2-mean-text b {
+  display: block;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 400;
+}
+.dict2 .d2-chev {
+  flex: none;
+  color: #50575d;
+}
+.dict2 .empty-note {
+  padding: 40px 0;
+}
+/* 문장 검색 결과는 예전 카드 그대로, 여백만 */
+.dict2 .sent-item {
+  margin: 8px 12px 0;
+}
+
+/* ---- 검색 줄 ----
+   자판이 떠 있을 때(.typing): 높이 41.33, 위 1 줄(#6f5fc6), 글자 x 11.33, 지우기 동그라미 19.33, '확인' 60 폭(#6f5fc6)
+   자판이 내려갔을 때: 높이 69.33(위 1.33 줄 #9e92e2, 바탕 #27292b), 돋보기 15.67(x 28.67) + 검색어(x 57.67), 오른쪽 위에 떠 있는 × (지름 34) */
+.dict2 .d2-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 8;
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+  height: 70.667px;
+  padding: 16px 0 0 28.667px;
+  border-top: 1.333px solid #9e92e2;
+  background: #27292b;
+}
+.dict2 .d2-bar-ic {
+  flex: none;
+  margin: 0 13.333px 0 0;
+  color: #9e92e2;
+}
+.dict2 .d2-bar input {
+  flex: 1;
+  min-width: 0;
+  height: 16px;
+  margin-top: -0.333px;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: none;
+  font-size: 16px;
+  line-height: 16px;
+  color: #d6d6d6;
+  caret-color: #d6d6d6;
+}
+.dict2 .d2-bar input::placeholder {
+  color: #676d77;
+  letter-spacing: -0.0864em;
+}
+.dict2 .d2-clear,
+.dict2 .d2-ok {
+  display: none;
+}
+.dict2.typing .d2-bar {
+  bottom: 1.667px;
+  align-items: center;
+  height: 42.333px;
+  padding: 0 0 0 11.333px;
+  border-top: 1px solid #6f5fc6;
+  background: #202122;
+}
+.dict2.typing .d2-bar-ic {
+  display: none;
+}
+.dict2.typing .d2-bar input {
+  height: 40px;
+  margin: 0;
+  line-height: 40px;
+}
+.dict2.typing .d2-clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 19.333px;
+  height: 19.333px;
+  margin: 0 10.333px 0 8px;
+  border-radius: 50%;
+  background: #494d4e;
+  color: #202122;
+}
+.dict2.typing .d2-ok {
+  display: block;
+  flex: none;
+  width: 60px;
+  height: 100%;
+  background: #6f5fc6;
+  font-size: 12.667px;
+  font-weight: 700;
+  color: #faf9fe;
+}
+.dict2 .d2-float-x {
+  position: fixed;
+  right: 11px;
+  bottom: 84.333px;
+  padding: 0;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #55595a;
+  color: #fff;
+}
+/* 치는 동안에는 안내 글이 없다 (빈 칸에 깜박이는 막대만) */
+.dict2.typing .d2-bar input::placeholder {
+  color: transparent;
+}

@@ -1,57 +1,46 @@
-import { useEffect } from "react";
-import {
-  HashRouter,
-  Navigate,
-  Route,
-  Routes,
-  useLocation,
-  useParams,
-} from "react-router-dom";
-import BottomNav from "./components/BottomNav";
-import PageHost from "./components/PageHost";
-import StreakPopup from "./components/StreakPopup";
-import UpdateSheet from "./components/UpdateSheet";
-import { syncContent } from "./lib/content";
-import { useSettings } from "./lib/settings";
-import { applySoundSettings } from "./lib/sfx";
-import StudyReminder from "./components/StudyReminder";
-import { setNavBarColor } from "./lib/statusBar";
-import { useApplyTheme } from "./lib/theme";
-import AllLearning from "./pages/AllLearning";
-import ExprHome, {
-  ExprCourses,
-  ExprDict,
-  ExprNotebook,
-} from "./pages/ExprHome";
-import ExprQuiz from "./pages/ExprQuiz";
-import TalkHome, { TalkLevel, TalkRecent, TalkSaved } from "./pages/TalkHome";
-import TalkPlay from "./pages/TalkPlay";
-import GrammarDict, { GrammarLesson } from "./pages/GrammarDict";
-import GrammarQuiz from "./pages/GrammarQuiz";
-import Guide from "./pages/Guide";
-import LearnedList from "./pages/LearnedList";
-import LearnedMenu, { LearnedWords } from "./pages/Learned";
-import ModeNotebook, { ModeLearnedMenu } from "./pages/ModeNotebook";
-import GBookmarks, { GBookmarkDetail } from "./pages/GBookmarks";
-import ListeningQuiz from "./pages/ListeningQuiz";
-import Pairs, { PairQuiz } from "./pages/Pairs";
-import Wordbook, { WordbookDetail } from "./pages/Wordbook";
-import Dictionary from "./pages/Dictionary";
-import Favorites from "./pages/Favorites";
-import Home from "./pages/Home";
-import Quiz from "./pages/Quiz";
-import ModeSettings from "./pages/ModeSettings";
-import Settings from "./pages/Settings";
-import Stats from "./pages/Stats";
-import Streak from "./pages/Streak";
-import Welcome from "./pages/Welcome";
-import Measure from "./pages/Measure";
-import Inbox from "./pages/Inbox";
-import WordDetail from "./pages/WordDetail";
-import Words from "./pages/Words";
-import WrongNotes from "./pages/WrongNotes";
+import { useEffect } from 'react';
+import { HashRouter, Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom';
+import BottomNav from './components/BottomNav';
+import PageHost from './components/PageHost';
+import StreakPopup from './components/StreakPopup';
+import UpdateSheet from './components/UpdateSheet';
+import { syncContent } from './lib/content';
+import { useSettings } from './lib/settings';
+import { applySoundSettings } from './lib/sfx';
+import StudyReminder from './components/StudyReminder';
+import { setNavBarColor } from './lib/statusBar';
+import { useApplyTheme } from './lib/theme';
+import AllLearning from './pages/AllLearning';
+import ExprHome, { ExprCourses, ExprDict, ExprNotebook } from './pages/ExprHome';
+import ExprQuiz from './pages/ExprQuiz';
+import TalkHome, { TalkLevel, TalkRecent, TalkSaved } from './pages/TalkHome';
+import TalkPlay from './pages/TalkPlay';
+import GrammarDict, { GrammarLesson } from './pages/GrammarDict';
+import GrammarQuiz from './pages/GrammarQuiz';
+import Guide from './pages/Guide';
+import LearnedList from './pages/LearnedList';
+import LearnedMenu, { LearnedWords } from './pages/Learned';
+import ModeNotebook, { ModeLearnedMenu } from './pages/ModeNotebook';
+import GBookmarks, { GBookmarkDetail } from './pages/GBookmarks';
+import ListeningQuiz from './pages/ListeningQuiz';
+import Pairs, { PairQuiz } from './pages/Pairs';
+import Wordbook, { WordbookDetail } from './pages/Wordbook';
+import Dictionary from './pages/Dictionary';
+import Favorites from './pages/Favorites';
+import Home from './pages/Home';
+import Quiz from './pages/Quiz';
+import ModeSettings from './pages/ModeSettings';
+import Settings from './pages/Settings';
+import Stats from './pages/Stats';
+import Streak from './pages/Streak';
+import Welcome from './pages/Welcome';
+import Measure from './pages/Measure';
+import Inbox from './pages/Inbox';
+import WordDetail from './pages/WordDetail';
+import Words from './pages/Words';
+import WrongNotes from './pages/WrongNotes';
 
-const TABS = ["/", "/stats", "/all"];
+const TABS = ['/', '/stats', '/all'];
 
 function ExprDictRoute() {
   const { key } = useParams();
@@ -67,45 +56,26 @@ function Shell() {
   }, [settings]);
   // 내비게이션 바(화면 맨 아래 제스처 막대 자리) 색: 하단 탭이 있는 화면은 탭 배경, 없으면 화면 배경. 어휘 퀴즈는 자판·패널 색으로 직접 맞춘다
   useEffect(() => {
-    if (!settings || loc.pathname === "/quiz" || loc.pathname === "/test")
-      return;
-    const dark = document.documentElement.dataset.theme === "dark";
-    const tabs =
-      TABS.includes(loc.pathname) &&
-      !(loc.pathname === "/" && settings.level == null);
-    setNavBarColor(
-      tabs ? (dark ? "#202122" : "#ffffff") : dark ? "#121212" : "#f4f5f9",
-    );
+    if (!settings || loc.pathname === '/quiz' || loc.pathname === '/test') return;
+    const dark = document.documentElement.dataset.theme === 'dark';
+    const tabs = TABS.includes(loc.pathname) && !(loc.pathname === '/' && settings.level == null);
+    // 사전은 아래 검색 줄(#27292b)이 화면 끝까지 이어진다
+    setNavBarColor(tabs ? (dark ? '#202122' : '#ffffff') : dark ? (loc.pathname === '/dict' ? '#27292b' : '#121212') : '#f4f5f9');
   }, [loc.pathname, settings]);
   if (!settings) return <div className="screen center muted">불러오는 중…</div>;
   const needsOnboarding = settings.level == null;
-  const showNav =
-    TABS.includes(loc.pathname) && !(loc.pathname === "/" && needsOnboarding);
+  const showNav = TABS.includes(loc.pathname) && !(loc.pathname === '/' && needsOnboarding);
   return (
-    <div className={`app ${showNav ? "with-nav" : ""}`}>
+    <div className={`app ${showNav ? 'with-nav' : ''}`}>
       <StudyReminder />
       <PageHost>
         <Routes>
-          <Route
-            path="/"
-            element={
-              needsOnboarding ? <Navigate to="/welcome" replace /> : <Home />
-            }
-          />
+          <Route path="/" element={needsOnboarding ? <Navigate to="/welcome" replace /> : <Home />} />
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/test" element={<Quiz mode="test" />} />
           <Route path="/measure" element={<Measure />} />
           <Route path="/inbox" element={<Inbox />} />
-          <Route
-            path="/quiz"
-            element={
-              needsOnboarding ? (
-                <Navigate to="/welcome" replace />
-              ) : (
-                <Quiz mode="study" />
-              )
-            }
-          />
+          <Route path="/quiz" element={needsOnboarding ? <Navigate to="/welcome" replace /> : <Quiz mode="study" />} />
           <Route path="/stats" element={<Stats />} />
           <Route path="/streak" element={<Streak />} />
           <Route path="/all" element={<AllLearning />} />
@@ -130,10 +100,7 @@ function Shell() {
           <Route path="/learned/:mode" element={<ModeLearnedMenu />} />
           <Route path="/bookmarks/grammar" element={<GBookmarks />} />
           <Route path="/bookmarks/grammar/:id" element={<GBookmarkDetail />} />
-          <Route
-            path="/bookmarks/:mode"
-            element={<LearnedList kind="bookmarks" />}
-          />
+          <Route path="/bookmarks/:mode" element={<LearnedList kind="bookmarks" />} />
           <Route path="/wordbook" element={<Wordbook />} />
           <Route path="/wordbook/:id" element={<WordbookDetail />} />
           <Route path="/guide" element={<Guide />} />
@@ -159,7 +126,7 @@ function Shell() {
 
 export default function App() {
   useEffect(() => {
-    syncContent().catch((e) => console.warn("단어 데이터 동기화 실패", e));
+    syncContent().catch((e) => console.warn('단어 데이터 동기화 실패', e));
   }, []);
   return (
     <HashRouter>
