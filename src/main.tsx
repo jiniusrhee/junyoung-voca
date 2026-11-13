@@ -13,6 +13,7 @@ import './styles/transition.css';
 import './styles/startpop.css';
 import './styles/goalpop.css';
 import './styles/subhead.css';
+import './styles/modeset.css';
 import { installNativeBack } from './lib/nativeBack';
 import { reassertBars, setStatusBar } from './lib/statusBar';
 

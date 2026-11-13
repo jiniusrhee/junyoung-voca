@@ -1,0 +1,405 @@
+/* modeset.css: 설정 하위 화면 (pages/ModeSettings.tsx — 화면 / 알림 / 음성 및 효과음 / 모드별 학습 설정 / 즐겨찾기)
+   말해보카 플립 캡처 실측 2026-11-13. 구역·줄의 기본 치수는 styles/subhead.css 의 .vs-sec · .vs-row 를 그대로 쓴다. */
+
+/* 줄 사이 구분선은 없다 (예전 .ms-row 의 선·여백을 쓰지 않는다) */
+.ms2 .vs-row {
+  border: 0;
+}
+/* 제목 없는 구역 (알림 등): 머리줄 아래 20 */
+.ms2 .vs-sec.plain {
+  padding-top: 20px;
+}
+.ms2 .vs-row-label {
+  display: inline-flex;
+  align-items: center;
+}
+/* 이름 옆 '?' : 지름 16 회색 동그라미 */
+.ms2 .vs-q {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+  border-radius: 50%;
+  background: #70777c;
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  color: #121212;
+  --ls: 0;
+}
+/* 줄의 토글: 33.33 x 19.33, 오른쪽 끝 x 340 */
+.ms2 .vs-row .toggle,
+.vs-page .vs-sec .vs-row .toggle {
+  width: 33.333px;
+  height: 19.333px;
+  margin-right: 3.75px;
+  border-radius: 9.667px;
+  background: #2c2c2d;
+}
+.ms2 .vs-row .toggle::after,
+.vs-page .vs-sec .vs-row .toggle::after {
+  top: 3px;
+  left: 3.333px;
+  width: 13.333px;
+  height: 13.333px;
+}
+.vs-page .vs-sec .vs-row input:checked + .toggle {
+  background: #7575db;
+}
+.vs-page .vs-sec .vs-row input:checked + .toggle::after {
+  left: 16.667px;
+  transform: none;
+}
+
+/* ---- 소리 크기 줄: 스피커 x 176~192, 막대 x 198.67~340 (높이 4), 손잡이 지름 13.33, 모두 #7575db ---- */
+.ms2 .slider-row {
+  justify-content: flex-start;
+  gap: 0;
+}
+.ms2 .slider-row > span:first-child {
+  flex: 1;
+}
+.ms2 .slider-row .vs-spk {
+  flex: none;
+  margin-right: 6.667px;
+  color: #7575db;
+}
+.ms2 .slider-row input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: none;
+  width: 141.333px;
+  height: 24px;
+  margin: 0 3.75px 0 0;
+  padding: 0;
+  background: transparent;
+  accent-color: #7575db;
+}
+.ms2 .slider-row input[type='range']::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #7575db 0 var(--v, 100%), #34353c var(--v, 100%) 100%);
+}
+.ms2 .slider-row input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 13.333px;
+  height: 13.333px;
+  margin-top: -4.667px;
+  border: 0;
+  border-radius: 50%;
+  background: #7575db;
+}
+
+/* ---- 화면: 다크 모드 그림 세 장 (83.33 x 56.67, 간격 118.67), 이름 15px, 동그라미 13.33 ---- */
+.ms2 .dm-cards {
+  display: flex;
+  gap: 35.333px;
+  margin: 31.667px 0 0 1.667px;
+  padding: 0;
+}
+.ms2 .dm-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 83.333px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #d6d6d6;
+}
+.ms2 .dm-thumb {
+  position: relative;
+  display: block;
+  width: 83.333px;
+  height: 56.667px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 10px;
+  background: #c6c4d1;
+  --sheet: #dfdee8;
+  --line: #c6c4d1;
+}
+.ms2 .dm-card.dark .dm-thumb {
+  background: #3e3c45;
+  --sheet: #55515f;
+  --line: #686179;
+}
+.ms2 .dm-sheet {
+  position: absolute;
+  left: 8.333px;
+  right: 8.333px;
+  top: 9.333px;
+  height: 34px;
+  border-radius: 6px;
+  background: var(--sheet);
+}
+.ms2 .dm-sheet.next {
+  top: 49.333px;
+}
+.ms2 .dm-sheet i {
+  position: absolute;
+  left: 15.333px;
+  right: 8.333px;
+  top: 9.333px;
+  width: auto;
+  height: 3.333px;
+  margin: 0;
+  border-radius: 2px;
+  background: var(--line);
+}
+.ms2 .dm-sheet i + i {
+  top: 20.667px;
+}
+.ms2 .dm-sheet i::before {
+  content: '';
+  position: absolute;
+  left: -11.333px;
+  top: -1.667px;
+  width: 6.667px;
+  height: 6.667px;
+  border-radius: 50%;
+  background: #9483e8;
+}
+/* 시스템 설정: 왼쪽 반은 밝게, 오른쪽 반은 어둡게 */
+.ms2 .dm-card.system .dm-thumb {
+  background: linear-gradient(90deg, #c6c4d1 50%, #3e3c45 50%);
+}
+.ms2 .dm-card.system .dm-sheet {
+  background: linear-gradient(90deg, #dfdee8 0 33.333px, #55515f 33.333px);
+}
+.ms2 .dm-card.system .dm-sheet i {
+  background: linear-gradient(90deg, #c6c4d1 0 18px, #686179 18px);
+}
+.ms2 .dm-name {
+  margin-top: 13.667px;
+  font-size: 15px;
+  line-height: 20px;
+  white-space: nowrap;
+}
+.ms2 .dm-radio {
+  box-sizing: border-box;
+  width: 13.333px;
+  height: 13.333px;
+  margin-top: 13px;
+  border: 1px solid #3e4049;
+  border-radius: 50%;
+  background: #242629;
+}
+.ms2 .dm-card.sel .dm-radio {
+  border: 2.667px solid #242629;
+  outline: 1px solid #3e4049;
+  outline-offset: -1px;
+  background: #735cf4;
+}
+.ms2.ms-screen .vs-sec:first-of-type {
+  padding-bottom: 27px;
+}
+
+/* ---- 알림: 안내 상자 322.67 x 75 (#2e3136), 노란 세모 23 x 21.33 ---- */
+.ms2 .notice-banner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: calc(100% - 3.083px);
+  height: 75px;
+  margin: 0.667px 0 13.833px 0.667px;
+  padding: 0.667px 14px 0 19px;
+  border: 0;
+  border-radius: 6px;
+  background: #2e3136;
+  text-align: left;
+}
+.ms2 .notice-banner .notice-warn {
+  flex: none;
+  width: 23px;
+  height: 21.333px;
+  margin: -0.667px 16.667px 0 0;
+  border-radius: 0;
+  background: none;
+}
+.ms2 .notice-banner .notice-text {
+  flex: 1;
+  min-width: 0;
+}
+.ms2 .notice-banner .notice-text b {
+  display: block;
+  font-size: 13.667px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #d6d6d6;
+}
+.ms2 .notice-banner .notice-text small {
+  display: block;
+  margin-top: 0;
+  font-size: 11.667px;
+  line-height: 15.333px;
+  color: #a9a9a9;
+}
+.ms2 .notice-banner .muted-ic {
+  flex: none;
+  color: #50575d;
+}
+.ms2 .time-input {
+  margin-right: 3.75px;
+}
+.ms2 .volume-check {
+  margin: 0 0 14px;
+}
+
+/* ---- 즐겨찾기: 밝은 바탕(#202122), 줄 60(아래 1 선 #28292c), 동그란 그림 34, 아래에 취소/확인 ---- */
+.ms2.ms-favorites,
+.ms2.ms-favorites .vs-head {
+  background: #202122;
+}
+.ms2.ms-favorites {
+  padding-bottom: 90px;
+}
+.ms2 .fav-sec {
+  padding: 39.333px 15.333px 54px 15px;
+}
+.ms2 .fav-sec + .fav-sec {
+  padding: 39.333px 15.333px 30px 15px;
+  border-bottom: 0;
+}
+.ms2 .fav-sec h3 {
+  margin: 0 0 20.333px 3.667px;
+}
+.ms2 .fav-sec .vs-help-box,
+:root[data-theme='dark'] .ms2 .fav-sec .vs-help-box {
+  margin: 0 0 8.333px 0.333px;
+  padding: 8.333px 10px 8px;
+  background: #2c2d30;
+  color: #a0a2a3;
+}
+.ms2 .fav-sec + .fav-sec .vs-help-box {
+  margin-bottom: 6px;
+}
+.ms2 .fav-row {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 60px;
+  padding-top: 1.333px;
+  border-bottom: 1px solid #28292c;
+}
+.ms2 .fav-row input {
+  display: none;
+}
+.ms2 .fav-ic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 34px;
+  height: 34px;
+  margin-right: 13.333px;
+  border-radius: 50%;
+  color: #f6f6fc;
+}
+.ms2 .fav-ic svg {
+  display: block;
+  width: auto;
+  height: 15.333px;
+}
+.ms2 .fav-name {
+  flex: 1;
+  font-size: 15px;
+  color: #d6d6d6;
+}
+.ms2 .fav-row .toggle {
+  width: 33.333px;
+  height: 19.333px;
+  border-radius: 9.667px;
+  background: #2c2c2d;
+}
+/* 손잡이는 흰색이 아니라 #d6d6d6 (styles.css 의 옛 규칙이 !important 로 흰색을 건다) */
+#root .vs-page .toggle::after {
+  background: #d6d6d6 !important;
+}
+.ms2 .fav-row .toggle::after {
+  top: 3px;
+  left: 3.333px;
+  width: 13.333px;
+  height: 13.333px;
+  background: #d6d7d6;
+  box-shadow: none;
+}
+.ms2 .fav-row input:checked + .toggle {
+  background: #7575db;
+}
+.ms2 .fav-row input:checked + .toggle::after {
+  left: 16.667px;
+  transform: none;
+}
+/* 손잡이 세 줄 (14.67 x 13.33) — 순서 바꾸기는 만들지 않아 모양만 */
+.ms2 .fav-grip {
+  flex: none;
+  width: 14.667px;
+  height: 13.333px;
+  margin: 0 5.333px 0 19.667px;
+  background: linear-gradient(#50575d 0 1.333px, transparent 1.333px 6px, #50575d 6px 7.333px, transparent 7.333px 12px, #50575d 12px 13.333px);
+}
+.ms2 .fav-pin {
+  flex: none;
+  margin-right: 5px;
+}
+.ms2 .fav-sec .vs-row {
+  padding-left: 4px;
+}
+.ms2 .fav-actions {
+  position: fixed;
+  left: 18.667px;
+  right: 18.667px;
+  bottom: 14.667px;
+  z-index: 6;
+  display: flex;
+  gap: 8px;
+}
+.ms2 .fav-actions button {
+  flex: 1;
+  height: 49.333px;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #f4f4f4;
+}
+.ms2 .fav-cancel {
+  background: #404446;
+}
+.ms2 .fav-ok {
+  background: #4b3f8d;
+}
+.ms2 .fav-ok.on {
+  background: #735cf4;
+}
+
+/* ================= 홈: 왼손 사용자 모드 (말해보카 실측: 모드 탭 기둥이 카드 왼쪽으로, 리본은 오른쪽으로 좌우가 뒤집힌다) ================= */
+.home.lefty .main-card {
+  flex-direction: row-reverse;
+}
+.home.lefty .main-body {
+  border-radius: 0 19px 19px 19px;
+}
+.home.lefty .mode-tabs .mode-tab {
+  transform: scaleX(-1);
+}
+.home.lefty .mode-tabs .mode-tab svg {
+  transform: scaleX(-1);
+}
+.home.lefty .ribbon {
+  left: auto;
+  right: 23.333px;
+}
+.home.lefty .notify-pill {
+  z-index: 2;
+}
+
+/* 마지막 구역 아래에는 검은 띠가 없다 */
+.vs-page .vs-sec:last-of-type {
+  border-bottom: 0;
+}

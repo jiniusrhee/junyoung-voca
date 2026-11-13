@@ -329,6 +329,8 @@ export interface Settings {
   streakGoal?: number;
   /** 홈에 표시할 학습 모드 탭 (없으면 전부) */
   homeTabs?: StudyMode[];
+  /** 왼손 사용자 모드: 홈의 모드 탭 기둥을 카드 왼쪽에 둔다 (설정 > 즐겨찾기 > 위치 설정) */
+  leftHanded?: boolean;
   exprGoal: number;
   exprCourse: string | null;
   talkGoal: number;

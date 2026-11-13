@@ -150,7 +150,8 @@
 }
 .vs-page .vs-row {
   min-height: 46px;
-  font-size: 15px;
+  /* 글자 폭으로 보면 15.33px (15px 이면 줄마다 2% 짧다) */
+  font-size: 15.333px;
 }
 :root[data-theme='dark'] .vs-page .vs-row {
   color: #d6d7d6;

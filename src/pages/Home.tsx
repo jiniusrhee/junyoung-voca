@@ -129,7 +129,7 @@ export default function Home() {
 
   return (
     <div
-      className={`screen home ${intro ? 'intro' : replay ? 'replay' : ''}`}
+      className={`screen home ${intro ? 'intro' : replay ? 'replay' : ''}${settings.leftHanded ? ' lefty' : ''}`}
       style={lag ? ({ '--lag': `${lag}ms` } as CSSProperties) : undefined}
       // 실제 앱은 홈을 처음 건드리는 순간에도 '오늘' 막대가 자라난다 (카드가 다 보이지 않아도)
       onTouchStart={todayBar ? undefined : () => setTodayBar(true)}
