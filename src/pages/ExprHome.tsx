@@ -194,10 +194,12 @@ export function ExprNotebook() {
       </header>
       <div className="nb-filters">
         <button className="chip-btn" onClick={() => setKoFirst((v) => !v)}>
-          {koFirst ? '뜻 먼저 보기' : '영어 먼저 보기'} ▾
+          {koFirst ? '뜻 먼저 보기' : '영어 먼저 보기'}
+          <i className="chip-tri" />
         </button>
         <button className="chip-btn" onClick={() => setWrongOnly((v) => !v)}>
-          {wrongOnly ? '틀린 문장만 보기' : '모든 문장 보기'} ▾
+          {wrongOnly ? '틀린 문장만 보기' : '모든 문장 보기'}
+          <i className="chip-tri" />
         </button>
         <span className="nb-date">
           <button onClick={() => setDate((d) => shiftDate(d, -1))} aria-label="이전 날">

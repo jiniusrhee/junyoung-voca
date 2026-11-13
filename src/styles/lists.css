@@ -1,1 +1,335 @@
 /* lists.css: 말해보카 실측(2026-11-10 플립 캡처) 기준 화면 스타일. styles.css 뒤에 불러와 덮어쓴다. */
+
+/* ================= 목록 화면 공통 (좋아하는 문장 · 오답노트 · 학습한 어휘 · 단어장) — 플립 실측 2026-11-13 =================
+   머리줄 아래 칩 줄(칩 높이 30, 테두리 가늘고 어두움) + 아래 0.67 선, 빈 상자 322.67 x 80.67, 오른쪽 위 가방 + 'N / 500'. */
+#root .screen.sub.list-page,
+#root .screen.sub.lw-page,
+#root .screen.sub.wb-page {
+  padding-left: 0;
+  padding-right: 0;
+}
+#root .list-page > .sub-head,
+#root .lw-page > .sub-head,
+#root .wb-page > .sub-head {
+  margin: 0;
+}
+/* 머리줄 오른쪽: 가방 18 x 18.33(#a486e8) + 'N / 500' 12.67px */
+#root .sub-head .bag-count {
+  gap: 10.333px;
+  margin-right: 4.667px;
+  font-size: 13.333px;
+  color: #d6d6d6;
+  --ls: 0;
+}
+#root .sub-head .bag-count svg {
+  display: block;
+  width: 18px;
+  height: 18.333px;
+  color: #a486e8;
+}
+#root .sub-head .bag-count span {
+  position: relative;
+  top: 0.667px;
+  font-size: 13.333px;
+}
+#root .list-page .sub-head-right,
+#root .lw-page .sub-head-right,
+#root .wb-page .sub-head-right {
+  display: flex;
+  align-items: center;
+  padding-right: 0;
+}
+/* 머리줄의 '학습 기록' 토글: 글자 12.33px(#a0a2a3), 토글 33.33 x 19.33 */
+#root .sub-head .vs-help {
+  gap: 5.667px;
+  margin-right: 3.333px;
+  font-size: 12.333px;
+  color: #a0a2a3;
+}
+#root .sub-head .vs-help .toggle {
+  width: 33.333px;
+  height: 19.333px;
+  border-radius: 9.667px;
+  background: #2b2b2c;
+}
+#root .sub-head .vs-help .toggle::after {
+  top: 3px;
+  left: 3.333px;
+  width: 13.333px;
+  height: 13.333px;
+  background: #d6d6d6 !important;
+  box-shadow: none;
+}
+#root .sub-head .vs-help input:checked + .toggle {
+  background: #7575db;
+}
+#root .sub-head .vs-help input:checked + .toggle::after {
+  left: 16.667px;
+  transform: none;
+}
+
+/* 칩 줄 */
+#root .list-page .list-filters,
+#root .lw-page .nb-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 8px;
+  box-sizing: border-box;
+  height: 49.333px;
+  margin: 0 0 24px;
+  padding: 0 20px 3.333px;
+  border-bottom: 0.667px solid #25282b;
+}
+#root .lw-page .nb-filters {
+  gap: 6.667px;
+  height: 53px;
+  margin-bottom: 8px;
+  padding: 0 19.667px 0 18.667px;
+}
+#root .list-page .chip-btn,
+#root .lw-page .nb-filters .chip-btn {
+  flex: none;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 12.333px 0 15.333px;
+  border: 0.667px solid #2c2d30;
+  border-radius: 15px;
+  background: none;
+  font-size: 12.667px;
+  line-height: 28.667px;
+  font-weight: 400;
+  color: #a4a4ac;
+  white-space: nowrap;
+}
+#root .lw-page .nb-filters .chip-btn {
+  padding: 0 8.667px 0 12.667px;
+}
+/* 칩 오른쪽의 작은 세모 (7 x 5, 글자에서 9.67 띄움) */
+#root .chip-btn .chip-tri {
+  flex: none;
+  width: 0;
+  height: 0;
+  margin: 1px 0 0 9.667px;
+  border: 3.5px solid transparent;
+  border-top: 5px solid #616161;
+  border-bottom: 0;
+}
+/* 편집: 톱니 13.33(#70777c) + 글자 12.33px */
+#root .list-page .edit-btn {
+  gap: 4.667px;
+  margin: 0 1.333px 0 auto;
+  font-size: 12.333px;
+  color: #a4a4ac;
+}
+#root .list-page .edit-btn svg {
+  width: 19px;
+  height: 19px;
+  margin: 0 -3px;
+  color: #70777c;
+}
+/* 날짜 이동: ‹ 보라, 날짜 12.33px 굵게, › (오늘이면 회색) */
+#root .lw-page .nb-date {
+  gap: 0;
+  margin-left: auto;
+}
+#root .lw-page .nb-date b {
+  min-width: 61.667px;
+  text-align: center;
+  font-size: 12.333px;
+  font-weight: 700;
+  color: #d6d6d6;
+}
+/* ‹ › : 7 x 12.67 꺾쇠 (이전 날은 보라, 더 갈 수 없으면 회색) */
+#root .lw-page .nb-date button {
+  width: 7px;
+  height: 30px;
+  padding: 0;
+  background: currentColor;
+  color: #6e66e0;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 12.667'%3E%3Cpolyline points='6,1 1,6.333 6,11.667' fill='none' stroke='%23000' stroke-width='1.667' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 7px 12.667px no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 12.667'%3E%3Cpolyline points='6,1 1,6.333 6,11.667' fill='none' stroke='%23000' stroke-width='1.667' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 7px 12.667px no-repeat;
+}
+#root .lw-page .nb-date button:last-child {
+  transform: scaleX(-1);
+}
+#root .lw-page .nb-date button {
+  font-size: 0;
+}
+#root .lw-page .nb-date button:disabled {
+  color: #50575d;
+}
+
+/* 빈 상자: 322.67 x 80.67, 테두리 0.67(#373a3e), 느낌표 동그라미 20, 글자 13px(#6e757b) */
+#root .list-page .lw-empty,
+#root .lw-page .lw-empty,
+#root .wb-page .lw-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5.333px;
+  box-sizing: border-box;
+  height: 80.667px;
+  margin: 0 18.667px;
+  padding: 0;
+  border: 0.667px solid #373a3e;
+  border-radius: 8px;
+  background: none;
+  color: #6e757b;
+}
+#root .list-page .lw-empty svg,
+#root .lw-page .lw-empty svg,
+#root .wb-page .lw-empty svg {
+  width: 22px;
+  height: 22px;
+  color: #6e757b;
+}
+#root .list-page .lw-empty p,
+#root .lw-page .lw-empty p,
+#root .wb-page .lw-empty p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 16px;
+  color: #6e757b;
+}
+#root .lw-page .lw-empty {
+  margin-top: 13px;
+}
+#root .wb-page .lw-empty {
+  margin: 21.667px 14.667px 0;
+}
+/* 제목 옆 '?' : 지름 19.33 회색 동그라미 (제목 오른쪽 5) */
+#root .wb-page .wb-help {
+  position: absolute;
+  top: 14.333px;
+  left: 89.333px;
+  z-index: 6;
+  width: 19.333px;
+  height: 19.333px;
+  padding: 0;
+  border-radius: 50%;
+  background: #929292;
+  font-size: 13px;
+  line-height: 19.333px;
+  font-weight: 700;
+  color: #121212;
+  --ls: 0;
+}
+#root .list-page .sent-item,
+#root .list-page .note-item {
+  margin-left: 18.667px;
+  margin-right: 18.667px;
+}
+
+/* 일별 학습 어휘 카드: 322.67 x 80(사이 5.33), 안쪽 막대 253 x 27.33(#34343c), 뜻 12.67px, 오른쪽 ⋮ */
+#root .lw-page .lw-list {
+  gap: 5.333px;
+  padding: 0 18.667px 96px;
+}
+#root .lw-page .lw-card {
+  box-sizing: border-box;
+  min-height: 80px;
+  padding: 12px 57px 12.667px 12.667px;
+  border-radius: 10px;
+  background: #202122;
+}
+#root .lw-page .lw-body {
+  gap: 8px;
+}
+#root .lw-page .lw-reveal {
+  box-sizing: border-box;
+  height: 27.333px;
+  padding: 0;
+  border-radius: 5px;
+  background: #34343c;
+  font-size: 12.667px;
+  line-height: 27.333px;
+  color: #b4b4b4;
+}
+#root .lw-page .lw-en {
+  height: 27.333px;
+  padding: 0 3.333px;
+  font-size: 16px;
+  line-height: 27.333px;
+  font-weight: 600;
+  color: #d6d6d6;
+  --ls: 0;
+}
+#root .lw-page .lw-ko {
+  padding-left: 3.667px;
+  font-size: 12.333px;
+  line-height: 16px;
+  color: #a9a9a9;
+}
+#root .lw-page .lw-log {
+  padding-left: 3.667px;
+  font-size: 11px;
+  line-height: 14px;
+  color: #70777c;
+}
+#root .lw-page .lw-more {
+  right: 13.333px;
+  width: 32px;
+  height: 40px;
+  padding: 0;
+  font-size: 23px;
+  color: #70777c;
+}
+/* 아래 고정 버튼 '히스토리 학습 (N개) >' : 322.67 x 49, 바닥에서 9.33 */
+#root .lw-page .nb-foot {
+  left: 18.667px;
+  right: 18.667px;
+  bottom: 9.333px;
+  width: auto;
+  padding: 0;
+  background: none;
+  transform: none;
+}
+#root .lw-page .nb-foot .btn {
+  position: relative;
+  width: 100%;
+  height: 49px;
+  min-height: 0;
+  border-radius: 8px;
+  background: #8571ef;
+  box-shadow: none;
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+}
+#root .lw-page .nb-foot .btn svg {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  width: 13px;
+  height: 13px;
+  margin-top: -6.5px;
+}
+
+/* 내 단어장: 제목 옆 '?' , 오른쪽 '편집', 오른쪽 아래 '+ 새 단어장 만들기' 알약 */
+#root .wb-page .wb-edit {
+  gap: 5.333px;
+  margin-right: 1.333px;
+  font-size: 12.333px;
+  color: #70777c;
+}
+#root .wb-page .wb-edit svg {
+  width: 15px;
+  height: 15px;
+  color: #70777c;
+}
+#root .wb-page .wb-fab {
+  right: 10.333px;
+  bottom: 22.333px;
+  height: 42px;
+  padding: 0 19.333px;
+  border-radius: 21px;
+  background: #8571ef;
+  box-shadow: none;
+  font-size: 13.667px;
+  font-weight: 400;
+  color: #fff;
+}

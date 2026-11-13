@@ -5,7 +5,13 @@ import Icon from './Icon';
 export function BagCount({ n, max = 500 }: { n: number; max?: number }) {
   return (
     <span className="bag-count">
-      <Icon name="bag" size={18} /> {n} / {max}
+      <svg width="18" height="18.333" viewBox="0 0 18 18.333" aria-hidden="true">
+        <path d="M5.300 0.800h7.400c0.500 0 0.800 0.500 0.600 0.950L12.300 4.300H5.700L4.700 1.750C4.500 1.300 4.800 0.800 5.300 0.800z" fill="currentColor" />
+        <path d="M5.600 5.300h6.800c3.000 2.300 5.100 5.300 5.100 8.300 0 2.900-2.100 4.400-5.000 4.400H5.500c-2.900 0-5.000-1.500-5.000-4.400 0-3.000 2.100-6.000 5.100-8.300z" fill="currentColor" />
+      </svg>
+      <span lang="en">
+        {n} / {max}
+      </span>
     </span>
   );
 }

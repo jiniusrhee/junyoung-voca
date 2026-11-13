@@ -33,10 +33,12 @@ export default function WrongNotes() {
       <SubHeader title="내가 좋아하는 오답노트" right={<BagCount n={rows?.length ?? 0} max={FAV_NOTE_LIMIT} />} />
       <ListFilters editing={editing} onEdit={() => setEditing((v) => !v)}>
         <button className="chip-btn" onClick={() => setHide((h) => (h === 'none' ? 'ko' : h === 'ko' ? 'en' : 'none'))}>
-          {HIDE_LABEL[hide]} ▾
+          {HIDE_LABEL[hide]}
+          <i className="chip-tri" />
         </button>
         <button className="chip-btn" onClick={() => setNewest((v) => !v)}>
-          {newest ? '최신순' : '오래된순'} ▾
+          {newest ? '최신순' : '오래된순'}
+          <i className="chip-tri" />
         </button>
       </ListFilters>
       {rows && rows.length === 0 && <EmptyBox />}

@@ -298,7 +298,8 @@ export default function ModeNotebook() {
               setSheet('hide');
             }}
           >
-            {HIDES.find((o) => o.v === hide)?.label} ▾
+            {HIDES.find((o) => o.v === hide)?.label}
+          <i className="chip-tri" />
           </button>
         )}
         {showFilter && (
@@ -309,7 +310,8 @@ export default function ModeNotebook() {
               setSheet('filter');
             }}
           >
-            {FILTERS.find((o) => o.v === filter)?.label} ▾
+            {FILTERS.find((o) => o.v === filter)?.label}
+          <i className="chip-tri" />
           </button>
         )}
         {daily && (

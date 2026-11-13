@@ -38,7 +38,7 @@ export default function Wordbook() {
       {help && <p className="vs-help-box">단어 정보 화면이나 목록의 ⋮ 메뉴에서 단어를 단어장에 담아요. 담은 단어는 어휘 학습에서 먼저 나와요.</p>}
       {books && books.length === 0 && (
         <div className="lw-empty">
-          <Icon name="xcircle" size={28} />
+          <Icon name="info" size={26} />
           <p>내 단어장이 아직 없어요.</p>
         </div>
       )}

@@ -101,7 +101,8 @@ export function LearnedWords() {
                 setSheet('hide');
               }}
             >
-              {HIDE_OPTS.find((o) => o.v === hide)?.label} ▾
+              {HIDE_OPTS.find((o) => o.v === hide)?.label}
+          <i className="chip-tri" />
             </button>
             <button
               className="chip-btn"
@@ -110,26 +111,23 @@ export function LearnedWords() {
                 setSheet('filter');
               }}
             >
-              {FILTER_OPTS.find((o) => o.v === filter)?.label} ▾
+              {FILTER_OPTS.find((o) => o.v === filter)?.label}
+          <i className="chip-tri" />
             </button>
           </>
         )}
         {k === 'daily' && (
           <span className="nb-date">
-            <button onClick={() => setDate((d) => shiftDate(d, -1))} aria-label="이전 날">
-              ‹
-            </button>
+            <button className="nb-prev" onClick={() => setDate((d) => shiftDate(d, -1))} aria-label="이전 날" />
             <b>{label}</b>
-            <button onClick={() => setDate((d) => (d < today ? shiftDate(d, 1) : d))} aria-label="다음 날" disabled={date >= today}>
-              ›
-            </button>
+            <button className="nb-next" onClick={() => setDate((d) => (d < today ? shiftDate(d, 1) : d))} aria-label="다음 날" disabled={date >= today} />
           </span>
         )}
       </div>
 
       {rows && extra && list.length === 0 && plain.length === 0 && (
         <div className="lw-empty">
-          <Icon name="xcircle" size={28} />
+          <Icon name="info" size={26} />
           <p>표시할 어휘가 없어요.</p>
         </div>
       )}

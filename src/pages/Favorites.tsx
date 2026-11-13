@@ -28,10 +28,12 @@ export default function Favorites() {
       <SubHeader title="내가 좋아하는 문장" right={<BagCount n={rows?.length ?? 0} />} />
       <ListFilters editing={editing} onEdit={() => setEditing((v) => !v)}>
         <button className="chip-btn" onClick={() => setEnFirst((v) => !v)}>
-          {enFirst ? '영어 문장 먼저 보기' : '한글 문장 먼저 보기'} ▾
+          {enFirst ? '영어 문장 먼저 보기' : '한글 문장 먼저 보기'}
+          <i className="chip-tri" />
         </button>
         <button className="chip-btn" onClick={() => setNewest((v) => !v)}>
-          {newest ? '최신순' : '오래된순'} ▾
+          {newest ? '최신순' : '오래된순'}
+          <i className="chip-tri" />
         </button>
       </ListFilters>
       {rows && rows.length === 0 && <EmptyBox />}
