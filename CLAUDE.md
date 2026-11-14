@@ -109,3 +109,5 @@ Vite + React + TypeScript, Dexie(IndexedDB), ts-fsrs(복습 스케줄), vite-plu
 
 - 콘텐츠를 추가할 때는 CONTENT.md의 순서를 따르고 `content:validate` 오류 0개를 확인한 뒤 커밋한다.
 - 코드 변경 후 `npm test`와 `npm run build`가 통과해야 push한다. 커밋 조건은 반드시 명령 자체의 종료 코드(`T=$?`, `[ "$T" = 0 ]`)로 건다. "Tests N passed" 줄을 grep 하는 방식은 "1 failed | 58 passed" 에도 걸리므로 쓰지 않는다 (2026-10-25 실제로 실패 테스트가 push 된 적 있음).
+- push 한 뒤에는 `gh run list --limit 3` 으로 배포 워크플로가 성공했는지 본다(실패하면 사용자에게 메일이 간다). 2026-11-14 에 0.3.9 커밋이 CI 에서만 첫 스모크 테스트 시간 초과로 실패했다 — 로컬에서는 통과했고 원인은 특정하지 못했다. 스모크 테스트의 `answerCurrent()` 가 다시 쳐 보고, 끝내 실패하면 입력 상태를 남긴다. 또 실패하면 그 메시지부터 볼 것(`gh run view <id> --log-failed`).
+
