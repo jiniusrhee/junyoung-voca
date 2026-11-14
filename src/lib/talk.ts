@@ -36,10 +36,14 @@ export function keyMatched(user: string, k: string): boolean {
   return k.split('|').some((v) => n.includes(` ${normTalk(v)} `));
 }
 
+/**
+ * 등급 (말해보카 플립 실측 2026-11-14): Perfect!!(보라 글자 · 별 셋 · 초록 상자) · Excellent!(분홍 글자 · 별 셋 · 연두 상자) · Nice Try!(청록 글자 · 별 없음 · 보라 상자).
+ * 그 사이 등급(Good!)은 실제 앱에서 직접 보지 못했다 — 별 둘 · 하나에 쓴다.
+ */
 export interface TalkGrade {
   stars: 0 | 1 | 2 | 3;
-  label: 'Perfect!!' | 'Great!' | 'Good!' | 'Nice Try!';
-  tone: 'green' | 'yellow' | 'red';
+  label: 'Perfect!!' | 'Excellent!' | 'Good!' | 'Nice Try!';
+  tone: 'perfect' | 'excellent' | 'good' | 'nice';
   feedback: string;
   similarity: number;
 }
@@ -60,20 +64,22 @@ export function gradeTalk(user: string, line: TalkLine, level: Settings['talkLev
   else if (cov === 1 && sim >= need - 0.22) stars = 2;
   else if (cov >= 0.5 && sim >= need - 0.15) stars = 1;
   else stars = 0;
-  const label = (['Nice Try!', 'Good!', 'Great!', 'Perfect!!'] as const)[stars];
+  // 별 셋 안에서: 모범 답안 · 허용 답안과 거의 같으면 Perfect!!, 핵심 표현은 다 살렸지만 문장이 좀 다르면 Excellent!
+  const perfect = stars === 3 && sim >= Math.min(0.9, need + 0.28);
+  let label: TalkGrade['label'];
   let feedback: string;
   let tone: TalkGrade['tone'];
   if (stars === 3) {
-    tone = 'green';
-    feedback = sim > 0.95 ? '완벽해요! 모범 답안과 똑같이 말했어요.' : '완벽해요! 핵심 표현을 모두 살려서 자연스럽게 말했어요.';
-  } else if (stars === 2) {
-    tone = 'green';
-    feedback = '좋아요! 뜻은 잘 전달돼요. 모범 답안과 비교해서 더 자연스러운 표현을 익혀 보세요.';
-  } else if (stars === 1) {
-    tone = 'yellow';
-    feedback = missing.length ? missing.map((m) => m.tip).join(' ') : '조금 아쉬워요. 모범 답안처럼 문장을 다듬어 보세요.';
+    label = perfect ? 'Perfect!!' : 'Excellent!';
+    tone = perfect ? 'perfect' : 'excellent';
+    feedback = sim > 0.95 ? '아주 자연스러워요! 모범 답안과 똑같이 말했어요.' : perfect ? '아주 자연스러워요! 핵심 표현을 모두 살려서 말했어요.' : '잘했어요! 뜻이 잘 전달돼요. 모범 답안과 견주어 더 매끄러운 표현도 익혀 보세요.';
+  } else if (stars >= 1) {
+    label = 'Good!';
+    tone = 'good';
+    feedback = missing.length ? missing.map((m) => m.tip).join(' ') : stars === 2 ? '좋아요! 뜻은 전달돼요. 모범 답안처럼 문장을 조금만 다듬어 보세요.' : '조금 아쉬워요. 모범 답안처럼 문장을 다듬어 보세요.';
   } else {
-    tone = 'red';
+    label = 'Nice Try!';
+    tone = 'nice';
     feedback = missing.length ? missing.map((m) => m.tip).join(' ') : '뜻이 잘 전달되지 않아요. 힌트를 보고 다시 말해 보세요.';
   }
   return { stars, label, tone, feedback, similarity: sim };

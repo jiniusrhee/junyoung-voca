@@ -25,8 +25,14 @@ describe('transitionFor (화면 전환 종류)', () => {
   it('학습 화면을 드나들 때와 주소 바꿔치기는 전환이 없다', () => {
     expect(transitionFor('/', '/quiz', 'PUSH')).toBe('none');
     expect(transitionFor('/quiz', '/', 'POP')).toBe('none');
-    expect(transitionFor('/talk', '/talk/cafe/1', 'PUSH')).toBe('none');
+    expect(transitionFor('/talk/cafe/1', '/talk', 'POP')).toBe('none');
+    expect(transitionFor('/', '/talk/cafe/1', 'PUSH')).toBe('none');
     expect(transitionFor('/a', '/b', 'REPLACE')).toBe('none');
     expect(transitionFor('/dict', '/dict', 'PUSH')).toBe('none');
+  });
+  it('실전 회화 홈에서 스토리로 들어갈 때는 비스듬히 닦아낸다', () => {
+    expect(transitionFor('/talk', '/talk/cafe/1', 'PUSH')).toBe('wipe');
+    // 난이도 · 최근 학습 같은 하위 화면은 보통의 밀기
+    expect(transitionFor('/talk', '/talk/level', 'PUSH')).toBe('push');
   });
 });

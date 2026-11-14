@@ -18,12 +18,15 @@ const line: TalkLine = {
 describe('talk grading', () => {
   it('gives 3 stars to the model answer and close paraphrases', () => {
     expect(gradeTalk(line.answer!, line).stars).toBe(3);
+    expect(gradeTalk(line.answer!, line)).toMatchObject({ label: 'Perfect!!', tone: 'perfect' });
     expect(gradeTalk('Hi! Have you been to the new Mexican restaurant on the corner?', line).stars).toBe(3);
   });
 
   it('lowers the grade and explains missing key phrases', () => {
     const g = gradeTalk('Hello do you know the new Mexican food store', line);
     expect(g.stars).toBeLessThan(2);
+    expect(['Good!', 'Nice Try!']).toContain(g.label);
+    expect(gradeTalk('', line)).toMatchObject({ label: 'Nice Try!', tone: 'nice' });
     expect(g.feedback).toContain('around the corner');
     expect(gradeTalk('', line).stars).toBe(0);
   });

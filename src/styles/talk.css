@@ -1,0 +1,1306 @@
+/* ================= 실전 회화 (말해보카 플립 실측 2026-11-14, 수치는 docs/SPEC.md 맨 끝 "실전 회화" 절) =================
+   pages/TalkPlay.tsx 전용. 뿌리 클래스는 talk2, 새 클래스는 tk- 로 시작한다 (styles.css 의 옛 .talk-* · .t-* · .ep-* 규칙과 섞이지 않게).
+   치수는 화면 폭 360 기준 CSS px, 세로는 웹뷰 위 끝 기준(= 화면 y − 30.67). 웹뷰 높이 833 을 기준으로 아래에서부터 잰 값은 bottom 으로 적는다. */
+#root .talk2 {
+  position: relative;
+  height: 100dvh;
+  overflow: hidden;
+  background: #1b1c1e;
+  color: #d4d4d4;
+}
+#root .talk2.tk-loading {
+  background: #111213;
+}
+#root .talk2 > .scene-art {
+  transform-origin: 50% 34%;
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.3, 1), filter 0.2s linear;
+}
+/* 대화가 시작되면 장면이 조금 다가온다. 채점 결과가 뜨면 흐려진다 */
+#root .talk2.tk-play > .scene-art {
+  transform: scale(1.22);
+}
+#root .talk2.tk-play.graded > .scene-art {
+  filter: blur(2.667px);
+}
+/* 인물(우리 마스코트)은 화면 위쪽 가운데: 시작 화면의 미션 글 · 대화의 말풍선에 가리지 않게 */
+#root .talk2 .scene-char {
+  top: 19%;
+  bottom: auto;
+}
+#root .talk2 button {
+  -webkit-tap-highlight-color: transparent;
+}
+#root .talk2 > .toast {
+  position: fixed;
+  z-index: 40;
+}
+
+/* ---------- 시작 화면 ---------- */
+#root .talk2 .tk-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0) 22%, rgba(0, 0, 0, 0) 52%, rgba(0, 0, 0, 0.42) 78%, rgba(0, 0, 0, 0.5));
+  pointer-events: none;
+}
+#root .talk2 .tk-ihead {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 44px;
+}
+#root .talk2 .tk-iback {
+  position: absolute;
+  left: 5.333px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 12.667px;
+  height: 43px;
+  padding: 0 10px;
+  border: 0;
+  background: none;
+  font-size: 15.333px;
+  font-weight: 500;
+  color: #fcfcfb;
+  white-space: nowrap;
+}
+#root .talk2 .tk-iback svg {
+  width: 9px;
+  height: 15.333px;
+}
+#root .talk2 .tk-level {
+  position: absolute;
+  right: 10.667px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 3.667px;
+  height: 43px;
+  padding: 0 10px;
+  border: 0;
+  background: none;
+  font-size: 13.333px;
+  color: #fcfcfb;
+  white-space: nowrap;
+}
+#root .talk2 .tk-level svg {
+  width: 14px;
+  height: 14.667px;
+}
+#root .talk2 .tk-level i {
+  font-style: normal;
+  --ls: 0;
+}
+/* 에피소드 진행: 막대 x 18~198 (높이 6.67, 채움 #e5b84e) · '9/16' · '전체 에피소드 보기' 알약 */
+#root .talk2 .tk-epbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 44px;
+  height: 26px;
+}
+#root .talk2 .tk-epbar-track {
+  position: absolute;
+  left: 18px;
+  top: 9.333px;
+  width: 180px;
+  height: 6.667px;
+  border-radius: 3.333px;
+  background: rgba(255, 255, 255, 0.32);
+  overflow: hidden;
+}
+#root .talk2 .tk-epbar-track i {
+  display: block;
+  height: 100%;
+  border-radius: 3.333px;
+  background: #e5b84e;
+}
+#root .talk2 .tk-epbar > span {
+  position: absolute;
+  left: 204px;
+  top: 5.667px;
+  font-size: 10.667px;
+  line-height: 14.667px;
+  color: #fcfcfc;
+  --ls: 0;
+}
+#root .talk2 .tk-epall {
+  position: absolute;
+  right: 22px;
+  top: 1px;
+  height: 23.333px;
+  padding: 0 9.333px;
+  border: 0;
+  border-radius: 11.667px;
+  background: rgba(150, 140, 128, 0.78);
+  font-size: 10.167px;
+  color: #fcfcfc;
+  white-space: nowrap;
+}
+#root .talk2 .tk-mission {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 179.667px;
+  margin: 0;
+  font-size: 22.667px;
+  line-height: 37.333px;
+  font-weight: 700;
+  text-align: center;
+  color: #fbfbfb;
+  white-space: pre-line;
+  word-break: keep-all;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
+}
+#root .talk2 .tk-istart {
+  position: absolute;
+  left: 23.333px;
+  right: 23.333px;
+  bottom: 10px;
+  display: flex;
+  gap: 10px;
+}
+#root .talk2 .tk-btn {
+  flex: 1;
+  height: 53.333px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #735cf4, #8a5ae0);
+  font-size: 16.667px;
+  font-weight: 500;
+  color: #fcfbfe;
+}
+#root .talk2 .tk-btn.gray {
+  background: #404446;
+}
+#root .talk2 .tk-btn:active {
+  filter: brightness(1.1);
+}
+#root .talk2.tk-intro.leaving .tk-ihead,
+#root .talk2.tk-intro.leaving .tk-epbar,
+#root .talk2.tk-intro.leaving .tk-mission,
+#root .talk2.tk-intro.leaving .tk-istart,
+#root .talk2.tk-intro.leaving .tk-shade {
+  opacity: 0;
+  transition: opacity 0.2s linear;
+}
+
+/* ---------- 대화: 머리줄 (어휘 퀴즈의 머리줄과 같은 자리) ----------
+   뒤로(흐린 흰색) · 보라 동그라미(#ae84ff, 지름 33.33, x 42~75.33) + 흰 트로피 · 막대(흰색 39%, 높이 17.33, 동그라미 가운데에서 오른쪽으로 242.67 × 남은 비율)
+   · 채움(연보라 줄무늬, 높이 12, 얻은 별의 비율) · 톱니(흰색) */
+#root .talk2 .tk-top {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 53.333px;
+  z-index: 3;
+}
+#root .talk2 .tk-back,
+#root .talk2 .tk-gear {
+  position: absolute;
+  top: 4.667px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #fff;
+}
+#root .talk2 .tk-back {
+  left: 1.333px;
+  color: rgba(255, 255, 255, 0.42);
+}
+#root .talk2 .tk-gear {
+  right: 2.833px;
+}
+#root .talk2 .tk-prog {
+  position: absolute;
+  left: 42px;
+  top: 10px;
+  width: 262px;
+  height: 33.333px;
+}
+#root .talk2 .tk-track {
+  position: absolute;
+  left: 16.667px;
+  top: 8px;
+  width: calc(242.667px * var(--t, 1));
+  min-width: 16.667px;
+  height: 17.333px;
+  border-radius: 0 8.667px 8.667px 0;
+  background: rgba(255, 255, 255, 0.39);
+  transition: width 0.3s ease-out;
+  overflow: hidden;
+}
+#root .talk2 .tk-fill {
+  position: absolute;
+  left: 0;
+  top: 2.667px;
+  width: calc(242.667px * var(--f, 0));
+  height: 12px;
+  background: repeating-linear-gradient(120deg, #bf9fff 0 6.35px, #c7abff 6.35px 10.97px);
+  transition: width 0.27s ease-out 0.12s;
+}
+#root .talk2 .tk-disc {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 33.333px;
+  height: 33.333px;
+  color: #ae84ff;
+  line-height: 0;
+}
+
+/* ---------- 대화: 아래에서부터 쌓이는 칸들 ----------
+   자판이 떠 있을 때 내 칸의 아래 끝은 자판 위 7.33 (웹뷰 아래에서 264.67), 채점 뒤에는 아래에서 211.33, 음성 모드는 45. */
+#root .talk2 .tk-col {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 264.667px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: bottom 0.2s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+#root .talk2.tk-play.graded .tk-col {
+  bottom: 211.333px;
+}
+#root .talk2.tk-play.tk-voice:not(.graded) .tk-col {
+  bottom: 45px;
+}
+#root .talk2.tk-play.entering .tk-col {
+  animation: tkRise 0.32s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+@keyframes tkRise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 상대 말풍선: x 9.67~326, 영어 16.67px(줄 20) + 한국어 11.67px(줄 18.67), 오른쪽에 가는 선과 스피커. 내 칸의 윗변에서 32 위 */
+#root .talk2 .tk-npc {
+  position: relative;
+  box-sizing: border-box;
+  width: 316.333px;
+  margin: 0 0 32px 9.667px;
+  padding: 11.333px 50px 14px 14.333px;
+  border-radius: 14px;
+  background: rgba(37, 38, 39, 0.94);
+}
+#root .talk2 .tk-npc-en {
+  margin: 0;
+  font-size: 16.667px;
+  line-height: 20px;
+  color: #d4d4d4;
+  --ls: 0;
+}
+#root .talk2 .tk-npc-ko {
+  margin: 9.667px 0 0;
+  font-size: 11.667px;
+  line-height: 18.667px;
+  color: #9c9d9d;
+  word-break: keep-all;
+}
+#root .talk2 .tk-npc-spk {
+  position: absolute;
+  right: 0;
+  top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40.333px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #6c7277;
+}
+#root .talk2 .tk-npc-spk::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8.333px;
+  width: 0.667px;
+  height: 19.333px;
+  background: #4a4d50;
+}
+/* 채점 뒤: 작은 알약으로 접힌다 (x 9.67~87.33 · 높이 38.67, 오른쪽 위에 꼬리) */
+#root .talk2 .tk-npc-pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 77.667px;
+  height: 38.667px;
+  margin: 0 0 32.333px 9.667px;
+  border-radius: 19.333px;
+  background: rgba(37, 38, 39, 0.94);
+  color: #70777c;
+  --tk-ink: #252627;
+}
+#root .talk2 .tk-npc-pill::after {
+  content: '';
+  position: absolute;
+  right: -5.333px;
+  top: -1.667px;
+  border-left: 12px solid rgba(37, 38, 39, 0.94);
+  border-top: 9px solid transparent;
+  transform: rotate(-24deg);
+}
+#root .talk2 .tk-npc-pill button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38.667px;
+  height: 38.667px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+}
+#root .talk2 .tk-npc-pill > i {
+  width: 0.667px;
+  height: 17.333px;
+  background: #3f4245;
+}
+
+/* 내 칸: x 9.67~350.67. 한국어 17.33px(줄 21.33, 첫 줄 글자 위 끝이 칸 위에서 23) */
+#root .talk2 .tk-me {
+  position: relative;
+  box-sizing: border-box;
+  width: 341px;
+  margin-left: 9.667px;
+  padding: 20.667px 24px 20.833px;
+  border-radius: 17px;
+  background: rgba(36, 38, 41, 0.955);
+}
+#root .talk2.tk-play.graded .tk-me {
+  padding-bottom: 19.333px;
+}
+#root .talk2.tk-play.tk-voice:not(.graded) .tk-me {
+  padding-bottom: 0;
+}
+#root .talk2 .tk-ko {
+  margin: 0;
+  font-size: 18.667px;
+  line-height: 21.333px;
+  color: #d4d4d4;
+  word-break: keep-all;
+}
+#root .talk2 .tk-word {
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  /* 덩어리마다 점선 밑줄: 지름 1.33 의 둥근 점이 4 간격으로, 글자 아래 끝에서 1.67 아래 */
+  background-image: radial-gradient(circle at 0.667px 0.667px, #7d7f81 0.6px, transparent 0.75px);
+  background-size: 4px 1.333px;
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  padding-bottom: 1.333px;
+}
+#root .talk2 .tk-word.on {
+  color: #e2584e;
+  background-image: linear-gradient(#e2584e, #e2584e);
+  background-size: 100% 1px;
+  background-position: 0 calc(100% - 0.333px);
+}
+/* 낱말의 영어 표현: 그 낱말 위에 뜨는 어두운 말풍선 */
+#root .talk2 .tk-peek {
+  position: absolute;
+  left: clamp(8px, calc(var(--x) - 60px), calc(100% - 128px));
+  bottom: calc(100% - 13px);
+  z-index: 5;
+  min-width: 40px;
+  max-width: 260px;
+  padding: 10.667px 13.333px;
+  border-radius: 9px;
+  background: #2f3237;
+  font-size: 15.333px;
+  line-height: 20px;
+  color: #e4e4e4;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+  --ls: 0;
+}
+#root .talk2 .tk-peek::after {
+  content: '';
+  position: absolute;
+  left: clamp(12px, calc(var(--x) - clamp(8px, calc(var(--x) - 60px), calc(100% - 128px)) - 6px), calc(100% - 24px));
+  bottom: -6.667px;
+  border-left: 6.667px solid transparent;
+  border-right: 6.667px solid transparent;
+  border-top: 7.333px solid #2f3237;
+}
+#root .talk2 .tk-tip {
+  position: absolute;
+  left: 24px;
+  bottom: calc(100% - 15px);
+  z-index: 5;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: #2f3237;
+  font-size: 12px;
+  color: #dcdcdc;
+  white-space: nowrap;
+}
+/* 설명 상자: 힌트 · Nice Try 는 보라(#9982c3), Perfect 초록(#69b96d), Excellent 연두(#9fb279). 글자 #121212 14.67px(줄 21.33) */
+#root .talk2 .tk-box {
+  margin: 18.333px -14.667px 0 -11.667px;
+  padding: 9.667px 11.667px;
+  border-radius: 10px;
+  background: #9982c3;
+  font-size: 14.667px;
+  line-height: 21.333px;
+  color: #121212;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+#root .talk2 .tk-box.perfect {
+  background: #69b96d;
+}
+#root .talk2 .tk-box.excellent {
+  background: #9fb279;
+}
+#root .talk2 .tk-box.good {
+  background: #c9b56c;
+}
+/* 내가 친 글: 21.33px(줄 27.33). 아무것도 없어도 한 줄 자리는 남는다 */
+#root .talk2 .tk-typed {
+  display: block;
+  min-height: 27.333px;
+  margin: 21.833px 0 0;
+  font-size: 21.333px;
+  line-height: 27.333px;
+  color: #d4d4d4;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  --ls: 0;
+}
+#root .talk2 .tk-box + .tk-typed {
+  margin-top: 16.833px;
+}
+#root .talk2 .tk-caret {
+  display: inline-block;
+  width: 2px;
+  height: 20.333px;
+  margin: 0 0 -3.333px 0.667px;
+  background: #0066ff;
+  animation: tkCaret 1.07s steps(1, end) infinite;
+}
+@keyframes tkCaret {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+/* 모범 답안: 점선 → 초록 꼬리표(48.33 x 15.33) → 초록 글자 16px(줄 21.33) */
+#root .talk2 .tk-model {
+  margin-top: 15.167px;
+  padding-top: 11.333px;
+  background: linear-gradient(90deg, #606366 0 1px, transparent 1px 4px) repeat-x 0 0 / 4px 1px;
+}
+#root .talk2 .tk-tag {
+  display: block;
+  width: max-content;
+  height: 15.333px;
+  padding: 0 6.667px;
+  border-radius: 7.667px;
+  background: #5fcf8f;
+  font-size: 10px;
+  line-height: 15.667px;
+  font-weight: 700;
+  color: #16301f;
+}
+#root .talk2 .tk-model p {
+  margin: 2px 0 0;
+  font-size: 16px;
+  line-height: 21.333px;
+  color: #34cc78;
+  --ls: 0;
+}
+
+/* 별 셋: 칸의 오른쪽 위에 걸쳐 있다 (금빛 범위 x 252.33~331 · 가운데가 칸 윗변에서 4 위). 테두리가 칸과 같은 색이라 칸이 올록볼록 솟은 것처럼 보인다 */
+#root .talk2 .tk-stars {
+  position: absolute;
+  right: 14.667px;
+  top: -21.667px;
+  display: flex;
+  pointer-events: none;
+}
+/* 별 아래의 어두운 받침: 테두리 사이로 뒤 그림이 비치지 않게 칸과 이어 준다 */
+#root .talk2 .tk-stars::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  right: 9px;
+  top: 14px;
+  bottom: 4px;
+  border-radius: 9px;
+  background: #242629;
+}
+#root .talk2 .tk-star {
+  position: relative;
+  display: block;
+  width: 34.667px;
+  height: 34.667px;
+  margin-left: -7.333px;
+}
+#root .talk2 .tk-star.on {
+  animation: tkStar 0.26s cubic-bezier(0.2, 0.9, 0.3, 1.4) both;
+}
+@keyframes tkStar {
+  from {
+    transform: scale(1.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+/* 등급 글자: 굵은 글자 + 칸 색의 두꺼운 테두리. 글자 위 끝이 칸 윗변에서 15.67 위 */
+#root .talk2 .tk-label {
+  position: absolute;
+  left: 13.333px;
+  top: -24.333px;
+  font-size: 28.667px;
+  line-height: 34px;
+  font-weight: 900;
+  letter-spacing: -0.4px;
+  color: #ae84ff;
+  -webkit-text-stroke: 5.333px #242629;
+  paint-order: stroke fill;
+  white-space: nowrap;
+  animation: tkLabel 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.3) both;
+  --ls: 0;
+}
+#root .talk2 .tk-label.excellent {
+  color: #ef78df;
+}
+#root .talk2 .tk-label.good {
+  color: #5fc4f2;
+}
+#root .talk2 .tk-label.nice {
+  color: #62cca9;
+}
+@keyframes tkLabel {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ---------- 문장 자판 (자판 칸: 웹뷰 아래 257.33, 바탕 #2b2b2b) ---------- */
+#root .talk2 .tk-kb {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 257.333px;
+  z-index: 2;
+  background: #2b2b2b;
+  animation: tkKbUp 0.2s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+@keyframes tkKbUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+/* 도구 알약: x 7~353 · 높이 33.33 (#363737), 칸막이 둘 */
+#root .talk2 .tk-pill {
+  position: absolute;
+  left: 7px;
+  right: 7px;
+  top: 9px;
+  height: 33.333px;
+  display: flex;
+  align-items: center;
+  border-radius: 16.667px;
+  background: #363737;
+  --tk-ink: #363737;
+}
+#root .talk2 .tk-pill > button {
+  display: flex;
+  align-items: center;
+  gap: 7.333px;
+  width: 118.667px;
+  height: 100%;
+  padding: 0 0 0 23.667px;
+  border: 0;
+  background: none;
+  font-size: 13.833px;
+  color: #fff;
+  white-space: nowrap;
+}
+#root .talk2 .tk-pill > button svg {
+  flex: none;
+  color: #838383;
+}
+#root .talk2 .tk-pill > button:last-child {
+  width: 119.333px;
+  padding-left: 26px;
+  gap: 9px;
+}
+#root .talk2 .tk-pill > button:disabled {
+  opacity: 0.4;
+}
+#root .talk2 .tk-pill > i {
+  flex: none;
+  width: 0.667px;
+  height: 14px;
+  background: #303131;
+}
+#root .talk2 .tk-pill-mid {
+  flex: 1;
+}
+#root .talk2 .skb {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 53.667px;
+}
+#root .talk2 .skb-row {
+  position: absolute;
+  left: 7.333px;
+  display: flex;
+  gap: 5px;
+  height: 43px;
+}
+#root .talk2 .skb-row.r0 {
+  top: 0;
+}
+#root .talk2 .skb-row.r1 {
+  top: 49px;
+  left: 25px;
+}
+#root .talk2 .skb-row.r2 {
+  top: 98.333px;
+}
+#root .talk2 .skb-row.r3 {
+  top: 147.667px;
+}
+#root .talk2 .skb-key {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 43px;
+  padding: 0 0 2px;
+  border: 0;
+  border-radius: 4.667px;
+  background: #6a6a6a;
+  box-shadow: 0 0.667px 0 #1d1c1d;
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1;
+  color: #fff;
+  --ls: 0;
+}
+#root .talk2 .skb-key.pressed {
+  background: #424242;
+}
+#root .talk2 .skb-key.gray {
+  background: #464646;
+}
+#root .talk2 .skb-key.gray.pressed {
+  background: #55555a;
+}
+#root .talk2 .skb-key.wide {
+  width: 42px;
+  padding: 0;
+}
+#root .talk2 .skb-row.r2 .skb-key.wide:first-child {
+  margin-right: 5.667px;
+}
+#root .talk2 .skb-row.r2 .skb-key.wide:last-child {
+  margin-left: 5.667px;
+}
+#root .talk2 .skb-key.skb-none {
+  visibility: hidden;
+}
+#root .talk2 .skb-key.num {
+  width: 62.667px;
+  gap: 5.333px;
+  padding: 0;
+  font-size: 13.333px;
+}
+#root .talk2 .skb-key.num span {
+  font-size: 13.333px;
+}
+#root .talk2 .skb-key.space {
+  width: 140px;
+  padding: 0;
+}
+#root .talk2 .skb-key .space-glyph {
+  display: block;
+  box-sizing: border-box;
+  width: 26.667px;
+  height: 6.667px;
+  border: 1.667px solid #fff;
+  border-top: 0;
+  border-radius: 0 0 2px 2px;
+}
+#root .talk2 .skb-key svg {
+  display: block;
+  color: #fff;
+}
+
+/* ---------- 채점 뒤의 동작 막대: x 18.67~341.33 · 높이 80.67 (#735cf4, 위에 밝은 테두리), 단추 넷 ---------- */
+#root .talk2 .tk-actions {
+  position: absolute;
+  left: 18.667px;
+  right: 18.667px;
+  bottom: 103.667px;
+  z-index: 2;
+  display: flex;
+  height: 80.667px;
+  border-radius: 21px;
+  background: #735cf4;
+  box-shadow: inset 0 1.667px 0 #a190ff, 0 3px 10px rgba(0, 0, 0, 0.25);
+  animation: tkRise 0.24s cubic-bezier(0.2, 0.7, 0.3, 1) 0.06s both;
+  --tk-ink: #735cf4;
+}
+#root .talk2 .tk-actions button {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 0 0;
+  border: 0;
+  background: none;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+}
+#root .talk2 .tk-actions button svg {
+  display: block;
+  height: 25px;
+  width: auto;
+}
+#root .talk2 .tk-actions button span {
+  margin-top: 7.667px;
+  line-height: 14px;
+}
+#root .talk2 .tk-actions button + button::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 19.333px;
+  width: 0.667px;
+  height: 43px;
+  background: #624dd9;
+}
+#root .talk2 .tk-actions button:active svg {
+  transform: scale(1.06);
+}
+
+/* ---------- 음성 모드: 내 칸 안 아래쪽에 힌트 보기 · 마이크 · 키보드 모드 ---------- */
+/* 마이크(지름 62, 가운데 x 180)의 위 끝은 입력 줄 아래 30.83, 아래 끝은 칸 아래에서 9.67. 양옆 단추의 가운데는 x 76 · 283.5 */
+#root .talk2 .tk-voice {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 102.5px;
+  margin: 0 -1px;
+  padding: 30.833px 5px 0 4.333px;
+}
+#root .talk2 .tk-vside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 78px;
+  padding: 13px 0 0;
+  border: 0;
+  background: none;
+  font-size: 10.667px;
+  font-weight: 700;
+  color: #70777c;
+  white-space: nowrap;
+  --tk-ink: #242629;
+}
+#root .talk2 .tk-vside svg {
+  color: #70777c;
+  height: 17.333px;
+  width: auto;
+}
+#root .talk2 .tk-vside .tk-vcancel {
+  color: #8967c6;
+}
+#root .talk2 .tk-vside:has(.tk-vcancel) {
+  color: #8967c6;
+}
+#root .talk2 .tk-vmic {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #735cf4;
+}
+#root .talk2 .tk-vmic.listening {
+  width: 82px;
+  height: 82px;
+  margin: -6.667px -10px 0;
+  background: linear-gradient(135deg, #735cf4, #8a5ae0);
+  box-shadow: 0 0 0 13.333px rgba(58, 56, 78, 0.92);
+}
+#root .talk2 .tk-vmic small {
+  margin-top: 6px;
+  font-size: 9.333px;
+  color: #fff;
+}
+#root .talk2 .tk-vtip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% - 23.5px);
+  transform: translateX(-50%);
+  padding: 12px 13.667px;
+  border-radius: 8px;
+  background: #3a3c40;
+  font-size: 12.333px;
+  line-height: 15px;
+  color: #e6e6e6;
+  white-space: nowrap;
+  pointer-events: none;
+}
+#root .talk2 .tk-vtip::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -5.333px;
+  margin-left: -6px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #3a3c40;
+}
+
+/* ---------- 결과 화면: 등급 칸 + 대화 스크립트 (플립 실측, 화면 y 기준 → 웹뷰 y = −30.67) ----------
+   등급 칸 x 20~340 · y 50.67~(글 길이에 따라): 빛살 그림 y 55~163.33, 배지(가로 85.33 x 세로 94.67) y 103.33~198, 제목 19.33px(글자 위 끝 y 223),
+   설명 15.67px · 줄 25.5(첫 줄 글자 위 끝 y 268.33, 왼쪽 x 44), 마지막 줄 아래 48.67.
+   스크립트 칸: 13.33 아래. 제목 글자 위 끝이 칸 위에서 37, 말풍선: 나(오른쪽, #444242) x 55~322 / 상대(왼쪽, #353431) x 38.33~305.67 */
+#root .talk2.tk-done {
+  background: #111111;
+}
+#root .talk2 .tk-dscroll {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  padding: 20px 20px 90px;
+}
+#root .talk2 .tk-dcard {
+  position: relative;
+  border-radius: 14px;
+  background: #242629;
+}
+#root .talk2 .tk-dhero {
+  padding: 168.667px 23.667px 42px;
+  text-align: center;
+}
+#root .talk2 .tk-drays {
+  position: absolute;
+  left: 4.333px;
+  right: 4.333px;
+  top: 4.333px;
+  height: 108.333px;
+  border-radius: 10px 10px 0 0;
+  --c0: #a87554;
+  --c1: #665342;
+  background: repeating-conic-gradient(from 8deg at 50% 88%, rgba(0, 0, 0, 0) 0 15deg, rgba(0, 0, 0, 0.1) 15deg 30deg), radial-gradient(ellipse 55% 110% at 50% 88%, var(--c0), var(--c1));
+}
+#root .talk2 .tk-dhero.g-S .tk-drays,
+#root .talk2 .tk-dhero.g-A .tk-drays {
+  --c0: #c9a245;
+  --c1: #6b5a2c;
+}
+#root .talk2 .tk-dhero.g-B .tk-drays {
+  --c0: #93a3b6;
+  --c1: #4c5560;
+}
+#root .talk2 .tk-dbadge {
+  position: absolute;
+  left: 50%;
+  top: 50.667px;
+  transform: translateX(-50%);
+  line-height: 0;
+}
+#root .talk2 .tk-dbadge .tk-grade {
+  width: auto;
+  height: 98.667px;
+}
+#root .talk2 .tk-dhero h2 {
+  margin: 0;
+  font-size: 19.333px;
+  line-height: 24px;
+  font-weight: 700;
+  color: #d6d6d6;
+}
+#root .talk2 .tk-dhero > p {
+  margin: 20.333px 0 0;
+  font-size: 15.667px;
+  line-height: 25.5px;
+  text-align: left;
+  color: #b9babb;
+  word-break: keep-all;
+}
+#root .talk2 .tk-dscript {
+  margin-top: 13.333px;
+  padding: 34.333px 0 16px;
+}
+/* 두 칸을 잇는 고리 둘 (13.33 x 47.33, 스크립트 칸 위 끝에서 30 위부터) */
+#root .talk2 .tk-dring {
+  position: absolute;
+  top: -30px;
+  width: 13.333px;
+  height: 47.333px;
+  border-radius: 6.667px;
+  background: #5c5c61;
+  box-shadow: inset 2.667px 0 0 #74747a;
+}
+#root .talk2 .tk-dring.l {
+  left: 27.333px;
+}
+#root .talk2 .tk-dring.r {
+  right: 27.333px;
+}
+#root .talk2 .tk-dscript h3 {
+  margin: 0;
+  font-size: 15.667px;
+  line-height: 20px;
+  font-weight: 700;
+  text-align: center;
+  color: #d6d6d6;
+}
+#root .talk2 .tk-dnpc,
+#root .talk2 .tk-dme {
+  position: relative;
+  box-sizing: border-box;
+  width: 267.333px;
+  border-radius: 13px;
+}
+/* 글자 위 끝까지: 상대 18.67 · 나 17.67, 마지막 줄 글자 아래 끝에서 칸 아래까지: 상대 13.33 · 나 17.67 (실측 그대로 — 두 말풍선의 안쪽 여백이 조금 다르다) */
+#root .talk2 .tk-dnpc {
+  margin: 13.667px 0 0 18.333px;
+  padding: 17.333px 20.333px 7.333px;
+  border-top-left-radius: 0;
+  background: #353431;
+}
+#root .talk2 .tk-dme {
+  margin: 27px 18px 0 auto;
+  padding: 16.333px 20.333px 11.667px;
+  border-top-right-radius: 0;
+  background: #444242;
+}
+#root .talk2 .tk-dscript h3 + .tk-dnpc,
+#root .talk2 .tk-dscript h3 + .tk-dme-wrap > .tk-dme {
+  margin-top: 13.667px;
+}
+#root .talk2 .tk-dnpc::before,
+#root .talk2 .tk-dme::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  border-top: 7.333px solid;
+}
+#root .talk2 .tk-dnpc::before {
+  left: -6.333px;
+  border-left: 6.667px solid transparent;
+  border-top-color: #353431;
+}
+#root .talk2 .tk-dme::before {
+  right: -6.333px;
+  border-right: 6.667px solid transparent;
+  border-top-color: #444242;
+}
+#root .talk2 .tk-dnpc p,
+#root .talk2 .tk-dme p {
+  margin: 0;
+  font-size: 16.667px;
+  line-height: 21.833px;
+  color: #d6d6d6;
+  --ls: 0;
+}
+#root .talk2 .tk-dnpc small,
+#root .talk2 .tk-dme small {
+  display: block;
+  margin-top: 4px;
+  font-size: 12.333px;
+  line-height: 18.667px;
+  color: #86888a;
+  word-break: keep-all;
+}
+#root .talk2 .tk-dme .tk-dmine {
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 0.667px solid #5a5858;
+  font-size: 14.667px;
+  line-height: 20px;
+  color: #c9bdf3;
+}
+#root .talk2 .tk-dmine b {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 10.667px;
+  font-weight: 700;
+  color: #9a8fd0;
+}
+/* '복습에 추가하기' + 토글 (글자 11.33px #70777c, 토글 26.33 x 14.67 — 꺼짐 #2b2b2c, 손잡이 지름 10 #d6d6d6) */
+#root .talk2 .tk-dreview {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10.333px;
+  height: 32.667px;
+  margin: 0 27px 0 0;
+  padding-top: 1px;
+  font-size: 11.333px;
+  color: #70777c;
+}
+#root .talk2 .tk-dreview input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+#root .talk2 .tk-toggle {
+  position: relative;
+  width: 26.333px;
+  height: 14.667px;
+  border-radius: 7.333px;
+  background: #2b2b2c;
+  transition: background 0.15s;
+}
+#root .talk2 .tk-toggle::after {
+  content: '';
+  position: absolute;
+  left: 2.667px;
+  top: 2.333px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d6d6d6;
+  transition: transform 0.15s;
+}
+#root .talk2 .tk-dreview input:checked + .tk-toggle {
+  background: #735cf4;
+}
+#root .talk2 .tk-dreview input:checked + .tk-toggle::after {
+  transform: translateX(11px);
+}
+#root .talk2 .tk-dme-wrap + .tk-dnpc {
+  margin-top: 13.333px;
+}
+#root .talk2 .tk-dfoot {
+  position: absolute;
+  left: 10.667px;
+  right: 10.667px;
+  bottom: 14.333px;
+  display: flex;
+}
+#root .talk2 .tk-dfoot .tk-btn {
+  height: 55.333px;
+  background: #735cf4;
+}
+
+/* ---------- 전체 에피소드 (아래에서 올라오는 판 — 플립 실측) ----------
+   판은 웹뷰 위 끝부터 덮는다. 머리줄 52.67(#212325) + 0.67 선. 줄 하나 70: 타임라인(x 32.67~35.33, #2f3034) + 점(지름 19.33, 가운데 x 34.33)
+   + 'Episode N'(10px, 글자 왼쪽 x 80) + 제목(15.33px 굵게, 16.67 아래) + 등급 배지(가로 30.33 x 세로 34.33, 가운데 x 302.5).
+   지금 할 에피소드: 줄 112, 보라 테두리 칸(x 60.33~339.67 · 높이 107.67, 안쪽 #27292b) + '학습 시작'(x 76~324 · 높이 29.67) */
+#root .talk2 .tk-sheet-dim {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.55);
+  animation: fadeIn 0.12s linear both;
+}
+#root .talk2 .tk-sheet {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px 16px 0 0;
+  background: #242629;
+  overflow: hidden;
+  animation: tkSheet 0.24s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+@keyframes tkSheet {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+#root .talk2 .tk-sheet-head {
+  position: relative;
+  flex: none;
+  height: 52.667px;
+  border-bottom: 0.667px solid #313236;
+  background: #212325;
+  font-size: 16px;
+  line-height: 53.333px;
+  text-align: center;
+  color: #d6d6d6;
+}
+#root .talk2 .tk-sheet-head button {
+  position: absolute;
+  right: 6px;
+  top: 6.333px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #70777c;
+}
+#root .talk2 .tk-eplist {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 0 24px;
+}
+#root .talk2 .tk-ep {
+  position: relative;
+  box-sizing: border-box;
+  min-height: 70px;
+  padding: 17.333px 70px 0 79.333px;
+}
+#root .talk2 .tk-ep::before {
+  content: '';
+  position: absolute;
+  left: 32.667px;
+  top: 0;
+  bottom: 0;
+  width: 2.667px;
+  background: #2f3034;
+}
+#root .talk2 .tk-ep:first-child::before {
+  top: 34px;
+}
+#root .talk2 .tk-ep:last-child::before {
+  bottom: calc(100% - 34px);
+}
+/* 점 둘레에 판 색의 띠(4.33)를 둘러 타임라인이 점 앞뒤에서 끊겨 보인다 */
+#root .talk2 .tk-epdot {
+  position: absolute;
+  left: 24.667px;
+  top: 25.667px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 19.333px;
+  height: 19.333px;
+  border-radius: 50%;
+  background: #2e3034;
+  box-shadow: 0 0 0 4.333px #242629;
+}
+#root .talk2 .tk-epdot.done {
+  background: #2fb673;
+}
+#root .talk2 .tk-epdot.now {
+  background: #735cf4;
+}
+#root .talk2 .tk-eptext small {
+  display: block;
+  font-size: 10px;
+  line-height: 13px;
+  color: #86888a;
+  --ls: 0;
+}
+#root .talk2 .tk-eptext b {
+  display: block;
+  margin-top: 3px;
+  font-size: 15.333px;
+  line-height: 20px;
+  font-weight: 700;
+  color: #d6d6d6;
+}
+#root .talk2 .tk-ep.locked .tk-eptext b {
+  color: #b9babb;
+}
+#root .talk2 .tk-epgrade {
+  position: absolute;
+  left: 302.5px;
+  top: 19.667px;
+  transform: translateX(-50%);
+  line-height: 0;
+}
+#root .talk2 .tk-epgrade .tk-grade {
+  width: auto;
+  height: 35.667px;
+}
+#root .talk2 .tk-ep.cur {
+  min-height: 112px;
+}
+#root .talk2 .tk-ep.cur::after {
+  content: '';
+  position: absolute;
+  left: 60.333px;
+  right: 20.333px;
+  top: 1.333px;
+  height: 107.667px;
+  box-sizing: border-box;
+  border: 1px solid #735cf4;
+  border-radius: 10px;
+  background: #27292b;
+  pointer-events: none;
+}
+#root .talk2 .tk-ep.cur > .tk-eptext,
+#root .talk2 .tk-ep.cur > .tk-epgrade,
+#root .talk2 .tk-ep.cur > .tk-epstart {
+  z-index: 1;
+}
+#root .talk2 .tk-ep.cur > .tk-eptext {
+  position: relative;
+}
+#root .talk2 .tk-epstart {
+  position: absolute;
+  left: 76px;
+  top: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7.333px;
+  width: 248px;
+  height: 29.667px;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  background: #735cf4;
+  font-size: 11.667px;
+  font-weight: 700;
+  color: #fff;
+}

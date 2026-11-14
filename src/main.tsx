@@ -19,6 +19,7 @@ import './styles/worddetail.css';
 import './styles/grammar.css';
 import './styles/listening.css';
 import './styles/expr.css';
+import './styles/talk.css';
 import './styles/streakpop.css';
 import { installNativeBack } from './lib/nativeBack';
 import { reassertBars, setStatusBar } from './lib/statusBar';

@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, type ReactNode } from 'react';
 import { useLocation, useNavigationType } from 'react-router-dom';
-import { POP_MS, PUSH_MS, SETTLE_MAX_MS, SHEET_CLOSE_MS, SHEET_OPEN_MS, isStudy, transitionFor, type Transition } from '../lib/pageTransition';
+import { POP_MS, PUSH_MS, SETTLE_MAX_MS, SHEET_CLOSE_MS, SHEET_OPEN_MS, WIPE_HOLD_MS, WIPE_IN_MS, WIPE_OUT_MS, isStudy, transitionFor, wipeBand, type Transition } from '../lib/pageTransition';
 
 interface Pending {
   kind: Transition;
@@ -120,6 +120,51 @@ export default function PageHost({ children }: { children: ReactNode }) {
     };
     const entering = p.kind === 'push' || p.kind === 'sheet-open';
     app.dataset.pt = p.kind;
+    // 닦아내기: 이전 화면이 비스듬한 띠로 좁아지며 검게 닫히고, 잠깐 뒤 새 화면이 같은 띠로 열린다
+    if (p.kind === 'wipe') {
+      const black = document.createElement('div');
+      black.className = 'pt-black';
+      app.appendChild(black);
+      added.push(black);
+      put(p.snap, 'pt-over');
+      if (typeof p.snap.animate === 'function')
+        // 닫힘: 처음에 확 좁아지고 가는 줄로 오래 남다가 사라진다 (녹화에서 읽은 띠 높이 ≈ (1 − t)^5)
+        anims.push(p.snap.animate([{ clipPath: wipeBand(100, 45) }, { clipPath: wipeBand(0, 1.5) }], { duration: WIPE_OUT_MS, easing: 'cubic-bezier(0.23, 1, 0.32, 1)', fill: 'forwards' }));
+      let settled = false;
+      let closed = false;
+      let opened = false;
+      let endTimer = 0;
+      const end = () => {
+        added.forEach((n) => n.remove());
+        anims.forEach((a) => a.cancel());
+        if (app.dataset.pt === p.kind) delete app.dataset.pt;
+      };
+      const open = () => {
+        if (!settled || !closed || opened) return;
+        opened = true;
+        p.snap.remove();
+        black.classList.add('pt-black-under');
+        const page = el.firstElementChild as HTMLElement | null;
+        if (page && typeof page.animate === 'function')
+          // 열림: 가는 줄로 시작해 점점 빨리 벌어진다 (띠 높이 ≈ t^2)
+          anims.push(page.animate([{ clipPath: wipeBand(0, 1.5) }, { clipPath: wipeBand(100, 45) }], { duration: WIPE_IN_MS, easing: 'cubic-bezier(0.55, 0.085, 0.68, 0.53)' }));
+        endTimer = window.setTimeout(end, WIPE_IN_MS + 10);
+      };
+      const closeTimer = window.setTimeout(() => {
+        closed = true;
+        open();
+      }, WIPE_OUT_MS + WIPE_HOLD_MS);
+      const stop = whenSettled(el, () => {
+        settled = true;
+        open();
+      });
+      return () => {
+        stop();
+        window.clearTimeout(closeTimer);
+        window.clearTimeout(endTimer);
+        end();
+      };
+    }
     // 1) 먼저 이전 화면(복사본)을 그대로 덮어 둔다. 들어가는 전환이면 새 머리줄은 바로 보인다
     put(p.snap, 'pt-over');
     const first = el.firstElementChild;

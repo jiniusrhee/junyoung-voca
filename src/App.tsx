@@ -56,7 +56,9 @@ function Shell() {
   }, [settings]);
   // 내비게이션 바(화면 맨 아래 제스처 막대 자리) 색: 하단 탭이 있는 화면은 탭 배경, 없으면 화면 배경. 어휘 퀴즈는 자판·패널 색으로 직접 맞춘다
   useEffect(() => {
-    if (!settings || loc.pathname === '/quiz' || loc.pathname === '/test') return;
+    // 학습 화면들은 자판 · 패널 · 장면 색에 맞춰 직접 칠한다. 여기서 건드리면 설정이 저장될 때마다(레벨 · 입력 방식 등) 기본색으로 덮어쓴다
+    const ownsBar = /^\/(quiz|test|grammar|listening|expr\/quiz)$/.test(loc.pathname) || /^\/talk\/[^/]+\/[^/]+$/.test(loc.pathname);
+    if (!settings || ownsBar) return;
     const dark = document.documentElement.dataset.theme === 'dark';
     const tabs = TABS.includes(loc.pathname) && !(loc.pathname === '/' && settings.level == null);
     // 사전은 아래 검색 줄(#27292b)이 화면 끝까지 이어진다
