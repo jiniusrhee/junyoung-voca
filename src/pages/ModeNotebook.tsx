@@ -416,7 +416,7 @@ export default function ModeNotebook() {
 
       {!meta.topic && rows.length > 0 && (
         <div className="nb-foot">
-          <button className="btn primary big" onClick={() => nav(`${quizPath(m)}?ids=${rows.map((r) => r.s.id).join(',')}`)}>
+          <button className="btn primary big" onClick={() => nav(`${quizPath(m)}?ids=${rows.map((r) => r.s.id).join(',')}${listen ? `&title=${encodeURIComponent(meta.label)}` : ''}`)}>
             히스토리 학습 ({rows.length}개) <Icon name="chevron" size={16} />
           </button>
         </div>

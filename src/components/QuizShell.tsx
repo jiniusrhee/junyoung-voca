@@ -44,7 +44,7 @@ export function QuizScene({ theme }: { theme: 'sky' | 'dino' }) {
 }
 
 /** 머리줄: 뒤로 · 진행 막대(동그라미 + 채움 + 작은 공룡 + 숫자) · 톱니 */
-export function QuizTop({ count, total, onLeave, onSettings }: { count: number; total: number; onLeave: () => void; onSettings: () => void }) {
+export function QuizTop({ count, total, title, onLeave, onSettings }: { count: number; total: number; /** 히스토리 학습: 막대 안에 목록 이름이 보이고 막대는 처음부터 갈색으로 차 있다 (말해보카) */ title?: string; onLeave: () => void; onSettings: () => void }) {
   const guard = useLeaveGuard(onLeave);
   const streakDone = useStreakDone();
   // 들어올 때 진행 막대가 0 에서 차오른다
@@ -60,15 +60,16 @@ export function QuizTop({ count, total, onLeave, onSettings }: { count: number; 
       <button className="qt-btn qt-back" onClick={guard.leave} aria-label="나가기">
         <QBack />
       </button>
-      <div className={`quiz-progress${count === 0 ? ' zero' : ''}`} style={{ '--f': barReady ? fill : 0 } as CSSProperties}>
+      <div className={`quiz-progress${count === 0 && !title ? ' zero' : ''}${title ? ' titled' : ''}`} style={{ '--f': title ? 1 : barReady ? fill : 0 } as CSSProperties}>
         <div className="progress-track">
           <div className="progress-fill" />
           <span className="progress-head" aria-hidden="true">
             <QHead />
           </span>
+          {title && <span className="progress-title">{title}</span>}
         </div>
         <span className={`trophy-badge ${count >= total ? 'gold' : ''}`}>
-          {streakDone ? <QStreak /> : <QTrophy />}
+          {streakDone && !title ? <QStreak /> : <QTrophy />}
         </span>
         <span className="progress-label">
           {count}/{total}

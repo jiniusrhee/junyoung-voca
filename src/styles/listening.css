@@ -1,0 +1,799 @@
+/* ================= 리스닝 학습 (말해보카 플립 실측 2026-11-14, 수치는 docs/SPEC.md 맨 끝 "리스닝" 절) =================
+   어휘 퀴즈와 같은 틀(.quiz-screen.vocab-quiz)을 쓰고, 리스닝만의 것을 여기서 덮어쓴다. 새 클래스는 lq- 로 시작한다.
+   치수는 모두 화면 폭 360 기준 CSS px (카드 x 13.33~346.67 · y 215.33~486.67, 아래 블록 위 끝 y 614.67). */
+
+/* ---------- 카드 ---------- */
+#root .listen-quiz .lq-card .qcard-top {
+  position: relative;
+  min-height: 116.667px;
+}
+#root .listen-quiz .lq-card .qcard-bottom {
+  min-height: 154.667px;
+  padding-left: 16.667px;
+}
+#root .listen-quiz .lq-wrap .qcard-tab {
+  padding-right: 10.667px;
+}
+/* 가려진 뜻: 둥근 막대 (x 45.33~315 · y 264.67~286.33). 맞힌 만큼 초록(위 #08a96c → 아래 #06b976)으로 찬다 */
+#root .listen-quiz .lq-bar {
+  position: absolute;
+  left: 32px;
+  top: 49.333px;
+  width: 269.667px;
+  height: 21.667px;
+  border-radius: 10.833px;
+  background: #2a2c2d;
+  overflow: hidden;
+}
+#root .listen-quiz .lq-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: 10.833px;
+  background: linear-gradient(#08a96c, #06b976);
+  transition: width 0.1s ease-out;
+}
+#root .listen-quiz .lq-card.is-wrong .lq-bar {
+  background: #3a2729;
+}
+/* 뜻: 다시 듣기를 다 쓰거나 정답 뒤에 0.5초 동안 떠오른다 */
+#root .listen-quiz .lq-ko,
+#root .listen-quiz .lq-card .qcard-top .ctx {
+  animation: lqFade 0.5s linear both;
+}
+#root .listen-quiz .card-slide.exit .lq-ko,
+#root .listen-quiz .card-slide.exit .ctx,
+#root .listen-quiz .card-slide.exit .lq-w.lq-rv {
+  animation: none;
+}
+@keyframes lqFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 문장: 어휘 카드와 같은 21.33px / 32.33. 아직 못 채운 낱말은 글자 자리만큼의 회색 줄(글자 밑선 높이, 두께 1.33 #474c50),
+   채운 낱말은 초록(#3bba74) — 틀린 적이 있는 자리와 정답 보기로 나온 낱말은 흰색(#dfdfdf). 정답 뒤에는 밑선 3 아래에 초록 밑줄(#007345)이 낱말마다 그어진다. */
+#root .listen-quiz .qcard-bottom .lq-en {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 0;
+  /* 가운데 맞춤이라 여백의 절반만큼 움직인다: 첫 줄 밑선이 카드 위에서 183.33 */
+  margin-top: -3.667px;
+}
+#root .listen-quiz .lq-w {
+  color: #3bba74;
+}
+#root .listen-quiz .lq-w.lq-wh {
+  color: #dfdfdf;
+}
+#root .listen-quiz .lq-w.lq-hl {
+  color: #9e92e2;
+}
+#root .listen-quiz .lq-w.lq-red {
+  color: #b64541;
+}
+#root .listen-quiz .lq-w.lq-b,
+#root .listen-quiz .lq-sp.lq-b {
+  color: transparent;
+  background: linear-gradient(#474c50, #474c50) no-repeat 0 var(--lq-base, 0.912em) / 100% 1.333px;
+}
+#root .listen-quiz .lq-w.lq-sung,
+#root .listen-quiz .lq-sp.lq-sung {
+  background: linear-gradient(#007345, #007345) no-repeat 0 calc(var(--lq-base, 0.912em) + 3.333px) / 100% 1.333px;
+}
+/* 정답 보기: 낱말이 67ms 간격으로 하나씩 나타난다 */
+#root .listen-quiz .lq-w.lq-rv {
+  animation: lqFade 0.2s linear both;
+  animation-delay: calc(var(--i) * 67ms);
+}
+/* 카드로 날아가는 낱말 (document.body 에 붙는다) */
+.lq-ghost {
+  position: fixed;
+  z-index: 80;
+  font-size: 21.333px;
+  color: #3bba74;
+  white-space: nowrap;
+  pointer-events: none;
+  transform-origin: 50% 50%;
+  --ls: 0;
+}
+.lq-ghost.wh {
+  color: #dfdfdf;
+}
+
+/* ---------- 결과 글자 (카드 위 끝에 걸쳐 있다 — 카드 뒤) ----------
+   직접 그린 글자: 굵은 기울임 글자 + 어두운 테두리. Perfect 노랑 #ecde00 / #35373a · Great 분홍 #f361e6 / #512453 · Good 하늘 · Nice Try 초록 #5cbd5e / #2a3d2a(기울이지 않음) */
+#root .listen-quiz .lq-banner {
+  position: absolute;
+  /* 큰 글자의 가운데가 화면 x 133.5 (카드 왼쪽에서 120.17) */
+  left: 120.167px;
+  bottom: -7px;
+  z-index: 0;
+  width: 0;
+  height: 36px;
+  margin: 0;
+  pointer-events: none;
+  --fill: #ecde00;
+  --edge: #35373a;
+  --sub: #eee9ce;
+}
+#root .listen-quiz .lq-ban {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+#root .listen-quiz .lq-banner b {
+  display: block;
+  padding: 0 2px;
+  font-size: 31px;
+  line-height: 36px;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: -1.4px;
+  color: var(--fill);
+  -webkit-text-stroke: 2.5px var(--edge);
+  paint-order: stroke fill;
+  text-shadow: 1.333px 1.667px 0 var(--edge);
+  --ls: 0;
+}
+#root .listen-quiz .lq-banner i {
+  position: absolute;
+  left: 100%;
+  bottom: 4px;
+  margin-left: 4px;
+  font-size: 12.5px;
+  line-height: 16px;
+  font-weight: 800;
+  font-style: normal;
+  color: var(--sub);
+  -webkit-text-stroke: 2.667px var(--edge);
+  paint-order: stroke fill;
+  --ls: 0;
+}
+#root .listen-quiz .lq-banner.great {
+  --fill: #f361e6;
+  --edge: #512453;
+  --sub: #f3e9f5;
+}
+#root .listen-quiz .lq-banner.great b {
+  font-size: 30px;
+  letter-spacing: 0;
+}
+#root .listen-quiz .lq-banner.great i {
+  margin-left: 1.167px;
+}
+#root .listen-quiz .lq-banner.good {
+  --fill: #5fc4f2;
+  --edge: #24405a;
+  --sub: #e4eff6;
+}
+#root .listen-quiz .lq-banner.nice {
+  --fill: #5cbd5e;
+  --edge: #2a3d2a;
+  --sub: #c8d1ad;
+}
+#root .listen-quiz .lq-banner.nice b {
+  font-style: normal;
+  letter-spacing: -2px;
+}
+/* 도구 줄의 거북은 상자(24)보다 넓다 */
+#root .listen-quiz .after-tool-icon svg {
+  overflow: visible;
+}
+
+/* ---------- TIP 단추 (지름 40 #735cf4, 카드 오른쪽 안쪽 10.67, 위·아래 칸 경계에 가운데) ---------- */
+#root .listen-quiz .lq-tipbtn {
+  position: absolute;
+  right: 10.667px;
+  top: 96.667px;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #735cf4;
+  color: #fff;
+  animation: lqFade 0.12s linear both;
+}
+#root .listen-quiz .lq-tipbtn b {
+  font-size: 13px;
+  line-height: 40px;
+  font-weight: 700;
+  --ls: 0;
+}
+#root .listen-quiz .lq-tipbtn .vz-key {
+  left: 50%;
+  top: -8.333px;
+  margin-left: -8.667px;
+}
+
+/* ---------- TIP 말풍선 (x 20.33~340, 아래 끝이 카드 위에서 113.67, #2c2e31) ---------- */
+#root .listen-quiz .lq-tip {
+  position: absolute;
+  left: 7px;
+  right: 6.667px;
+  bottom: 157.667px;
+  z-index: 6;
+  padding: 21px 16.333px 11.667px;
+  border-radius: 12px;
+  background: #2c2e31;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  animation: lqFade 0.1s linear both;
+}
+#root .listen-quiz .lq-tip::after {
+  content: '';
+  position: absolute;
+  left: calc(var(--tail) - 17px);
+  bottom: -12px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 12.5px solid #2c2e31;
+}
+#root .listen-quiz .lq-tip-title {
+  margin: 0;
+  padding-bottom: 19px;
+  border-bottom: 0.667px solid #35373a;
+  font-size: 13.667px;
+  line-height: 22px;
+  font-weight: 700;
+  color: #d6d6d6;
+}
+#root .listen-quiz .lq-tip-title .hl {
+  color: #9e92e2;
+}
+#root .listen-quiz .lq-tip-badge {
+  display: inline-block;
+  width: 20px;
+  height: 12.333px;
+  margin-right: 4.667px;
+  border-radius: 3.5px;
+  background: #f74242;
+  color: #fff;
+  font-size: 8.667px;
+  line-height: 12.333px;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: 3.667px;
+  --ls: 0;
+}
+#root .listen-quiz .lq-tip-body {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 24px;
+  color: #b8b8b8;
+  word-break: keep-all;
+}
+#root .listen-quiz .lq-tip-pager {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  height: 20px;
+  margin: 8.667px 3px 0 0;
+  font-size: 11.667px;
+  font-weight: 500;
+  color: #9e92e2;
+  --ls: 0.5px;
+}
+#root .listen-quiz .lq-tip-pager button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #9e92e2;
+}
+#root .listen-quiz .lq-tip-pager svg {
+  width: 6px;
+  height: 9px;
+}
+
+/* ---------- 낱말 뜻 팝업 (x 23.33~336.67, 아래 끝이 카드 위에서 113, #2f3336) + 어두워지는 바탕 ---------- */
+#root .listen-quiz .lq-dimsky {
+  position: absolute;
+  left: -13.333px;
+  right: -13.333px;
+  top: -196px;
+  bottom: 0;
+  z-index: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0) 60px, rgba(0, 0, 0, 0.5) 215px);
+}
+#root .listen-quiz .lq-dimcard {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background: rgba(0, 0, 0, 0.45);
+}
+#root .listen-quiz .lq-wrap.popping .qcard-tab {
+  filter: brightness(0.5);
+}
+#root .listen-quiz .lq-pop {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 158.333px;
+  z-index: 6;
+  padding: 5px 5px 14.333px;
+  border-radius: 12px;
+  background: #2f3336;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+#root .listen-quiz .lq-pop::after {
+  content: '';
+  position: absolute;
+  left: calc(var(--tail) - 20px);
+  bottom: -12px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 12.5px solid #2f3336;
+}
+#root .listen-quiz .lq-pop-head {
+  height: 26.333px;
+  margin: 0;
+  border-radius: 8px;
+  background: #37393d;
+  font-size: 11.667px;
+  line-height: 26.333px;
+  text-align: center;
+  color: #70777c;
+}
+#root .listen-quiz .lq-pop-row {
+  display: flex;
+  align-items: center;
+  height: 22px;
+  margin-top: 10px;
+  padding: 0 7.667px 0 12.333px;
+}
+#root .listen-quiz .lq-pop-row b {
+  flex: 1;
+  min-width: 0;
+  font-size: 17px;
+  font-weight: 400;
+  color: #d6d6d6;
+  --ls: 0;
+}
+#root .listen-quiz .lq-pop-pos {
+  height: 18px;
+  padding: 0 7.333px;
+  border-radius: 3.5px;
+  background: #3f3c5a;
+  font-size: 10px;
+  line-height: 18px;
+  color: #b3a9ee;
+}
+#root .listen-quiz .lq-pop-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 22px;
+  margin-left: 4px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #9e92e2;
+}
+#root .listen-quiz .lq-pop-search svg {
+  width: 15px;
+  height: 15px;
+}
+#root .listen-quiz .lq-pop-mean {
+  margin: 1.333px 12.333px 0;
+  font-size: 11.667px;
+  line-height: 17px;
+  color: #b4b6b8;
+  word-break: keep-all;
+}
+#root .listen-quiz .lq-pop-listen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6.667px;
+  width: calc(100% - 24px);
+  height: 32.667px;
+  margin: 26.333px 12px 0;
+  padding: 0;
+  border: 1px solid #9e92e2;
+  border-radius: 6px;
+  background: none;
+  font-size: 13.667px;
+  font-weight: 700;
+  color: #9e92e2;
+}
+#root .listen-quiz .lq-pop-listen svg {
+  width: 16px;
+  height: 13.333px;
+}
+
+/* ---------- 주관식 · 키보드: 도구줄 ----------
+   왼쪽 '다시 듣기': 지름 22.67 회색 동그라미 스피커(x 40~62.67 · 도구줄 위에서 8.33) + 그 아래에 걸친 점 셋(지름 6.33, 가운데 x 43.83 · 51.33 · 58.83, y 24.67~31)
+   가운데: 입력 칸 x 124.67~235.33 · 도구줄 위에서 9.67 (110.67 x 30.33, #3c4045, 글자 #afbee0 21px, 커서 #0066ff 2 x 21.67) */
+#root .listen-quiz .lq-input .toolbar .tool-btn {
+  padding-top: 7.333px;
+}
+#root .listen-quiz .lq-input .toolbar .tool-btn.lq-replay {
+  padding-top: 8.333px;
+}
+#root .listen-quiz .lq-input .toolbar .tool-btn > span:last-child {
+  margin-top: 3.333px;
+  font-size: 11px;
+  color: #70777c;
+}
+#root .listen-quiz .lq-spkwrap {
+  position: relative;
+  left: -0.333px;
+  display: block;
+  width: 22.667px;
+  height: 23px;
+  margin-bottom: -0.333px;
+}
+#root .listen-quiz .lq-spk {
+  display: block;
+  color: #70777c;
+  line-height: 0;
+}
+#root .listen-quiz .lq-spk svg {
+  display: block;
+  width: 22.667px;
+  height: 22.667px;
+}
+#root .listen-quiz .lq-spk.on .a2 {
+  animation: lqArc 0.9s steps(1, end) infinite;
+}
+#root .listen-quiz .lq-spk.on .a1 {
+  animation: lqArc 0.9s steps(1, end) -0.45s infinite;
+}
+@keyframes lqArc {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+#root .listen-quiz .lq-dots {
+  display: flex;
+  gap: 1.167px;
+  line-height: 0;
+}
+#root .listen-quiz .lq-dots i {
+  display: block;
+  box-sizing: border-box;
+  width: 6.333px;
+  height: 6.333px;
+  border: 1px solid #70777c;
+  border-radius: 50%;
+  background: #303436;
+}
+#root .listen-quiz .lq-dots i.g {
+  background: #70bd28;
+}
+#root .listen-quiz .lq-dots i.y {
+  background: #c3b300;
+}
+#root .listen-quiz .lq-dots i.o {
+  background: #c9833d;
+}
+#root .listen-quiz .lq-spkwrap .lq-dots {
+  position: absolute;
+  left: 0.333px;
+  top: 16.333px;
+}
+#root .listen-quiz .lq-input .toolbar .tool-btn.lq-replay > span:last-child {
+  left: -1px;
+  margin-top: 1px;
+}
+#root .listen-quiz .lq-box {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 110.667px;
+  height: 30.333px;
+  margin-top: -1px;
+  padding: 0 4px 0 6.333px;
+  border-radius: 6.5px;
+  background: #3c4045;
+  overflow: hidden;
+  font-size: 21px;
+  line-height: 30.333px;
+  color: #afbee0;
+  white-space: nowrap;
+  --ls: 0;
+}
+#root .listen-quiz .lq-box > span {
+  min-width: 0;
+  /* 길어지면 뒤쪽(방금 친 글자)이 보이도록 */
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+#root .listen-quiz .lq-caret {
+  flex: none;
+  display: block;
+  width: 2px;
+  height: 21.667px;
+  margin-left: 0.667px;
+  background: #0066ff;
+  animation: lqCaret 1.07s steps(1, end) infinite;
+}
+@keyframes lqCaret {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ---------- 주관식 · 음성: 왼쪽 '다시 듣기'(스피커 26 x 21.33 + 글자 + 점 셋 지름 8, 간격 14.67) ---------- */
+/* 음성 모드의 양옆 글자는 12.33px (플립 실측: '키보드 모드' 폭 52.67) */
+#root .listen-quiz .voice-zone .vz-btn {
+  font-size: 12.333px;
+}
+#root .listen-quiz .lq-vreplay .lq-spk svg {
+  width: 26px;
+  height: 21.333px;
+  margin: 0.333px 0 0.333px -3px;
+}
+#root .listen-quiz .lq-vreplay > span:nth-last-child(2) {
+  margin-top: 6px;
+  white-space: nowrap;
+}
+#root .listen-quiz .lq-vreplay .lq-dots {
+  gap: 6.667px;
+  margin-top: 4px;
+}
+/* 키캡 1 · 0 은 단추 가운데에서 안쪽(화면 가운데 쪽)으로 7 */
+#root .listen-quiz .voice-zone .vz-btn.left .vz-key {
+  margin-left: -1.667px;
+}
+#root .listen-quiz .voice-zone .vz-btn.right .vz-key {
+  margin-left: -15.333px;
+}
+#root .listen-quiz .lq-vreplay .lq-dots i {
+  width: 8px;
+  height: 8px;
+  border: 0;
+  background: #3a3d40;
+}
+#root .listen-quiz .lq-vreplay .lq-dots i.g {
+  background: #70bd28;
+}
+#root .listen-quiz .lq-vreplay .lq-dots i.y {
+  background: #c3b300;
+}
+#root .listen-quiz .lq-vreplay .lq-dots i.o {
+  background: #c9833d;
+}
+#root .listen-quiz .lq-vreplay .qi-reveal {
+  height: 20.2px;
+  margin: 0.9px 0;
+}
+
+/* ---------- 객관식: 물속 풍경 위의 낱말 단추 넷 + 보라 알약 ----------
+   단추 166.67 x 83.67 (x 10~176.67 / 183.33~350, y 600.33~684 / 690.33~774): 면 #242629 + 아래 턱 3.67 #1f2023, 글자 22px #d6d6d6
+   빈 칸: 물이 비치는 어두운 칸(검정 10%) + 테두리 1.33. 틀린 칸: 면 #411f22 · 턱 #5a111d · 글자 #a34030. 맞힌 칸: 0.17초 동안 어두운 초록으로 번쩍
+   알약 212.67 x 48.67 (x 73.67~286.33 · y 788~836.67, #6e66e0) */
+#root .listen-quiz .quiz-bottom > .lq-mc {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 263.333px;
+}
+#root .listen-quiz .quiz-bottom > .lq-mc.leave {
+  animation: kbSink 0.1s linear forwards;
+  pointer-events: none;
+}
+#root .listen-quiz .quiz-bottom > .lq-mc.enter {
+  animation: slideUp 0.117s cubic-bezier(0.2, 0.7, 0.3, 1) 0.167s both;
+  z-index: 2;
+}
+#root .listen-quiz .quiz-bottom.first > .lq-mc {
+  animation: kbFirst 0.467s linear both;
+}
+#root .listen-quiz .lq-slots {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  display: grid;
+  grid-template-columns: 166.667px 166.667px;
+  gap: 6.333px 6.667px;
+}
+#root .listen-quiz .lq-slot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 83.667px;
+  padding: 2.667px 6px 0;
+  border: 0;
+  border-radius: 11px;
+  background: #242629;
+  box-shadow: inset 0 -3.667px 0 #1f2023;
+  font-size: 22px;
+  font-weight: 400;
+  color: #d6d6d6;
+  --ls: 0;
+}
+#root .listen-quiz .lq-slot > span:last-child {
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+#root .listen-quiz .lq-slot:disabled {
+  opacity: 1;
+}
+#root .listen-quiz .lq-slot.empty {
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 0 1.333px rgba(0, 0, 0, 0.15);
+}
+#root .listen-quiz .lq-slot.bad {
+  background: #411f22;
+  box-shadow: inset 0 -3.667px 0 #5a111d;
+  color: #a34030;
+}
+#root .listen-quiz .lq-slot.hit {
+  animation: lqHit 0.17s linear both;
+}
+@keyframes lqHit {
+  0% {
+    background: #1b2c27;
+  }
+  45% {
+    background: #153226;
+  }
+  100% {
+    background: #1c2a26;
+  }
+}
+#root .listen-quiz .lq-slot:active:not(:disabled):not(.bad) {
+  background: #2b2e31;
+}
+#root .listen-quiz .lq-slot .vz-key {
+  left: -1.333px;
+  top: -3.667px;
+}
+#root .listen-quiz .lq-pill {
+  position: absolute;
+  left: 73.667px;
+  top: 187.667px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 212.667px;
+  height: 48.667px;
+  padding: 0;
+  border: 0;
+  border-radius: 24.333px;
+  background: #6e66e0;
+  font-size: 15.667px;
+  font-weight: 500;
+  color: #fff;
+}
+#root .listen-quiz .lq-pill:disabled {
+  opacity: 1;
+}
+#root .listen-quiz .lq-pill .vz-key {
+  left: 0;
+  top: -3px;
+}
+#root .listen-quiz .lq-pill-ic {
+  position: relative;
+  display: block;
+  width: 17.667px;
+  height: 14.667px;
+  margin: -7.667px 0 0 2.667px;
+}
+#root .listen-quiz .lq-pill-ic svg {
+  display: block;
+  width: 17.667px;
+  height: 14.667px;
+  transform: scaleY(1.1);
+  transform-origin: 50% 0;
+}
+#root .listen-quiz .lq-pill-ic .lq-dots {
+  position: absolute;
+  left: 0.333px;
+  top: 19px;
+  gap: 2.667px;
+}
+#root .listen-quiz .lq-pill-ic .lq-dots i {
+  width: 4px;
+  height: 4px;
+  border: 0;
+  background: #9673f0;
+}
+#root .listen-quiz .lq-pill-ic .lq-dots i.g {
+  background: #70bd28;
+}
+#root .listen-quiz .lq-pill-ic .lq-dots i.y {
+  background: #c3b300;
+}
+#root .listen-quiz .lq-pill-ic .lq-dots i.o {
+  background: #ca843d;
+}
+#root .listen-quiz .lq-pill-ok {
+  width: 18px;
+  height: 18px;
+}
+#root .listen-quiz .lq-pill.careful {
+  gap: 12.667px;
+  font-size: 13.333px;
+  font-weight: 400;
+  --ls: 0;
+}
+/* 'Listen Carefully' 앞의 점 셋: 차례로 떠올랐다 내려간다 */
+#root .listen-quiz .lq-wave {
+  display: flex;
+  align-items: center;
+  gap: 3.333px;
+  height: 14px;
+}
+#root .listen-quiz .lq-wave i {
+  display: block;
+  width: 3.333px;
+  height: 3.333px;
+  border-radius: 50%;
+  background: #fff;
+  animation: lqWave 0.9s ease-in-out infinite;
+}
+#root .listen-quiz .lq-wave i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+#root .listen-quiz .lq-wave i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes lqWave {
+  0%,
+  60%,
+  100% {
+    transform: translateY(2px);
+  }
+  30% {
+    transform: translateY(-3px);
+  }
+}
+
+/* ---------- 히스토리 학습의 머리줄 (플립 실측: 막대 전체가 민무늬 갈색 #ab7a65 · 높이 20 · 오른쪽 끝 둥글게, 그 안에 목록 이름이 화면 가운데에) ---------- */
+#root .vocab-quiz .quiz-progress.titled .progress-track {
+  top: 6.667px;
+  height: 20px;
+  border-radius: 0 10px 10px 0;
+  background: #ab7a65;
+}
+#root .vocab-quiz .quiz-progress.titled .progress-fill,
+#root .vocab-quiz .quiz-progress.titled .progress-head {
+  display: none;
+}
+#root .vocab-quiz .quiz-progress .progress-title {
+  position: absolute;
+  left: 0;
+  right: 12.667px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-size: 11px;
+  font-weight: 600;
+  color: #faf9fe;
+  white-space: nowrap;
+  pointer-events: none;
+}

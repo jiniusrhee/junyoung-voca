@@ -254,3 +254,170 @@
   top: 324.333px;
 }
 
+/* ---------- 리스닝 시작 창 (플립 실측 2026-11-14) ----------
+   창 335.33 x 531.67 (화면 x 12.33~347.67 · y 181.33~713). 머리줄 52.67(#1e2022), 줄 둘(글자 15px, 값은 굵게 — 값 가운데 x 244.83, ‹ › 는 186 · 303.33),
+   점선(위에서 158.67), 볼륨 칸 309.33 x 267.33(#2f3134, 위에서 171.67), '오늘의 학습' 308 x 53.33(위에서 459.67 — 보랏빛이 천천히 흐른다) */
+.start-pop.listen {
+  width: 335.333px;
+  height: 531.667px;
+}
+.start-pop.listen .sp-head {
+  height: 52.667px;
+  border-bottom: 0.667px solid #2a2c2f;
+  border-radius: 14px 14px 0 0;
+  background: #1e2022;
+  line-height: 54px;
+}
+.start-pop.listen .sp-close {
+  top: 8.833px;
+  right: 9.167px;
+}
+.start-pop.listen .spl-row {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 73.333px;
+  height: 28px;
+  font-size: 15px;
+  line-height: 28px;
+  color: #d6d6d6;
+}
+.start-pop.listen .spl-row + .spl-row {
+  top: 113.333px;
+}
+.start-pop.listen .spl-row > span {
+  position: absolute;
+  left: 29.333px;
+}
+.start-pop.listen .spl-row > b {
+  position: absolute;
+  left: 194.833px;
+  width: 100px;
+  text-align: center;
+  font-size: 13.333px;
+  font-weight: 700;
+}
+.start-pop.listen .spl-chev {
+  position: absolute;
+  top: -4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #4f555b;
+}
+.start-pop.listen .spl-chev svg {
+  width: 5.333px;
+  height: 9px;
+}
+.start-pop.listen .spl-chev.l {
+  left: 168px;
+}
+.start-pop.listen .spl-chev.r {
+  left: 285.333px;
+}
+.start-pop.listen .spl-chev:active {
+  color: #9aa0a6;
+}
+.start-pop.listen .spl-dash {
+  position: absolute;
+  left: 17.667px;
+  right: 17.667px;
+  top: 158.667px;
+  height: 0.667px;
+  background: repeating-linear-gradient(90deg, #36383b 0 2px, transparent 2px 3.333px);
+}
+.start-pop.listen .spl-box {
+  position: absolute;
+  left: 13px;
+  top: 171.667px;
+  width: 309.333px;
+  height: 267.333px;
+  border-radius: 12px;
+  background: #2f3134;
+}
+.start-pop.listen .spl-phones {
+  position: absolute;
+  left: 122px;
+  top: 33.333px;
+  width: 67.667px;
+  height: 63px;
+}
+.start-pop.listen .spl-box p {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 119px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 26.5px;
+  text-align: center;
+  color: #b8b8b8;
+}
+.start-pop.listen .spl-line {
+  position: absolute;
+  left: 5.667px;
+  right: 5px;
+  top: 195.333px;
+  height: 0.667px;
+  background: repeating-linear-gradient(90deg, #48494b 0 2px, transparent 2px 3.333px);
+}
+.start-pop.listen .spl-vol {
+  position: absolute;
+  left: 60px;
+  top: 212px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 41px;
+  padding: 0 10px;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  font-weight: 700;
+  color: #9e92e2;
+  white-space: nowrap;
+}
+.start-pop.listen .spl-vol em {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26.333px;
+  height: 26.333px;
+  border-radius: 50%;
+  background: #454753;
+}
+.start-pop.listen .spl-vol em svg {
+  width: 13.333px;
+  height: 11px;
+}
+.start-pop.listen .spl-vol:active em {
+  background: #565967;
+}
+.start-pop.listen .sp-start {
+  left: 13.333px;
+  top: 459.667px;
+  gap: 13.667px;
+  width: 308px;
+  padding-left: 5px;
+  background: linear-gradient(90deg, #735cf4, #8a5ae0, #735cf4, #8a5ae0);
+  background-size: 300% 100%;
+  animation: splFlow 3.2s linear infinite;
+}
+.start-pop.listen .sp-start svg {
+  width: 23.333px;
+  height: 18.333px;
+}
+@keyframes splFlow {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+

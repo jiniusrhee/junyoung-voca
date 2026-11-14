@@ -171,3 +171,23 @@ export function QSpeak() {
     </svg>
   );
 }
+
+/** 음성 모드의 '키보드 모드' 그림 (플립 실측 2026-11-14: 23.67 x 18.33 둥근 네모 안에 점 다섯 · 점 넷 · 점-막대-점) */
+export function QKeyboard() {
+  return (
+    <svg className="vz-kbd" width="23.667" height="18.333" viewBox="0 0 23.667 18.333" aria-hidden="true">
+      <rect x="0" y="0" width="23.667" height="18.333" rx="3.600" fill="currentColor" />
+      <g fill="#252627">
+        {[4.68, 8.28, 11.88, 15.48, 19.08].map((x) => (
+          <circle key={x} cx={x} cy="5.400" r="0.850" />
+        ))}
+        {[6.48, 10.08, 13.68, 17.28].map((x) => (
+          <circle key={x} cx={x} cy="8.900" r="0.850" />
+        ))}
+        <circle cx="4.900" cy="13.100" r="0.850" />
+        <rect x="7.500" y="12.250" width="8.700" height="1.700" rx="0.850" />
+        <circle cx="18.800" cy="13.100" r="0.850" />
+      </g>
+    </svg>
+  );
+}

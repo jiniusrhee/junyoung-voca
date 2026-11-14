@@ -14,7 +14,7 @@ import Icon from '../components/Icon';
 import Keyboard from '../components/Keyboard';
 import Mascot from '../components/Mascot';
 import VocabSettings from '../components/VocabSettings';
-import { QBack, QBonus, QBookOutline, QGear, QHead, QHint, QMic, QReveal, QSpeak, QStreak, QSwap, QTrophy } from '../components/QuizIcons';
+import { QBack, QBonus, QBookOutline, QGear, QHead, QHint, QKeyboard, QMic, QReveal, QSpeak, QStreak, QSwap, QTrophy } from '../components/QuizIcons';
 import { useStreakDone } from '../components/QuizShell';
 import KoText from '../components/KoText';
 import QuizCard, { FilledSentence, type CardBadge, type CardFlash } from '../components/QuizCard';
@@ -1500,22 +1500,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
               <span className="vz-key" lang="en">
                 0
               </span>
-              <svg className="vz-kbd" width="23.667" height="18.333" viewBox="0 0 23.667 18.333" aria-hidden="true">
-                <rect x="0" y="0" width="23.667" height="18.333" rx="3.600" fill="currentColor" />
-                <g fill="#252627">
-                  <rect x="3.400" y="3.600" width="2.600" height="2.400" rx="0.500" />
-                  <rect x="7.467" y="3.600" width="2.600" height="2.400" rx="0.500" />
-                  <rect x="11.533" y="3.600" width="2.600" height="2.400" rx="0.500" />
-                  <rect x="15.600" y="3.600" width="2.600" height="2.400" rx="0.500" />
-                  <rect x="19.000" y="3.600" width="1.300" height="2.400" rx="0.500" />
-                  <rect x="3.400" y="7.900" width="2.600" height="2.400" rx="0.500" />
-                  <rect x="7.467" y="7.900" width="2.600" height="2.400" rx="0.500" />
-                  <rect x="11.533" y="7.900" width="2.600" height="2.400" rx="0.500" />
-                  <rect x="15.600" y="7.900" width="2.600" height="2.400" rx="0.500" />
-                  <rect x="19.000" y="7.900" width="1.300" height="2.400" rx="0.500" />
-                  <rect x="6.300" y="12.400" width="11.067" height="2.400" rx="0.700" />
-                </g>
-              </svg>
+              <QKeyboard />
               <span>키보드 모드</span>
             </button>
           </div>

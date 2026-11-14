@@ -165,4 +165,37 @@ describe('app smoke', () => {
     if (wrong === 'zzzz') expect(document.querySelector('.note-panel')).toBeTruthy();
     else expect(listed).toContain(wrong);
   });
+
+  it('listening (keyboard): each finished word moves to the card, a wrong confirm flashes, the last word ends with Perfect', async () => {
+    const { saveSettings } = await import('../lib/settings');
+    await saveSettings({ listeningMode: 'subjective', listeningInput: 'keyboard' });
+    window.location.hash = '#/listening';
+    render(<App />);
+    await waitFor(() => expect(document.querySelector('.listen-quiz .lq-en')).toBeTruthy(), { timeout: 15_000 });
+    const words = [...document.querySelectorAll('.listen-quiz .lq-en .lq-w')].map((e) => (e.textContent ?? '').toLowerCase().replace(/[^a-z]/g, ''));
+    expect(words.length).toBeGreaterThan(1);
+    // 아직 아무것도 못 채웠다
+    expect(document.querySelectorAll('.listen-quiz .lq-w.lq-b').length).toBe(words.length);
+
+    // 틀린 글자를 치고 확인: 카드가 붉어지고 낱말은 채워지지 않는다
+    await type('zq');
+    await press('Enter');
+    expect(document.querySelector('.listen-quiz .lq-card.is-wrong')).toBeTruthy();
+    expect(document.querySelectorAll('.listen-quiz .lq-w.lq-b').length).toBe(words.length);
+    await press('Backspace', 2);
+
+    // 첫 낱말을 다 치는 순간 카드로 올라가고 입력 칸이 비워진다
+    await type(words[0]);
+    await waitFor(() => expect(document.querySelectorAll('.listen-quiz .lq-w.lq-g').length).toBe(1), { timeout: 5_000 });
+    expect(document.querySelector('.listen-quiz .lq-box span')?.textContent).toBe('');
+
+    for (const w of words.slice(1)) await type(w);
+    await waitFor(() => expect(document.querySelector('.lq-banner.perfect')).toBeTruthy(), { timeout: 15_000 });
+    await screen.findByRole('button', { name: /다음 문제/ }, { timeout: 15_000 });
+    // 정답 뒤에는 뜻이 보이고 진행 수가 오른다
+    expect(document.querySelector('.listen-quiz .lq-ko')).toBeTruthy();
+    await screen.findByText(/^1\/\d+$/, {}, { timeout: 15_000 });
+    const day = await db.daily.toArray();
+    expect(day.some((d) => (d.byMode?.listening?.total ?? 0) === 1)).toBe(true);
+  });
 });
