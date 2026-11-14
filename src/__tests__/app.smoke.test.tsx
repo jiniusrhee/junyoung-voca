@@ -62,6 +62,28 @@ async function typeExactly(text: string) {
   throw new Error(`입력 실패: ${text}`);
 }
 
+/**
+ * 지금 카드의 정답을 쳐서 정답 패널('다음 문제')이 뜰 때까지.
+ * CI 에서 가끔(2026-11-14, 15번에 한 번꼴) 정답을 다 쳤는데도 패널이 뜨지 않은 채 시간 초과가 났다 — 로컬에서는 재현되지 않았고 원인을 특정하지 못했다.
+ * 글자가 빠졌거나 카드가 바뀐 경우를 견디도록, 안 뜨면 지우고 카드를 다시 읽어 한 번 더 친다. 끝내 실패하면 그때의 입력 상태를 적어 남긴다(DOM 전체 대신).
+ */
+async function answerCurrent(): Promise<{ word: WordEntry; sentence: WordSentence }> {
+  let last = '';
+  for (let attempt = 0; attempt < 4; attempt++) {
+    const cur = await current();
+    await type(cur.sentence.answer);
+    try {
+      await screen.findByRole('button', { name: /다음 문제/ }, { timeout: attempt === 3 ? 12_000 : 4_000 });
+      return cur;
+    } catch {
+      const text = (sel: string) => document.querySelector(sel)?.textContent ?? '';
+      last = `시도 ${attempt + 1}: 입력 칸 "${text('.toolbar .bubble')}" · 정답 "${cur.sentence.answer}" · 화면 "${document.querySelector('.quiz-screen')?.className ?? ''}" · 알림 "${text('.toast')}" · 진행 "${text('.progress-label')}"`;
+      await press('Backspace', cur.sentence.answer.length + 20);
+    }
+  }
+  throw new Error(`정답을 쳤지만 정답 패널이 뜨지 않음 — ${last}`);
+}
+
 async function press(key: string, times = 1) {
   for (let i = 0; i < times; i++) {
     await act(async () => {
@@ -86,11 +108,8 @@ describe('app smoke', () => {
     expect(screen.getByText('New')).toBeTruthy();
     expect(screen.getByRole('button', { name: /힌트 보기/ })).toBeTruthy();
 
-    const { word, sentence } = await current();
-    await type(sentence.answer);
-
     // 정답을 다 입력하면 확인 없이 채점되고 정답 후 패널이 나온다
-    await screen.findByRole('button', { name: /다음 문제/ }, { timeout: 15_000 });
+    const { word } = await answerCurrent();
     expect(screen.getByText(/뒤 복습$/)).toBeTruthy();
     const card = await db.cards.get(word.id);
     expect(card?.known).toBe(true);
@@ -121,8 +140,7 @@ describe('app smoke', () => {
     expect(document.querySelector('.ghost.pre')?.textContent).toBe(pre);
     expect(document.querySelector('.ghost:not(.pre)')?.textContent).toBe(sentence.answer.slice(pre.length));
 
-    await type(sentence.answer);
-    await screen.findByRole('button', { name: /다음 문제/ }, { timeout: 15_000 });
+    await answerCurrent();
     const card = await db.cards.get(word.id);
     expect(card?.known).toBeFalsy();
     expect(card!.due.getTime()).toBeLessThanOrEqual(Date.now() + 6 * 60_000);
@@ -149,8 +167,7 @@ describe('app smoke', () => {
     }
 
     await press('Backspace', wrong.length);
-    await type(sentence.answer);
-    await screen.findByRole('button', { name: /다음 문제/ }, { timeout: 15_000 });
+    await answerCurrent();
 
     const card = await db.cards.get(word.id);
     expect(card?.known).toBeFalsy();
