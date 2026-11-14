@@ -12,6 +12,7 @@ import Mascot from '../components/Mascot';
 import { db } from '../db';
 import { saveSettings, useSettings } from '../lib/settings';
 import { useCachedQuery, useKeptQuery } from '../lib/liveCache';
+import { getTalkProgress } from '../lib/talk';
 import { isNativeApp, nativeNotifyRequest } from '../lib/nativeNotify';
 import { getImported, importedRange, inRange, type DayRange } from '../lib/imported';
 import { STREAK_GOALS } from './Streak';
@@ -73,6 +74,24 @@ export default function Home() {
   const repaired = useCachedQuery('repaired', () => getRepairedDays(), []);
   const homeMode: StudyMode = settings && HOME_MODES.includes(settings.homeMode) ? settings.homeMode : 'vocab';
   const acc = useCachedQuery(`acc:${homeMode}`, () => reviewAccuracy(7, new Date(), homeMode), [homeMode]);
+  // 표현·실전 회화 탭: 하루 목표 대신 지금 코스 / 스토리 이름이 보인다 (말해보카)
+  const courseName = useCachedQuery(
+    `exprCourseName:${settings?.exprCourse ?? ''}`,
+    async () => {
+      const cs = await db.ecourses.orderBy('order').toArray();
+      return (cs.find((c) => c.id === settings?.exprCourse) ?? cs[0])?.title ?? '';
+    },
+    [settings?.exprCourse],
+  );
+  const storyName = useCachedQuery(
+    'talkStoryName',
+    async () => {
+      const [stories, prog] = await Promise.all([db.tstories.orderBy('order').toArray(), getTalkProgress()]);
+      const last = (st: (typeof stories)[number]) => Math.max(0, ...st.episodes.map((e) => prog?.[e.id]?.ts ?? 0));
+      return [...stories].sort((a, b) => last(b) - last(a))[0]?.title ?? '';
+    },
+    [],
+  );
   const [start, setStart] = useState<StudyMode | null>(null);
   const comp = useCachedQuery('comprehension', () => comprehension(), []);
   const testDate = useCachedQuery('levelTestDate', async () => (await db.kv.get('levelTestDate'))?.value as string | undefined, []);
@@ -195,7 +214,7 @@ export default function Home() {
           </div>
           <div className="main-row" key={homeMode}>
             <div className="main-text">
-              <Link to="/stats" className="acc-line">
+              <Link to="/stats" className={`acc-line${homeMode === 'talk' || homeMode === 'listening' ? ' none' : ''}`}>
                 <HBadge />
                 <span>복습 정답률</span>
                 <span lang="en">{acc == null ? '-' : `${Math.round(acc * 100)}%`}</span>
@@ -203,12 +222,33 @@ export default function Home() {
                   <polyline points="0.650,0.650 3.350,3.333 0.650,6.017" fill="none" stroke="currentColor" strokeWidth="1.200" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </Link>
-              <h2>{MODE_TITLE[homeMode]}</h2>
-              <button className="goal-line-btn" onClick={() => setGoalOpen(true)}>
-                하루 목표 <b lang="en">{goal}</b> 개 <HPencil />
-              </button>
+              <h2>
+                {MODE_TITLE[homeMode]}
+                {(homeMode === 'expr' || homeMode === 'talk') && (
+                  <sup className="beta" lang="en">
+                    beta
+                  </sup>
+                )}
+              </h2>
+              {homeMode === 'expr' ? (
+                <Link to="/expr/courses" className="sub-line">
+                  <span>학습 코스</span>
+                  <i />
+                  <KoText text={courseName ?? ''} />
+                </Link>
+              ) : homeMode === 'talk' ? (
+                <Link to="/talk" className="sub-line">
+                  <span>스토리</span>
+                  <i />
+                  <KoText text={storyName ?? ''} />
+                </Link>
+              ) : (
+                <button className="goal-line-btn" onClick={() => setGoalOpen(true)}>
+                  하루 목표 <b lang="en">{goal}</b> 개 <HPencil />
+                </button>
+              )}
             </div>
-            <GaugeRing percent={pct} size={63.333} stroke={5} intro={intro || replay || replayRun > 0} introLag={(replay || replayRun > 0) && !intro ? -250 : lag} />
+            {homeMode !== 'expr' && homeMode !== 'talk' && <GaugeRing percent={pct} size={63.333} stroke={5} intro={intro || replay || replayRun > 0} introLag={(replay || replayRun > 0) && !intro ? -250 : lag} />}
           </div>
           {/* 턱(아래 그림자)은 움직이지 않는 받침으로 그리고 버튼 면만 내려앉는다 — 면·그림·빛줄기의 움직임이 모두 같은 박자로 돌게 transform 만 쓴다 */}
           <div className={`today-seat m-${homeMode}`}>

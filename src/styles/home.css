@@ -214,6 +214,44 @@
   font-weight: 700;
   color: #d6d6d6;
 }
+/* 실전 회화·리스닝에는 '복습 정답률' 줄이 없다(자리는 그대로) */
+.home .acc-line.none {
+  visibility: hidden;
+}
+/* 표현·실전 회화: 제목 뒤 위첨자 'beta'(9.67px 기울임, 보라), 그 아래 '학습 코스 | 코스 이름' / '스토리 | 스토리 이름' (고리는 없다) */
+.home .main-text h2 .beta {
+  position: relative;
+  top: -11.333px;
+  margin-left: 5.333px;
+  font-size: 9.667px;
+  line-height: 1;
+  font-weight: 400;
+  font-style: italic;
+  color: #9670d8;
+  vertical-align: baseline;
+  --ls: 0;
+}
+.home .sub-line {
+  display: flex;
+  align-items: center;
+  margin: 3px 0 0 -1px;
+  overflow: hidden;
+  font-size: 12.333px;
+  line-height: 20px;
+  color: #77787a;
+  white-space: nowrap;
+}
+.home .sub-line > i {
+  flex: none;
+  width: 0.667px;
+  height: 9.333px;
+  margin: 0 8px 0 8.333px;
+  background: #55585c;
+}
+.home.hm-expr .main-text,
+.home.hm-talk .main-text {
+  padding-bottom: 15px;
+}
 .home .goal-line-btn {
   gap: 0;
   margin-left: -1px;
