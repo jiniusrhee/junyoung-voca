@@ -630,15 +630,17 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
   animation: fadeIn 0.1s both;
 }
+/* 칸 하나: 꼬리표는 칸 위에서 11.33, 문장은 꼬리표 아래 6, 뜻은 그 아래 4, 아래 여백 9.67 (칸 높이 89.67) */
 #root .grammar-quiz .gq-note-sec {
-  padding: 15.333px 16px 12.333px 10.667px;
+  padding: 11.333px 16px 9.667px 10.667px;
   background: #252627;
 }
-#root .grammar-quiz .gq-note-sec.alt {
+#root .grammar-quiz .gq-note-sec.is-alt {
   background: #202122;
 }
 #root .grammar-quiz .gq-tag {
-  display: inline-block;
+  display: block;
+  width: max-content;
   height: 16.667px;
   padding: 0 8px;
   border-radius: 8.333px;
@@ -646,27 +648,28 @@
   line-height: 17px;
   font-weight: 700;
 }
-#root .grammar-quiz .gq-tag.model {
+#root .grammar-quiz .gq-tag.is-model {
   background: #2c2c3a;
   color: #7575db;
 }
-#root .grammar-quiz .gq-tag.alt {
+#root .grammar-quiz .gq-tag.is-alt {
   background: #26362d;
   color: #44a56b;
 }
 #root .grammar-quiz .gq-note-en {
-  margin: 5.667px 0 0;
+  margin: 6px 0 0;
   font-size: 18.333px;
   line-height: 23px;
   font-weight: 600;
   color: #d6d6d6;
-  --ls: -0.02;
+  /* 실제 앱은 이 문장이 같은 높이의 Roboto 보다 12% 좁다("There's no risk, I promise." = 184.67). 기기에 그 글꼴 이름이 없어 자간으로 폭을 맞춘다 */
+  --ls: -0.052;
 }
 #root .grammar-quiz .gq-note-en .diff {
   color: #cd5851;
 }
 #root .grammar-quiz .gq-note-ko {
-  margin: 3.333px 0 0;
+  margin: 4px 0 0;
   font-size: 14.333px;
   line-height: 19px;
   color: #a9a9a9;

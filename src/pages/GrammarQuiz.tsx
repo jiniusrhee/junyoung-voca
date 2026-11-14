@@ -591,8 +591,8 @@ export default function GrammarQuiz() {
               note && showPanel ? (
                 <div className="gq-note">
                   <div className="gq-note-sec">
-                    <span className="gq-tag model">모범답안</span>
-                    <p className="gq-note-en" lang="en">
+                    <span className="gq-tag is-model">모범답안</span>
+                    <p className="gq-note-en">
                       {q.s.en}
                     </p>
                     <p className="gq-note-ko">
@@ -600,9 +600,9 @@ export default function GrammarQuiz() {
                     </p>
                   </div>
                   {alts.map((a, i) => (
-                    <div key={i} className="gq-note-sec alt">
-                      <span className="gq-tag alt">복수정답</span>
-                      <p className="gq-note-en" lang="en">
+                    <div key={i} className="gq-note-sec is-alt">
+                      <span className="gq-tag is-alt">복수정답</span>
+                      <p className="gq-note-en">
                         {diffWords(q.s.en, a.en).map((x, k) => (
                           <span key={k} className={x.diff ? 'diff' : ''}>
                             {k > 0 ? ' ' : ''}
