@@ -1212,12 +1212,12 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
         <Backdrop theme="sky" />
       ) : (
         <>
-          <div className="scene-layer dino-bg" aria-hidden="true">
-            <DinoScene variant={sceneVariant} />
-          </div>
-          {/* 물속: 자판·패널 뒤에 깔려 있다 (음성 모드와 자판이 올라오는 순간에 보인다) */}
+          {/* 물속: 풍경의 물가 아래와 자판·패널 뒤에 깔려 있다 (풍경 그림은 물가 아래가 뚫려 있으므로 물속을 먼저 그린다) */}
           <div className="sea-layer" aria-hidden="true">
             <SeaScene />
+          </div>
+          <div className="scene-layer dino-bg" aria-hidden="true">
+            <DinoScene variant={sceneVariant} />
           </div>
         </>
       )}
@@ -1227,7 +1227,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
           <QBack />
         </button>
         {/* 말해보카 실측: 채움 끝 x = 82 + 210 × (푼 수 / 목표) (화면 폭 360 기준), 그 오른쪽에 작은 공룡 */}
-        <div className="quiz-progress" style={{ '--f': barReady ? fill : 0 } as CSSProperties}>
+        <div className={`quiz-progress${count === 0 ? ' zero' : ''}`} style={{ '--f': barReady ? fill : 0 } as CSSProperties}>
           <div className="progress-track">
             <div className="progress-fill" />
             <span className="progress-head" aria-hidden="true">

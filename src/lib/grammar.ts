@@ -122,8 +122,37 @@ export function checkGrammar(s: GrammarSentence, picked: WordCard[], cards: Word
       message: `아래 보기에서 ${missing.length}개 단어를 더 사용해서 문장을 완성해 보세요.`,
     };
   }
-  const marks: Mark[] = user.map((w, i) => (norm(w) === norm(best[i]) ? null : 'swap'));
-  return { status: 'order', marks, plus: [], message: '단어의 순서를 바꿔보세요.' };
+  return { status: 'order', marks: orderMarks(user, best), plus: [], message: '단어의 순서를 바꿔보세요.' };
+}
+
+/**
+ * 순서만 틀렸을 때 옮겨야 할 낱말: 정답과 가장 길게 겹치는 순서(최장 공통 부분열)에 들지 않는 낱말만 표시한다.
+ * 말해보카 실측(2026-11-14): 'There is no I promise risk' → risk 하나만 표시 (자리마다 비교하면 I·promise·risk 셋이 된다).
+ * 길이가 같은 후보가 여럿이면 뒤쪽 낱말을 옮기는 쪽을 고른다.
+ */
+export function orderMarks(user: string[], best: string[]): Mark[] {
+  const a = user.map(norm);
+  const b = best.map(norm);
+  const n = a.length;
+  const m = b.length;
+  const dp: number[][] = Array.from({ length: n + 1 }, () => new Array<number>(m + 1).fill(0));
+  for (let i = n - 1; i >= 0; i--) {
+    for (let j = m - 1; j >= 0; j--) {
+      dp[i][j] = a[i] === b[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
+    }
+  }
+  const keep = new Set<number>();
+  let i = 0;
+  let j = 0;
+  while (i < n && j < m) {
+    if (a[i] === b[j] && dp[i][j] === dp[i + 1][j + 1] + 1) {
+      keep.add(i);
+      i++;
+      j++;
+    } else if (dp[i][j + 1] >= dp[i + 1][j]) j++;
+    else i++;
+  }
+  return user.map((_, k) => (keep.has(k) ? null : 'swap'));
 }
 
 /** 정답 문장 속 다른 단어를 빨간색으로 보여주기 위해, 모범답안과 다른 위치 */

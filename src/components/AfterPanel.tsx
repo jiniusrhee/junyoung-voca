@@ -52,6 +52,23 @@ export interface AfterPanelProps {
   moreRows?: MoreAction[][];
   /** enter / leave 슬라이드 애니메이션용 */
   className?: string;
+  /** 다른 학습 모드(문법 등): 도구 줄을 통째로 바꾼다 (최대 5칸) */
+  tools?: PanelTool[];
+  /** 다른 학습 모드: 첫 번째 큰 단추('듣기평가 속도' 자리)를 바꾼다 */
+  bigFirst?: { icon: ReactNode; label: string; onClick: () => void };
+  /** 정답 말풍선이 없는 모드(문법): '^' 단추만 남는다 */
+  noBubble?: boolean;
+  /** 패널 위(카드 아랫부분)에 겹쳐 띄울 것 — 문법의 오답 노트 */
+  above?: ReactNode;
+}
+
+export interface PanelTool {
+  key: string;
+  icon: IconName;
+  label: string;
+  onClick: () => void;
+  badge?: number;
+  active?: boolean;
 }
 
 function Tool({ icon, label, onClick, badge, active }: { icon: IconName; label: string; onClick: () => void; badge?: number; active?: boolean }) {
@@ -95,6 +112,16 @@ export function BigPlay() {
   );
 }
 
+/** 펼친 책 ('문법 사전'): 플립 실측 2026-11-14 — 46 상자 안에서 x 4~42, y 6.33~37.67. 두 쪽이 가운데 3.33 틈을 두고, 책등 쪽이 아래로 처진 모양 */
+export function BigBook() {
+  return (
+    <svg viewBox="0 0 46 46" aria-hidden="true">
+      <path d="M4 9.200Q4 6.400 6.800 6.400Q16 6.600 21.330 12.300V37.600Q15 33.600 5.600 33.300Q4 33.300 4 31.600z" fill="currentColor" />
+      <path d="M42 9.200Q42 6.400 39.200 6.400Q30 6.600 24.670 12.300V37.600Q31 33.600 40.400 33.300Q42 33.300 42 31.600z" fill="currentColor" />
+    </svg>
+  );
+}
+
 /** '학습 완료' 표시: 붓으로 그은 듯 끝이 뾰족한 흰 체크 (플립 실측 2026-11-13: 단추 왼쪽 위에서 x 31.33~73.67, y 27.33~60) */
 export function BigDone() {
   return (
@@ -131,9 +158,10 @@ export default function AfterPanel(p: AfterPanelProps) {
           ))}
         </div>
       )}
+      {p.above}
       <div className="bubble-row">
         {p.bubbleExtra}
-        {(p.listening || !p.hideBubble) && (
+        {!p.noBubble && (p.listening || !p.hideBubble) && (
           <button className={`bubble ${p.answerIsWord && !p.listening ? 'link' : ''}${p.flatBubble ? ' flat' : ''}${p.listening ? ' hearing' : ''}`} lang="en" onClick={p.onBubble}>
             {p.listening ? (
               <span className="dots">
@@ -163,18 +191,31 @@ export default function AfterPanel(p: AfterPanelProps) {
         </div>
       ) : (
         <div className="after-tools">
+          {p.tools ? (
+            p.tools.map((t) => <Tool key={t.key} icon={t.icon} label={t.label} onClick={t.onClick} badge={t.badge} active={t.active} />)
+          ) : (
+            <>
           <Tool icon="quote" label="다른 예문" onClick={p.onExamples} active={p.examplesOpen} />
           <Tool icon="notew" label="오답 노트" onClick={p.onWrongs} badge={p.wrongCount} active={p.wrongsOpen} />
           <Tool icon="micFill" label="말해보기" onClick={p.onSay} />
           <Tool icon="book" label="단어 정보" onClick={p.onInfo} />
           <Tool icon="bookmark" label="내 단어장" onClick={p.onWordbook} active={p.inWordbook} />
+            </>
+          )}
         </div>
       )}
       <div className="after-big">
-        <button className="big-btn" onClick={p.onSlow}>
-          <BigTurtle />
-          <span>듣기평가 속도</span>
-        </button>
+        {p.bigFirst ? (
+          <button className="big-btn" onClick={p.bigFirst.onClick}>
+            {p.bigFirst.icon}
+            <span>{p.bigFirst.label}</span>
+          </button>
+        ) : (
+          <button className="big-btn" onClick={p.onSlow}>
+            <BigTurtle />
+            <span>듣기평가 속도</span>
+          </button>
+        )}
         <button className={`big-btn${p.speaking ? ' speaking' : ''}`} onClick={p.onReplay}>
           <BigSpeaker />
           <span>다시 듣기</span>

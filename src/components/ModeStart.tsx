@@ -1,7 +1,7 @@
 import { useLiveQuery } from 'dexie-react-hooks';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../db';
-import { modeToday } from '../lib/modeStudy';
+import { modeSolved, modeToday } from '../lib/modeStudy';
 import { saveSettings, useSettings } from '../lib/settings';
 import { speak } from '../lib/speech';
 import { daySolved } from '../lib/stats';
@@ -62,7 +62,7 @@ export default function ModeStart({ mode, onClose }: { mode: StudyMode; onClose:
 
   if (mode === 'grammar') {
     const goal = s.grammarGoal;
-    const n = info?.today.total ?? 0;
+    const n = modeSolved(info?.today);
     return (
       <StartSheet
         title="문법 학습"

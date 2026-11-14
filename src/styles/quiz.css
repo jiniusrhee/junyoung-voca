@@ -188,6 +188,13 @@
   height: 24px;
   transition: left 0.27s ease-out 0.12s;
 }
+/* 아직 하나도 못 풀었을 때(0/N): 채움이 없고 작은 공룡은 동그라미 뒤에 숨어 있다 (플립 실측 2026-11-14: 동그라미 오른쪽 아래로 0.7 만 비친다) */
+#root .vocab-quiz .quiz-progress.zero .progress-fill {
+  width: 0;
+}
+#root .vocab-quiz .quiz-progress.zero .progress-head {
+  left: 0;
+}
 #root .vocab-quiz .trophy-badge {
   position: absolute;
   left: 0;
@@ -2744,7 +2751,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: calc(var(--bottom-h) - 6px);
+  /* 그림의 y 0(물가의 기준선)은 아래 블록 위 끝에서 6 아래. 물가가 굽이져 기준선보다 3.3 위까지 올라가므로 층은 6 위에서 시작하고 그만큼을 물 색으로 채운다 */
+  height: var(--bottom-h);
+  padding-top: 6px;
+  box-sizing: border-box;
+  background: #6cb6b2;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;

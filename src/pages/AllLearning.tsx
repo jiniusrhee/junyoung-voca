@@ -5,7 +5,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import Icon, { type IconName } from '../components/Icon';
 import ModeStart from '../components/ModeStart';
 import { db } from '../db';
-import { modeToday } from '../lib/modeStudy';
+import { modeToday, modeSolved } from '../lib/modeStudy';
 import { useSettings } from '../lib/settings';
 import { getTalkProgress } from '../lib/talk';
 import { studyDateOf } from '../lib/time';
@@ -38,7 +38,7 @@ export default function AllLearning() {
       lLearned: await db.mcards.where('mode').equals('listening').count(),
       lMarks: await db.bookmarks.where('mode').equals('listening').count(),
       vToday: (await db.daily.get(studyDateOf()))?.total ?? 0,
-      gToday: (await modeToday('grammar')).total,
+      gToday: modeSolved(await modeToday('grammar')),
       lToday: (await modeToday('listening')).total,
       eLearned: await db.mcards.where('mode').equals('expr').count(),
       eToday: (await modeToday('expr')).total,

@@ -1,3 +1,4 @@
+import { modeSolved } from '../lib/modeStudy';
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ExtraStudySheet from '../components/ExtraStudySheet';
@@ -121,7 +122,7 @@ export default function Home() {
   const byDate = new Map((daily ?? []).map((d) => [d.date, d]));
   const t = byDate.get(today);
   const vocabTotal = daySolved(t);
-  const total = homeMode === 'vocab' ? vocabTotal : (t?.byMode?.[homeMode]?.total ?? 0);
+  const total = homeMode === 'vocab' ? vocabTotal : modeSolved(t?.byMode?.[homeMode]);
   const goal = homeMode === 'grammar' ? settings.grammarGoal : homeMode === 'listening' ? settings.listeningGoal : homeMode === 'expr' ? settings.exprGoal : homeMode === 'talk' ? settings.talkGoal : settings.dailyGoal;
   const pct = Math.round((total / goal) * 100);
   const met = total >= goal;

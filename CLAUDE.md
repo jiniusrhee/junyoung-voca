@@ -35,6 +35,16 @@ Vite + React + TypeScript, Dexie(IndexedDB), ts-fsrs(복습 스케줄), vite-plu
 - 팝업: 어휘 학습 시작 창 `components/ExtraStudySheet.tsx` + `styles/startpop.css`, 하루 목표 `components/GoalModal.tsx` + `styles/goalpop.css`. 둘 다 실측 치수를 창 왼쪽 위 기준 절대 자리로 적었다.
 - 켠 직후 시스템 막대 색: 스플래시가 걷힐 때 테마의 막대 색이 다시 입혀지므로 `android/.../values/styles.xml` 에 기본색을 두고, 웹에서 `reassertBars()`(lib/statusBar.ts)로 다시 칠한다.
 
+## 2026-11-13 에 다시 만든 화면 (수치는 docs/SPEC.md 맨 끝 "2026-11-13" 절)
+
+- 설정 하위 화면 `pages/ModeSettings.tsx` + `styles/modeset.css`(선택자 `.ms2 …`): 값은 아래에서 올라오는 시트(`.sheet-dim`)로 고른다. 즐겨찾기(홈 모드 탭 순서, '확인'을 눌러야 적용)와 왼손 사용자 모드(`settings.leftHanded` → `.home.lefty`)도 여기.
+- 사전 `pages/Dictionary.tsx` + `styles/dict.css`(`.dict2 …`), 낱말 상세 `styles/worddetail.css`(`#root .word-page …`). 치는 대로 찾고, 뒤로 돌아오면 지난 검색이 남는다(모듈 변수 `lastQuery`).
+- 목록 화면(좋아하는 문장·오답노트·학습한 어휘·내 단어장) `styles/lists.css`, `components/ListChrome.tsx`.
+- 어휘 퀴즈의 음성 모드: `pages/Quiz.tsx` 의 `.voice-zone`(`.vz-*`) + 물속 풍경 `components/SeaScene.tsx`(직접 그린 SVG).
+- 목표를 채우면 창이 뜨지 않고 '다음 문제'가 초록 '학습 완료'(`.big-btn.next.fin`)로 바뀐다. `Quiz.tsx` 의 `reachedTarget`. 누르면 홈으로(홈이 다시 채워짐).
+- styles.css 에는 옛 일반 이름 규칙(`.finish`, `.toggle::after` 등)이 남아 있다. 새 클래스 이름을 지을 때 styles.css 를 먼저 grep 한다.
+- `.github/workflows/apk.yml` 은 수동 실행 전용이지만 YAML 이 틀리면 push 마다 실패 메일이 온다. 고치면 `npx js-yaml .github/workflows/apk.yml` 로 확인.
+
 ## 비교·캡처 도구
 
 `scripts/devtools/`(README 참고): 플립·에뮬레이터 캡처(cap.py), OCR 탭(tw.py), 말해보카 자판 입력(kb.py), 녹화·키프레임(rec.sh·kf.py·clip.py), WebView 조작(remote.mjs·drive.mjs), APK 없이 개발 서버 + 헤드리스 Chrome 캡처(shot.mjs). 실제 앱 캡처·영상은 `ref/flip/`(git 제외).

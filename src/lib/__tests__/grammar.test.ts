@@ -72,3 +72,19 @@ describe('grammar', () => {
     expect(diffWords(t.en, t.alts![0].en).filter((x) => x.diff).length).toBeGreaterThan(0);
   });
 });
+
+describe('orderMarks', () => {
+  it('옮겨야 할 낱말만 표시한다 (실제 앱: There is no I promise risk → risk 하나)', async () => {
+    const { orderMarks } = await import('../grammar');
+    const marks = orderMarks(['There', 'is', 'no', 'I', 'promise', 'risk'], ['There', 'is', 'no', 'risk', 'I', 'promise']);
+    expect(marks).toEqual([null, null, null, null, null, 'swap']);
+  });
+  it('앞뒤 두 낱말이 바뀌었으면 뒤쪽 낱말을 표시한다', async () => {
+    const { orderMarks } = await import('../grammar');
+    expect(orderMarks(['want', 'I', 'to', 'learn'], ['I', 'want', 'to', 'learn'])).toEqual([null, 'swap', null, null]);
+  });
+  it('순서가 맞으면 표시가 없다', async () => {
+    const { orderMarks } = await import('../grammar');
+    expect(orderMarks(['a', 'b', 'c'], ['a', 'b', 'c'])).toEqual([null, null, null]);
+  });
+});

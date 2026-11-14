@@ -26,6 +26,13 @@ export interface ModeOutcome {
   failed: boolean;
   elapsedMs: number;
   wrongs?: WrongNote[];
+  /** 목표 진행 수에 쳐 줄지 (기본: 쳐 준다). 문법은 한 번에 맞힌 문제만 */
+  counts?: boolean;
+}
+
+/** 그날 그 모드에서 목표에 쳐 주는 수 */
+export function modeSolved(m: ModeDay | undefined): number {
+  return m?.solved ?? m?.total ?? 0;
 }
 
 export function gradeFor(o: ModeOutcome): Grade {
@@ -62,7 +69,9 @@ export async function recordModeAnswer(mode: StudyMode, itemId: string, o: ModeO
     const d = (await db.daily.get(date)) ?? { date, total: 0, newWords: 0, reviews: 0, correct: 0, timeMs: 0 };
     const byMode = { ...(d.byMode ?? {}) };
     const m = { ...(byMode[mode] ?? emptyDay()) };
-    const before = m.total;
+    const before = modeSolved(m);
+    // counts 를 넘기는 모드(문법)는 그날 처음부터 solved 를 따로 센다 (안 넘기는 모드는 total 그대로)
+    if (o.counts !== undefined || m.solved != null) m.solved = before + (o.counts === false ? 0 : 1);
     m.total += 1;
     if (isNew) m.newItems += 1;
     else m.reviews += 1;
@@ -70,7 +79,7 @@ export async function recordModeAnswer(mode: StudyMode, itemId: string, o: ModeO
     m.timeMs += Math.min(o.elapsedMs, 5 * 60_000);
     byMode[mode] = m;
     await db.daily.put({ ...d, byMode });
-    return { total: m.total, metNow: before < goal && m.total >= goal };
+    return { total: m.total, solved: modeSolved(m), metNow: before < goal && modeSolved(m) >= goal };
   });
   void computeStreak().then(grantRepairPen).catch(() => undefined);
   return { row, grade, isNew, ...result };

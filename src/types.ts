@@ -106,6 +106,8 @@ export type StudyMode = 'vocab' | 'grammar' | 'listening' | 'pairs' | 'expr' | '
 
 export interface ModeDay {
   total: number;
+  /** 목표에 쳐 주는 수. 문법은 한 번에 맞힌 문제만 오른다(말해보카 실측 2026-11-14: 틀렸다 맞히거나 정답 보기를 쓰면 진행 수가 그대로). 없으면 total */
+  solved?: number;
   newItems: number;
   reviews: number;
   correct: number;
