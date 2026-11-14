@@ -298,14 +298,19 @@ export default function ExprQuiz() {
     }
   };
 
+  /** 나가기 · 학습 완료: 들어온 곳(코스 지도 · 목록)으로 돌아간다. 바로 열린 경우에는 코스 지도로 */
+  const leave = () => {
+    if (window.history.length > 1) nav(-1);
+    else nav('/expr', { replace: true });
+  };
+
   /** 이번 학습의 목표를 채웠는가 — 채우면 '다음 문제'가 초록 '학습 완료' */
   const reachedTarget = listIds ? count >= listIds.length : count >= goal && (extraTarget > 0 || (startCount != null && startCount < goal));
 
   const next = async () => {
     if (phase !== 'answered' || !view) return;
     if (reachedTarget) {
-      if (listIds) nav(-1);
-      else nav('/');
+      leave();
       return;
     }
     stopSpeaking();
@@ -454,7 +459,7 @@ export default function ExprQuiz() {
   return (
     <div className={`quiz-screen vocab-quiz expr-quiz theme-${settings.studyTheme}${answered ? ' answered' : ''}${notePanel ? ' notes-open' : ''}${infoCard ? ' examples-open' : ''}`}>
       <QuizScene theme={settings.studyTheme} />
-      <QuizTop count={count} total={goal} title={listIds ? '히스토리 학습' : undefined} onLeave={() => (listIds ? nav(-1) : nav('/expr'))} onSettings={() => nav('/settings/mode/expr')} />
+      <QuizTop count={count} total={goal} title={listIds ? '히스토리 학습' : undefined} onLeave={leave} onSettings={() => nav('/settings/mode/expr')} />
       {toast && <div className="toast">{toast}</div>}
 
       <main className="quiz-stage">

@@ -30,7 +30,8 @@ export default function ExprHome() {
     });
     const daily = await db.daily.toArray();
     const trophies = daily.filter((d) => modeSolved(d.byMode?.expr) >= (s?.exprGoal ?? 15)).length;
-    return { patterns, done, trophies, stars: seen.size };
+    const today = modeSolved(daily.find((d) => d.date === studyDateOf())?.byMode?.expr);
+    return { patterns, done, trophies, stars: seen.size, today };
   }, [cid, s?.exprGoal]);
 
   const nodes = data?.patterns ?? [];
@@ -93,7 +94,7 @@ export default function ExprHome() {
         </span>
       </div>
       <div className="expr-start">
-        <button className="today-btn" onClick={() => nav('/expr/quiz')}>
+        <button className="today-btn" onClick={() => nav((data?.today ?? 0) >= (s?.exprGoal ?? 15) ? `/expr/quiz?target=${(data?.today ?? 0) + 15}` : '/expr/quiz')}>
           <Icon name="book" size={24} /> 오늘의 학습
         </button>
       </div>

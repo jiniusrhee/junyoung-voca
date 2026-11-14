@@ -258,7 +258,7 @@ export default function Home() {
                 homeMode === 'vocab'
                   ? setExtraOpen(true)
                   : homeMode === 'expr'
-                    ? nav(met ? `/expr/quiz?target=${total + 15}` : '/expr/quiz')
+                    ? nav('/expr')
                     : homeMode === 'talk'
                       ? nav('/talk')
                       : setStart(homeMode)
