@@ -181,31 +181,45 @@ export function HBookOpen() {
   );
 }
 
-/** 모드 탭: 어휘 (25 x 26) — 책 읽는 사람 + 확인 배지 */
-export function HTabVocab() {
+/**
+ * 모드 탭 그림 오른쪽 아래의 완료 배지: 그 모드의 오늘 목표를 채웠을 때만 붙는다
+ * (플립 실측 2026-11-14: 어휘는 못 채우고 문법만 채운 날 — 어휘 그림에는 없고 G 책에만 붙어 있었다).
+ * 탭 바탕색으로 둥글게 파낸 자리(반지름 7.5)에 올록볼록한 동그라미 + 체크.
+ */
+function DoneBadge({ cx, cy }: { cx: number; cy: number }) {
   const bumps = Array.from({ length: 8 }, (_, i) => {
     const a = (i * Math.PI) / 4 + Math.PI / 8;
-    return <circle key={i} cx={18.700 + 4.500 * Math.cos(a)} cy={19.700 + 4.500 * Math.sin(a)} r="1.850" fill="currentColor" />;
+    return <circle key={i} cx={cx + 4.500 * Math.cos(a)} cy={cy + 4.500 * Math.sin(a)} r="1.850" fill="currentColor" />;
   });
   return (
-    <svg width="25" height="26" viewBox="0 0 25 26" aria-hidden="true">
+    <>
+      <circle cx={cx} cy={cy} r="7.500" style={cut} />
+      <circle cx={cx} cy={cy} r="4.900" fill="currentColor" />
+      {bumps}
+      <path d={`M${cx - 2.5} ${cy + 0.1}l1.850 1.800 3.250-3.500`} fill="none" style={cutLine} strokeWidth="1.500" strokeLinecap="round" strokeLinejoin="round" />
+    </>
+  );
+}
+
+/** 모드 탭: 어휘 — 책 읽는 사람 (22 x 24.5). 오늘 목표를 채웠으면 확인 배지가 붙는다(25 x 26) */
+export function HTabVocab({ done = false }: { done?: boolean }) {
+  return (
+    <svg width={done ? 25 : 22} height="26" viewBox={done ? '0 0 25 26' : '0 0 22 26'} aria-hidden="true">
       <circle cx="11" cy="3.300" r="3.300" fill="currentColor" />
       <path d="M0.900 8.100c3.300-0.700 7.000 0.300 10.100 2.400 3.100-2.100 6.800-3.100 10.100-2.400 0.500 0.100 0.900 0.600 0.900 1.200v11.200c0 0.600-0.400 1.100-1.000 1.100-3.500 0.200-7.000 1.100-10.000 2.900-3.000-1.800-6.500-2.700-10.000-2.900-0.600 0-1.000-0.500-1.000-1.100V9.300c0-0.600 0.400-1.100 0.900-1.200z" fill="currentColor" />
-      <circle cx="18.700" cy="19.700" r="7.500" style={cut} />
-      <circle cx="18.700" cy="19.700" r="4.900" fill="currentColor" />
-      {bumps}
-      <path d="M16.200 19.800l1.850 1.800 3.250-3.500" fill="none" style={cutLine} strokeWidth="1.500" strokeLinecap="round" strokeLinejoin="round" />
+      {done && <DoneBadge cx={18.7} cy={19.7} />}
     </svg>
   );
 }
 
-/** 모드 탭: 문법 (22 x 22.67) — G 가 파인 책 */
-export function HTabGrammar() {
+/** 모드 탭: 문법 (22 x 22.67) — G 가 파인 책. 오늘 목표를 채웠으면 오른쪽 아래에 확인 배지(그림은 그대로, 배지만 밖으로 나온다) */
+export function HTabGrammar({ done = false }: { done?: boolean }) {
   return (
-    <svg width="22" height="22.667" viewBox="0 0 22 22.667" aria-hidden="true">
+    <svg width="22" height="22.667" viewBox="0 0 22 22.667" overflow="visible" aria-hidden="true">
       <path d="M4.300 0H21a1 1 0 0 1 1 1v20.667a1 1 0 0 1-1 1H4.300A4.300 4.300 0 0 1 0 18.367V4.300A4.300 4.300 0 0 1 4.300 0z" fill="currentColor" />
       <path d="M4.600 19.600H22" fill="none" style={cutLine} strokeWidth="1.500" strokeLinecap="round" />
       <path d="M14.900 6.900a3.900 3.900 0 1 0 1.200 3.500h-3.500" fill="none" style={cutLine} strokeWidth="1.900" strokeLinecap="round" strokeLinejoin="round" />
+      {done && <DoneBadge cx={18.7} cy={19.3} />}
     </svg>
   );
 }

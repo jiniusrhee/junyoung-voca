@@ -2673,6 +2673,11 @@
   display: none;
 }
 /* 시트가 열려 있으면 정답 말풍선은 가려지고, '^' 는 시트 위 끝으로 올라가 '×' 가 된다 */
+/* 시트가 열려 있는 동안에는 도구 이름이 밝아진다 (플립 실측 2026-11-14: 닫힘 #70777c → 열림 #bcc2d0, 그림은 그대로) */
+#root .quiz-screen.vocab-quiz .after.more-open .after-tool > span:last-child,
+:root[data-theme='dark'] #root .quiz-screen.vocab-quiz .after.more-open .after-tool > span:last-child {
+  color: #bcc2d0;
+}
 #root .vocab-quiz .after.more-open .bubble-row .bubble,
 #root .vocab-quiz .after.more-open .bubble-row .dict-pop {
   visibility: hidden;

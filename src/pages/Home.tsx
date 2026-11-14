@@ -20,11 +20,13 @@ import { WEEKDAYS_KO, dayOfWeek, formatClock, shiftDate, studyDateOf } from '../
 import type { ImportedProgress, DailyRow, StudyMode } from '../types';
 
 const MODE_TABS: { key: string; icon: ReactNode; label: string; mode?: StudyMode }[] = [
-  { key: 'grammar', icon: <HTabGrammar />, label: '문법', mode: 'grammar' },
+  { key: 'grammar', icon: null, label: '문법', mode: 'grammar' },
   { key: 'expr', icon: <HTabExpr />, label: '표현', mode: 'expr' },
   { key: 'talk', icon: <HTabTalk />, label: '실전 회화', mode: 'talk' },
   { key: 'listen', icon: <HTabListen />, label: '리스닝', mode: 'listening' },
 ];
+/** 시작 단추의 글 (플립 실측 2026-11-14): 오늘의 어휘·문법·표현·회화·리스닝 / 목표를 채운 뒤에는 추가 … */
+const MODE_BTN: Record<string, string> = { vocab: '어휘', grammar: '문법', listening: '리스닝', expr: '표현', talk: '회화' };
 const MODE_TITLE: Record<string, string> = { vocab: '어휘 학습', grammar: '문법 학습', listening: '리스닝 학습', expr: '표현 학습', talk: '실전 회화 학습' };
 const HOME_MODES: StudyMode[] = ['vocab', 'grammar', 'listening', 'expr', 'talk'];
 // 말해보카 홈 '학습 정보' 범례·막대 색 (플립 다크 모드 캡처 실측)
@@ -138,7 +140,7 @@ export default function Home() {
   return (
     <div
       key={replayRun}
-      className={`screen home ${intro && !replayRun ? 'intro' : replay || replayRun ? 'replay' : ''}${settings.leftHanded ? ' lefty' : ''}`}
+      className={`screen home hm-${homeMode} ${intro && !replayRun ? 'intro' : replay || replayRun ? 'replay' : ''}${settings.leftHanded ? ' lefty' : ''}`}
       style={lag ? ({ '--lag': `${lag}ms` } as CSSProperties) : undefined}
       // 실제 앱은 홈을 처음 건드리는 순간에도 '오늘' 막대가 자라난다 (카드가 다 보이지 않아도)
       onTouchStart={todayBar ? undefined : () => setTodayBar(true)}
@@ -223,13 +225,13 @@ export default function Home() {
               }
             >
               <span className={`btn-ic ${met ? 'spin' : ''}`}>{met ? <HStar /> : <HBookOpen />}</span>
-              {homeMode === 'vocab' ? (met ? '추가 어휘' : '오늘의 어휘') : met ? '추가 학습' : '오늘의 학습'}
+              {met ? '추가' : '오늘의'} {MODE_BTN[homeMode]}
             </button>
           </div>
         </div>
         <div className="mode-tabs">
           <button className={`mode-tab vocab ${homeMode === 'vocab' ? 'active' : ''}`} onClick={() => void saveSettings({ homeMode: 'vocab' })} aria-label="어휘 학습">
-            <HTabVocab />
+            <HTabVocab done={vocabTotal >= settings.dailyGoal} />
           </button>
           {MODE_TABS.filter((m) => !settings.homeTabs || !m.mode || settings.homeTabs.includes(m.mode)).map((m) => (
             <button
@@ -238,7 +240,7 @@ export default function Home() {
               onClick={() => m.mode && void saveSettings({ homeMode: m.mode })}
               aria-label={m.label}
             >
-              {m.icon}
+              {m.key === 'grammar' ? <HTabGrammar done={modeSolved(t?.byMode?.grammar) >= settings.grammarGoal} /> : m.icon}
             </button>
           ))}
           <button className="mode-gear" onClick={() => nav('/settings')} aria-label="설정">

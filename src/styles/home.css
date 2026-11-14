@@ -290,11 +290,55 @@
   border-radius: 14px;
   background: var(--lip);
 }
-.home .today-seat.m-expr,
-.home .today-seat.m-talk,
-.home .today-seat.m-grammar,
+/* 모드마다 단추 면·턱·고리의 색이 다르다 (플립 실측 2026-11-14)
+   어휘 #8e7bfc / #7041e6 · 문법 #64b4ea / #3e7fab · 표현 #e67c95 / #c4526d · 회화 #99b554 / #667f2b · 리스닝 #e29e66 / #b8743b */
+.home .today-seat.m-grammar {
+  --lip: #3e7fab;
+}
+.home .today-seat.m-expr {
+  --lip: #c4526d;
+}
+.home .today-seat.m-talk {
+  --lip: #667f2b;
+}
 .home .today-seat.m-listening {
-  --lip: rgba(0, 0, 0, 0.28);
+  --lip: #b8743b;
+}
+.home .today-btn.m-grammar {
+  background: #64b4ea;
+}
+.home .today-btn.m-expr {
+  background: #e67c95;
+}
+.home .today-btn.m-talk {
+  background: #99b554;
+}
+.home .today-btn.m-listening {
+  background: #e29e66;
+}
+.home.hm-grammar .gauge-fill {
+  stroke: #64b4ea;
+}
+.home.hm-grammar .gauge-label {
+  color: #64b4ea;
+}
+.home.hm-listening .gauge-fill {
+  stroke: #e29e66;
+}
+.home.hm-listening .gauge-label {
+  color: #e29e66;
+}
+.home.hm-expr .gauge-fill {
+  stroke: #e67c95;
+}
+.home.hm-expr .gauge-label {
+  color: #e67c95;
+}
+.home.hm-talk .gauge-fill {
+  stroke: #99b554;
+}
+.home.hm-talk .gauge-label {
+  color: #99b554;
 }
 .home .today-btn::before {
   content: '';
@@ -360,10 +404,11 @@
 .home .mode-tabs .mode-tab.listen svg {
   top: 1px;
 }
+/* 고르지 않은 탭의 바탕 (실측): 어휘 #3b3649 · 문법 #2e3940 · 표현 #533940 · 회화 #393f2c · 리스닝 #4b3c30. 고른 탭은 카드 색 #2c2f33 */
 .home .mode-tabs .mode-tab.vocab {
   z-index: 1;
-  --cut: #34383d;
-  background: #34383d;
+  --cut: #3b3649;
+  background: #3b3649;
   color: #9c81e7;
 }
 .home .mode-tabs .mode-tab.grammar {
