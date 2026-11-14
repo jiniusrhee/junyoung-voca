@@ -219,3 +219,38 @@
 .start-pop .sp-start:active {
   transform: scale(1.04);
 }
+
+/* ---------- 문법 등 다른 모드의 시작 창 (플립 실측 2026-11-14) ----------
+   어휘 창에서 '학습 코스' 칸이 빠진 모양: 330 x 396.33 (화면 y 249~645.33). 고리는 조금 크다(지름 221.33, 선 8, 창 위에서 73.67).
+   줄 둘(줄 간격 24.67, 글자 x 120.67~), 마스코트·숫자·단추는 어휘 창보다 76.67 위. */
+.start-pop.mode {
+  height: 396.333px;
+}
+.start-pop.mode .sp-ring {
+  left: 54.667px;
+  top: 73.667px;
+}
+.start-pop.mode .sp-ring path {
+  stroke-width: 7.6;
+}
+.start-pop.mode .sp-rows {
+  left: 105px;
+  top: 163.667px;
+  width: 118.333px;
+}
+.start-pop.mode .sp-rows span {
+  font-weight: 600;
+}
+.start-pop.mode .sp-rows li {
+  height: 24.667px;
+}
+.start-pop.mode .sp-mascot {
+  top: 242.667px;
+}
+.start-pop.mode .sp-count {
+  top: 265px;
+}
+.start-pop.mode .sp-start {
+  top: 324.333px;
+}
+

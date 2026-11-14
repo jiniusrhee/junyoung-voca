@@ -363,7 +363,7 @@ export default function GrammarQuiz() {
       const res = await recordModeAnswer(
         'grammar',
         q.s.id,
-        { clean, wrong, failed: asFailed, elapsedMs: Date.now() - startedAt.current, counts: clean },
+        { clean, wrong, failed: asFailed, elapsedMs: Date.now() - startedAt.current, counts: clean, firstCleanDays: 120 },
         goal,
       );
       pickerRef.current?.note(q.s.id);

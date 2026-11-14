@@ -28,6 +28,11 @@ export interface ModeOutcome {
   wrongs?: WrongNote[];
   /** 목표 진행 수에 쳐 줄지 (기본: 쳐 준다). 문법은 한 번에 맞힌 문제만 */
   counts?: boolean;
+  /**
+   * 처음 본 문제를 한 번에 맞혔을 때 다음 복습까지의 날수 (어휘의 KNOWN_WORD_DAYS 와 같은 규칙).
+   * 말해보카 문법 실측(2026-11-14): 새 문장을 한 번에 맞히면 '4개월 뒤 복습'.
+   */
+  firstCleanDays?: number;
 }
 
 /** 그날 그 모드에서 목표에 쳐 주는 수 */
@@ -47,7 +52,11 @@ export async function recordModeAnswer(mode: StudyMode, itemId: string, o: ModeO
   const prev = await db.mcards.get(id);
   const isNew = !prev;
   const grade = gradeFor(o);
-  const row = scheduleFields(prev ?? newMCard(mode, itemId, now), grade, now);
+  let row = scheduleFields(prev ?? newMCard(mode, itemId, now), grade, now);
+  if (isNew && o.clean && o.firstCleanDays) {
+    const days = o.firstCleanDays;
+    row = { ...row, due: new Date(now.getTime() + days * 86_400_000), stability: Math.max(row.stability, days), scheduled_days: days, state: State.Review, learning_steps: 0 };
+  }
   const date = studyDateOf(now);
   const result = await db.transaction('rw', db.mcards, db.reviews, db.daily, async () => {
     await db.mcards.put(row);

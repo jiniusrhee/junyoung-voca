@@ -7,7 +7,8 @@ import { speak } from '../lib/speech';
 import { daySolved } from '../lib/stats';
 import { studyDateOf } from '../lib/time';
 import type { StudyMode } from '../types';
-import ExtraStudySheet from './ExtraStudySheet';
+import ExtraStudySheet, { RING_ARC, RING_LEN } from './ExtraStudySheet';
+import { HBookOpen, HStar } from './HomeIcons';
 import Icon from './Icon';
 import Mascot from './Mascot';
 import { StartSheet } from './StudyChrome';
@@ -61,42 +62,59 @@ export default function ModeStart({ mode, onClose }: { mode: StudyMode; onClose:
   }
 
   if (mode === 'grammar') {
+    // 말해보카 플립 실측(2026-11-14): 어휘 시작 창에서 '학습 코스' 칸만 빠진 모양(330 x 396.33). 줄은 '새로운 문장' · '복습할 문장' 둘
     const goal = s.grammarGoal;
     const n = modeSolved(info?.today);
+    const met = n >= goal;
+    let target = goal;
+    if (met) {
+      target = goal + 10;
+      while (target <= n) target += 10;
+    }
+    const left = Math.max(0, target - n);
+    const review = Math.min((info?.due ?? 0) + (info?.wrong ?? 0), left);
+    const fresh = Math.min(info?.fresh ?? 0, left - review);
+    const fill = Math.min(1, n / target);
     return (
-      <StartSheet
-        title="문법 학습"
-        onClose={onClose}
-        action={
-          <button className="extra-start" onClick={() => nav(n >= goal ? `/grammar?target=${n + 10}` : '/grammar')}>
-            <Icon name={n >= goal ? 'star' : 'book'} size={22} /> {n >= goal ? '추가 학습' : '오늘의 학습'}
-          </button>
-        }
-      >
-        <div className="extra-body ring-body">
-          <svg className="start-ring" viewBox="0 0 120 120" aria-hidden="true">
-            <circle cx="60" cy="60" r="52" className="ring-track" />
-            <circle cx="60" cy="60" r="52" className="ring-fill" style={{ strokeDasharray: `${Math.min(1, n / goal) * 326.7} 326.7` }} />
+      <div className="modal-dim" onClick={onClose}>
+        <div className="start-pop mode" onClick={(e) => e.stopPropagation()}>
+          <div className="sp-head">
+            <span>문법 학습</span>
+            <button className="sp-close" onClick={onClose} aria-label="닫기">
+              <svg width="11.667" height="11.667" viewBox="0 0 11.667 11.667" aria-hidden="true">
+                <path d="M0.800 0.800l10.067 10.067M10.867 0.800L0.800 10.867" fill="none" stroke="currentColor" strokeWidth="1.500" strokeLinecap="round" />
+              </svg>
+            </button>
+          </div>
+          <svg className="sp-ring" width="221.333" height="221.333" viewBox="0 0 210.333 210.333" aria-hidden="true">
+            <path d={RING_ARC} className="sp-ring-track" />
+            {fill > 0 && <path d={RING_ARC} className="sp-ring-fill" style={{ strokeDasharray: `${fill * RING_LEN} ${RING_LEN}` }} />}
           </svg>
-          <div className="extra-counts in-ring">
-            <p>
-              새로운 문장 <b>{Math.min(info?.fresh ?? 0, Math.max(0, goal - (info?.due ?? 0) - (info?.wrong ?? 0)))}</b> 개
-            </p>
-            <p>
-              복습할 문장 <b>{info?.due ?? 0}</b> 개
-            </p>
-            <p>
-              틀린 문장 <b>{info?.wrong ?? 0}</b> 개
-            </p>
+          <ul className="sp-rows">
+            <li>
+              <span>새로운 문장</span>
+              <b lang="en">{fresh}</b>
+              <i>개</i>
+            </li>
+            <li>
+              <span>복습할 문장</span>
+              <b lang="en">{review}</b>
+              <i>개</i>
+            </li>
+          </ul>
+          <div className="sp-mascot">
+            <Mascot size={62} mood="cheer" />
           </div>
-          <div className="extra-mascot ring-mascot">
-            <Mascot size={110} mood="cheer" />
-          </div>
-          <p className="extra-progress ring-progress">
-            <b>{n}</b>/{goal}
+          <p className="sp-count" lang="en">
+            <b>{n}</b>
+            <span>/{target}</span>
           </p>
+          <button className="sp-start" onClick={() => nav(met ? `/grammar?target=${target}` : '/grammar')}>
+            {met ? <HStar /> : <HBookOpen />}
+            {met ? '추가 학습' : '오늘의 학습'}
+          </button>
         </div>
-      </StartSheet>
+      </div>
     );
   }
 

@@ -21,7 +21,8 @@ const C = 105.167;
 const SWEEP = 320;
 export const RING_LEN = (2 * Math.PI * R * SWEEP) / 360;
 const END = { x: C + R * Math.cos((50 * Math.PI) / 180), y: C + R * Math.sin((50 * Math.PI) / 180) };
-const ARC = `M ${C} ${C + R} A ${R} ${R} 0 1 1 ${END.x.toFixed(3)} ${END.y.toFixed(3)}`;
+export const RING_ARC = `M ${C} ${C + R} A ${R} ${R} 0 1 1 ${END.x.toFixed(3)} ${END.y.toFixed(3)}`;
+const ARC = RING_ARC;
 
 /** 돌아가는 화살표 두 개 ('변경' 알약): 13 x 11 */
 function Swap() {
