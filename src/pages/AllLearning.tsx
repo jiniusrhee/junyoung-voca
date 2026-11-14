@@ -41,7 +41,7 @@ export default function AllLearning() {
       gToday: modeSolved(await modeToday('grammar')),
       lToday: (await modeToday('listening')).total,
       eLearned: await db.mcards.where('mode').equals('expr').count(),
-      eToday: (await modeToday('expr')).total,
+      eToday: modeSolved(await modeToday('expr')),
       tToday: (await modeToday('talk')).total,
       course: settings?.exprCourse ? (await db.ecourses.get(settings.exprCourse))?.title : (await db.ecourses.orderBy('order').first())?.title,
       story: await lastStory(),

@@ -1,0 +1,262 @@
+/* ================= 표현 학습 (말해보카 플립 실측 2026-11-14, 수치는 docs/SPEC.md 맨 끝 "표현 학습" 절) =================
+   어휘 퀴즈와 같은 틀(.quiz-screen.vocab-quiz)을 쓰고, 표현만의 것을 여기서 덮어쓴다. 새 클래스는 eq- 로 시작한다.
+   카드는 어휘 카드보다 크다: 띠 y 156.67~179.67 + 카드 y 179.67~522 (위 칸 128.67 · 아래 칸 213.67). 풍경 그림의 자리는 어휘와 같다. */
+#root .expr-quiz {
+  --scene-h: 92.667px;
+}
+#root .expr-quiz .scene-layer,
+#root .expr-quiz > .scene-layer.dino-bg {
+  bottom: 212px;
+  height: 165px;
+}
+
+/* ---------- 띠: 카드 폭 전체, 말풍선 그림 + 패턴의 뜻 ---------- */
+#root .expr-quiz .eq-head {
+  height: 23px;
+  min-height: 23px;
+}
+#root .expr-quiz .eq-band {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 3.667px;
+  padding: 0.667px 90px 0 11.667px;
+  border-radius: 11px 11px 0 0;
+  background: var(--q-tab);
+  color: #deead8;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#root .expr-quiz .eq-band svg {
+  flex: none;
+  width: 13px;
+  height: 11px;
+}
+#root .expr-quiz .eq-band > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 배지('N일 전' · 'New' · 'N 뒤 복습')는 어휘 카드보다 3.67 아래 (y 160~) */
+#root .expr-quiz .eq-head .qcard-badges {
+  transform: translateY(3.667px);
+}
+/* 'N 뒤 복습' 배지는 y 165~190 */
+#root .expr-quiz .eq-head .qcard-badges .badge-due {
+  position: relative;
+  top: 5.667px;
+}
+
+/* ---------- 카드 ---------- */
+#root .expr-quiz .eq-card {
+  border-radius: 0 0 28px 28px;
+}
+#root .expr-quiz .eq-card .qcard-top.eq-top {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  height: 128.667px;
+  min-height: 128.667px;
+  padding: 0;
+  border-radius: 0;
+}
+/* 상대: 캐릭터(왼쪽 13.33, 세로 가운데 68.33) + 말풍선 x 99~331.67 · 위에서 11.67 (232.67 x 105.33, #2f3134 + 테두리 #34383c) */
+#root .expr-quiz .eq-avatar {
+  position: absolute;
+  left: 14.667px;
+  top: 41.333px;
+  width: 54px;
+  height: 54px;
+  line-height: 0;
+}
+#root .expr-quiz .eq-bubble {
+  position: absolute;
+  left: 85.667px;
+  top: 11.667px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 232.667px;
+  height: 105.333px;
+  padding: 0 34px 0 16px;
+  border: 1px solid #34383c;
+  border-radius: 13px;
+  background: #2f3134;
+}
+#root .expr-quiz .eq-bubble::before {
+  content: '';
+  position: absolute;
+  left: -7.333px;
+  top: 47px;
+  width: 12px;
+  height: 12px;
+  border-left: 1px solid #34383c;
+  border-bottom: 1px solid #34383c;
+  background: #2f3134;
+  transform: rotate(45deg) skew(12deg, 12deg);
+}
+#root .expr-quiz .eq-bubble p {
+  position: relative;
+  margin: 0;
+  font-size: 17.333px;
+  line-height: 22.333px;
+  color: #dfdfdf;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+#root .expr-quiz .eq-bubble p[lang='ko'] {
+  font-size: 15.333px;
+}
+#root .expr-quiz .eq-trans {
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #4d5158;
+}
+#root .expr-quiz .eq-trans svg {
+  width: 14px;
+  height: 14px;
+}
+#root .expr-quiz .eq-trans.on {
+  color: #8a7ee0;
+}
+
+/* 설명 알약: 위·아래 칸의 경계에 걸쳐 뜬다 (카드 크기는 그대로) */
+#root .expr-quiz .eq-card > .pill {
+  position: absolute;
+  left: 7px;
+  right: 7px;
+  top: 128.667px;
+  margin: 0;
+  transform: translateY(-50%);
+}
+
+/* 아래 칸: 문장(어휘 카드와 같은 21.33px / 32.33, 빈칸 상자도 같음) + 뜻(13.33px, 패턴에 해당하는 곳은 초록).
+   두 줄 문장일 때 첫 줄 밑선이 카드 위에서 197.33, 뜻의 글자 위 끝이 266.33 */
+#root .expr-quiz .eq-card .qcard-bottom.eq-bottom {
+  box-sizing: border-box;
+  height: 213.667px;
+  min-height: 213.667px;
+  padding: 0 16.667px 15.333px;
+  border-radius: 0 0 28px 28px;
+}
+#root .expr-quiz .eq-bottom .en {
+  padding-bottom: 0;
+}
+#root .expr-quiz .eq-bottom .eq-ko {
+  margin: 25px 0 0;
+  font-size: 13.333px;
+  line-height: 18px;
+  color: #dfdfdf;
+}
+#root .expr-quiz .eq-bottom .eq-ko em.hl {
+  color: #34cc78;
+  font-style: normal;
+}
+/* 힌트로 채워 준 글자는 초록 */
+#root .expr-quiz .eq-bottom .blank .typed.eq-pre {
+  color: var(--q-green);
+}
+/* 길이 보기 전: 빈칸이 한 덩어리 — 오른쪽 끝이 흐려져 길이를 가늠할 수 없다 */
+#root .expr-quiz .eq-bottom .blank.eq-long {
+  max-width: 100%;
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 14px), transparent);
+  mask-image: linear-gradient(90deg, #000 calc(100% - 14px), transparent);
+}
+#root .expr-quiz .eq-bottom .blank.eq-long .blank-size {
+  white-space: nowrap;
+}
+
+/* 도구줄의 '길이 보기' 그림 */
+#root .expr-quiz .toolbar .tool-btn .qi.eq-len {
+  width: 23.333px;
+  height: 18.667px;
+  margin: 1.333px 0;
+}
+#root .expr-quiz .vz-btn .eq-len {
+  width: 23.333px;
+  height: 18.667px;
+  margin: 1.667px 0;
+}
+
+/* '다른 예문' (플립 실측): 띠와 배지는 그대로 있고 카드 몸통만 예문 카드로 바뀐다(크기는 카드와 같다 — 342.33).
+   예문마다 영어(패턴 부분 초록) · 뜻(왼쪽, 작게) · 가는 선 · 거북과 스피커 줄 */
+#root .expr-quiz .eq-card[hidden] {
+  display: none;
+}
+#root .expr-quiz .eq-wrap > .info-card {
+  height: 342.333px;
+  margin: 0;
+  border-radius: 0 0 12px 12px;
+}
+#root .expr-quiz .info-card .ex-item.big.eq-ex {
+  position: relative;
+  padding: 13px 17px 0;
+  min-height: 0;
+}
+#root .expr-quiz .info-card .eq-ex .ex-en {
+  margin: 0;
+  padding: 0;
+  font-size: 17.333px;
+  line-height: 22px;
+  color: #dfdfdf;
+}
+#root .expr-quiz .info-card .eq-ex .ex-en .blank.filled {
+  padding: 0;
+  background: none;
+  color: #3bba74;
+  min-height: 0;
+  line-height: inherit;
+  display: inline;
+}
+#root .expr-quiz .info-card .eq-ex-ko {
+  margin: 6px 0 0;
+  font-size: 12.333px;
+  line-height: 17px;
+  color: #a9abad;
+}
+#root .expr-quiz .info-card .eq-ex-btns {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10.667px;
+  padding: 0 14px;
+  border-top: 0.667px solid #313336;
+}
+#root .expr-quiz .info-card .eq-ex-btns button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 41.333px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #4d5257;
+}
+#root .expr-quiz .info-card .eq-ex-btns svg {
+  width: 22px;
+  height: 22px;
+  overflow: visible;
+}
+#root .expr-quiz .info-card .eq-ex-btns button:active {
+  color: #8a8f95;
+}
+
+/* 오답 노트: 카드 아래쪽에 겹쳐 뜬다 (카드가 어휘보다 커서 카드 안쪽 아래에 맞춘다) */
+#root .expr-quiz .note-panel.eq-note {
+  top: auto;
+  bottom: 9.333px;
+  max-height: 196px;
+}

@@ -48,7 +48,7 @@ Vite + React + TypeScript, Dexie(IndexedDB), ts-fsrs(복습 스케줄), vite-plu
 ## 2026-11-14 문법 학습 (수치는 docs/SPEC.md 맨 끝 "2026-11-14" 절)
 
 - 문법 화면 `pages/GrammarQuiz.tsx` 는 어휘 퀴즈와 같은 틀을 쓴다: 뿌리 클래스 `quiz-screen vocab-quiz grammar-quiz`, 공통 조각 `components/QuizShell.tsx`(QuizScene·QuizTop·useStreakDone), 정답 패널 `AfterPanel`(tools·bigFirst·noBubble·above). 문법만의 규칙은 `styles/grammar.css`(`#root .grammar-quiz …`, 새 클래스는 `gq-` 로 시작 — styles.css 에 옛 `.g-*` 규칙이 남아 있다).
-- 다른 학습 모드(표현 · 실전 회화)를 실제 앱에 맞출 때도 같은 방식으로 한다(QuizShell + AfterPanel + 모드 전용 css). 리스닝은 이렇게 옮겼다(아래 절).
+- 리스닝 · 표현도 같은 방식으로 옮겼다(아래 절들). 실전 회화를 맞출 때도 실제 화면을 먼저 보고 같은 틀을 쓰는지 확인할 것.
 - 칩 움직임: 놓이는 칩·돌아가는 칩은 `document.body` 에 붙인 `.gq-ghost` 가 0.15초 동안 날고, 남은 칩은 Web Animations 로 당겨진다(`beforeChange` → `useLayoutEffect`).
 - 크기 단계 `tierOf`(보기 칩 폭의 합 ≤ 340 → 21px, > 650 → 19px), 순서 표시 `lib/grammar.ts` 의 `orderMarks`, 한 번에 맞힌 문제만 세는 `ModeDay.solved`/`modeSolved()`.
 - 머리줄 동그라미는 `useStreakDone()` 이 거짓이면 트로피(`QTrophy`), 참이면 불꽃. "N 연속 학습!" 은 `components/StreakPopup.tsx` + `styles/streakpop.css`(학습 화면에서는 뜨지 않고, 닫히면 `streakpop-closed` 이벤트로 홈이 다시 채워진다).
@@ -65,6 +65,15 @@ Vite + React + TypeScript, Dexie(IndexedDB), ts-fsrs(복습 스케줄), vite-plu
 - TIP 설명은 `lib/listenTips.ts`(규칙 기반, 직접 쓴 글). 실제 앱의 설명글·낱말 뜻 데이터는 가져오지 않는다.
 - 히스토리 학습: 목록 화면(`ModeNotebook` · `Learned`)의 '히스토리 학습' → `components/OrderDialog.tsx`(순차 / 랜덤) → `/listening?ids=…&title=목록 이름`. `QuizTop` 의 `title` 이 있으면 막대가 갈색 띠 + 목록 이름이 된다.
 - 리스닝 시작 창은 `components/ModeStart.tsx` 의 `.start-pop.listen`(`styles/startpop.css` 맨 끝).
+
+## 2026-11-14 표현 학습 (수치는 docs/SPEC.md 맨 끝 "표현 학습" 절)
+
+- 표현 퀴즈 `pages/ExprQuiz.tsx` 도 어휘 퀴즈의 틀: 뿌리 클래스 `quiz-screen vocab-quiz expr-quiz`, `QuizShell` + `AfterPanel`, 전용 규칙은 `styles/expr.css`(`#root .expr-quiz …`, 새 클래스는 `eq-`).
+  빈칸 상자 · 말풍선 · 고스트 · 알약 · 예문 카드 · 오답 노트는 어휘 카드의 클래스(`.blank` · `.bubble` · `.ghost` · `.pill` · `.info-card` · `.note-panel`)를 일부러 그대로 쓴다.
+- 단계는 `step` 0~3: 한 덩어리 빈칸 → 길이 보기 → 힌트 보기(`exprPrefix`: 첫 낱말의 앞 2글자) → 정답 보기(채워진 글자는 남고 나머지가 주황으로 비침).
+- 비교는 `bare`(아포스트로피 · 대소문자 무시), 칸 · 말풍선의 글자는 `shownWord`(정답의 꼴로). 등록되지 않은 오답은 확인을 눌러도 반응이 없다(실제 앱 그대로).
+- 진행 수는 힌트 · 정답 보기를 쓰지 않은 문제만 오른다(`counts: step < 2` → `ModeDay.solved`).
+- 아직 실제와 다른 곳: 코스 지도 화면(`ExprHome`), 표현 사전 판, 상황 사진 카드(데이터 없음).
 
 ## 비교·캡처 도구
 

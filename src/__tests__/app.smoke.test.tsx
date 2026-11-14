@@ -198,4 +198,50 @@ describe('app smoke', () => {
     const day = await db.daily.toArray();
     expect(day.some((d) => (d.byMode?.listening?.total ?? 0) === 1)).toBe(true);
   });
+
+  it('expression: length → typed words turn into boxes, an unregistered wrong answer does nothing, the answer without apostrophes is accepted', async () => {
+    // 가짜 fetch 는 단어 팩만 내주므로 표현 문장은 직접 심는다 (아포스트로피가 든 정답)
+    await db.ecourses.put({ id: 't-course', title: '테스트 코스', group: '테스트', stars: 1, order: 0, pack: 't' });
+    await db.epatterns.put({ key: 't-course:thats', id: 'thats', course: 't-course', ko: '그거 ~네', en: "That's ~", meaning: '', note: '', order: 0 });
+    await db.eitems.put({
+      id: 't-course-thats-01',
+      course: 't-course',
+      pkey: 't-course:thats',
+      partner: { en: 'I got into Yale!', ko: '나 예일대 붙었어!' },
+      en: 'Wow, ___!',
+      answer: "that's great news",
+      ko: '와, **정말 좋은 소식이네**!',
+      order: 0,
+    });
+    const { saveSettings } = await import('../lib/settings');
+    await saveSettings({ exprCourse: 't-course' });
+    window.location.hash = '#/expr/quiz';
+    render(<App />);
+    await waitFor(() => expect(document.querySelector('.expr-quiz .eq-bottom .blank-size')).toBeTruthy(), { timeout: 15_000 });
+    // 길이 보기 전: 빈칸은 한 덩어리
+    expect(document.querySelectorAll('.expr-quiz .eq-bottom .blank').length).toBe(1);
+    const answer = document.querySelector('.expr-quiz .eq-bottom .blank-size')?.textContent ?? '';
+    const words = answer.split(' ');
+    expect(words.length).toBeGreaterThan(0);
+
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: /길이 보기/ }));
+    });
+    expect(document.querySelectorAll('.expr-quiz .eq-bottom .blank').length).toBe(words.length);
+    expect(screen.getByRole('button', { name: /힌트 보기/ })).toBeTruthy();
+
+    // 등록되지 않은 오답 + 확인: 눈에 보이는 반응이 없다
+    await type('zq');
+    await press('Enter');
+    expect(document.querySelector('.expr-quiz .eq-card.is-wrong')).toBeNull();
+    expect(document.querySelector('.expr-quiz .pill')).toBeNull();
+    await press('Backspace', 2);
+
+    // 아포스트로피 없이 소문자로 쳐도 맞는다
+    await type(answer.toLowerCase().replace(/[^a-z ]/g, ''));
+    await screen.findByRole('button', { name: /다음 문제/ }, { timeout: 15_000 });
+    expect([...document.querySelectorAll('.expr-quiz .eq-bottom .blank.filled')].map((e) => e.textContent).join(' ')).toBe(answer);
+    // 힌트를 쓰지 않았으므로 진행 수가 오른다
+    await waitFor(async () => expect((await db.daily.toArray()).some((d) => d.byMode?.expr?.solved === 1)).toBe(true), { timeout: 15_000 });
+  });
 });

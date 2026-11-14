@@ -5,6 +5,7 @@ import Icon from '../components/Icon';
 import { KoSentence } from '../components/QuizCard';
 import { db } from '../db';
 import { courseProgress } from '../lib/expr';
+import { modeSolved } from '../lib/modeStudy';
 import { saveSettings, useSettings } from '../lib/settings';
 import { speak } from '../lib/speech';
 import { shiftDate, studyDateOf } from '../lib/time';
@@ -28,7 +29,7 @@ export default function ExprHome() {
       return its.length > 0 && its.every((i) => seen.has(i.id));
     });
     const daily = await db.daily.toArray();
-    const trophies = daily.filter((d) => (d.byMode?.expr?.total ?? 0) >= (s?.exprGoal ?? 15)).length;
+    const trophies = daily.filter((d) => modeSolved(d.byMode?.expr) >= (s?.exprGoal ?? 15)).length;
     return { patterns, done, trophies, stars: seen.size };
   }, [cid, s?.exprGoal]);
 
