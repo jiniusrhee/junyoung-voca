@@ -2,6 +2,8 @@ import { useLiveQuery } from 'dexie-react-hooks';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Icon from '../components/Icon';
+import KoText from '../components/KoText';
+import { QBack, QGear } from '../components/QuizIcons';
 import SceneArt from '../components/SceneArt';
 import { db } from '../db';
 import { saveSettings, useSettings } from '../lib/settings';
@@ -32,34 +34,42 @@ export default function TalkHome() {
   const cats = [...new Set((stories ?? []).map((x) => x.category))].sort((a, b) => CAT_ORDER.indexOf(a) - CAT_ORDER.indexOf(b));
 
   return (
-    <div className="vs-page talk-home">
-      <header className="vs-head">
-        <button className="vs-back" onClick={() => nav(-1)}>
-          <Icon name="back" size={22} /> 실전 회화 학습
+    <div className="th2">
+      <header className="th2-head">
+        <button className="th2-back" onClick={() => nav(-1)}>
+          <QBack />
+          <span>실전 회화 학습</span>
         </button>
-        <button className="level-chip dark" onClick={() => nav('/talk/level')}>
-          <Icon name="gear" size={16} /> 난이도 · {s.talkLevel}
+        <button className="th2-level" onClick={() => nav('/talk/level')}>
+          <QGear />
+          <span>
+            난이도 · <i lang="en">{s.talkLevel}</i>
+          </span>
         </button>
       </header>
       {!stories?.length && <p className="empty-note">회화 데이터를 받는 중이에요.</p>}
-      <div className="story-carousel">
+      <div className="th2-carousel">
         {list.map((st) => {
           const done = st.episodes.filter((e) => prog?.[e.id]?.done).length;
           const cur = prog ? currentEpisode(st, prog) : 0;
           const started = st.episodes.some((e) => prog?.[e.id]?.ts);
           return (
-            <div key={st.id} className="story-card">
+            <div key={st.id} className="th2-story">
               <SceneArt scene={st.scene} style={{ position: 'absolute', inset: 0 }} />
-              <div className="story-shade" />
-              <span className="story-cefr">{st.cefr}</span>
-              <div className="story-text">
-                <b>{st.title}</b>
-                <span>{st.subtitle}</span>
-                <button className="btn primary story-go" onClick={() => nav(`/talk/${st.id}/${cur}`)}>
-                  <Icon name="play" size={16} /> {started ? '이어서 학습' : '학습 시작'}
-                </button>
-              </div>
-              <div className="story-bar">
+              <div className="th2-shade" />
+              <b>
+                <KoText text={st.title} />
+              </b>
+              <span>
+                <KoText text={st.subtitle} />
+              </span>
+              <button onClick={() => nav(`/talk/${st.id}/${cur}`)}>
+                <svg viewBox="0 0 9 10.667" width="9" height="10.667" aria-hidden="true">
+                  <path d="M0 1.300C0 0.300 1.100-0.300 1.950 0.250l6.300 4.033c0.800 0.500 0.800 1.633 0 2.150L1.950 10.417C1.100 10.967 0 10.367 0 9.367z" fill="#fff" />
+                </svg>
+                {started ? '이어서 학습' : '학습 시작'}
+              </button>
+              <div className="th2-bar">
                 <i style={{ width: `${(done / st.episodes.length) * 100}%` }} />
               </div>
             </div>
@@ -68,30 +78,53 @@ export default function TalkHome() {
       </div>
 
       {review && (
-        <button className="review-card" onClick={() => nav(`/talk/${review.story.id}/${review.epIdx}?line=${review.lineIdx}`)}>
-          <span className="review-tag">복습하기 ›</span>
-          <p className="review-head">
-            문장 복습 <span className="rec">★ 추천</span>
+        <button className="th2-review" onClick={() => nav(`/talk/${review.story.id}/${review.epIdx}?line=${review.lineIdx}`)}>
+          <span className="th2-rtag">
+            복습하기
+            <svg viewBox="0 0 6 10" width="5.333" height="9" aria-hidden="true">
+              <path d="M1 1l4 4-4 4" fill="none" stroke="#fff" strokeWidth="1.500" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+          <p className="th2-rhead">
+            문장 복습
+            <span className="th2-rec">
+              <svg viewBox="0 0 10 10" width="7.667" height="7.667" aria-hidden="true">
+                <path d="M5 0.400 6.350 3.500 9.700 3.800 7.150 6 7.950 9.300 5 7.500 2.050 9.300 2.850 6 0.300 3.800 3.650 3.500z" fill="#4fbe2d" />
+              </svg>
+              추천
+            </span>
           </p>
-          <p className="review-ko">{review.line.ko}</p>
-          <p className="review-src">{review.story.episodes[review.epIdx].title}</p>
+          <p className="th2-rko">
+            <KoText text={review.line.ko} />
+          </p>
+          <p className="th2-rsrc">
+            <i>
+              <SceneArt scene={review.story.scene} withCharacter={false} style={{ position: 'absolute', inset: 0 }} />
+            </i>
+            <KoText text={review.story.episodes[review.epIdx].title} />
+          </p>
         </button>
       )}
-      <Link to="/talk/recent" className="recent-row">
-        최근 학습한 에피소드 <Icon name="chevron" size={18} />
+      <Link to="/talk/recent" className="th2-recent">
+        최근 학습한 에피소드
+        <svg viewBox="0 0 7 12" width="6.667" height="11.333" aria-hidden="true">
+          <path d="M1 1l5 5-5 5" fill="none" stroke="#50575d" strokeWidth="1.600" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
       </Link>
 
       {cats.map((c) => (
-        <section key={c} className="cat-sec">
+        <section key={c} className="th2-cat">
           <h3>{c}</h3>
-          <div className="cat-row">
+          <div className="th2-tiles">
             {(stories ?? [])
               .filter((x) => x.category === c)
               .map((st) => (
-                <button key={st.id} className="cat-card" onClick={() => nav(`/talk/${st.id}/${prog ? currentEpisode(st, prog) : 0}`)}>
+                <button key={st.id} className="th2-tile" onClick={() => nav(`/talk/${st.id}/${prog ? currentEpisode(st, prog) : 0}`)}>
                   <SceneArt scene={st.scene} withCharacter={false} style={{ position: 'absolute', inset: 0 }} />
-                  <span className="cat-shade" />
-                  <b>{st.title}</b>
+                  <span className="th2-tshade" />
+                  <b>
+                    <KoText text={st.title} />
+                  </b>
                 </button>
               ))}
           </div>
@@ -133,45 +166,61 @@ export function TalkRecent() {
   );
 }
 
-/** 학습 난이도 (CEFR) */
+/**
+ * 학습 난이도 (CEFR) — 말해보카 플립 실측(2026-11-14).
+ * 머리줄 아래 안내 글은 제자리에 있고 그 아래로 난이도 칸 여섯이 흐른다. 고른 칸은 보라 테두리 + 그 난이도의 예문이 펼쳐진다.
+ * '확인'은 지금 난이도와 다른 것을 골랐을 때만 또렷해진다.
+ */
 export function TalkLevel() {
   const nav = useNavigate();
   const s = useSettings();
   const [sel, setSel] = useState<Settings['talkLevel'] | null>(null);
   if (!s) return null;
   const cur = sel ?? s.talkLevel;
+  const changed = cur !== s.talkLevel;
   return (
-    <div className="vs-page level-page">
-      <header className="vs-head">
-        <button className="vs-back" onClick={() => nav(-1)}>
-          <Icon name="back" size={22} /> 학습 난이도
+    <div className="th2 th2-lv">
+      <header className="th2-head">
+        <button className="th2-back" onClick={() => nav(-1)}>
+          <QBack />
+          <span>학습 난이도</span>
         </button>
       </header>
-      <p className="level-intro">
-        실전 회화의 난이도는
-        <br />
-        전 세계적으로 통용되는 언어 능력 기준인
-        <br />
-        <em>CEFR</em>을 기반으로 나누어져요.
-      </p>
-      <p className="level-sub">난이도가 낮을수록 채점이 너그러워지고, 내 난이도에 맞는 스토리가 먼저 보여요.</p>
-      <div className="level-list">
+      <div className="th2-lvintro">
+        <p>
+          실전 회화의 난이도는
+          <br />
+          전 세계적으로 통용되는 언어 능력 기준인
+          <br />
+          <em lang="en">CEFR</em>을 기반으로 나누어져요.
+        </p>
+        <small>난이도가 낮을수록 채점이 너그러워지고, 내 난이도의 스토리가 먼저 보여요.</small>
+      </div>
+      <div className="th2-lvlist">
         {CEFR.map((c) => (
-          <button key={c.id} className={`level-card ${cur === c.id ? 'sel' : ''}`} onClick={() => setSel(c.id)}>
-            <span className="radio" />
+          <button key={c.id} className={`th2-lvcard${cur === c.id ? ' sel' : ''}`} onClick={() => setSel(c.id)} aria-pressed={cur === c.id}>
+            <i className="th2-radio" />
+            <b lang="en">{c.id}</b>
             <span>
-              <b>{c.id}</b>
-              <small>{c.desc}</small>
+              <KoText text={c.desc} />
             </span>
+            {cur === c.id && (
+              <span className="th2-lvex">
+                <span>
+                  <KoText text={c.ex.ko} />
+                </span>
+                <span lang="en">{c.ex.en}</span>
+              </span>
+            )}
           </button>
         ))}
       </div>
-      <div className="level-actions">
-        <button className="btn gray big" onClick={() => nav(-1)}>
+      <div className="th2-lvfoot">
+        <button className="th2-lvcancel" onClick={() => nav(-1)}>
           취소
         </button>
         <button
-          className="btn primary big"
+          className={`th2-lvok${changed ? ' on' : ''}`}
           onClick={() => {
             void saveSettings({ talkLevel: cur });
             nav(-1);

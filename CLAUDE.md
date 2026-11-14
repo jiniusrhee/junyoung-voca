@@ -48,7 +48,7 @@ Vite + React + TypeScript, Dexie(IndexedDB), ts-fsrs(복습 스케줄), vite-plu
 ## 2026-11-14 문법 학습 (수치는 docs/SPEC.md 맨 끝 "2026-11-14" 절)
 
 - 문법 화면 `pages/GrammarQuiz.tsx` 는 어휘 퀴즈와 같은 틀을 쓴다: 뿌리 클래스 `quiz-screen vocab-quiz grammar-quiz`, 공통 조각 `components/QuizShell.tsx`(QuizScene·QuizTop·useStreakDone), 정답 패널 `AfterPanel`(tools·bigFirst·noBubble·above). 문법만의 규칙은 `styles/grammar.css`(`#root .grammar-quiz …`, 새 클래스는 `gq-` 로 시작 — styles.css 에 옛 `.g-*` 규칙이 남아 있다).
-- 리스닝 · 표현도 같은 방식으로 옮겼다(아래 절들). 실전 회화를 맞출 때도 실제 화면을 먼저 보고 같은 틀을 쓰는지 확인할 것.
+- 리스닝 · 표현도 같은 방식으로 옮겼다(아래 절들). 실전 회화는 틀이 다르다(장면 그림 위에 말풍선이 쌓이는 화면 — 맨 아래 절).
 - 칩 움직임: 놓이는 칩·돌아가는 칩은 `document.body` 에 붙인 `.gq-ghost` 가 0.15초 동안 날고, 남은 칩은 Web Animations 로 당겨진다(`beforeChange` → `useLayoutEffect`).
 - 크기 단계 `tierOf`(보기 칩 폭의 합 ≤ 340 → 21px, > 650 → 19px), 순서 표시 `lib/grammar.ts` 의 `orderMarks`, 한 번에 맞힌 문제만 세는 `ModeDay.solved`/`modeSolved()`.
 - 머리줄 동그라미는 `useStreakDone()` 이 거짓이면 트로피(`QTrophy`), 참이면 불꽃. "N 연속 학습!" 은 `components/StreakPopup.tsx` + `styles/streakpop.css`(학습 화면에서는 뜨지 않고, 닫히면 `streakpop-closed` 이벤트로 홈이 다시 채워진다).
@@ -74,6 +74,18 @@ Vite + React + TypeScript, Dexie(IndexedDB), ts-fsrs(복습 스케줄), vite-plu
 - 비교는 `bare`(아포스트로피 · 대소문자 무시), 칸 · 말풍선의 글자는 `shownWord`(정답의 꼴로). 등록되지 않은 오답은 확인을 눌러도 반응이 없다(실제 앱 그대로).
 - 진행 수는 힌트 · 정답 보기를 쓰지 않은 문제만 오른다(`counts: step < 2` → `ModeDay.solved`).
 - 아직 실제와 다른 곳: 코스 지도 화면(`ExprHome`), 표현 사전 판, 상황 사진 카드(데이터 없음).
+
+## 2026-11-15 실전 회화 (수치는 docs/SPEC.md 맨 끝 "실전 회화" 절)
+
+- 대화 화면 `pages/TalkPlay.tsx`(시작 화면 · 대화 · 결과 · 전체 에피소드 판) + `styles/talk.css`: 뿌리 클래스 `talk2`, 새 클래스는 `tk-`. 홈 · 난이도는 `pages/TalkHome.tsx`, 뿌리 `th2`, 클래스 `th2-`(같은 css 파일 뒤쪽).
+  styles.css 의 옛 `.talk-*` · `.t-*` · `.ep-*` · `.td-*` · `.story-*` · `.cat-*` 규칙은 이제 쓰이지 않는다(새 이름을 지을 때 겹치지 않게만 주의).
+- 그림은 `components/TalkBits.tsx`(등급 배지 `GradeBadge` · 별 `TalkStar` · 동작 막대 아이콘), 문장 자판은 `components/SentenceKeyboard.tsx`(`.skb`, 실측 키 크기).
+- 머리줄 막대: `--f`(얻은 별 / 만점)만큼 차고 `--t`(1 − 잃은 별 / 만점)만큼 길이가 남는다. 잃은 별은 '다음 문제'를 누를 때 `lost` 에 더한다.
+- 채점 뒤의 상태는 `graded = !!grade && !retrying`. 재도전은 `retrying` 만 켠다(입력 · 결과를 지우지 않는다).
+- 사진 대신 `SceneArt`(직접 그린 SVG) + 마스코트를 쓴다. 시스템 막대 색은 장면의 하늘 · 바닥 색으로 칠한다(`sceneOf`).
+- **학습 화면은 내비게이션 바 색을 스스로 칠한다**: `App.tsx` 의 `ownsBar` 에 든 경로(/quiz · /grammar · /listening · /expr/quiz · /talk/스토리/에피소드)는 앱 껍데기가 건드리지 않는다. 새 학습 화면을 만들면 여기에 넣을 것(안 넣으면 설정이 저장될 때마다 기본색으로 덮인다).
+- 화면 전환 'wipe'(`lib/pageTransition.ts` · `PageHost`): 실전 회화 홈 → 스토리. 닫힘 0.33초 · 검은 화면 0.13초 · 열림 0.27초.
+- `<button>` 은 내용을 세로 가운데에 둔다. 최소 높이를 준 칸형 단추에서 글자 자리가 안 맞으면 이것부터 의심할 것(난이도 칸에서 한 번 헤맸다).
 
 ## 비교·캡처 도구
 

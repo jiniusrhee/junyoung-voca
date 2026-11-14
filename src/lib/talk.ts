@@ -167,11 +167,32 @@ export function pickReview(stories: TalkStory[], prog: TalkProgress, marks: stri
   return bestStars <= 2 ? best : null;
 }
 
-export const CEFR: { id: Settings['talkLevel']; desc: string }[] = [
-  { id: 'A1', desc: '기초적인 문장을 이해하고 사용할 수 있어요. 간단한 질문에 답할 수 있어요.' },
-  { id: 'A2', desc: '일상 생활에 필요한 표현을 이해하고 사용할 수 있어요. 단순한 주제에 대해 간단한 대화를 나눌 수 있어요.' },
-  { id: 'B1', desc: '일, 학교, 취미 등 익숙한 주제에 대해 대화를 이어갈 수 있어요. 문장을 연결하여 이야기할 수 있어요.' },
-  { id: 'B2', desc: '복잡한 주제의 대화 내용을 이해하고 참여할 수 있어요. 자신의 의견을 논리적으로 표현하며 토론할 수 있어요.' },
-  { id: 'C1', desc: '다양한 주제에 대해 유창하고 자연스럽게 말할 수 있어요. 미묘한 뉘앙스까지 표현할 수 있어요.' },
-  { id: 'C2', desc: '원어민에 가까운 수준으로 거의 모든 상황에서 정확하고 세련되게 표현할 수 있어요.' },
+/** 난이도 설명 + 그 난이도의 말투를 보여 주는 예문 한 쌍(직접 쓴 것 — 고른 난이도의 칸이 펼쳐지며 보인다) */
+export const CEFR: { id: Settings['talkLevel']; desc: string; ex: { ko: string; en: string } }[] = [
+  { id: 'A1', desc: '기초적인 문장을 이해하고 사용할 수 있어요. 간단한 질문에 답할 수 있어요.', ex: { ko: '저는 커피를 좋아해요.', en: 'I like coffee.' } },
+  {
+    id: 'A2',
+    desc: '일상 생활에 필요한 표현을 이해하고 사용할 수 있어요. 단순한 주제에 대해 간단한 대화를 나눌 수 있어요.',
+    ex: { ko: '어제 친구랑 영화를 봤는데 재미있었어요.', en: 'I watched a movie with my friend yesterday, and it was fun.' },
+  },
+  {
+    id: 'B1',
+    desc: '일, 학교, 취미 등 익숙한 주제에 대해 대화를 이어갈 수 있어요. 문장을 연결하여 이야기할 수 있어요.',
+    ex: { ko: '비가 오는 날에는 집에서 요리를 하면서 시간을 보내곤 해요.', en: 'When it rains, I usually spend my time cooking at home.' },
+  },
+  {
+    id: 'B2',
+    desc: '복잡한 주제의 대화 내용을 이해하고 참여할 수 있어요. 자신의 의견을 논리적으로 표현하며 토론할 수 있어요.',
+    ex: { ko: '그 제안은 장점이 많지만, 비용을 생각하면 좀 더 따져 봐야 해요.', en: 'The proposal has many advantages, but given the cost, it needs a closer look.' },
+  },
+  {
+    id: 'C1',
+    desc: '다양한 주제에 대해 유창하고 자연스럽게 말할 수 있어요. 미묘한 뉘앙스까지 표현할 수 있어요.',
+    ex: { ko: '겉보기엔 단순해도, 그 결정 뒤에는 꽤 복잡한 사정이 얽혀 있었어요.', en: 'Simple as it may seem, there were fairly complicated circumstances behind that decision.' },
+  },
+  {
+    id: 'C2',
+    desc: '원어민에 가까운 수준으로 거의 모든 상황에서 정확하고 세련되게 표현할 수 있어요.',
+    ex: { ko: '그의 말이 틀렸다기보다는, 문제의 핵심을 교묘하게 비껴간 셈이에요.', en: "It's not so much that he was wrong as that he deftly sidestepped the heart of the matter." },
+  },
 ];

@@ -261,4 +261,101 @@ describe('app smoke', () => {
     // 힌트를 쓰지 않았으므로 진행 수가 오른다
     await waitFor(async () => expect((await db.daily.toArray()).some((d) => d.byMode?.expr?.solved === 1)).toBe(true), { timeout: 15_000 });
   });
+
+  it('conversation: start → typed model answer is Perfect!! with three stars → retry keeps the text → hint then model answer is Nice Try! → result page', async () => {
+    await db.tstories.put({
+      id: 't-story',
+      title: '테스트 스토리',
+      subtitle: '부제',
+      category: '일상',
+      cefr: 'B1',
+      scene: 'street',
+      pack: 't',
+      order: 0,
+      episodes: [
+        {
+          id: 't-story-01',
+          title: '첫 만남',
+          partner: 'Jake',
+          mission: '이웃에게 인사해 봐요.',
+          lines: [
+            { who: 'npc', en: 'Hi there!', ko: '안녕하세요!' },
+            { who: 'me', ko: '네, 지난주에 이사 왔어요.', answer: 'Yes, I moved in last week.', keys: [{ k: 'moved in', tip: "'이사 오다'는 move in 이에요." }], hint: "'이사 오다'는 move in 으로 표현해 보세요.", words: [{ ko: '이사 왔어요', en: 'moved in' }] },
+            { who: 'npc', en: 'Welcome!', ko: '환영해요!' },
+            { who: 'me', ko: '고마워요.', answer: 'Thank you.', hint: '고마움을 전해 보세요.' },
+          ],
+        },
+      ],
+    });
+    const { saveSettings } = await import('../lib/settings');
+    await saveSettings({ talkInput: 'keyboard' });
+    window.location.hash = '#/talk/t-story/0';
+    render(<App />);
+    const start = await screen.findByRole('button', { name: '시작하기' }, { timeout: 15_000 });
+    expect(screen.getByText('전체 에피소드 보기')).toBeTruthy();
+    await act(async () => {
+      fireEvent.click(start);
+    });
+    await waitFor(() => expect(document.querySelector('.talk2.tk-play .skb')).toBeTruthy(), { timeout: 5_000 });
+    // 문장 자판: 맨 처음은 대문자
+    const key = (label: string) => document.querySelector(`.skb [aria-label="${label}"]`) as HTMLElement;
+    expect(key('q').textContent).toBe('Q');
+    const tapKey = async (label: string) => {
+      await act(async () => {
+        fireEvent.pointerDown(key(label));
+      });
+    };
+    for (const ch of 'yes') await tapKey(ch);
+    expect(document.querySelector('.tk-typed span')?.textContent).toBe('Yes');
+    await tapKey('쉼표');
+    await tapKey('띄어쓰기');
+    for (const w of ['i', 'moved', 'in', 'last', 'week']) {
+      for (const ch of w) await tapKey(ch);
+      if (w !== 'week') await tapKey('띄어쓰기');
+    }
+    await tapKey('마침표');
+    await act(async () => {
+      fireEvent.pointerDown(document.querySelector('.skb .skb-row.r3 .skb-key:last-child') as HTMLElement);
+    });
+    await waitFor(() => expect(document.querySelector('.tk-label.perfect')?.textContent).toBe('Perfect!!'), { timeout: 5_000 });
+    await waitFor(() => expect(document.querySelectorAll('.tk-star.on').length).toBe(3), { timeout: 5_000 });
+    expect(document.querySelector('.tk-model p')?.textContent).toBe('Yes, I moved in last week.');
+    // 상대 말풍선은 알약으로 접힌다
+    expect(document.querySelector('.tk-npc-pill')).toBeTruthy();
+
+    // 재도전: 자판이 다시 올라오고 앞서 친 글이 남아 있다
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: '재도전' }));
+    });
+    expect(document.querySelector('.skb')).toBeTruthy();
+    expect(document.querySelector('.tk-typed span')?.textContent).toBe('Yes, i moved in last week.');
+    await act(async () => {
+      fireEvent.pointerDown(document.querySelector('.skb .skb-row.r3 .skb-key:last-child') as HTMLElement);
+    });
+    await waitFor(() => expect(document.querySelector('.tk-actions')).toBeTruthy(), { timeout: 5_000 });
+
+    // 다음 문제 → 힌트 보기 → 모범 답안 = Nice Try!
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: '다음 문제' }));
+    });
+    await waitFor(() => expect(document.querySelector('.tk-ko')?.textContent).toBe('고마워요.'), { timeout: 5_000 });
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: '힌트 보기' }));
+    });
+    expect(document.querySelector('.tk-box.nice')?.textContent).toBe('고마움을 전해 보세요.');
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: '모범 답안' }));
+    });
+    await waitFor(() => expect(document.querySelector('.tk-label.nice')?.textContent).toBe('Nice Try!'), { timeout: 5_000 });
+    expect(document.querySelectorAll('.tk-star.on').length).toBe(0);
+
+    // 마지막 턴: '학습 완료' → 결과 화면 (별 3 + 0 → 평균 1.5 → B)
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: '학습 완료' }));
+    });
+    await waitFor(() => expect(document.querySelector('.talk2.tk-done')).toBeTruthy(), { timeout: 5_000 });
+    expect(screen.getByText('대화 스크립트')).toBeTruthy();
+    expect(document.querySelector('.tk-dhero.g-B')).toBeTruthy();
+    expect(document.querySelectorAll('.tk-dme').length).toBe(2);
+  });
 });

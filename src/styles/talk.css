@@ -1304,3 +1304,462 @@
   font-weight: 700;
   color: #fff;
 }
+
+/* ================= 실전 회화 홈 (pages/TalkHome.tsx — 플립 실측 2026-11-14, 화면 y 기준 → 웹뷰 y = −30.67) =================
+   머리줄 42.67(#121212) · 바탕 #191a1d. 스토리 카드 305.33 x 352(x 27.33~ · y 92.33~444.33, 모서리 18, 다음 카드가 13.33 띄고 살짝 보인다),
+   복습 칸 x 17~343.33 · y 464~601, '최근 학습한 에피소드' y 607.67~654.33, 분류 제목 16px, 타일 143.33 x 190(사이 10). 새 클래스는 th2- */
+#root .th2 {
+  min-height: 100dvh;
+  padding-bottom: 24px;
+  background: #191a1d;
+  color: #d6d6d6;
+}
+#root .th2 button,
+#root .th2 a {
+  -webkit-tap-highlight-color: transparent;
+}
+#root .th2 .th2-head {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  height: 42.667px;
+  border-bottom: 0.667px solid #232427;
+  background: #121212;
+}
+#root .th2 .th2-back {
+  position: absolute;
+  left: 5.333px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 12.667px;
+  height: 42.667px;
+  padding: 0 10px;
+  border: 0;
+  background: none;
+  font-size: 15.333px;
+  color: #d6d6d6;
+  white-space: nowrap;
+}
+#root .th2 .th2-back svg {
+  width: 9px;
+  height: 15.333px;
+  color: #d6d6d6;
+}
+#root .th2 .th2-level {
+  position: absolute;
+  right: 12px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 3.667px;
+  height: 42.667px;
+  padding: 0 10px;
+  border: 0;
+  background: none;
+  font-size: 13.333px;
+  color: #a9a9a9;
+  white-space: nowrap;
+}
+#root .th2 .th2-level svg {
+  width: 14px;
+  height: 14.667px;
+  color: #70777c;
+}
+#root .th2 .th2-level i {
+  font-style: normal;
+  --ls: 0;
+}
+/* 스토리 카드 줄: 가로로 넘기며 카드마다 멈춘다 */
+#root .th2 .th2-carousel {
+  display: flex;
+  gap: 13.333px;
+  margin-top: 19px;
+  padding: 0 27.333px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 27.333px;
+  scrollbar-width: none;
+}
+#root .th2 .th2-carousel::-webkit-scrollbar {
+  display: none;
+}
+#root .th2 .th2-story {
+  position: relative;
+  flex: none;
+  width: 305.333px;
+  height: 352px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #2a2b2e;
+  scroll-snap-align: start;
+}
+#root .th2 .th2-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0) 52%, rgba(0, 0, 0, 0.5) 74%, rgba(0, 0, 0, 0.62));
+}
+#root .th2 .th2-story > b {
+  position: absolute;
+  left: 19.333px;
+  right: 16px;
+  top: 232.333px;
+  font-size: 19.333px;
+  line-height: 23px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#root .th2 .th2-story > span {
+  position: absolute;
+  left: 19px;
+  right: 16px;
+  top: 264.667px;
+  font-size: 12.667px;
+  line-height: 17px;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#root .th2 .th2-story > button {
+  position: absolute;
+  left: 18.333px;
+  top: 296px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 268.667px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #735cf4;
+  font-size: 12.667px;
+  color: #fff;
+}
+#root .th2 .th2-story > button:active {
+  filter: brightness(1.1);
+}
+#root .th2 .th2-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 6.333px;
+  background: #3f4043;
+}
+#root .th2 .th2-bar i {
+  display: block;
+  height: 100%;
+  background: #e2bd6a;
+}
+/* 문장 복습 칸 */
+#root .th2 .th2-review {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 326.333px;
+  margin: 19.667px 0 0 17px;
+  padding: 14.667px 23.667px 18.667px;
+  border: 0.667px solid #735cf4;
+  border-radius: 13px;
+  background: #252627;
+  text-align: left;
+  color: #d6d6d6;
+  overflow: hidden;
+}
+#root .th2 .th2-rtag {
+  position: absolute;
+  right: -0.667px;
+  top: -0.667px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5.333px;
+  width: 84px;
+  height: 28.667px;
+  border-radius: 0 0 0 4px;
+  background: #735cf4;
+  font-size: 11.667px;
+  color: #fff;
+}
+/* 꼬리표의 왼쪽은 비스듬히 휘어 칸의 윗변으로 이어진다 */
+#root .th2 .th2-rtag::before {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 0;
+  width: 22px;
+  height: 28.667px;
+  margin-right: -0.5px;
+  background: #735cf4;
+  clip-path: path('M0 0C7 0 9.500 4 12 13.500 14.500 23 17 28.667 22 28.667V0z');
+}
+#root .th2 .th2-rhead {
+  display: flex;
+  align-items: center;
+  gap: 7.333px;
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  color: #a9a9a9;
+}
+#root .th2 .th2-rec {
+  display: flex;
+  align-items: center;
+  gap: 2.333px;
+  height: 15.333px;
+  padding: 0 5.333px 0 4.667px;
+  border: 0.667px solid #4fbe2d;
+  border-radius: 8px;
+  font-size: 9.333px;
+  font-weight: 700;
+  color: #4fbe2d;
+}
+#root .th2 .th2-rko {
+  margin: 15px 0 0;
+  font-size: 17.333px;
+  line-height: 21.333px;
+  font-weight: 700;
+  color: #d6d6d6;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+#root .th2 .th2-rsrc {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 11.333px 0 0;
+  font-size: 11.667px;
+  line-height: 17.333px;
+  color: #a0a2a3;
+}
+#root .th2 .th2-rsrc i {
+  position: relative;
+  flex: none;
+  width: 17.333px;
+  height: 17.333px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+#root .th2 .th2-recent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 326px;
+  height: 46.667px;
+  margin: 6.667px 0 0 17px;
+  padding: 0 20px 0 23.667px;
+  border: 0.667px solid #303134;
+  border-radius: 13px;
+  background: #252627;
+  font-size: 15.333px;
+  font-weight: 700;
+  color: #d6d6d6;
+  text-decoration: none;
+}
+/* 분류: 제목(글자 위 끝이 앞 칸 아래 23) + 타일 줄(제목 아래 16) */
+#root .th2 .th2-cat h3 {
+  margin: 19px 0 0 17.667px;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 700;
+  color: #d6d6d6;
+}
+#root .th2 .th2-cat + .th2-cat h3 {
+  margin-top: 23px;
+}
+#root .th2 .th2-tiles {
+  display: flex;
+  gap: 10px;
+  margin-top: 12.333px;
+  padding: 0 17.333px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+#root .th2 .th2-tiles::-webkit-scrollbar {
+  display: none;
+}
+#root .th2 .th2-tile {
+  position: relative;
+  flex: none;
+  width: 143.333px;
+  height: 190px;
+  padding: 0;
+  border: 0;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #2a2b2e;
+  text-align: left;
+}
+#root .th2 .th2-tshade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.6));
+}
+#root .th2 .th2-tile > b {
+  position: absolute;
+  left: 11px;
+  right: 10px;
+  bottom: 21.333px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  color: #fff;
+  word-break: keep-all;
+}
+
+/* ---------- 학습 난이도 (플립 실측, 화면 y → 웹뷰 y = −30.67) ----------
+   안내 글 16px · 줄 24 (첫 줄 글자 위 끝 y 103.33) + 작은 글 11.33px(y 182.67). 칸 x 25.33~334.67 · 높이 102 · 사이 14 (첫 칸 y 230.33),
+   칸 안: 동그란 단추(지름 12, 가운데 x 46) · 이름 15.67px 굵게(위 끝 +25.67) · 설명 12.33px #a9a9a9 · 줄 16. 아래 단추 둘 156.67 x 48.67 (y 800~848.67) */
+#root .th2.th2-lv {
+  padding-bottom: 96px;
+}
+#root .th2 .th2-lvintro {
+  position: sticky;
+  top: 43.333px;
+  z-index: 4;
+  padding: 24px 12px 32.667px;
+  background: linear-gradient(#191a1d calc(100% - 24px), rgba(25, 26, 29, 0));
+  text-align: center;
+}
+#root .th2 .th2-lvintro p {
+  margin: 0;
+  font-size: 17.667px;
+  line-height: 24px;
+  color: #d6d6d6;
+}
+#root .th2 .th2-lvintro em {
+  font-style: normal;
+  font-weight: 700;
+  color: #9e92e2;
+  --ls: 0;
+}
+#root .th2 .th2-lvintro small {
+  display: block;
+  margin-top: 9.667px;
+  font-size: 11.667px;
+  line-height: 16px;
+  color: #a9a9a9;
+}
+#root .th2 .th2-lvlist {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 2px 25.333px 0;
+}
+/* 내용(이름 + 설명)은 칸 안에서 세로 가운데 (실측: 설명이 두 줄이면 이름이 위에서 25.67, 세 줄이면 17.67) */
+#root .th2 .th2-lvcard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 102px;
+  padding: 12px 24px 12px 38.667px;
+  border: 1px solid #36383d;
+  border-radius: 12px;
+  background: #242629;
+  text-align: left;
+  color: #d6d6d6;
+}
+#root .th2 .th2-lvcard.sel {
+  padding-top: 18.667px;
+  padding-bottom: 5px;
+  border-color: #735cf4;
+  box-shadow: inset 0 0 0 0.333px #735cf4;
+}
+#root .th2 .th2-radio {
+  position: absolute;
+  left: 14.333px;
+  top: 50%;
+  box-sizing: border-box;
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  border: 1px solid #454752;
+  border-radius: 50%;
+}
+#root .th2 .th2-lvcard.sel .th2-radio {
+  border-color: #454752;
+  background: radial-gradient(circle, #735cf4 0 3.6px, #1b1c1f 4.2px);
+}
+#root .th2 .th2-lvcard > b {
+  display: block;
+  font-size: 15.667px;
+  line-height: 20px;
+  font-weight: 700;
+  color: #d6d6d6;
+  --ls: 0;
+}
+#root .th2 .th2-lvcard > span {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 16.333px;
+  color: #a9a9a9;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+/* 고른 난이도의 예문: 가는 선 아래 '– 한국어' / '– 영어' */
+#root .th2 .th2-lvcard > .th2-lvex {
+  margin-top: 7px;
+  padding: 9px 0 2px;
+  border-top: 1px solid #37383f;
+}
+#root .th2 .th2-lvex > span {
+  position: relative;
+  display: block;
+  padding-left: 12.333px;
+  font-size: 13px;
+  line-height: 16.333px;
+  color: #a9a9a9;
+}
+#root .th2 .th2-lvex > span + span {
+  margin-top: 5px;
+  --ls: 0;
+}
+#root .th2 .th2-lvex > span::before {
+  content: '–';
+  position: absolute;
+  left: 1px;
+  color: #6b6d72;
+}
+#root .th2 .th2-lvfoot {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 6;
+  display: flex;
+  gap: 8.667px;
+  padding: 26px 19px 14.667px;
+  background: linear-gradient(rgba(25, 26, 29, 0), #191a1d 24px);
+}
+#root .th2 .th2-lvfoot button {
+  flex: 1;
+  height: 48.667px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  font-size: 15.667px;
+  color: #faf9fe;
+}
+#root .th2 .th2-lvcancel {
+  background: #404446;
+}
+#root .th2 .th2-lvok {
+  background: #473c8b;
+}
+#root .th2 .th2-lvok.on {
+  background: #735cf4;
+}
+
