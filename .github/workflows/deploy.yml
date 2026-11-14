@@ -10,9 +10,10 @@ permissions:
   pages: write
   id-token: write
 
+# 연달아 push 해도 돌고 있던 배포를 끊지 않는다(끊으면 '취소됨'으로 끝나 알림이 올 수 있다). 뒤에 온 것은 기다렸다가 돈다
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
