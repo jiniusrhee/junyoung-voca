@@ -45,6 +45,16 @@ Vite + React + TypeScript, Dexie(IndexedDB), ts-fsrs(복습 스케줄), vite-plu
 - styles.css 에는 옛 일반 이름 규칙(`.finish`, `.toggle::after` 등)이 남아 있다. 새 클래스 이름을 지을 때 styles.css 를 먼저 grep 한다.
 - `.github/workflows/apk.yml` 은 수동 실행 전용이지만 YAML 이 틀리면 push 마다 실패 메일이 온다. 고치면 `npx js-yaml .github/workflows/apk.yml` 로 확인.
 
+## 2026-11-14 문법 학습 (수치는 docs/SPEC.md 맨 끝 "2026-11-14" 절)
+
+- 문법 화면 `pages/GrammarQuiz.tsx` 는 어휘 퀴즈와 같은 틀을 쓴다: 뿌리 클래스 `quiz-screen vocab-quiz grammar-quiz`, 공통 조각 `components/QuizShell.tsx`(QuizScene·QuizTop·useStreakDone), 정답 패널 `AfterPanel`(tools·bigFirst·noBubble·above). 문법만의 규칙은 `styles/grammar.css`(`#root .grammar-quiz …`, 새 클래스는 `gq-` 로 시작 — styles.css 에 옛 `.g-*` 규칙이 남아 있다).
+- 다른 학습 모드(리스닝·표현)를 실제 앱에 맞출 때도 같은 방식으로 한다(QuizShell + AfterPanel + 모드 전용 css).
+- 칩 움직임: 놓이는 칩·돌아가는 칩은 `document.body` 에 붙인 `.gq-ghost` 가 0.15초 동안 날고, 남은 칩은 Web Animations 로 당겨진다(`beforeChange` → `useLayoutEffect`).
+- 크기 단계 `tierOf`(보기 칩 폭의 합 ≤ 340 → 21px, > 650 → 19px), 순서 표시 `lib/grammar.ts` 의 `orderMarks`, 한 번에 맞힌 문제만 세는 `ModeDay.solved`/`modeSolved()`.
+- 머리줄 동그라미는 `useStreakDone()` 이 거짓이면 트로피(`QTrophy`), 참이면 불꽃. "N 연속 학습!" 은 `components/StreakPopup.tsx` + `styles/streakpop.css`(학습 화면에서는 뜨지 않고, 닫히면 `streakpop-closed` 이벤트로 홈이 다시 채워진다).
+- 풍경 `DinoScene` 은 물가 아래가 뚫려 있고 그 밑에 `SeaScene` 층이 깔린다(물속 층을 먼저 그린다). 문법 화면에서는 같은 그림이 14 아래.
+- 스크래치패드(임시 폴더)의 오래된 도구 파일이 지워진 적이 있다(2026-11-14 cap.py). 다시 쓸 도구는 `scripts/devtools/` 에 둔다.
+
 ## 비교·캡처 도구
 
 `scripts/devtools/`(README 참고): 플립·에뮬레이터 캡처(cap.py), OCR 탭(tw.py), 말해보카 자판 입력(kb.py), 녹화·키프레임(rec.sh·kf.py·clip.py), WebView 조작(remote.mjs·drive.mjs), APK 없이 개발 서버 + 헤드리스 Chrome 캡처(shot.mjs). 실제 앱 캡처·영상은 `ref/flip/`(git 제외).
