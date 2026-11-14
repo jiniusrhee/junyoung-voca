@@ -48,12 +48,23 @@ Vite + React + TypeScript, Dexie(IndexedDB), ts-fsrs(복습 스케줄), vite-plu
 ## 2026-11-14 문법 학습 (수치는 docs/SPEC.md 맨 끝 "2026-11-14" 절)
 
 - 문법 화면 `pages/GrammarQuiz.tsx` 는 어휘 퀴즈와 같은 틀을 쓴다: 뿌리 클래스 `quiz-screen vocab-quiz grammar-quiz`, 공통 조각 `components/QuizShell.tsx`(QuizScene·QuizTop·useStreakDone), 정답 패널 `AfterPanel`(tools·bigFirst·noBubble·above). 문법만의 규칙은 `styles/grammar.css`(`#root .grammar-quiz …`, 새 클래스는 `gq-` 로 시작 — styles.css 에 옛 `.g-*` 규칙이 남아 있다).
-- 다른 학습 모드(리스닝·표현)를 실제 앱에 맞출 때도 같은 방식으로 한다(QuizShell + AfterPanel + 모드 전용 css).
+- 다른 학습 모드(표현 · 실전 회화)를 실제 앱에 맞출 때도 같은 방식으로 한다(QuizShell + AfterPanel + 모드 전용 css). 리스닝은 이렇게 옮겼다(아래 절).
 - 칩 움직임: 놓이는 칩·돌아가는 칩은 `document.body` 에 붙인 `.gq-ghost` 가 0.15초 동안 날고, 남은 칩은 Web Animations 로 당겨진다(`beforeChange` → `useLayoutEffect`).
 - 크기 단계 `tierOf`(보기 칩 폭의 합 ≤ 340 → 21px, > 650 → 19px), 순서 표시 `lib/grammar.ts` 의 `orderMarks`, 한 번에 맞힌 문제만 세는 `ModeDay.solved`/`modeSolved()`.
 - 머리줄 동그라미는 `useStreakDone()` 이 거짓이면 트로피(`QTrophy`), 참이면 불꽃. "N 연속 학습!" 은 `components/StreakPopup.tsx` + `styles/streakpop.css`(학습 화면에서는 뜨지 않고, 닫히면 `streakpop-closed` 이벤트로 홈이 다시 채워진다).
 - 풍경 `DinoScene` 은 물가 아래가 뚫려 있고 그 밑에 `SeaScene` 층이 깔린다(물속 층을 먼저 그린다). 문법 화면에서는 같은 그림이 14 아래.
 - 스크래치패드(임시 폴더)의 오래된 도구 파일이 지워진 적이 있다(2026-11-14 cap.py). 다시 쓸 도구는 `scripts/devtools/` 에 둔다.
+
+## 2026-11-14 리스닝 학습 (수치는 docs/SPEC.md 맨 끝 "리스닝 학습" 절)
+
+- 리스닝 화면 `pages/ListeningQuiz.tsx` 도 어휘 퀴즈의 틀을 쓴다: 뿌리 클래스 `quiz-screen vocab-quiz listen-quiz lq-{mc|kb|voice}`, `QuizShell` + `AfterPanel`, 전용 규칙은 `styles/listening.css`(`#root .listen-quiz …`, 새 클래스는 `lq-`).
+  **`blank` · `ok` · `hl` 같은 짧은 이름은 쓰지 말 것** — quiz.css 의 `.vocab-quiz .blank` 규칙에 걸려 글자 자리가 틀어진 적이 있다(2026-11-14).
+- 로직은 `lib/listening.ts`: 낱말 나누기 `listenWords`(show · key · type · btn), 자판 입력 `typedMatch`(낱말을 다 치는 순간 채워짐), 객관식 보기 순서 `mcOrder`(넷씩 묶어 섞기), 막대 `listenProgress`, 결과 `resultFor`(들은 횟수). 숫자가 든 문장은 `listenPool` 에서 뺀다.
+- 낱말이 카드로 날아가는 움직임: `accept()` 가 출발 자리를 `flyFrom` 에 적고 `useLayoutEffect([done])` 가 `document.body` 의 `.lq-ghost` 를 0.23초 날린다.
+- 끝내기 `finish()` 의 박자: 결과 글자 0.38초 → 패널 전환 1.09초(정답 보기는 0.85초~) → 밑줄 +0.96초부터 낱말마다 67ms. 입력 칸은 내려가는 움직임(`kbSink`)이 끝날 때(`onAnimationEnd`) 치운다 — 타이머로 치우면 기기에서 패널보다 먼저 사라진다.
+- TIP 설명은 `lib/listenTips.ts`(규칙 기반, 직접 쓴 글). 실제 앱의 설명글·낱말 뜻 데이터는 가져오지 않는다.
+- 히스토리 학습: 목록 화면(`ModeNotebook` · `Learned`)의 '히스토리 학습' → `components/OrderDialog.tsx`(순차 / 랜덤) → `/listening?ids=…&title=목록 이름`. `QuizTop` 의 `title` 이 있으면 막대가 갈색 띠 + 목록 이름이 된다.
+- 리스닝 시작 창은 `components/ModeStart.tsx` 의 `.start-pop.listen`(`styles/startpop.css` 맨 끝).
 
 ## 비교·캡처 도구
 

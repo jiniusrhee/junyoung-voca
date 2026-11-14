@@ -2,6 +2,7 @@ import { useLiveQuery } from 'dexie-react-hooks';
 import { Fragment, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Icon from '../components/Icon';
+import OrderDialog, { shuffled } from '../components/OrderDialog';
 import { HChevron, HReader } from '../components/HomeIcons';
 import SubHeader from '../components/SubHeader';
 import { LEARNED_KINDS, importedDay, learnedCounts, learnedList, logText, type LearnedKind, type LearnedRow } from '../lib/learned';
@@ -63,6 +64,7 @@ export function LearnedWords() {
   const [pick, setPick] = useState<string>('');
   const [revealed, setRevealed] = useState<Set<string>>(new Set());
   const [menu, setMenu] = useState<string | null>(null);
+  const [orderOpen, setOrderOpen] = useState(false);
   const book = useWordbook();
   const rows = useLiveQuery(() => learnedList(k, date), [k, date]);
   const extra = useLiveQuery(() => (k === 'daily' ? importedDay(date) : Promise.resolve({ rows: [], plain: [] })), [k, date]);
@@ -149,10 +151,19 @@ export function LearnedWords() {
       </div>
       {list.length > 0 && (
         <div className="nb-foot">
-          <button className="btn primary big" onClick={() => nav(`/quiz?ids=${list.map((r) => r.word.id).join(',')}`)}>
+          <button className="btn primary big" onClick={() => setOrderOpen(true)}>
             히스토리 학습 ({list.length}개) <Icon name="chevron" size={16} />
           </button>
         </div>
+      )}
+      {orderOpen && (
+        <OrderDialog
+          onClose={() => setOrderOpen(false)}
+          onPick={(order) => {
+            const ids = list.map((r) => r.word.id);
+            nav(`/quiz?ids=${(order === 'random' ? shuffled(ids) : ids).join(',')}`);
+          }}
+        />
       )}
 
       {sheet && (

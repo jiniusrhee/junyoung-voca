@@ -333,3 +333,121 @@
   font-weight: 400;
   color: #fff;
 }
+
+/* ---------- '학습 순서 설정' 창 (components/OrderDialog.tsx — 플립 실측 2026-11-14) ----------
+   창 335.33 x 330.33 (#242629). 제목 17px(위에서 가운데 35.83). 칸 둘 308.67 x 86.33(위에서 66.67 · 164, 테두리 1.33 — 고른 칸 #735cf4, 아닌 칸 #454752):
+   동그란 단추 13.33(왼쪽 14.33) · 그림(왼쪽 34.33 · 위 14.67, 46.67 x 50 상자) · 이름 15px 굵게(왼쪽 87.33) · 설명 11.67px #888990.
+   취소(#404446) / 결정(#735cf4) 149.33 x 49, 위에서 266 */
+.modal-dim.order-dim {
+  padding: 0;
+  background: rgba(0, 0, 0, 0.72);
+  animation: fadeIn 0.1s linear both;
+}
+.order-pop {
+  position: relative;
+  flex: none;
+  width: 335.333px;
+  height: 330.333px;
+  border-radius: 14px;
+  background: #242629;
+  color: #d6d6d6;
+}
+.order-pop h3 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 24.333px;
+  margin: 0;
+  font-size: 17px;
+  line-height: 23px;
+  font-weight: 400;
+  text-align: center;
+}
+.order-pop .op-opt {
+  position: absolute;
+  left: 13.333px;
+  top: 66.667px;
+  box-sizing: border-box;
+  width: 308.667px;
+  height: 86.333px;
+  padding: 0;
+  border: 1.333px solid #454752;
+  border-radius: 8px;
+  background: none;
+  text-align: left;
+  color: #d6d6d6;
+  -webkit-tap-highlight-color: transparent;
+}
+.order-pop .op-opt + .op-opt {
+  top: 164px;
+}
+.order-pop .op-opt.on {
+  border-color: #735cf4;
+  background: #24262a;
+}
+.order-pop .op-radio {
+  position: absolute;
+  left: 13px;
+  top: 35.167px;
+  box-sizing: border-box;
+  width: 13.333px;
+  height: 13.333px;
+  border: 1px solid #454752;
+  border-radius: 50%;
+}
+.order-pop .op-opt.on .op-radio {
+  border-color: #735cf4;
+  background: radial-gradient(circle, #735cf4 0 3.6px, transparent 4.2px);
+}
+.order-pop .op-ic {
+  position: absolute;
+  left: 33px;
+  top: 13.333px;
+  width: 46.667px;
+  height: 50px;
+}
+.order-pop .op-opt b {
+  position: absolute;
+  left: 86px;
+  top: 13px;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 700;
+}
+.order-pop .op-opt span {
+  position: absolute;
+  left: 86px;
+  top: 36px;
+  width: 209px;
+  font-size: 12.667px;
+  line-height: 17px;
+  color: #888990;
+  word-break: keep-all;
+}
+.order-pop .op-btns {
+  position: absolute;
+  left: 13px;
+  top: 266px;
+  display: flex;
+  gap: 10.667px;
+}
+.order-pop .op-btns button {
+  width: 149.333px;
+  height: 49px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+}
+.order-pop .op-cancel {
+  background: #404446;
+}
+.order-pop .op-ok {
+  background: #735cf4;
+}
+.order-pop .op-btns button:active {
+  filter: brightness(1.12);
+}
+

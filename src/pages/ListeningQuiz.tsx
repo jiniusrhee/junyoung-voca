@@ -342,7 +342,7 @@ export default function ListeningQuiz() {
       setBanner(true);
     } else later(() => setBanner(true), 380);
     if (r !== 'nice') later(() => sfx('correct'), 380);
-    const swapAt = failed ? Math.max(850, left * 67 + 250) : 1040;
+    const swapAt = failed ? Math.max(850, left * 67 + 250) : 1090;
     later(() => {
       setPanelReady(true);
       setZoneLeaving(true);
@@ -357,8 +357,14 @@ export default function ListeningQuiz() {
       }
       setFlights((f) => f + 1);
     }, swapAt);
-    // 초록 밑줄: 패널이 올라오고 0.9초 뒤부터 낱말마다 67ms
-    words.forEach((_, i) => later(() => setSung((n) => Math.max(n, i + 1)), swapAt + 900 + i * 67));
+    // 초록 밑줄: 패널이 올라오고 1초쯤 뒤부터 낱말마다 67ms
+    // (플립 60fps 녹화: 패널 전환 1.02초 뒤부터 4프레임에 한 낱말, 줄이 바뀌는 곳에서는 0.13초 더 쉰다)
+    const tops = [...(enRef.current?.querySelectorAll<HTMLElement>('[data-w]') ?? [])].map((el) => el.offsetTop);
+    let pause = 0;
+    words.forEach((_, i) => {
+      if (i > 0 && tops[i] != null && tops[i] !== tops[i - 1]) pause += 130;
+      later(() => setSung((n) => Math.max(n, i + 1)), swapAt + 960 + i * 67 + pause);
+    });
     setCount((c) => c + 1);
     try {
       const res = await recordModeAnswer(

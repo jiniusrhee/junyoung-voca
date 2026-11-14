@@ -2,6 +2,7 @@ import { useLiveQuery } from 'dexie-react-hooks';
 import { Fragment, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Icon from '../components/Icon';
+import OrderDialog, { shuffled } from '../components/OrderDialog';
 import SubHeader from '../components/SubHeader';
 import { db } from '../db';
 import { GRAMMAR_BOOKMARKS, folderItems, toggleInFolder } from '../lib/folders';
@@ -249,6 +250,7 @@ export default function ModeNotebook() {
   const [pick, setPick] = useState('');
   const [open, setOpen] = useState<Set<string>>(new Set());
   const [menu, setMenu] = useState<string | null>(null);
+  const [orderOpen, setOrderOpen] = useState(false);
   const data = useLiveQuery(() => listOf(m, k, date, today), [m, k, date, today]);
   const marks = useLiveQuery(async () => (m === 'grammar' ? folderItems(GRAMMAR_BOOKMARKS) : new Set((await db.bookmarks.where('mode').equals(m).toArray()).map((b) => b.itemId))), [m]);
   const label = date === today ? '오늘' : date === shiftDate(today, -1) ? '어제' : date.slice(5).replace('-', '.');
@@ -416,10 +418,20 @@ export default function ModeNotebook() {
 
       {!meta.topic && rows.length > 0 && (
         <div className="nb-foot">
-          <button className="btn primary big" onClick={() => nav(`${quizPath(m)}?ids=${rows.map((r) => r.s.id).join(',')}${listen ? `&title=${encodeURIComponent(meta.label)}` : ''}`)}>
+          <button className="btn primary big" onClick={() => setOrderOpen(true)}>
             히스토리 학습 ({rows.length}개) <Icon name="chevron" size={16} />
           </button>
         </div>
+      )}
+      {/* 말해보카: 히스토리 학습을 누르면 순차 / 랜덤을 먼저 고른다 */}
+      {orderOpen && (
+        <OrderDialog
+          onClose={() => setOrderOpen(false)}
+          onPick={(order) => {
+            const ids = rows.map((r) => r.s.id);
+            nav(`${quizPath(m)}?ids=${(order === 'random' ? shuffled(ids) : ids).join(',')}${listen ? `&title=${encodeURIComponent(meta.label)}` : ''}`, { replace: false });
+          }}
+        />
       )}
 
       {sheet && (
