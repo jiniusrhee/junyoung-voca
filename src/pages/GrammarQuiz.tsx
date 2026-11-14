@@ -34,6 +34,39 @@ interface CardView {
   dueText: string | null;
   flash: Flash;
   hint: string | null;
+  /** 크기 단계: l(낱말이 적다: 칩 21px, 위 칸이 높다) · m(보통 20px) · s(낱말이 많다: 19px, 한국어도 작게) */
+  tier: Tier;
+  /** 한국어 문장이 두 줄로 넘어갔는가 (위 칸 높이가 달라진다) */
+  ko2: boolean;
+}
+
+type Tier = 'l' | 'm' | 's';
+
+/**
+ * 크기 단계 (말해보카 실측 2026-11-14, 12문제): 보기 칩을 20px 로 늘어놓았을 때의 폭을 다 더한 값으로 갈린다.
+ * 297 → 21px / 400~624 → 20px / 691~692 → 19px. 경계는 그 사이 값으로 잡았다.
+ */
+let measureCtx: CanvasRenderingContext2D | null | undefined;
+function tierOf(cards: WordCard[]): Tier {
+  if (measureCtx === undefined) {
+    try {
+      measureCtx = document.createElement('canvas').getContext('2d');
+    } catch {
+      measureCtx = null;
+    }
+  }
+  const ctx = measureCtx;
+  let total = 0;
+  for (const c of cards) {
+    // 캔버스를 못 쓰면 글자 수로 어림한다 (20px Roboto 의 평균 글자 폭 ≈ 10.4)
+    let w = c.text.length * 10.4;
+    if (ctx) {
+      ctx.font = `20px ${getComputedStyle(document.body).fontFamily || 'system-ui'}`;
+      w = ctx.measureText(c.text).width || w;
+    }
+    total += Math.max(34.667, w + 14.4);
+  }
+  return total <= 340 ? 'l' : total > 650 ? 's' : 'm';
 }
 
 /**
@@ -81,6 +114,9 @@ export default function GrammarQuiz() {
   const [toast, setToast] = useState<string | null>(null);
   const [speaking, setSpeaking] = useState(false);
   const [firstIn, setFirstIn] = useState(false);
+  /** 정답 보기를 눌렀다: '확인'은 회색으로 남는다 */
+  const [revealed, setRevealed] = useState(false);
+  const [ko2, setKo2] = useState(false);
   const pickerRef = useRef<GrammarPicker | null>(null);
   const startedAt = useRef(Date.now());
   const started = useRef(false);
@@ -94,6 +130,7 @@ export default function GrammarQuiz() {
   const prevRects = useRef<Map<number, DOMRect>>(new Map());
 
   const cards = useMemo(() => (q ? buildCards(q.s) : []), [q]);
+  const tier = useMemo(() => tierOf(cards), [cards]);
   const tk = useMemo(() => (q ? tokenize(q.s.en) : null), [q]);
   /** 히스토리 학습: 목록의 문장만 순서대로 */
   const listIds = params.get('ids')?.split(',').filter(Boolean) ?? null;
@@ -150,6 +187,8 @@ export default function GrammarQuiz() {
     setPanelReady(false);
     setRevealDue(false);
     setMoreOpen(false);
+    setRevealed(false);
+    setKo2(false);
     setCardKey((k) => k + 1);
     startedAt.current = Date.now();
     busy.current = false;
@@ -213,6 +252,8 @@ export default function GrammarQuiz() {
     g.style.top = `${to.top}px`;
     g.style.width = `${to.width}px`;
     g.style.height = `${to.height}px`;
+    g.style.lineHeight = `${to.height}px`;
+    g.style.fontSize = `${tier === 'l' ? 21 : tier === 's' ? 19 : 20}px`;
     document.body.appendChild(g);
     const end = () => {
       g.remove();
@@ -257,6 +298,14 @@ export default function GrammarQuiz() {
     flyOut.current = [];
     prevRects.current = new Map();
   }, [picked]);
+
+  // 한국어 문장이 두 줄로 넘어갔는지 잰다 (카드가 바뀔 때마다)
+  useLayoutEffect(() => {
+    const ko = lineRef.current?.closest('.gq-card')?.querySelector<HTMLElement>('.qcard-top .ko');
+    if (!ko) return;
+    const lh = parseFloat(getComputedStyle(ko).lineHeight) || 24;
+    setKo2(ko.scrollHeight > lh * 1.5);
+  }, [cardKey, tier]);
 
   /* ---------- 풀기 ---------- */
   const answerCards = (en: string): WordCard[] => {
@@ -345,6 +394,7 @@ export default function GrammarQuiz() {
     const ans = answerCards(q.s.en);
     beforeChange(ans);
     setPicked(ans);
+    setRevealed(true);
     void finish(true, q.s.en);
   };
 
@@ -436,6 +486,8 @@ export default function GrammarQuiz() {
     dueText: answered && revealDue ? (due ? dueBadge(due) : '잠시 후 복습') : null,
     flash,
     hint: answered ? null : (check?.message ?? voiceMsg),
+    tier,
+    ko2,
   };
   const plus = new Set(check?.plus ?? []);
   const showPanel = answered && panelReady;
@@ -569,7 +621,7 @@ export default function GrammarQuiz() {
           />
         )}
         {(!showPanel || bankLeaving) && (
-          <div className={`quiz-input gq-input ${bankLeaving ? 'leave' : panelLeaving ? 'enter' : ''}`}>
+          <div className={`quiz-input gq-input gq-t${tier} ${bankLeaving ? 'leave' : panelLeaving ? 'enter' : ''}`}>
             <div className="gq-bank" ref={bankRef}>
               {cards.map((c) => {
                 const used = picked.some((p) => p.id === c.id);
@@ -586,7 +638,7 @@ export default function GrammarQuiz() {
                 <QReveal />
                 <span>정답 보기</span>
               </button>
-              <button className={`gq-submit${picked.length ? ' on' : ''}`} onClick={submit} disabled={!picked.length || answered}>
+              <button className={`gq-submit${picked.length && !revealed ? ' on' : ''}`} onClick={submit} disabled={!picked.length || answered}>
                 확인
               </button>
             </div>
@@ -603,7 +655,7 @@ function GCard({ view, lineRef, onUntap }: { view: CardView; lineRef?: React.Ref
   const level = topic?.level ?? String(q.s.levelNum);
   const flashCls = flash ? `is-${flash.kind}` : '';
   return (
-    <div className={`qcard-wrap gq-wrap${answered ? ' done' : ''}`}>
+    <div className={`qcard-wrap gq-wrap gq-t${view.tier}${view.ko2 ? ' ko2' : ''}${answered ? ' done' : ''}`}>
       <div className="qcard-head">
         <span className="qcard-tab">
           레벨 {level} <span className="tab-q">?</span>
@@ -671,6 +723,12 @@ function GCard({ view, lineRef, onUntap }: { view: CardView; lineRef?: React.Ref
                 {c.text}
               </button>
             ))}
+            {/* 의문문: 아직 아무것도 놓지 않았을 때 답 줄에 안내가 비친다 (말해보카) */}
+            {view.end === '?' && view.chips.length === 0 && (
+              <span className="gq-ph" lang="ko">
+                의문문으로 만들어 주세요
+              </span>
+            )}
             {view.end && <span className="gq-end">{view.end}</span>}
           </div>
         </div>

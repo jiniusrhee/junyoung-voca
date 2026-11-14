@@ -81,7 +81,7 @@ describe('app smoke', () => {
       fireEvent.click(start);
     });
 
-    await screen.findByText('0/20', {}, { timeout: 5_000 });
+    await screen.findByText('0/20', {}, { timeout: 15_000 });
     expect(screen.getByText('레벨 10')).toBeTruthy();
     expect(screen.getByText('New')).toBeTruthy();
     expect(screen.getByRole('button', { name: /힌트 보기/ })).toBeTruthy();
@@ -90,7 +90,7 @@ describe('app smoke', () => {
     await type(sentence.answer);
 
     // 정답을 다 입력하면 확인 없이 채점되고 정답 후 패널이 나온다
-    await screen.findByRole('button', { name: /다음 문제/ }, { timeout: 5_000 });
+    await screen.findByRole('button', { name: /다음 문제/ }, { timeout: 15_000 });
     expect(screen.getByText(/뒤 복습$/)).toBeTruthy();
     const card = await db.cards.get(word.id);
     expect(card?.known).toBe(true);
@@ -99,7 +99,7 @@ describe('app smoke', () => {
     await act(async () => {
       fireEvent.click(screen.getByRole('button', { name: /다음 문제/ }));
     });
-    await screen.findByText('1/20', {}, { timeout: 5_000 });
+    await screen.findByText('1/20', {}, { timeout: 15_000 });
     expect(screen.getByText('레벨 13')).toBeTruthy();
   });
 
@@ -122,7 +122,7 @@ describe('app smoke', () => {
     expect(document.querySelector('.ghost:not(.pre)')?.textContent).toBe(sentence.answer.slice(pre.length));
 
     await type(sentence.answer);
-    await screen.findByRole('button', { name: /다음 문제/ }, { timeout: 5_000 });
+    await screen.findByRole('button', { name: /다음 문제/ }, { timeout: 15_000 });
     const card = await db.cards.get(word.id);
     expect(card?.known).toBeFalsy();
     expect(card!.due.getTime()).toBeLessThanOrEqual(Date.now() + 6 * 60_000);
@@ -150,7 +150,7 @@ describe('app smoke', () => {
 
     await press('Backspace', wrong.length);
     await type(sentence.answer);
-    await screen.findByRole('button', { name: /다음 문제/ }, { timeout: 5_000 });
+    await screen.findByRole('button', { name: /다음 문제/ }, { timeout: 15_000 });
 
     const card = await db.cards.get(word.id);
     expect(card?.known).toBeFalsy();

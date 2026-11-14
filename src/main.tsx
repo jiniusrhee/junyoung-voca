@@ -17,6 +17,7 @@ import './styles/modeset.css';
 import './styles/dict.css';
 import './styles/worddetail.css';
 import './styles/grammar.css';
+import './styles/streakpop.css';
 import { installNativeBack } from './lib/nativeBack';
 import { reassertBars, setStatusBar } from './lib/statusBar';
 

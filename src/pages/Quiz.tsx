@@ -14,7 +14,8 @@ import Icon from '../components/Icon';
 import Keyboard from '../components/Keyboard';
 import Mascot from '../components/Mascot';
 import VocabSettings from '../components/VocabSettings';
-import { QBack, QBonus, QBookOutline, QGear, QHead, QHint, QMic, QReveal, QSpeak, QStreak, QSwap } from '../components/QuizIcons';
+import { QBack, QBonus, QBookOutline, QGear, QHead, QHint, QMic, QReveal, QSpeak, QStreak, QSwap, QTrophy } from '../components/QuizIcons';
+import { useStreakDone } from '../components/QuizShell';
 import KoText from '../components/KoText';
 import QuizCard, { FilledSentence, type CardBadge, type CardFlash } from '../components/QuizCard';
 import { Backdrop, useLeaveGuard } from '../components/StudyChrome';
@@ -186,6 +187,8 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
   const tipSeen = useLiveQuery(async () => !!(await db.kv.get('typedTipSeen')), []);
   const [tipOpen, setTipOpen] = useState(true);
   const guard = useLeaveGuard(() => nav('/'));
+  /** 머리줄 동그라미: 오늘의 연속 학습을 달성하기 전에는 트로피, 달성하면 불꽃 */
+  const streakDone = useStreakDone();
   // 말해보카: 학습 화면에서는 상태바까지 하늘색 (다이노 테마), 하늘 테마는 연한 파랑
   // 학습 화면의 상태바는 하늘색. 설정 오버레이가 덮고 있는 동안은 앱 기본색으로
   useStatusBarColor(showSettings ? null : settings?.studyTheme === 'sky' ? '#96cbf5' : '#bbe4df', false);
@@ -1235,7 +1238,7 @@ export default function Quiz({ mode }: { mode: 'study' | 'test' }) {
             </span>
           </div>
           <span className={`trophy-badge ${count >= total ? 'gold' : ''}`}>
-            <QStreak />
+            {streakDone ? <QStreak /> : <QTrophy />}
           </span>
           <span className="progress-label">
             {count}/{total}

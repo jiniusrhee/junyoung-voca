@@ -39,6 +39,21 @@ export function QStreak() {
   );
 }
 
+/**
+ * 진행 막대 왼쪽 동그라미의 트로피: 그날의 연속 학습을 아직 달성하지 못한 동안 불꽃 대신 보인다
+ * (플립 실측 2026-11-14: 4/10 까지 트로피, 5/10 부터 불꽃). 흰 컵 — 동그라미 안에서 x 8~25.67, y 10.33~23.67.
+ */
+export function QTrophy() {
+  return (
+    <svg className="qi qi-streak" viewBox="0 0 100 100" width="33.333" height="33.333" aria-hidden="true">
+      <circle cx="50" cy="50" r="50" fill="currentColor" />
+      <path d="M31 31h38v15.500c0 9.500-8 16.500-19 16.500s-19-7-19-16.500z" fill="#faf9fe" />
+      <path d="M31.500 34.500h-6v6.500c0 5.500 3.500 9.500 8.500 10.800M68.500 34.500h6v6.500c0 5.500-3.500 9.500-8.500 10.800" fill="none" stroke="#faf9fe" strokeWidth="3" />
+      <path d="M47 61.500h6l1.500 5.500 6.500 1.800V71H39v-2.200l6.500-1.800z" fill="#faf9fe" />
+    </svg>
+  );
+}
+
 /** 채움 끝의 작은 공룡(17.33 × 24): 왼쪽을 보고 앉은 목 긴 공룡, 밝은 테두리 */
 export function QHead() {
   return (

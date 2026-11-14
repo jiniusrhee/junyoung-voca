@@ -1,0 +1,235 @@
+/* streakpop.css: "N 연속 학습!" 전체 화면 (components/StreakPopup.tsx) — 말해보카 플립 캡처 실측 2026-11-14
+   좌표는 화면(폭 360) 기준 CSS px, 웹뷰는 화면 y 30.67 에서 시작한다 → 아래 top 값은 화면 y − 30.67.
+     불꽃 x 135.33~226 · y 250~359 / 숫자 y 403.33~444.33 (글자 높이 41) / '연속 학습!' y 461.33~486
+     판 y 517.67~664.33 (요일 동그라미 지름 29, 첫 동그라미 x 51.67, 간격 37.93, y 543~572 · 가는 선 y 591 · 글 두 줄 y 610~643.33)
+     확인 x 80.33~341.33 · y 797~845.67 (#735cf4). 실제 앱은 그 왼쪽(x 19~71.67)에 공유 단추가 있다 — 만들지 않으므로 확인을 화면 폭에 맞춘다 */
+
+#root .streak-pop2,
+.streak-pop2 {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: block;
+  padding: 0;
+  background:
+    radial-gradient(130% 62% at 50% 24%, rgba(86, 46, 34, 0.97) 0%, rgba(52, 33, 30, 0.975) 34%, rgba(18, 14, 26, 0.98) 72%, rgba(7, 8, 21, 0.985) 100%);
+  color: #fff;
+  animation: stIn 0.12s linear both;
+}
+@keyframes stIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 불이 붙으면 불꽃 둘레가 넓게 빛난다 */
+.streak-pop2::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 274.667px;
+  width: 300px;
+  height: 300px;
+  margin: -150px 0 0 -150px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 128, 32, 0.5) 0%, rgba(255, 110, 30, 0.26) 34%, rgba(255, 100, 30, 0.08) 62%, rgba(255, 100, 30, 0) 100%);
+  opacity: 0;
+  transition: opacity 0.25s linear;
+  pointer-events: none;
+}
+.streak-pop2.lit::before {
+  opacity: 1;
+}
+/* 불꽃: 90.67 x 108.5. 꺼져 있다가(회색) 0.3초 뒤 불이 붙는다 */
+.streak-pop2 .st-flame {
+  position: absolute;
+  left: 50%;
+  top: 220.333px;
+  width: 90.667px;
+  height: 108.5px;
+  margin-left: -44.833px;
+}
+.streak-pop2 .st-flame svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.streak-pop2 .st-flame-body {
+  fill: #c9d0d8;
+  transition: fill 0.18s linear;
+}
+.streak-pop2 .st-flame-core {
+  fill: #ffffff;
+  transition: fill 0.18s linear;
+}
+.streak-pop2.lit .st-flame svg {
+  filter: drop-shadow(0 0 14px rgba(255, 138, 30, 0.85)) drop-shadow(0 0 42px rgba(255, 110, 20, 0.55));
+  animation: stFlamePop 0.35s cubic-bezier(0.2, 0.7, 0.3, 1.4) both;
+}
+.streak-pop2.lit .st-flame-body {
+  fill: #ffa42a;
+}
+.streak-pop2.lit .st-flame-core {
+  fill: #ffee74;
+}
+@keyframes stFlamePop {
+  0% {
+    transform: scale(0.86);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/* 불티 둘 */
+.streak-pop2 .st-spark {
+  position: absolute;
+  width: 2.667px;
+  height: 2.667px;
+  border-radius: 50%;
+  background: #ff8a2a;
+  opacity: 0;
+}
+.streak-pop2.lit .st-spark.s1 {
+  left: 34px;
+  top: -16px;
+  animation: stSpark 1.6s 0.2s ease-out infinite;
+}
+.streak-pop2.lit .st-spark.s2 {
+  left: 78px;
+  top: 32px;
+  animation: stSpark 1.9s 0.7s ease-out infinite;
+}
+@keyframes stSpark {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+}
+
+/* 숫자: 글자 높이 41 (약 57px, 아주 굵게), 위는 희고 아래는 주황 */
+.streak-pop2 .st-num {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 362.667px;
+  display: block;
+  font-size: 57px;
+  line-height: 61px;
+  font-weight: 900;
+  text-align: center;
+  background: linear-gradient(180deg, #ffffff 22%, #ffd9a8 48%, #ffb061 66%, #ff9c4b 84%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 1.2px transparent;
+  --ls: -0.01;
+}
+.streak-pop2:not(.lit) .st-num {
+  background: linear-gradient(180deg, #ffffff 20%, #d8dde3 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.streak-pop2 .st-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 427.333px;
+  margin: 0;
+  font-size: 26.667px;
+  line-height: 32px;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+}
+
+/* 판: 옅게 밝은 둥근 네모 (위에 가는 빛줄) */
+.streak-pop2 .st-panel {
+  position: absolute;
+  left: 32px;
+  right: 32px;
+  top: 487px;
+  height: 146.667px;
+  border-radius: 14px;
+  background: rgba(255, 220, 190, 0.035);
+  box-shadow: inset 0 1px 0 rgba(255, 210, 170, 0.07);
+}
+.streak-pop2 .st-week {
+  position: absolute;
+  left: 19.667px;
+  top: 25.333px;
+  display: flex;
+  gap: 8.933px;
+}
+.streak-pop2 .st-week span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  background: rgba(10, 8, 14, 0.42);
+  font-size: 11.667px;
+  font-weight: 700;
+  color: #6e6a70;
+}
+.streak-pop2 .st-week span.on {
+  background: #ff9c4b;
+}
+.streak-pop2 .st-week span svg {
+  display: block;
+  width: 29px;
+  height: 29px;
+}
+.streak-pop2 .st-next {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 73.333px;
+  margin: 0;
+  padding-top: 15px;
+  border-top: 0.667px solid rgba(255, 255, 255, 0.1);
+  margin-left: 0.667px;
+  margin-right: 0.667px;
+  font-size: 14.333px;
+  line-height: 21.333px;
+  text-align: center;
+  color: #fff;
+}
+
+/* 확인: y 797~845.67, #735cf4 */
+.streak-pop2 .st-ok {
+  position: absolute;
+  left: 18.667px;
+  right: 18.667px;
+  top: 766.333px;
+  height: 48.667px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #735cf4;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+}
+.streak-pop2 .st-ok:active {
+  filter: brightness(1.08);
+}
+/* 화면이 짧은 기기: 아래 단추가 잘리지 않게 바닥에 붙인다 */
+@media (max-height: 820px) {
+  .streak-pop2 .st-ok {
+    top: auto;
+    bottom: 18px;
+  }
+}

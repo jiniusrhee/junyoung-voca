@@ -93,6 +93,13 @@ export default function Home() {
   useEffect(() => {
     sessionStorage.removeItem('homeReplay');
   }, []);
+  // "N 연속 학습!" 화면이 홈을 덮고 있었다면, 그것이 닫힌 뒤에 다시 채우기를 한 번 더 보여 준다 (실제 앱: 확인을 누른 뒤 홈이 채워진다)
+  const [replayRun, setReplayRun] = useState(0);
+  useEffect(() => {
+    const on = () => setReplayRun((n) => n + 1);
+    window.addEventListener('streakpop-closed', on);
+    return () => window.removeEventListener('streakpop-closed', on);
+  }, []);
   // 앱(APK)에서는 시스템 스플래시 아이콘이 0.25초쯤 걷히는 동안 홈이 가려져 있으므로 그만큼 늦게 시작한다
   const lag = intro && isNativeApp() ? 250 : 0;
   const [toast, setToast] = useState<'in' | 'out' | null>(null);
@@ -130,7 +137,8 @@ export default function Home() {
 
   return (
     <div
-      className={`screen home ${intro ? 'intro' : replay ? 'replay' : ''}${settings.leftHanded ? ' lefty' : ''}`}
+      key={replayRun}
+      className={`screen home ${intro && !replayRun ? 'intro' : replay || replayRun ? 'replay' : ''}${settings.leftHanded ? ' lefty' : ''}`}
       style={lag ? ({ '--lag': `${lag}ms` } as CSSProperties) : undefined}
       // 실제 앱은 홈을 처음 건드리는 순간에도 '오늘' 막대가 자라난다 (카드가 다 보이지 않아도)
       onTouchStart={todayBar ? undefined : () => setTodayBar(true)}
@@ -198,7 +206,7 @@ export default function Home() {
                 하루 목표 <b lang="en">{goal}</b> 개 <HPencil />
               </button>
             </div>
-            <GaugeRing percent={pct} size={63.333} stroke={5} intro={intro || replay} introLag={replay && !intro ? -250 : lag} />
+            <GaugeRing percent={pct} size={63.333} stroke={5} intro={intro || replay || replayRun > 0} introLag={(replay || replayRun > 0) && !intro ? -250 : lag} />
           </div>
           {/* 턱(아래 그림자)은 움직이지 않는 받침으로 그리고 버튼 면만 내려앉는다 — 면·그림·빛줄기의 움직임이 모두 같은 박자로 돌게 transform 만 쓴다 */}
           <div className={`today-seat m-${homeMode}`}>

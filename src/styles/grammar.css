@@ -19,7 +19,39 @@
   height: 165px;
 }
 
-/* ---------- 카드 ---------- */
+/* ---------- 카드 ----------
+   크기 단계 (2026-11-14, 12문제 실측): 낱말이 적으면 l, 보통 m, 많으면 s (pages/GrammarQuiz.tsx 의 tierOf)
+     l: 칩 글자 21px(높이 36.33) · 위 칸 121.33 · 빈 답 줄의 밑줄은 카드 위에서 229
+     m: 칩 글자 20px(높이 34.33) · 위 칸 102.33 (한국어가 두 줄이면 114) · 밑줄 218.67 (두 줄이면 224.33)
+     s: 칩 글자 19px(높이 32.67) · 한국어 15.33px · 위 칸 102.33 (두 줄이면 91.67) · 밑줄 218 (두 줄이면 200.67)
+   답 줄 묶음(첫 칩 위 ~ 마지막 밑줄 아래)은 아래 칸의 가운데보다 6.5 위에 놓인다(padding-bottom 13). */
+#root .grammar-quiz .gq-wrap,
+#root .grammar-quiz .gq-input {
+  --gf: 20px;
+  --gh: 34px;
+}
+#root .grammar-quiz .gq-tl {
+  --gf: 21px;
+  --gh: 36px;
+}
+#root .grammar-quiz .gq-ts {
+  --gf: 19px;
+  --gh: 32.333px;
+}
+#root .grammar-quiz .gq-wrap {
+  --g-top: 102.333px;
+  --g-pad: 13px;
+}
+#root .grammar-quiz .gq-wrap.gq-tl {
+  --g-top: 121.333px;
+}
+#root .grammar-quiz .gq-wrap.gq-tm.ko2 {
+  --g-top: 114px;
+}
+#root .grammar-quiz .gq-wrap.gq-ts.ko2 {
+  --g-top: 91.667px;
+  --g-pad: 36px;
+}
 #root .grammar-quiz .qcard.gq-card {
   display: flex;
   flex: none;
@@ -29,13 +61,21 @@
   border-radius: 10.5px 12px 12px 12px;
 }
 #root .grammar-quiz .gq-card .qcard-top {
-  min-height: 102.333px;
+  flex: none;
+  box-sizing: border-box;
+  height: var(--g-top);
+  min-height: 0;
   border-radius: 10.5px 12px 0 0;
+}
+/* s 단계: 한국어 문장도 작다 (글자 높이 13.33, 줄 간격 22.67) */
+#root .grammar-quiz .gq-ts .qcard-top .ko {
+  font-size: 15.333px;
+  line-height: 22.667px;
 }
 #root .grammar-quiz .gq-card .qcard-bottom {
   flex: 1;
   min-height: 0;
-  padding: 0 16.667px 13px 16.667px;
+  padding: 0 16.667px var(--g-pad) 16.667px;
   border-radius: 0 0 12px 12px;
 }
 /* 꼬리표는 단추가 아니다(눌러도 도움말이 없다) */
@@ -43,16 +83,21 @@
   transition: none;
 }
 
-/* ---------- 답 줄: 칩 34 + 밑줄(칩 아래 1.67 에 0.67 두께) , 줄 간격 42.33. 첫 칩 위 ~ 마지막 밑줄 아래가 아래 칸의 가운데보다 6.5 위 ---------- */
+/* ---------- 답 줄: 칩(높이 --gh) + 밑줄(칩 아래 1.67 에 0.67 두께), 줄 간격 = --gh + 8.33 ---------- */
 #root .grammar-quiz .gq-line {
   position: relative;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
   gap: 8.333px 5px;
-  min-height: 36.333px;
+  min-height: calc(var(--gh) + 2.333px);
   padding: 0 0 2.333px;
-  background: repeating-linear-gradient(to bottom, transparent 0 35.667px, #2c2e30 35.667px 36.333px, transparent 36.333px 42.333px);
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 calc(var(--gh) + 1.667px),
+    #2c2e30 calc(var(--gh) + 1.667px) calc(var(--gh) + 2.333px),
+    transparent calc(var(--gh) + 2.333px) calc(var(--gh) + 8.333px)
+  );
   --ls: 0;
 }
 #root .grammar-quiz .gq-chip {
@@ -60,13 +105,13 @@
   flex: none;
   box-sizing: border-box;
   min-width: 34.333px;
-  height: 34px;
+  height: var(--gh);
   padding: 0 7px;
   border: 0;
   border-radius: 6.667px;
   background: #35383c;
-  font-size: 20px;
-  line-height: 34px;
+  font-size: var(--gf);
+  line-height: var(--gh);
   font-weight: 400;
   color: #d6d6d6;
   text-align: center;
@@ -82,15 +127,29 @@
   background: #362828;
   color: #cd5851;
 }
-/* 문장 끝 부호: 밑줄 오른쪽 끝에서 4.5 바깥, 마지막 줄의 글자 밑선에 */
+/* 문장 끝 부호('.' · '?'): 가운데가 밑줄 오른쪽 끝에서 7.1 바깥(x 337.1), 마지막 줄의 글자 밑선에 */
 #root .grammar-quiz .gq-end {
   position: absolute;
-  right: -9.667px;
+  left: calc(100% + 7.1px);
   bottom: 2.333px;
-  height: 34px;
-  font-size: 20px;
-  line-height: 34px;
+  height: var(--gh);
+  transform: translateX(-50%);
+  font-size: var(--gf);
+  line-height: var(--gh);
   color: #d6d6d6;
+}
+/* 의문문 안내: 글자가 밑줄 왼쪽 끝에서 4 (x 34~184.33), 16.17px, #5a6062 */
+#root .grammar-quiz .gq-ph {
+  position: absolute;
+  left: 2.667px;
+  bottom: 2.333px;
+  height: var(--gh);
+  font-size: 16.167px;
+  line-height: calc(var(--gh) + 2px);
+  color: #5a6062;
+  white-space: nowrap;
+  pointer-events: none;
+  --ls: -0.0864;
 }
 
 /* 배지: 지름 13. 답 줄의 −(틀린 낱말)·⇄(옮길 낱말)은 칩 왼쪽 위에서 3.33 / 2.67 바깥, 보기 칸의 +(더 쓸 낱말)는 3 / 2.33 바깥 */
@@ -199,13 +258,13 @@
   flex: none;
   box-sizing: border-box;
   min-width: 34.667px;
-  height: 34.333px;
+  height: calc(var(--gh) + 0.333px);
   padding: 0 6.533px;
   border: 0.667px solid #474849;
   border-radius: 6.667px;
   background: #202122;
-  font-size: 20px;
-  line-height: 33px;
+  font-size: var(--gf);
+  line-height: calc(var(--gh) - 1px);
   font-weight: 400;
   color: #d6d6d6;
   text-align: center;
